@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog &#8212; Forgexe</title>
+<meta name="description" content="Praktische inzichten over AI, automatisering en groei voor het Nederlandse MKB. Geen hype, wel resultaat.">
+<link rel="canonical" href="https://forgexe.nl/blog.html">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#71809a;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.02;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.15;--grid-opacity:0.6;--ill-stroke:var(--green);--ill-opacity:0.7}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.06;--grid-opacity:0.12;--ill-stroke:#059669;--ill-opacity:0.6}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:1.5rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s}.nav-cta:hover{background:var(--green-lt)}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:.8rem;color:var(--green);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
+.section-title{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem}
+.section-desc{font-size:.95rem;color:var(--dim);max-width:560px;line-height:1.9;margin-bottom:3rem}
+.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono)}.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}.btn-primary svg{width:14px;height:14px}
+.reveal{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes bl{50%{opacity:0}}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
+.page-hero h1{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
+.page-hero h1 em{font-style:normal;color:var(--green)}
+.page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:560px;opacity:0;animation:fu .8s ease forwards .7s}
+
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd)}
+.blog-card{background:var(--bg);padding:2rem;transition:background .3s;position:relative;display:flex;flex-direction:column}.blog-card:hover{background:var(--card-hover)}
+.blog-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--green);transition:width .4s}.blog-card:hover::after{width:100%}
+.blog-tag{display:inline-block;font-size:.58rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--green);padding:.2rem .6rem;margin-bottom:1rem;font-family:var(--mono);align-self:flex-start}
+.blog-date{font-size:.65rem;color:var(--mut);margin-bottom:.75rem}
+.blog-title{font-family:var(--pop);font-size:1.05rem;font-weight:600;line-height:1.3;margin-bottom:.75rem;letter-spacing:-.02em}
+.blog-excerpt{font-size:.78rem;color:var(--dim);line-height:1.8;margin-bottom:1.25rem;flex:1}
+.blog-link{font-size:.72rem;color:var(--green);text-decoration:none;font-family:var(--mono);transition:color .3s}.blog-link:hover{color:var(--green-lt)}
+
+.page-cta{padding:6rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
+.page-cta h2{font-family:var(--pop);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
+
+footer{padding:3.5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.footer-col a{display:block;font-size:.72rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.footer-brand-desc{font-size:.7rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.65rem;color:var(--mut)}.footer-tagline{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.65rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+
+@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.page-hero{padding:6rem 1.5rem 2rem}section{padding:3.5rem 1.5rem}.blog-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<nav>
+  <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="cases.html">Cases</a></li><li><a href="blog.html">Blog</a></li></ul>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="hero-terminal"><span class="prompt">C:\forgexe\blog&gt;</span> forge --list articles<span class="cursor"></span></div>
+  <h1>Inzichten over AI,<br>automatisering en <em>groei.</em></h1>
+  <p class="hero-sub">Praktische kennis voor het Nederlandse MKB. Geen hype, wel resultaat.</p>
+</header>
+<div class="neon-line"></div>
+
+<section class="reveal">
+  <div class="section-label">C:\blog\artikelen&gt;<span class="section-label-cursor"></span></div>
+  <div class="blog-grid">
+    <a href="blog-ai-agents-salesteam.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">AI</span>
+      <div class="blog-date">28 mrt 2026</div>
+      <h3 class="blog-title">Hoe AI-agents je salesteam versterken zonder te vervangen</h3>
+      <p class="blog-excerpt">AI-agents nemen repetitieve taken over zodat je team zich kan focussen op wat mensen het beste doen: relaties bouwen en deals sluiten.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+    <a href="blog-5-processen-automatiseren.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">Automatisering</span>
+      <div class="blog-date">21 mrt 2026</div>
+      <h3 class="blog-title">5 processen die elk MKB-bedrijf vandaag kan automatiseren</h3>
+      <p class="blog-excerpt">Van lead-opvolging tot facturatie: deze vijf processen kosten je team uren per week en zijn relatief eenvoudig te automatiseren.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+    <a href="blog-linkedin-outreach-ai.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">Growth</span>
+      <div class="blog-date">14 mrt 2026</div>
+      <h3 class="blog-title">LinkedIn outreach in 2026: handmatig vs. AI-gestuurd</h3>
+      <p class="blog-excerpt">We vergeleken handmatige LinkedIn outreach met een AI-gestuurde aanpak. Het verschil in respons en conversie was opvallend.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+    <a href="blog-roi-procesautomatisering.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">Strategie</span>
+      <div class="blog-date">7 mrt 2026</div>
+      <h3 class="blog-title">De ROI van procesautomatisering: wat je echt kunt verwachten</h3>
+      <p class="blog-excerpt">Vergeet de beloftes van 10x productiviteit. Dit is wat procesautomatisering realistisch oplevert voor een MKB-bedrijf.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+    <a href="blog-crm-integraties.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">Automatisering</span>
+      <div class="blog-date">28 feb 2026</div>
+      <h3 class="blog-title">CRM-integraties die je team uren per week besparen</h3>
+      <p class="blog-excerpt">Je CRM is pas waardevol als het verbonden is met de rest van je tools. Deze integraties maken het verschil.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+    <a href="blog-ai-strategie-bestaande-tools.html" class="blog-card" style="text-decoration:none;color:inherit">
+      <span class="blog-tag">AI</span>
+      <div class="blog-date">21 feb 2026</div>
+      <h3 class="blog-title">Waarom je AI-strategie begint bij je bestaande tools</h3>
+      <p class="blog-excerpt">Je hoeft niet alles om te gooien. De beste AI-implementaties bouwen voort op wat je al hebt. Zo begin je.</p>
+      <span class="blog-link">Lees meer &#8594;</span>
+    </a>
+  </div>
+</section>
+<div class="neon-line"></div>
+
+<section class="page-cta reveal">
+  <h2>Wil je weten hoe AI jouw<br>bedrijf kan versterken?</h2>
+  <p>We starten met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
+  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31850805439">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+</footer>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(en) {
+    if (en.isIntersecting) en.target.classList.add('visible');
+  });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>

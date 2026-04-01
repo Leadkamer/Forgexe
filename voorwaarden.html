@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algemene Voorwaarden &#8212; Forgexe</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#71809a;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.02;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.15;--grid-opacity:0.6}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.06;--grid-opacity:0.12}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:1.5rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s}.nav-cta:hover{background:var(--green-lt)}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+.legal{padding:10rem 3rem 6rem;max-width:800px;margin:0 auto;position:relative;z-index:1}
+.legal h1{font-family:var(--pop);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:2rem;color:var(--green)}
+.legal h2{font-family:var(--pop);font-size:1.15rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem}
+.legal h3{font-size:.9rem;font-weight:500;margin-top:1.5rem;margin-bottom:.75rem;color:var(--green)}
+.legal p,.legal li{font-size:.82rem;color:var(--dim);line-height:1.9;margin-bottom:.75rem}
+.legal ol{padding-left:1.5rem;margin-bottom:1.25rem;counter-reset:item}.legal ol li{margin-bottom:.5rem}
+.legal ul{padding-left:1.5rem;margin-bottom:1.25rem;list-style:disc}.legal ul li{margin-bottom:.4rem}
+.legal .article-marker{font-size:.65rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-right:.5rem}
+.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+footer{padding:3.5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.footer-col a{display:block;font-size:.72rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.footer-brand-desc{font-size:.7rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.65rem;color:var(--mut)}.footer-tagline{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.65rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.legal{padding:6rem 1.5rem 3rem}.footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<nav>
+  <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="cases.html">Cases</a></li><li><a href="blog.html">Blog</a></li></ul>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+
+<div class="legal">
+  <h1>Algemene Voorwaarden</h1>
+
+  <h2>Artikel 1 &#8212; Definities</h2>
+  <p><strong>De Opdrachtnemer:</strong> Forgexe, AI-automatiseringsbedrijf gevestigd in Maastricht en ingeschreven bij de Kamer van Koophandel onder nummer [KvK-nummer].</p>
+  <p><strong>De Opdrachtgever:</strong> De natuurlijke- of rechtspersoon welke met Opdrachtnemer (Forgexe) enige schriftelijke en/of mondelinge, al dan niet aanvullende overeenkomst heeft gesloten met Forgexe, gebruik maakt van de diensten welke Forgexe aanbiedt of aan wie Forgexe een offerte heeft uitgebracht waarop deze Algemene Voorwaarden van toepassing zijn.</p>
+  <p><strong>Diensten:</strong> De diensten welke Forgexe aanbiedt. Onder andere, maar niet beperkt tot: AI-automations, AI-agents, geautomatiseerde workflows, data-enrichment, lead scoring, social media marketing en optimalisatie, website development en design, online leadgeneratie, zoekmachinemarketing en -optimalisatie, consultancy, Google Ads, e-mailmarketingcampagnes en aanverwante AI-diensten.</p>
+  <p><strong>Overeenkomst:</strong> De overeenkomst welke gesloten wordt ten behoeve van het gebruik van de door Forgexe aangeboden diensten.</p>
+  <p><strong>AI-diensten:</strong> Alle diensten waarbij gebruik wordt gemaakt van kunstmatige intelligentie, machine learning, geautomatiseerde besluitvorming of large language models (LLM&#8217;s), waaronder AI-agents, geautomatiseerde outreach-workflows, lead scoring, data-enrichment en AI-gegenereerde content.</p>
+  <p><strong>Workflow / Automation:</strong> Een geautomatiseerd proces dat via platformen zoals n8n, Zapier of vergelijkbare tools meerdere applicaties en databronnen verbindt om taken zonder handmatige tussenkomst uit te voeren.</p>
+  <p><strong>AI-agent:</strong> Een autonoom of semi-autonoom softwaresysteem dat via AI-modellen zelfstandig taken uitvoert, beslissingen neemt en acties initieert op basis van instructies en/of contextdata van de Opdrachtgever.</p>
+  <p><strong>Derde Partij Platforms:</strong> Externe diensten, API&#8217;s en platformen waarvan Forgexe gebruik maakt bij het uitvoeren van AI-diensten, waaronder maar niet beperkt tot: Apollo, LinkedIn, Phantombuster, Unipile, Anthropic Claude API, OpenAI, Google Maps Platform en n8n Cloud.</p>
+  <p><strong>AI-output:</strong> Alle resultaten, berichten, analyses, scores, aanbevelingen of andere uitkomsten gegenereerd door AI-systemen in het kader van de geleverde diensten.</p>
+
+  <h2>Artikel 2 &#8212; Toepasselijkheid</h2>
+  <p>Deze voorwaarden zijn van toepassing op iedere aanbieding, offerte, de daaruit voortvloeiende diensten van welke aard dan ook inbegrepen, en overeenkomst tussen een Opdrachtgever en Opdrachtnemer (Forgexe) waarop Opdrachtnemer deze voorwaarden van toepassing heeft verklaard, voor zover van deze voorwaarden niet door partijen schriftelijk is afgeweken.</p>
+  <p>Opdrachtnemer wijst de toepasselijkheid van algemene voorwaarden van de Opdrachtgever uitdrukkelijk van de hand. Indien een bepaling in deze algemene voorwaarden op enig moment deels of volledig nietig is of vernietigd wordt, blijft het overige volledig van toepassing.</p>
+
+  <h2>Artikel 3 &#8212; Eigendomsvoorbehoud</h2>
+  <p>Alle door Opdrachtnemer geleverde zaken binnen het kader van de overeenkomst blijven eigendom van Opdrachtnemer totdat de Opdrachtgever alle verplichtingen uit de met Opdrachtnemer gesloten overeenkomst(en) deugdelijk is nagekomen. Het onder eigendomsvoorbehoud geleverde mag niet worden doorverkocht en mag nimmer als betaalmiddel worden gebruikt.</p>
+
+  <h2>Artikel 4 &#8212; Betalingscondities</h2>
+  <p>Alle facturen zullen door de Opdrachtgever worden betaald overeenkomstig op de factuur vermelde betalingscondities. Bij gebrek aan specifieke condities dient de factuur binnen tien (10) dagen na factuurdatum te worden voldaan. Alle prijzen en kostenramingen zijn exclusief BTW, tenzij anders vermeld.</p>
+  <p>Indien de Opdrachtgever in gebreke blijft in de tijdige betaling van een factuur, is hij van rechtswege in verzuim en is een rente verschuldigd van 1% per maand, tenzij de wettelijke rente hoger is.</p>
+
+  <h2>Artikel 5 &#8212; Incassokosten</h2>
+  <p>Indien de Opdrachtgever in gebreke of in verzuim is met het nakomen van zijn verplichtingen, komen alle kosten ter verkrijging van voldoening, zowel buiten als in rechte, voor rekening van de Opdrachtgever.</p>
+
+  <h2>Artikel 6 &#8212; Contractduur en overeenkomst</h2>
+  <p>Opdrachtnemer zal de overeengekomen diensten naar beste inzicht, kennis, vermogen en overeenkomstig de eisen van goed vakmanschap uitvoeren. Opdrachtnemer kan echter niet garanderen dat met de uit te voeren werkzaamheden het door Opdrachtgever beoogde rendement of resultaat wordt bereikt.</p>
+  <p>Wijzigingen en aanvullingen op een overeenkomst gelden slechts indien Opdrachtnemer ze schriftelijk vastlegt.</p>
+
+  <h2>Artikel 7 &#8212; Ontbinding en opzegging</h2>
+  <p>Opdrachtnemer is bevoegd de nakoming op te schorten of de overeenkomst te ontbinden indien de Opdrachtgever zijn verplichtingen niet, onvolledig of niet tijdig nakomt.</p>
+  <p>Bij overeenkomsten met een onbepaalde looptijd dient de Opdrachtgever een opzegtermijn van &#233;&#233;n (1) maand in acht te nemen. Een overeenkomst voor bepaalde tijd is niet tussentijds opzegbaar en wordt na afloop automatisch verlengd voor eenzelfde periode, behoudens opzegging met inachtneming van een opzegtermijn van twee (2) servicemaanden.</p>
+  <p>Indien de Opdrachtgever een overeenkomst opzegt, dient hij de gemaakte kosten met betrekking tot de tot dan verrichte werkzaamheden integraal te betalen.</p>
+
+  <h2>Artikel 8 &#8212; Aard van de AI-dienstverlening</h2>
+  <p>Forgexe levert AI-diensten op basis van een inspanningsverplichting. Forgexe garandeert geen specifieke resultaten, conversieverhoudingen of aantallen gegenereerde leads, tenzij schriftelijk anders overeengekomen.</p>
+  <p>AI-systemen en geautomatiseerde workflows zijn inherent afhankelijk van de kwaliteit van inputdata, de werking van Derde Partij Platforms en de accuraatheid van AI-modellen. Forgexe is niet aansprakelijk voor uitkomsten die voortvloeien uit onjuiste, onvolledige of verouderde inputdata van de Opdrachtgever.</p>
+  <p>Opdrachtgever is zelf verantwoordelijk voor het controleren van AI-output alvorens deze te gebruiken voor beslissingen met aanzienlijke zakelijke, juridische of financi&#235;le consequenties.</p>
+
+  <h2>Artikel 9 &#8212; Afhankelijkheid van Derde Partij Platforms</h2>
+  <p>De uitvoering van AI-diensten is mede afhankelijk van de beschikbaarheid, werking en gebruiksvoorwaarden van Derde Partij Platforms. Forgexe heeft geen invloed op wijzigingen, uitval, blokkades of beleidswijzigingen van deze platforms.</p>
+  <p>Wijzigingen in API-limieten, tarieven of beschikbaarheid van Derde Partij Platforms gelden als overmacht en bevrijden Forgexe van aansprakelijkheid. Extra kosten die hieruit voortvloeien worden na voorafgaande kennisgeving doorberekend.</p>
+
+  <h2>Artikel 10 &#8212; Aansprakelijkheid voor AI-output</h2>
+  <p>AI-output wordt gegenereerd op basis van statistische modellen en kan fouten, onnauwkeurigheden of verouderde informatie bevatten. Forgexe is niet aansprakelijk voor schade die voortvloeit uit het gebruik van AI-output zonder adequate verificatie door de Opdrachtgever.</p>
+  <p>De Opdrachtgever is verantwoordelijk voor het instellen van adequate controle- en goedkeuringsprocessen bij het gebruik van AI-agents die namens hem communiceren of handelingen verrichten.</p>
+  <p>De totale aansprakelijkheid van Forgexe voor schade voortvloeiend uit AI-diensten is beperkt tot het bedrag dat &#233;&#233;n (1) maand voorafgaand aan de schadeveroorzakende gebeurtenis door de Opdrachtgever is betaald voor de betreffende AI-dienst.</p>
+
+  <h2>Artikel 11 &#8212; Acceptabel gebruik en compliance</h2>
+  <p>Opdrachtgever is verantwoordelijk voor het gebruik van de geleverde AI-diensten in overeenstemming met alle toepasselijke wet- en regelgeving, waaronder de AVG, de Telecommunicatiewet en de ePrivacy-verordening.</p>
+  <p>Het is Opdrachtgever niet toegestaan de AI-diensten te gebruiken voor:</p>
+  <ul>
+    <li>het versturen van ongewenste commerci&#235;le communicatie zonder wettelijke grondslag;</li>
+    <li>het omzeilen van beveiligingssystemen of gebruiksvoorwaarden van Derde Partij Platforms;</li>
+    <li>het genereren of verspreiden van misleidende, discriminerende of anderszins onrechtmatige content;</li>
+    <li>activiteiten die in strijd zijn met de openbare orde of goede zeden.</li>
+  </ul>
+  <p>Bij overtreding is Forgexe gerechtigd de dienstverlening per direct te staken. Opdrachtgever vrijwaart Forgexe volledig voor alle aanspraken van derden die hieruit voortvloeien.</p>
+
+  <h2>Artikel 12 &#8212; Continu&#239;teit en onderhoud AI-diensten</h2>
+  <p>Forgexe spant zich in om overeengekomen AI-workflows en agents operationeel te houden. Bij storingen zal Forgexe zich inspannen om deze binnen een redelijke termijn te verhelpen.</p>
+  <p>Forgexe is niet aansprakelijk voor downtime of verminderde functionaliteit als gevolg van gepland of ongepland onderhoud door Derde Partij Platforms.</p>
+
+  <h2>Artikel 13 &#8212; Intellectuele eigendommen</h2>
+  <p>Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten &#8212; waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen &#8212; blijven te allen tijde eigendom van Opdrachtnemer.</p>
+  <p>AI-output die specifiek is gegenereerd op basis van data en instructies van de Opdrachtgever is eigendom van de Opdrachtgever, mits alle betalingsverplichtingen zijn nagekomen.</p>
+  <p>Forgexe behoudt het recht om generieke methodologie&#235;n en best practices opnieuw te gebruiken voor andere opdrachtgevers, zonder dat daarbij vertrouwelijke informatie wordt gedeeld.</p>
+  <p>Bij overtreding van dit artikel is Opdrachtgever een boete verschuldigd van tweeduizend euro (&#8364; 2.000,-) per overtreding, naast eventuele schadevergoeding.</p>
+
+  <h2>Artikel 14 &#8212; Privacy en gegevensbescherming</h2>
+  <p>Voor zover Forgexe persoonsgegevens verwerkt namens de Opdrachtgever, handelt Forgexe als Verwerker en de Opdrachtgever als Verwerkingsverantwoordelijke in de zin van de AVG. Indien nodig sluiten partijen een afzonderlijke Verwerkersovereenkomst.</p>
+  <p>Opdrachtgever garandeert dat aangeleverde data rechtmatig is verkregen. Forgexe verwerkt persoonsgegevens uitsluitend voor de uitvoering van de overeengekomen diensten.</p>
+  <p>Na be&#235;indiging van de overeenkomst worden persoonsgegevens op verzoek teruggeleverd. Zonder verzoek worden gegevens binnen zes (6) maanden permanent vernietigd.</p>
+
+  <h2>Artikel 15 &#8212; Aansprakelijkheid</h2>
+  <p>De aansprakelijkheid van Opdrachtnemer is beperkt tot maximaal de factuurwaarde van de order waarop de aansprakelijkheid betrekking heeft. Niet voor vergoeding in aanmerking komt: indirecte schade, gevolgschade, gederfde winst en omzetderving.</p>
+  <p>Iedere vordering tot schadevergoeding vervalt door het verloop van twaalf (12) maanden na het ontstaan van de vordering.</p>
+
+  <h2>Artikel 16 &#8212; Overmacht</h2>
+  <p>Opdrachtnemer is niet aansprakelijk voor schade als gevolg van overmacht. Onder overmacht wordt mede verstaan: oorlog, overstroming, brand, bedrijfsstoornissen, storingen in internetverbindingen, uitval van elektriciteit, maatregelen van overheidswege, niet-levering door derden, ziekte van medewerkers, en API-wijzigingen, uitval of beleidswijzigingen van Derde Partij Platforms.</p>
+  <p>Indien de overmachtssituatie langer duurt dan &#233;&#233;n (1) maand, zijn partijen gerechtigd de overeenkomst te ontbinden zonder verplichting tot schadevergoeding.</p>
+
+  <h2>Artikel 17 &#8212; Offertes en aanbiedingen</h2>
+  <p>Aanbiedingen en offertes zijn vrijblijvend en geldig gedurende veertien (14) dagen, tenzij anders aangegeven. Prijzen zijn exclusief BTW.</p>
+
+  <h2>Artikel 18 &#8212; Vrijwaring</h2>
+  <p>Opdrachtgever vrijwaart Opdrachtnemer geheel en onvoorwaardelijk tegen alle aanspraken van derden tot vergoeding van schade, behoudens opzet of grove schuld aan de zijde van Opdrachtnemer.</p>
+
+  <h2>Artikel 19 &#8212; Klachten</h2>
+  <p>Klachten dienen direct na ontdekking schriftelijk aan Forgexe te worden gemeld. Indien geen expliciete garantietermijn is overeengekomen, geldt een termijn van zes (6) maanden na levering.</p>
+
+  <h2>Artikel 20 &#8212; Toepasselijk recht</h2>
+  <p>Op alle rechtsbetrekkingen waarbij Opdrachtnemer partij is, is uitsluitend Nederlands recht van toepassing. Partijen zullen pas een beroep op de rechter doen nadat zij zich tot het uiterste hebben ingespannen een geschil in onderling overleg te beslechten.</p>
+</div>
+<div class="neon-line"></div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31850805439">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+</footer>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+</script>
+</body>
+</html>

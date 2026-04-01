@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacybeleid &#8212; Forgexe</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#71809a;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.02;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.15;--grid-opacity:0.6}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.06;--grid-opacity:0.12}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:1.5rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s}.nav-cta:hover{background:var(--green-lt)}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+.legal{padding:10rem 3rem 6rem;max-width:800px;margin:0 auto;position:relative;z-index:1}
+.legal h1{font-family:var(--pop);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.03em;margin-bottom:2rem;color:var(--green)}
+.legal h2{font-family:var(--pop);font-size:1.15rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem}
+.legal h3{font-size:.9rem;font-weight:500;margin-top:1.5rem;margin-bottom:.75rem;color:var(--green)}
+.legal p,.legal li{font-size:.82rem;color:var(--dim);line-height:1.9;margin-bottom:1.25rem}
+.legal ul{padding-left:1.5rem;margin-bottom:1.25rem}.legal li{margin-bottom:.5rem}
+.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+footer{padding:3.5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.footer-col a{display:block;font-size:.72rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.footer-brand-desc{font-size:.7rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.65rem;color:var(--mut)}.footer-tagline{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.65rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.legal{padding:6rem 1.5rem 3rem}.footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<nav>
+  <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="cases.html">Cases</a></li><li><a href="blog.html">Blog</a></li></ul>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+
+<div class="legal">
+  <h1>Privacybeleid</h1>
+  <p>Wij gaan vertrouwelijk om met jouw gegevens. De wijze waarop wij dit doen is vastgelegd in dit privacy statement.</p>
+  <p>Forgexe vindt jouw privacy belangrijk, respecteert en hecht veel waarde aan de privacy van bezoekers van forgexe.nl. Forgexe draagt zorg voor de vertrouwelijke behandeling van de (persoonlijke) informatie die je ons verschaft. Om deze reden leggen wij in deze privacyverklaring uit welke gegevens wij verzamelen, op welke wijze wij dit doen, waarom wij deze gegevens verzamelen en voor welke doeleinden deze gebruikt worden. De verwerking van de persoonsgegevens gebeurt op een wijze welke in overeenstemming is met de eisen die de Algemene Verordening Gegevensbescherming (AVG) stelt.</p>
+  <p>Je persoonsgegevens worden door ons verwerkt voor het aangaan en de uitvoer van overeenkomsten ter zake onze diensten en het beheer van de daaruit voortvloeiende relaties, met inbegrip het uitvoeren van activiteiten gericht op de vergroting van het klantenbestand. Als je een contact- of aanmeldformulier op de website invult, of ons een e-mail stuurt, dan worden de gegevens die je ons toestuurt bewaard zolang als naar de aard van het formulier of de inhoud van je e-mail nodig is voor de volledige afhandeling daarvan.</p>
+
+  <h2>Persoonlijke informatie</h2>
+  <p>Wij verzamelen persoonsgegevens van (oud)-medewerkers, sollicitanten, (prospectieve) toeleveranciers, opdrachtgevers en bezoekers van onze eigen website forgexe.nl. We vragen je uitsluitend om noodzakelijke persoonlijke gegevens, met als enige doel om je zo goed mogelijk van dienst te kunnen zijn. Onder noodzakelijke persoonlijke gegevens worden verstaan: NAW-gegevens, telefoonnummer en e-mailadres.</p>
+  <p>We gebruiken je contactgegevens om direct met je te communiceren over onze diensten of naar aanleiding van vragen en/of opmerkingen die jij of andere gebruikers hebben doorgegeven. We kunnen je contactgegevens daarnaast gebruiken om je informatie toe te sturen over diensten welke voor jou van toepassing zijn. Wij bewaren (persoons)gegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor betreffende (persoons)gegevens worden verzameld. Nadat deze gegevens niet meer noodzakelijk zijn voor onze dienstverlening worden deze binnen 3 maanden permanent verwijderd.</p>
+
+  <h2>Beveiliging</h2>
+  <p>Forgexe zal zich in het kader van beveiliging te allen tijde inspannen en na beste vermogen passende technische en organisatorische maatregelen nemen met betrekking tot de te verrichten verwerkingen van persoonsgegevens en tegen verlies of enige vorm van onrechtmatige verwerking. Onder de voornoemde maatregelen vallen o.a. toegangsbeveiligingen m.b.t. systemen, data, controle van gegevensopenbaring en borging van beschikbaarheid van data (back-up). Forgexe spant zich in om de beveiliging te laten voldoen aan een niveau welke, gelet op de stand van de techniek, de gevoeligheid van de persoonsgegevens en de aan het treffen van de beveiliging verbonden kosten, niet onredelijk is.</p>
+
+  <h2>Formulieren</h2>
+  <p>Onze website is o.a. voorzien van een contactformulier. Met de formulieren op onze website kun je ons vragen stellen of aanvragen doen. In deze formulieren vragen we je om persoonsgegevens. Hiervoor gebruiken wij je NAW-gegevens, telefoonnummer en e-mailadres. Deze gegevens gebruiken wij om indien nodig contact met je te leggen en onderhouden. Wij bewaren deze informatie totdat wij zeker weten dat je tevreden bent met onze reacties en/of verleende diensten. Bewaartermijnen en verwerking van deze gegevens vallen binnen het kader van de wet- of regelgeving.</p>
+
+  <h2>Google Analytics</h2>
+  <p>Wij maken gebruik van Google Analytics om bij te houden hoe gebruikers van onze website de website gebruiken. De aldus verkregen informatie wordt, met inbegrip van het adres van je computer (IP-adres), overgebracht naar en door Google opgeslagen op servers in de Verenigde Staten. Google gebruikt deze informatie om bij te houden hoe onze website gebruikt wordt, om rapporten over de website aan ons te kunnen verstrekken. Wij hebben Google niet toegestaan de verkregen informatie te gebruiken voor andere door Google aangeboden diensten.</p>
+
+  <h2>Cookies</h2>
+  <p>De website forgexe.nl gebruikt cookies. Cookies zijn kleine bestandjes die op het device van de bezoeker worden geplaatst bij het bezoek aan een website.</p>
+
+  <h3>Functionele cookies</h3>
+  <p>Functionele cookies zijn nodig voor het goed functioneren van de website. Deze cookies verzamelen geen persoonsgegevens en worden zonder toestemming automatisch geplaatst.</p>
+
+  <h3>Analytische cookies</h3>
+  <p>Analytische cookies worden gebruikt om de effectiviteit van onze website te bekijken. Zo kunnen wij bijvoorbeeld zien hoeveel bezoekers wij op de website krijgen en welke pagina&#8217;s zij bezoeken. forgexe.nl verzamelt analytische gegevens anoniem via Google Analytics. Doordat de gegevens volledig anoniem zijn, vragen we je niet om toestemming voor het gebruik van deze cookies.</p>
+
+  <h3>Tracking cookies</h3>
+  <p>Naast functionele en analytische cookies maakt forgexe.nl mogelijk gebruik van tracking cookies. Tracking cookies worden ingezet om surfgedrag te tracken. Door het bezoeken van onze website kan er een cookie opgeslagen worden waarmee wij je later relevante advertenties kunnen tonen. Je kunt aangeven of je tracking cookies toe wilt staan.</p>
+
+  <h3>Cookies uitschakelen</h3>
+  <p>Je kunt ervoor kiezen geen toestemming te verschaffen voor het plaatsen van cookies. In de internetbrowser kan je instellen dat cookies geblokkeerd worden. Wanneer je cookies blokkeert kan het zijn dat onze website niet of minder goed functioneert.</p>
+
+  <h2>Inzage, correctie en recht van verzet</h2>
+  <p>Indien je een relatie met ons bedrijf hebt, vragen hebt of wilt weten welke persoonsgegevens wij van jou hebben, dan mag je te allen tijden contact met ons opnemen. Na schriftelijk verzoek heb je de mogelijkheid je persoonlijke gegevens in te zien, corrigeren, verwijderen en uitleg te krijgen over de hiervoor in acht genomen doeleinden.</p>
+
+  <h2>Aanpassingen</h2>
+  <p>Forgexe behoudt zich het recht voor dit privacybeleid aan te passen. Wijzigingen zullen op de website worden gepubliceerd.</p>
+
+  <h2>Klachten</h2>
+  <p>Indien je een klacht wilt indienen over de manier waarop Forgexe met jouw privacy omgaat, neem dan in eerste instantie contact met ons op. Wij zullen je klacht aanhoren en behandelen. Stel dat je vervolgens van mening bent dat wij er samen niet uitkomen, dan heb je het recht om een klacht in te dienen bij de toezichthouder, de Autoriteit Persoonsgegevens.</p>
+</div>
+<div class="neon-line"></div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31850805439">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+</footer>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+</script>
+</body>
+</html>
