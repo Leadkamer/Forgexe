@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 &#8212; Forgexe</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#71809a;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.02;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--grid-opacity:0.6}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--grid-opacity:0.12}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+.error-page{text-align:center;position:relative;z-index:1;padding:2rem}
+.error-code{font-size:8rem;font-weight:700;color:var(--green);opacity:.15;line-height:1;font-family:var(--mono)}
+.error-terminal{font-size:.85rem;color:var(--mut);margin-bottom:2rem}.error-terminal .prompt{color:var(--green)}
+.error-title{font-family:var(--pop);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;margin-bottom:1rem}
+.error-desc{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.8}
+.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono);border-radius:6px}.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}
+@keyframes bl{50%{opacity:0}}
+.cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<div class="error-page">
+  <div class="error-code">404</div>
+  <div class="error-terminal"><span class="prompt">C:\forgexe&gt;</span> page --not-found<span class="cursor"></span></div>
+  <h1 class="error-title">Pagina niet gevonden.</h1>
+  <p class="error-desc">De pagina die je zoekt bestaat niet of is verplaatst. Geen zorgen, we brengen je terug.</p>
+  <a href="index.html" class="btn-primary">Terug naar home</a>
+</div>
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:1.25rem 2rem;background:var(--bg-el,#10121a);border-top:1px solid var(--brd,rgba(255,255,255,0.06));font-family:var(--mono,monospace);font-size:.78rem;color:var(--dim,#71809a);display:none;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+  <p style="margin:0;line-height:1.6;flex:1;min-width:200px">Wij gebruiken cookies om de website te verbeteren. <a href="privacy.html" style="color:var(--green,#34d399);text-decoration:none">Meer info</a></p>
+  <div style="display:flex;gap:.75rem;flex-shrink:0">
+    <button onclick="acceptCookies()" style="padding:.5rem 1.2rem;background:var(--green,#34d399);color:var(--btn-txt,#0a0b0e);border:none;font-size:.72rem;font-weight:500;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Accepteren</button>
+    <button onclick="declineCookies()" style="padding:.5rem 1.2rem;background:transparent;color:var(--dim,#71809a);border:1px solid var(--brd,rgba(255,255,255,0.06));font-size:.72rem;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Weigeren</button>
+  </div>
+</div>
+<script>
+function acceptCookies(){localStorage.setItem("cookies","accepted");document.getElementById("cookieBanner").style.display="none"}
+function declineCookies(){localStorage.setItem("cookies","declined");document.getElementById("cookieBanner").style.display="none"}
+(function(){if(!localStorage.getItem("cookies")){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
+</script>
+</body>
+</html>

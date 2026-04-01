@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
 <title>Blog &#8212; Forgexe</title>
 <meta name="description" content="Praktische inzichten over AI, automatisering en groei voor het Nederlandse MKB. Geen hype, wel resultaat.">
 <link rel="canonical" href="https://forgexe.nl/blog.html">
@@ -142,7 +143,7 @@ footer{padding:3.5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200
     <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
     <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
     <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
-    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31850805439">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
   </div>
   <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
 </footer>
@@ -157,6 +158,18 @@ var obs = new IntersectionObserver(function(entries) {
   });
 }, {threshold: 0.08});
 document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:1.25rem 2rem;background:var(--bg-el,#10121a);border-top:1px solid var(--brd,rgba(255,255,255,0.06));font-family:var(--mono,monospace);font-size:.78rem;color:var(--dim,#71809a);display:none;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+  <p style="margin:0;line-height:1.6;flex:1;min-width:200px">Wij gebruiken cookies om de website te verbeteren. <a href="privacy.html" style="color:var(--green,#34d399);text-decoration:none">Meer info</a></p>
+  <div style="display:flex;gap:.75rem;flex-shrink:0">
+    <button onclick="acceptCookies()" style="padding:.5rem 1.2rem;background:var(--green,#34d399);color:var(--btn-txt,#0a0b0e);border:none;font-size:.72rem;font-weight:500;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Accepteren</button>
+    <button onclick="declineCookies()" style="padding:.5rem 1.2rem;background:transparent;color:var(--dim,#71809a);border:1px solid var(--brd,rgba(255,255,255,0.06));font-size:.72rem;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Weigeren</button>
+  </div>
+</div>
+<script>
+function acceptCookies(){localStorage.setItem("cookies","accepted");document.getElementById("cookieBanner").style.display="none"}
+function declineCookies(){localStorage.setItem("cookies","declined");document.getElementById("cookieBanner").style.display="none"}
+(function(){if(!localStorage.getItem("cookies")){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
 </script>
 </body>
 </html>
