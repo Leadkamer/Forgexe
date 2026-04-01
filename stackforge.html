@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackforge — Forged for Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #09090b;
+  --bg-elevated: #131316;
+  --bg-card: #1a1a1f;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dim: rgba(245, 158, 11, 0.08);
+  --accent-glow: rgba(245, 158, 11, 0.12);
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --radius: 12px;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo .logo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent), #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-logo .logo-icon svg { width: 16px; height: 16px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  padding: 9px 20px;
+  background: var(--text-primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 160px 48px 120px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.btn-primary {
+  padding: 14px 32px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245, 158, 11, 0.25); }
+
+.btn-secondary {
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-hover);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-secondary:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- LOGOS ---- */
+.logos-section {
+  padding: 80px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.logos-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+}
+
+.logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.logo-placeholder {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-muted);
+  opacity: 0.4;
+  letter-spacing: -0.01em;
+}
+
+/* ---- PHILOSOPHY ---- */
+.philosophy-section {
+  padding: 140px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.philosophy-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.philosophy-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 6px;
+}
+
+.philosophy-text h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.philosophy-text p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.philosophy-text p + p {
+  margin-top: 16px;
+}
+
+/* ---- SERVICES ---- */
+.stack-section {
+  padding: 140px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.stack-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+
+.section-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.stack-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stack-header p {
+  color: var(--text-secondary);
+  font-size: 17px;
+  margin-top: 20px;
+  line-height: 1.7;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.stack-card {
+  background: var(--bg-elevated);
+  padding: 48px 40px;
+  transition: all 0.4s;
+  position: relative;
+  cursor: default;
+}
+
+.stack-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.stack-card:hover::after { opacity: 1; }
+
+.stack-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  color: var(--accent);
+}
+
+.stack-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.stack-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- PROCESS ---- */
+.process-section {
+  padding: 140px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.process-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+
+.process-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.process-steps {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 32px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.process-step:last-child { border-bottom: none; }
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.step-content h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+.step-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ---- RESULTS ---- */
+.results-section {
+  padding: 140px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.results-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+
+.results-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.result-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.result-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+
+.result-number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.result-label { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ---- TESTIMONIAL ---- */
+.testimonial-section {
+  padding: 140px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.testimonial-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2a32, #3a3a44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.testimonial-info strong { display: block; font-size: 15px; font-weight: 600; }
+.testimonial-info span { font-size: 13px; color: var(--text-muted); }
+
+/* ---- CTA ---- */
+.cta-section {
+  padding: 140px 48px;
+  text-align: center;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.cta-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.cta-section h2 em { font-style: italic; color: var(--accent); }
+
+.cta-section p {
+  color: var(--text-secondary);
+  font-size: 17px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  padding: 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left { font-size: 14px; color: var(--text-muted); }
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--text-secondary); }
+
+/* ---- ANIMATIONS ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 140px 24px 100px; }
+  .stack-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .process-step { grid-template-columns: 48px 1fr; gap: 20px; }
+  .philosophy-inner { grid-template-columns: 1fr; gap: 24px; }
+  section { padding-left: 24px !important; padding-right: 24px !important; }
+  footer { flex-direction: column; gap: 24px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 13L8 3L12 13" stroke="#09090b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.5 10h5" stroke="#09090b" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    Stackforge
+  </div>
+  <ul class="nav-links">
+    <li><a href="#filosofie">Filosofie</a></li>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#aanpak">Aanpak</a></li>
+    <li><a href="#resultaten">Resultaten</a></li>
+  </ul>
+  <button class="nav-cta">Plan een gesprek</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span></span> Voorheen Leadkamer — nu gesmeed voor schaal
+  </div>
+  <h1>Groei die <em>gesmeed</em> is om te blijven</h1>
+  <p class="hero-sub">Wij orkestreren AI-agents, automations en marketingsystemen tot één machine die structureel klanten binnenhaalt. Geen losse campagnes — één systeem, vakkundig gebouwd.</p>
+  <div class="hero-actions">
+    <button class="btn-primary">Start een gesprek</button>
+    <button class="btn-secondary">Bekijk onze filosofie</button>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="logos-section">
+  <div class="logos-label">Vertrouwd door 40+ groeiende bedrijven</div>
+  <div class="logos-row">
+    <span class="logo-placeholder">Bedrijf A</span>
+    <span class="logo-placeholder">Bedrijf B</span>
+    <span class="logo-placeholder">Bedrijf C</span>
+    <span class="logo-placeholder">Bedrijf D</span>
+    <span class="logo-placeholder">Bedrijf E</span>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-section reveal" id="filosofie">
+  <div class="philosophy-inner">
+    <div class="philosophy-label">Onze filosofie</div>
+    <div class="philosophy-text">
+      <h2>Wij geloven dat groei niet gekocht wordt, maar gebouwd.</h2>
+      <p>De meeste bureaus verkopen losse diensten. Een advertentiecampagne hier, een funnel daar. Dat werkt — tot het stopt. Dan begin je weer van voren af aan.</p>
+      <p>Stackforge bouwt anders. Wij smeden systemen waarin elke laag de volgende versterkt. AI-agents die leads kwalificeren. Automations die opvolgen. Funnels die converteren. SEO die organisch trekt. Niet als losse projecten, maar als één machine die elke maand beter presteert.</p>
+      <p>Dat is het Stackforge-principe: wat we bouwen, blijft werken — ook als we stoppen met bouwen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="stack-section" id="diensten">
+  <div class="stack-header reveal">
+    <div class="section-eyebrow">De Stack</div>
+    <h2>Zes lagen. Eén systeem.</h2>
+    <p>Elke laag is vakkundig gesmeed en versterkt de volgende. Samen vormen ze jouw groei-machine.</p>
+  </div>
+  <div class="stack-grid reveal">
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>AI Agents</h3>
+      <p>Autonome systemen die 24/7 leads kwalificeren, opvolgen en converteren. Gebouwd op maat, gesmeed voor jouw proces.</p>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/><path d="M17.66 6.34l-4.24 4.24m-2.84 2.84l-4.24 4.24m14.14 0l-4.24-4.24m-2.84-2.84L6.34 6.34"/></svg>
+      </div>
+      <h3>AI Automations</h3>
+      <p>Workflows die je klantproces automatiseren — van eerste klik tot terugkerende klant. Minder handwerk, meer resultaat.</p>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Leadgeneratie</h3>
+      <p>Strategieën die voorspelbaar kwalitatieve leads opleveren. Niet eenmalig, maar structureel — maand na maand.</p>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+      </div>
+      <h3>Funnels</h3>
+      <p>Conversie-trajecten die bezoekers systematisch naar klant begeleiden. Getest, geoptimaliseerd, bewezen.</p>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+      </div>
+      <h3>Paid Ads</h3>
+      <p>Google, Meta en LinkedIn campagnes die renderen. Aangestuurd door data, geoptimaliseerd door AI.</p>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <h3>SEO & GEO</h3>
+      <p>Organische vindbaarheid in zoekmachines én AI-platformen. Gevonden worden waar je klant zoekt — nu en in de toekomst.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="aanpak">
+  <div class="process-header reveal">
+    <div class="section-eyebrow">Aanpak</div>
+    <h2>Van diagnose tot draaiend systeem</h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h3>Diagnose</h3>
+        <p>We brengen je huidige processen, kanalen en bottlenecks in kaart. Geen aannames — scherpe analyse.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h3>Architectuur</h3>
+        <p>We ontwerpen je groei-stack: welke lagen, welke volgorde, welke AI-agents. Op maat gesmeed voor jouw bedrijf.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h3>Smeden</h3>
+        <p>We bouwen, testen en lanceren elke laag. Stap voor stap, zonder je operatie te verstoren. Vakwerk.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <h3>Verfijnen</h3>
+        <p>Het systeem draait. Nu maken we het scherper — elke week, elke maand. Groei die compound werkt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="resultaten">
+  <div class="results-header reveal">
+    <div class="section-eyebrow">Resultaten</div>
+    <h2>Wat gesmede groei oplevert</h2>
+  </div>
+  <div class="results-grid reveal">
+    <div class="result-card">
+      <div class="result-number">3.2×</div>
+      <div class="result-label">Gemiddelde toename in gekwalificeerde leads binnen 90 dagen</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">68%</div>
+      <div class="result-label">Minder handmatig werk door AI-automations</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">€2.4M</div>
+      <div class="result-label">Aan pipeline gegenereerd voor onze klanten in 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial-inner reveal">
+    <div class="testimonial-quote">"Ze hebben iets gebouwd dat elke maand beter presteert. Geen bureau dat facturen stuurt — een team dat systemen smeedt die blijven werken."</div>
+    <div class="testimonial-author">
+      <div class="testimonial-avatar">JV</div>
+      <div class="testimonial-info">
+        <strong>Jeroen Vermeer</strong>
+        <span>CEO, TechBedrijf (28 medewerkers)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner reveal">
+    <h2>Klaar om te <em>smeden?</em></h2>
+    <p>Eén gesprek. Geen verplichtingen. We laten je zien hoe jouw groei-stack eruit kan zien.</p>
+    <button class="btn-primary">Plan een vrijblijvend gesprek</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Stackforge. Voorheen Leadkamer.</div>
+  <ul class="footer-links">
+    <li><a href="#">Diensten</a></li>
+    <li><a href="#">Over ons</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Privacy</a></li>
+  </ul>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.textContent;
+      if (text.includes('×')) animateValue(el, 0, 3.2, 1500, '×');
+      else if (text.includes('%')) animateValue(el, 0, 68, 1500, '%');
+      else if (text.includes('€')) animateValue(el, 0, 2.4, 1500, 'M', '€');
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.result-number').forEach(el => counterObserver.observe(el));
+
+function animateValue(el, start, end, duration, suffix = '', prefix = '') {
+  const startTime = performance.now();
+  const isDecimal = !Number.isInteger(end);
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = start + (end - start) * eased;
+    el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+</script>
+
+</body>
+</html>

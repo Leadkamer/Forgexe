@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgexe — Logo Concepten</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+body {
+  background: #0a0b0e;
+  color: #e2e8f0;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  margin: 0;
+  padding: 3rem;
+}
+
+h1 {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #34d399;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.concept {
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.concept:hover {
+  border-color: rgba(52,211,153,0.15);
+}
+
+.concept svg {
+  width: 120px;
+  height: 120px;
+}
+
+.concept-name {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #34d399;
+}
+
+.concept-desc {
+  font-size: 0.7rem;
+  color: #71809a;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.wordmark-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #e2e8f0;
+}
+
+.wordmark-text .exe {
+  color: #34d399;
+}
+
+/* Dark/light preview */
+.preview-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 3rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.preview-dark, .preview-light {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.preview-dark {
+  background: #0a0b0e;
+}
+
+.preview-light {
+  background: #f4f6f8;
+}
+</style>
+</head>
+<body>
+
+<h1>Forgexe — Logo Concepten</h1>
+
+<div class="grid">
+
+  <!-- CONCEPT 1: The Anvil Cursor -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Anvil shape abstracted as geometric block -->
+      <rect x="25" y="45" width="70" height="8" rx="1" fill="#34d399"/>
+      <rect x="35" y="53" width="50" height="30" rx="1" fill="#34d399"/>
+      <rect x="30" y="83" width="60" height="8" rx="1" fill="#34d399"/>
+      <!-- Cursor on top — the blinking prompt -->
+      <rect x="55" y="25" width="10" height="16" fill="#34d399" opacity="0.5"/>
+      <!-- Spark -->
+      <line x1="45" y1="35" x2="38" y2="28" stroke="#34d399" stroke-width="1.5" opacity="0.3"/>
+      <line x1="75" y1="35" x2="82" y2="28" stroke="#34d399" stroke-width="1.5" opacity="0.3"/>
+    </svg>
+    <div class="concept-name">01 — The Anvil Cursor</div>
+    <p class="concept-desc">Een aambeeld met een cursor bovenop. De smederij die uitvoert. Forge meets terminal.</p>
+  </div>
+
+  <!-- CONCEPT 2: The F> Monogram -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bold F -->
+      <path d="M30 25h40v12H46v16h20v12H46v30H30V25z" fill="#34d399"/>
+      <!-- > prompt -->
+      <polygon points="72,55 92,70 72,85" fill="none" stroke="#34d399" stroke-width="4" stroke-linejoin="round"/>
+    </svg>
+    <div class="concept-name">02 — F> Monogram</div>
+    <p class="concept-desc">De F van Forgexe met het > terminal-prompt symbool. Compact, herkenbaar, direct.</p>
+  </div>
+
+  <!-- CONCEPT 3: The Execute Block -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer frame — like a file icon -->
+      <path d="M25 20h50l20 20v60H25V20z" fill="none" stroke="#34d399" stroke-width="2.5"/>
+      <!-- Folded corner -->
+      <path d="M75 20v20h20" fill="none" stroke="#34d399" stroke-width="2.5"/>
+      <!-- .exe text inside -->
+      <text x="60" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#34d399">.exe</text>
+      <!-- Forge hammer icon small -->
+      <line x1="48" y1="48" x2="72" y2="48" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="42" x2="60" y2="55" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <div class="concept-name">03 — The Execute Block</div>
+    <p class="concept-desc">Een .exe bestand met een hamer-kruis erin. Het uitvoerbare bestand dat gesmeed is.</p>
+  </div>
+
+  <!-- CONCEPT 4: Stacked Geometric -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Two interlocking shapes: forge (square) + exe (diamond) -->
+      <rect x="25" y="35" width="50" height="50" fill="#34d399" opacity="0.2" rx="2"/>
+      <rect x="25" y="35" width="50" height="50" fill="none" stroke="#34d399" stroke-width="2" rx="2"/>
+      <!-- X overlay -->
+      <line x1="45" y1="35" x2="95" y2="85" stroke="#34d399" stroke-width="2.5"/>
+      <line x1="95" y1="35" x2="45" y2="85" stroke="#34d399" stroke-width="2.5"/>
+      <!-- Dot -->
+      <circle cx="70" cy="60" r="4" fill="#34d399"/>
+    </svg>
+    <div class="concept-name">04 — Forge × Execute</div>
+    <p class="concept-desc">Een vierkant (forge/blok) doorkruist door een X (execute). Geometrisch, abstract, premium.</p>
+  </div>
+
+  <!-- CONCEPT 5: Terminal Window -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Terminal window -->
+      <rect x="15" y="20" width="90" height="80" rx="3" fill="none" stroke="#34d399" stroke-width="2"/>
+      <!-- Title bar -->
+      <line x1="15" y1="35" x2="105" y2="35" stroke="#34d399" stroke-width="1" opacity="0.3"/>
+      <!-- Dots -->
+      <circle cx="27" cy="27.5" r="2.5" fill="#34d399" opacity="0.4"/>
+      <circle cx="37" cy="27.5" r="2.5" fill="#34d399" opacity="0.4"/>
+      <circle cx="47" cy="27.5" r="2.5" fill="#34d399" opacity="0.4"/>
+      <!-- C:\> prompt -->
+      <text x="25" y="55" font-family="JetBrains Mono, monospace" font-size="10" fill="#34d399" opacity="0.5">C:\&gt;</text>
+      <!-- FX bold -->
+      <text x="25" y="78" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700" fill="#34d399">FX</text>
+      <!-- Cursor -->
+      <rect x="75" y="62" width="8" height="18" fill="#34d399" opacity="0.4"/>
+    </svg>
+    <div class="concept-name">05 — Terminal FX</div>
+    <p class="concept-desc">Een terminal-venster met FX erin. Alsof Forgexe een programma is dat draait op uw bedrijf.</p>
+  </div>
+
+  <!-- CONCEPT 6: The Minimal Mark -->
+  <div class="concept">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Clean F shape built from bars — like a forge/anvil -->
+      <rect x="30" y="25" width="12" height="70" rx="1" fill="#34d399"/>
+      <rect x="30" y="25" width="55" height="10" rx="1" fill="#34d399"/>
+      <rect x="30" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+      <!-- > arrow extending from the F -->
+      <path d="M78 56l18 15-18 15" fill="none" stroke="#34d399" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="concept-name">06 — F→ Minimal</div>
+    <p class="concept-desc">Een gestileerde F (als aambeeld-silhouet) met een > pijl. Minimaal, scherp, schaalbaar. Werkt op 16px favicon tot billboard.</p>
+  </div>
+
+</div>
+
+<!-- PREVIEW ROW -->
+<div style="margin-top:4rem">
+  <h1>Favoriet op donker & licht</h1>
+  <div class="preview-row">
+    <div class="preview-dark">
+      <svg viewBox="0 0 40 40" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="6" width="5" height="28" rx="1" fill="#34d399"/>
+        <rect x="8" y="6" width="22" height="4" rx="1" fill="#34d399"/>
+        <rect x="8" y="17" width="16" height="3" rx="1" fill="#34d399"/>
+        <path d="M28 19l7 6-7 6" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-size:1.2rem;font-weight:700;letter-spacing:.15em;color:#e2e8f0">FORGEXE</span>
+    </div>
+    <div class="preview-light">
+      <svg viewBox="0 0 40 40" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="6" width="5" height="28" rx="1" fill="#059669"/>
+        <rect x="8" y="6" width="22" height="4" rx="1" fill="#059669"/>
+        <rect x="8" y="17" width="16" height="3" rx="1" fill="#059669"/>
+        <path d="M28 19l7 6-7 6" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-size:1.2rem;font-weight:700;letter-spacing:.15em;color:#111827">FORGEXE</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

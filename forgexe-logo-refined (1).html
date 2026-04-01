@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgexe — Logo Concept 06 Verfijnd</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+body { background:#0a0b0e; color:#e2e8f0; font-family:'JetBrains Mono',monospace; font-weight:300; margin:0; padding:3rem; }
+h1 { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:#34d399; margin-bottom:1rem; }
+h2 { font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:#475569; margin-bottom:2rem; }
+.grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:rgba(255,255,255,0.04); margin-bottom:3rem; }
+.cell { background:#0a0b0e; padding:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+.cell:hover { background:#10121a; }
+.label { font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:#34d399; }
+.sublabel { font-size:.6rem; color:#475569; text-align:center; line-height:1.5; max-width:200px; }
+
+/* Preview rows */
+.preview-section { margin-top:3rem; }
+.preview-row { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid rgba(255,255,255,0.06); margin-bottom:2rem; }
+.prev-dark { background:#0a0b0e; padding:2.5rem 3rem; display:flex; align-items:center; gap:1rem; }
+.prev-light { background:#f4f6f8; padding:2.5rem 3rem; display:flex; align-items:center; gap:1rem; }
+.prev-dark .wm { font-size:1.4rem; font-weight:700; letter-spacing:.15em; color:#e2e8f0; }
+.prev-light .wm { font-size:1.4rem; font-weight:700; letter-spacing:.15em; color:#111827; }
+.prev-dark .wm-sub { font-size:.65rem; color:#475569; letter-spacing:.1em; margin-left:.5rem; }
+.prev-light .wm-sub { font-size:.65rem; color:#9ca3af; letter-spacing:.1em; margin-left:.5rem; }
+
+/* Size test */
+.size-row { display:flex; align-items:center; gap:3rem; padding:2rem 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+.size-label { font-size:.6rem; color:#475569; width:80px; letter-spacing:.1em; }
+
+/* Favicon test */
+.favicon-row { display:flex; gap:2rem; align-items:center; margin-top:2rem; }
+.fav-box { width:32px; height:32px; border-radius:4px; display:flex; align-items:center; justify-content:center; }
+.fav-dark { background:#0a0b0e; border:1px solid rgba(255,255,255,0.1); }
+.fav-light { background:#f4f6f8; border:1px solid rgba(0,0,0,0.1); }
+.fav-green { background:#34d399; }
+</style>
+</head>
+<body>
+
+<h1>Forgexe — Concept 06 Verfijnd</h1>
+<h2>F→ Minimal — zes variaties</h2>
+
+<div class="grid">
+  <!-- A: Original -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <rect x="25" y="20" width="14" height="80" rx="1" fill="#34d399"/>
+      <rect x="25" y="20" width="60" height="12" rx="1" fill="#34d399"/>
+      <rect x="25" y="52" width="45" height="10" rx="1" fill="#34d399"/>
+      <path d="M80 57l22 18-22 18" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="label">A — Original</div>
+    <div class="sublabel">De basis. Stevige F met ronde > pijl.</div>
+  </div>
+
+  <!-- B: Sharper, thinner -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <rect x="25" y="20" width="10" height="80" fill="#34d399"/>
+      <rect x="25" y="20" width="58" height="8" fill="#34d399"/>
+      <rect x="25" y="53" width="42" height="7" fill="#34d399"/>
+      <path d="M78 57l20 17-20 17" fill="none" stroke="#34d399" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>
+    <div class="label">B — Sharp</div>
+    <div class="sublabel">Dunnere lijnen, scherpe hoeken. Meer precisie, minder massa.</div>
+  </div>
+
+  <!-- C: Connected — the > grows out of the F -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+      <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+      <rect x="25" y="52" width="45" height="8" rx="1" fill="#34d399"/>
+      <!-- > connected to middle bar -->
+      <path d="M70 56l26 20-26 20" fill="none" stroke="#34d399" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="label">C — Connected</div>
+    <div class="sublabel">De pijl groeit direct uit de middenbalk. Eén vloeiend geheel.</div>
+  </div>
+
+  <!-- D: Filled chevron -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+      <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+      <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+      <!-- Filled triangle/play button -->
+      <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+    </svg>
+    <div class="label">D — Execute</div>
+    <div class="sublabel">De > als gevulde driehoek. Play-button energie. "Druk op execute."</div>
+  </div>
+
+  <!-- E: Outline F -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <path d="M30 25h55v10H42v18h35v10H42v32H30V25z" fill="none" stroke="#34d399" stroke-width="3"/>
+      <path d="M82 58l18 15-18 15" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="label">E — Outline</div>
+    <div class="sublabel">Alleen lijnen. Maximaal minimaal. Werkt het beste op grote schaal.</div>
+  </div>
+
+  <!-- F: Monospace block -->
+  <div class="cell">
+    <svg viewBox="0 0 120 120" width="100" height="100" fill="none">
+      <!-- F built from equal-width blocks like monospace characters -->
+      <rect x="25" y="20" width="11" height="11" fill="#34d399"/>
+      <rect x="38" y="20" width="11" height="11" fill="#34d399"/>
+      <rect x="51" y="20" width="11" height="11" fill="#34d399"/>
+      <rect x="64" y="20" width="11" height="11" fill="#34d399"/>
+      <rect x="25" y="33" width="11" height="11" fill="#34d399"/>
+      <rect x="25" y="46" width="11" height="11" fill="#34d399"/>
+      <rect x="38" y="46" width="11" height="11" fill="#34d399"/>
+      <rect x="51" y="46" width="11" height="11" fill="#34d399"/>
+      <rect x="25" y="59" width="11" height="11" fill="#34d399"/>
+      <rect x="25" y="72" width="11" height="11" fill="#34d399"/>
+      <rect x="25" y="85" width="11" height="11" fill="#34d399"/>
+      <!-- > from blocks -->
+      <rect x="72" y="46" width="11" height="11" fill="#34d399" opacity="0.6"/>
+      <rect x="85" y="59" width="11" height="11" fill="#34d399"/>
+      <rect x="72" y="72" width="11" height="11" fill="#34d399" opacity="0.6"/>
+    </svg>
+    <div class="label">F — Pixel</div>
+    <div class="sublabel">Gebouwd uit blokken. 8-bit, retro-computing, Commodore-energie. De meest 80s variant.</div>
+  </div>
+</div>
+
+<!-- WORDMARK PREVIEWS -->
+<h1>Woordmerk-combinaties — Favoriet (A) vs variaties</h1>
+
+<div class="preview-row">
+  <div class="prev-dark">
+    <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+      <rect x="6" y="5" width="5" height="30" rx="1" fill="#34d399"/>
+      <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#34d399"/>
+      <rect x="6" y="18" width="17" height="3.5" rx="1" fill="#34d399"/>
+      <path d="M28 20l8 7-8 7" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="wm">FORGEXE</span>
+  </div>
+  <div class="prev-light">
+    <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+      <rect x="6" y="5" width="5" height="30" rx="1" fill="#059669"/>
+      <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#059669"/>
+      <rect x="6" y="18" width="17" height="3.5" rx="1" fill="#059669"/>
+      <path d="M28 20l8 7-8 7" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="wm">FORGEXE</span>
+  </div>
+</div>
+
+<div class="preview-row">
+  <div class="prev-dark">
+    <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+      <rect x="6" y="5" width="5" height="30" rx="1" fill="#34d399"/>
+      <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#34d399"/>
+      <rect x="6" y="18" width="16" height="3.5" rx="1" fill="#34d399"/>
+      <polygon points="27,17 37,24 27,31" fill="#34d399"/>
+    </svg>
+    <span class="wm">FORGEXE</span>
+  </div>
+  <div class="prev-light">
+    <svg viewBox="0 0 40 40" width="36" height="36" fill="none">
+      <rect x="6" y="5" width="5" height="30" rx="1" fill="#059669"/>
+      <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#059669"/>
+      <rect x="6" y="18" width="16" height="3.5" rx="1" fill="#059669"/>
+      <polygon points="27,17 37,24 27,31" fill="#059669"/>
+    </svg>
+    <span class="wm">FORGEXE</span>
+  </div>
+</div>
+
+<!-- SIZE TEST -->
+<h1 style="margin-top:3rem">Schaaltest</h1>
+
+<div class="size-row">
+  <div class="size-label">Billboard</div>
+  <svg viewBox="0 0 120 120" width="80" height="80" fill="none">
+    <rect x="25" y="20" width="14" height="80" rx="1" fill="#34d399"/>
+    <rect x="25" y="20" width="60" height="12" rx="1" fill="#34d399"/>
+    <rect x="25" y="52" width="45" height="10" rx="1" fill="#34d399"/>
+    <path d="M80 57l22 18-22 18" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+<div class="size-row">
+  <div class="size-label">Website</div>
+  <svg viewBox="0 0 120 120" width="40" height="40" fill="none">
+    <rect x="25" y="20" width="14" height="80" rx="1" fill="#34d399"/>
+    <rect x="25" y="20" width="60" height="12" rx="1" fill="#34d399"/>
+    <rect x="25" y="52" width="45" height="10" rx="1" fill="#34d399"/>
+    <path d="M80 57l22 18-22 18" fill="none" stroke="#34d399" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span style="font-size:1rem;font-weight:700;letter-spacing:.12em">FORGEXE</span>
+</div>
+
+<div class="size-row">
+  <div class="size-label">Favicon</div>
+  <div class="favicon-row">
+    <div class="fav-box fav-dark">
+      <svg viewBox="0 0 40 40" width="20" height="20" fill="none">
+        <rect x="6" y="5" width="5" height="30" rx="1" fill="#34d399"/>
+        <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#34d399"/>
+        <rect x="6" y="18" width="17" height="3.5" rx="1" fill="#34d399"/>
+        <path d="M28 20l8 7-8 7" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="fav-box fav-light">
+      <svg viewBox="0 0 40 40" width="20" height="20" fill="none">
+        <rect x="6" y="5" width="5" height="30" rx="1" fill="#059669"/>
+        <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#059669"/>
+        <rect x="6" y="18" width="17" height="3.5" rx="1" fill="#059669"/>
+        <path d="M28 20l8 7-8 7" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="fav-box fav-green">
+      <svg viewBox="0 0 40 40" width="20" height="20" fill="none">
+        <rect x="6" y="5" width="5" height="30" rx="1" fill="#0a0b0e"/>
+        <rect x="6" y="5" width="23" height="4.5" rx="1" fill="#0a0b0e"/>
+        <rect x="6" y="18" width="17" height="3.5" rx="1" fill="#0a0b0e"/>
+        <path d="M28 20l8 7-8 7" fill="none" stroke="#0a0b0e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span style="font-size:.6rem;color:#475569">16×16 weergave — donker / licht / inverted</span>
+  </div>
+</div>
+
+</body>
+</html>

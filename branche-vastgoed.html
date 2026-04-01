@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automatisering Vastgoed &#8212; Forgexe</title>
+<meta name="description" content="AI-automatisering voor makelaars en vastgoedbeheerders. Van leadopvolging tot huurdercommunicatie. Gratis bedrijfsscan.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#71809a;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.02;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.15;--grid-opacity:0.6;--ill-stroke:var(--green);--ill-opacity:0.7}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.06;--grid-opacity:0.12;--ill-stroke:#059669;--ill-opacity:0.6}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:1.5rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s}.nav-cta:hover{background:var(--green-lt)}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:.8rem;color:var(--green);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
+.section-title{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem}
+.section-desc{font-size:.95rem;color:var(--dim);max-width:560px;line-height:1.9;margin-bottom:3rem}
+.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes bl{50%{opacity:0}}@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.ill{opacity:var(--ill-opacity)}
+.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono)}.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}.btn-primary svg{width:14px;height:14px}
+.page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.prompt{color:var(--green)}
+.page-hero h1{font-family:var(--pop);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
+.page-hero h1 em{font-style:normal;color:var(--green)}
+.page-hero-sub{font-size:1rem;color:var(--dim);max-width:580px;line-height:1.9;opacity:0;animation:fu .8s ease forwards .7s}
+.hero-cta{margin-top:2rem;opacity:0;animation:fu .8s ease forwards .9s}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd)}.pain-card{background:var(--bg);padding:2.5rem;transition:background .3s}.pain-card:hover{background:var(--card-hover)}.pain-ill{height:48px;display:flex;align-items:center;margin-bottom:1rem}.pain-title{font-size:.95rem;font-weight:500;margin-bottom:.75rem}.pain-desc{font-size:.82rem;color:var(--dim);line-height:1.8}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:3rem}.pillar-block{border:1px solid var(--brd)}.pillar-header{padding:2rem;border-bottom:1px solid var(--brd)}.pillar-icon{font-size:.65rem;color:var(--green);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}.pillar-title{font-family:var(--pop);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem}.pillar-desc{font-size:.82rem;color:var(--dim);line-height:1.7}.pillar-list{list-style:none;padding:2rem}.pillar-list li{font-size:.82rem;color:var(--dim);padding:.5rem 0 .5rem 1.2rem;position:relative;border-bottom:1px solid var(--brd)}.pillar-list li:last-child{border-bottom:none}.pillar-list li::before{content:'>';position:absolute;left:0;color:var(--green);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;counter-reset:step}.step{position:relative;padding-top:3.5rem}.step::before{counter-increment:step;content:counter(step);position:absolute;top:0;font-size:2.5rem;font-weight:700;color:var(--green);opacity:.35;font-family:var(--mono)}.step h3{font-size:1rem;font-weight:500;margin-bottom:.75rem}.step p{font-size:.85rem;color:var(--dim);line-height:1.8}
+.results-box{background:var(--bg-el);border:1px solid var(--brd);padding:3.5rem;position:relative}.results-box::before,.results-box::after{content:'';position:absolute;width:25px;height:25px;opacity:.15}.results-box::before{top:-1px;left:-1px;border-top:1px solid var(--green);border-left:1px solid var(--green)}.results-box::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--green);border-right:1px solid var(--green)}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}.kpi-num{font-size:2.8rem;font-weight:700;color:var(--green);font-family:var(--mono);line-height:1;margin-bottom:.5rem}.kpi-suf{font-size:1.4rem}.kpi-label{font-size:.75rem;color:var(--dim)}
+.case-card{margin-top:2.5rem;border:1px solid var(--brd);padding:2rem;transition:background .3s}.case-card:hover{background:var(--card-hover)}.case-type{font-size:.58rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}.case-title{font-size:.9rem;margin-bottom:.5rem}.case-result{font-size:.82rem;color:#4ade80;font-weight:500}
+.faq-list{max-width:700px;margin-top:2rem}.faq-item{border-bottom:1px solid var(--brd)}.faq-question{padding:1.25rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;transition:color .3s}.faq-question:hover{color:var(--green)}.faq-question .icon{font-size:.6rem;color:var(--green);transition:transform .3s}.faq-item.open .icon{transform:rotate(45deg)}.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease}.faq-item.open .faq-answer{max-height:300px}.faq-answer p{font-size:.78rem;color:var(--dim);line-height:1.8;padding-bottom:1.25rem}
+.page-cta{padding:6rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}.page-cta h2{font-family:var(--pop);font-size:clamp(2rem,4vw,3rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta>p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto}
+.risk-reducers{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}.risk-item{font-size:.65rem;color:var(--mut);display:flex;align-items:center;gap:.4rem}.risk-item .check{color:var(--green);font-weight:700}
+.tools-bar{margin-top:2rem;font-size:.72rem;color:var(--mut);text-align:center}.tools-bar span{color:var(--dim)}
+footer{padding:3.5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.footer-col a{display:block;font-size:.72rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.footer-brand-desc{font-size:.7rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.65rem;color:var(--mut)}.footer-tagline{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.65rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.page-hero{padding:6rem 1.5rem 3rem}section{padding:3.5rem 1.5rem}.pain-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr;gap:2rem}.steps{grid-template-columns:1fr;gap:2rem}.kpi-grid{grid-template-columns:1fr}.results-box{padding:2rem}}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<nav>
+  <a href="forgexe.html" class="logo"><svg viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="forgexe.html">Home</a></li><li><a href="forgexe.html#expertises">Expertises</a></li><li><a href="forgexe.html#resultaten">Resultaten</a></li><li><a href="forgexe.html#contact">Contact</a></li></ul>
+    <a href="forgexe.html#contact" class="nav-cta">Gratis scan</a>
+    <div class="theme-toggle" id="themeToggle"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-terminal"><span class="prompt">C:\forgexe&gt;</span> forge --sector realestate --scan</div>
+  <h1>AI-systemen voor vastgoed en makelaardij</h1>
+  <p class="page-hero-sub">In vastgoed wint wie het snelst reageert. Toch gaan bezichtiging-aanvragen verloren, huurdersvragen blijven liggen, en je CRM is een rommeltje. Tijd voor een systeem.</p>
+  <div class="hero-cta"><a href="forgexe.html#contact" class="btn-primary">Gratis scan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+</div>
+<div class="neon-line"></div>
+
+<section class="reveal">
+  <div class="section-label">C:\\herkenbaar&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Uitdagingen in de<br>vastgoed.</h2>
+  <div class="pain-grid">
+    <div class="pain-card"><div class="pain-ill"><svg class="ill" viewBox="0 0 48 48" width="40" height="40" fill="none"><circle cx="24" cy="24" r="18" stroke="var(--ill-stroke)" stroke-width="1.2"/><path d="M24 12v12l8 4" stroke="var(--ill-stroke)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="pain-title">Leads die verloren gaan door trage opvolging</div><p class="pain-desc">Een bezichtiging-aanvraag komt binnen om 21:00. Pas de volgende ochtend reageert iemand. Tegen die tijd heeft de koper al drie andere makelaars gesproken.</p></div>
+    <div class="pain-card"><div class="pain-ill"><svg class="ill" viewBox="0 0 48 48" width="40" height="40" fill="none"><circle cx="24" cy="18" r="8" stroke="var(--ill-stroke)" stroke-width="1.2"/><path d="M14 36c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="var(--ill-stroke)" stroke-width="1.2"/></svg></div><div class="pain-title">Huurderscommunicatie kost uren per dag</div><p class="pain-desc">Onderhoudsmeldingen, statusvragen, contractverlengingen. Elke huurder belt of mailt, en elke vraag kost 10 minuten. Bij 500 eenheden is dat een fulltime baan.</p></div>
+    <div class="pain-card"><div class="pain-ill"><svg class="ill" viewBox="0 0 48 48" width="40" height="40" fill="none"><rect x="6" y="10" width="12" height="12" rx="2" stroke="var(--ill-stroke)" stroke-width="1.2"/><rect x="30" y="10" width="12" height="12" rx="2" stroke="var(--ill-stroke)" stroke-width="1.2"/><rect x="18" y="28" width="12" height="12" rx="2" stroke="var(--ill-stroke)" stroke-width="1.2"/><line x1="18" y1="16" x2="30" y2="16" stroke="var(--ill-stroke)" stroke-width=".75" opacity=".3" stroke-dasharray="2 2"/></svg></div><div class="pain-title">CRM en portalen die niet samenwerken</div><p class="pain-desc">Funda-leads in de e-mail, klantdata in het CRM, contracten in een map. Geen overzicht, dubbele invoer, en gemiste opvolgmomenten.</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">C:\\expertises&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Groei en operatie<br>voor de vastgoed.</h2>
+  <div class="pillars">
+    <div class="pillar-block">
+      <div class="pillar-header"><div class="pillar-icon">Forge.Growth</div><div class="pillar-title">Meer kopers en huurders bereiken</div></div>
+      <ul class="pillar-list"><li>AI-agent die bezichtiging-aanvragen binnen 2 minuten opvolgt</li><li>Geautomatiseerde lead-nurturing van Funda tot bezichtiging</li><li>Paid ads voor specifieke locaties en woningtypen</li><li>SEO voor "kopen in [stad]" en "huren in [wijk]"</li></ul>
+    </div>
+    <div class="pillar-block">
+      <div class="pillar-header"><div class="pillar-icon">Forge.Ops</div><div class="pillar-title">Beheer en communicatie stroomlijnen</div></div>
+      <ul class="pillar-list"><li>AI-agent voor huurdersvragen en onderhoudsmeldingen</li><li>Onderhoudsmeldingen &#8594; planning &#8594; uitvoerder automatisch</li><li>Automatische contractgeneratie en -verlenging</li><li>Real-time dashboard voor portfolio-overzicht</li></ul>
+    </div>
+  </div>
+  <div class="tools-bar">Integraties: <span>Realworks, Kolibri, Reaforce, Reasult</span></div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">C:\\aanpak&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Drie stappen.</h2>
+  <div class="steps">
+    <div class="step"><h3>Gratis scan</h3><p>Wij scannen jouw leadflow, huurderscommunicatie en beheersprocessen. Je krijgt een rapport met de drie grootste kansen.</p></div>
+    <div class="step"><h3>Wij smeden jouw systeem</h3><p>Gebouwd op jouw bestaande systemen: Realworks, Kolibri, Reaforce of eigen portalen. Geen migraties.</p></div>
+    <div class="step"><h3>Het draait. Jij groeit.</h3><p>Leads worden direct opgepakt, huurders krijgen instant antwoord, en jouw team focust op deals sluiten en relaties bouwen.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:3rem"><a href="forgexe.html#contact" class="btn-primary">Start met stap 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+</section>
+<div class="neon-line"></div>
+
+<section class="reveal">
+  <div class="results-box">
+    <div class="section-label">C:\\resultaten&gt;<span class="section-label-cursor"></span></div>
+    <h2 class="section-title">Bewezen in de<br>vastgoed.</h2>
+    <div class="kpi-grid">
+      <div><div class="kpi-num">2<span class="kpi-suf">min</span></div><div class="kpi-label">gemiddelde<br>leadresponstijd</div></div>
+      <div><div class="kpi-num">70<span class="kpi-suf">%</span></div><div class="kpi-label">minder handmatige<br>huurdersvragen</div></div>
+      <div><div class="kpi-num">3<span class="kpi-suf">x</span></div><div class="kpi-label">meer bezichtigingen<br>uit dezelfde leads</div></div>
+    </div>
+    <div class="case-card"><div class="case-type">Growth + Ops</div><div class="case-title">Vastgoedbeheerder &#8212; 25 FTE, 800 eenheden</div><div class="case-result">&#10003; Leadresponstijd van 14 uur naar 2 minuten. 70% minder handmatige huurdersvragen. Portfolio-dashboard live.</div></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-label">C:\\faq&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">FAQ.</h2>
+  <div class="faq-list" id="faqList">
+    <div class="faq-item"><div class="faq-question">Werkt dit met Realworks/Kolibri? <span class="icon">+</span></div><div class="faq-answer"><p>Ja. Wij integreren met Realworks, Kolibri, Reaforce en andere gangbare vastgoedplatformen.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Kan de AI-agent ook bezichtigingen inplannen? <span class="icon">+</span></div><div class="faq-answer"><p>Ja. De agent checkt beschikbaarheid, plant de bezichtiging in, stuurt bevestigingen en herinneringen. Volledig autonoom.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Werkt dit ook voor VvE-beheer? <span class="icon">+</span></div><div class="faq-answer"><p>Ja. De communicatie-automations en het meldingensysteem werken voor zowel huur, koop als VvE-beheer.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Wat kost dit voor een makelaarskantoor? <span class="icon">+</span></div><div class="faq-answer"><p>Afhankelijk van portfolio-grootte starten we vanaf &#8364;1.500/maand. De gratis scan laat precies zien waar de winst zit voor jouw kantoor.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Werkt de AI-agent ook buiten kantooruren? <span class="icon">+</span></div><div class="faq-answer"><p>Ja, 24/7. Juist in de avonduren komen de meeste bezichtiging-aanvragen binnen. De agent reageert altijd binnen 2 minuten, ook om 23:00.</p></div></div>
+  </div>
+</section>
+
+<section class="page-cta reveal">
+  <h2>Klaar om jouw vastgoedbedrijf<br>sneller te laten schakelen?</h2>
+  <p>We starten altijd met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
+  <a href="forgexe.html#contact" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div class="risk-reducers"><div class="risk-item"><span class="check">&#10003;</span> 100% gratis</div><div class="risk-item"><span class="check">&#10003;</span> Rapport binnen 48 uur</div><div class="risk-item"><span class="check">&#10003;</span> Reactie binnen 2 uur</div></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="#">Blog</a><a href="#">Cases</a><a href="forgexe.html#contact">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">sedat at forgexe.nl</a><a href="tel:+31612345678">+31 6 1234 5678</a><a href="https://wa.me/31612345678">WhatsApp</a><a href="#">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="#">Privacy</a><a href="#">Voorwaarden</a></div></div>
+</footer>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+document.getElementById('faqList').addEventListener('click', function(e) {
+  var q = e.target.closest('.faq-question');
+  if (q) q.parentElement.classList.toggle('open');
+});
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(en) {
+    if (en.isIntersecting) en.target.classList.add('visible');
+  });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>
