@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>Blog &#8212; Forgexe</title>
-<meta name="description" content="Praktische inzichten over AI, automatisering en groei voor het Nederlandse MKB. Geen hype, wel resultaat.">
-<link rel="canonical" href="https://forgexe.nl/blog.html">
+<title>Expertises &#8212; Forgexe</title>
+<meta name="description" content="Ontdek de 4 AI-automatiseringssystemen van Forgexe: AI Blogger, AI Outreach, AI Rapportage en Planning Optimalisatie.">
+<link rel="canonical" href="https://forgexe.nl/expertises.html">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
-body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25;--ill-stroke:var(--green);--ill-opacity:0.7}
-body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04;--ill-stroke:#059669;--ill-opacity:0.6}
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;--amber-glow:rgba(245,166,35,0.12);--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
 ::selection{background:var(--green);color:var(--btn-txt)}
@@ -22,6 +22,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display
 .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
 .nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
 .nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
 .theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
 
 section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
@@ -38,16 +39,35 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .page-hero h1{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
-.page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:560px;opacity:0;animation:fu .8s ease forwards .7s}
+.page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:600px;opacity:0;animation:fu .8s ease forwards .7s}
 
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd)}
-.blog-card{background:var(--bg);padding:2rem;transition:background .3s;position:relative;display:flex;flex-direction:column}.blog-card:hover{background:var(--card-hover)}
-.blog-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--green);transition:width .4s}.blog-card:hover::after{width:100%}
-.blog-tag{display:inline-block;font-size:.58rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--green);padding:.2rem .6rem;margin-bottom:1rem;font-family:var(--mono);align-self:flex-start}
-.blog-date{font-size:.65rem;color:var(--mut);margin-bottom:.75rem}
-.blog-title{font-family:var(--pop);font-size:1.05rem;font-weight:600;line-height:1.3;margin-bottom:.75rem;letter-spacing:-.02em}
-.blog-excerpt{font-size:.78rem;color:var(--dim);line-height:1.8;margin-bottom:1.25rem;flex:1}
-.blog-link{font-size:.72rem;color:var(--green);text-decoration:none;font-family:var(--mono);transition:color .3s}.blog-link:hover{color:var(--green-lt)}
+.pillars-intro{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd);margin-bottom:4rem}
+.pillar-intro{background:var(--bg);padding:2rem}
+body.light .pillar-intro{background:var(--bg-el)}
+.pillar-intro-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)}
+.pillar-intro-label.green{color:var(--green)}
+.pillar-intro-label.amber{color:var(--amber)}
+.pillar-intro-title{font-family:var(--pop);font-size:1.2rem;font-weight:600;margin-bottom:.4rem}
+.pillar-intro-desc{font-size:.82rem;color:var(--dim)}
+
+.solutions-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd)}
+.solution-card{background:var(--bg);padding:2.5rem;position:relative;transition:background .3s}.solution-card:hover{background:var(--card-hover)}
+body.light .solution-card{background:var(--bg-el)}
+.solution-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--green);transition:width .4s}.solution-card:hover::after{width:100%}
+.solution-card.ops::after{background:var(--amber)}
+.solution-tag{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-family:var(--mono)}
+.solution-tag.green{color:var(--green);border:1px solid var(--green);display:inline-block;padding:.2rem .6rem}
+.solution-tag.amber{color:var(--amber);border:1px solid var(--amber);display:inline-block;padding:.2rem .6rem}
+.solution-title{font-family:var(--pop);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.75rem}
+.solution-desc{font-size:.85rem;color:var(--dim);line-height:1.8;margin-bottom:1.5rem}
+.solution-stats{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.solution-stat{display:flex;flex-direction:column}
+.solution-stat-number{font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--green)}
+.solution-card.ops .solution-stat-number{color:var(--amber)}
+.solution-stat-label{font-size:.65rem;color:var(--dim)}
+.solution-link{font-size:.78rem;text-decoration:none;font-family:var(--mono);transition:color .3s}
+.solution-link.green{color:var(--green)}.solution-link.green:hover{color:var(--green-lt)}
+.solution-link.amber{color:var(--amber)}.solution-link.amber:hover{color:var(--amber-lt)}
 
 .page-cta{padding:10rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
 .page-cta h2{font-family:var(--pop);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
@@ -62,7 +82,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
 
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.blog-grid{grid-template-columns:1fr}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.pillars-intro{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
 </style>
 </head>
 <body class="light">
@@ -76,68 +96,87 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="over-ons.html">Over ons</a><a href="cases.html">Cases</a><a href="blog.html">Blog</a><a href="expertises.html">Expertises</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
 <header class="page-hero">
-  <div class="hero-terminal"><span class="prompt">C:\forgexe\blog&gt;</span> forge --list articles<span class="cursor"></span></div>
-  <h1>Inzichten over AI,<br>automatisering en <em>groei.</em></h1>
-  <p class="hero-sub">Praktische kennis voor het Nederlandse MKB. Geen hype, wel resultaat.</p>
+  <div class="hero-terminal"><span class="prompt">C:\forgexe\expertises&gt;</span> forge --list systems<span class="cursor"></span></div>
+  <h1>Onze systemen.<br>Jouw <em>resultaat</em>.</h1>
+  <p class="hero-sub">Van leadgeneratie tot rapportage &#8212; dit zijn de AI-systemen die we voor je smeden.</p>
 </header>
 <div class="neon-line"></div>
 
-<section class="reveal">
-  <div class="section-label">C:\blog\artikelen&gt;<span class="section-label-cursor"></span></div>
-  <div class="blog-grid">
-    <a href="blog-ai-agents-salesteam.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">AI</span>
-      <div class="blog-date">28 mrt 2026</div>
-      <h3 class="blog-title">Hoe AI-agents je salesteam versterken zonder te vervangen</h3>
-      <p class="blog-excerpt">AI-agents nemen repetitieve taken over zodat je team zich kan focussen op wat mensen het beste doen: relaties bouwen en deals sluiten.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
-    <a href="blog-5-processen-automatiseren.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">Automatisering</span>
-      <div class="blog-date">21 mrt 2026</div>
-      <h3 class="blog-title">5 processen die elk MKB-bedrijf vandaag kan automatiseren</h3>
-      <p class="blog-excerpt">Van lead-opvolging tot facturatie: deze vijf processen kosten je team uren per week en zijn relatief eenvoudig te automatiseren.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
-    <a href="blog-linkedin-outreach-ai.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">Growth</span>
-      <div class="blog-date">14 mrt 2026</div>
-      <h3 class="blog-title">LinkedIn outreach in 2026: handmatig vs. AI-gestuurd</h3>
-      <p class="blog-excerpt">We vergeleken handmatige LinkedIn outreach met een AI-gestuurde aanpak. Het verschil in respons en conversie was opvallend.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
-    <a href="blog-roi-procesautomatisering.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">Strategie</span>
-      <div class="blog-date">7 mrt 2026</div>
-      <h3 class="blog-title">De ROI van procesautomatisering: wat je echt kunt verwachten</h3>
-      <p class="blog-excerpt">Vergeet de beloftes van 10x productiviteit. Dit is wat procesautomatisering realistisch oplevert voor een MKB-bedrijf.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
-    <a href="blog-crm-integraties.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">Automatisering</span>
-      <div class="blog-date">28 feb 2026</div>
-      <h3 class="blog-title">CRM-integraties die je team uren per week besparen</h3>
-      <p class="blog-excerpt">Je CRM is pas waardevol als het verbonden is met de rest van je tools. Deze integraties maken het verschil.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
-    <a href="blog-ai-strategie-bestaande-tools.html" class="blog-card" style="text-decoration:none;color:inherit">
-      <span class="blog-tag">AI</span>
-      <div class="blog-date">21 feb 2026</div>
-      <h3 class="blog-title">Waarom je AI-strategie begint bij je bestaande tools</h3>
-      <p class="blog-excerpt">Je hoeft niet alles om te gooien. De beste AI-implementaties bouwen voort op wat je al hebt. Zo begin je.</p>
-      <span class="blog-link">Lees meer &#8594;</span>
-    </a>
+<section>
+  <div class="section-label">C:\expertises\pillars&gt;<span class="section-label-cursor"></span></div>
+
+  <div class="pillars-intro reveal">
+    <div class="pillar-intro">
+      <div class="pillar-intro-label green">Forge.Growth</div>
+      <div class="pillar-intro-title">Systemen die klanten binnenhalen</div>
+      <p class="pillar-intro-desc">AI-gestuurde leadgeneratie, content en outreach die 24/7 nieuwe klanten voor je aantrekken.</p>
+    </div>
+    <div class="pillar-intro">
+      <div class="pillar-intro-label amber">Forge.Ops</div>
+      <div class="pillar-intro-title">Systemen die je operatie stroomlijnen</div>
+      <p class="pillar-intro-desc">Automatische rapportages, planning en dashboards die handwerk elimineren en inzicht geven.</p>
+    </div>
+  </div>
+
+  <div class="solutions-grid">
+    <div class="solution-card reveal">
+      <div class="solution-tag green">Forge.Growth</div>
+      <div class="solution-title">AI Blogger</div>
+      <p class="solution-desc">SEO-content die zichzelf schrijft. AI analyseert je markt, schrijft geoptimaliseerde artikelen en publiceert automatisch.</p>
+      <div class="solution-stats">
+        <div class="solution-stat"><span class="solution-stat-number">4x</span><span class="solution-stat-label">organisch verkeer</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">20+</span><span class="solution-stat-label">artikelen/maand</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">Top 10</span><span class="solution-stat-label">rankings</span></div>
+      </div>
+      <a href="ai-blogger.html" class="solution-link green">Bekijk details &#8594;</a>
+    </div>
+
+    <div class="solution-card reveal">
+      <div class="solution-tag green">Forge.Growth</div>
+      <div class="solution-title">AI Outreach &amp; Leadgen</div>
+      <p class="solution-desc">Leads die zichzelf genereren. AI-gestuurde LinkedIn en e-mail outreach die prospects vindt, benadert en kwalificeert.</p>
+      <div class="solution-stats">
+        <div class="solution-stat"><span class="solution-stat-number">300+</span><span class="solution-stat-label">connecties/maand</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">15-25%</span><span class="solution-stat-label">acceptatie</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">8-12</span><span class="solution-stat-label">afspraken/maand</span></div>
+      </div>
+      <a href="ai-outreach.html" class="solution-link green">Bekijk details &#8594;</a>
+    </div>
+
+    <div class="solution-card ops reveal">
+      <div class="solution-tag amber">Forge.Ops</div>
+      <div class="solution-title">AI Rapportage</div>
+      <p class="solution-desc">Rapportages die zichzelf bouwen. Van data uit je CRM en boekhouding naar overzichtelijke rapporten. Automatisch.</p>
+      <div class="solution-stats">
+        <div class="solution-stat"><span class="solution-stat-number">8 uur</span><span class="solution-stat-label">/week bespaard</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">0</span><span class="solution-stat-label">fouten</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">Real-time</span><span class="solution-stat-label">inzicht</span></div>
+      </div>
+      <a href="ai-rapportage.html" class="solution-link amber">Bekijk details &#8594;</a>
+    </div>
+
+    <div class="solution-card ops reveal">
+      <div class="solution-tag amber">Forge.Ops</div>
+      <div class="solution-title">Planning Optimalisatie</div>
+      <p class="solution-desc">Planning die meedenkt. AI-gestuurde planning en dashboarding voor de maakindustrie.</p>
+      <div class="solution-stats">
+        <div class="solution-stat"><span class="solution-stat-number">-30%</span><span class="solution-stat-label">stilstand</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">95%</span><span class="solution-stat-label">on-time</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">Voorspellend</span><span class="solution-stat-label">plannen</span></div>
+      </div>
+      <a href="planning-optimalisatie.html" class="solution-link amber">Bekijk details &#8594;</a>
+    </div>
   </div>
 </section>
 <div class="neon-line"></div>
 
 <section class="page-cta reveal">
-  <h2>Wil je weten hoe AI jouw<br>bedrijf kan versterken?</h2>
-  <p>We starten met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
-  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <h2>Benieuwd welk systeem bij jouw bedrijf past?</h2>
+  <p>We starten met een gratis scan. Concreet, meetbaar, zonder verplichtingen.</p>
+  <a href="contact.html" class="btn-primary">Gratis scan aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </section>
 
 <footer>
