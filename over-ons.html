@@ -227,17 +227,16 @@ var obs = new IntersectionObserver(function(entries) {
 }, {threshold: 0.08});
 document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 </script>
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:1.25rem 2rem;background:var(--bg-el,#10121a);border-top:1px solid var(--brd,rgba(255,255,255,0.06));font-family:var(--mono,monospace);font-size:.78rem;color:var(--dim,#71809a);display:none;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:1.25rem 2rem;background:var(--bg-el,#10121a);border-top:1px solid var(--brd,rgba(255,255,255,0.06));font-family:var(--mono,monospace);font-size:.78rem;color:var(--dim,#8d9bb5);align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
   <p style="margin:0;line-height:1.6;flex:1;min-width:200px">Wij gebruiken cookies om de website te verbeteren. <a href="privacy.html" style="color:var(--green,#34d399);text-decoration:none">Meer info</a></p>
   <div style="display:flex;gap:.75rem;flex-shrink:0">
-    <button onclick="acceptCookies()" style="padding:.5rem 1.2rem;background:var(--green,#34d399);color:var(--btn-txt,#0a0b0e);border:none;font-size:.72rem;font-weight:500;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Accepteren</button>
-    <button onclick="declineCookies()" style="padding:.5rem 1.2rem;background:transparent;color:var(--dim,#71809a);border:1px solid var(--brd,rgba(255,255,255,0.06));font-size:.72rem;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Weigeren</button>
+    <button onclick="setCookieConsent('accepted')" style="padding:.5rem 1.2rem;background:var(--green,#34d399);color:var(--btn-txt,#0a0b0e);border:none;font-size:.72rem;font-weight:500;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Accepteren</button>
+    <button onclick="setCookieConsent('declined')" style="padding:.5rem 1.2rem;background:transparent;color:var(--dim,#8d9bb5);border:1px solid var(--brd,rgba(255,255,255,0.06));font-size:.72rem;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Weigeren</button>
   </div>
 </div>
 <script>
-function acceptCookies(){localStorage.setItem("cookies","accepted");document.getElementById("cookieBanner").style.display="none"}
-function declineCookies(){localStorage.setItem("cookies","declined");document.getElementById("cookieBanner").style.display="none"}
-(function(){if(!localStorage.getItem("cookies")){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
+function setCookieConsent(v){var d=new Date();d.setTime(d.getTime()+30*24*60*60*1000);document.cookie="cookie_consent="+v+";expires="+d.toUTCString()+";path=/;SameSite=Lax";document.getElementById("cookieBanner").style.display="none"}
+(function(){if(document.cookie.indexOf("cookie_consent=")===-1){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
 </script>
 </body>
 </html>
