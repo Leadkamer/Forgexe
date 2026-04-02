@@ -36,7 +36,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
-@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.legal{padding:6rem 1.5rem 3rem}.footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.legal{padding:6rem 1.25rem 3rem}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
 </style>
 </head>
 <body class="light">
@@ -46,9 +46,11 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="nav-right">
     <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="cases.html">Cases</a></li><li><a href="blog.html">Blog</a></li></ul>
     <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="over-ons.html">Over ons</a><a href="cases.html">Cases</a><a href="blog.html">Blog</a><a href="branches.html">Branches</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
 <div class="legal">
   <h1>Privacybeleid</h1>
@@ -106,6 +108,16 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 </footer>
 
 <script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
 document.getElementById('themeToggle').addEventListener('click', function() {
   document.body.classList.toggle('light');
 });

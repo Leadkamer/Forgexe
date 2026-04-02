@@ -55,7 +55,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
-@media(max-width:768px){nav{padding:.75rem 1.5rem}.nav-links{display:none}.page-hero{padding:6rem 1.5rem 3rem}section{padding:3.5rem 1.5rem}.pain-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr;gap:2rem}.steps{grid-template-columns:1fr;gap:2rem}.kpi-grid{grid-template-columns:1fr}.results-box{padding:2rem}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.pain-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr;gap:2rem}.steps{grid-template-columns:1fr;gap:2rem}.kpi-grid{grid-template-columns:1fr}.results-box{padding:2rem}.neon-line{margin:0 1.25rem}}
 </style>
 </head>
 <body class="light">
@@ -65,9 +65,11 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="nav-right">
     <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="over-ons.html">Over ons</a></li><li><a href="cases.html">Cases</a></li><li><a href="blog.html">Blog</a></li></ul>
     <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     <div class="theme-toggle" id="themeToggle"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="over-ons.html">Over ons</a><a href="cases.html">Cases</a><a href="blog.html">Blog</a><a href="branches.html">Branches</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
 <div class="page-hero">
   <div class="hero-terminal"><span class="prompt">C:\forgexe&gt;</span> forge --sector finance --scan</div>
@@ -158,6 +160,16 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 </footer>
 
 <script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
 document.getElementById('themeToggle').addEventListener('click', function() {
   document.body.classList.toggle('light');
 });
