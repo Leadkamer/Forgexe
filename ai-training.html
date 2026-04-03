@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>Expertises &#8212; Forgexe</title>
-<meta name="description" content="Ontdek de 4 AI-automatiseringssystemen van Forgexe: AI Blogger, AI Outreach, AI Rapportage en Planning Optimalisatie.">
-<link rel="canonical" href="https://forgexe.nl/expertises.html">
+<title>AI Training &amp; Workshops &#8212; Forgexe</title>
+<meta name="description" content="Maak AI een kracht binnen jouw organisatie. Workshops en training voor je team: van prompt engineering tot AI-tools effectief inzetten.">
+<link rel="canonical" href="https://forgexe.nl/ai-training.html">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;--amber-glow:rgba(245,166,35,0.12);--tr:0.35s ease}
-body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25}
-body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04}
+:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease;--amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;--amber-glow:rgba(245,166,35,0.12)}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25;--ill-stroke:var(--green);--ill-opacity:0.7;--success:#4ade80}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04;--ill-stroke:#059669;--ill-opacity:0.6}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
 ::selection{background:var(--green);color:var(--btn-txt)}
@@ -19,17 +19,18 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-mark{flex-shrink:0}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
 .nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
 .nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
-.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;transition:background var(--tr);border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
 
 section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .section-label{font-size:.8rem;color:var(--green);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .section-title{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:2rem}
 .section-desc{font-size:.95rem;color:var(--dim);max-width:560px;line-height:1.9;margin-bottom:4rem}
 .neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+.arcade-border{display:none;padding:0 3rem;max-width:1200px;margin:2.5rem auto}.arcade-border-inner{height:1px;background:repeating-linear-gradient(90deg,var(--green) 0px,var(--green) 4px,transparent 4px,transparent 8px,var(--neon-cyan) 8px,var(--neon-cyan) 12px,transparent 12px,transparent 16px);opacity:var(--neon-opacity)}
 .btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono);border-radius:6px}.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}.btn-primary svg{width:14px;height:14px}
 .reveal{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
 @keyframes bl{50%{opacity:0}}
@@ -41,33 +42,23 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 .page-hero h1 em{font-style:normal;color:var(--green)}
 .page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:600px;opacity:0;animation:fu .8s ease forwards .7s}
 
-.pillars-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd);margin-bottom:4rem}
-.pillar-intro{background:var(--bg);padding:2rem}
-body.light .pillar-intro{background:var(--bg-el)}
-.pillar-intro-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)}
-.pillar-intro-label.green{color:var(--green)}
-.pillar-intro-label.amber{color:var(--amber)}
-.pillar-intro-title{font-family:var(--pop);font-size:1.2rem;font-weight:600;margin-bottom:.4rem}
-.pillar-intro-desc{font-size:.82rem;color:var(--dim)}
+.feature-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.feature-list li{display:flex;align-items:flex-start;gap:1rem;font-size:.88rem;color:var(--dim);line-height:1.7}
+.feature-list li::before{content:'>';color:var(--green);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px}
 
-.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd)}
-.solution-card{background:var(--bg);padding:2.5rem;position:relative;transition:background .3s}.solution-card:hover{background:var(--card-hover)}
-body.light .solution-card{background:var(--bg-el)}
-.solution-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--green);transition:width .4s}.solution-card:hover::after{width:100%}
-.solution-card.ops::after{background:var(--amber)}
-.solution-tag{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-family:var(--mono)}
-.solution-tag.green{color:var(--green);border:1px solid var(--green);display:inline-block;padding:.2rem .6rem}
-.solution-tag.amber{color:var(--amber);border:1px solid var(--amber);display:inline-block;padding:.2rem .6rem}
-.solution-title{font-family:var(--pop);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.75rem}
-.solution-desc{font-size:.85rem;color:var(--dim);line-height:1.8;margin-bottom:1.5rem}
-.solution-stats{display:flex;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.solution-stat{display:flex;flex-direction:column}
-.solution-stat-number{font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--green)}
-.solution-card.ops .solution-stat-number{color:var(--amber)}
-.solution-stat-label{font-size:.65rem;color:var(--dim)}
-.solution-link{font-size:.78rem;text-decoration:none;font-family:var(--mono);transition:color .3s}
-.solution-link.green{color:var(--green)}.solution-link.green:hover{color:var(--green-lt)}
-.solution-link.amber{color:var(--amber)}.solution-link.amber:hover{color:var(--amber-lt)}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem}
+.step{border:1px solid var(--brd);padding:2rem;transition:background .3s}.step:hover{background:var(--card-hover)}
+.step::before{content:attr(data-step);font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);display:block;margin-bottom:.75rem;line-height:1}
+.step-title{font-family:var(--pop);font-size:1.05rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
+.step p{font-size:.82rem;color:var(--dim);line-height:1.8}
+
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2rem}
+.result{border:1px solid var(--brd);padding:2rem;text-align:center;transition:background .3s}.result:hover{background:var(--card-hover)}
+.result .number{font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);line-height:1;margin-bottom:.5rem}
+.result .label{font-size:.75rem;color:var(--dim);line-height:1.5}
+
+.audience-box{border:1px solid var(--brd);padding:3rem;max-width:700px;margin-top:2rem}
+.audience-box p{font-size:.95rem;color:var(--dim);line-height:1.9}
 
 .page-cta{padding:10rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
 .page-cta h2{font-family:var(--pop);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
@@ -82,7 +73,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
 
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.pillars-intro{grid-template-columns:1fr}.solutions-grid{grid-template-columns:1fr}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.feature-list{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr 1fr}.arcade-border{display:none}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
 </style>
 </head>
 <body class="light">
@@ -96,110 +87,75 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="cases.html">Cases</a><a href="blog.html">Blog</a><a href="expertises.html">Expertises</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+<div class="mobile-menu" id="mobileMenu"><a href="/">Home</a><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
 <header class="page-hero">
-  <div class="hero-terminal"><span class="prompt">C:\forgexe\expertises&gt;</span> forge --list systems<span class="cursor"></span></div>
-  <h1>Onze AI-medewerkers.<br>Jouw <em>resultaat</em>.</h1>
-  <p class="hero-sub">Van leadgeneratie tot rapportage &#8212; dit zijn de AI-medewerkers die we voor je smeden.</p>
+  <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-training&gt;</span> forge --start team-training<span class="cursor"></span></div>
+  <h1>Maak AI een kracht<br>binnen jouw <em>team.</em></h1>
+  <p class="hero-sub">Workshops en training op maat. Van prompt engineering tot het herkennen van automatiseringsmogelijkheden in je dagelijkse werk.</p>
 </header>
 <div class="neon-line"></div>
 
-<section>
-  <div class="section-label">C:\expertises\pillars&gt;<span class="section-label-cursor"></span></div>
+<section class="reveal">
+  <div class="section-label">C:\ai-training\wat-het-doet&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Wat het doet.</h2>
+  <p class="section-desc">Je team leert AI niet uit een boekje, maar door het te doen.</p>
+  <ul class="feature-list">
+    <li>Hands-on workshops afgestemd op jouw branche en tools</li>
+    <li>Prompt engineering: effectief communiceren met AI-modellen</li>
+    <li>Automatiseringsmogelijkheden herkennen in dagelijkse processen</li>
+    <li>AI-tools leren inzetten voor hun specifieke rol (sales, ops, marketing)</li>
+  </ul>
+</section>
+<div class="neon-line"></div>
 
-  <div class="pillars-intro reveal">
-    <div class="pillar-intro">
-      <div class="pillar-intro-label green">Forge.Growth</div>
-      <div class="pillar-intro-title">AI-medewerkers die klanten binnenhalen</div>
-      <p class="pillar-intro-desc">AI-gestuurde leadgeneratie, content en outreach die 24/7 nieuwe klanten voor je aantrekken.</p>
+<section class="reveal">
+  <div class="section-label">C:\ai-training\hoe-het-werkt&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Hoe het werkt.</h2>
+  <p class="section-desc">Drie stappen van onbekend terrein naar AI-vaardig team.</p>
+  <div class="steps">
+    <div class="step" data-step="01">
+      <div class="step-title">Intake</div>
+      <p>We analyseren hoe je team nu werkt en waar AI het meeste impact maakt. Welke tools gebruiken ze? Waar gaat de meeste tijd verloren?</p>
     </div>
-    <div class="pillar-intro">
-      <div class="pillar-intro-label amber">Forge.Ops</div>
-      <div class="pillar-intro-title">AI-medewerkers die je operatie stroomlijnen</div>
-      <p class="pillar-intro-desc">Automatische rapportages, planning en dashboards die handwerk elimineren en inzicht geven.</p>
+    <div class="step" data-step="02">
+      <div class="step-title">Workshop op maat</div>
+      <p>Praktische sessies met jullie eigen tools en processen als uitgangspunt. Geen theorie, maar direct toepasbare kennis.</p>
+    </div>
+    <div class="step" data-step="03">
+      <div class="step-title">Implementatie</div>
+      <p>Je team gaat direct aan de slag. Wij begeleiden de eerste weken zodat AI daadwerkelijk onderdeel wordt van het dagelijks werk.</p>
     </div>
   </div>
+</section>
+<div class="neon-line"></div>
 
-  <div class="solutions-grid">
-    <div class="solution-card reveal">
-      <div class="solution-tag green">Forge.Growth</div>
-      <div class="solution-title">AI Blogger</div>
-      <p class="solution-desc">Je AI-blogger analyseert je markt, schrijft geoptimaliseerde artikelen en publiceert automatisch op je website.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><span class="solution-stat-number">4x</span><span class="solution-stat-label">organisch verkeer</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">20+</span><span class="solution-stat-label">artikelen/maand</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">Top 10</span><span class="solution-stat-label">rankings</span></div>
-      </div>
-      <a href="ai-blogger.html" class="solution-link green">Bekijk details &#8594;</a>
-    </div>
+<section class="reveal">
+  <div class="section-label">C:\ai-training\resultaten&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Resultaten.</h2>
+  <p class="section-desc">Dit is wat onze AI Training oplevert voor teams die serieus aan de slag willen.</p>
+  <div class="results-grid">
+    <div class="result"><div class="number">4 uur</div><div class="label">per week bespaard<br>per medewerker na training</div></div>
+    <div class="result"><div class="number">90%</div><div class="label">van deelnemers past AI<br>dezelfde week toe</div></div>
+    <div class="result"><div class="number">3x</div><div class="label">sneller adoptiesnelheid<br>vs. zelf uitzoeken</div></div>
+    <div class="result"><div class="number">Blijvend</div><div class="label">effect door<br>train-de-trainer aanpak</div></div>
+  </div>
+</section>
+<div class="neon-line"></div>
 
-    <div class="solution-card reveal">
-      <div class="solution-tag green">Forge.Growth</div>
-      <div class="solution-title">AI Outreach &amp; Leadgen</div>
-      <p class="solution-desc">Je AI-outreach specialist vindt prospects, benadert ze gepersonaliseerd en kwalificeert ze. Jij praat alleen met warme leads.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><span class="solution-stat-number">300+</span><span class="solution-stat-label">connecties/maand</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">15-25%</span><span class="solution-stat-label">acceptatie</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">8-12</span><span class="solution-stat-label">afspraken/maand</span></div>
-      </div>
-      <a href="ai-outreach.html" class="solution-link green">Bekijk details &#8594;</a>
-    </div>
-
-    <div class="solution-card ops reveal">
-      <div class="solution-tag amber">Forge.Ops</div>
-      <div class="solution-title">AI Rapportage</div>
-      <p class="solution-desc">Je AI-rapporteur haalt data op uit al je systemen en bouwt overzichtelijke rapporten. Automatisch, op tijd, zonder fouten.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><span class="solution-stat-number">8 uur</span><span class="solution-stat-label">/week bespaard</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">0</span><span class="solution-stat-label">fouten</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">Real-time</span><span class="solution-stat-label">inzicht</span></div>
-      </div>
-      <a href="ai-rapportage.html" class="solution-link amber">Bekijk details &#8594;</a>
-    </div>
-
-    <div class="solution-card ops reveal">
-      <div class="solution-tag amber">Forge.Ops</div>
-      <div class="solution-title">Planning Optimalisatie</div>
-      <p class="solution-desc">Je AI-planner optimaliseert productieplanning, signaleert bottlenecks en visualiseert alles in een real-time dashboard.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><span class="solution-stat-number">-30%</span><span class="solution-stat-label">stilstand</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">95%</span><span class="solution-stat-label">on-time</span></div>
-        <div class="solution-stat"><span class="solution-stat-number">Voorspellend</span><span class="solution-stat-label">plannen</span></div>
-      </div>
-      <a href="planning-optimalisatie.html" class="solution-link amber">Bekijk details &#8594;</a>
-    </div>
-  
-    <a href="ai-training.html" class="solution-card" style="text-decoration:none;color:inherit">
-      <span class="solution-tag green">Forge.Growth</span>
-      <div class="solution-title">AI Training &amp; Workshops</div>
-      <p class="solution-desc">Maak AI een kracht binnen jouw team. Hands-on workshops afgestemd op jouw branche en tools.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><div class="solution-stat-number">4 uur</div><div class="solution-stat-label">per week bespaard<br>per medewerker</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">90%</div><div class="solution-stat-label">past AI toe<br>dezelfde week</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">3x</div><div class="solution-stat-label">snellere<br>adoptie</div></div>
-      </div>
-      <span class="solution-link green">Bekijk details &#8594;</span>
-    </a>
-    <a href="dashboarding.html" class="solution-card ops" style="text-decoration:none;color:inherit">
-      <span class="solution-tag amber">Forge.Ops</span>
-      <div class="solution-title">Dashboarding &amp; AI Platform</div>
-      <p class="solution-desc">Jouw eigen ecosysteem. E&#233;n AI-gestuurd platform dat al je systemen verbindt.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><div class="solution-stat-number">1</div><div class="solution-stat-label">platform i.p.v.<br>6+ tools</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">70%</div><div class="solution-stat-label">minder tijd<br>data opzoeken</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">Real-time</div><div class="solution-stat-label">inzicht in<br>alle data</div></div>
-      </div>
-      <span class="solution-link amber">Bekijk details &#8594;</span>
-    </a>
+<section class="reveal">
+  <div class="section-label">C:\ai-training\voor-wie&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Voor wie.</h2>
+  <div class="audience-box">
+    <p>Teams die weten dat AI belangrijk is, maar niet weten waar te beginnen. Van salesteams die slimmer willen prospecten tot operationele teams die hun rapportage willen versnellen. Geen technische voorkennis nodig.</p>
   </div>
 </section>
 <div class="neon-line"></div>
 
 <section class="page-cta reveal">
-  <h2>Benieuwd welke AI-medewerker jouw team versterkt?</h2>
-  <p>We starten met een gratis scan. Concreet, meetbaar, zonder verplichtingen.</p>
-  <a href="contact.html" class="btn-primary">Gratis scan aanvragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <h2>Klaar om je team<br>AI-vaardig te maken?</h2>
+  <p>We starten met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
+  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </section>
 
 <footer>
