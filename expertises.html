@@ -41,7 +41,7 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 .page-hero h1 em{font-style:normal;color:var(--green)}
 .page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:600px;opacity:0;animation:fu .8s ease forwards .7s}
 
-.pillars-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd);margin-bottom:4rem}
+.pillars-intro{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd);margin-bottom:4rem}
 .pillar-intro{background:var(--bg);padding:2rem}
 body.light .pillar-intro{background:var(--bg-el)}
 .pillar-intro-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)}
@@ -106,22 +106,11 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 <div class="neon-line"></div>
 
 <section>
-  <div class="section-label">C:\expertises\pillars&gt;<span class="section-label-cursor"></span></div>
+  <div class="section-label">C:\expertises\growth&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title" style="margin-bottom:1rem">Forge.Growth</h2>
+  <p class="section-desc">AI-medewerkers die klanten binnenhalen. Leadgeneratie, content en outreach die 24/7 voor je werken.</p>
 
-  <div class="pillars-intro reveal">
-    <div class="pillar-intro">
-      <div class="pillar-intro-label green">Forge.Growth</div>
-      <div class="pillar-intro-title">AI-medewerkers die klanten binnenhalen</div>
-      <p class="pillar-intro-desc">AI-gestuurde leadgeneratie, content en outreach die 24/7 nieuwe klanten voor je aantrekken.</p>
-    </div>
-    <div class="pillar-intro">
-      <div class="pillar-intro-label amber">Forge.Ops</div>
-      <div class="pillar-intro-title">AI-medewerkers die je operatie stroomlijnen</div>
-      <p class="pillar-intro-desc">Automatische rapportages, planning en dashboards die handwerk elimineren en inzicht geven.</p>
-    </div>
-  </div>
-
-  <div class="solutions-grid">
+  <div class="solutions-grid" style="grid-template-columns:repeat(3,1fr)">
     <div class="solution-card reveal">
       <div class="solution-tag green">Forge.Growth</div>
       <div class="solution-title">AI Blogger</div>
@@ -133,7 +122,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       </div>
       <a href="ai-blogger.html" class="solution-link green">Bekijk details &#8594;</a>
     </div>
-
     <div class="solution-card reveal">
       <div class="solution-tag green">Forge.Growth</div>
       <div class="solution-title">AI Outreach &amp; Leadgen</div>
@@ -145,7 +133,27 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       </div>
       <a href="ai-outreach.html" class="solution-link green">Bekijk details &#8594;</a>
     </div>
+    <div class="solution-card reveal">
+      <div class="solution-tag green">Forge.Growth</div>
+      <div class="solution-title">AI Training &amp; Workshops</div>
+      <p class="solution-desc">Maak AI een kracht binnen jouw team. Hands-on workshops afgestemd op jouw branche en tools.</p>
+      <div class="solution-stats">
+        <div class="solution-stat"><span class="solution-stat-number">4 uur</span><span class="solution-stat-label">bespaard/week</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">90%</span><span class="solution-stat-label">past AI direct toe</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">3x</span><span class="solution-stat-label">snellere adoptie</span></div>
+      </div>
+      <a href="ai-training.html" class="solution-link green">Bekijk details &#8594;</a>
+    </div>
+  </div>
+</section>
+<div class="neon-line"></div>
 
+<section>
+  <div class="section-label-amber">C:\expertises\ops&gt;<span class="section-label-cursor-amber"></span></div>
+  <h2 class="section-title" style="margin-bottom:1rem">Forge.Ops</h2>
+  <p class="section-desc">AI-medewerkers die je operatie stroomlijnen. Rapportages, planning en dashboards die handwerk elimineren.</p>
+
+  <div class="solutions-grid" style="grid-template-columns:repeat(3,1fr)">
     <div class="solution-card ops reveal">
       <div class="solution-tag amber">Forge.Ops</div>
       <div class="solution-title">AI Rapportage</div>
@@ -157,7 +165,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       </div>
       <a href="ai-rapportage.html" class="solution-link amber">Bekijk details &#8594;</a>
     </div>
-
     <div class="solution-card ops reveal">
       <div class="solution-tag amber">Forge.Ops</div>
       <div class="solution-title">Planning Optimalisatie</div>
@@ -169,29 +176,17 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       </div>
       <a href="planning-optimalisatie.html" class="solution-link amber">Bekijk details &#8594;</a>
     </div>
-  
-    <a href="ai-training.html" class="solution-card" style="text-decoration:none;color:inherit">
-      <span class="solution-tag green">Forge.Growth</span>
-      <div class="solution-title">AI Training &amp; Workshops</div>
-      <p class="solution-desc">Maak AI een kracht binnen jouw team. Hands-on workshops afgestemd op jouw branche en tools.</p>
-      <div class="solution-stats">
-        <div class="solution-stat"><div class="solution-stat-number">4 uur</div><div class="solution-stat-label">per week bespaard<br>per medewerker</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">90%</div><div class="solution-stat-label">past AI toe<br>dezelfde week</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">3x</div><div class="solution-stat-label">snellere<br>adoptie</div></div>
-      </div>
-      <span class="solution-link green">Bekijk details &#8594;</span>
-    </a>
-    <a href="dashboarding.html" class="solution-card ops" style="text-decoration:none;color:inherit">
-      <span class="solution-tag amber">Forge.Ops</span>
+    <div class="solution-card ops reveal">
+      <div class="solution-tag amber">Forge.Ops</div>
       <div class="solution-title">Dashboarding &amp; AI Platform</div>
-      <p class="solution-desc">Jouw eigen ecosysteem. E&#233;n AI-gestuurd platform dat al je systemen verbindt.</p>
+      <p class="solution-desc">Jouw eigen ecosysteem. E&#233;n AI-gestuurd platform dat al je systemen verbindt en real-time inzicht geeft.</p>
       <div class="solution-stats">
-        <div class="solution-stat"><div class="solution-stat-number">1</div><div class="solution-stat-label">platform i.p.v.<br>6+ tools</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">70%</div><div class="solution-stat-label">minder tijd<br>data opzoeken</div></div>
-        <div class="solution-stat"><div class="solution-stat-number">Real-time</div><div class="solution-stat-label">inzicht in<br>alle data</div></div>
+        <div class="solution-stat"><span class="solution-stat-number">1</span><span class="solution-stat-label">platform i.p.v. 6+</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">70%</span><span class="solution-stat-label">minder data zoeken</span></div>
+        <div class="solution-stat"><span class="solution-stat-number">Real-time</span><span class="solution-stat-label">alle data</span></div>
       </div>
-      <span class="solution-link amber">Bekijk details &#8594;</span>
-    </a>
+      <a href="dashboarding.html" class="solution-link amber">Bekijk details &#8594;</a>
+    </div>
   </div>
 </section>
 <div class="neon-line"></div>
