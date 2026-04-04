@@ -10,15 +10,17 @@
 <meta property="og:description" content="Van lead-opvolging tot facturatie: deze vijf processen kosten je team uren per week en zijn eenvoudig te automatiseren.">
 <meta property="og:type" content="article">
 <link rel="canonical" href="https://forgexe.nl/blog-5-processen-automatiseren.html">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--mono:'JetBrains Mono',monospace;--pop:'Poppins',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
+:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease}
 body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25}
 body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
 ::selection{background:var(--green);color:var(--btn-txt)}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
 .neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
@@ -35,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
-.page-hero h1{font-family:var(--pop);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
+.page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
 .page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:560px;opacity:0;animation:fu .8s ease forwards .7s}
 
@@ -45,15 +47,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display
 .article-tag{font-size:.58rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--green);padding:.2rem .6rem;font-family:var(--mono)}
 .article-date{font-size:.72rem;color:var(--mut)}
 .article-reading{font-size:.72rem;color:var(--mut)}
-.article h1{font-family:var(--pop);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.03em;margin-bottom:2rem}
-.article h2{font-family:var(--pop);font-size:1.3rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem}
+.article h1{font-family:var(--head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;letter-spacing:-.03em;margin-bottom:2rem}
+.article h2{font-family:var(--head);font-size:1.3rem;font-weight:600;margin-top:2.5rem;margin-bottom:1rem}
 .article h3{font-size:1rem;font-weight:500;margin-top:2rem;margin-bottom:.75rem;color:var(--green)}
 .article p{font-size:.88rem;color:var(--dim);line-height:2;margin-bottom:1.5rem}
 .article strong{color:var(--txt);font-weight:500}
 .article ul,.article ol{padding-left:1.5rem;margin-bottom:1.5rem}.article li{font-size:.85rem;color:var(--dim);line-height:1.9;margin-bottom:.5rem}
 
 .page-cta{padding:10rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
-.page-cta h2{font-family:var(--pop);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
+.page-cta h2{font-family:var(--head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
 
 footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
