@@ -207,6 +207,11 @@ function setCookieConsent(v){var d=new Date();d.setTime(d.getTime()+30*24*60*60*
 (function(){if(document.cookie.indexOf("cookie_consent=")===-1){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
 </script>
 
+<style>
+elevenlabs-convai{--el-branding-display:none}
+elevenlabs-convai::part(branding){display:none!important}
+elevenlabs-convai::part(powered-by){display:none!important}
+</style>
 <elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
