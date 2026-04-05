@@ -58,6 +58,9 @@ body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
 .feature-list li{display:flex;align-items:flex-start;gap:1rem;font-size:.88rem;color:var(--dim);line-height:1.7}
 .feature-list li::before{content:'>';color:var(--green);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px}
 
+.step-icon{width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,.08);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.step-icon.amber{background:rgba(245,166,35,.08)}
+.step-icon svg{width:20px;height:20px}
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem}
 .step{border:1px solid var(--brd);padding:2rem;transition:background .3s}.step:hover{background:var(--card-hover)}
 .step::before{content:attr(data-step);font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);display:block;margin-bottom:.75rem;line-height:1}
@@ -229,15 +232,18 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <h2 class="section-title">Snelle toepassingen.</h2>
   <p class="section-desc">Concrete automations die je vandaag kunt inzetten.</p>
   <div class="steps">
-    <div class="step" data-step="&gt;_">
+    <div class="step" data-step="">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
       <div class="step-title">Speed to Lead</div>
       <p>Nieuwe lead via formulier, advertentie of LinkedIn? Binnen 60 seconden een gepersonaliseerd bericht of belafspraak. Hoe sneller je reageert, hoe hoger de conversie &#8212; en jouw AI slaapt nooit.</p>
     </div>
-    <div class="step" data-step="&gt;_">
+    <div class="step" data-step="">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
       <div class="step-title">Lead Follow-up</div>
       <p>Leads die niet direct converteren krijgen automatisch slimme opvolging. Gepersonaliseerde nurture-flows via e-mail en LinkedIn &#8212; op het juiste moment, met de juiste boodschap.</p>
     </div>
-    <div class="step" data-step="&gt;_">
+    <div class="step" data-step="">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M21 12a9 9 0 11-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></div>
       <div class="step-title">Database Reactivation</div>
       <p>Honderden slapende contacten in je CRM? AI analyseert je database, identificeert kansen en activeert oude leads opnieuw met persoonlijke outreach. Nieuwe deals uit bestaande data.</p>
     </div>

@@ -58,6 +58,9 @@ body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
 .feature-list li::before{content:'>';color:var(--amber);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px}
 
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem}
+.step-icon{width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,.08);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.step-icon.amber{background:rgba(245,166,35,.08)}
+.step-icon svg{width:20px;height:20px}
 .step{border:1px solid var(--brd);padding:2rem;transition:background .3s}.step:hover{background:var(--card-hover)}
 .step::before{content:attr(data-step);font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);display:block;margin-bottom:.75rem;line-height:1}
 .step-amber::before{color:var(--amber)}
@@ -227,7 +230,8 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <h2 class="section-title">Snelle toepassingen.</h2>
   <p class="section-desc">Slimme meldingen die je team scherp houden.</p>
   <div class="steps">
-    <div class="step step-amber" data-step="&gt;_">
+    <div class="step step-amber" data-step="">
+      <div class="step-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
       <div class="step-title">Status Notification</div>
       <p>Automatische meldingen bij statuswijzigingen in je processen. Deal gesloten? Taak verlopen? SLA-deadline nadert? Je team krijgt direct een melding via Slack, e-mail of Teams &#8212; zonder dat iemand handmatig hoeft te checken.</p>
     </div>
