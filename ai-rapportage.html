@@ -40,6 +40,14 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--amber)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(245,166,35,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--amber)}
@@ -98,6 +106,86 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-rapportage&gt;</span> forge --generate reports --auto<span class="cursor"></span></div>
   <h1>Rapportages die<br>zichzelf <em>bouwen.</em></h1>
   <p class="hero-sub">Je AI-rapporteur haalt data op uit al je systemen en bouwt overzichtelijke rapporten. Automatisch, op tijd, zonder fouten.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">ai-rapportage</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <text x="14" y="18" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">AI RAPPORTAGE</text>
+          <rect x="400" y="4" width="110" height="22" rx="6" fill="#f5a623"/>
+          <text x="455" y="19" text-anchor="middle" font-family="var(--mono)" font-size="7" font-weight="600" fill="var(--bg)">+ Nieuw rapport</text>
+          <text x="14" y="42" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">BRONNEN GEKOPPELD</text>
+          <rect x="10" y="50" width="100" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <circle cx="26" cy="68" r="8" fill="rgba(52,211,153,.12)"/><text x="26" y="71" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399">Z</text>
+          <text x="40" y="64" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Zoho CRM</text>
+          <text x="40" y="76" font-family="var(--mono)" font-size="5.5" fill="#34d399">&#10003; Verbonden</text>
+          <rect x="118" y="50" width="100" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <circle cx="134" cy="68" r="8" fill="rgba(59,130,246,.12)"/><text x="134" y="71" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#3b82f6">G</text>
+          <text x="148" y="64" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Google Ads</text>
+          <text x="148" y="76" font-family="var(--mono)" font-size="5.5" fill="#34d399">&#10003; Verbonden</text>
+          <rect x="226" y="50" width="100" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <circle cx="242" cy="68" r="8" fill="rgba(244,63,94,.12)"/><text x="242" y="71" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f43f5e">A</text>
+          <text x="256" y="64" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Analytics</text>
+          <text x="256" y="76" font-family="var(--mono)" font-size="5.5" fill="#34d399">&#10003; Verbonden</text>
+          <rect x="334" y="50" width="100" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <circle cx="350" cy="68" r="8" fill="rgba(245,166,35,.12)"/><text x="350" y="71" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f5a623">E</text>
+          <text x="364" y="64" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Exact Online</text>
+          <text x="364" y="76" font-family="var(--mono)" font-size="5.5" fill="#34d399">&#10003; Verbonden</text>
+          <text x="14" y="108" font-family="var(--mono)" font-size="7" font-weight="500" fill="var(--dim)" opacity=".5">RECENTE RAPPORTEN</text>
+          <rect x="10" y="114" width="500" height="22" rx="0" fill="rgba(245,166,35,.03)"/>
+          <text x="20" y="128" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">RAPPORT</text>
+          <text x="220" y="128" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">TYPE</text>
+          <text x="320" y="128" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">GEGENEREERD</text>
+          <text x="440" y="128" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">STATUS</text>
+          <line x1="10" y1="136" x2="510" y2="136" stroke="var(--brd)" stroke-width=".5"/>
+          <rect x="16" y="144" width="14" height="18" rx="3" fill="rgba(245,166,35,.1)"/>
+          <text x="23" y="156" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f5a623">&#9776;</text>
+          <text x="38" y="152" font-family="var(--mono)" font-size="7.5" fill="var(--txt)">Maandrapportage april 2026</text>
+          <text x="38" y="162" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">4 bronnen &#183; 12 pagina's</text>
+          <rect x="216" y="146" width="66" height="16" rx="4" fill="rgba(245,166,35,.08)"/>
+          <text x="249" y="157" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f5a623">Maandelijks</text>
+          <text x="320" y="157" font-family="var(--mono)" font-size="7" fill="var(--dim)">05 apr, 09:00</text>
+          <rect x="436" y="146" width="56" height="16" rx="8" fill="rgba(52,211,153,.15)"/>
+          <circle cx="446" cy="154" r="3" fill="#34d399"/><text x="468" y="158" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#34d399">Klaar</text>
+          <line x1="10" y1="170" x2="510" y2="170" stroke="var(--brd)" stroke-width=".5"/>
+          <rect x="16" y="178" width="14" height="18" rx="3" fill="rgba(59,130,246,.1)"/>
+          <text x="23" y="190" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#3b82f6">&#9776;</text>
+          <text x="38" y="186" font-family="var(--mono)" font-size="7.5" fill="var(--txt)">Ads performance Q1</text>
+          <text x="38" y="196" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">2 bronnen &#183; 8 pagina's</text>
+          <rect x="216" y="180" width="66" height="16" rx="4" fill="rgba(59,130,246,.08)"/>
+          <text x="249" y="191" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#3b82f6">Kwartaal</text>
+          <text x="320" y="191" font-family="var(--mono)" font-size="7" fill="var(--dim)">01 apr, 08:00</text>
+          <rect x="436" y="180" width="56" height="16" rx="8" fill="rgba(52,211,153,.15)"/>
+          <circle cx="446" cy="188" r="3" fill="#34d399"/><text x="468" y="192" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#34d399">Klaar</text>
+          <line x1="10" y1="204" x2="510" y2="204" stroke="var(--brd)" stroke-width=".5"/>
+          <rect x="16" y="212" width="14" height="18" rx="3" fill="rgba(139,92,246,.1)"/>
+          <text x="23" y="224" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#8b5cf6">&#9776;</text>
+          <text x="38" y="220" font-family="var(--mono)" font-size="7.5" fill="var(--txt)">Sales pipeline week 14</text>
+          <text x="38" y="230" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">3 bronnen &#183; wordt gegenereerd...</text>
+          <rect x="216" y="214" width="66" height="16" rx="4" fill="rgba(139,92,246,.08)"/>
+          <text x="249" y="225" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#8b5cf6">Wekelijks</text>
+          <text x="320" y="225" font-family="var(--mono)" font-size="7" fill="var(--dim)">nu</text>
+          <rect x="436" y="214" width="70" height="16" rx="8" fill="rgba(245,166,35,.12)"/>
+          <circle cx="446" cy="222" r="3" fill="#f5a623" style="animation:mockupPulse 1.5s ease-in-out infinite"/>
+          <text x="475" y="226" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f5a623">Genereert...</text>
+          <line x1="10" y1="244" x2="510" y2="244" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="14" y="262" font-family="var(--mono)" font-size="7" font-weight="500" fill="var(--dim)" opacity=".5">PREVIEW: Maandrapportage april</text>
+          <rect x="10" y="268" width="162" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="20" y="282" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Omzet</text>
+          <text x="20" y="296" font-family="var(--head)" font-size="12" font-weight="700" fill="var(--txt)">&#8364;847K</text>
+          <text x="72" y="296" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650;12%</text>
+          <rect x="180" y="268" width="162" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="190" y="282" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Nieuwe klanten</text>
+          <text x="190" y="296" font-family="var(--head)" font-size="12" font-weight="700" fill="var(--txt)">23</text>
+          <text x="210" y="296" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650;8%</text>
+          <rect x="350" y="268" width="160" height="36" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="360" y="282" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Klanttevredenheid</text>
+          <text x="360" y="296" font-family="var(--head)" font-size="12" font-weight="700" fill="var(--txt)">8.7</text>
+          <text x="384" y="296" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650;0.3</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 

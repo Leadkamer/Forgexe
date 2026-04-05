@@ -40,6 +40,14 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--amber)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(245,166,35,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--amber)}
@@ -98,6 +106,81 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\dashboarding&gt;</span> forge --deploy platform --connect-all<span class="cursor"></span></div>
   <h1>Jouw eigen ecosysteem.<br>E&#233;n <em>platform.</em></h1>
   <p class="hero-sub">Een AI-gestuurd dashboard dat al je systemen verbindt. Van planning tot rapportage, real-time inzicht en volledig in eigen beheer.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">forgexe-platform</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <rect x="0" y="0" width="90" height="300" fill="rgba(6,182,212,.03)"/>
+          <line x1="90" y1="0" x2="90" y2="300" stroke="var(--brd)" stroke-width="1"/>
+          <rect x="22" y="10" width="7" height="18" rx="1" fill="#34d399" opacity=".7"/>
+          <rect x="22" y="10" width="20" height="3.5" rx="1" fill="#34d399" opacity=".7"/>
+          <rect x="22" y="18" width="14" height="2.5" rx="1" fill="#34d399" opacity=".7"/>
+          <polygon points="38,17 45,22 38,27" fill="#34d399" opacity=".7"/>
+          <text x="52" y="24" font-family="var(--mono)" font-size="7" font-weight="700" fill="#34d399">Forgexe</text>
+          <rect x="8" y="40" width="74" height="24" rx="5" fill="rgba(6,182,212,.1)" stroke="rgba(6,182,212,.2)" stroke-width=".5"/>
+          <text x="45" y="56" text-anchor="middle" font-family="var(--mono)" font-size="6.5" font-weight="500" fill="#06b6d4">Dashboard</text>
+          <rect x="8" y="70" width="74" height="22" rx="5" fill="rgba(52,211,153,.05)"/>
+          <text x="45" y="85" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">Outreach</text>
+          <rect x="8" y="96" width="74" height="22" rx="5" fill="rgba(59,130,246,.05)"/>
+          <text x="45" y="111" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">Content</text>
+          <rect x="8" y="122" width="74" height="22" rx="5" fill="rgba(244,63,94,.05)"/>
+          <text x="45" y="137" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">Ads</text>
+          <rect x="8" y="148" width="74" height="22" rx="5" fill="rgba(245,166,35,.05)"/>
+          <text x="45" y="163" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">Rapportage</text>
+          <rect x="8" y="174" width="74" height="22" rx="5" fill="rgba(244,63,94,.05)"/>
+          <text x="45" y="189" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">Planning</text>
+          <text x="12" y="230" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">SYSTEEM</text>
+          <circle cx="16" cy="244" r="3" fill="#34d399"/><text x="24" y="247" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">Alle APIs actief</text>
+          <circle cx="16" cy="258" r="3" fill="#34d399"/><text x="24" y="261" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">7 AI-agents online</text>
+          <text x="104" y="18" font-family="var(--head)" font-size="10" font-weight="600" fill="var(--txt)">Overzicht</text>
+          <text x="340" y="18" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Laatste sync: 2 min geleden</text>
+          <rect x="104" y="28" width="200" height="110" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="116" y="46" font-family="var(--mono)" font-size="6.5" fill="#34d399">OUTREACH</text>
+          <text x="276" y="46" text-anchor="end" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">deze week</text>
+          <text x="116" y="68" font-family="var(--head)" font-size="18" font-weight="700" fill="var(--txt)">347</text>
+          <text x="156" y="68" font-family="var(--mono)" font-size="7" fill="#34d399">leads &#9650;23%</text>
+          <rect x="116" y="80" width="170" height="8" rx="2" fill="rgba(52,211,153,.15)"/>
+          <rect x="116" y="92" width="130" height="8" rx="2" fill="rgba(52,211,153,.2)"/>
+          <rect x="116" y="104" width="80" height="8" rx="2" fill="rgba(52,211,153,.3)"/>
+          <text x="200" y="112" font-family="var(--mono)" font-size="5" fill="#34d399">47 gekwalificeerd</text>
+          <rect x="312" y="28" width="200" height="110" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="324" y="46" font-family="var(--mono)" font-size="6.5" fill="#f43f5e">ADS PERFORMANCE</text>
+          <text x="484" y="46" text-anchor="end" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">30 dagen</text>
+          <text x="324" y="68" font-family="var(--head)" font-size="18" font-weight="700" fill="var(--txt)">4.1x</text>
+          <text x="358" y="68" font-family="var(--mono)" font-size="7" fill="#f43f5e">ROAS &#9650;128%</text>
+          <polyline points="324,128 344,124 364,118 384,114 404,108 424,102 444,96 464,88 484,82" stroke="#f43f5e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M324,128 344,124 364,118 384,114 404,108 424,102 444,96 464,88 484,82 L484,130 L324,130 Z" fill="rgba(244,63,94,.06)"/>
+          <rect x="104" y="146" width="200" height="110" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="116" y="164" font-family="var(--mono)" font-size="6.5" fill="#3b82f6">CONTENT</text>
+          <text x="276" y="164" text-anchor="end" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">april</text>
+          <text x="116" y="186" font-family="var(--head)" font-size="18" font-weight="700" fill="var(--txt)">24</text>
+          <text x="140" y="186" font-family="var(--mono)" font-size="7" fill="#3b82f6">artikelen</text>
+          <text x="200" y="186" font-family="var(--mono)" font-size="6" fill="#34d399">18 live</text>
+          <rect x="116" y="230" width="24" height="18" rx="3" fill="rgba(59,130,246,.12)"/>
+          <rect x="144" y="222" width="24" height="26" rx="3" fill="rgba(59,130,246,.16)"/>
+          <rect x="172" y="216" width="24" height="32" rx="3" fill="rgba(59,130,246,.2)"/>
+          <rect x="200" y="208" width="24" height="40" rx="3" fill="rgba(59,130,246,.24)"/>
+          <rect x="228" y="200" width="24" height="48" rx="3" fill="rgba(59,130,246,.3)"/>
+          <text x="116" y="242" font-family="var(--mono)" font-size="4.5" fill="var(--dim)" opacity=".4">Dec</text>
+          <text x="172" y="242" font-family="var(--mono)" font-size="4.5" fill="var(--dim)" opacity=".4">Feb</text>
+          <text x="228" y="242" font-family="var(--mono)" font-size="4.5" fill="var(--dim)" opacity=".4">Apr</text>
+          <rect x="312" y="146" width="200" height="110" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="324" y="164" font-family="var(--mono)" font-size="6.5" fill="#f5a623">PLANNING</text>
+          <text x="484" y="164" text-anchor="end" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">week 14</text>
+          <text x="324" y="186" font-family="var(--head)" font-size="18" font-weight="700" fill="var(--txt)">94%</text>
+          <text x="356" y="186" font-family="var(--mono)" font-size="7" fill="#f5a623">bezetting</text>
+          <rect x="324" y="198" width="20" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="348" y="198" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="372" y="198" width="20" height="14" rx="2" fill="rgba(245,166,35,.15)"/><rect x="396" y="198" width="20" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="420" y="198" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/>
+          <rect x="324" y="216" width="20" height="14" rx="2" fill="rgba(245,166,35,.1)"/><rect x="348" y="216" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="372" y="216" width="20" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="396" y="216" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="420" y="216" width="20" height="14" rx="2" fill="rgba(244,63,94,.1)"/>
+          <rect x="324" y="234" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="348" y="234" width="20" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="372" y="234" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="396" y="234" width="20" height="14" rx="2" fill="rgba(245,166,35,.1)"/><rect x="420" y="234" width="20" height="14" rx="2" fill="rgba(52,211,153,.15)"/>
+          <rect x="104" y="268" width="408" height="26" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".5"/>
+          <circle cx="118" cy="281" r="4" fill="#34d399" style="animation:mockupPulse 2s ease-in-out infinite"/>
+          <text x="128" y="285" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".6">AI Outreach heeft 12 nieuwe leads gevonden</text>
+          <text x="440" y="285" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">3 min geleden</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 

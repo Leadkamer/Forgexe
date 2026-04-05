@@ -39,6 +39,15 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupDraw{0%{stroke-dashoffset:200}100%{stroke-dashoffset:0}}
+@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
@@ -95,6 +104,85 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-ads&gt;</span> forge --start ads-manager<span class="cursor"></span></div>
   <h1>Advertenties die zichzelf<br><em>optimaliseren.</em></h1>
   <p class="hero-sub">Je AI ads manager beheert je Google Ads, Meta Ads en ChatGPT Ads campagnes. Van strategie tot creatie en optimalisatie &#8212; autonoom en data-gestuurd.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">forgexe-ads-dashboard</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <defs><linearGradient id="adsGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/></linearGradient></defs>
+          <rect x="10" y="8" width="120" height="52" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <text x="20" y="24" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">Totale spend</text>
+          <text x="20" y="44" font-family="var(--head)" font-size="15" font-weight="700" fill="var(--txt)">&#8364;12.480</text>
+          <rect x="140" y="8" width="120" height="52" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <text x="150" y="24" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">ROAS</text>
+          <text x="150" y="44" font-family="var(--head)" font-size="15" font-weight="700" fill="#f43f5e">4.1x</text>
+          <text x="188" y="44" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650;128%</text>
+          <rect x="270" y="8" width="120" height="52" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <text x="280" y="24" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">Conversies</text>
+          <text x="280" y="44" font-family="var(--head)" font-size="15" font-weight="700" fill="var(--txt)">847</text>
+          <text x="312" y="44" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650;96%</text>
+          <rect x="400" y="8" width="110" height="52" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <text x="410" y="24" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">CPA</text>
+          <text x="410" y="44" font-family="var(--head)" font-size="15" font-weight="700" fill="var(--txt)">&#8364;14,73</text>
+          <text x="462" y="44" font-family="var(--mono)" font-size="7" fill="#34d399">&#9660;31%</text>
+          <rect x="10" y="72" width="500" height="120" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="22" y="90" font-family="var(--mono)" font-size="7" font-weight="500" fill="var(--dim)" opacity=".6">ROAS PERFORMANCE</text>
+          <rect x="180" y="80" width="50" height="16" rx="4" fill="rgba(244,63,94,.12)"/>
+          <text x="205" y="91" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f43f5e">Google</text>
+          <rect x="234" y="80" width="42" height="16" rx="4" fill="rgba(59,130,246,.08)"/>
+          <text x="255" y="91" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#3b82f6">Meta</text>
+          <rect x="280" y="80" width="54" height="16" rx="4" fill="rgba(139,92,246,.08)"/>
+          <text x="307" y="91" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#8b5cf6">ChatGPT</text>
+          <text x="22" y="110" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">5.0</text>
+          <text x="22" y="135" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">2.5</text>
+          <text x="22" y="160" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">0.0</text>
+          <line x1="40" y1="108" x2="500" y2="108" stroke="var(--brd)" stroke-width=".3"/>
+          <line x1="40" y1="133" x2="500" y2="133" stroke="var(--brd)" stroke-width=".3"/>
+          <line x1="40" y1="158" x2="500" y2="158" stroke="var(--brd)" stroke-width=".3"/>
+          <polyline points="50,155 90,150 130,148 170,140 210,132 250,125 290,118 330,112 370,108 410,104 450,100 490,96" stroke="#f43f5e" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="500" stroke-dashoffset="500" style="animation:mockupDraw 2.5s ease forwards"/>
+          <path d="M50,155 90,150 130,148 170,140 210,132 250,125 290,118 330,112 370,108 410,104 450,100 490,96 L490,162 L50,162 Z" fill="url(#adsGrad)" opacity=".1"/>
+          <polyline points="50,152 90,153 130,150 170,148 210,146 250,145 290,143 330,142 370,140 410,138 450,137 490,136" stroke="var(--dim)" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity=".25"/>
+          <text x="90" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Jan</text>
+          <text x="170" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Feb</text>
+          <text x="250" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Mrt</text>
+          <text x="330" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Apr</text>
+          <text x="410" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Mei</text>
+          <text x="490" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".3">Jun</text>
+          <text x="20" y="208" font-family="var(--mono)" font-size="7" font-weight="500" fill="var(--dim)" opacity=".6">ACTIEVE CAMPAGNES</text>
+          <rect x="10" y="214" width="500" height="24" rx="0" fill="rgba(244,63,94,.03)"/>
+          <text x="20" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">CAMPAGNE</text>
+          <text x="200" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">PLATFORM</text>
+          <text x="290" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">BUDGET</text>
+          <text x="370" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">ROAS</text>
+          <text x="440" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">STATUS</text>
+          <line x1="10" y1="238" x2="510" y2="238" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="20" y="254" font-family="var(--mono)" font-size="7" fill="var(--txt)">B2B Leadgen NL</text>
+          <rect x="196" y="244" width="50" height="16" rx="4" fill="rgba(244,63,94,.08)"/>
+          <text x="221" y="255" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f43f5e">Google</text>
+          <text x="290" y="254" font-family="var(--mono)" font-size="7" fill="var(--dim)">&#8364;4.200/m</text>
+          <text x="370" y="254" font-family="var(--mono)" font-size="7" font-weight="600" fill="#34d399">4.8x</text>
+          <rect x="436" y="244" width="44" height="16" rx="8" fill="rgba(52,211,153,.15)"/>
+          <circle cx="446" cy="252" r="3" fill="#34d399"/><text x="462" y="256" font-family="var(--mono)" font-size="6" fill="#34d399">Actief</text>
+          <line x1="10" y1="264" x2="510" y2="264" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="20" y="280" font-family="var(--mono)" font-size="7" fill="var(--txt)">Retargeting Warm</text>
+          <rect x="196" y="270" width="40" height="16" rx="4" fill="rgba(59,130,246,.08)"/>
+          <text x="216" y="281" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#3b82f6">Meta</text>
+          <text x="290" y="280" font-family="var(--mono)" font-size="7" fill="var(--dim)">&#8364;2.800/m</text>
+          <text x="370" y="280" font-family="var(--mono)" font-size="7" font-weight="600" fill="#34d399">5.2x</text>
+          <rect x="436" y="270" width="44" height="16" rx="8" fill="rgba(52,211,153,.15)"/>
+          <circle cx="446" cy="278" r="3" fill="#34d399"/><text x="462" y="282" font-family="var(--mono)" font-size="6" fill="#34d399">Actief</text>
+          <line x1="10" y1="290" x2="510" y2="290" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="20" y="306" font-family="var(--mono)" font-size="7" fill="var(--txt)">AI Search Brand</text>
+          <rect x="196" y="296" width="54" height="16" rx="4" fill="rgba(139,92,246,.08)"/>
+          <text x="223" y="307" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#8b5cf6">ChatGPT</text>
+          <text x="290" y="306" font-family="var(--mono)" font-size="7" fill="var(--dim)">&#8364;1.500/m</text>
+          <text x="370" y="306" font-family="var(--mono)" font-size="7" font-weight="600" fill="#f5a623">2.1x</text>
+          <rect x="436" y="296" width="60" height="16" rx="8" fill="rgba(59,130,246,.1)"/>
+          <text x="466" y="307" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#3b82f6">Optimaliseren</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 

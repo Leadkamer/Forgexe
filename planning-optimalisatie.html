@@ -40,6 +40,14 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--amber)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(245,166,35,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--amber)}
@@ -98,6 +106,86 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\planning&gt;</span> forge --optimize production-schedule<span class="cursor"></span></div>
   <h1>Planning die<br><em>meedenkt.</em></h1>
   <p class="hero-sub">Je AI-planner optimaliseert je productieplanning continu. Van orderintake tot productievloer, alles geoptimaliseerd.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">planning-ai</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <text x="14" y="18" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">PRODUCTIEPLANNING</text>
+          <rect x="140" y="4" width="50" height="20" rx="5" fill="rgba(244,63,94,.1)"/><text x="165" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f43f5e">Week</text>
+          <rect x="194" y="4" width="50" height="20" rx="5" fill="rgba(244,63,94,.04)"/><text x="219" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">Maand</text>
+          <rect x="430" y="4" width="80" height="20" rx="5" fill="#f43f5e"/><text x="470" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" font-weight="600" fill="var(--bg)">AI Optimaliseer</text>
+          <rect x="10" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="20" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Bezetting</text>
+          <text x="20" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="#34d399">94%</text>
+          <text x="52" y="64" font-family="var(--mono)" font-size="6" fill="#34d399">&#9650;8%</text>
+          <rect x="138" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="148" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Stilstand</text>
+          <text x="148" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="#34d399">-30%</text>
+          <rect x="266" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="276" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Levertijd</text>
+          <text x="276" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="var(--txt)">3.2 dgn</text>
+          <text x="328" y="64" font-family="var(--mono)" font-size="6" fill="#34d399">&#9660;2d</text>
+          <rect x="394" y="32" width="116" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
+          <text x="404" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Orders actief</text>
+          <text x="404" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="var(--txt)">18</text>
+          <rect x="10" y="82" width="500" height="20" fill="rgba(244,63,94,.03)"/>
+          <text x="20" y="96" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">TAAK</text>
+          <text x="110" y="96" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">ORDER</text>
+          <text x="180" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Ma 7</text>
+          <text x="230" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Di 8</text>
+          <text x="280" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Wo 9</text>
+          <text x="330" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Do 10</text>
+          <text x="380" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Vr 11</text>
+          <text x="430" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Za 12</text>
+          <text x="480" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Zo 13</text>
+          <line x1="155" y1="102" x2="155" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="205" y1="102" x2="205" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="255" y1="102" x2="255" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="305" y1="102" x2="305" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="355" y1="102" x2="355" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="405" y1="102" x2="405" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="455" y1="102" x2="455" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="505" y1="102" x2="505" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
+          <line x1="290" y1="88" x2="290" y2="240" stroke="#f43f5e" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+          <rect x="280" y="82" width="20" height="12" rx="3" fill="#f43f5e"/><text x="290" y="91" text-anchor="middle" font-family="var(--mono)" font-size="6" font-weight="600" fill="var(--bg)">Nu</text>
+          <line x1="10" y1="102" x2="510" y2="102" stroke="var(--brd)" stroke-width=".3"/>
+          <text x="20" y="118" font-family="var(--mono)" font-size="7" fill="var(--txt)">Frezen CNC</text>
+          <text x="110" y="118" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2641</text>
+          <rect x="160" y="107" width="140" height="18" rx="4" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.15)" stroke-width=".5"/>
+          <rect x="160" y="107" width="95" height="18" rx="4" fill="rgba(244,63,94,.2)"/>
+          <text x="200" y="119" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f43f5e">68%</text>
+          <line x1="10" y1="130" x2="510" y2="130" stroke="var(--brd)" stroke-width=".3"/>
+          <text x="20" y="146" font-family="var(--mono)" font-size="7" fill="var(--txt)">Assemblage</text>
+          <text x="110" y="146" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2641</text>
+          <rect x="260" y="135" width="170" height="18" rx="4" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.15)" stroke-width=".5"/>
+          <rect x="260" y="135" width="50" height="18" rx="4" fill="rgba(245,166,35,.2)"/>
+          <text x="280" y="147" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f5a623">30%</text>
+          <line x1="10" y1="158" x2="510" y2="158" stroke="var(--brd)" stroke-width=".3"/>
+          <text x="20" y="174" font-family="var(--mono)" font-size="7" fill="var(--txt)">Lakstraat</text>
+          <text x="110" y="174" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
+          <rect x="200" y="163" width="200" height="18" rx="4" fill="rgba(52,211,153,.08)" stroke="rgba(52,211,153,.25)" stroke-width=".8"/>
+          <rect x="200" y="163" width="90" height="18" rx="4" fill="rgba(52,211,153,.2)"/>
+          <text x="240" y="175" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">45%</text>
+          <rect x="394" y="163" width="34" height="18" rx="4" fill="rgba(52,211,153,.15)"/><text x="411" y="175" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#34d399">&#9733;AI</text>
+          <line x1="10" y1="186" x2="510" y2="186" stroke="var(--brd)" stroke-width=".3"/>
+          <text x="20" y="202" font-family="var(--mono)" font-size="7" fill="var(--txt)">Kwaliteit</text>
+          <text x="110" y="202" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
+          <rect x="340" y="191" width="120" height="18" rx="4" fill="rgba(139,92,246,.08)" stroke="rgba(139,92,246,.15)" stroke-width=".5"/>
+          <text x="350" y="203" font-family="var(--mono)" font-size="5.5" fill="#8b5cf6">Wacht</text>
+          <line x1="10" y1="214" x2="510" y2="214" stroke="var(--brd)" stroke-width=".3"/>
+          <text x="20" y="230" font-family="var(--mono)" font-size="7" fill="var(--txt)">Verzending</text>
+          <text x="110" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
+          <rect x="420" y="219" width="80" height="18" rx="4" fill="rgba(59,130,246,.08)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
+          <text x="430" y="231" font-family="var(--mono)" font-size="5.5" fill="#3b82f6">Gepland</text>
+          <rect x="10" y="248" width="500" height="26" rx="6" fill="rgba(52,211,153,.04)" stroke="rgba(52,211,153,.12)" stroke-width=".5"/>
+          <circle cx="24" cy="261" r="4" fill="#34d399" style="animation:mockupPulse 2s ease-in-out infinite"/><text x="34" y="265" font-family="var(--mono)" font-size="7" fill="#34d399">AI monitoring actief</text>
+          <text x="200" y="265" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">Laatste optimalisatie: 2 min geleden</text>
+          <text x="420" y="265" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">5 orders in wachtrij</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 
