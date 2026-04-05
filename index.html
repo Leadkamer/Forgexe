@@ -664,67 +664,512 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
 <section id="expertises" class="reveal-scale">
   <div class="section-label">C:\expertises&gt;<span class="section-label-cursor"></span></div>
-  <h2 class="section-title">Twee pijlers.<br>Zes expertises.</h2>
+  <h2 class="section-title">Twee pijlers.<br>Zeven expertises.</h2>
   <p class="section-desc">Wij bouwen twee soorten AI-medewerkers. Samen vormen ze een machine die jouw bedrijf sterker maakt.</p>
 
   <!-- Forge.Growth header -->
-  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3rem">
     <div style="width:42px;height:42px;border-radius:10px;background:rgba(52,211,153,.1);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#34d399" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
     <div><div style="font-family:var(--head);font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Forge.Growth</div><div style="font-size:.78rem;color:var(--dim)">AI-medewerkers die klanten binnenhalen</div></div>
   </div>
-  <div class="exp-grid" style="margin-bottom:4rem">
-    <a href="ai-outreach.html" class="exp-card exp-green" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(52,211,153,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <div class="exp-title">AI Outreach &amp; Leadgen</div>
-      <div class="exp-desc">Je AI-outreach specialist vindt prospects, benadert ze en kwalificeert. 24/7.</div>
-      <span class="exp-link" style="color:var(--green)">Bekijk details &#8594;</span>
-    </a>
-    <a href="ai-blogger.html" class="exp-card exp-blue" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(59,130,246,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
-      <div class="exp-title">AI Blogger &amp; Content</div>
-      <div class="exp-desc">SEO-content die zichzelf schrijft. 20+ artikelen per maand, automatisch.</div>
-      <span class="exp-link" style="color:#3b82f6">Bekijk details &#8594;</span>
-    </a>
-    <a href="ai-ads.html" class="exp-card exp-rose" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(244,63,94,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-      <div class="exp-title">AI Ads Manager</div>
-      <div class="exp-desc">Google Ads, Meta Ads en ChatGPT Ads beheer + automatische advertentie-creatie.</div>
-      <span class="exp-link" style="color:#f43f5e">Bekijk details &#8594;</span>
-    </a>
-    <a href="ai-training.html" class="exp-card exp-violet" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(139,92,246,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
-      <div class="exp-title">AI Training &amp; Workshops</div>
-      <div class="exp-desc">Maak AI een kracht binnen jouw team. Hands-on en op maat.</div>
-      <span class="exp-link" style="color:#8b5cf6">Bekijk details &#8594;</span>
-    </a>
-    
-  </div>
+
+  <!-- 1. AI Outreach — mockup links, tekst rechts -->
+  <a href="ai-outreach.html" class="exp-row" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">outreach-pipeline</span></div>
+        <div class="exp-mockup-body" id="mockup-outreach">
+          <svg viewBox="0 0 480 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- LinkedIn prospect card -->
+            <rect x="10" y="60" width="90" height="100" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1"/>
+            <circle cx="55" cy="90" r="14" stroke="#34d399" stroke-width="1" fill="none"/>
+            <path d="M55 82v4M52 88h6" stroke="#34d399" stroke-width="1" stroke-linecap="round"/>
+            <rect x="30" y="112" width="50" height="4" rx="2" fill="rgba(52,211,153,.15)"/>
+            <rect x="35" y="120" width="40" height="3" rx="1.5" fill="rgba(52,211,153,.08)"/>
+            <text x="55" y="145" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399" opacity=".7">LinkedIn</text>
+            <!-- Arrow 1 animated -->
+            <path d="M105 110 L155 110" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 6" style="animation:mockupFlow 1.5s linear infinite"/>
+            <polygon points="155,106 163,110 155,114" fill="#34d399" opacity=".6"/>
+            <!-- Message bubble -->
+            <rect x="168" y="65" width="105" height="90" rx="8" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1"/>
+            <rect x="182" y="82" width="60" height="4" rx="2" fill="rgba(52,211,153,.2)"/>
+            <rect x="182" y="92" width="75" height="3" rx="1.5" fill="rgba(52,211,153,.1)"/>
+            <rect x="182" y="100" width="50" height="3" rx="1.5" fill="rgba(52,211,153,.1)"/>
+            <rect x="182" y="108" width="65" height="3" rx="1.5" fill="rgba(52,211,153,.1)"/>
+            <rect x="182" y="120" width="42" height="14" rx="4" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width=".5"/>
+            <text x="203" y="130" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#34d399">Verstuur</text>
+            <text x="220" y="145" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399" opacity=".7">Bericht</text>
+            <!-- Arrow 2 animated -->
+            <path d="M278 110 L328 110" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 6" style="animation:mockupFlow 1.8s linear infinite"/>
+            <polygon points="328,106 336,110 328,114" fill="#34d399" opacity=".6"/>
+            <!-- Funnel / qualify -->
+            <path d="M348 70 L408 70 L390 130 L366 130 Z" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M370 96 L376 104 L386 88" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="378" y="145" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399" opacity=".7">Kwalificatie</text>
+            <!-- Arrow 3 animated -->
+            <path d="M378 135 L378 165 L440 165" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 6" style="animation:mockupFlow 2s linear infinite" fill="none"/>
+            <polygon points="440,161 448,165 440,169" fill="#34d399" opacity=".6"/>
+            <!-- CRM mini table -->
+            <rect x="390" y="155" width="80" height="55" rx="6" fill="rgba(52,211,153,.06)" stroke="#34d399" stroke-width="1"/>
+            <line x1="390" y1="170" x2="470" y2="170" stroke="#34d399" stroke-width=".5" opacity=".3"/>
+            <rect x="396" y="162" width="24" height="4" rx="1" fill="rgba(52,211,153,.2)"/>
+            <rect x="424" y="162" width="18" height="4" rx="1" fill="rgba(52,211,153,.12)"/>
+            <rect x="446" y="162" width="18" height="4" rx="1" fill="rgba(52,211,153,.12)"/>
+            <rect x="396" y="176" width="20" height="3" rx="1" fill="rgba(52,211,153,.1)"/>
+            <rect x="424" y="176" width="14" height="3" rx="1" fill="rgba(52,211,153,.08)"/>
+            <circle cx="453" cy="177" r="4" fill="rgba(52,211,153,.2)"/>
+            <rect x="396" y="184" width="22" height="3" rx="1" fill="rgba(52,211,153,.1)"/>
+            <rect x="424" y="184" width="16" height="3" rx="1" fill="rgba(52,211,153,.08)"/>
+            <circle cx="453" cy="185" r="4" fill="rgba(52,211,153,.15)"/>
+            <rect x="396" y="192" width="18" height="3" rx="1" fill="rgba(52,211,153,.1)"/>
+            <rect x="424" y="192" width="12" height="3" rx="1" fill="rgba(52,211,153,.08)"/>
+            <circle cx="453" cy="193" r="4" fill="rgba(52,211,153,.12)"/>
+            <!-- 24/7 badge -->
+            <rect x="10" y="185" width="44" height="20" rx="5" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width=".5"/>
+            <text x="32" y="198" text-anchor="middle" font-family="var(--mono)" font-size="8" font-weight="600" fill="#34d399">24/7</text>
+            <!-- Top label -->
+            <text x="240" y="30" text-anchor="middle" font-family="var(--mono)" font-size="8" fill="var(--dim)" opacity=".5">OUTREACH PIPELINE</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge growth">GROWTH</span>
+      <h3 class="exp-row-title">AI Outreach &amp; Leadgen</h3>
+      <p class="exp-row-desc">Jouw AI-outreach specialist vindt prospects op LinkedIn, benadert ze persoonlijk en kwalificeert automatisch. Jij praat alleen nog met warme leads. 24/7.</p>
+      <span class="exp-row-link" style="color:var(--green)">Bekijk details &#8594;</span>
+    </div>
+  </a>
+
+  <!-- 2. AI Blogger — tekst links, mockup rechts -->
+  <a href="ai-blogger.html" class="exp-row reverse" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">content-manager</span></div>
+        <div class="exp-mockup-body" id="mockup-blogger">
+          <svg viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Left panel: Blog post preview -->
+            <rect x="10" y="10" width="280" height="240" rx="8" fill="rgba(59,130,246,.04)" stroke="#3b82f6" stroke-width=".5"/>
+            <!-- Featured image placeholder -->
+            <rect x="20" y="22" width="260" height="80" rx="6" fill="rgba(59,130,246,.08)"/>
+            <path d="M130 52 L145 42 L160 58 L170 50 L190 68 L110 68 Z" fill="rgba(59,130,246,.15)"/>
+            <circle cx="145" cy="42" r="8" fill="rgba(59,130,246,.12)"/>
+            <!-- Title with cursor -->
+            <rect x="20" y="112" width="200" height="8" rx="2" fill="rgba(59,130,246,.2)"/>
+            <rect x="222" y="112" width="2" height="10" fill="#3b82f6" style="animation:mockupType 1s step-end infinite"/>
+            <!-- Body text lines -->
+            <rect x="20" y="128" width="250" height="4" rx="2" fill="rgba(59,130,246,.08)"/>
+            <rect x="20" y="137" width="230" height="4" rx="2" fill="rgba(59,130,246,.08)"/>
+            <rect x="20" y="146" width="245" height="4" rx="2" fill="rgba(59,130,246,.08)"/>
+            <rect x="20" y="155" width="180" height="4" rx="2" fill="rgba(59,130,246,.08)"/>
+            <!-- Meta info -->
+            <rect x="20" y="172" width="16" height="16" rx="3" fill="rgba(59,130,246,.1)"/>
+            <text x="42" y="183" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">1.240 woorden</text>
+            <text x="110" y="183" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".6">SEO: 92/100</text>
+            <!-- Published pill -->
+            <rect x="20" y="198" width="72" height="18" rx="9" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width=".5"/>
+            <circle cx="32" cy="207" r="3" fill="#34d399"/>
+            <text x="58" y="210" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399">Gepubliceerd</text>
+            <!-- Draft pill -->
+            <rect x="100" y="198" width="52" height="18" rx="9" fill="rgba(245,166,35,.1)" stroke="#f5a623" stroke-width=".5"/>
+            <text x="126" y="210" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f5a623">Concept</text>
+            <!-- Divider -->
+            <line x1="300" y1="20" x2="300" y2="242" stroke="var(--brd)" stroke-width="1"/>
+            <!-- Right panel: Social media -->
+            <text x="310" y="28" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">SOCIAL PLANNING</text>
+            <!-- LinkedIn card -->
+            <rect x="310" y="38" width="160" height="52" rx="6" fill="rgba(59,130,246,.04)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
+            <rect x="320" y="48" width="12" height="12" rx="2" fill="rgba(59,130,246,.2)"/>
+            <text x="338" y="57" font-family="var(--mono)" font-size="6.5" font-weight="500" fill="#3b82f6">LinkedIn</text>
+            <rect x="320" y="66" width="100" height="3" rx="1" fill="rgba(59,130,246,.1)"/>
+            <rect x="320" y="73" width="70" height="3" rx="1" fill="rgba(59,130,246,.06)"/>
+            <rect x="430" y="48" width="30" height="12" rx="3" fill="rgba(52,211,153,.15)"/>
+            <text x="445" y="56" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">14:00</text>
+            <!-- X/Twitter card -->
+            <rect x="310" y="98" width="160" height="52" rx="6" fill="rgba(59,130,246,.04)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
+            <rect x="320" y="108" width="12" height="12" rx="2" fill="rgba(139,92,246,.2)"/>
+            <text x="338" y="117" font-family="var(--mono)" font-size="6.5" font-weight="500" fill="#8b5cf6">X / Twitter</text>
+            <rect x="320" y="126" width="90" height="3" rx="1" fill="rgba(139,92,246,.08)"/>
+            <rect x="320" y="133" width="60" height="3" rx="1" fill="rgba(139,92,246,.05)"/>
+            <rect x="430" y="108" width="30" height="12" rx="3" fill="rgba(245,166,35,.15)"/>
+            <text x="445" y="116" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f5a623">16:30</text>
+            <!-- Instagram card -->
+            <rect x="310" y="158" width="160" height="52" rx="6" fill="rgba(59,130,246,.04)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
+            <rect x="320" y="168" width="12" height="12" rx="2" fill="rgba(244,63,94,.2)"/>
+            <text x="338" y="177" font-family="var(--mono)" font-size="6.5" font-weight="500" fill="#f43f5e">Instagram</text>
+            <rect x="320" y="186" width="80" height="3" rx="1" fill="rgba(244,63,94,.08)"/>
+            <rect x="320" y="193" width="55" height="3" rx="1" fill="rgba(244,63,94,.05)"/>
+            <rect x="430" y="168" width="30" height="12" rx="3" fill="rgba(52,211,153,.15)"/>
+            <text x="445" y="176" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">09:00</text>
+            <!-- 20+ badge -->
+            <rect x="310" y="222" width="80" height="22" rx="6" fill="rgba(59,130,246,.1)" stroke="#3b82f6" stroke-width=".5"/>
+            <text x="350" y="236" text-anchor="middle" font-family="var(--mono)" font-size="8" font-weight="600" fill="#3b82f6">20+ / mnd</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge growth">GROWTH</span>
+      <h3 class="exp-row-title">AI Blogger &amp; Content</h3>
+      <p class="exp-row-desc">Jouw Content Manager analyseert je markt, vindt de juiste keywords en publiceert geoptimaliseerde artikelen. Tegelijk plant hij social media posts. 20+ stuks per maand.</p>
+      <span class="exp-row-link" style="color:#3b82f6">Bekijk details &#8594;</span>
+    </div>
+  </a>
+
+  <!-- 3. AI Ads — mockup links, tekst rechts -->
+  <a href="ai-ads.html" class="exp-row" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">forgexe-ads-dashboard</span></div>
+        <div class="exp-mockup-body" id="mockup-ads">
+          <svg viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Tab bar -->
+            <rect x="10" y="10" width="80" height="26" rx="6" fill="rgba(244,63,94,.1)" stroke="#f43f5e" stroke-width=".8"/>
+            <text x="50" y="27" text-anchor="middle" font-family="var(--mono)" font-size="7.5" font-weight="600" fill="#f43f5e">Google</text>
+            <rect x="98" y="10" width="70" height="26" rx="6" fill="rgba(244,63,94,.04)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="133" y="27" text-anchor="middle" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".6">Meta</text>
+            <rect x="176" y="10" width="78" height="26" rx="6" fill="rgba(244,63,94,.04)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="215" y="27" text-anchor="middle" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".6">ChatGPT</text>
+            <!-- AI badge top right -->
+            <rect x="410" y="10" width="60" height="26" rx="6" fill="rgba(244,63,94,.08)" stroke="#f43f5e" stroke-width=".5"/>
+            <text x="428" y="27" font-family="var(--mono)" font-size="7" fill="#f43f5e">&#9733; AI</text>
+            <!-- Chart area -->
+            <rect x="10" y="48" width="460" height="130" rx="8" fill="rgba(244,63,94,.02)" stroke="var(--brd)" stroke-width=".5"/>
+            <!-- Y axis -->
+            <text x="20" y="62" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">5.0</text>
+            <text x="20" y="92" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">3.0</text>
+            <text x="20" y="122" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">1.0</text>
+            <text x="20" y="152" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">0.0</text>
+            <!-- Grid lines -->
+            <line x1="40" y1="60" x2="460" y2="60" stroke="var(--brd)" stroke-width=".5" opacity=".3"/>
+            <line x1="40" y1="90" x2="460" y2="90" stroke="var(--brd)" stroke-width=".5" opacity=".3"/>
+            <line x1="40" y1="120" x2="460" y2="120" stroke="var(--brd)" stroke-width=".5" opacity=".3"/>
+            <line x1="40" y1="150" x2="460" y2="150" stroke="var(--brd)" stroke-width=".5" opacity=".3"/>
+            <!-- ROAS label -->
+            <text x="45" y="172" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">ROAS</text>
+            <!-- Line 1: solid (current) trending up -->
+            <polyline points="50,145 100,138 150,130 200,118 250,105 300,95 350,80 400,68 450,58" stroke="#f43f5e" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="400" stroke-dashoffset="400" style="animation:mockupDraw 2.5s ease forwards"/>
+            <!-- Line 2: dashed (previous period) -->
+            <polyline points="50,140 100,142 150,138 200,135 250,132 300,130 350,128 400,126 450,124" stroke="var(--dim)" stroke-width="1" fill="none" stroke-dasharray="4 4" opacity=".3"/>
+            <!-- Glow under line 1 -->
+            <path d="M50,145 100,138 150,130 200,118 250,105 300,95 350,80 400,68 450,58 L450,155 L50,155 Z" fill="url(#adsGrad)" opacity=".15"/>
+            <defs><linearGradient id="adsGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/></linearGradient></defs>
+            <!-- X axis months -->
+            <text x="100" y="170" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Jan</text>
+            <text x="200" y="170" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Mrt</text>
+            <text x="300" y="170" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Mei</text>
+            <text x="400" y="170" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Jul</text>
+            <!-- KPI boxes -->
+            <rect x="10" y="192" width="146" height="58" rx="8" fill="rgba(244,63,94,.04)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="22" y="210" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">ROAS</text>
+            <text x="22" y="232" font-family="var(--head)" font-size="18" font-weight="700" fill="#f43f5e">4.1x</text>
+            <text x="68" y="232" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650; 128%</text>
+            <rect x="170" y="192" width="146" height="58" rx="8" fill="rgba(244,63,94,.04)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="182" y="210" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">CTR</text>
+            <text x="182" y="232" font-family="var(--head)" font-size="18" font-weight="700" fill="#f43f5e">3.8%</text>
+            <text x="226" y="232" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650; 42%</text>
+            <rect x="330" y="192" width="140" height="58" rx="8" fill="rgba(244,63,94,.04)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="342" y="210" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">CONVERSIES</text>
+            <text x="342" y="232" font-family="var(--head)" font-size="18" font-weight="700" fill="#f43f5e">847</text>
+            <text x="380" y="232" font-family="var(--mono)" font-size="7" fill="#34d399">&#9650; 96%</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge growth">GROWTH</span>
+      <h3 class="exp-row-title">AI Ads Manager</h3>
+      <p class="exp-row-desc">Google Ads, Meta Ads en ChatGPT Ads in &#233;&#233;n dashboard. Jouw AI ads manager optimaliseert campagnes, maakt advertenties en stuurt bij op ROAS. Autonoom en datagedreven.</p>
+      <span class="exp-row-link" style="color:#f43f5e">Bekijk details &#8594;</span>
+    </div>
+  </a>
+
+  <!-- 4. AI Training — tekst links, mockup rechts -->
+  <a href="ai-training.html" class="exp-row reverse" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">forge-training ~</span></div>
+        <div class="exp-mockup-body" id="mockup-training">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Terminal window -->
+            <rect x="10" y="10" width="340" height="220" rx="8" fill="rgba(139,92,246,.03)" stroke="#8b5cf6" stroke-width=".5"/>
+            <!-- Terminal lines -->
+            <text x="22" y="36" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".5">~/forge-training $</text>
+            <text x="22" y="56" font-family="var(--mono)" font-size="8" fill="#8b5cf6" opacity=".8">&gt; Module 1: Prompt Engineering</text>
+            <text x="22" y="76" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".4">   Leer effectieve prompts schrijven</text>
+            <text x="22" y="76" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".4">   voor zakelijke toepassingen.</text>
+            <text x="22" y="100" font-family="var(--mono)" font-size="8" fill="#34d399">&#10003; Basisprincipes</text>
+            <text x="22" y="116" font-family="var(--mono)" font-size="8" fill="#34d399">&#10003; Chain-of-thought</text>
+            <text x="22" y="132" font-family="var(--mono)" font-size="8" fill="#8b5cf6">&#9654; Outreach prompts</text>
+            <text x="22" y="152" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".4">   $ "Schrijf een cold outreach</text>
+            <text x="22" y="165" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".4">     voor een technisch directeur</text>
+            <text x="22" y="178" font-family="var(--mono)" font-size="7.5" fill="var(--dim)" opacity=".4">     in de maakindustrie..."</text>
+            <!-- Blinking cursor -->
+            <rect x="215" y="170" width="8" height="12" rx="1" fill="#8b5cf6" style="animation:mockupType 1s step-end infinite"/>
+            <!-- Progress bar -->
+            <text x="22" y="210" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">VOORTGANG</text>
+            <rect x="80" y="203" width="200" height="8" rx="4" fill="rgba(139,92,246,.08)"/>
+            <rect x="80" y="203" width="130" height="8" rx="4" fill="rgba(139,92,246,.3)"/>
+            <text x="290" y="210" font-family="var(--mono)" font-size="7" fill="#8b5cf6">65%</text>
+            <!-- Team avatars right side -->
+            <text x="380" y="30" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">DEELNEMERS</text>
+            <circle cx="390" cy="60" r="18" fill="rgba(139,92,246,.1)" stroke="#8b5cf6" stroke-width=".5"/>
+            <text x="390" y="64" text-anchor="middle" font-family="var(--head)" font-size="11" font-weight="600" fill="#8b5cf6">JB</text>
+            <circle cx="430" cy="60" r="18" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width=".5"/>
+            <text x="430" y="64" text-anchor="middle" font-family="var(--head)" font-size="11" font-weight="600" fill="#34d399">ML</text>
+            <circle cx="410" cy="96" r="18" fill="rgba(244,63,94,.1)" stroke="#f43f5e" stroke-width=".5"/>
+            <text x="410" y="100" text-anchor="middle" font-family="var(--head)" font-size="11" font-weight="600" fill="#f43f5e">KV</text>
+            <circle cx="450" cy="96" r="18" fill="rgba(245,166,35,.1)" stroke="#f5a623" stroke-width=".5"/>
+            <text x="450" y="100" text-anchor="middle" font-family="var(--head)" font-size="11" font-weight="600" fill="#f5a623">SA</text>
+            <!-- Skill badges -->
+            <text x="380" y="142" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">MODULES</text>
+            <rect x="370" y="152" width="100" height="20" rx="5" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width=".5"/>
+            <text x="420" y="165" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="#34d399">Prompt Eng.</text>
+            <rect x="370" y="178" width="100" height="20" rx="5" fill="rgba(245,166,35,.1)" stroke="#f5a623" stroke-width=".5"/>
+            <text x="420" y="191" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="#f5a623">AI Workflows</text>
+            <rect x="370" y="204" width="100" height="20" rx="5" fill="rgba(59,130,246,.1)" stroke="#3b82f6" stroke-width=".5"/>
+            <text x="420" y="217" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="#3b82f6">Automatisering</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge growth">GROWTH</span>
+      <h3 class="exp-row-title">AI Training &amp; Workshops</h3>
+      <p class="exp-row-desc">Van prompt engineering tot het herkennen van automatiseringskansen in dagelijks werk. Hands-on workshops op maat voor jouw team.</p>
+      <span class="exp-row-link" style="color:#8b5cf6">Bekijk details &#8594;</span>
+    </div>
+  </a>
 
   <!-- Forge.Ops header -->
-  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3rem;margin-top:2rem">
     <div style="width:42px;height:42px;border-radius:10px;background:rgba(245,166,35,.1);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5a623" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
     <div><div style="font-family:var(--head);font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--amber),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Forge.Ops</div><div style="font-size:.78rem;color:var(--dim)">AI-medewerkers die je operatie stroomlijnen</div></div>
   </div>
-  <div class="exp-grid">
-    <a href="ai-rapportage.html" class="exp-card exp-amber" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(245,166,35,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/></svg></div>
-      <div class="exp-title">AI Rapportage</div>
-      <div class="exp-desc">Automatische rapporten uit al je systemen. Op tijd, zonder fouten.</div>
-      <span class="exp-link" style="color:var(--amber)">Bekijk details &#8594;</span>
-    </a>
-    <a href="planning-optimalisatie.html" class="exp-card exp-rose" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(244,63,94,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <div class="exp-title">Planning Optimalisatie</div>
-      <div class="exp-desc">AI-gestuurde planning voor de maakindustrie. -30% stilstand.</div>
-      <span class="exp-link" style="color:#f43f5e">Bekijk details &#8594;</span>
-    </a>
-    <a href="dashboarding.html" class="exp-card exp-cyan" style="text-decoration:none;color:inherit;display:block">
-      <div class="exp-icon" style="background:rgba(6,182,212,.1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-      <div class="exp-title">Dashboarding &amp; AI Platform</div>
-      <div class="exp-desc">E&#233;n platform dat alles verbindt. Real-time inzicht in alle data.</div>
-      <span class="exp-link" style="color:#06b6d4">Bekijk details &#8594;</span>
-    </a>
-  </div>
+
+  <!-- 5. AI Rapportage — mockup links, tekst rechts -->
+  <a href="ai-rapportage.html" class="exp-row" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">ai-rapportage</span></div>
+        <div class="exp-mockup-body" id="mockup-rapportage">
+          <svg viewBox="0 0 480 250" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Source 1: Spreadsheet -->
+            <rect x="10" y="20" width="90" height="55" rx="6" fill="rgba(245,166,35,.06)" stroke="#f5a623" stroke-width=".8"/>
+            <rect x="20" y="30" width="12" height="3" rx="1" fill="rgba(245,166,35,.2)"/><rect x="36" y="30" width="12" height="3" rx="1" fill="rgba(245,166,35,.15)"/><rect x="52" y="30" width="12" height="3" rx="1" fill="rgba(245,166,35,.1)"/>
+            <rect x="20" y="38" width="12" height="3" rx="1" fill="rgba(245,166,35,.15)"/><rect x="36" y="38" width="12" height="3" rx="1" fill="rgba(245,166,35,.1)"/><rect x="52" y="38" width="12" height="3" rx="1" fill="rgba(245,166,35,.08)"/>
+            <rect x="20" y="46" width="12" height="3" rx="1" fill="rgba(245,166,35,.1)"/><rect x="36" y="46" width="12" height="3" rx="1" fill="rgba(245,166,35,.08)"/><rect x="52" y="46" width="12" height="3" rx="1" fill="rgba(245,166,35,.06)"/>
+            <text x="55" y="66" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f5a623" opacity=".7">Excel</text>
+            <!-- Source 2: Database -->
+            <rect x="10" y="95" width="90" height="55" rx="6" fill="rgba(245,166,35,.06)" stroke="#f5a623" stroke-width=".8"/>
+            <ellipse cx="55" cy="110" rx="25" ry="7" fill="none" stroke="#f5a623" stroke-width=".8" opacity=".6"/>
+            <path d="M30 110 L30 125 Q30 132 55 132 Q80 132 80 125 L80 110" stroke="#f5a623" stroke-width=".8" fill="none" opacity=".6"/>
+            <text x="55" y="145" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f5a623" opacity=".7">CRM Data</text>
+            <!-- Source 3: Analytics -->
+            <rect x="10" y="170" width="90" height="55" rx="6" fill="rgba(245,166,35,.06)" stroke="#f5a623" stroke-width=".8"/>
+            <rect x="25" y="198" width="10" height="16" rx="2" fill="rgba(245,166,35,.2)"/>
+            <rect x="39" y="190" width="10" height="24" rx="2" fill="rgba(245,166,35,.25)"/>
+            <rect x="53" y="194" width="10" height="20" rx="2" fill="rgba(245,166,35,.2)"/>
+            <rect x="67" y="184" width="10" height="30" rx="2" fill="rgba(245,166,35,.3)"/>
+            <text x="55" y="222" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#f5a623" opacity=".7">Analytics</text>
+            <!-- Animated flow lines -->
+            <path d="M105 47 L175 47 Q190 47 190 62 L190 115" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="4 8" style="animation:mockupFlow 2s linear infinite" fill="none"/>
+            <path d="M105 122 L190 122" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="4 8" style="animation:mockupFlow 1.6s linear infinite" fill="none"/>
+            <path d="M105 197 L175 197 Q190 197 190 182 L190 135" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="4 8" style="animation:mockupFlow 2.2s linear infinite" fill="none"/>
+            <!-- AI convergence node -->
+            <circle cx="190" cy="122" r="16" fill="rgba(245,166,35,.1)" stroke="#f5a623" stroke-width="1"/>
+            <text x="190" y="126" text-anchor="middle" font-family="var(--mono)" font-size="8" font-weight="600" fill="#f5a623">AI</text>
+            <circle cx="190" cy="122" r="22" fill="none" stroke="#f5a623" stroke-width=".5" opacity=".3" style="animation:mockupPulse 2s ease-in-out infinite"/>
+            <!-- Arrow to report -->
+            <path d="M212 122 L260 122" stroke="#f5a623" stroke-width="1.5" stroke-dasharray="4 6" style="animation:mockupFlow 1.4s linear infinite"/>
+            <polygon points="260,118 268,122 260,126" fill="#f5a623" opacity=".6"/>
+            <!-- Generated report document -->
+            <rect x="275" y="15" width="195" height="220" rx="8" fill="rgba(245,166,35,.04)" stroke="#f5a623" stroke-width="1"/>
+            <!-- Dog ear -->
+            <path d="M440 15 L470 15 L470 45 Z" fill="var(--bg-el)" stroke="#f5a623" stroke-width="1"/>
+            <path d="M440 15 L440 45 L470 45" fill="rgba(245,166,35,.08)" stroke="#f5a623" stroke-width=".5"/>
+            <!-- Report content -->
+            <text x="292" y="40" font-family="var(--head)" font-size="10" font-weight="600" fill="var(--txt)" opacity=".8">Maandrapportage</text>
+            <text x="292" y="52" font-family="var(--mono)" font-size="6" fill="#f5a623" opacity=".6">April 2026 &#8212; Automatisch gegenereerd</text>
+            <line x1="292" y1="60" x2="455" y2="60" stroke="var(--brd)" stroke-width=".5"/>
+            <!-- Text lines -->
+            <rect x="292" y="70" width="148" height="4" rx="1.5" fill="rgba(245,166,35,.12)"/>
+            <rect x="292" y="80" width="130" height="3" rx="1.5" fill="rgba(245,166,35,.06)"/>
+            <rect x="292" y="88" width="145" height="3" rx="1.5" fill="rgba(245,166,35,.06)"/>
+            <rect x="292" y="96" width="100" height="3" rx="1.5" fill="rgba(245,166,35,.06)"/>
+            <!-- Mini bar chart in report -->
+            <rect x="292" y="112" width="148" height="65" rx="4" fill="rgba(245,166,35,.04)" stroke="var(--brd)" stroke-width=".3"/>
+            <rect x="304" y="155" width="16" height="16" rx="2" fill="rgba(245,166,35,.2)"/>
+            <rect x="326" y="142" width="16" height="29" rx="2" fill="rgba(245,166,35,.25)"/>
+            <rect x="348" y="148" width="16" height="23" rx="2" fill="rgba(245,166,35,.2)"/>
+            <rect x="370" y="135" width="16" height="36" rx="2" fill="rgba(52,211,153,.25)"/>
+            <rect x="392" y="128" width="16" height="43" rx="2" fill="rgba(52,211,153,.3)"/>
+            <rect x="414" y="122" width="16" height="49" rx="2" fill="rgba(52,211,153,.35)"/>
+            <!-- More text -->
+            <rect x="292" y="190" width="140" height="3" rx="1.5" fill="rgba(245,166,35,.06)"/>
+            <rect x="292" y="198" width="120" height="3" rx="1.5" fill="rgba(245,166,35,.06)"/>
+            <!-- Timestamp -->
+            <text x="292" y="224" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Gegenereerd: 05-04-2026 09:00</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge ops">OPS</span>
+      <h3 class="exp-row-title">AI Rapportage</h3>
+      <p class="exp-row-desc">Jouw AI-reporter haalt data uit al je systemen en bouwt heldere rapporten. Automatisch, op tijd, zonder fouten. Van spreadsheet tot boardroom-ready.</p>
+      <span class="exp-row-link" style="color:var(--amber)">Bekijk details &#8594;</span>
+    </div>
+  </a>
+
+  <!-- 6. Planning — tekst links, mockup rechts -->
+  <a href="planning-optimalisatie.html" class="exp-row reverse" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">planning-ai</span></div>
+        <div class="exp-mockup-body" id="mockup-planning">
+          <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Header -->
+            <text x="10" y="18" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">PRODUCTIEPLANNING</text>
+            <text x="380" y="18" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">Week 14 &#8212; 2026</text>
+            <!-- Column headers -->
+            <text x="120" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Ma</text>
+            <text x="180" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Di</text>
+            <text x="240" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Wo</text>
+            <text x="300" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Do</text>
+            <text x="360" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Vr</text>
+            <text x="420" y="38" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">Za</text>
+            <!-- Grid lines vertical -->
+            <line x1="90" y1="44" x2="90" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="150" y1="44" x2="150" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="210" y1="44" x2="210" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="270" y1="44" x2="270" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="330" y1="44" x2="330" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="390" y1="44" x2="390" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <line x1="450" y1="44" x2="450" y2="195" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+            <!-- "Nu" indicator -->
+            <line x1="255" y1="30" x2="255" y2="195" stroke="#f43f5e" stroke-width="1" stroke-dasharray="4 4" opacity=".5"/>
+            <rect x="243" y="24" width="24" height="14" rx="3" fill="#f43f5e"/>
+            <text x="255" y="34" text-anchor="middle" font-family="var(--mono)" font-size="7" font-weight="600" fill="var(--bg)">Nu</text>
+            <!-- Row 1 -->
+            <text x="10" y="62" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">Frezen CNC</text>
+            <rect x="95" y="50" width="180" height="20" rx="5" fill="rgba(244,63,94,.08)" stroke="rgba(244,63,94,.2)" stroke-width=".5"/>
+            <rect x="95" y="50" width="120" height="20" rx="5" fill="rgba(244,63,94,.15)"/>
+            <!-- Row 2 -->
+            <text x="10" y="97" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">Assemblage</text>
+            <rect x="215" y="85" width="200" height="20" rx="5" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.2)" stroke-width=".5"/>
+            <rect x="215" y="85" width="80" height="20" rx="5" fill="rgba(245,166,35,.15)"/>
+            <!-- Row 3: AI optimized -->
+            <text x="10" y="132" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">Lakstraat</text>
+            <rect x="155" y="120" width="240" height="20" rx="5" fill="rgba(52,211,153,.08)" stroke="rgba(52,211,153,.3)" stroke-width=".8"/>
+            <rect x="155" y="120" width="100" height="20" rx="5" fill="rgba(52,211,153,.2)"/>
+            <!-- AI sparkle on this row -->
+            <text x="400" y="134" font-family="var(--mono)" font-size="8" fill="#34d399">&#9733; AI</text>
+            <!-- Row 4 -->
+            <text x="10" y="167" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">Kwaliteit</text>
+            <rect x="300" y="155" width="150" height="20" rx="5" fill="rgba(139,92,246,.08)" stroke="rgba(139,92,246,.2)" stroke-width=".5"/>
+            <rect x="300" y="155" width="40" height="20" rx="5" fill="rgba(139,92,246,.15)"/>
+            <!-- Row 5 -->
+            <text x="10" y="192" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".6">Verzending</text>
+            <rect x="380" y="180" width="80" height="20" rx="5" fill="rgba(59,130,246,.08)" stroke="rgba(59,130,246,.2)" stroke-width=".5"/>
+            <!-- Bottom KPI bar -->
+            <rect x="10" y="210" width="460" height="26" rx="6" fill="rgba(52,211,153,.05)" stroke="rgba(52,211,153,.15)" stroke-width=".5"/>
+            <text x="22" y="227" font-family="var(--mono)" font-size="7" fill="#34d399" font-weight="500">&#9660; Stilstand: -30%</text>
+            <text x="180" y="227" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">Bezettingsgraad: 94%</text>
+            <text x="350" y="227" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">Levertijd: -2 dagen</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge ops">OPS</span>
+      <h3 class="exp-row-title">Planning Optimalisatie</h3>
+      <p class="exp-row-desc">AI-gestuurde productieplanning die continu optimaliseert. Van orderintake tot werkvloer, alles afgestemd. Resultaat: -30% stilstand.</p>
+      <span class="exp-row-link" style="color:#f43f5e">Bekijk details &#8594;</span>
+    </div>
+  </a>
+
+  <!-- 7. Dashboarding — mockup links, tekst rechts -->
+  <a href="dashboarding.html" class="exp-row" style="text-decoration:none;color:inherit">
+    <div class="exp-row-visual">
+      <div class="exp-mockup-frame">
+        <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">forgexe-platform</span></div>
+        <div class="exp-mockup-body" id="mockup-dashboarding">
+          <svg viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+            <!-- Sidebar -->
+            <rect x="0" y="0" width="80" height="260" fill="rgba(6,182,212,.03)" stroke="var(--brd)" stroke-width=".5"/>
+            <!-- Forgexe mark in sidebar -->
+            <rect x="25" y="12" width="8" height="20" rx="1" fill="#34d399" opacity=".6"/>
+            <rect x="25" y="12" width="22" height="4" rx="1" fill="#34d399" opacity=".6"/>
+            <rect x="25" y="20" width="16" height="3" rx="1" fill="#34d399" opacity=".6"/>
+            <polygon points="42,20 50,25 42,30" fill="#34d399" opacity=".6"/>
+            <!-- Sidebar nav items -->
+            <rect x="12" y="48" width="56" height="22" rx="5" fill="rgba(52,211,153,.1)" stroke="rgba(52,211,153,.2)" stroke-width=".5"/>
+            <circle cx="24" cy="59" r="4" fill="none" stroke="#34d399" stroke-width=".8"/><rect x="34" y="57" width="28" height="3" rx="1" fill="rgba(52,211,153,.3)"/>
+            <rect x="12" y="78" width="56" height="22" rx="5" fill="rgba(59,130,246,.06)"/>
+            <circle cx="24" cy="89" r="4" fill="none" stroke="#3b82f6" stroke-width=".8" opacity=".5"/><rect x="34" y="87" width="28" height="3" rx="1" fill="rgba(59,130,246,.15)"/>
+            <rect x="12" y="108" width="56" height="22" rx="5" fill="rgba(244,63,94,.06)"/>
+            <circle cx="24" cy="119" r="4" fill="none" stroke="#f43f5e" stroke-width=".8" opacity=".5"/><rect x="34" y="117" width="28" height="3" rx="1" fill="rgba(244,63,94,.15)"/>
+            <rect x="12" y="138" width="56" height="22" rx="5" fill="rgba(245,166,35,.06)"/>
+            <circle cx="24" cy="149" r="4" fill="none" stroke="#f5a623" stroke-width=".8" opacity=".5"/><rect x="34" y="147" width="28" height="3" rx="1" fill="rgba(245,166,35,.15)"/>
+            <rect x="12" y="168" width="56" height="22" rx="5" fill="rgba(139,92,246,.06)"/>
+            <circle cx="24" cy="179" r="4" fill="none" stroke="#8b5cf6" stroke-width=".8" opacity=".5"/><rect x="34" y="177" width="28" height="3" rx="1" fill="rgba(139,92,246,.15)"/>
+            <rect x="12" y="198" width="56" height="22" rx="5" fill="rgba(6,182,212,.06)"/>
+            <circle cx="24" cy="209" r="4" fill="none" stroke="#06b6d4" stroke-width=".8" opacity=".5"/><rect x="34" y="207" width="28" height="3" rx="1" fill="rgba(6,182,212,.15)"/>
+            <!-- Main content: 2x2 widget grid -->
+            <!-- Widget 1: Outreach funnel (top-left) -->
+            <rect x="92" y="10" width="186" height="118" rx="8" fill="rgba(52,211,153,.03)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="104" y="28" font-family="var(--mono)" font-size="6.5" fill="#34d399" opacity=".7">OUTREACH</text>
+            <text x="248" y="28" text-anchor="end" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">deze week</text>
+            <text x="104" y="50" font-family="var(--head)" font-size="16" font-weight="700" fill="var(--txt)" opacity=".8">347</text>
+            <text x="145" y="50" font-family="var(--mono)" font-size="7" fill="#34d399">leads</text>
+            <!-- Mini funnel -->
+            <path d="M104 62 L260 62 L235 115 L130 115 Z" fill="rgba(52,211,153,.04)" stroke="rgba(52,211,153,.15)" stroke-width=".5"/>
+            <rect x="135" y="68" width="100" height="8" rx="2" fill="rgba(52,211,153,.15)"/>
+            <rect x="143" y="82" width="82" height="8" rx="2" fill="rgba(52,211,153,.2)"/>
+            <rect x="152" y="96" width="62" height="8" rx="2" fill="rgba(52,211,153,.3)"/>
+            <!-- Widget 2: Ads chart (top-right) -->
+            <rect x="288" y="10" width="186" height="118" rx="8" fill="rgba(244,63,94,.03)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="300" y="28" font-family="var(--mono)" font-size="6.5" fill="#f43f5e" opacity=".7">ADS PERFORMANCE</text>
+            <text x="444" y="28" text-anchor="end" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">30 dagen</text>
+            <text x="300" y="50" font-family="var(--head)" font-size="16" font-weight="700" fill="var(--txt)" opacity=".8">4.1x</text>
+            <text x="336" y="50" font-family="var(--mono)" font-size="7" fill="#f43f5e">ROAS</text>
+            <!-- Mini line chart -->
+            <polyline points="300,110 320,105 340,98 360,95 380,88 400,82 420,75 440,68 460,60" stroke="#f43f5e" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M300,110 320,105 340,98 360,95 380,88 400,82 420,75 440,68 460,60 L460,118 L300,118 Z" fill="rgba(244,63,94,.06)"/>
+            <!-- Widget 3: Content stats (bottom-left) -->
+            <rect x="92" y="138" width="186" height="118" rx="8" fill="rgba(59,130,246,.03)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="104" y="156" font-family="var(--mono)" font-size="6.5" fill="#3b82f6" opacity=".7">CONTENT</text>
+            <text x="248" y="156" text-anchor="end" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">deze maand</text>
+            <text x="104" y="178" font-family="var(--head)" font-size="16" font-weight="700" fill="var(--txt)" opacity=".8">24</text>
+            <text x="128" y="178" font-family="var(--mono)" font-size="7" fill="#3b82f6">artikelen</text>
+            <!-- Mini bar chart -->
+            <rect x="104" y="224" width="22" height="24" rx="3" fill="rgba(59,130,246,.12)"/>
+            <rect x="132" y="214" width="22" height="34" rx="3" fill="rgba(59,130,246,.15)"/>
+            <rect x="160" y="208" width="22" height="40" rx="3" fill="rgba(59,130,246,.18)"/>
+            <rect x="188" y="196" width="22" height="52" rx="3" fill="rgba(59,130,246,.22)"/>
+            <rect x="216" y="190" width="22" height="58" rx="3" fill="rgba(59,130,246,.28)"/>
+            <!-- Widget 4: Planning (bottom-right) -->
+            <rect x="288" y="138" width="186" height="118" rx="8" fill="rgba(245,166,35,.03)" stroke="var(--brd)" stroke-width=".5"/>
+            <text x="300" y="156" font-family="var(--mono)" font-size="6.5" fill="#f5a623" opacity=".7">PLANNING</text>
+            <text x="444" y="156" text-anchor="end" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".4">week 14</text>
+            <text x="300" y="178" font-family="var(--head)" font-size="16" font-weight="700" fill="var(--txt)" opacity=".8">94%</text>
+            <text x="332" y="178" font-family="var(--mono)" font-size="7" fill="#f5a623">bezetting</text>
+            <!-- Mini calendar grid -->
+            <rect x="300" y="190" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="322" y="190" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="344" y="190" width="18" height="14" rx="2" fill="rgba(245,166,35,.15)"/><rect x="366" y="190" width="18" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="388" y="190" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/>
+            <rect x="300" y="208" width="18" height="14" rx="2" fill="rgba(245,166,35,.1)"/><rect x="322" y="208" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="344" y="208" width="18" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="366" y="208" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="388" y="208" width="18" height="14" rx="2" fill="rgba(244,63,94,.1)"/>
+            <rect x="300" y="226" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="322" y="226" width="18" height="14" rx="2" fill="rgba(52,211,153,.2)"/><rect x="344" y="226" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/><rect x="366" y="226" width="18" height="14" rx="2" fill="rgba(245,166,35,.1)"/><rect x="388" y="226" width="18" height="14" rx="2" fill="rgba(52,211,153,.15)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="exp-row-content">
+      <span class="exp-row-badge ops">OPS</span>
+      <h3 class="exp-row-title">Dashboarding &amp; AI Platform</h3>
+      <p class="exp-row-desc">E&#233;n platform dat al je systemen verbindt. Real-time inzicht in leads, content, ads, planning en rapportage. Volledig onder jouw controle.</p>
+      <span class="exp-row-link" style="color:#06b6d4">Bekijk details &#8594;</span>
+    </div>
+  </a>
 
   <div style="text-align:center;margin-top:3.5rem"><a href="expertises.html" class="btn-ghost">Bekijk alle expertises &#8594;</a></div>
 
