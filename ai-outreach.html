@@ -39,6 +39,16 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupFlow{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-30}}
+@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
+@keyframes mockupType{0%,100%{opacity:1}50%{opacity:0}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
@@ -95,6 +105,84 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-outreach&gt;</span> forge --launch leadgen-pipeline<span class="cursor"></span></div>
   <h1>Leads die zichzelf<br><em>genereren.</em></h1>
   <p class="hero-sub">Je AI-outreach specialist vindt prospects, benadert ze gepersonaliseerd en kwalificeert ze. Jij praat alleen met warme leads.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">outreach-flow</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <text x="260" y="20" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".4">OUTREACH AUTOMATISERING &#8212; FLOW</text>
+          <rect x="16" y="40" width="88" height="90" rx="10" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <rect x="16" y="40" width="88" height="26" rx="10" fill="rgba(59,130,246,.1)"/>
+          <rect x="16" y="54" width="88" height="2" rx="0" fill="rgba(59,130,246,.1)"/>
+          <text x="60" y="56" text-anchor="middle" font-family="var(--mono)" font-size="6.5" font-weight="600" fill="#3b82f6">LinkedIn</text>
+          <circle cx="42" cy="86" r="12" fill="rgba(59,130,246,.12)"/>
+          <text x="42" y="89" text-anchor="middle" font-family="var(--head)" font-size="8" font-weight="600" fill="#3b82f6">JV</text>
+          <text x="58" y="82" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Jan Vermeer</text>
+          <text x="58" y="92" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".5">Techn. Directeur</text>
+          <rect x="28" y="104" width="56" height="14" rx="4" fill="rgba(59,130,246,.08)"/>
+          <text x="56" y="114" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#3b82f6">Prospect</text>
+          <line x1="104" y1="85" x2="134" y2="85" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 3" style="animation:mockupFlow 1.5s linear infinite"/>
+          <polygon points="134,80 144,85 134,90" fill="#34d399" opacity=".7"/>
+          <rect x="148" y="40" width="88" height="90" rx="10" fill="var(--bg-el)" stroke="rgba(52,211,153,.3)" stroke-width="1.2"/>
+          <rect x="148" y="40" width="88" height="26" rx="10" fill="rgba(52,211,153,.1)"/>
+          <rect x="148" y="54" width="88" height="2" rx="0" fill="rgba(52,211,153,.1)"/>
+          <text x="192" y="56" text-anchor="middle" font-family="var(--mono)" font-size="6.5" font-weight="600" fill="#34d399">AI Agent</text>
+          <circle cx="192" cy="82" r="14" fill="rgba(52,211,153,.08)" stroke="#34d399" stroke-width=".5"/>
+          <text x="192" y="87" text-anchor="middle" font-family="var(--mono)" font-size="14" fill="#34d399">&#9881;</text>
+          <text x="192" y="108" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">Personaliseert</text>
+          <text x="192" y="118" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">bericht</text>
+          <line x1="236" y1="85" x2="266" y2="85" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 3" style="animation:mockupFlow 1.5s linear infinite"/>
+          <polygon points="266,80 276,85 266,90" fill="#34d399" opacity=".7"/>
+          <rect x="280" y="40" width="88" height="90" rx="10" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <rect x="280" y="40" width="88" height="26" rx="10" fill="rgba(139,92,246,.1)"/>
+          <rect x="280" y="54" width="88" height="2" rx="0" fill="rgba(139,92,246,.1)"/>
+          <text x="324" y="56" text-anchor="middle" font-family="var(--mono)" font-size="6.5" font-weight="600" fill="#8b5cf6">Bericht</text>
+          <rect x="294" y="72" width="60" height="40" rx="6" fill="rgba(139,92,246,.06)" stroke="rgba(139,92,246,.15)" stroke-width=".5"/>
+          <rect x="300" y="80" width="40" height="3" rx="1.5" fill="rgba(139,92,246,.15)"/>
+          <rect x="300" y="86" width="48" height="3" rx="1.5" fill="rgba(139,92,246,.1)"/>
+          <rect x="300" y="92" width="32" height="3" rx="1.5" fill="rgba(139,92,246,.08)"/>
+          <text x="324" y="118" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#8b5cf6">Connectieverzoek</text>
+          <line x1="368" y1="85" x2="398" y2="85" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 3" style="animation:mockupFlow 1.5s linear infinite"/>
+          <polygon points="398,80 408,85 398,90" fill="#34d399" opacity=".7"/>
+          <rect x="412" y="40" width="92" height="90" rx="10" fill="var(--bg-el)" stroke="rgba(52,211,153,.4)" stroke-width="1.5"/>
+          <rect x="412" y="40" width="92" height="26" rx="10" fill="rgba(52,211,153,.15)"/>
+          <rect x="412" y="54" width="92" height="2" rx="0" fill="rgba(52,211,153,.15)"/>
+          <text x="458" y="56" text-anchor="middle" font-family="var(--mono)" font-size="6.5" font-weight="600" fill="#34d399">Warm Lead</text>
+          <circle cx="458" cy="82" r="14" fill="rgba(52,211,153,.12)"/>
+          <text x="458" y="88" text-anchor="middle" font-family="var(--mono)" font-size="16" fill="#34d399">&#10003;</text>
+          <text x="458" y="108" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">Afspraak</text>
+          <text x="458" y="118" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">ingepland</text>
+          <line x1="16" y1="148" x2="504" y2="148" stroke="var(--brd)" stroke-width=".5" stroke-dasharray="3 3"/>
+          <text x="16" y="168" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">LIVE VOORBEELD</text>
+          <rect x="16" y="178" width="240" height="50" rx="8" fill="rgba(52,211,153,.06)" stroke="rgba(52,211,153,.15)" stroke-width=".5"/>
+          <circle cx="34" cy="194" r="8" fill="rgba(52,211,153,.15)"/>
+          <text x="34" y="197" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#34d399">AI</text>
+          <text x="50" y="192" font-family="var(--mono)" font-size="6" font-weight="500" fill="#34d399">Forge AI Agent</text>
+          <text x="50" y="204" font-family="var(--mono)" font-size="6" fill="var(--txt)">"Hoi Jan, ik zag dat MetaalWerken recent</text>
+          <text x="50" y="214" font-family="var(--mono)" font-size="6" fill="var(--txt)">investeert in automatisering. Wij helpen..."</text>
+          <rect x="272" y="178" width="232" height="50" rx="8" fill="rgba(59,130,246,.06)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
+          <circle cx="488" cy="194" r="8" fill="rgba(59,130,246,.12)"/>
+          <text x="488" y="197" text-anchor="middle" font-family="var(--head)" font-size="6" font-weight="600" fill="#3b82f6">JV</text>
+          <text x="282" y="192" font-family="var(--mono)" font-size="6" font-weight="500" fill="#3b82f6">Jan Vermeer</text>
+          <text x="282" y="204" font-family="var(--mono)" font-size="6" fill="var(--txt)">"Klinkt interessant! Kunnen we volgende</text>
+          <text x="282" y="214" font-family="var(--mono)" font-size="6" fill="var(--txt)">week een kort gesprek inplannen?"</text>
+          <rect x="16" y="244" width="488" height="42" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="36" y="262" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">VANDAAG</text>
+          <text x="36" y="276" font-family="var(--head)" font-size="11" font-weight="700" fill="var(--txt)">23 berichten</text>
+          <line x1="148" y1="252" x2="148" y2="280" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="168" y="262" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">GEACCEPTEERD</text>
+          <text x="168" y="276" font-family="var(--head)" font-size="11" font-weight="700" fill="#34d399">8 connects</text>
+          <line x1="288" y1="252" x2="288" y2="280" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="308" y="262" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">GESPREKKEN</text>
+          <text x="308" y="276" font-family="var(--head)" font-size="11" font-weight="700" fill="#8b5cf6">3 actief</text>
+          <line x1="418" y1="252" x2="418" y2="280" stroke="var(--brd)" stroke-width=".5"/>
+          <circle cx="440" cy="265" r="5" fill="#34d399" style="animation:mockupPulse 2s ease-in-out infinite"/>
+          <circle cx="440" cy="265" r="8" fill="none" stroke="#34d399" stroke-width=".5" opacity=".3" style="animation:mockupPulse 2s ease-in-out infinite"/>
+          <text x="452" y="270" font-family="var(--mono)" font-size="7" font-weight="500" fill="#34d399">24/7 actief</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 

@@ -39,6 +39,14 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupType{0%,100%{opacity:1}50%{opacity:0}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
@@ -97,6 +105,55 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-training&gt;</span> forge --start team-training<span class="cursor"></span></div>
   <h1>Maak AI een kracht<br>binnen jouw <em>team.</em></h1>
   <p class="hero-sub">Workshops en training op maat. Van prompt engineering tot het herkennen van automatiseringsmogelijkheden in je dagelijkse werk.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">forge-academy</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <rect x="0" y="0" width="520" height="310" fill="var(--bg-el)"/>
+          <rect x="0" y="0" width="520" height="34" fill="rgba(139,92,246,.04)"/>
+          <line x1="0" y1="34" x2="520" y2="34" stroke="var(--brd)" stroke-width=".5"/>
+          <circle cx="20" cy="17" r="10" fill="rgba(139,92,246,.12)"/>
+          <text x="20" y="20" text-anchor="middle" font-family="var(--head)" font-size="7" font-weight="600" fill="#8b5cf6">FA</text>
+          <text x="38" y="14" font-family="var(--head)" font-size="8" font-weight="700" fill="#8b5cf6">Forge Academy</text>
+          <text x="38" y="26" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Workshop: AI inzetten in je dagelijks werk</text>
+          <circle cx="420" cy="17" r="8" fill="rgba(139,92,246,.12)"/><text x="420" y="20" text-anchor="middle" font-family="var(--head)" font-size="5.5" font-weight="600" fill="#8b5cf6">JB</text>
+          <circle cx="438" cy="17" r="8" fill="rgba(52,211,153,.12)"/><text x="438" y="20" text-anchor="middle" font-family="var(--head)" font-size="5.5" font-weight="600" fill="#34d399">ML</text>
+          <circle cx="456" cy="17" r="8" fill="rgba(244,63,94,.12)"/><text x="456" y="20" text-anchor="middle" font-family="var(--head)" font-size="5.5" font-weight="600" fill="#f43f5e">KV</text>
+          <rect x="472" y="10" width="36" height="14" rx="7" fill="rgba(139,92,246,.08)"/>
+          <text x="490" y="20" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#8b5cf6">+4</text>
+          <rect x="160" y="48" width="344" height="36" rx="10" fill="rgba(59,130,246,.06)" stroke="rgba(59,130,246,.1)" stroke-width=".5"/>
+          <text x="176" y="62" font-family="var(--mono)" font-size="6" font-weight="500" fill="#3b82f6">Jeroen (Sales)</text>
+          <text x="176" y="76" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Hoe kan ik AI gebruiken om sneller offertes te maken?</text>
+          <rect x="16" y="96" width="380" height="108" rx="10" fill="rgba(139,92,246,.04)" stroke="rgba(139,92,246,.15)" stroke-width=".8"/>
+          <circle cx="34" cy="114" r="10" fill="rgba(139,92,246,.15)"/>
+          <text x="34" y="117" text-anchor="middle" font-family="var(--mono)" font-size="8" font-weight="700" fill="#8b5cf6">AI</text>
+          <text x="52" y="112" font-family="var(--mono)" font-size="6" font-weight="600" fill="#8b5cf6">Forge Trainer</text>
+          <text x="120" y="112" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">zojuist</text>
+          <text x="28" y="132" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Goed voorbeeld! Hier zijn 3 manieren:</text>
+          <rect x="28" y="142" width="360" height="18" rx="4" fill="rgba(52,211,153,.06)"/>
+          <text x="36" y="155" font-family="var(--mono)" font-size="6.5" fill="#34d399">1.</text>
+          <text x="50" y="155" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Template-prompt: vul klantdata in, AI genereert offerte-tekst</text>
+          <rect x="28" y="164" width="360" height="18" rx="4" fill="rgba(52,211,153,.06)"/>
+          <text x="36" y="177" font-family="var(--mono)" font-size="6.5" fill="#34d399">2.</text>
+          <text x="50" y="177" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">CRM-koppeling: haal automatisch klantgegevens op</text>
+          <rect x="28" y="186" width="360" height="14" rx="4" fill="rgba(139,92,246,.04)"/>
+          <text x="36" y="196" font-family="var(--mono)" font-size="6.5" fill="#8b5cf6">3.</text>
+          <text x="50" y="196" font-family="var(--mono)" font-size="6.5" fill="var(--dim)">Prijscalculatie laten checken door AI voor...</text>
+          <rect x="318" y="188" width="4" height="10" rx="1" fill="#8b5cf6" style="animation:mockupType 1s step-end infinite"/>
+          <rect x="220" y="218" width="284" height="28" rx="10" fill="rgba(244,63,94,.06)" stroke="rgba(244,63,94,.1)" stroke-width=".5"/>
+          <text x="236" y="232" font-family="var(--mono)" font-size="6" font-weight="500" fill="#f43f5e">Kim (Operations)</text>
+          <text x="236" y="242" font-family="var(--mono)" font-size="6.5" fill="var(--txt)">Kan dat ook voor inkooporders werken?</text>
+          <rect x="0" y="262" width="520" height="48" fill="var(--bg)"/>
+          <line x1="0" y1="262" x2="520" y2="262" stroke="var(--brd)" stroke-width=".5"/>
+          <rect x="16" y="274" width="410" height="28" rx="8" fill="var(--bg-el)" stroke="var(--brd)" stroke-width="1"/>
+          <text x="30" y="292" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".35">Stel een vraag aan de AI trainer...</text>
+          <rect x="436" y="274" width="68" height="28" rx="8" fill="#8b5cf6"/>
+          <text x="470" y="292" text-anchor="middle" font-family="var(--mono)" font-size="7" font-weight="600" fill="var(--bg)">Verstuur</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 

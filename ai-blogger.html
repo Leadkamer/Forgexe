@@ -39,6 +39,14 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
 .page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
+.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
+.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
+body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
+.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
+@keyframes mockupType{0%,100%{opacity:1}50%{opacity:0}}
 .page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--green)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
 .page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
 .page-hero h1 em{font-style:normal;color:var(--green)}
@@ -95,6 +103,91 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-blogger&gt;</span> forge --start content-engine<span class="cursor"></span></div>
   <h1>SEO-content die<br>zichzelf <em>schrijft.</em></h1>
   <p class="hero-sub">Je AI-blogger analyseert je markt, vindt de juiste zoekwoorden en publiceert geoptimaliseerde artikelen. Automatisch, als een dedicated content medewerker.</p>
+  <div class="hero-mockup">
+    <div class="hero-mockup-frame">
+      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">content-manager</span></div>
+      <div style="padding:0;min-height:0">
+        <svg viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <rect x="0" y="0" width="290" height="320" fill="var(--bg-el)"/>
+          <line x1="290" y1="0" x2="290" y2="320" stroke="var(--brd)" stroke-width="1"/>
+          <rect x="0" y="0" width="290" height="30" fill="rgba(59,130,246,.04)"/>
+          <line x1="0" y1="30" x2="290" y2="30" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="12" y="19" font-family="var(--mono)" font-size="7" font-weight="600" fill="#3b82f6">ARTIKEL EDITOR</text>
+          <rect x="130" y="7" width="18" height="16" rx="3" fill="rgba(59,130,246,.08)"/>
+          <text x="139" y="19" text-anchor="middle" font-family="var(--head)" font-size="8" font-weight="700" fill="var(--dim)">B</text>
+          <rect x="152" y="7" width="18" height="16" rx="3" fill="rgba(59,130,246,.08)"/>
+          <text x="161" y="19" text-anchor="middle" font-family="var(--head)" font-size="8" fill="var(--dim)" font-style="italic">I</text>
+          <rect x="174" y="7" width="18" height="16" rx="3" fill="rgba(59,130,246,.08)"/>
+          <text x="183" y="19" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="var(--dim)">H1</text>
+          <rect x="196" y="7" width="18" height="16" rx="3" fill="rgba(59,130,246,.08)"/>
+          <text x="205" y="19" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="var(--dim)">H2</text>
+          <rect x="234" y="8" width="48" height="15" rx="7" fill="rgba(52,211,153,.12)"/>
+          <text x="258" y="19" text-anchor="middle" font-family="var(--mono)" font-size="6.5" fill="#34d399">SEO: 94</text>
+          <text x="16" y="54" font-family="var(--head)" font-size="12" font-weight="700" fill="var(--txt)">5 processen die je</text>
+          <text x="16" y="70" font-family="var(--head)" font-size="12" font-weight="700" fill="var(--txt)">vandaag kunt automatiseren</text>
+          <text x="16" y="86" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">1.840 woorden &#183; Leestijd: 7 min &#183; Categorie: Automatisering</text>
+          <rect x="16" y="96" width="258" height="3" rx="1.5" fill="var(--dim)" opacity=".12"/>
+          <rect x="16" y="104" width="240" height="3" rx="1.5" fill="var(--dim)" opacity=".1"/>
+          <rect x="16" y="112" width="252" height="3" rx="1.5" fill="var(--dim)" opacity=".12"/>
+          <rect x="16" y="120" width="200" height="3" rx="1.5" fill="var(--dim)" opacity=".08"/>
+          <rect x="16" y="136" width="160" height="4" rx="2" fill="var(--dim)" opacity=".18"/>
+          <rect x="16" y="150" width="258" height="3" rx="1.5" fill="var(--dim)" opacity=".1"/>
+          <rect x="16" y="158" width="230" height="3" rx="1.5" fill="var(--dim)" opacity=".12"/>
+          <rect x="16" y="166" width="250" height="3" rx="1.5" fill="var(--dim)" opacity=".1"/>
+          <rect x="16" y="174" width="180" height="3" rx="1.5" fill="var(--dim)" opacity=".08"/>
+          <rect x="196" y="174" width="2" height="10" rx="1" fill="#3b82f6" style="animation:mockupType 1s step-end infinite"/>
+          <rect x="16" y="190" width="258" height="3" rx="1.5" fill="var(--dim)" opacity=".06"/>
+          <rect x="16" y="198" width="240" height="3" rx="1.5" fill="var(--dim)" opacity=".05"/>
+          <rect x="16" y="206" width="252" height="3" rx="1.5" fill="var(--dim)" opacity=".06"/>
+          <rect x="0" y="290" width="290" height="30" fill="rgba(59,130,246,.03)"/>
+          <line x1="0" y1="290" x2="290" y2="290" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="12" y="309" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">1.840 / 2.000 woorden</text>
+          <rect x="140" y="302" width="100" height="5" rx="2.5" fill="rgba(59,130,246,.08)"/>
+          <rect x="140" y="302" width="92" height="5" rx="2.5" fill="rgba(59,130,246,.25)"/>
+          <text x="250" y="309" font-family="var(--mono)" font-size="6" fill="#3b82f6">92%</text>
+          <rect x="290" y="0" width="230" height="30" fill="rgba(52,211,153,.04)"/>
+          <line x1="290" y1="30" x2="520" y2="30" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="302" y="19" font-family="var(--mono)" font-size="7" font-weight="600" fill="#34d399">GEGENEREERDE POSTS</text>
+          <text x="295" y="55" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Vanuit artikel &#8594;</text>
+          <rect x="302" y="42" width="206" height="78" rx="8" fill="var(--bg-el)" stroke="rgba(59,130,246,.2)" stroke-width="1"/>
+          <rect x="312" y="52" width="16" height="16" rx="4" fill="rgba(59,130,246,.15)"/>
+          <text x="320" y="63" text-anchor="middle" font-family="var(--head)" font-size="8" font-weight="700" fill="#3b82f6">in</text>
+          <text x="336" y="60" font-family="var(--mono)" font-size="7" font-weight="500" fill="#3b82f6">LinkedIn</text>
+          <rect x="460" y="50" width="40" height="14" rx="4" fill="rgba(52,211,153,.12)"/>
+          <text x="480" y="60" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">Klaar</text>
+          <text x="312" y="80" font-family="var(--mono)" font-size="6" fill="var(--txt)">Wist je dat 73% van bedrijven nog</text>
+          <text x="312" y="90" font-family="var(--mono)" font-size="6" fill="var(--txt)">steeds handmatig facturen verwerkt?</text>
+          <text x="312" y="100" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">In ons laatste artikel leggen we uit...</text>
+          <text x="312" y="112" font-family="var(--mono)" font-size="5.5" fill="#3b82f6">#automatisering #ai #productiviteit</text>
+          <rect x="302" y="128" width="206" height="64" rx="8" fill="var(--bg-el)" stroke="rgba(139,92,246,.2)" stroke-width="1"/>
+          <rect x="312" y="138" width="16" height="16" rx="4" fill="rgba(139,92,246,.15)"/>
+          <text x="320" y="149" text-anchor="middle" font-family="var(--head)" font-size="8" font-weight="700" fill="#8b5cf6">X</text>
+          <text x="336" y="148" font-family="var(--mono)" font-size="7" font-weight="500" fill="#8b5cf6">X / Twitter</text>
+          <rect x="460" y="136" width="40" height="14" rx="4" fill="rgba(52,211,153,.12)"/>
+          <text x="480" y="146" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">Klaar</text>
+          <text x="312" y="166" font-family="var(--mono)" font-size="6" fill="var(--txt)">5 processen die je vandaag al kunt</text>
+          <text x="312" y="176" font-family="var(--mono)" font-size="6" fill="var(--txt)">automatiseren (en waarom je dat zou</text>
+          <text x="312" y="186" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">moeten doen) &#8594; link in bio</text>
+          <rect x="302" y="200" width="206" height="64" rx="8" fill="var(--bg-el)" stroke="rgba(244,63,94,.2)" stroke-width="1"/>
+          <rect x="312" y="210" width="16" height="16" rx="4" fill="rgba(244,63,94,.15)"/>
+          <text x="320" y="221" text-anchor="middle" font-family="var(--head)" font-size="7" font-weight="600" fill="#f43f5e">IG</text>
+          <text x="336" y="220" font-family="var(--mono)" font-size="7" font-weight="500" fill="#f43f5e">Instagram</text>
+          <rect x="452" y="208" width="48" height="14" rx="4" fill="rgba(245,166,35,.1)"/>
+          <text x="476" y="218" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f5a623">Genereert...</text>
+          <rect x="312" y="234" width="140" height="3" rx="1.5" fill="var(--dim)" opacity=".1"/>
+          <rect x="312" y="242" width="120" height="3" rx="1.5" fill="var(--dim)" opacity=".08"/>
+          <rect x="312" y="250" width="90" height="3" rx="1.5" fill="var(--dim)" opacity=".06"/>
+          <rect x="450" y="248" width="4" height="10" rx="1" fill="#f43f5e" style="animation:mockupType 1s step-end infinite"/>
+          <rect x="302" y="276" width="206" height="36" rx="8" fill="rgba(52,211,153,.04)" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="314" y="293" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">DEZE MAAND</text>
+          <text x="314" y="306" font-family="var(--head)" font-size="9" font-weight="600" fill="var(--txt)">24 artikelen</text>
+          <line x1="410" y1="282" x2="410" y2="308" stroke="var(--brd)" stroke-width=".5"/>
+          <text x="420" y="293" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">POSTS</text>
+          <text x="420" y="306" font-family="var(--head)" font-size="9" font-weight="600" fill="#34d399">72 gepland</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 <div class="neon-line"></div>
 
