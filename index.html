@@ -282,6 +282,9 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 @keyframes mockupFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .auto-grid{max-width:1200px}.auto-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
 @media(max-width:768px){.exp-row{grid-template-columns:1fr;gap:1.5rem}.exp-row.reverse .exp-row-visual{order:0}.exp-row.reverse .exp-row-content{order:1}.exp-row-title{font-size:1.15rem}.exp-mockup-body{min-height:160px;padding:1rem}.auto-grid{grid-template-columns:1fr !important;gap:1rem !important}}
+.bento-grid a:hover{background:var(--card-hover) !important}
+.bento-grid .exp-mockup-frame{border-radius:0;border:none}
+@media(max-width:768px){.bento-grid{grid-template-columns:1fr !important}}
 
 .scan-wizard{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 3rem}
 .scan-inner{background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:3rem;position:relative;overflow:hidden}
@@ -665,18 +668,19 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
 <section id="expertises" class="reveal-scale">
   <div class="section-label">C:\expertises&gt;<span class="section-label-cursor"></span></div>
-  <h2 class="section-title">Twee pijlers.<br>Zeven expertises.</h2>
-  <p class="section-desc">Wij bouwen twee soorten AI-medewerkers. Samen vormen ze een machine die jouw bedrijf sterker maakt.</p>
+  <h2 class="section-title">Onze expertises.</h2>
+  <p class="section-desc">Elke AI-medewerker voert &eacute;&eacute;n taak autonoom uit. 24/7, zonder pauze.</p>
 
-  <!-- Forge.Growth header -->
-  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3rem">
-    <div style="width:42px;height:42px;border-radius:10px;background:rgba(52,211,153,.1);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#34d399" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-    <div><div style="font-family:var(--head);font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Forge.Growth</div><div style="font-size:.78rem;color:var(--dim)">AI-medewerkers die klanten binnenhalen</div></div>
-  </div>
+  <div class="bento-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd);border-radius:16px;overflow:hidden">
 
-  <!-- 1. AI Outreach — mockup links, tekst rechts -->
-  <a href="ai-outreach.html" class="exp-row" style="text-decoration:none;color:inherit">
-    <div class="exp-row-visual">
+    <a href="ai-outreach.html" style="background:var(--bg);padding:0;text-decoration:none;color:inherit;display:flex;flex-direction:column">
+      <div style="padding:2.5rem 2rem 1.5rem;flex:1;display:flex;flex-direction:column">
+        <div style="display:inline-flex;align-self:flex-start;font-size:.55rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--green);padding:.25rem .6rem;background:rgba(52,211,153,.08);border-radius:4px;margin-bottom:1.25rem">GROWTH</div>
+        <h3 style="font-family:var(--head);font-size:1.3rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.02em">AI Outreach &amp; Leadgen</h3>
+        <p style="font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:1.5rem">Jouw AI-specialist vindt prospects op LinkedIn, benadert ze persoonlijk en kwalificeert automatisch. Jij praat alleen nog met warme leads.</p>
+        <div style="width:34px;height:34px;border:1px solid var(--brd);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:auto;transition:all .3s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--dim)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div style="border-top:1px solid var(--brd)">
       <div class="exp-mockup-frame">
         <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">outreach-flow</span></div>
         <div class="exp-mockup-body" id="mockup-outreach" style="padding:0;min-height:0">
@@ -770,18 +774,17 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
           </svg>
         </div>
       </div>
-    </div>
-    <div class="exp-row-content">
-      <span class="exp-row-badge growth">GROWTH</span>
-      <h3 class="exp-row-title">AI Outreach &amp; Leadgen</h3>
-      <p class="exp-row-desc">Jouw AI-outreach specialist vindt prospects op LinkedIn, benadert ze persoonlijk en kwalificeert automatisch. Jij praat alleen nog met warme leads. 24/7.</p>
-      <span class="exp-row-link" style="color:var(--green)">Bekijk details &#8594;</span>
-    </div>
-  </a>
+      </div>
+    </a>
 
-  <!-- 2. AI Blogger — tekst links, mockup rechts -->
-  <a href="ai-blogger.html" class="exp-row reverse" style="text-decoration:none;color:inherit">
-    <div class="exp-row-visual">
+    <a href="ai-blogger.html" style="background:var(--bg);padding:0;text-decoration:none;color:inherit;display:flex;flex-direction:column">
+      <div style="padding:2.5rem 2rem 1.5rem;flex:1;display:flex;flex-direction:column">
+        <div style="display:inline-flex;align-self:flex-start;font-size:.55rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#3b82f6;padding:.25rem .6rem;background:rgba(59,130,246,.08);border-radius:4px;margin-bottom:1.25rem">GROWTH</div>
+        <h3 style="font-family:var(--head);font-size:1.3rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.02em">AI Blogger &amp; Content</h3>
+        <p style="font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:1.5rem">Jouw Content Manager vindt de juiste keywords en publiceert geoptimaliseerde artikelen. Tegelijk plant hij social media posts.</p>
+        <div style="width:34px;height:34px;border:1px solid var(--brd);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:auto;transition:all .3s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--dim)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div style="border-top:1px solid var(--brd)">
       <div class="exp-mockup-frame">
         <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">content-manager</span></div>
         <div class="exp-mockup-body" id="mockup-blogger" style="padding:0;min-height:0">
@@ -884,23 +887,17 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
           </svg>
         </div>
       </div>
-    </div>
-    <div class="exp-row-content">
-      <span class="exp-row-badge growth">GROWTH</span>
-      <h3 class="exp-row-title">AI Blogger &amp; Content</h3>
-      <p class="exp-row-desc">Jouw Content Manager analyseert je markt, vindt de juiste keywords en publiceert geoptimaliseerde artikelen. Tegelijk plant hij social media posts. 20+ stuks per maand.</p>
-      <span class="exp-row-link" style="color:#3b82f6">Bekijk details &#8594;</span>
-    </div>
-  </a>
-  <!-- Forge.Ops header -->
-  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3rem;margin-top:2rem">
-    <div style="width:42px;height:42px;border-radius:10px;background:rgba(245,166,35,.1);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5a623" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-    <div><div style="font-family:var(--head);font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--amber),var(--amber-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Forge.Ops</div><div style="font-size:.78rem;color:var(--dim)">AI-medewerkers die je operatie stroomlijnen</div></div>
-  </div>
+      </div>
+    </a>
 
-  <!-- 5. AI Rapportage — mockup links, tekst rechts -->
-  <a href="ai-rapportage.html" class="exp-row" style="text-decoration:none;color:inherit">
-    <div class="exp-row-visual">
+    <a href="ai-rapportage.html" style="background:var(--bg);padding:0;text-decoration:none;color:inherit;display:flex;flex-direction:column">
+      <div style="padding:2.5rem 2rem 1.5rem;flex:1;display:flex;flex-direction:column">
+        <div style="display:inline-flex;align-self:flex-start;font-size:.55rem;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding:.25rem .6rem;background:rgba(245,166,35,.08);border-radius:4px;margin-bottom:1.25rem">OPS</div>
+        <h3 style="font-family:var(--head);font-size:1.3rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.02em">AI Rapportage</h3>
+        <p style="font-size:.82rem;color:var(--dim);line-height:1.7;margin-bottom:1.5rem">Jouw AI-reporter haalt data uit al je systemen en bouwt heldere rapporten. Automatisch, op tijd, zonder fouten.</p>
+        <div style="width:34px;height:34px;border:1px solid var(--brd);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:auto;transition:all .3s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--dim)" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div style="border-top:1px solid var(--brd)">
       <div class="exp-mockup-frame">
         <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">ai-rapportage</span></div>
         <div class="exp-mockup-body" id="mockup-rapportage" style="padding:0;min-height:0">
@@ -986,14 +983,10 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
           </svg>
         </div>
       </div>
-    </div>
-    <div class="exp-row-content">
-      <span class="exp-row-badge ops">OPS</span>
-      <h3 class="exp-row-title">AI Rapportage</h3>
-      <p class="exp-row-desc">Jouw AI-reporter haalt data uit al je systemen en bouwt heldere rapporten. Automatisch, op tijd, zonder fouten. Van spreadsheet tot boardroom-ready.</p>
-      <span class="exp-row-link" style="color:var(--amber)">Bekijk details &#8594;</span>
-    </div>
-  </a>
+      </div>
+    </a>
+
+  </div>
 
   <div style="text-align:center;margin-top:3.5rem"><a href="expertises.html" class="btn-ghost">Bekijk alle expertises &#8594;</a></div>
 
