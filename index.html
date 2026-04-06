@@ -532,6 +532,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
     <!-- Step 2: Branche -->
     <div class="scan-step" id="scanStep2" style="display:none">
+      <button onclick="prevScanStep(2)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">In welke branche ben je actief?</h3>
       <div class="scan-options">
         <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Maakindustrie')">Maakindustrie</button>
@@ -547,6 +548,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
     <!-- Step 3: Uitdaging -->
     <div class="scan-step" id="scanStep3" style="display:none">
+      <button onclick="prevScanStep(3)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">Waar ligt je grootste uitdaging?</h3>
       <div class="scan-options">
         <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Meer leads en klanten')">Meer leads en klanten</button>
@@ -557,6 +559,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
     <!-- Step 4: Tools (multi-select) -->
     <div class="scan-step" id="scanStep4" style="display:none">
+      <button onclick="prevScanStep(4)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">Welke tools gebruik je nu?</h3>
       <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.25rem">Selecteer alles dat van toepassing is.</p>
       <div class="scan-options" id="toolOptions">
@@ -572,6 +575,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
     <!-- Step 5: Urgentie -->
     <div class="scan-step" id="scanStep5" style="display:none">
+      <button onclick="prevScanStep(5)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">Hoe snel wil je resultaat zien?</h3>
       <div class="scan-options">
         <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Zo snel mogelijk')">Zo snel mogelijk</button>
@@ -582,6 +586,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 
     <!-- Step 6: Contactgegevens -->
     <div class="scan-step" id="scanStep6" style="display:none">
+      <button onclick="prevScanStep(6)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3>
       <form class="scan-form" onsubmit="submitScan(event)">
         <div class="scan-form-row">
@@ -1207,6 +1212,11 @@ var totalSteps = 6;
 function openScanWizard() {
   var w = document.getElementById('scanWizard');
   w.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+function prevScanStep(step) {
+  document.getElementById('scanStep' + step).style.display = 'none';
+  document.getElementById('scanStep' + (step - 1)).style.display = 'block';
+  document.getElementById('scanProgressBar').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
 }
 function nextScanStep(step, key, value) {
   scanData[key] = value;
