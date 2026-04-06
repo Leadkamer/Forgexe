@@ -317,14 +317,14 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 <!-- Cost Savings Calculator -->
 <section class="reveal">
   <div class="section-label">C:\pricing\calculator&gt;<span class="section-label-cursor"></span></div>
-  <h2 class="section-title">Bereken je besparing.</h2>
-  <p class="section-desc">Zie hoeveel je bespaart met AI-medewerkers versus traditionele medewerkers.</p>
+  <h2 class="section-title">Wat kosten repetitieve<br>taken je nu?</h2>
+  <p class="section-desc">Je medewerkers besteden uren aan terugkerende processen: leads opvolgen, rapportages maken, data invoeren. Werk dat AI sneller en goedkoper doet, zodat je team zich richt op wat echt telt.</p>
   <div class="calc-layout">
 
     <!-- Left: Controls -->
     <div class="calc-controls">
       <div>
-        <div class="calc-group-label">Functie</div>
+        <div class="calc-group-label">Type terugkerende taken</div>
         <div class="calc-buttons" id="calcFunctions">
           <button class="calc-btn active" onclick="setFunction(this, 'Marketing')">Marketing</button>
           <button class="calc-btn" onclick="setFunction(this, 'Sales')">Sales</button>
@@ -332,7 +332,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         </div>
       </div>
       <div>
-        <div class="calc-group-label">Aantal FTE's</div>
+        <div class="calc-group-label">Medewerkers die hier tijd aan kwijt zijn</div>
         <div class="calc-buttons" id="calcFTEs">
           <button class="calc-btn active" onclick="setFTE(this, 1)">1 FTE</button>
           <button class="calc-btn" onclick="setFTE(this, 2)">2 FTE</button>
@@ -345,15 +345,14 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
     <div class="calc-results">
       <div class="calc-comparison">
 
-        <!-- Traditioneel -->
+        <!-- Handmatig -->
         <div class="calc-col">
-          <div class="calc-col-title">Traditioneel</div>
-          <div class="calc-line"><span class="calc-line-label">Bruto salaris</span><span class="calc-line-value">&#8364;3.500/mnd</span></div>
-          <div class="calc-line"><span class="calc-line-label">Werkgeverslasten (&#177;30%)</span><span class="calc-line-value">&#8364;1.050/mnd</span></div>
-          <div class="calc-line"><span class="calc-line-label">Kantoor, tools, training</span><span class="calc-line-value">&#8364;500/mnd</span></div>
-          <div class="calc-line"><span class="calc-line-label">Totaal per FTE</span><span class="calc-line-value">&#8364;5.050/mnd</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Totaal per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;5.050</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Totaal per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;60.600</span></div>
+          <div class="calc-col-title">Handmatig</div>
+          <div class="calc-line"><span class="calc-line-label">Geschatte uren/week aan repetitief werk</span><span class="calc-line-value" id="tradHours">~15 uur</span></div>
+          <div class="calc-line"><span class="calc-line-label">Kosten per uur (incl. werkgeverslasten)</span><span class="calc-line-value">&#8364;35</span></div>
+          <div class="calc-line total"><span class="calc-line-label">Kosten per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;2.275</span></div>
+          <div class="calc-line total"><span class="calc-line-label">Kosten per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;27.300</span></div>
+          <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Beperkt tot kantooruren (8u/dag)</span></div>
         </div>
 
         <!-- Forgexe -->
@@ -368,14 +367,15 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 
       <!-- Savings -->
       <div class="calc-savings">
-        <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;56.400 per jaar</div>
-        <div class="calc-savings-label">ten opzichte van traditionele medewerkers</div>
+        <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;23.100 per jaar</div>
+        <div class="calc-savings-label">door repetitieve processen te automatiseren</div>
         <div class="calc-benefits">
-          <div class="calc-benefit"><span class="check">&#10003;</span> 24/7 beschikbaar</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Geen ziekteverzuim</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Schaalt direct</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Geen vakantiedagen</div>
+          <div class="calc-benefit"><span class="check">&#10003;</span> Draait 24/7 door, ook buiten kantooruren</div>
+          <div class="calc-benefit"><span class="check">&#10003;</span> Geen fouten door handmatig werk</div>
+          <div class="calc-benefit"><span class="check">&#10003;</span> Je team focust op strategie en klantcontact</div>
+          <div class="calc-benefit"><span class="check">&#10003;</span> Schaalt direct mee zonder extra overhead</div>
         </div>
+        <p style="font-size:.72rem;color:var(--dim);margin-top:1rem;opacity:.6;max-width:500px">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
       </div>
     </div>
 
@@ -484,8 +484,9 @@ function setFTE(btn, fte) {
 
 function updateCalculator() {
   var fte = calcState.fte;
-  var costPerFTE = 5050;
-  var tradMonthly = fte * costPerFTE;
+  var hoursPerWeek = fte * 15;
+  var hourlyRate = 35;
+  var tradMonthly = Math.round(hoursPerWeek * hourlyRate * 4.33);
   var tradYearly = tradMonthly * 12;
 
   var pkg = packages[fte];
@@ -494,6 +495,7 @@ function updateCalculator() {
 
   var savings = tradYearly - fxYearly;
 
+  document.getElementById('tradHours').textContent = '~' + hoursPerWeek + ' uur';
   document.getElementById('tradMonthly').innerHTML = '\u20AC' + formatNumber(tradMonthly);
   document.getElementById('tradYearly').innerHTML = '\u20AC' + formatNumber(tradYearly);
   document.getElementById('fxPackage').textContent = pkg.name;
