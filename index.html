@@ -562,14 +562,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
       <button onclick="prevScanStep(4)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
       <h3 class="scan-question">Welke tools gebruik je nu?</h3>
       <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.25rem">Selecteer alles dat van toepassing is.</p>
-      <div class="scan-options" id="toolOptions">
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">CRM (Zoho, Pipedrive, Salesforce)</button>
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">ERP (SAP, Exact, AFAS)</button>
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">Google Workspace</button>
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">Microsoft 365</button>
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">Boekhoudpakket</button>
-        <button class="scan-option scan-multi" onclick="toggleTool(this)">Geen van deze</button>
-      </div>
+      <div class="scan-options" id="toolOptions"></div>
       <button class="btn-primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
     </div>
 
@@ -1218,8 +1211,26 @@ function prevScanStep(step) {
   document.getElementById('scanStep' + (step - 1)).style.display = 'block';
   document.getElementById('scanProgressBar').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
 }
+var toolsByType = {
+  'Meer leads en klanten': ['CRM (Zoho, Pipedrive, Salesforce)', 'LinkedIn', 'Google Ads', 'Meta Ads', 'E-mail marketing (Mailchimp, ActiveCampaign)', 'WordPress / Webflow', 'Geen van deze'],
+  'Efficientere operatie': ['ERP (SAP, Exact, AFAS)', 'Boekhoudpakket', 'Planningssoftware', 'Google Workspace', 'Microsoft 365', 'Slack / Teams', 'Geen van deze'],
+  'Beide': ['CRM (Zoho, Pipedrive, Salesforce)', 'ERP (SAP, Exact, AFAS)', 'Google Ads / Meta Ads', 'Google Workspace', 'Microsoft 365', 'Boekhoudpakket', 'E-mail marketing', 'Geen van deze']
+};
+function buildToolOptions() {
+  var container = document.getElementById('toolOptions');
+  var tools = toolsByType[scanData.uitdaging] || toolsByType['Beide'];
+  container.innerHTML = '';
+  tools.forEach(function(tool) {
+    var btn = document.createElement('button');
+    btn.className = 'scan-option scan-multi';
+    btn.textContent = tool;
+    btn.onclick = function() { toggleTool(btn); };
+    container.appendChild(btn);
+  });
+}
 function nextScanStep(step, key, value) {
   scanData[key] = value;
+  if (step === 3) { buildToolOptions(); }
   document.getElementById('scanStep' + step).style.display = 'none';
   document.getElementById('scanStep' + (step + 1)).style.display = 'block';
   document.getElementById('scanProgressBar').style.width = Math.round(((step + 1) / totalSteps) * 100) + '%';
