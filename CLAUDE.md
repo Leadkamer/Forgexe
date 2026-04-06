@@ -8,7 +8,7 @@ Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site g
 - Communiceer met mij in het Nederlands
 
 ## Design tokens
-- Fonts: `JetBrains Mono` (mono/UI) + `Poppins` (headings)
+- Fonts: `JetBrains Mono` (mono/UI) + `Outfit` (headings)
 - Primaire kleur (groen): `#34d399`, light: `#4ade80`, deep: `#059669`
 - Neon cyan accent: `#00f0ff`
 - Dark mode is standaard, light mode via `body.light` class
