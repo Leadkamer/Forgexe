@@ -515,7 +515,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
   </div>
 </header>
 
-<div id="scanWizard" class="scan-wizard" style="display:none">
+<div id="scanWizard" class="scan-wizard" style="padding-top:2rem">
   <div class="scan-inner">
     <div class="scan-terminal">C:\forgexe\scan> --init bedrijfsscan<span class="cursor"></span></div>
 
@@ -1206,11 +1206,7 @@ var scanData = {};
 var totalSteps = 6;
 function openScanWizard() {
   var w = document.getElementById('scanWizard');
-  w.style.display = 'block';
-  w.classList.add('open');
-  setTimeout(function() {
-    w.scrollIntoView({behavior: 'smooth', block: 'center'});
-  }, 100);
+  w.scrollIntoView({behavior: 'smooth', block: 'center'});
 }
 function nextScanStep(step, key, value) {
   scanData[key] = value;
