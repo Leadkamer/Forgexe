@@ -516,7 +516,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
   </div>
 </header>
 
-<div id="scanWizard" class="scan-wizard" style="padding-top:2rem">
+<div id="scanWizard" class="scan-wizard" style="display:none">
   <div class="scan-inner">
     <div class="scan-terminal">C:\forgexe\scan> --init bedrijfsscan<span class="cursor"></span></div>
 
@@ -636,18 +636,12 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
   <div class="challenge-answer" id="challengeAnswer">
     <div style="width:60px"><svg class="ill" viewBox="0 0 60 60" width="50" height="50" fill="none"><circle cx="30" cy="30" r="22" stroke="var(--ill-stroke)" stroke-width="1.2"/><path d="M30 14v16l10 5" stroke="var(--ill-stroke)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
     <div class="challenge-answer-text"><h3 id="answerTitle">Integraties die jouw systemen verbinden</h3><p id="answerDesc">CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.</p><a href="contact.html" id="answerLink">Meer over Procesoptimalisatie &#8594;</a>
-      <div class="challenge-form">
-        <div class="challenge-form-label">Ontvang meer info over deze oplossing</div>
-        <div class="challenge-form-row">
-          <input type="text" placeholder="Voornaam">
-          <input type="text" placeholder="Achternaam">
-          <input type="email" placeholder="Zakelijke e-mail">
-          <button type="button">Verstuur</button>
-        </div>
-        <label style="display:flex;align-items:flex-start;gap:.5rem;margin-top:.75rem;cursor:pointer;font-size:.68rem;color:var(--dim);line-height:1.5"><input type="checkbox" required style="margin-top:2px;accent-color:var(--green)"><span>Ik ga akkoord met het <a href="privacy.html" style="color:var(--green);text-decoration:none" target="_blank">privacybeleid</a>.</span></label>
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--brd)">
+        <a href="#challengeWizard" onclick="openChallengeWizard();return false;" class="btn-primary" style="font-size:.78rem;padding:.75rem 1.5rem">Start de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
+  <div id="challengeWizard" style="display:none;margin-top:1rem"></div>
 </section>
 
 <section class="reveal">
@@ -1218,14 +1212,33 @@ document.querySelectorAll('#mobileMenu a').forEach(function(a) {
 });
 var scanData = {};
 var totalSteps = 6;
+var skipStep3 = false;
 function openScanWizard() {
   var w = document.getElementById('scanWizard');
-  w.scrollIntoView({behavior: 'smooth', block: 'center'});
+  w.style.display = 'block';
+  skipStep3 = false;
+  setTimeout(function() {
+    w.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }, 100);
+}
+function openChallengeWizard() {
+  var w = document.getElementById('scanWizard');
+  var target = document.getElementById('challengeWizard');
+  target.appendChild(w);
+  w.style.display = 'block';
+  target.style.display = 'block';
+  skipStep3 = true;
+  scanData.uitdaging = 'Beide';
+  setTimeout(function() {
+    w.scrollIntoView({behavior: 'smooth', block: 'center'});
+  }, 100);
 }
 function prevScanStep(step) {
+  var prev = step - 1;
+  if (skipStep3 && step === 4) { prev = 2; }
   document.getElementById('scanStep' + step).style.display = 'none';
-  document.getElementById('scanStep' + (step - 1)).style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
+  document.getElementById('scanStep' + prev).style.display = 'block';
+  document.getElementById('scanProgressBar').style.width = Math.round((prev / totalSteps) * 100) + '%';
 }
 var toolsByType = {
   'Meer leads en klanten': ['CRM (Zoho, Pipedrive, Salesforce)', 'LinkedIn', 'Google Ads', 'Meta Ads', 'E-mail marketing (Mailchimp, ActiveCampaign)', 'WordPress / Webflow', 'Geen van deze'],
@@ -1246,10 +1259,15 @@ function buildToolOptions() {
 }
 function nextScanStep(step, key, value) {
   scanData[key] = value;
+  var next = step + 1;
+  if (skipStep3 && step === 2) {
+    next = 4;
+    buildToolOptions();
+  }
   if (step === 3) { buildToolOptions(); }
   document.getElementById('scanStep' + step).style.display = 'none';
-  document.getElementById('scanStep' + (step + 1)).style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = Math.round(((step + 1) / totalSteps) * 100) + '%';
+  document.getElementById('scanStep' + next).style.display = 'block';
+  document.getElementById('scanProgressBar').style.width = Math.round((next / totalSteps) * 100) + '%';
 }
 function toggleTool(btn) {
   btn.classList.toggle('selected');
