@@ -1212,7 +1212,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(a) {
     document.getElementById('mobileMenu').classList.remove('open');
   });
 });
-var scanData = {};
+var scanData = {uitdaging: 'Efficientere operatie'};
 var totalSteps = 6;
 var skipStep3 = false;
 function openScanWizard() {
@@ -1323,11 +1323,17 @@ document.getElementById('challengeGrid').addEventListener('click', function(e) {
   var d = challengeData[idx];
   document.querySelectorAll('.challenge-card').forEach(function(c) { c.classList.remove('active'); });
   card.classList.add('active');
-  // Reset: toon antwoord, verberg wizard
+  // Reset: toon antwoord, verberg wizard, reset stappen
   var content = document.getElementById('challengeAnswerContent');
   var w = document.getElementById('scanWizard');
   if (content) { content.style.display = ''; }
-  if (w) { w.style.display = 'none'; }
+  if (w) {
+    w.style.display = 'none';
+    document.querySelectorAll('.scan-step').forEach(function(s) { s.style.display = 'none'; });
+    document.getElementById('scanStep1').style.display = 'block';
+    document.getElementById('scanDone').style.display = 'none';
+    document.getElementById('scanProgressBar').style.width = '16%';
+  }
   document.getElementById('answerTitle').textContent = d.title;
   document.getElementById('answerDesc').textContent = d.desc;
   scanData.uitdaging = d.type;
