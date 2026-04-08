@@ -635,13 +635,13 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
   </div>
   <div class="challenge-answer" id="challengeAnswer">
     <div style="width:60px"><svg class="ill" viewBox="0 0 60 60" width="50" height="50" fill="none"><circle cx="30" cy="30" r="22" stroke="var(--ill-stroke)" stroke-width="1.2"/><path d="M30 14v16l10 5" stroke="var(--ill-stroke)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-    <div class="challenge-answer-text"><h3 id="answerTitle">Integraties die jouw systemen verbinden</h3><p id="answerDesc">CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.</p><a href="contact.html" id="answerLink">Meer over Procesoptimalisatie &#8594;</a>
+    <div class="challenge-answer-text"><h3 id="answerTitle">Integraties die jouw systemen verbinden</h3><p id="answerDesc">CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.</p>
       <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--brd)">
-        <a href="#challengeWizard" onclick="openChallengeWizard();return false;" class="btn-primary" style="font-size:.78rem;padding:.75rem 1.5rem">Start de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#challengeWizard" onclick="openChallengeWizard();return false;" class="btn-primary" style="font-size:.78rem;padding:.75rem 1.5rem" id="challengeCta">Start de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
+      <div id="challengeWizard" style="display:none;margin-top:1.5rem"></div>
     </div>
   </div>
-  <div id="challengeWizard" style="display:none;margin-top:1rem"></div>
 </section>
 
 <section class="reveal">
@@ -1224,6 +1224,8 @@ function openScanWizard() {
 function openChallengeWizard() {
   var w = document.getElementById('scanWizard');
   var target = document.getElementById('challengeWizard');
+  var cta = document.getElementById('challengeCta');
+  if (cta) { cta.style.display = 'none'; }
   target.appendChild(w);
   w.style.display = 'block';
   target.style.display = 'block';
@@ -1305,12 +1307,12 @@ document.getElementById('faqList').addEventListener('click', function(e) {
 });
 
 var challengeData = [
-  {title: 'AI-medewerkers voor directe opvolging', desc: 'Je AI-medewerkers reageren binnen 2 minuten op elke lead. Ze kwalificeren, plannen afspraken in en volgen op. Geen lead valt meer tussen wal en schip.', link: 'Bekijk onze expertises'},
-  {title: 'Data-gestuurde marketingstrategie', desc: 'Wij bouwen multichannel groei-systemen: SEO, GEO, paid ads en funnels die samenwerken als een machine. Elke euro meetbaar.', link: 'Bekijk onze expertises'},
-  {title: 'Procesautomation die uren bespaart', desc: 'Wij verbinden jouw tools en elimineren handmatige stappen. Intake, opvolging, rapportage, alles geautomatiseerd.', link: 'Bekijk onze expertises'},
-  {title: 'Integraties die jouw systemen verbinden', desc: 'CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.', link: 'Bekijk onze expertises'},
-  {title: 'AI Strategie op maat', desc: 'Wij brengen in kaart waar AI het meeste impact maakt in jouw bedrijf. Concrete use cases, realistische planning, meetbare ROI.', link: 'Bekijk onze expertises'},
-  {title: 'AI Training voor jouw team', desc: 'Wij trainen jouw team in het dagelijks werken met AI. Prompt engineering, automatiseringsmogelijkheden herkennen, en tools effectief inzetten.', link: 'Bekijk onze expertises'}
+  {title: 'AI-medewerkers voor directe opvolging', desc: 'Je AI-medewerkers reageren binnen 2 minuten op elke lead. Ze kwalificeren, plannen afspraken in en volgen op. Geen lead valt meer tussen wal en schip.'},
+  {title: 'Data-gestuurde marketingstrategie', desc: 'Wij bouwen multichannel groei-systemen: SEO, GEO, paid ads en funnels die samenwerken als een machine. Elke euro meetbaar.'},
+  {title: 'Procesautomation die uren bespaart', desc: 'Wij verbinden jouw tools en elimineren handmatige stappen. Intake, opvolging, rapportage, alles geautomatiseerd.'},
+  {title: 'Integraties die jouw systemen verbinden', desc: 'CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.'},
+  {title: 'AI Strategie op maat', desc: 'Wij brengen in kaart waar AI het meeste impact maakt in jouw bedrijf. Concrete use cases, realistische planning, meetbare ROI.'},
+  {title: 'AI Training voor jouw team', desc: 'Wij trainen jouw team in het dagelijks werken met AI. Prompt engineering, automatiseringsmogelijkheden herkennen, en tools effectief inzetten.'}
 ];
 
 document.getElementById('challengeGrid').addEventListener('click', function(e) {
@@ -1322,8 +1324,6 @@ document.getElementById('challengeGrid').addEventListener('click', function(e) {
   card.classList.add('active');
   document.getElementById('answerTitle').textContent = d.title;
   document.getElementById('answerDesc').textContent = d.desc;
-  document.getElementById('answerLink').textContent = d.link;
-  document.getElementById('answerLink').href = 'expertises.html';
   document.getElementById('challengeAnswer').classList.remove('hidden');
   if(window.innerWidth <= 768){
     setTimeout(function(){document.getElementById('challengeAnswer').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
