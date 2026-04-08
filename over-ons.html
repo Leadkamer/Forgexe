@@ -82,7 +82,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
 
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.story-grid{grid-template-columns:1fr;gap:2rem}.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.story-grid{grid-template-columns:1fr;gap:2rem}.values-grid{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}div[style*='repeat(3']{grid-template-columns:1fr !important}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
 </style>
 </head>
 <body class="light">
@@ -160,8 +160,8 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 
 <section id="team" class="reveal">
   <div class="section-label">C:\\team&gt;<span class="section-label-cursor"></span></div>
-  <h2 class="section-title">De mensen achter<br>de systemen.</h2>
-  <p class="section-desc">Klein team. Directe lijnen. Geen overhead. Iedereen die je spreekt is ook degene die bouwt.</p>
+  <h2 class="section-title">De mensen (en machines)<br>achter de systemen.</h2>
+  <p class="section-desc">Klein team. Directe lijnen. Geen overhead. Iedereen die je spreekt is ook degene die bouwt. En drie collega's die nooit klagen over de koffie.</p>
   <div class="team-grid">
     <div class="team-card">
       <div class="team-avatar">
@@ -200,6 +200,43 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       <a href="https://www.linkedin.com/in/samuel-smit-ockeloen/" class="team-linkedin" target="_blank" rel="noopener">LinkedIn &#8594;</a>
     </div>
   </div>
+
+  <div style="text-align:center;margin:4rem 0 2rem">
+    <div style="font-family:var(--mono);font-size:.75rem;color:var(--green);letter-spacing:.1em">// team.extend(ai_agents) &#8212; 3 collega's toegevoegd</div>
+    <h3 style="font-family:var(--head);font-size:1.4rem;font-weight:600;margin-top:.75rem;letter-spacing:-.02em">Onze AI-medewerkers</h3>
+    <p style="font-size:.85rem;color:var(--dim);margin-top:.5rem">Ze werken 24/7, nemen nooit vakantie op en hebben nog nooit de koekjes uit de kantine gestolen.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--brd);border-radius:12px;overflow:hidden">
+    <div class="team-card">
+      <div class="team-avatar" style="border-color:var(--green)">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="80" height="80" rx="40" fill="rgba(52,211,153,.08)"/><rect x="24" y="20" width="32" height="24" rx="6" stroke="#34d399" stroke-width="2" fill="none"/><circle cx="34" cy="32" r="3" fill="#34d399"/><circle cx="46" cy="32" r="3" fill="#34d399"/><path d="M28 48 L40 42 L52 48" stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="36" y="44" width="8" height="6" rx="2" stroke="#34d399" stroke-width="1.5" fill="none"/><line x1="40" y1="50" x2="40" y2="56" stroke="#34d399" stroke-width="1.5"/><path d="M32 56 L48 56" stroke="#34d399" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="16" r="2" fill="#34d399" opacity=".5"/><line x1="40" y1="14" x2="40" y2="8" stroke="#34d399" stroke-width="1.5" opacity=".5"/></svg>
+      </div>
+      <div class="team-name" style="color:var(--green)">Forge.Growth Agent</div>
+      <div class="team-role">AI Marketing Specialist</div>
+      <p class="team-bio">Vindt leads terwijl jij slaapt, schrijft content voor het ontbijt en heeft je campagnes geoptimaliseerd voordat je eerste koffie op is. Vraagt nooit om salarisverhoging.</p>
+      <span class="team-linkedin" style="color:var(--green);cursor:default">Status: online &#9679;</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="border-color:#f5a623">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="80" height="80" rx="40" fill="rgba(245,166,35,.08)"/><rect x="24" y="20" width="32" height="24" rx="6" stroke="#f5a623" stroke-width="2" fill="none"/><rect x="31" y="28" width="6" height="6" rx="1" fill="#f5a623"/><rect x="43" y="28" width="6" height="6" rx="1" fill="#f5a623"/><path d="M30 40 L50 40" stroke="#f5a623" stroke-width="2" stroke-linecap="round"/><rect x="36" y="44" width="8" height="6" rx="2" stroke="#f5a623" stroke-width="1.5" fill="none"/><line x1="40" y1="50" x2="40" y2="56" stroke="#f5a623" stroke-width="1.5"/><path d="M32 56 L48 56" stroke="#f5a623" stroke-width="2" stroke-linecap="round"/><path d="M20 30 L24 32 L20 34" stroke="#f5a623" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M60 30 L56 32 L60 34" stroke="#f5a623" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="team-name" style="color:#f5a623">Forge.Ops Agent</div>
+      <div class="team-role">AI Operations Manager</div>
+      <p class="team-bio">Heeft een ongezonde liefde voor spreadsheets en vindt niets leuker dan een gestroomlijnde workflow. Verwerkt je facturen in 0,3 seconden. Zonder typo's.</p>
+      <span class="team-linkedin" style="color:#f5a623;cursor:default">Status: online &#9679;</span>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" style="border-color:#00f0ff">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="80" height="80" rx="40" fill="rgba(0,240,255,.08)"/><rect x="24" y="20" width="32" height="24" rx="6" stroke="#00f0ff" stroke-width="2" fill="none"/><circle cx="34" cy="30" r="3" stroke="#00f0ff" stroke-width="1.5" fill="none"/><circle cx="46" cy="30" r="3" stroke="#00f0ff" stroke-width="1.5" fill="none"/><path d="M32 38 Q40 42 48 38" stroke="#00f0ff" stroke-width="1.5" fill="none" stroke-linecap="round"/><rect x="36" y="44" width="8" height="6" rx="2" stroke="#00f0ff" stroke-width="1.5" fill="none"/><line x1="40" y1="50" x2="40" y2="56" stroke="#00f0ff" stroke-width="1.5"/><path d="M32 56 L48 56" stroke="#00f0ff" stroke-width="2" stroke-linecap="round"/><circle cx="56" cy="16" r="4" stroke="#00f0ff" stroke-width="1.5" fill="none"/><line x1="56" y1="13" x2="56" y2="19" stroke="#00f0ff" stroke-width="1"/><line x1="53" y1="16" x2="59" y2="16" stroke="#00f0ff" stroke-width="1"/></svg>
+      </div>
+      <div class="team-name" style="color:#00f0ff">Forge.Pilot Agent</div>
+      <div class="team-role">AI Rapporteur</div>
+      <p class="team-bio">Levert je rapport op maandagochtend nog v&#243;&#243;rdat je wekker afgaat. Leest al je data zodat jij dat niet hoeft. Favoriet excuus voor te laat komen: &#8220;ik was je rapport aan het lezen.&#8221;</p>
+      <span class="team-linkedin" style="color:#00f0ff;cursor:default">Status: online &#9679;</span>
+    </div>
+  </div>
+
 </section>
 
 <section class="page-cta reveal">
