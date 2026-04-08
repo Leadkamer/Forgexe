@@ -1232,7 +1232,6 @@ function openChallengeWizard() {
   w.style.display = 'block';
   container.style.display = 'block';
   skipStep3 = true;
-  scanData.uitdaging = 'Beide';
   setTimeout(function() {
     container.scrollIntoView({behavior: 'smooth', block: 'nearest'});
   }, 100);
@@ -1309,12 +1308,12 @@ document.getElementById('faqList').addEventListener('click', function(e) {
 });
 
 var challengeData = [
-  {title: 'AI-medewerkers voor directe opvolging', desc: 'Je AI-medewerkers reageren binnen 2 minuten op elke lead. Ze kwalificeren, plannen afspraken in en volgen op. Geen lead valt meer tussen wal en schip.'},
-  {title: 'Data-gestuurde marketingstrategie', desc: 'Wij bouwen multichannel groei-systemen: SEO, GEO, paid ads en funnels die samenwerken als een machine. Elke euro meetbaar.'},
-  {title: 'Procesautomation die uren bespaart', desc: 'Wij verbinden jouw tools en elimineren handmatige stappen. Intake, opvolging, rapportage, alles geautomatiseerd.'},
-  {title: 'Integraties die jouw systemen verbinden', desc: 'CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.'},
-  {title: 'AI Strategie op maat', desc: 'Wij brengen in kaart waar AI het meeste impact maakt in jouw bedrijf. Concrete use cases, realistische planning, meetbare ROI.'},
-  {title: 'AI Training voor jouw team', desc: 'Wij trainen jouw team in het dagelijks werken met AI. Prompt engineering, automatiseringsmogelijkheden herkennen, en tools effectief inzetten.'}
+  {title: 'AI-medewerkers voor directe opvolging', desc: 'Je AI-medewerkers reageren binnen 2 minuten op elke lead. Ze kwalificeren, plannen afspraken in en volgen op. Geen lead valt meer tussen wal en schip.', type: 'Meer leads en klanten'},
+  {title: 'Data-gestuurde marketingstrategie', desc: 'Wij bouwen multichannel groei-systemen: SEO, GEO, paid ads en funnels die samenwerken als een machine. Elke euro meetbaar.', type: 'Meer leads en klanten'},
+  {title: 'Procesautomation die uren bespaart', desc: 'Wij verbinden jouw tools en elimineren handmatige stappen. Intake, opvolging, rapportage, alles geautomatiseerd.', type: 'Efficientere operatie'},
+  {title: 'Integraties die jouw systemen verbinden', desc: 'CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.', type: 'Efficientere operatie'},
+  {title: 'AI Strategie op maat', desc: 'Wij brengen in kaart waar AI het meeste impact maakt in jouw bedrijf. Concrete use cases, realistische planning, meetbare ROI.', type: 'Beide'},
+  {title: 'AI Training voor jouw team', desc: 'Wij trainen jouw team in het dagelijks werken met AI. Prompt engineering, automatiseringsmogelijkheden herkennen, en tools effectief inzetten.', type: 'Beide'}
 ];
 
 document.getElementById('challengeGrid').addEventListener('click', function(e) {
@@ -1331,6 +1330,7 @@ document.getElementById('challengeGrid').addEventListener('click', function(e) {
   if (w) { w.style.display = 'none'; }
   document.getElementById('answerTitle').textContent = d.title;
   document.getElementById('answerDesc').textContent = d.desc;
+  scanData.uitdaging = d.type;
   document.getElementById('challengeAnswer').classList.remove('hidden');
   if(window.innerWidth <= 768){
     setTimeout(function(){document.getElementById('challengeAnswer').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
