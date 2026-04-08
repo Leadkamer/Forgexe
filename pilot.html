@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Forge.Pilot &#8212; Forgexe</title>
+<meta name="description" content="Forge.Pilot brengt al je data samen in &#233;&#233;n wekelijks overzicht. Marketing, sales en operations — samengevat in gewone taal. Schrijf je in voor vroege toegang.">
+<link rel="canonical" href="https://forgexe.nl/pilot.html">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--cyan-lt:#22d3ee;--cyan-deep:#0891b2;--cyan-glow:rgba(0,240,255,0.12);--amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;--amber-glow:rgba(245,166,35,0.12);--tr:0.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25;--ill-stroke:var(--green);--ill-opacity:0.7}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04;--ill-stroke:#059669;--ill-opacity:0.6;--cyan-glow:rgba(0,240,255,0.06);--amber-glow:rgba(245,166,35,0.06)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
+body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
+
+section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:.8rem;color:var(--green);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
+.section-label-cyan{font-size:.8rem;color:#00f0ff;margin-bottom:1.5rem;font-family:var(--mono)}
+.section-label-cursor-cyan{display:inline-block;width:9px;height:16px;background:#00f0ff;margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 12px rgba(0,240,255,.6)}
+.neon-line-cyan{height:1px;background:linear-gradient(90deg,transparent,#0891b2,#00f0ff,#22d3ee,transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+.section-title{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:2rem}
+.section-desc{font-size:.95rem;color:var(--dim);max-width:560px;line-height:1.9;margin-bottom:4rem}
+.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes bl{50%{opacity:0}}
+@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:#00f0ff}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:#00f0ff;margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(0,240,255,.5)}
+.page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
+.page-hero h1 em{font-style:normal;color:#00f0ff;text-shadow:0 0 60px rgba(0,240,255,.15)}
+.page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:560px;opacity:0;animation:fu .8s ease forwards .7s}
+.coming-soon-badge{display:inline-block;font-size:.68rem;font-family:var(--mono);letter-spacing:.15em;text-transform:uppercase;color:#00f0ff;border:1px solid rgba(0,240,255,.3);background:rgba(0,240,255,.06);padding:.4rem 1.2rem;border-radius:4px;margin-top:2rem;opacity:0;animation:fu .8s ease forwards .9s}
+
+/* Explainer cards */
+.explainer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--brd)}
+.explainer-card{background:var(--bg-el);padding:2.5rem;transition:all .3s;position:relative}
+.explainer-card:hover{background:var(--card-hover)}
+.explainer-card-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.explainer-card-icon.green{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2)}
+.explainer-card-icon.amber{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2)}
+.explainer-card-icon.cyan{background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2)}
+.explainer-card h3{font-family:var(--head);font-size:1.1rem;font-weight:600;margin-bottom:.6rem}
+.explainer-card p{font-size:.85rem;color:var(--dim);line-height:1.8}
+.explainer-card.highlighted{background:var(--card-hover);box-shadow:inset 0 0 40px rgba(0,240,255,.03)}
+.explainer-arrow{display:flex;align-items:center;justify-content:center;padding:2rem 0}
+.explainer-arrow svg{width:200px;height:40px}
+
+/* Mockup frame */
+.exp-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;max-width:700px;margin:3rem auto 0}
+.exp-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
+.exp-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--mut);opacity:.4}
+.exp-mockup-bar-title{font-size:.6rem;color:var(--mut);font-family:var(--mono);letter-spacing:.08em;margin-left:8px}
+.exp-mockup-body{padding:0;min-height:0}
+
+/* Features grid */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature-card{border:1px solid var(--brd);border-radius:12px;background:var(--bg-el);padding:2rem;transition:all .3s}
+.feature-card:hover{background:var(--card-hover);transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.feature-card-icon{width:44px;height:44px;border-radius:50%;background:rgba(0,240,255,.08);border:1px solid rgba(0,240,255,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.feature-card h3{font-family:var(--head);font-size:.95rem;font-weight:600;margin-bottom:.5rem}
+.feature-card p{font-size:.82rem;color:var(--dim);line-height:1.8}
+
+/* Waitlist CTA */
+.pilot-cta{padding:10rem 3rem;text-align:center;position:relative;z-index:1}
+.pilot-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,var(--cyan-glow) 0%,transparent 70%);pointer-events:none}
+.pilot-cta .section-label-cyan,.pilot-cta .section-title,.pilot-cta .section-desc,.pilot-cta .waitlist-form,.pilot-cta .trust-signals,.pilot-cta .confirmation{position:relative;z-index:2}
+.pilot-cta .section-title{margin-left:auto;margin-right:auto}
+.pilot-cta .section-desc{margin-left:auto;margin-right:auto;text-align:center;max-width:520px}
+
+.waitlist-form{max-width:520px;margin:0 auto}
+.form-row{display:flex;gap:1rem;margin-bottom:1rem}
+.form-row input{flex:1;padding:.85rem 1rem;font-size:.82rem;font-family:var(--mono);background:var(--bg);border:1px solid var(--brd);color:var(--txt);outline:none;transition:border-color .3s;border-radius:6px}
+.form-row input::placeholder{color:var(--mut)}
+.form-row input:focus{border-color:#00f0ff}
+.form-row.full input{width:100%}
+.btn-cyan{display:inline-flex;align-items:center;justify-content:center;width:100%;padding:1rem 2rem;background:#00f0ff;color:#0a0b0e;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);border:none;border-radius:6px;cursor:pointer;transition:all .3s;margin-top:.5rem}
+.btn-cyan:hover{background:#22d3ee;transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,240,255,.25)}
+.trust-signals{display:flex;justify-content:center;gap:2rem;margin-top:2rem;flex-wrap:wrap}
+.trust-signals span{font-size:.78rem;color:var(--dim)}
+.trust-signals span b{color:#00f0ff;font-weight:400}
+.confirmation{display:none;padding:2.5rem;background:rgba(0,240,255,.06);border:1px solid rgba(0,240,255,.2);border-radius:12px;max-width:520px;margin:0 auto}
+.confirmation h3{font-family:var(--head);font-size:1.2rem;font-weight:600;color:#00f0ff;margin-bottom:.75rem}
+.confirmation p{font-size:.88rem;color:var(--dim);line-height:1.8}
+
+footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
+.footer-col a{display:block;font-size:.82rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
+.footer-brand-desc{font-size:.82rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+
+@media(max-width:768px){
+nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}
+.page-hero{padding:7rem 1.25rem 2rem}
+section{padding:5rem 1.25rem}
+.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}
+.section-desc{font-size:.88rem;margin-bottom:2.5rem}
+.explainer-grid{grid-template-columns:1fr}
+.explainer-arrow{transform:rotate(90deg)}
+.features-grid{grid-template-columns:1fr}
+.form-row{flex-direction:column}
+.trust-signals{flex-direction:column;align-items:center;gap:.75rem}
+.exp-mockup-frame{margin:2rem -0.5rem 0}
+.neon-line,.neon-line-cyan{margin:0 1.25rem}
+.pilot-cta{padding:5rem 1.25rem}
+.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}
+.footer-brand{justify-content:center}
+.footer-brand-desc{margin:0 auto}
+.footer-col{text-align:center}
+.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}
+}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+<nav>
+  <a href="/" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="expertises.html">Expertises</a></li><li><a href="branches.html">Branches</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/">Home</a><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="hero-terminal"><span class="prompt">C:\forgexe\pilot&gt;</span> --status coming_soon<span class="cursor"></span></div>
+  <h1>Jouw bedrijf in &#233;&#233;n <em>overzicht</em>.</h1>
+  <p class="hero-sub">Forge.Pilot brengt al je data samen. Marketing, sales en operations &#8212; wekelijks samengevat in gewone taal. Zodat jij weet wat er speelt zonder dashboards te openen.</p>
+  <div class="coming-soon-badge">BINNENKORT BESCHIKBAAR</div>
+</header>
+<div class="neon-line-cyan"></div>
+
+<!-- HOW IT WORKS -->
+<section class="reveal">
+  <div class="section-label-cyan">C:\pilot\flow&gt;<span class="section-label-cursor-cyan"></span></div>
+  <h2 class="section-title">Twee pijlers. E&#233;n overzicht.</h2>
+  <p class="section-desc">Forge.Growth en Forge.Ops leveren de data. Forge.Pilot combineert alles tot &#233;&#233;n helder weekoverzicht.</p>
+
+  <div class="explainer-grid">
+    <!-- Card 1: Growth (green) -->
+    <div class="explainer-card">
+      <div class="explainer-card-icon green">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Growth data</h3>
+      <p>Leads, campagnes, content, conversies. Alles wat je groei-engine doet.</p>
+    </div>
+    <!-- Card 2: Ops (amber) -->
+    <div class="explainer-card">
+      <div class="explainer-card-icon amber">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h3>Ops data</h3>
+      <p>Planning, rapportage, doorlooptijden, effici&#235;ntie. Alles wat je operatie draait.</p>
+    </div>
+    <!-- Card 3: Pilot (cyan, highlighted) -->
+    <div class="explainer-card highlighted">
+      <div class="explainer-card-icon cyan">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      </div>
+      <h3>Pilot combineert</h3>
+      <p>E&#233;n wekelijks overzicht in gewone taal. Trends, aandachtspunten en concrete acties.</p>
+    </div>
+  </div>
+
+  <!-- Arrow indicators -->
+  <div class="explainer-arrow">
+    <svg viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 8 L100 32" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 3" opacity=".5"/>
+      <path d="M170 8 L100 32" stroke="#f5a623" stroke-width="1.5" stroke-dasharray="4 3" opacity=".5"/>
+      <circle cx="100" cy="34" r="4" fill="#00f0ff" opacity=".7"/>
+      <circle cx="30" cy="6" r="3" fill="#34d399" opacity=".5"/>
+      <circle cx="170" cy="6" r="3" fill="#f5a623" opacity=".5"/>
+    </svg>
+  </div>
+</section>
+<div class="neon-line-cyan"></div>
+
+<!-- MOCKUP PREVIEW -->
+<section class="reveal">
+  <div class="section-label-cyan">C:\pilot\preview&gt;<span class="section-label-cursor-cyan"></span></div>
+  <h2 class="section-title">Zo ziet je wekelijks overzicht eruit.</h2>
+  <p class="section-desc">Geen ingewikkelde dashboards. Gewoon een helder overzicht, elke maandag in je inbox.</p>
+
+  <div class="exp-mockup-frame">
+    <div class="exp-mockup-bar"><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-dot"></span><span class="exp-mockup-bar-title">forge-pilot-report</span></div>
+    <div class="exp-mockup-body">
+      <svg viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+        <!-- Background -->
+        <rect width="600" height="420" fill="var(--bg-el)"/>
+
+        <!-- Header bar -->
+        <rect x="0" y="0" width="600" height="48" fill="var(--bg)" opacity=".5"/>
+        <rect x="20" y="14" width="5" height="20" rx="1" fill="#00f0ff"/>
+        <rect x="20" y="14" width="16" height="4" rx="1" fill="#00f0ff"/>
+        <rect x="20" y="24" width="11" height="3" rx="1" fill="#00f0ff"/>
+        <text x="42" y="28" font-family="var(--mono)" font-size="10" font-weight="700" fill="#00f0ff" letter-spacing=".08em">FORGE.PILOT</text>
+        <text x="580" y="28" font-family="var(--mono)" font-size="9" fill="var(--dim)" text-anchor="end">Week 14 &#8212; Bedrijfsoverzicht</text>
+
+        <!-- KPI cards -->
+        <rect x="20" y="62" width="176" height="56" rx="6" fill="var(--bg)" stroke="var(--brd)" stroke-width="1"/>
+        <text x="32" y="82" font-family="var(--mono)" font-size="7" fill="var(--dim)" letter-spacing=".08em">NIEUWE LEADS</text>
+        <text x="32" y="104" font-family="var(--head)" font-size="18" font-weight="700" fill="#34d399">23</text>
+        <text x="60" y="104" font-family="var(--mono)" font-size="9" fill="#34d399">&#8593;12%</text>
+
+        <rect x="212" y="62" width="176" height="56" rx="6" fill="var(--bg)" stroke="var(--brd)" stroke-width="1"/>
+        <text x="224" y="82" font-family="var(--mono)" font-size="7" fill="var(--dim)" letter-spacing=".08em">OMZET</text>
+        <text x="224" y="104" font-family="var(--head)" font-size="18" font-weight="700" fill="var(--txt)">&#8364;124K</text>
+        <text x="290" y="104" font-family="var(--mono)" font-size="9" fill="#34d399">&#8593;8%</text>
+
+        <rect x="404" y="62" width="176" height="56" rx="6" fill="var(--bg)" stroke="var(--brd)" stroke-width="1"/>
+        <text x="416" y="82" font-family="var(--mono)" font-size="7" fill="var(--dim)" letter-spacing=".08em">DOORLOOPTIJD</text>
+        <text x="416" y="104" font-family="var(--head)" font-size="18" font-weight="700" fill="#f5a623">3.2 dgn</text>
+        <text x="498" y="104" font-family="var(--mono)" font-size="9" fill="#34d399">&#8595;15%</text>
+
+        <!-- Wat ging goed (green border) -->
+        <rect x="22" y="138" width="3" height="72" rx="1.5" fill="#34d399"/>
+        <text x="36" y="152" font-family="var(--head)" font-size="10" font-weight="600" fill="var(--txt)">Wat ging goed</text>
+        <circle cx="40" cy="168" r="2" fill="#34d399"/>
+        <text x="48" y="172" font-family="var(--mono)" font-size="8" fill="var(--dim)">LinkedIn-campagne leverde 18 nieuwe leads op (+40% vs vorige week)</text>
+        <circle cx="40" cy="184" r="2" fill="#34d399"/>
+        <text x="48" y="188" font-family="var(--mono)" font-size="8" fill="var(--dim)">Gemiddelde dealgrootte steeg naar &#8364;8.200</text>
+        <circle cx="40" cy="200" r="2" fill="#34d399"/>
+        <text x="48" y="204" font-family="var(--mono)" font-size="8" fill="var(--dim)">Klanttevredenheid stabiel op 4.7/5</text>
+
+        <!-- Wat vraagt aandacht (amber border) -->
+        <rect x="22" y="228" width="3" height="72" rx="1.5" fill="#f5a623"/>
+        <text x="36" y="242" font-family="var(--head)" font-size="10" font-weight="600" fill="var(--txt)">Wat vraagt aandacht</text>
+        <circle cx="40" cy="258" r="2" fill="#f5a623"/>
+        <text x="48" y="262" font-family="var(--mono)" font-size="8" fill="var(--dim)">3 offertes staan &gt;7 dagen open zonder reactie</text>
+        <circle cx="40" cy="274" r="2" fill="#f5a623"/>
+        <text x="48" y="278" font-family="var(--mono)" font-size="8" fill="var(--dim)">Website-traffic daalde 12% — mogelijk seizoenseffect</text>
+        <circle cx="40" cy="290" r="2" fill="#f5a623"/>
+        <text x="48" y="294" font-family="var(--mono)" font-size="8" fill="var(--dim)">Projectoplevering Klant X loopt 2 dagen achter op planning</text>
+
+        <!-- Acties deze week (cyan border) -->
+        <rect x="22" y="318" width="3" height="72" rx="1.5" fill="#00f0ff"/>
+        <text x="36" y="332" font-family="var(--head)" font-size="10" font-weight="600" fill="var(--txt)">Acties deze week</text>
+        <rect x="36" y="345" width="10" height="10" rx="2" stroke="#00f0ff" stroke-width="1" fill="none"/>
+        <text x="52" y="354" font-family="var(--mono)" font-size="8" fill="var(--dim)">Follow-up sturen naar 3 openstaande offertes</text>
+        <rect x="36" y="361" width="10" height="10" rx="2" stroke="#00f0ff" stroke-width="1" fill="none"/>
+        <text x="52" y="370" font-family="var(--mono)" font-size="8" fill="var(--dim)">SEO-check uitvoeren op top-5 landingspagina's</text>
+        <rect x="36" y="377" width="10" height="10" rx="2" stroke="#00f0ff" stroke-width="1" fill="none"/>
+        <text x="52" y="386" font-family="var(--mono)" font-size="8" fill="var(--dim)">Capaciteitsplanning week 15 afstemmen met team</text>
+
+        <!-- Bottom bar -->
+        <rect x="0" y="404" width="600" height="16" fill="var(--bg)" opacity=".3"/>
+        <text x="300" y="414" font-family="var(--mono)" font-size="6" fill="var(--mut)" text-anchor="middle" letter-spacing=".1em">FORGE.PILOT &#8212; GEGENEREERD OP MAANDAG 06:00</text>
+      </svg>
+    </div>
+  </div>
+</section>
+<div class="neon-line-cyan"></div>
+
+<!-- FEATURES -->
+<section class="reveal">
+  <div class="section-label-cyan">C:\pilot\features&gt;<span class="section-label-cursor-cyan"></span></div>
+  <h2 class="section-title">Waarom Forge.Pilot?</h2>
+  <p class="section-desc">Alles wat je nodig hebt om je bedrijf in 30 seconden te overzien.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3>Wekelijks rapport</h3>
+      <p>Elke maandag een overzicht in gewone taal. Geen dashboards, geen spreadsheets.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <h3>Koppelt met je tools</h3>
+      <p>Exact, Moneybird, Google Ads, CRM &#8212; Pilot haalt data uit de tools die je al gebruikt.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Marketing + Sales + Ops</h3>
+      <p>Geen losse rapportages meer. Alles in &#233;&#233;n view, zodat je het hele plaatje ziet.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <h3>Trends &amp; signalen</h3>
+      <p>Week, maand, kwartaal. Pilot signaleert trends en waarschuwt bij afwijkingen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3>Acties, geen data</h3>
+      <p>Geen grafieken die je zelf moet interpreteren. Concrete aanbevelingen in je inbox.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Groeit met je mee</h3>
+      <p>Hoe meer Forgexe-diensten je gebruikt, hoe completer je overzicht wordt.</p>
+    </div>
+  </div>
+</section>
+<div class="neon-line-cyan"></div>
+
+<!-- WAITLIST CTA -->
+<section class="pilot-cta reveal">
+  <div class="section-label-cyan">C:\pilot\signup&gt;<span class="section-label-cursor-cyan"></span></div>
+  <h2 class="section-title">Interesse? Schrijf je in voor vroege toegang.</h2>
+  <p class="section-desc">We starten met een kleine groep. Eerste gebruikers krijgen Forge.Pilot 3 maanden gratis.</p>
+
+  <form class="waitlist-form" id="waitlistForm">
+    <div class="form-row">
+      <input type="text" name="naam" placeholder="Naam" required>
+      <input type="text" name="bedrijf" placeholder="Bedrijfsnaam" required>
+    </div>
+    <div class="form-row full">
+      <input type="email" name="email" placeholder="Zakelijke e-mail" required>
+    </div>
+    <button type="submit" class="btn-cyan">AANMELDEN VOOR VROEGE TOEGANG</button>
+  </form>
+
+  <div class="confirmation" id="waitlistConfirmation">
+    <h3>&#10003; Je staat op de lijst!</h3>
+    <p>Bedankt! We nemen contact op zodra Forge.Pilot live gaat. Houd je inbox in de gaten.</p>
+  </div>
+
+  <div class="trust-signals">
+    <span><b>&#10003;</b> 100% gratis tijdens beta</span>
+    <span><b>&#10003;</b> Geen creditcard nodig</span>
+    <span><b>&#10003;</b> Opzeggen kan altijd</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-finance.html">Finance</a><a href="branche-vastgoed.html">Vastgoed</a><a href="branche-e-commerce.html">E-commerce</a><a href="branche-juridisch.html">Juridisch</a><a href="branche-it-software.html">IT &amp; Software</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="#">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/in/sedat-ayar-b4a22129/">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var naam = form.querySelector('input[name="naam"]').value;
+  var bedrijf = form.querySelector('input[name="bedrijf"]').value;
+  var email = form.querySelector('input[name="email"]').value;
+  console.log('Pilot waitlist signup:', { naam: naam, bedrijf: bedrijf, email: email });
+  form.style.display = 'none';
+  document.getElementById('waitlistConfirmation').style.display = 'block';
+});
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(en) {
+    if (en.isIntersecting) en.target.classList.add('visible');
+  });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+</script>
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;padding:1.25rem 2rem;background:var(--bg-el,#10121a);border-top:1px solid var(--brd,rgba(255,255,255,0.06));font-family:var(--mono,monospace);font-size:.78rem;color:var(--dim,#8d9bb5);align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+  <p style="margin:0;line-height:1.6;flex:1;min-width:200px">Wij gebruiken cookies om de website te verbeteren. <a href="privacy.html" style="color:var(--green,#34d399);text-decoration:none">Meer info</a></p>
+  <div style="display:flex;gap:.75rem;flex-shrink:0">
+    <button onclick="setCookieConsent('accepted')" style="padding:.5rem 1.2rem;background:var(--green,#34d399);color:var(--btn-txt,#0a0b0e);border:none;font-size:.72rem;font-weight:500;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Accepteren</button>
+    <button onclick="setCookieConsent('declined')" style="padding:.5rem 1.2rem;background:transparent;color:var(--dim,#8d9bb5);border:1px solid var(--brd,rgba(255,255,255,0.06));font-size:.72rem;font-family:var(--mono,monospace);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:4px">Weigeren</button>
+  </div>
+</div>
+<script>
+function setCookieConsent(v){var d=new Date();d.setTime(d.getTime()+30*24*60*60*1000);document.cookie="cookie_consent="+v+";expires="+d.toUTCString()+";path=/;SameSite=Lax";document.getElementById("cookieBanner").style.display="none"}
+(function(){if(document.cookie.indexOf("cookie_consent=")===-1){var b=document.getElementById("cookieBanner");if(b)b.style.display="flex"}}());
+</script>
+
+<style>
+elevenlabs-convai{--el-branding-display:none}
+elevenlabs-convai::part(branding){display:none!important}
+elevenlabs-convai::part(powered-by){display:none!important}
+</style>
+<elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
