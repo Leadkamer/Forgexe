@@ -324,15 +324,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
     <!-- Left: Controls -->
     <div class="calc-controls">
       <div>
-        <div class="calc-group-label">Type terugkerende taken</div>
-        <div class="calc-buttons" id="calcFunctions">
-          <button class="calc-btn active" onclick="setFunction(this, 'Marketing')">Marketing</button>
-          <button class="calc-btn" onclick="setFunction(this, 'Sales')">Sales</button>
-          <button class="calc-btn" onclick="setFunction(this, 'Administratie')">Administratie</button>
-        </div>
-      </div>
-      <div>
-        <div class="calc-group-label">Medewerkers die hier tijd aan kwijt zijn</div>
+        <div class="calc-group-label">Medewerkers die tijd kwijt zijn aan repetitief werk</div>
         <div class="calc-buttons" id="calcFTEs">
           <button class="calc-btn active" onclick="setFTE(this, 1)">1 FTE</button>
           <button class="calc-btn" onclick="setFTE(this, 2)">2 FTE</button>
@@ -349,9 +341,9 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         <div class="calc-col">
           <div class="calc-col-title">Handmatig</div>
           <div class="calc-line"><span class="calc-line-label">Geschatte uren/week aan repetitief werk</span><span class="calc-line-value" id="tradHours">~15 uur</span></div>
-          <div class="calc-line"><span class="calc-line-label">Kosten per uur (incl. werkgeverslasten)</span><span class="calc-line-value">&#8364;35</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Kosten per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;2.275</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Kosten per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;27.300</span></div>
+          <div class="calc-line"><span class="calc-line-label">Gem. kosten per uur (incl. werkgeverslasten)</span><span class="calc-line-value">&#8364;30</span></div>
+          <div class="calc-line total"><span class="calc-line-label">Kosten per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;1.950</span></div>
+          <div class="calc-line total"><span class="calc-line-label">Kosten per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;23.400</span></div>
           <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Beperkt tot kantooruren (8u/dag)</span></div>
         </div>
 
@@ -367,7 +359,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 
       <!-- Savings -->
       <div class="calc-savings">
-        <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;23.100 per jaar</div>
+        <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;19.200 per jaar</div>
         <div class="calc-savings-label">door repetitieve processen te automatiseren</div>
         <div class="calc-benefits">
           <div class="calc-benefit"><span class="check">&#10003;</span> Draait 24/7 door, ook buiten kantooruren</div>
@@ -454,7 +446,7 @@ var obs = new IntersectionObserver(function(entries) {
 document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
 /* Calculator logic */
-var calcState = {func: 'Marketing', fte: 1};
+var calcState = {fte: 1};
 
 var packages = {
   1: {name: 'Forge.Start', price: 350},
@@ -464,14 +456,6 @@ var packages = {
 
 function formatNumber(n) {
   return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
-
-function setFunction(btn, func) {
-  var buttons = document.getElementById('calcFunctions').querySelectorAll('.calc-btn');
-  buttons.forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  calcState.func = func;
-  updateCalculator();
 }
 
 function setFTE(btn, fte) {
@@ -485,7 +469,7 @@ function setFTE(btn, fte) {
 function updateCalculator() {
   var fte = calcState.fte;
   var hoursPerWeek = fte * 15;
-  var hourlyRate = 35;
+  var hourlyRate = 30;
   var tradMonthly = Math.round(hoursPerWeek * hourlyRate * 4.33);
   var tradYearly = tradMonthly * 12;
 
