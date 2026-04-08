@@ -91,6 +91,7 @@ body.light .proof-logos .logo-dark:hover{opacity:.8;filter:grayscale(0) brightne
 .challenge-answer-text h3{font-size:1.15rem;font-weight:500;margin-bottom:.6rem}
 .challenge-answer-text p{font-size:.88rem;color:var(--dim);line-height:1.8;margin-bottom:1rem}
 .challenge-answer-text a{font-size:.78rem;color:var(--green);text-decoration:none;letter-spacing:.05em}
+.challenge-answer-text a.btn-primary{color:var(--btn-txt);font-size:.78rem}
 .challenge-form{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--brd)}
 .challenge-form-label{font-size:.82rem;color:var(--green);letter-spacing:.08em;margin-bottom:.75rem;font-family:var(--mono)}
 .challenge-form-row{display:flex;gap:.5rem}
@@ -1323,6 +1324,11 @@ document.getElementById('challengeGrid').addEventListener('click', function(e) {
   var d = challengeData[idx];
   document.querySelectorAll('.challenge-card').forEach(function(c) { c.classList.remove('active'); });
   card.classList.add('active');
+  // Reset: toon antwoord, verberg wizard
+  var content = document.getElementById('challengeAnswerContent');
+  var w = document.getElementById('scanWizard');
+  if (content) { content.style.display = ''; }
+  if (w) { w.style.display = 'none'; }
   document.getElementById('answerTitle').textContent = d.title;
   document.getElementById('answerDesc').textContent = d.desc;
   document.getElementById('challengeAnswer').classList.remove('hidden');
