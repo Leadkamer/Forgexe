@@ -78,8 +78,8 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 .compare-table tr:last-child td{border-bottom:none}
 
 /* Calculator */
-.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.calc-controls{display:flex;flex-direction:column;gap:2rem}
+.calc-layout{display:flex;flex-direction:column;gap:2rem}
+.calc-controls{display:flex;flex-direction:column;align-items:center;gap:1rem}
 .calc-group-label{font-size:.72rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;font-family:var(--mono)}
 .calc-buttons{display:flex;gap:.5rem;flex-wrap:wrap}
 .calc-btn{padding:.6rem 1.2rem;font-size:.78rem;font-family:var(--mono);background:var(--bg-el);border:1px solid var(--brd);color:var(--dim);cursor:pointer;transition:all .3s;border-radius:6px;letter-spacing:.05em}
@@ -141,7 +141,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   .price-card.popular{transform:none}
   .price-card.popular:hover{transform:none}
   .compare-wrapper{margin:0 -1.25rem;padding:0 1.25rem}
-  .calc-layout{grid-template-columns:1fr}
   .calc-comparison{grid-template-columns:1fr}
   .calc-benefits{gap:.75rem}
   .neon-line{margin:0 1.25rem}
@@ -321,54 +320,42 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <p class="section-desc">Je medewerkers besteden uren aan terugkerende processen: leads opvolgen, rapportages maken, data invoeren. Werk dat AI sneller en goedkoper doet, zodat je team zich richt op wat echt telt.</p>
   <div class="calc-layout">
 
-    <!-- Left: Controls -->
     <div class="calc-controls">
-      <div>
-        <div class="calc-group-label">Medewerkers die tijd kwijt zijn aan repetitief werk</div>
-        <div class="calc-buttons" id="calcFTEs">
-          <button class="calc-btn active" onclick="setFTE(this, 1)">1 FTE</button>
-          <button class="calc-btn" onclick="setFTE(this, 2)">2 FTE</button>
-          <button class="calc-btn" onclick="setFTE(this, 3)">3 FTE</button>
-        </div>
+      <div class="calc-group-label">Medewerkers die tijd kwijt zijn aan repetitief werk</div>
+      <div class="calc-buttons" id="calcFTEs">
+        <button class="calc-btn active" onclick="setFTE(this, 1)">1 FTE</button>
+        <button class="calc-btn" onclick="setFTE(this, 2)">2 FTE</button>
+        <button class="calc-btn" onclick="setFTE(this, 3)">3 FTE</button>
       </div>
     </div>
 
-    <!-- Right: Results -->
-    <div class="calc-results">
-      <div class="calc-comparison">
-
-        <!-- Handmatig -->
-        <div class="calc-col">
-          <div class="calc-col-title">Handmatig</div>
-          <div class="calc-line"><span class="calc-line-label">Geschatte uren/week aan repetitief werk</span><span class="calc-line-value" id="tradHours">~15 uur</span></div>
-          <div class="calc-line"><span class="calc-line-label">Gem. kosten per uur (incl. werkgeverslasten)</span><span class="calc-line-value">&#8364;30</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Kosten per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;1.950</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Kosten per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;23.400</span></div>
-          <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Beperkt tot kantooruren (8u/dag)</span></div>
-        </div>
-
-        <!-- Forgexe -->
-        <div class="calc-col forgexe">
-          <div class="calc-col-title">Forgexe</div>
-          <div class="calc-line"><span class="calc-line-label">Pakket</span><span class="calc-line-value" id="fxPackage">Forge.Start</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Totaal per maand</span><span class="calc-line-value" id="fxMonthly">&#8364;350</span></div>
-          <div class="calc-line total"><span class="calc-line-label">Totaal per jaar</span><span class="calc-line-value" id="fxYearly">&#8364;4.200</span></div>
-        </div>
-
+    <div class="calc-comparison">
+      <div class="calc-col">
+        <div class="calc-col-title">Handmatig</div>
+        <div class="calc-line"><span class="calc-line-label">Geschatte uren/week aan repetitief werk</span><span class="calc-line-value" id="tradHours">~15 uur</span></div>
+        <div class="calc-line"><span class="calc-line-label">Gem. kosten per uur (incl. werkgeverslasten)</span><span class="calc-line-value">&#8364;30</span></div>
+        <div class="calc-line total"><span class="calc-line-label">Kosten per maand</span><span class="calc-line-value" id="tradMonthly">&#8364;1.950</span></div>
+        <div class="calc-line total"><span class="calc-line-label">Kosten per jaar</span><span class="calc-line-value" id="tradYearly">&#8364;23.400</span></div>
+        <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Beperkt tot kantooruren (8u/dag)</span></div>
       </div>
-
-      <!-- Savings -->
-      <div class="calc-savings">
-        <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;19.200 per jaar</div>
-        <div class="calc-savings-label">door repetitieve processen te automatiseren</div>
-        <div class="calc-benefits">
-          <div class="calc-benefit"><span class="check">&#10003;</span> Draait 24/7 door, ook buiten kantooruren</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Geen fouten door handmatig werk</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Je team focust op strategie en klantcontact</div>
-          <div class="calc-benefit"><span class="check">&#10003;</span> Schaalt direct mee zonder extra overhead</div>
-        </div>
-        <p style="font-size:.72rem;color:var(--dim);margin-top:1rem;opacity:.6;max-width:500px">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
+      <div class="calc-col forgexe">
+        <div class="calc-col-title">Forgexe</div>
+        <div class="calc-line"><span class="calc-line-label">Pakket</span><span class="calc-line-value" id="fxPackage">Forge.Start</span></div>
+        <div class="calc-line total"><span class="calc-line-label">Totaal per maand</span><span class="calc-line-value" id="fxMonthly">&#8364;350</span></div>
+        <div class="calc-line total"><span class="calc-line-label">Totaal per jaar</span><span class="calc-line-value" id="fxYearly">&#8364;4.200</span></div>
       </div>
+    </div>
+
+    <div class="calc-savings">
+      <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;19.200 per jaar</div>
+      <div class="calc-savings-label">door repetitieve processen te automatiseren</div>
+      <div class="calc-benefits">
+        <div class="calc-benefit"><span class="check">&#10003;</span> Draait 24/7 door, ook buiten kantooruren</div>
+        <div class="calc-benefit"><span class="check">&#10003;</span> Geen fouten door handmatig werk</div>
+        <div class="calc-benefit"><span class="check">&#10003;</span> Je team focust op strategie en klantcontact</div>
+        <div class="calc-benefit"><span class="check">&#10003;</span> Schaalt direct mee zonder extra overhead</div>
+      </div>
+      <p style="font-size:.72rem;color:var(--dim);margin-top:1rem;opacity:.6;max-width:500px;margin-left:auto;margin-right:auto">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
     </div>
 
   </div>
