@@ -39,27 +39,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
 @media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.legal{padding:6rem 1.25rem 3rem}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
-
-.scan-wizard{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 3rem}
-.scan-inner{background:var(--bg-el);border:none;border-radius:16px;padding:3rem;position:relative;overflow:hidden}
-.scan-terminal{font-size:.8rem;color:var(--green);font-family:var(--mono);margin-bottom:2rem}
-.scan-question{font-family:var(--head);font-size:1.4rem;font-weight:600;margin-bottom:2rem;letter-spacing:-.02em}
-.scan-options{display:flex;gap:.75rem;flex-wrap:wrap}
-.scan-option{padding:.75rem 1.5rem;background:transparent;border:1px solid var(--brd);color:var(--txt);font-family:var(--mono);font-size:.82rem;cursor:pointer;border-radius:8px;transition:all .3s}
-.scan-option:hover{border-color:var(--green);color:var(--green);background:rgba(52,211,153,.05)}
-.scan-form-row{display:flex;gap:.75rem;margin-bottom:.75rem}
-.scan-form-row input{flex:1;padding:.75rem 1rem;font-size:.82rem;font-family:var(--mono);background:var(--bg);border:1px solid var(--brd);color:var(--txt);outline:none;border-radius:6px;transition:border-color .3s}
-.scan-form-row input:focus{border-color:var(--green)}
-.scan-form-row input::placeholder{color:var(--mut)}
-.scan-progress{height:3px;background:var(--brd);border-radius:2px;margin-top:2rem}
-.scan-progress-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--amber));border-radius:2px;transition:width .5s ease}
-.scan-done-terminal{font-size:.8rem;color:var(--amber);font-family:var(--mono);margin-bottom:1.5rem}
-.scan-done-title{font-family:var(--head);font-size:1.3rem;font-weight:600;color:var(--green);margin-bottom:.75rem}
-.scan-done-desc{font-size:.88rem;color:var(--dim);margin-bottom:1.5rem}
-.scan-done-checks{display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.78rem;color:var(--dim)}
-.scan-done-checks span{color:var(--green)}
-.scan-multi.selected{border-color:var(--green);color:var(--green);background:rgba(52,211,153,.08)}
-@media(max-width:768px){.scan-wizard{padding:0 1.25rem}.scan-inner{padding:2rem}.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}
 </style>
 </head>
 <body class="light">
@@ -68,7 +47,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <a href="/" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
   <div class="nav-right">
     <ul class="nav-links"><li><a href="expertises.html">Expertises</a></li><li><a href="branches.html">Branches</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
-    <a href="#scanWizard" onclick="openScanWizard();return false;" class="nav-cta">Gratis scan</a>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
@@ -91,89 +70,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
   <p>Alle auteursrechten en andere intellectuele eigendomsrechten met betrekking tot alle op onze website aanwezige content berust bij Forgexe, tenzij nadrukkelijk anders vermeld door middel van bijvoorbeeld bronverwijzingen. Niets uit de applicaties, teksten of grafische voorstellingen van deze website mag worden verveelvoudigd en/of openbaar gemaakt door druk, fotokopie, fax, overtypen, opslag in een geautomatiseerd gegevensbestand of anderszins hetgeen van toepassing is op de gehele of gedeeltelijke bewerking, zonder uitdrukkelijke schriftelijke toestemming vooraf verschaft door Forgexe.</p>
 </div>
 <div class="neon-line"></div>
-
-<div id="scanWizard" class="scan-wizard" style="display:none">
-  <div class="scan-inner">
-    <div class="scan-terminal">C:\forgexe\scan> --init bedrijfsscan<span class="cursor"></span></div>
-    <div class="scan-step" id="scanStep1">
-      <h3 class="scan-question">Hoeveel medewerkers heeft je bedrijf?</h3>
-      <div class="scan-options">
-        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '1-15')">1 - 15</button>
-        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '15-50')">15 - 50</button>
-        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '50-200')">50 - 200</button>
-        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '200+')">200+</button>
-      </div>
-    </div>
-    <div class="scan-step" id="scanStep2" style="display:none">
-      <button onclick="prevScanStep(2)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
-      <h3 class="scan-question">In welke branche ben je actief?</h3>
-      <div class="scan-options">
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Maakindustrie')">Maakindustrie</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Finance')">Finance</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'IT &amp; Software')">IT &amp; Software</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'E-commerce')">E-commerce</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Vastgoed')">Vastgoed</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Juridisch')">Juridisch</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Marketing')">Marketing</button>
-        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Anders')">Anders</button>
-      </div>
-    </div>
-    <div class="scan-step" id="scanStep3" style="display:none">
-      <button onclick="prevScanStep(3)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
-      <h3 class="scan-question">Waar ligt je grootste uitdaging?</h3>
-      <div class="scan-options">
-        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Meer leads en klanten')">Meer leads en klanten</button>
-        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Efficientere operatie')">Effici&#235;ntere operatie</button>
-        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Beide')">Beide</button>
-      </div>
-    </div>
-    <div class="scan-step" id="scanStep4" style="display:none">
-      <button onclick="prevScanStep(4)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
-      <h3 class="scan-question">Welke tools gebruik je nu?</h3>
-      <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.25rem">Selecteer alles dat van toepassing is.</p>
-      <div class="scan-options" id="toolOptions"></div>
-      <button class="btn-primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </div>
-    <div class="scan-step" id="scanStep5" style="display:none">
-      <button onclick="prevScanStep(5)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
-      <h3 class="scan-question">Hoe snel wil je resultaat zien?</h3>
-      <div class="scan-options">
-        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Zo snel mogelijk')">Zo snel mogelijk</button>
-        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Binnen 3 maanden')">Binnen 3 maanden</button>
-        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Ik orienteer me nog')">Ik ori&#235;nteer me nog</button>
-      </div>
-    </div>
-    <div class="scan-step" id="scanStep6" style="display:none">
-      <button onclick="prevScanStep(6)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem;transition:color .3s" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--dim)'">&larr; Terug</button>
-      <h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3>
-      <form class="scan-form" onsubmit="submitScan(event)">
-        <div class="scan-form-row">
-          <input type="text" id="scanNaam" placeholder="Naam" required>
-          <input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required>
-        </div>
-        <div class="scan-form-row">
-          <input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required>
-          <input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)">
-        </div>
-        <label style="display:flex;align-items:flex-start;gap:.6rem;margin-top:1rem;cursor:pointer;font-size:.75rem;color:var(--dim);line-height:1.6"><input type="checkbox" id="scanPrivacy" required style="margin-top:3px;accent-color:var(--green)"><span>Ik ga akkoord met het <a href="privacy.html" style="color:var(--green);text-decoration:none" target="_blank">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
-      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-      </form>
-    </div>
-    <div class="scan-step" id="scanDone" style="display:none">
-      <div class="scan-done-terminal">C:\forgexe\scan&gt; --status processing...<span class="cursor"></span></div>
-      <h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3>
-      <p class="scan-done-desc">Je ontvangt je rapport binnen 48 uur. We nemen zo snel mogelijk contact op.</p>
-      <div class="scan-done-checks">
-        <span>&#10003; Rapport binnen 48 uur</span>
-        <span>&#10003; Reactie binnen 2 uur</span>
-        <span>&#10003; 100% gratis</span>
-      </div>
-    </div>
-    <div class="scan-progress">
-      <div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div>
-    </div>
-  </div>
-</div>
 
 <footer>
   <div class="footer-grid">
@@ -212,75 +108,6 @@ elevenlabs-convai::part(branding){display:none!important}
 elevenlabs-convai::part(powered-by){display:none!important}
 </style>
 <elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript">
-var scanData = {uitdaging: 'Beide'};
-var totalSteps = 6;
-function openScanWizard() {
-  var w = document.getElementById('scanWizard');
-  w.style.display = 'block';
-  setTimeout(function() {
-    w.scrollIntoView({behavior: 'smooth', block: 'center'});
-  }, 100);
-}
-function prevScanStep(step) {
-  document.getElementById('scanStep' + step).style.display = 'none';
-  document.getElementById('scanStep' + (step - 1)).style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = Math.round(((step - 1) / totalSteps) * 100) + '%';
-}
-var toolsByType = {
-  'Meer leads en klanten': ['CRM (Zoho, Pipedrive, Salesforce)', 'LinkedIn', 'Google Ads', 'Meta Ads', 'E-mail marketing (Mailchimp, ActiveCampaign)', 'WordPress / Webflow', 'Geen van deze'],
-  'Efficientere operatie': ['ERP (SAP, Exact, AFAS)', 'Boekhoudpakket', 'Planningssoftware', 'Google Workspace', 'Microsoft 365', 'Slack / Teams', 'Geen van deze'],
-  'Beide': ['CRM (Zoho, Pipedrive, Salesforce)', 'ERP (SAP, Exact, AFAS)', 'Google Ads / Meta Ads', 'Google Workspace', 'Microsoft 365', 'Boekhoudpakket', 'E-mail marketing', 'Geen van deze']
-};
-function buildToolOptions() {
-  var container = document.getElementById('toolOptions');
-  var tools = toolsByType[scanData.uitdaging] || toolsByType['Beide'];
-  container.innerHTML = '';
-  tools.forEach(function(tool) {
-    var btn = document.createElement('button');
-    btn.className = 'scan-option scan-multi';
-    btn.textContent = tool;
-    btn.onclick = function() { toggleTool(btn); };
-    container.appendChild(btn);
-  });
-}
-function nextScanStep(step, key, value) {
-  scanData[key] = value;
-  var next = step + 1;
-  if (step === 3) { buildToolOptions(); }
-  document.getElementById('scanStep' + step).style.display = 'none';
-  document.getElementById('scanStep' + next).style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = Math.round((next / totalSteps) * 100) + '%';
-}
-function toggleTool(btn) {
-  btn.classList.toggle('selected');
-}
-function submitTools() {
-  var selected = [];
-  document.querySelectorAll('#toolOptions .selected').forEach(function(b) {
-    selected.push(b.textContent);
-  });
-  scanData.tools = selected.length > 0 ? selected.join(', ') : 'Geen geselecteerd';
-  document.getElementById('scanStep4').style.display = 'none';
-  document.getElementById('scanStep5').style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = Math.round((5 / totalSteps) * 100) + '%';
-}
-function submitScan(e) {
-  e.preventDefault();
-  scanData.naam = document.getElementById('scanNaam').value;
-  scanData.bedrijf = document.getElementById('scanBedrijf').value;
-  scanData.email = document.getElementById('scanEmail').value;
-  scanData.telefoon = document.getElementById('scanTelefoon').value;
-  document.getElementById('scanStep6').style.display = 'none';
-  document.getElementById('scanDone').style.display = 'block';
-  document.getElementById('scanProgressBar').style.width = '100%';
-  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-scan', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(scanData)
-  }).catch(function(err) {});
-}
-
-</script>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
