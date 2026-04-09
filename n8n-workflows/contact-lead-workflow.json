@@ -1,0 +1,121 @@
+{
+  "name": "Forgexe - Contact Formulier",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "forgexe-contact",
+        "responseMode": "lastNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "name": "Contact Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "forgexe-contact"
+    },
+    {
+      "parameters": {
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "10WlKYZS4hghgOh052T3SzKzsYYceVrqC6T-UlWfocDc"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Contact leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ new Date().toISOString().split('T')[0] }}",
+            "Naam": "={{ $json.body.naam }}",
+            "Bedrijf": "={{ $json.body.bedrijf }}",
+            "Email": "={{ $json.body.email }}",
+            "Telefoon": "={{ $json.body.telefoon || '' }}",
+            "Bericht": "={{ $json.body.bericht || '' }}"
+          }
+        },
+        "options": {}
+      },
+      "name": "Save to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [400, -100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: 'Forgexe <info@forgexe.nl>', to: [$json.body.email], subject: 'We hebben je bericht ontvangen!', html: '<div style=\"font-family:Arial,sans-serif;max-width:600px;margin:0 auto\"><h2 style=\"color:#34d399\">Bedankt, ' + $json.body.naam + '!</h2><p>We hebben je bericht ontvangen en reageren binnen <strong>2 uur</strong> op werkdagen.</p><p>Heb je een dringende vraag? Bel ons op <a href=\"tel:+31850805439\">085 - 080 54 39</a> of stuur een <a href=\"https://wa.me/31618031022\">WhatsApp</a>.</p><br><p>Met vriendelijke groet,<br><strong>Team Forgexe</strong></p><p style=\"font-size:12px;color:#999\">forgexe.nl</p></div>' }) }}",
+        "options": {}
+      },
+      "name": "Bevestigingsmail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: 'Forgexe <info@forgexe.nl>', to: ['sedat@forgexe.nl'], subject: '📩 Nieuw contactverzoek: ' + $json.body.naam, html: '<div style=\"font-family:Arial,sans-serif\"><h2>Nieuw contactverzoek</h2><p><strong>Naam:</strong> ' + $json.body.naam + '</p><p><strong>Bedrijf:</strong> ' + ($json.body.bedrijf || '-') + '</p><p><strong>Email:</strong> ' + $json.body.email + '</p><p><strong>Telefoon:</strong> ' + ($json.body.telefoon || '-') + '</p><p><strong>Bericht:</strong></p><p>' + ($json.body.bericht || '-') + '</p></div>' }) }}",
+        "options": {}
+      },
+      "name": "Notificatie Team",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true, \"message\": \"Bericht ontvangen\"}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {"name": "Access-Control-Allow-Origin", "value": "*"},
+              {"name": "Access-Control-Allow-Headers", "value": "Content-Type"}
+            ]
+          }
+        }
+      },
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [700, 0]
+    }
+  ],
+  "connections": {
+    "Contact Webhook": {
+      "main": [
+        [
+          {"node": "Save to Sheet", "type": "main", "index": 0},
+          {"node": "Bevestigingsmail", "type": "main", "index": 0},
+          {"node": "Notificatie Team", "type": "main", "index": 0}
+        ]
+      ]
+    },
+    "Save to Sheet": {
+      "main": [[{"node": "Respond OK", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

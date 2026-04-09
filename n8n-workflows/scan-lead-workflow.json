@@ -1,0 +1,125 @@
+{
+  "name": "Forgexe - Scan Wizard Lead",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "forgexe-scan",
+        "responseMode": "lastNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "name": "Scan Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "forgexe-scan"
+    },
+    {
+      "parameters": {
+        "resource": "sheet",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "10WlKYZS4hghgOh052T3SzKzsYYceVrqC6T-UlWfocDc"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Scan leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ new Date().toISOString().split('T')[0] }}",
+            "Naam": "={{ $json.body.naam }}",
+            "Bedrijf": "={{ $json.body.bedrijf }}",
+            "Email": "={{ $json.body.email }}",
+            "Telefoon": "={{ $json.body.telefoon || '' }}",
+            "Medewerkers": "={{ $json.body.medewerkers }}",
+            "Branche": "={{ $json.body.branche }}",
+            "Uitdaging": "={{ $json.body.uitdaging }}",
+            "Tools": "={{ $json.body.tools }}",
+            "Urgentie": "={{ $json.body.urgentie }}"
+          }
+        },
+        "options": {}
+      },
+      "name": "Save to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [400, -100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: 'Forgexe <info@forgexe.nl>', to: [$json.body.email], subject: 'Je bedrijfsscan is ontvangen!', html: '<div style=\"font-family:Arial,sans-serif;max-width:600px;margin:0 auto\"><h2 style=\"color:#34d399\">Bedankt, ' + $json.body.naam + '!</h2><p>We hebben je scanverzoek voor <strong>' + $json.body.bedrijf + '</strong> ontvangen.</p><p>Je ontvangt je persoonlijke rapport binnen <strong>48 uur</strong>.</p><p>Heb je in de tussentijd vragen? Reply dan op deze mail.</p><br><p>Met vriendelijke groet,<br><strong>Team Forgexe</strong></p><p style=\"font-size:12px;color:#999\">forgexe.nl</p></div>' }) }}",
+        "options": {}
+      },
+      "name": "Bevestigingsmail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: 'Forgexe <info@forgexe.nl>', to: ['sedat@forgexe.nl'], subject: '🔥 Nieuwe scan lead: ' + $json.body.bedrijf, html: '<div style=\"font-family:Arial,sans-serif\"><h2>Nieuw scanverzoek</h2><table style=\"border-collapse:collapse;width:100%\"><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Naam</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.naam + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Bedrijf</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.bedrijf + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Email</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.email + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Telefoon</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + ($json.body.telefoon || '-') + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Medewerkers</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.medewerkers + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Branche</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.branche + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Uitdaging</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.uitdaging + '</td></tr><tr><td style=\"padding:8px;border-bottom:1px solid #eee;font-weight:bold\">Tools</td><td style=\"padding:8px;border-bottom:1px solid #eee\">' + $json.body.tools + '</td></tr><tr><td style=\"padding:8px;font-weight:bold\">Urgentie</td><td style=\"padding:8px\">' + $json.body.urgentie + '</td></tr></table></div>' }) }}",
+        "options": {}
+      },
+      "name": "Notificatie Team",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true, \"message\": \"Scan ontvangen\"}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {"name": "Access-Control-Allow-Origin", "value": "*"},
+              {"name": "Access-Control-Allow-Headers", "value": "Content-Type"}
+            ]
+          }
+        }
+      },
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [700, 0]
+    }
+  ],
+  "connections": {
+    "Scan Webhook": {
+      "main": [
+        [
+          {"node": "Save to Sheet", "type": "main", "index": 0},
+          {"node": "Bevestigingsmail", "type": "main", "index": 0},
+          {"node": "Notificatie Team", "type": "main", "index": 0}
+        ]
+      ]
+    },
+    "Save to Sheet": {
+      "main": [[{"node": "Respond OK", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

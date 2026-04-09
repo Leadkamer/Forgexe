@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1128 191" width="1128" height="191">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#0a0b0e"/>
+      <stop offset="100%" stop-color="#1a0f0a"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#34d399" stop-opacity="0.1"/>
+      <stop offset="65%" stop-color="#f5a623" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#34d399" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#f5a623" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#f5a623"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1128" height="191" fill="url(#bg)"/>
+  <rect width="1128" height="191" fill="url(#glow)"/>
+
+  <!-- Grid -->
+  <g opacity="0.08" stroke="#34d399" stroke-width="0.5" fill="none">
+    <line x1="80" y1="0" x2="80" y2="191"/><line x1="160" y1="0" x2="160" y2="191"/><line x1="240" y1="0" x2="240" y2="191"/><line x1="320" y1="0" x2="320" y2="191"/><line x1="400" y1="0" x2="400" y2="191"/><line x1="480" y1="0" x2="480" y2="191"/><line x1="560" y1="0" x2="560" y2="191"/><line x1="640" y1="0" x2="640" y2="191"/><line x1="720" y1="0" x2="720" y2="191"/><line x1="800" y1="0" x2="800" y2="191"/><line x1="880" y1="0" x2="880" y2="191"/><line x1="960" y1="0" x2="960" y2="191"/><line x1="1040" y1="0" x2="1040" y2="191"/>
+    <line x1="0" y1="64" x2="1128" y2="64"/><line x1="0" y1="128" x2="1128" y2="128"/>
+  </g>
+
+  <!-- Neon lines top + bottom -->
+  <rect x="0" y="0" width="1128" height="1.5" fill="url(#line)"/>
+  <rect x="0" y="189.5" width="1128" height="1.5" fill="url(#line)"/>
+
+  <!-- Scanlines -->
+  <g opacity="0.05">
+    <line x1="0" y1="4" x2="1128" y2="4" stroke="#fff" stroke-width="1"/><line x1="0" y1="8" x2="1128" y2="8" stroke="#fff" stroke-width="1"/><line x1="0" y1="12" x2="1128" y2="12" stroke="#fff" stroke-width="1"/><line x1="0" y1="16" x2="1128" y2="16" stroke="#fff" stroke-width="1"/><line x1="0" y1="20" x2="1128" y2="20" stroke="#fff" stroke-width="1"/><line x1="0" y1="24" x2="1128" y2="24" stroke="#fff" stroke-width="1"/><line x1="0" y1="28" x2="1128" y2="28" stroke="#fff" stroke-width="1"/><line x1="0" y1="32" x2="1128" y2="32" stroke="#fff" stroke-width="1"/><line x1="0" y1="36" x2="1128" y2="36" stroke="#fff" stroke-width="1"/><line x1="0" y1="40" x2="1128" y2="40" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- Orbit visual (right side) -->
+  <g transform="translate(920, 96)" opacity="0.5">
+    <circle cx="0" cy="0" r="50" stroke="url(#orbitGrad)" stroke-width="1.2" fill="none" opacity="0.5"/>
+    <circle cx="0" cy="0" r="90" stroke="url(#orbitGrad)" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <circle cx="0" cy="0" r="130" stroke="url(#orbitGrad)" stroke-width="0.6" fill="none" opacity="0.2"/>
+    <circle cx="0" cy="0" r="70" stroke="#34d399" stroke-width="0.8" fill="none" opacity="0.3" stroke-dasharray="5 12"/>
+    <circle cx="0" cy="0" r="110" stroke="#f5a623" stroke-width="0.6" fill="none" opacity="0.2" stroke-dasharray="3 14"/>
+    <circle cx="0" cy="0" r="40" fill="url(#centerGlow)"/>
+  </g>
+
+  <!-- Flow lines -->
+  <g opacity="0.6">
+    <line x1="680" y1="40" x2="790" y2="70" stroke="#34d399" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+    <line x1="690" y1="155" x2="790" y2="125" stroke="#34d399" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+    <line x1="1020" y1="30" x2="960" y2="65" stroke="#f5a623" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+    <line x1="1060" y1="160" x2="980" y2="125" stroke="#f5a623" stroke-width="1" stroke-dasharray="3 6" opacity="0.4"/>
+    <circle cx="680" cy="40" r="2.5" fill="#34d399" opacity="0.5"/>
+    <circle cx="690" cy="155" r="2.5" fill="#34d399" opacity="0.5"/>
+    <circle cx="1020" cy="30" r="2.5" fill="#f5a623" opacity="0.5"/>
+    <circle cx="1060" cy="160" r="2.5" fill="#f5a623" opacity="0.5"/>
+    <circle cx="830" cy="25" r="2" fill="#00f0ff" opacity="0.4"/>
+    <circle cx="1040" cy="96" r="2" fill="#00f0ff" opacity="0.4"/>
+  </g>
+
+  <!-- Logo mark -->
+  <g transform="translate(250, 45)">
+    <rect x="0" y="0" width="11" height="52" rx="2.5" fill="#34d399"/>
+    <rect x="0" y="0" width="38" height="10" rx="2.5" fill="#34d399"/>
+    <rect x="0" y="21" width="28" height="8" rx="2.5" fill="#34d399"/>
+    <polygon points="33,20 50,32 33,44" fill="#34d399"/>
+  </g>
+
+  <!-- FORGEXE text -->
+  <text x="314" y="80" font-family="'Outfit', 'Arial', sans-serif" font-size="32" font-weight="700" letter-spacing="5" fill="#34d399">FORGEXE</text>
+
+  <!-- Execute growth -->
+  <text x="252" y="112" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e2e8f0">C:\&gt; execute growth</text>
+  <rect x="430" y="100" width="6" height="14" rx="1" fill="#34d399" opacity="0.8"/>
+
+  <!-- Tagline -->
+  <text x="252" y="142" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" font-weight="700" letter-spacing="1" fill="#e2e8f0">AI-medewerkers die jouw groei en operatie 24/7 uitvoeren</text>
+
+  <!-- Two pillars -->
+  <g transform="translate(800, 55)">
+    <rect x="0" y="0" width="120" height="38" rx="10" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+    <g transform="translate(10, 7)">
+      <rect x="0" y="0" width="24" height="24" rx="6" fill="rgba(52,211,153,0.15)"/>
+      <polyline points="4,16 8,11 13,17 18,7 22,12" stroke="#34d399" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="42" y="25" font-family="'Outfit', 'Arial', sans-serif" font-size="14" font-weight="600" fill="#34d399">Growth</text>
+
+    <rect x="132" y="0" width="100" height="38" rx="10" fill="rgba(245,166,35,0.1)" stroke="rgba(245,166,35,0.3)" stroke-width="1"/>
+    <g transform="translate(142, 7)">
+      <rect x="0" y="0" width="24" height="24" rx="6" fill="rgba(245,166,35,0.15)"/>
+      <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#f5a623" stroke-width="1.3" fill="none"/>
+      <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#f5a623" stroke-width="1.3" fill="none"/>
+      <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#f5a623" stroke-width="1.3" fill="none"/>
+      <rect x="13" y="13" width="7" height="7" rx="1.5" stroke="#f5a623" stroke-width="1.3" fill="none"/>
+    </g>
+    <text x="174" y="25" font-family="'Outfit', 'Arial', sans-serif" font-size="14" font-weight="600" fill="#f5a623">Ops</text>
+  </g>
+</svg>
