@@ -385,9 +385,13 @@ document.getElementById('waitlistForm').addEventListener('submit', function(e) {
   var naam = form.querySelector('input[name="naam"]').value;
   var bedrijf = form.querySelector('input[name="bedrijf"]').value;
   var email = form.querySelector('input[name="email"]').value;
-  console.log('Pilot waitlist signup:', { naam: naam, bedrijf: bedrijf, email: email });
   form.style.display = 'none';
   document.getElementById('waitlistConfirmation').style.display = 'block';
+  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-pilot', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ naam: naam, bedrijf: bedrijf, email: email })
+  }).catch(function(err) { /* silent */ });
 });
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(en) {

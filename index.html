@@ -1295,8 +1295,11 @@ function submitScan(e) {
   document.getElementById('scanStep6').style.display = 'none';
   document.getElementById('scanDone').style.display = 'block';
   document.getElementById('scanProgressBar').style.width = '100%';
-  // Here you can send scanData to n8n webhook
-  console.log('Scan data:', JSON.stringify(scanData));
+  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-scan', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(scanData)
+  }).catch(function(err) { /* silent */ });
 }
 
 document.getElementById('themeToggle').addEventListener('click', function() {

@@ -107,14 +107,15 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 
 <section class="reveal">
   <div class="contact-layout">
-    <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
-      <div class="form-group"><label>Naam *</label><input type="text" name="naam" placeholder="Jouw naam" required></div>
-      <div class="form-group"><label>Bedrijf *</label><input type="text" name="bedrijf" placeholder="Bedrijfsnaam" required></div>
-      <div class="form-group"><label>E-mail *</label><input type="email" name="email" placeholder="naam@bedrijf.nl" required></div>
-      <div class="form-group"><label>Telefoon</label><input type="tel" name="telefoon" placeholder="+31 6 ..." ></div>
-      <div class="form-group"><label>Waar kunnen we mee helpen?</label><textarea name="bericht" placeholder="Vertel kort over je uitdaging of waar je kansen ziet voor AI en automatisering..."></textarea></div>
+    <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+      <div class="form-group"><label>Naam *</label><input type="text" id="contactNaam" placeholder="Jouw naam" required></div>
+      <div class="form-group"><label>Bedrijf *</label><input type="text" id="contactBedrijf" placeholder="Bedrijfsnaam" required></div>
+      <div class="form-group"><label>E-mail *</label><input type="email" id="contactEmail" placeholder="naam@bedrijf.nl" required></div>
+      <div class="form-group"><label>Telefoon</label><input type="tel" id="contactTelefoon" placeholder="+31 6 ..."></div>
+      <div class="form-group"><label>Waar kunnen we mee helpen?</label><textarea id="contactBericht" placeholder="Vertel kort over je uitdaging of waar je kansen ziet voor AI en automatisering..."></textarea></div>
       <div class="form-submit"><button type="submit" class="btn-primary">Verstuur aanvraag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
       <p class="form-note">&#10003; 100% gratis &#183; &#10003; Rapport binnen 48 uur &#183; &#10003; Geen verplichtingen</p>
+      <div id="contactSuccess" style="display:none;padding:2rem;text-align:center"><h3 style="color:var(--green);font-family:var(--head);margin-bottom:.75rem">Bedankt! Je bericht is verstuurd.</h3><p style="font-size:.88rem;color:var(--dim)">We reageren binnen 2 uur op werkdagen.</p></div>
     </form>
     <div class="contact-info">
       <div class="contact-card">
@@ -190,6 +191,23 @@ document.querySelectorAll('#mobileMenu a').forEach(function(a) {
     document.getElementById('mobileMenu').classList.remove('open');
   });
 });
+function submitContact(e) {
+  e.preventDefault();
+  var data = {
+    naam: document.getElementById('contactNaam').value,
+    bedrijf: document.getElementById('contactBedrijf').value,
+    email: document.getElementById('contactEmail').value,
+    telefoon: document.getElementById('contactTelefoon').value,
+    bericht: document.getElementById('contactBericht').value
+  };
+  document.getElementById('contactForm').querySelectorAll('.form-group, .form-submit, .form-note').forEach(function(el) { el.style.display = 'none'; });
+  document.getElementById('contactSuccess').style.display = 'block';
+  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-contact', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).catch(function(err) { /* silent */ });
+}
 document.getElementById('themeToggle').addEventListener('click', function() {
   document.body.classList.toggle('light');
 });
