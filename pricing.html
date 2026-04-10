@@ -348,15 +348,16 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Beperkt tot kantooruren (8u/dag)</span></div>
       </div>
       <div class="calc-col forgexe">
-        <div class="calc-col-title">Forgexe</div>
-        <div class="calc-line"><span class="calc-line-label">Pakket</span><span class="calc-line-value" id="fxPackage">Forge.Start</span></div>
-        <div class="calc-line total"><span class="calc-line-label">Totaal per maand</span><span class="calc-line-value" id="fxMonthly">&#8364;500</span></div>
-        <div class="calc-line total"><span class="calc-line-label">Totaal per jaar</span><span class="calc-line-value" id="fxYearly">&#8364;6.000</span></div>
+        <div class="calc-col-title">Geautomatiseerd met Forgexe</div>
+        <div class="calc-line"><span class="calc-line-label">AI-medewerkers nemen het over</span><span class="calc-line-value">24/7</span></div>
+        <div class="calc-line"><span class="calc-line-label">Vanaf</span><span class="calc-line-value">&#8364;500/mnd</span></div>
+        <div class="calc-line total"><span class="calc-line-label">Investering per jaar</span><span class="calc-line-value">vanaf &#8364;6.000</span></div>
+        <div class="calc-line" style="margin-top:.5rem;opacity:.6"><span class="calc-line-label" style="font-size:.72rem">Schaalt mee met je behoeften</span></div>
       </div>
     </div>
 
     <div class="calc-savings">
-      <div class="calc-savings-amount" id="calcSavings">Jouw besparing: &#8364;17.400 per jaar</div>
+      <div class="calc-savings-amount" id="calcSavings">Jouw besparing: tot &#8364;16.380 per jaar</div>
       <div class="calc-savings-label">door repetitieve processen te automatiseren</div>
       <div class="calc-benefits">
         <div class="calc-benefit"><span class="check">&#10003;</span> Draait 24/7 door, ook buiten kantooruren</div>
@@ -364,7 +365,9 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         <div class="calc-benefit"><span class="check">&#10003;</span> Je team focust op strategie en klantcontact</div>
         <div class="calc-benefit"><span class="check">&#10003;</span> Schaalt direct mee zonder extra overhead</div>
       </div>
-      <p style="font-size:.72rem;color:var(--dim);margin-top:1rem;opacity:.6;max-width:500px;margin-left:auto;margin-right:auto">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
+      <p style="font-size:.85rem;color:var(--txt);margin-top:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">Welk Forgexe-pakket bij jouw situatie past, bespreken we in een gratis bedrijfsscan.</p>
+      <a href="contact.html" class="btn-primary" style="margin-top:1rem">Plan een gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p style="font-size:.72rem;color:var(--dim);margin-top:1.5rem;opacity:.6;max-width:500px;margin-left:auto;margin-right:auto">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
     </div>
 
   </div>
@@ -444,12 +447,6 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 /* Calculator logic */
 var calcState = {fte: 1};
 
-var packages = {
-  1: {name: 'Forge.Start', price: 500},
-  2: {name: 'Forge.Pro', price: 1250},
-  3: {name: 'Forge.Scale', price: 2500}
-};
-
 function formatNumber(n) {
   return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
@@ -469,19 +466,13 @@ function updateCalculator() {
   var tradMonthly = Math.round(hoursPerWeek * hourlyRate * 4.33);
   var tradYearly = tradMonthly * 12;
 
-  var pkg = packages[fte];
-  var fxMonthly = pkg.price;
-  var fxYearly = fxMonthly * 12;
-
-  var savings = tradYearly - fxYearly;
+  // Realistische besparing: ~70% van handmatig werk wordt geautomatiseerd
+  var savings = Math.round(tradYearly * 0.7);
 
   document.getElementById('tradHours').textContent = '~' + hoursPerWeek + ' uur';
   document.getElementById('tradMonthly').innerHTML = '\u20AC' + formatNumber(tradMonthly);
   document.getElementById('tradYearly').innerHTML = '\u20AC' + formatNumber(tradYearly);
-  document.getElementById('fxPackage').textContent = pkg.name;
-  document.getElementById('fxMonthly').innerHTML = '\u20AC' + formatNumber(fxMonthly);
-  document.getElementById('fxYearly').innerHTML = '\u20AC' + formatNumber(fxYearly);
-  document.getElementById('calcSavings').innerHTML = 'Jouw besparing: \u20AC' + formatNumber(savings) + ' per jaar';
+  document.getElementById('calcSavings').innerHTML = 'Jouw besparing: tot \u20AC' + formatNumber(savings) + ' per jaar';
 }
 </script>
 
