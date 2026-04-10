@@ -219,7 +219,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         <li>Binnen 1 week operationeel</li>
         <li>Maandelijkse rapportage</li>
       </ul>
-      <a href="contact.html" class="price-cta">Gratis bedrijfsscan</a>
+      <a href="#scanWizard" onclick="openScanWizard();return false;" class="price-cta">Gratis bedrijfsscan</a>
     </div>
 
     <!-- Forge.Pro (popular) -->
@@ -237,7 +237,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
         <li>Maandelijkse rapportage</li>
         <li>Tweewekelijkse check-in</li>
       </ul>
-      <a href="contact.html" class="price-cta">Gratis bedrijfsscan</a>
+      <a href="#scanWizard" onclick="openScanWizard();return false;" class="price-cta">Gratis bedrijfsscan</a>
     </div>
 
     <!-- Forge.Scale -->
@@ -259,6 +259,92 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
     </div>
 
   </div>
+</section>
+
+<!-- Scan wizard opent hier (tussen pakketten en vergelijking) -->
+<section style="padding-top:0;padding-bottom:0">
+<div id="scanWizard" class="scan-wizard" style="display:none">
+  <div class="scan-inner">
+    <div class="scan-terminal">C:\forgexe\scan&gt; --init bedrijfsscan<span class="cursor"></span></div>
+    <div class="scan-step" id="scanStep1">
+      <h3 class="scan-question">Hoeveel medewerkers heeft je bedrijf?</h3>
+      <div class="scan-options">
+        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '1-15')">1 - 15</button>
+        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '15-50')">15 - 50</button>
+        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '50-200')">50 - 200</button>
+        <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '200+')">200+</button>
+      </div>
+    </div>
+    <div class="scan-step" id="scanStep2" style="display:none">
+      <button onclick="prevScanStep(2)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
+      <h3 class="scan-question">In welke branche ben je actief?</h3>
+      <div class="scan-options">
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Maakindustrie')">Maakindustrie</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Finance')">Finance</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'IT &amp; Software')">IT &amp; Software</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'E-commerce')">E-commerce</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Vastgoed')">Vastgoed</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Juridisch')">Juridisch</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Marketing')">Marketing</button>
+        <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Anders')">Anders</button>
+      </div>
+    </div>
+    <div class="scan-step" id="scanStep3" style="display:none">
+      <button onclick="prevScanStep(3)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
+      <h3 class="scan-question">Waar ligt je grootste uitdaging?</h3>
+      <div class="scan-options">
+        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Meer leads en klanten')">Meer leads en klanten</button>
+        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Efficientere operatie')">Effici&#235;ntere operatie</button>
+        <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Beide')">Beide</button>
+      </div>
+    </div>
+    <div class="scan-step" id="scanStep4" style="display:none">
+      <button onclick="prevScanStep(4)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
+      <h3 class="scan-question">Welke tools gebruik je nu?</h3>
+      <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.25rem">Selecteer alles dat van toepassing is.</p>
+      <div class="scan-options" id="toolOptions"></div>
+      <button class="btn-primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="scan-step" id="scanStep5" style="display:none">
+      <button onclick="prevScanStep(5)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
+      <h3 class="scan-question">Hoe snel wil je resultaat zien?</h3>
+      <div class="scan-options">
+        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Zo snel mogelijk')">Zo snel mogelijk</button>
+        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Binnen 3 maanden')">Binnen 3 maanden</button>
+        <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Ik orienteer me nog')">Ik ori&#235;nteer me nog</button>
+      </div>
+    </div>
+    <div class="scan-step" id="scanStep6" style="display:none">
+      <button onclick="prevScanStep(6)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
+      <h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3>
+      <form class="scan-form" onsubmit="submitScan(event)">
+        <div class="scan-form-row">
+          <input type="text" id="scanNaam" placeholder="Naam" required>
+          <input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required>
+        </div>
+        <div class="scan-form-row">
+          <input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required>
+          <input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)">
+        </div>
+        <label style="display:flex;align-items:flex-start;gap:.6rem;margin-top:1rem;cursor:pointer;font-size:.75rem;color:var(--dim);line-height:1.6"><input type="checkbox" id="scanPrivacy" required style="margin-top:3px;accent-color:var(--green)"><span>Ik ga akkoord met het <a href="privacy.html" style="color:var(--green);text-decoration:none" target="_blank">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </form>
+    </div>
+    <div class="scan-step" id="scanDone" style="display:none">
+      <div class="scan-done-terminal">C:\forgexe\scan&gt; --status processing...<span class="cursor"></span></div>
+      <h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3>
+      <p class="scan-done-desc">Je ontvangt je rapport binnen 48 uur. We nemen zo snel mogelijk contact op.</p>
+      <div class="scan-done-checks">
+        <span>&#10003; Rapport binnen 48 uur</span>
+        <span>&#10003; Reactie binnen 2 uur</span>
+        <span>&#10003; 100% gratis</span>
+      </div>
+    </div>
+    <div class="scan-progress">
+      <div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div>
+    </div>
+  </div>
+</div>
 </section>
 <div class="neon-line"></div>
 
@@ -392,89 +478,6 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
       <p style="font-size:.72rem;color:var(--dim);margin-top:1.5rem;opacity:.6;max-width:500px;margin-left:auto;margin-right:auto">* Indicatieve berekening op basis van geschatte uren aan terugkerende taken. AI-medewerkers vervangen geen volledige functies, maar automatiseren de repetitieve processen daarbinnen.</p>
     </div>
 
-    <!-- Scan wizard opent hier -->
-    <div id="scanWizard" class="scan-wizard" style="display:none;margin-top:2rem">
-      <div class="scan-inner">
-        <div class="scan-terminal">C:\forgexe\scan&gt; --init bedrijfsscan<span class="cursor"></span></div>
-        <div class="scan-step" id="scanStep1">
-          <h3 class="scan-question">Hoeveel medewerkers heeft je bedrijf?</h3>
-          <div class="scan-options">
-            <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '1-15')">1 - 15</button>
-            <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '15-50')">15 - 50</button>
-            <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '50-200')">50 - 200</button>
-            <button class="scan-option" onclick="nextScanStep(1, 'medewerkers', '200+')">200+</button>
-          </div>
-        </div>
-        <div class="scan-step" id="scanStep2" style="display:none">
-          <button onclick="prevScanStep(2)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
-          <h3 class="scan-question">In welke branche ben je actief?</h3>
-          <div class="scan-options">
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Maakindustrie')">Maakindustrie</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Finance')">Finance</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'IT &amp; Software')">IT &amp; Software</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'E-commerce')">E-commerce</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Vastgoed')">Vastgoed</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Juridisch')">Juridisch</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Marketing')">Marketing</button>
-            <button class="scan-option" onclick="nextScanStep(2, 'branche', 'Anders')">Anders</button>
-          </div>
-        </div>
-        <div class="scan-step" id="scanStep3" style="display:none">
-          <button onclick="prevScanStep(3)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
-          <h3 class="scan-question">Waar ligt je grootste uitdaging?</h3>
-          <div class="scan-options">
-            <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Meer leads en klanten')">Meer leads en klanten</button>
-            <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Efficientere operatie')">Effici&#235;ntere operatie</button>
-            <button class="scan-option" onclick="nextScanStep(3, 'uitdaging', 'Beide')">Beide</button>
-          </div>
-        </div>
-        <div class="scan-step" id="scanStep4" style="display:none">
-          <button onclick="prevScanStep(4)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
-          <h3 class="scan-question">Welke tools gebruik je nu?</h3>
-          <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.25rem">Selecteer alles dat van toepassing is.</p>
-          <div class="scan-options" id="toolOptions"></div>
-          <button class="btn-primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        </div>
-        <div class="scan-step" id="scanStep5" style="display:none">
-          <button onclick="prevScanStep(5)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
-          <h3 class="scan-question">Hoe snel wil je resultaat zien?</h3>
-          <div class="scan-options">
-            <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Zo snel mogelijk')">Zo snel mogelijk</button>
-            <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Binnen 3 maanden')">Binnen 3 maanden</button>
-            <button class="scan-option" onclick="nextScanStep(5, 'urgentie', 'Ik orienteer me nog')">Ik ori&#235;nteer me nog</button>
-          </div>
-        </div>
-        <div class="scan-step" id="scanStep6" style="display:none">
-          <button onclick="prevScanStep(6)" style="background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:.75rem;cursor:pointer;padding:0;margin-bottom:1rem">&larr; Terug</button>
-          <h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3>
-          <form class="scan-form" onsubmit="submitScan(event)">
-            <div class="scan-form-row">
-              <input type="text" id="scanNaam" placeholder="Naam" required>
-              <input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required>
-            </div>
-            <div class="scan-form-row">
-              <input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required>
-              <input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)">
-            </div>
-            <label style="display:flex;align-items:flex-start;gap:.6rem;margin-top:1rem;cursor:pointer;font-size:.75rem;color:var(--dim);line-height:1.6"><input type="checkbox" id="scanPrivacy" required style="margin-top:3px;accent-color:var(--green)"><span>Ik ga akkoord met het <a href="privacy.html" style="color:var(--green);text-decoration:none" target="_blank">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
-            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-          </form>
-        </div>
-        <div class="scan-step" id="scanDone" style="display:none">
-          <div class="scan-done-terminal">C:\forgexe\scan&gt; --status processing...<span class="cursor"></span></div>
-          <h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3>
-          <p class="scan-done-desc">Je ontvangt je rapport binnen 48 uur. We nemen zo snel mogelijk contact op.</p>
-          <div class="scan-done-checks">
-            <span>&#10003; Rapport binnen 48 uur</span>
-            <span>&#10003; Reactie binnen 2 uur</span>
-            <span>&#10003; 100% gratis</span>
-          </div>
-        </div>
-        <div class="scan-progress">
-          <div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
