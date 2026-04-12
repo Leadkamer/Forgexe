@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" width="1050" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#0a0b0e"/>
+      <stop offset="100%" stop-color="#1a0f0a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#34d399" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#f5a623" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f5a623" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1050" height="600" rx="12" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#34d399" stroke-width="0.5" fill="none">
+    <line x1="0" y1="100" x2="1050" y2="100"/>
+    <line x1="0" y1="200" x2="1050" y2="200"/>
+    <line x1="0" y1="300" x2="1050" y2="300"/>
+    <line x1="0" y1="400" x2="1050" y2="400"/>
+    <line x1="0" y1="500" x2="1050" y2="500"/>
+    <line x1="175" y1="0" x2="175" y2="600"/>
+    <line x1="350" y1="0" x2="350" y2="600"/>
+    <line x1="525" y1="0" x2="525" y2="600"/>
+    <line x1="700" y1="0" x2="700" y2="600"/>
+    <line x1="875" y1="0" x2="875" y2="600"/>
+  </g>
+
+  <!-- Neon line top -->
+  <rect x="60" y="58" width="930" height="1.5" fill="url(#line)"/>
+
+  <!-- Name -->
+  <text x="80" y="130" font-family="'Outfit', 'Arial', sans-serif" font-size="36" font-weight="700" fill="#e2e8f0">Sedat Ayar</text>
+
+  <!-- Role -->
+  <text x="80" y="168" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="14" font-weight="500" letter-spacing="2" fill="#34d399">FOUNDER</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="200" x2="300" y2="200" stroke="#34d399" stroke-width="1" opacity="0.3"/>
+
+  <!-- Contact details -->
+  <g transform="translate(80, 240)">
+    <!-- Mobile -->
+    <g>
+      <svg x="0" y="0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <line x1="12" y1="18" x2="12.01" y2="18"/>
+      </svg>
+      <text x="28" y="13" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">+31 (0)6 18 03 10 22</text>
+    </g>
+
+    <!-- Phone -->
+    <g transform="translate(0, 36)">
+      <svg x="0" y="0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+      </svg>
+      <text x="28" y="13" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">+31 (0)85 080 54 39</text>
+    </g>
+
+    <!-- Email -->
+    <g transform="translate(0, 72)">
+      <svg x="0" y="0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <text x="28" y="13" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#e2e8f0">sedat@forgexe.nl</text>
+    </g>
+
+    <!-- Website -->
+    <g transform="translate(0, 108)">
+      <svg x="0" y="0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+      </svg>
+      <text x="28" y="13" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#34d399" font-weight="600">forgexe.nl</text>
+    </g>
+
+    <!-- LinkedIn -->
+    <g transform="translate(0, 144)">
+      <svg x="0" y="0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6">
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      <text x="28" y="13" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="13" fill="#8d9bb5">linkedin.com/in/sedat-ayar</text>
+    </g>
+  </g>
+
+  <!-- Logo mark (bottom right) -->
+  <g transform="translate(870, 430)">
+    <rect x="0" y="0" width="14" height="72" rx="3" fill="#34d399" opacity="0.2"/>
+    <rect x="0" y="0" width="52" height="13" rx="3" fill="#34d399" opacity="0.2"/>
+    <rect x="0" y="29" width="38" height="10" rx="3" fill="#34d399" opacity="0.2"/>
+    <polygon points="45,27 68,42 45,57" fill="#34d399" opacity="0.2"/>
+  </g>
+
+  <!-- QR hint -->
+  <text x="80" y="530" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="11" fill="#475569">Scan voor meer informatie</text>
+
+  <!-- QR placeholder -->
+  <rect x="80" y="540" width="3" height="3" fill="#34d399" opacity="0.3"/>
+</svg>
