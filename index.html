@@ -131,14 +131,14 @@ body.light .proof-logos .logo-dark:hover{opacity:.8;filter:grayscale(0) brightne
 .tech-rows{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem}
 
 .crt{position:relative;background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;padding:5rem;margin-left:auto;margin-right:auto;overflow:hidden}
-.crt::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:1;border-radius:12px}
-.crt::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.08) 100%);pointer-events:none;z-index:1;border-radius:12px}
-body.light .crt{background:rgba(240,253,244,.4);border-color:rgba(52,211,153,.12)}
-body.light .crt::before{background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(52,211,153,.015) 2px,rgba(52,211,153,.015) 4px)}
-body.light .crt::after{background:radial-gradient(ellipse at center,transparent 50%,rgba(52,211,153,.04) 100%)}
-body.light .crt-amber{background:rgba(255,248,235,.5);border-color:rgba(245,166,35,.12)}
-body.light .crt-amber::before{background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(245,166,35,.01) 2px,rgba(245,166,35,.01) 4px)}
-body.light .crt-amber::after{background:radial-gradient(ellipse at center,transparent 50%,rgba(245,166,35,.03) 100%)}
+.crt::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);pointer-events:none;z-index:1;border-radius:12px}
+.crt::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.12) 100%);pointer-events:none;z-index:1;border-radius:12px}
+body.light .crt{background:rgba(236,253,245,.5);border-color:rgba(52,211,153,.15)}
+body.light .crt::before{background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(52,211,153,.04) 3px,rgba(52,211,153,.04) 4px)}
+body.light .crt::after{background:radial-gradient(ellipse at center,transparent 40%,rgba(52,211,153,.08) 100%)}
+body.light .crt-amber{background:rgba(255,248,235,.5);border-color:rgba(245,166,35,.15)}
+body.light .crt-amber::before{background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(245,166,35,.035) 3px,rgba(245,166,35,.035) 4px)}
+body.light .crt-amber::after{background:radial-gradient(ellipse at center,transparent 40%,rgba(245,166,35,.07) 100%)}
 .crt-amber{border-color:rgba(245,166,35,0.08)}
 .crt .section-label,.crt .section-title,.crt .section-desc,.crt .tech-rows,.crt .challenges-grid,.crt .challenge-answer{position:relative;z-index:2}
 .tech-row-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;font-family:var(--mono)}
