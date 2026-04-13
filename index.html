@@ -57,6 +57,22 @@ section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-in
 .hero-sub{font-size:1.15rem;color:var(--dim);line-height:1.8;margin-bottom:2.5rem;max-width:520px;font-weight:300;opacity:0;animation:fu .8s ease forwards .8s;transition:color var(--tr)}
 .hero-cta-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards 1.1s}
 .hero-micro{font-size:.82rem;color:var(--dim);margin-top:1rem;opacity:0;animation:fu .8s ease forwards 1.4s}
+.ai-bar{margin-top:1.75rem;max-width:560px;opacity:0;animation:fu .8s ease forwards 1.25s}
+.ai-bar-label{font-size:.7rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.ai-bar-label .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(52,211,153,.8);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.2)}}
+.ai-bar-wrap{position:relative;background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;padding:1rem 1.25rem;transition:border-color .3s,box-shadow .3s}
+.ai-bar-wrap:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.1)}
+.ai-bar-wrap textarea{width:100%;background:none;border:none;color:var(--txt);font-family:var(--mono);font-size:.88rem;line-height:1.6;resize:none;outline:none;min-height:60px;padding-right:3rem}
+.ai-bar-wrap textarea::placeholder{color:var(--mut)}
+.ai-bar-submit{position:absolute;bottom:.75rem;right:.75rem;width:38px;height:38px;border-radius:8px;background:var(--green);color:var(--btn-txt);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.ai-bar-submit:hover{background:var(--green-lt);transform:translateY(-1px)}
+.ai-bar-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.ai-bar-submit svg{width:16px;height:16px}
+.ai-bar-contact{display:none;gap:.5rem;margin-top:.75rem}
+.ai-bar-contact input{flex:1;padding:.6rem .9rem;font-size:.78rem;font-family:var(--mono);background:var(--bg-el);border:1px solid var(--brd);color:var(--txt);outline:none;border-radius:8px;transition:border-color .3s}
+.ai-bar-contact input:focus{border-color:var(--green)}
+.ai-bar-done{display:none;padding:1rem 1.25rem;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:12px;color:var(--green);font-family:var(--mono);font-size:.85rem}
 .hero-visual{opacity:0;animation:fuScale 1.2s ease forwards 1s;display:flex;align-items:center;justify-content:center;margin-right:-4rem}
 .hero-visual svg{width:100%;max-width:780px;height:auto}
 
@@ -336,6 +352,19 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
       <a href="#scanWizard" onclick="openScanWizard();return false;" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <p class="hero-micro"><span style="color:var(--green)">&#10003;</span> Geen verplichtingen <span style="color:var(--green)">&#10003;</span> Rapport binnen 48 uur <span style="color:var(--green)">&#10003;</span> 100% gratis</p>
+    <div class="ai-bar">
+      <div class="ai-bar-label"><span class="pulse"></span>Beschrijf wat je wilt automatiseren</div>
+      <div class="ai-bar-wrap" id="aiBarWrap">
+        <textarea id="aiBarInput" placeholder="Bijv. 'We verliezen te veel tijd aan handmatige orderverwerking en klantvragen...'" rows="3"></textarea>
+        <button class="ai-bar-submit" id="aiBarSubmit" onclick="aiBarNext()" aria-label="Verstuur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="ai-bar-contact" id="aiBarContact">
+        <input type="text" id="aiBarNaam" placeholder="Je naam" required>
+        <input type="email" id="aiBarEmail" placeholder="Zakelijke e-mail" required>
+        <button class="ai-bar-submit" style="position:static;width:auto;padding:0 1.25rem" onclick="aiBarSubmit()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="ai-bar-done" id="aiBarDone">&#10003; Bedankt! We nemen binnen 2 uur contact op met een voorstel.</div>
+    </div>
   </div>
   <div class="hero-visual">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" style="overflow:visible">
@@ -1215,6 +1244,39 @@ var skipStep3 = false;
 function openScanWizard() {
   // Open de wizard in de challenges sectie (centraal)
   openChallengeWizard();
+}
+function aiBarNext() {
+  var input = document.getElementById('aiBarInput');
+  if (!input.value.trim()) {
+    input.focus();
+    return;
+  }
+  document.getElementById('aiBarWrap').style.display = 'none';
+  document.getElementById('aiBarContact').style.display = 'flex';
+  document.getElementById('aiBarNaam').focus();
+}
+function aiBarSubmit() {
+  var beschrijving = document.getElementById('aiBarInput').value;
+  var naam = document.getElementById('aiBarNaam').value;
+  var email = document.getElementById('aiBarEmail').value;
+  if (!naam || !email) {
+    if (!naam) { document.getElementById('aiBarNaam').focus(); }
+    else { document.getElementById('aiBarEmail').focus(); }
+    return;
+  }
+  document.getElementById('aiBarContact').style.display = 'none';
+  document.getElementById('aiBarDone').style.display = 'block';
+  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-contact', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      naam: naam,
+      email: email,
+      bedrijf: '',
+      telefoon: '',
+      bericht: 'AI-bar: ' + beschrijving
+    })
+  }).catch(function(err) {});
 }
 function openChallengeWizard() {
   var w = document.getElementById('scanWizard');
