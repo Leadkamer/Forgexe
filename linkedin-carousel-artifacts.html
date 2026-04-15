@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Carousel &#8212; Claude Artifacts &#8212; Forgexe</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mono:'JetBrains Mono',monospace;
+  --head:'Outfit',sans-serif;
+  --bg:#0a0b0e;
+  --bg-el:#10121a;
+  --txt:#e2e8f0;
+  --dim:#8d9bb5;
+  --mut:#475569;
+  --brd:rgba(255,255,255,0.08);
+  --green:#34d399;
+  --green-lt:#4ade80;
+  --green-deep:#059669;
+  --cyan:#00f0ff;
+  --amber:#f5a623;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#1a1c22;
+  font-family:var(--mono);
+  color:var(--txt);
+  padding:3rem 2rem;
+  min-height:100vh;
+}
+.page-header{
+  max-width:1080px;
+  margin:0 auto 3rem;
+  text-align:center;
+  color:#94a3b8;
+  font-family:var(--mono);
+}
+.page-header h1{
+  font-family:var(--head);
+  font-size:1.8rem;
+  color:#fff;
+  margin-bottom:.75rem;
+  font-weight:700;
+}
+.page-header p{
+  font-size:.85rem;
+  line-height:1.7;
+  max-width:600px;
+  margin:0 auto;
+}
+.instructions{
+  background:#10121a;
+  border:1px solid var(--brd);
+  border-radius:12px;
+  padding:1.5rem 2rem;
+  max-width:720px;
+  margin:2rem auto 0;
+  text-align:left;
+  font-size:.78rem;
+  line-height:1.8;
+  color:#94a3b8;
+}
+.instructions strong{color:var(--green)}
+.instructions ol{padding-left:1.25rem}
+
+.carousel-grid{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3rem;
+  padding:2rem 0;
+}
+
+/* Slide container — LinkedIn carousel 1080x1350 portrait */
+.slide{
+  width:1080px;
+  height:1350px;
+  background:var(--bg);
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  display:flex;
+  flex-direction:column;
+  padding:90px 80px;
+  color:var(--txt);
+}
+
+/* Scanline overlay */
+.slide::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.008) 2px,rgba(0,0,0,0.008) 4px);
+  pointer-events:none;
+  z-index:10;
+}
+
+/* Neon grid background */
+.slide::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(52,211,153,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(52,211,153,0.025) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 70% 55% at 50% 45%,black 10%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 45%,black 10%,transparent 75%);
+  pointer-events:none;
+  z-index:1;
+}
+
+.slide > *{position:relative;z-index:5}
+
+/* Slide top bar — logo + counter */
+.slide-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:auto;
+}
+.slide-logo{display:flex;align-items:center;gap:.75rem}
+.slide-logo svg{width:38px;height:38px}
+.slide-logo-text{
+  font-family:var(--mono);
+  font-size:1.05rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--green);
+}
+.slide-counter{
+  font-family:var(--mono);
+  font-size:.85rem;
+  color:var(--mut);
+  letter-spacing:.12em;
+}
+
+/* Terminal prompt */
+.term{
+  font-family:var(--mono);
+  font-size:.95rem;
+  color:var(--dim);
+  margin-bottom:2rem;
+  opacity:.8;
+}
+.term .prompt{color:var(--green)}
+.term .cursor{
+  display:inline-block;
+  width:10px;
+  height:18px;
+  background:var(--green);
+  margin-left:3px;
+  animation:bl 1s step-end infinite;
+  vertical-align:middle;
+  box-shadow:0 0 12px rgba(52,211,153,.6);
+}
+@keyframes bl{50%{opacity:0}}
+
+/* Slide main content area */
+.slide-main{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  flex:1;
+  margin:2rem 0;
+}
+
+/* Typography */
+h1.slide-title{
+  font-family:var(--head);
+  font-size:4.5rem;
+  font-weight:800;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  margin-bottom:2rem;
+  color:var(--txt);
+}
+h1.slide-title em{
+  font-style:normal;
+  color:var(--green);
+}
+h1.slide-title .cyan{color:var(--cyan);text-shadow:0 0 20px rgba(0,240,255,.35)}
+h1.slide-title .amber{color:var(--amber)}
+
+h2.slide-sub{
+  font-family:var(--head);
+  font-size:2.6rem;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.025em;
+  margin-bottom:1.5rem;
+}
+h2.slide-sub em{font-style:normal;color:var(--green)}
+
+.slide-body{
+  font-family:var(--mono);
+  font-size:1.35rem;
+  line-height:1.75;
+  color:var(--dim);
+  font-weight:300;
+}
+.slide-body strong{color:var(--txt);font-weight:500}
+.slide-body .hi{color:var(--green)}
+
+.slide-body p + p{margin-top:1rem}
+
+/* Label above title */
+.slide-label{
+  font-family:var(--mono);
+  font-size:.85rem;
+  color:var(--green);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:1.5rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+}
+.slide-label::before{
+  content:'';
+  width:24px;
+  height:2px;
+  background:var(--green);
+  box-shadow:0 0 10px rgba(52,211,153,.6);
+}
+
+/* List */
+.slide-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  font-family:var(--mono);
+  font-size:1.35rem;
+  line-height:1.5;
+  color:var(--txt);
+  margin-top:1.5rem;
+  font-weight:300;
+}
+.slide-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+}
+.slide-list li::before{
+  content:'&#8594;';
+  color:var(--green);
+  font-weight:700;
+  flex-shrink:0;
+}
+
+/* Steps list with numbers */
+.slide-steps{
+  list-style:none;
+  counter-reset:step;
+  display:flex;
+  flex-direction:column;
+  gap:1.25rem;
+  font-family:var(--mono);
+  font-size:1.3rem;
+  color:var(--txt);
+  margin-top:1.5rem;
+  font-weight:300;
+}
+.slide-steps li{
+  display:flex;
+  align-items:baseline;
+  gap:1.5rem;
+  counter-increment:step;
+  padding:.5rem 0;
+  border-bottom:1px solid var(--brd);
+}
+.slide-steps li:last-child{border-bottom:none}
+.slide-steps li::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--mono);
+  font-size:1rem;
+  color:var(--green);
+  font-weight:700;
+  flex-shrink:0;
+  letter-spacing:.05em;
+}
+
+/* Bottom bar */
+.slide-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:auto;
+  padding-top:2rem;
+  border-top:1px solid var(--brd);
+  font-family:var(--mono);
+  font-size:.85rem;
+  color:var(--mut);
+  letter-spacing:.08em;
+}
+.slide-bottom .swipe{
+  color:var(--green);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  animation:swipeHint 2s ease-in-out infinite;
+}
+@keyframes swipeHint{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(8px)}
+}
+
+/* Neon line accent */
+.neon-line{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--cyan),transparent);
+  opacity:.3;
+  margin:1.5rem 0;
+}
+
+/* Chat bubble for examples */
+.chat-bubble{
+  background:var(--bg-el);
+  border:1px solid var(--brd);
+  border-radius:14px;
+  padding:1.5rem 2rem;
+  margin:1.5rem 0;
+  font-family:var(--mono);
+  font-size:1.25rem;
+  color:var(--txt);
+  position:relative;
+}
+.chat-bubble.user{
+  border-left:3px solid var(--cyan);
+}
+.chat-bubble.user::before{
+  content:'JIJ';
+  position:absolute;
+  top:-10px;
+  left:20px;
+  background:var(--bg);
+  padding:0 .6rem;
+  font-size:.7rem;
+  color:var(--cyan);
+  letter-spacing:.15em;
+  font-weight:700;
+}
+.chat-bubble.ai{
+  border-left:3px solid var(--green);
+  color:var(--dim);
+}
+.chat-bubble.ai::before{
+  content:'CLAUDE';
+  position:absolute;
+  top:-10px;
+  left:20px;
+  background:var(--bg);
+  padding:0 .6rem;
+  font-size:.7rem;
+  color:var(--green);
+  letter-spacing:.15em;
+  font-weight:700;
+}
+
+/* Big number callout */
+.big-stat{
+  font-family:var(--head);
+  font-size:8rem;
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.05em;
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:1rem;
+}
+
+/* CTA box for final slide */
+.cta-box{
+  background:var(--bg-el);
+  border:1px solid var(--brd);
+  border-radius:12px;
+  padding:2rem;
+  margin-top:2rem;
+}
+.cta-box-label{
+  font-family:var(--mono);
+  font-size:.75rem;
+  color:var(--green);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:.75rem;
+}
+.cta-box-text{
+  font-family:var(--head);
+  font-size:1.6rem;
+  font-weight:600;
+  color:var(--txt);
+  line-height:1.3;
+  margin-bottom:.5rem;
+}
+.cta-box-url{
+  font-family:var(--mono);
+  font-size:1rem;
+  color:var(--green);
+}
+
+/* Highlighted keywords */
+.kw{
+  color:var(--green);
+  font-weight:500;
+}
+.kw-cyan{color:var(--cyan);font-weight:500}
+.kw-amber{color:var(--amber);font-weight:500}
+
+/* Print/export media query */
+@media print{
+  body{background:#fff;padding:0}
+  .page-header,.instructions{display:none}
+  .carousel-grid{gap:0}
+  .slide{
+    box-shadow:none;
+    border-radius:0;
+    page-break-after:always;
+    margin:0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>LinkedIn Carousel &#8212; Claude Artifacts</h1>
+  <p>Eerste LinkedIn post voor Forgexe &#183; 10 slides &#183; 1080x1350px portrait</p>
+  <div class="instructions">
+    <strong>Hoe te exporteren:</strong>
+    <ol>
+      <li>Open dit bestand in Chrome of Safari</li>
+      <li>Scroll door de slides om ze te bekijken</li>
+      <li>Voor screenshots: gebruik DevTools (F12) &rarr; Toggle device toolbar &rarr; Custom size 1080x1350 &rarr; Capture screenshot per slide</li>
+      <li>Voor PDF: Cmd/Ctrl + P &rarr; Save as PDF (elk slide wordt 1 pagina)</li>
+      <li>Upload de 10 afbeeldingen als document-carousel op LinkedIn</li>
+    </ol>
+  </div>
+</div>
+
+<div class="carousel-grid">
+
+<!-- SLIDE 1 — HOOK -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">01 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="term"><span class="prompt">C:\forgexe&gt;</span> show claude_secret<span class="cursor"></span></div>
+    <h1 class="slide-title">Ik heb een <em>werkende<br>webapp</em> gemaakt.<br>In 3 minuten.</h1>
+    <p class="slide-body">Zonder &#233;&#233;n regel code te schrijven.<br>Zonder Webflow. Zonder WordPress.<br>Zonder developer.</p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">Swipe voor de truc &rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 2 — PROBLEEM -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">02 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Het probleem</div>
+    <h2 class="slide-sub">Voor de meeste mensen<br>is AI <em>een chatbot.</em></h2>
+    <p class="slide-body">
+      Je stelt een vraag.<br>
+      Je krijgt tekst terug.<br>
+      Je copy-paste.<br>
+      Je hoopt dat het werkt.
+    </p>
+    <div class="neon-line"></div>
+    <p class="slide-body"><span class="kw">Er is een betere manier.</span></p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 3 — THE REVEAL -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">03 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Maak kennis met</div>
+    <h1 class="slide-title"><span class="cyan">Claude<br>Artifacts.</span></h1>
+    <div class="neon-line"></div>
+    <p class="slide-body">
+      De functie die AI verandert van<br>
+      <strong>"iemand die praat"</strong><br>
+      naar<br>
+      <strong>"iemand die <span class="kw">bouwt</span>"</strong>.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 4 — WAT HET IS -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">04 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Wat zijn Artifacts?</div>
+    <h2 class="slide-sub">Live-creaties,<br>direct <em>naast</em><br>je gesprek.</h2>
+    <p class="slide-body">Geen tekst. Geen uitleg.<br>Gewoon <span class="kw">direct werkend</span>.</p>
+    <ul class="slide-list">
+      <li>Webpagina's</li>
+      <li>Werkende calculators</li>
+      <li>Interactieve dashboards</li>
+      <li>Data-visualisaties</li>
+      <li>Documenten met opmaak</li>
+      <li>Mini-apps</li>
+    </ul>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 5 — VOORBEELD 1 -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">05 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Voorbeeld #01</div>
+    <h2 class="slide-sub"><em>Landingspagina</em><br>voor een bakkerij.</h2>
+
+    <div class="chat-bubble user">
+      "Bouw een landingspagina voor mijn bakkerij. Warme kleuren, foto's van brood, bestelformulier onderaan."
+    </div>
+
+    <div class="chat-bubble ai">
+      <span style="color:var(--green)">[Artifact gegenereerd]</span><br>
+      Complete werkende pagina, direct zichtbaar, real-time aanpasbaar.
+    </div>
+
+    <p class="slide-body" style="margin-top:1rem"><span class="kw">Klaar in 2 minuten.</span></p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 6 — VOORBEELD 2 -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">06 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Voorbeeld #02</div>
+    <h2 class="slide-sub"><em>ROI-calculator</em><br>voor je dienst.</h2>
+
+    <div class="chat-bubble user">
+      "Maak een ROI-calculator waarmee klanten zelf kunnen uitrekenen hoeveel ze besparen met mijn AI-dienst."
+    </div>
+
+    <div class="chat-bubble ai">
+      <span style="color:var(--green)">[Artifact gegenereerd]</span><br>
+      Werkende calculator met invoervelden, berekeningen en resultaat.
+    </div>
+
+    <p class="slide-body" style="margin-top:1rem">
+      <span class="kw">30 seconden.</span> Gratis. Geen tools. Geen code.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 7 — VOORBEELD 3 -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">07 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Voorbeeld #03</div>
+    <h2 class="slide-sub"><em>Sales pipeline</em><br>als dashboard.</h2>
+
+    <div class="chat-bubble user">
+      "Visualiseer mijn sales pipeline als een interactieve grafiek die ik kan delen met mijn team."
+    </div>
+
+    <div class="chat-bubble ai">
+      <span style="color:var(--green)">[Artifact gegenereerd]</span><br>
+      Interactief dashboard met filters, hover-info en export-knop.
+    </div>
+
+    <p class="slide-body" style="margin-top:1rem">
+      Zonder <span class="kw-amber">PowerBI</span>. Zonder <span class="kw-amber">Tableau</span>.<br>
+      Zonder <span class="kw-amber">abonnement</span>.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 8 — WHY IT MATTERS -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">08 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Waarom dit telt</div>
+    <h2 class="slide-sub">Dit is geen<br>betere <em>autocomplete.</em></h2>
+    <div class="neon-line"></div>
+    <p class="slide-body" style="font-size:1.6rem;line-height:1.6;margin-top:1rem">
+      Dit is <span class="kw">co-creation</span>.
+    </p>
+    <p class="slide-body" style="margin-top:1.5rem">
+      Je praat niet <strong>m&#232;t</strong> AI &mdash;<br>
+      je bouwt <span class="kw">s&#225;men</span> met AI.
+    </p>
+    <p class="slide-body" style="margin-top:1.5rem">
+      Het verschil is <strong>enorm</strong>.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 9 — HOE TE GEBRUIKEN -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">09 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Zo begin je vandaag</div>
+    <h2 class="slide-sub">Probeer het <em>zelf.</em><br>Nu.</h2>
+
+    <ol class="slide-steps">
+      <li>Ga naar claude.ai</li>
+      <li>Start een gesprek</li>
+      <li>Vraag Claude om iets te bouwen</li>
+      <li>Artifact verschijnt rechts van je scherm</li>
+      <li>Itereer tot het perfect is</li>
+      <li>Deel, exporteer of embed</li>
+    </ol>
+
+    <p class="slide-body" style="margin-top:2rem;font-size:1.15rem">
+      <span class="kw">Gratis tier beschikbaar.</span>
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span class="swipe">&rarr;</span>
+  </div>
+</div>
+
+<!-- SLIDE 10 — TAKEAWAY + CTA -->
+<div class="slide">
+  <div class="slide-top">
+    <div class="slide-logo">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="#34d399"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="#34d399"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="#34d399"/><polygon points="27,16 38,24 27,32" fill="#34d399"/></svg>
+      <span class="slide-logo-text">FORGEXE</span>
+    </div>
+    <span class="slide-counter">10 / 10</span>
+  </div>
+
+  <div class="slide-main">
+    <div class="slide-label">Tot slot</div>
+    <h2 class="slide-sub">De meeste mensen zien AI<br>nog als <em>zoekmachine.</em></h2>
+    <p class="slide-body" style="margin-top:1.5rem">
+      Terwijl het eigenlijk een <span class="kw">team van specialisten</span> is<br>
+      dat voor je bouwt.
+    </p>
+
+    <div class="cta-box">
+      <div class="cta-box-label">&mdash; Forgexe</div>
+      <div class="cta-box-text">Volg ons voor meer AI-inzichten<br>die &eacute;cht werken voor het MKB.</div>
+      <div class="cta-box-url">forgexe.nl</div>
+    </div>
+
+    <p class="slide-body" style="margin-top:2rem;font-size:1.1rem;color:var(--mut)">
+      Wij bouwen AI-medewerkers die klanten binnenhalen,<br>processen stroomlijnen en rapportages bouwen.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>forgexe.nl</span>
+    <span style="color:var(--green)">Groei verder &rarr;</span>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
