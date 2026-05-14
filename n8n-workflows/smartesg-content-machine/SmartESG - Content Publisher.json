@@ -1,0 +1,652 @@
+{
+  "name": "SmartESG - Content Publisher",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## WEBHOOK ENTRY\nDashboard POST → /smartesg-content-action\nPayload: { post_id, action, feedback?, edited_post_tekst?, media?, image_url? }\nactions: approve | rewrite | reject\n\nMedia object (bij approve):\n{ drive_id, name, kind, mime, url, thumb }",
+        "height": 360,
+        "width": 880,
+        "color": 4
+      },
+      "id": "pub-note-001",
+      "name": "Sticky Webhook",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-32, -80]
+    },
+    {
+      "parameters": {
+        "content": "## APPROVE BRANCH\nStatus=publishing → IF afbeelding → met of zonder afbeelding posten via Unipile (multipart) → status=published + linkedin_post_id",
+        "height": 360,
+        "width": 1920,
+        "color": 5
+      },
+      "id": "pub-note-002",
+      "name": "Sticky Approve",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1184, -120]
+    },
+    {
+      "parameters": {
+        "content": "## REWRITE BRANCH\nHerschrijver (Claude, voice + voorbeelden + feedback) → update sheet → status=pending opnieuw",
+        "height": 280,
+        "width": 1280,
+        "color": 6
+      },
+      "id": "pub-note-003",
+      "name": "Sticky Rewrite",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1184, 280]
+    },
+    {
+      "parameters": {
+        "content": "## REJECT BRANCH\nstatus=rejected, klaar.",
+        "height": 200,
+        "width": 700,
+        "color": 3
+      },
+      "id": "pub-note-004",
+      "name": "Sticky Reject",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1184, 600]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "smartesg-content-action",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [64, 80],
+      "id": "pub-webhook",
+      "name": "Dashboard Webhook",
+      "webhookId": "smartesg-content-action"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "id",
+              "lookupValue": "={{ $json.body.post_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [288, 80],
+      "id": "pub-get-post",
+      "name": "Get Post Row",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Authors",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [512, 80],
+      "id": "pub-get-authors",
+      "name": "Get Authors",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "pub-sw-approve",
+                    "leftValue": "={{ $('Dashboard Webhook').first().json.body.action }}",
+                    "rightValue": "approve",
+                    "operator": {"type": "string", "operation": "equals"}
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Approve"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "pub-sw-rewrite",
+                    "leftValue": "={{ $('Dashboard Webhook').first().json.body.action }}",
+                    "rightValue": "rewrite",
+                    "operator": {"type": "string", "operation": "equals"}
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Rewrite"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "pub-sw-reject",
+                    "leftValue": "={{ $('Dashboard Webhook').first().json.body.action }}",
+                    "rightValue": "reject",
+                    "operator": {"type": "string", "operation": "equals"}
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Reject"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [768, 80],
+      "id": "pub-switch-action",
+      "name": "Action Switch"
+    },
+    {
+      "parameters": {
+        "jsCode": "// APPROVE: combineer post + author + media voor de Unipile-call\nconst post = $('Get Post Row').first().json;\nconst body = $('Dashboard Webhook').first().json.body;\nconst authorRows = $('Get Authors').all();\nconst authorRow = authorRows.find(r => (r.json.author || '').trim() === (post.author || '').trim());\n\nconst media = body.media || null;\nconst imageUrl = (media && media.url) ? media.url : (body.image_url || '');\nconst isVideo = !!(media && media.kind === 'video');\n\nreturn {\n  json: {\n    post_id: post.id,\n    author: post.author,\n    final_post_tekst: body.edited_post_tekst || post.post_tekst,\n    unipile_account_id: authorRow ? authorRow.json.unipile_account_id : '',\n    row_number: post.row_number,\n    image_url: imageUrl,\n    image_mime: media ? (media.mime || '') : '',\n    image_name: media ? (media.name || '') : '',\n    has_image: !!imageUrl,\n    is_video: isVideo\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1248, -16],
+      "id": "pub-approve-set",
+      "name": "Combine Post+Author"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.post_id }}",
+            "status": "publishing"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {"id":"id","displayName":"id","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"status","displayName":"status","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1472, -16],
+      "id": "pub-approve-status-publishing",
+      "name": "Status: publishing",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-image-check",
+              "leftValue": "={{ $('Combine Post+Author').first().json.has_image }}",
+              "rightValue": "",
+              "operator": {"type": "boolean", "operation": "true", "singleValue": true}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1696, -16],
+      "id": "pub-if-has-image",
+      "name": "IF Has Image"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Combine Post+Author').first().json.image_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "data"
+            }
+          },
+          "redirect": {
+            "redirect": {
+              "followRedirects": true,
+              "maxRedirects": 5
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [1920, -144],
+      "id": "pub-download-image",
+      "name": "Download Image",
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api18.unipile.com:14855/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-API-KEY", "value": "JJnuginS.6QBeicKk+kj/6nklsDmigUP3HMHo51Uv4VmiX6GvhOc="},
+            {"name": "accept", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipartFormData",
+        "bodyParameters": {
+          "parameters": [
+            {"name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
+            {"name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"},
+            {"parameterType": "formBinaryData", "name": "attachments", "inputDataFieldName": "data"}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [2144, -144],
+      "id": "pub-unipile-with-image",
+      "name": "Post with Image (Unipile)",
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api18.unipile.com:14855/api/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-API-KEY", "value": "JJnuginS.6QBeicKk+kj/6nklsDmigUP3HMHo51Uv4VmiX6GvhOc="},
+            {"name": "accept", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipartFormData",
+        "bodyParameters": {
+          "parameters": [
+            {"name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
+            {"name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [1920, 112],
+      "id": "pub-unipile-post",
+      "name": "Post naar LinkedIn (Unipile)",
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Vang resultaat van of 'Post with Image' of 'Post Text Only'.\n// Slechts één van beide branches voert uit per execution.\nconst r = $input.first().json || {};\nconst combine = $('Combine Post+Author').first().json;\nreturn {\n  json: {\n    id: r.id || '',\n    provider_id: r.provider_id || '',\n    post_id: combine.post_id,\n    had_image: combine.has_image,\n    image_url: combine.image_url,\n    raw: r\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2368, -16],
+      "id": "pub-capture-unipile",
+      "name": "Capture Unipile Result"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.post_id }}",
+            "status": "={{ $json.id ? 'published' : 'failed' }}",
+            "linkedin_post_id": "={{ $json.id || '' }}",
+            "image_url": "={{ $json.image_url || '' }}"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {"id":"id","displayName":"id","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"status","displayName":"status","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"linkedin_post_id","displayName":"linkedin_post_id","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"image_url","displayName":"image_url","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [2592, -16],
+      "id": "pub-approve-status-published",
+      "name": "Status: published",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: 'approve', post_id: $('Capture Unipile Result').first().json.post_id, linkedin_post_id: $('Capture Unipile Result').first().json.id || '', had_image: $('Capture Unipile Result').first().json.had_image }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2816, -16],
+      "id": "pub-approve-respond",
+      "name": "Respond Approve"
+    },
+    {
+      "parameters": {
+        "jsCode": "// REWRITE: combineer post + author config voor de Herschrijver\nconst post = $('Get Post Row').first().json;\nconst body = $('Dashboard Webhook').first().json.body;\nconst authorRows = $('Get Authors').all();\nconst authorRow = authorRows.find(r => (r.json.author || '').trim() === (post.author || '').trim());\n\nreturn {\n  json: {\n    post_id: post.id,\n    author: post.author,\n    original_post: post.post_tekst,\n    feedback: body.feedback || '',\n    voice: authorRow ? authorRow.json.voice : '',\n    voorbeelden: authorRow ? authorRow.json.voorbeelden : '',\n    row_number: post.row_number\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1248, 344],
+      "id": "pub-rewrite-set",
+      "name": "Combine for Rewrite"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Herschrijf de LinkedIn-post op basis van de gebruiker-feedback. Behoud de eigen stem.\n\nVOICE: {{ $json.voice }}\n\nVOORBEELDEN VAN DEZE STEM (CRUCIAAL - blijf hier dichtbij):\n\"\"\"\n{{ $json.voorbeelden }}\n\"\"\"\n\nORIGINELE POST:\n\"\"\"\n{{ $json.original_post }}\n\"\"\"\n\nFEEDBACK VAN GEBRUIKER:\n\"\"\"\n{{ $json.feedback }}\n\"\"\"\n\nVerwerk de feedback. Behoud structuur (haakje, kern, afsluiting, hashtags). Geen lange streepjes. Behoud de eigen stem zoals in de voorbeelden.\n\nVERPLICHT OUTPUT FORMAAT (strikt JSON, geen markdown wrappers):\n{\n  \"post_tekst\": \"De verbeterde versie, klaar om te plaatsen.\",\n  \"haakje\": \"De eerste 2 regels.\",\n  \"hashtags\": [\"#ESG\", \"#...\"]\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [1472, 344],
+      "id": "pub-herschrijver",
+      "name": "Herschrijver",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-opus-4-7",
+          "mode": "list",
+          "cachedResultName": "Claude Opus 4.7"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [1440, 520],
+      "id": "pub-claude-herschrijf",
+      "name": "Claude (Herschrijver)",
+      "credentials": {
+        "anthropicApi": {
+          "id": "g1b8If6eUJ1a04uD",
+          "name": "SmartESG"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Herschrijver output\nconst raw = $json.output || '{}';\nconst clean = raw.replace(/```json|```/g, '').trim();\nlet parsed = {};\ntry { parsed = JSON.parse(clean); }\ncatch(e) { parsed = { post_tekst: raw, haakje: '', hashtags: [] }; }\n\nconst combine = $('Combine for Rewrite').first().json;\n\nreturn {\n  json: {\n    post_id: combine.post_id,\n    post_tekst: parsed.post_tekst || '',\n    haakje: parsed.haakje || '',\n    hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags.join(' ') : ''\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1696, 344],
+      "id": "pub-parse-rewrite",
+      "name": "Parse Rewrite"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.post_id }}",
+            "post_tekst": "={{ $json.post_tekst }}",
+            "hashtags": "={{ $json.hashtags }}",
+            "status": "pending",
+            "feedback": ""
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {"id":"id","displayName":"id","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"post_tekst","displayName":"post_tekst","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"hashtags","displayName":"hashtags","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"status","displayName":"status","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"feedback","displayName":"feedback","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1920, 344],
+      "id": "pub-rewrite-update",
+      "name": "Update with Rewrite",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: 'rewrite', post_id: $('Parse Rewrite').first().json.post_id, post_tekst: $('Parse Rewrite').first().json.post_tekst, hashtags: $('Parse Rewrite').first().json.hashtags, haakje: $('Parse Rewrite').first().json.haakje || '' }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2144, 344],
+      "id": "pub-rewrite-respond",
+      "name": "Respond Rewrite"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Dashboard Webhook').first().json.body.post_id }}",
+            "status": "rejected"
+          },
+          "matchingColumns": ["id"],
+          "schema": [
+            {"id":"id","displayName":"id","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"status","displayName":"status","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1248, 664],
+      "id": "pub-reject-update",
+      "name": "Status: rejected",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"ok\": true,\n  \"action\": \"reject\",\n  \"post_id\": \"{{ $('Dashboard Webhook').first().json.body.post_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1472, 664],
+      "id": "pub-reject-respond",
+      "name": "Respond Reject"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Dashboard Webhook": { "main": [[{ "node": "Get Post Row", "type": "main", "index": 0 }]] },
+    "Get Post Row": { "main": [[{ "node": "Get Authors", "type": "main", "index": 0 }]] },
+    "Get Authors": { "main": [[{ "node": "Action Switch", "type": "main", "index": 0 }]] },
+    "Action Switch": {
+      "main": [
+        [{ "node": "Combine Post+Author", "type": "main", "index": 0 }],
+        [{ "node": "Combine for Rewrite", "type": "main", "index": 0 }],
+        [{ "node": "Status: rejected", "type": "main", "index": 0 }]
+      ]
+    },
+
+    "Combine Post+Author": { "main": [[{ "node": "Status: publishing", "type": "main", "index": 0 }]] },
+    "Status: publishing": { "main": [[{ "node": "IF Has Image", "type": "main", "index": 0 }]] },
+    "IF Has Image": {
+      "main": [
+        [{ "node": "Download Image", "type": "main", "index": 0 }],
+        [{ "node": "Post naar LinkedIn (Unipile)", "type": "main", "index": 0 }]
+      ]
+    },
+    "Download Image": { "main": [[{ "node": "Post with Image (Unipile)", "type": "main", "index": 0 }]] },
+    "Post with Image (Unipile)": { "main": [[{ "node": "Capture Unipile Result", "type": "main", "index": 0 }]] },
+    "Post naar LinkedIn (Unipile)": { "main": [[{ "node": "Capture Unipile Result", "type": "main", "index": 0 }]] },
+    "Capture Unipile Result": { "main": [[{ "node": "Status: published", "type": "main", "index": 0 }]] },
+    "Status: published": { "main": [[{ "node": "Respond Approve", "type": "main", "index": 0 }]] },
+
+    "Combine for Rewrite": { "main": [[{ "node": "Herschrijver", "type": "main", "index": 0 }]] },
+    "Claude (Herschrijver)": { "ai_languageModel": [[{ "node": "Herschrijver", "type": "ai_languageModel", "index": 0 }]] },
+    "Herschrijver": { "main": [[{ "node": "Parse Rewrite", "type": "main", "index": 0 }]] },
+    "Parse Rewrite": { "main": [[{ "node": "Update with Rewrite", "type": "main", "index": 0 }]] },
+    "Update with Rewrite": { "main": [[{ "node": "Respond Rewrite", "type": "main", "index": 0 }]] },
+
+    "Status: rejected": { "main": [[{ "node": "Respond Reject", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "smartesg-publisher-v2-images",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
