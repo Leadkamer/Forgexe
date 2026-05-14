@@ -24,6 +24,9 @@ Twee kolommen, header in rij 1:
 | pitch_template | (Tom's pitch-tekst hier, met `{Voornaam}` placeholder) |
 | pitch_daglimiet | 20 |
 | pitch_throttle_sec | 90 |
+| pitch_statuses | Geaccepteerd,Follow-up,Nudge |
+
+**`pitch_statuses`** is een comma-separated lijst van display-statussen die de pitch krijgen. Mogelijke waardes (uit het dashboard): `Geaccepteerd`, `Follow-up`, `Nudge`, `Gereageerd`. Tom en Bas kunnen dit per campagne aanpassen via de modal — de gekozen statussen worden hier opgeslagen zodat de schedule de volgende dag dezelfde set gebruikt.
 
 **Default pitch_template** (kun je 1-op-1 plakken):
 

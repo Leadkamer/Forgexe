@@ -47,7 +47,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Webhook payload normaliseren. Actions: 'start' | 'stop' | 'send-now'\nconst body = $json.body || {};\nreturn {\n  json: {\n    source: 'webhook',\n    action: body.action || 'start',\n    template: body.template || '',\n    daglimiet: body.daglimiet || 20,\n    throttle_sec: body.throttle_sec || 90\n  }\n};"
+        "jsCode": "// Webhook payload normaliseren. Actions: 'start' | 'stop' | 'send-now'\nconst body = $json.body || {};\nconst statuses = Array.isArray(body.statuses) ? body.statuses : [];\nreturn {\n  json: {\n    source: 'webhook',\n    action: body.action || 'start',\n    template: body.template || '',\n    daglimiet: body.daglimiet || 20,\n    throttle_sec: body.throttle_sec || 90,\n    statuses_csv: statuses.join(',')\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -93,7 +93,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Bouw settings object uit key/value rows. Merge met webhook input indien aanwezig.\nconst rows = $('Get Settings').all().map(i => i.json);\nconst settings = {};\nrows.forEach(r => { if (r.key) settings[r.key] = r.value; });\n\n// Detecteer of we via webhook of schedule kwamen\nlet trigger = {};\ntry { trigger = $('Parse Webhook').first().json; } catch(e) {}\nif (!trigger.action) {\n  try { trigger = $('Werkdag Check').first().json; } catch(e) {}\n}\n\nconst webhookTemplate = (trigger.template || '').trim();\nconst webhookDaglimiet = parseInt(trigger.daglimiet) || 0;\nconst webhookThrottle = parseInt(trigger.throttle_sec) || 0;\n\nreturn {\n  json: {\n    source: trigger.source || 'unknown',\n    action: trigger.action || 'send-now',\n    pitch_actief: (settings.pitch_actief || 'Nee').trim(),\n    pitch_template: webhookTemplate || (settings.pitch_template || ''),\n    pitch_daglimiet: webhookDaglimiet || parseInt(settings.pitch_daglimiet) || 20,\n    pitch_throttle_sec: webhookThrottle || parseInt(settings.pitch_throttle_sec) || 90,\n    template_came_from_webhook: !!webhookTemplate\n  }\n};"
+        "jsCode": "// Bouw settings object uit key/value rows. Merge met webhook input indien aanwezig.\nconst rows = $('Get Settings').all().map(i => i.json);\nconst settings = {};\nrows.forEach(r => { if (r.key) settings[r.key] = r.value; });\n\n// Detecteer of we via webhook of schedule kwamen\nlet trigger = {};\ntry { trigger = $('Parse Webhook').first().json; } catch(e) {}\nif (!trigger.action) {\n  try { trigger = $('Werkdag Check').first().json; } catch(e) {}\n}\n\nconst webhookTemplate = (trigger.template || '').trim();\nconst webhookDaglimiet = parseInt(trigger.daglimiet) || 0;\nconst webhookThrottle = parseInt(trigger.throttle_sec) || 0;\nconst webhookStatusesCsv = (trigger.statuses_csv || '').trim();\n\nreturn {\n  json: {\n    source: trigger.source || 'unknown',\n    action: trigger.action || 'send-now',\n    pitch_actief: (settings.pitch_actief || 'Nee').trim(),\n    pitch_template: webhookTemplate || (settings.pitch_template || ''),\n    pitch_daglimiet: webhookDaglimiet || parseInt(settings.pitch_daglimiet) || 20,\n    pitch_throttle_sec: webhookThrottle || parseInt(settings.pitch_throttle_sec) || 90,\n    pitch_statuses: webhookStatusesCsv || (settings.pitch_statuses || 'Geaccepteerd,Follow-up,Nudge'),\n    template_came_from_webhook: !!webhookTemplate,\n    statuses_came_from_webhook: !!webhookStatusesCsv\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -242,6 +242,45 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
+            "key": "pitch_statuses",
+            "value": "={{ $('Merge Config').first().json.pitch_statuses }}"
+          },
+          "matchingColumns": ["key"],
+          "schema": [
+            {"id":"key","displayName":"key","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"value","displayName":"value","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1632, 130],
+      "id": "bulk-save-statuses",
+      "name": "Settings: save statuses",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Settings",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
             "key": "pitch_actief",
             "value": "Nee"
           },
@@ -327,7 +366,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Filter eligible leads + verdeel over Tom/Bas tot daglimiet\nconst leads = $input.all().map(i => i.json);\nconst cfg = $('Merge Config').first().json;\nconst daglimiet = cfg.pitch_daglimiet || 20;\n\nfunction isEligible(l) {\n  if ((l.Status || '').trim() !== 'Geaccepteerd') return false;\n  if ((l['Heeft Gereageerd'] || '').trim() === 'Ja') return false;\n  if ((l['Pitch Verzonden'] || '').trim() !== '') return false;\n  if (!l.provider_id && !l['Provider ID'] && !l.providerId) return false;\n  return true;\n}\n\nconst tomQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Tom').slice(0, daglimiet);\nconst basQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Bas').slice(0, daglimiet);\n\nconst combined = [...tomQueue, ...basQueue];\n\nif (combined.length === 0) {\n  return [{ json: { empty: true, message: 'Geen eligible leads vandaag', remaining: 0 } }];\n}\n\nreturn combined.map(l => {\n  const voornaam = (l.Voornaam || '').trim() || 'daar';\n  const author = (l.Afzender || '').trim();\n  const accountId = author === 'Bas' ? 'REPLACE_WITH_BAS_UNIPILE_ID' : 'behhoyRSR5y24t66aDgVQQ';\n  const template = cfg.pitch_template || '';\n  const message = template.replace(/\\{Voornaam\\}/gi, voornaam).replace(/\\{voornaam\\}/gi, voornaam);\n  return {\n    json: {\n      linkedin_url: l['Linkedin URL'] || '',\n      voornaam: voornaam,\n      author: author,\n      account_id: accountId,\n      provider_id: l.provider_id || l['Provider ID'] || l.providerId || '',\n      message: message,\n      empty: false\n    }\n  };\n});"
+        "jsCode": "// Filter eligible leads + verdeel over Tom/Bas tot daglimiet\nconst leads = $input.all().map(i => i.json);\nconst cfg = $('Merge Config').first().json;\nconst daglimiet = cfg.pitch_daglimiet || 20;\n\n// Welke display-statussen zijn geselecteerd via dashboard?\nconst selectedStatuses = (cfg.pitch_statuses || 'Geaccepteerd,Follow-up,Nudge')\n  .split(',')\n  .map(s => s.trim())\n  .filter(s => s);\n\n// Spiegel van dashboard's getStatus() - bepaalt display-status van een lead\nfunction displayStatus(l) {\n  if ((l['Heeft Gereageerd'] || '').trim() === 'Ja') return 'Gereageerd';\n  if ((l['Status Follow-up'] || '').trim() === 'Nudge Verzonden') return 'Nudge';\n  if ((l['Status Follow-up'] || '').trim() === 'Verzonden') return 'Follow-up';\n  return (l.Status || 'Nieuw').trim();\n}\n\nfunction isEligible(l) {\n  if ((l['Pitch Verzonden'] || '').trim() !== '') return false;\n  if (!l.provider_id && !l['Provider ID'] && !l.providerId) return false;\n  return selectedStatuses.includes(displayStatus(l));\n}\n\nconst tomQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Tom').slice(0, daglimiet);\nconst basQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Bas').slice(0, daglimiet);\n\nconst combined = [...tomQueue, ...basQueue];\n\nif (combined.length === 0) {\n  return [{ json: { empty: true, message: 'Geen eligible leads vandaag', remaining: 0, selectedStatuses } }];\n}\n\nreturn combined.map(l => {\n  const voornaam = (l.Voornaam || '').trim() || 'daar';\n  const author = (l.Afzender || '').trim();\n  const accountId = author === 'Bas' ? 'REPLACE_WITH_BAS_UNIPILE_ID' : 'behhoyRSR5y24t66aDgVQQ';\n  const template = cfg.pitch_template || '';\n  const message = template.replace(/\\{Voornaam\\}/gi, voornaam).replace(/\\{voornaam\\}/gi, voornaam);\n  return {\n    json: {\n      linkedin_url: l['Linkedin URL'] || '',\n      voornaam: voornaam,\n      author: author,\n      account_id: accountId,\n      provider_id: l.provider_id || l['Provider ID'] || l.providerId || '',\n      message: message,\n      display_status: displayStatus(l),\n      empty: false\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -522,7 +561,8 @@
     },
 
     "Settings: pitch_actief=Ja": { "main": [[{ "node": "Settings: save template", "type": "main", "index": 0 }]] },
-    "Settings: save template": { "main": [[{ "node": "Respond Start", "type": "main", "index": 0 }]] },
+    "Settings: save template": { "main": [[{ "node": "Settings: save statuses", "type": "main", "index": 0 }]] },
+    "Settings: save statuses": { "main": [[{ "node": "Respond Start", "type": "main", "index": 0 }]] },
 
     "Settings: pitch_actief=Nee": { "main": [[{ "node": "Respond Stop", "type": "main", "index": 0 }]] },
 
