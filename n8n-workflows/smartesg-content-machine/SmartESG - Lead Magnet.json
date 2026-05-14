@@ -1,0 +1,230 @@
+{
+  "name": "SmartESG - Lead Magnet",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## LEAD MAGNET WORKFLOW\nLanding page POST → /smartesg-lead-magnet\n\nDoet:\n1. Lead opslaan in 'Leadmagnet' sheet tab\n2. PDF mailen naar de lead (download link)\n3. Intern notify-mail naar info@smartesg.nl met scoring\n\nLead tier-bepaling:\n- HOT: q_relevant=Ja,urgent + q_keten=Ja,essentieel\n- WARM: q_relevant=Ja,oriënterend + min 2 actieve antwoorden\n- COLD: q_relevant=Nog niet OF alleen passieve antwoorden",
+        "height": 380,
+        "width": 760,
+        "color": 4
+      },
+      "id": "lm-note-001",
+      "name": "Sticky Info",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-32, -120]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "smartesg-lead-magnet",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [64, 240],
+      "id": "lm-webhook",
+      "name": "Landing Webhook",
+      "webhookId": "smartesg-lead-magnet"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse + scoreer lead\nconst b = $json.body || {};\n\nconst answers = {\n  q_relevant: (b.q_relevant || '').trim(),\n  q_iso9001: (b.q_iso9001 || '').trim(),\n  q_iso14001: (b.q_iso14001 || '').trim(),\n  q_ecovadis: (b.q_ecovadis || '').trim(),\n  q_keten: (b.q_keten || '').trim()\n};\n\n// Tier berekenen\nfunction isActief(v) {\n  return ['Gecertificeerd','Al gecertificeerd','In uitvoering','Ja, ambitie','Al aangesloten','Van plan','Ja, essentieel','Op termijn','Ja, urgent','Ja, oriënterend'].includes(v);\n}\nconst activeCount = Object.values(answers).filter(isActief).length;\n\nlet tier = 'COLD';\nif (answers.q_relevant === 'Ja, urgent' && answers.q_keten === 'Ja, essentieel') {\n  tier = 'HOT';\n} else if (answers.q_relevant === 'Ja, urgent') {\n  tier = 'WARM';\n} else if (answers.q_relevant === 'Ja, oriënterend' && activeCount >= 3) {\n  tier = 'WARM';\n}\n\n// Voornaam + email validatie\nconst voornaam = (b.voornaam || '').trim();\nconst email = (b.email || '').trim().toLowerCase();\nconst isValidEmail = /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email);\n\nreturn {\n  json: {\n    voornaam,\n    achternaam: (b.achternaam || '').trim(),\n    naam: voornaam + ' ' + (b.achternaam || '').trim(),\n    email,\n    bedrijf: (b.bedrijf || '').trim(),\n    functie: (b.functie || '').trim(),\n    ...answers,\n    consent: !!b.consent,\n    source: b.source || 'leveranciersbeoordeling-landing',\n    submitted_at: b.submitted_at || new Date().toISOString(),\n    submitted_date: (b.submitted_at || new Date().toISOString()).substring(0,10),\n    page_url: b.page_url || '',\n    tier,\n    active_count: activeCount,\n    is_valid: isValidEmail && voornaam.length > 0\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [288, 240],
+      "id": "lm-parse",
+      "name": "Parse + Score Lead"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2},
+          "conditions": [
+            {
+              "id": "valid",
+              "leftValue": "={{ $json.is_valid }}",
+              "rightValue": "",
+              "operator": {"type": "boolean", "operation": "true", "singleValue": true}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [512, 240],
+      "id": "lm-if-valid",
+      "name": "IF Valid"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leadmagnet",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $json.submitted_date }}",
+            "Tier": "={{ $json.tier }}",
+            "Voornaam": "={{ $json.voornaam }}",
+            "Achternaam": "={{ $json.achternaam }}",
+            "Email": "={{ $json.email }}",
+            "Bedrijf": "={{ $json.bedrijf }}",
+            "Functie": "={{ $json.functie }}",
+            "Relevant": "={{ $json.q_relevant }}",
+            "ISO 9001": "={{ $json.q_iso9001 }}",
+            "ISO 14001": "={{ $json.q_iso14001 }}",
+            "EcoVadis": "={{ $json.q_ecovadis }}",
+            "Keten": "={{ $json.q_keten }}",
+            "Source": "={{ $json.source }}",
+            "Consent": "={{ $json.consent ? 'Ja' : 'Nee' }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {"id":"Datum","displayName":"Datum","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Tier","displayName":"Tier","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Voornaam","displayName":"Voornaam","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Achternaam","displayName":"Achternaam","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Email","displayName":"Email","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Bedrijf","displayName":"Bedrijf","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Functie","displayName":"Functie","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Relevant","displayName":"Relevant","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"ISO 9001","displayName":"ISO 9001","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"ISO 14001","displayName":"ISO 14001","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"EcoVadis","displayName":"EcoVadis","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Keten","displayName":"Keten","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Source","displayName":"Source","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false},
+            {"id":"Consent","displayName":"Consent","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":false}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [736, 160],
+      "id": "lm-save-sheet",
+      "name": "Save to Leadmagnet Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Parse + Score Lead').first().json.email }}",
+        "subject": "Jouw download: SmartESG Leveranciersbeoordeling",
+        "emailType": "html",
+        "message": "=<!DOCTYPE html><html><body style=\"font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #0f172a; max-width: 600px; margin: 0 auto; padding: 24px;\">\n<div style=\"background: linear-gradient(135deg, #0d3b3b, #0f766e); color: white; padding: 32px 28px; border-radius: 12px;\">\n  <div style=\"font-size: 14px; letter-spacing: 0.08em; opacity: 0.85; text-transform: uppercase; margin-bottom: 8px;\">SMART ESG</div>\n  <h1 style=\"margin: 0; font-size: 24px; line-height: 1.3;\">Hi {{ $('Parse + Score Lead').first().json.voornaam }},</h1>\n  <p style=\"margin: 12px 0 0; opacity: 0.9;\">Bedankt voor je interesse in de Leveranciersbeoordeling.</p>\n</div>\n\n<div style=\"padding: 28px 8px;\">\n  <p>Zoals beloofd: hieronder vind je de PDF terug. Je kunt 'm direct openen via onderstaande knop.</p>\n\n  <div style=\"margin: 28px 0;\">\n    <a href=\"https://download.smartesg.nl/leveranciersbeoordeling.pdf\" style=\"display: inline-block; background: #0f766e; color: white; padding: 14px 22px; text-decoration: none; border-radius: 8px; font-weight: 600;\">📄 Open Leveranciersbeoordeling.pdf</a>\n  </div>\n\n  <p>De beoordeling bevat 11 toetsbare criteria verdeeld over vier thema's:</p>\n  <ul>\n    <li><strong>Kwaliteitsmanagement</strong> — ISO 9001, klachten, audits</li>\n    <li><strong>Duurzaamheid &amp; Milieu</strong> — ISO 14001, CO₂ cradle-to-gate</li>\n    <li><strong>Duurzaamheidsnetwerken &amp; Labels</strong> — EcoVadis, FSC, Lean &amp; Green</li>\n    <li><strong>MVO-Rapportage &amp; Transparantie</strong> — Scope 3, GRI / CDP</li>\n  </ul>\n\n  <p style=\"margin-top: 28px;\">Vragen of zin in een korte sparringsessie? Reply gerust op deze mail.</p>\n  <p style=\"margin-top: 8px;\">Hartelijke groet,<br><strong>Tom Teunisse &amp; Bas</strong><br>SmartESG</p>\n</div>\n\n<hr style=\"border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;\">\n<p style=\"font-size: 12px; color: #64748b; text-align: center;\">SmartESG · <a href=\"https://smartesg.nl\" style=\"color: #0f766e;\">smartesg.nl</a> · <a href=\"mailto:info@smartesg.nl\" style=\"color: #0f766e;\">info@smartesg.nl</a></p>\n</body></html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [960, 160],
+      "id": "lm-email-lead",
+      "name": "Email PDF naar Lead",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "info@smartesg.nl",
+        "subject": "=🔥 Nieuwe lead-magnet download ({{ $('Parse + Score Lead').first().json.tier }}): {{ $('Parse + Score Lead').first().json.naam }} - {{ $('Parse + Score Lead').first().json.bedrijf }}",
+        "emailType": "html",
+        "message": "=<!DOCTYPE html><html><body style=\"font-family:Arial,sans-serif;line-height:1.6;color:#0f172a;max-width:600px;margin:0 auto;padding:20px;\">\n<h2>Nieuwe leadmagnet-download — Tier: <span style=\"color:{{ $('Parse + Score Lead').first().json.tier === 'HOT' ? '#dc2626' : ($('Parse + Score Lead').first().json.tier === 'WARM' ? '#f59e0b' : '#64748b') }}\">{{ $('Parse + Score Lead').first().json.tier }}</span></h2>\n\n<table cellpadding=\"6\" style=\"width:100%;border-collapse:collapse;\">\n  <tr><td><strong>Naam</strong></td><td>{{ $('Parse + Score Lead').first().json.naam }}</td></tr>\n  <tr><td><strong>Email</strong></td><td><a href=\"mailto:{{ $('Parse + Score Lead').first().json.email }}\">{{ $('Parse + Score Lead').first().json.email }}</a></td></tr>\n  <tr><td><strong>Bedrijf</strong></td><td>{{ $('Parse + Score Lead').first().json.bedrijf }}</td></tr>\n  <tr><td><strong>Functie</strong></td><td>{{ $('Parse + Score Lead').first().json.functie || '-' }}</td></tr>\n  <tr><td colspan=\"2\" style=\"padding-top:14px;\"><strong>Antwoorden:</strong></td></tr>\n  <tr><td>Relevant?</td><td>{{ $('Parse + Score Lead').first().json.q_relevant }}</td></tr>\n  <tr><td>ISO 9001</td><td>{{ $('Parse + Score Lead').first().json.q_iso9001 }}</td></tr>\n  <tr><td>ISO 14001</td><td>{{ $('Parse + Score Lead').first().json.q_iso14001 }}</td></tr>\n  <tr><td>EcoVadis</td><td>{{ $('Parse + Score Lead').first().json.q_ecovadis }}</td></tr>\n  <tr><td>Ketenrapportage</td><td>{{ $('Parse + Score Lead').first().json.q_keten }}</td></tr>\n</table>\n\n<p style=\"margin-top:20px;padding:12px;background:#f0fdf4;border-left:4px solid #0f766e;\">\n{{ $('Parse + Score Lead').first().json.tier === 'HOT' ? '🔥 <strong>HOT lead</strong> — direct opvolgen, urgentie + ketenrapportage interesse.' : ($('Parse + Score Lead').first().json.tier === 'WARM' ? '🌤 <strong>WARM lead</strong> — toevoegen aan FU-sequence.' : '❄️ <strong>COLD lead</strong> — nieuwsbrief, niet sales-opvolgen.') }}\n</p>\n</body></html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [1184, 160],
+      "id": "lm-email-notify",
+      "name": "Notify Tom + Bas",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, tier: $('Parse + Score Lead').first().json.tier, message: 'Download komt eraan, check ook je inbox.' }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {"name": "Access-Control-Allow-Origin", "value": "*"}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1408, 160],
+      "id": "lm-respond-ok",
+      "name": "Respond OK"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 400,
+        "responseBody": "={{ JSON.stringify({ ok: false, error: 'Ongeldige invoer - email of naam ontbreekt.' }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {"name": "Access-Control-Allow-Origin", "value": "*"}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [736, 360],
+      "id": "lm-respond-invalid",
+      "name": "Respond Invalid"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Landing Webhook": { "main": [[{ "node": "Parse + Score Lead", "type": "main", "index": 0 }]] },
+    "Parse + Score Lead": { "main": [[{ "node": "IF Valid", "type": "main", "index": 0 }]] },
+    "IF Valid": {
+      "main": [
+        [{ "node": "Save to Leadmagnet Sheet", "type": "main", "index": 0 }],
+        [{ "node": "Respond Invalid", "type": "main", "index": 0 }]
+      ]
+    },
+    "Save to Leadmagnet Sheet": { "main": [[{ "node": "Email PDF naar Lead", "type": "main", "index": 0 }]] },
+    "Email PDF naar Lead": { "main": [[{ "node": "Notify Tom + Bas", "type": "main", "index": 0 }]] },
+    "Notify Tom + Bas": { "main": [[{ "node": "Respond OK", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "smartesg-leadmagnet-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
