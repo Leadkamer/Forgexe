@@ -1,0 +1,566 @@
+{
+  "name": "SmartESG - Bulk Outreach",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## BULK PITCH CAMPAGNE\nStuurt eenmalig (en daarna dagelijks doortikkend) een pitch-bericht naar alle geaccepteerde leads van Tom + Bas.\n\nTwee triggers:\n- Webhook: dashboard start/stop campagne + slaat template op\n- Schedule: dagelijks 11:00 (na FU sequence 10:30) - werkt batch van 20/dag/auteur af\n\nSettings sheet rijen (key/value):\n- pitch_actief: Ja|Nee\n- pitch_template: tekst met {Voornaam}\n- pitch_daglimiet: 20\n- pitch_throttle_sec: 90\n\nSheet kolom op leads-tab:\n- Pitch Verzonden (datum, leeg = nog niet verzonden)\n\nSkipt: Heeft Gereageerd = Ja",
+        "height": 480,
+        "width": 760,
+        "color": 4
+      },
+      "id": "bulk-note-001",
+      "name": "Sticky Info",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-32, -120]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "smartesg-bulk-outreach",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [64, 400],
+      "id": "bulk-webhook",
+      "name": "Dashboard Webhook",
+      "webhookId": "smartesg-bulk-outreach"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 11,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [64, 580],
+      "id": "bulk-schedule",
+      "name": "Schedule Daily 11:00"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Webhook payload normaliseren. Actions: 'start' | 'stop' | 'send-now'\nconst body = $json.body || {};\nreturn {\n  json: {\n    source: 'webhook',\n    action: body.action || 'start',\n    template: body.template || '',\n    daglimiet: body.daglimiet || 20,\n    throttle_sec: body.throttle_sec || 90\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [288, 400],
+      "id": "bulk-parse-webhook",
+      "name": "Parse Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Schedule trigger - alleen op werkdagen processen\nconst today = new Date();\nconst dow = today.getDay();\nif (dow === 0 || dow === 6) return [];\nreturn [{ json: { source: 'schedule', action: 'send-now' } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [288, 580],
+      "id": "bulk-schedule-gate",
+      "name": "Werkdag Check"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Settings",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [512, 490],
+      "id": "bulk-get-settings",
+      "name": "Get Settings",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Bouw settings object uit key/value rows. Merge met webhook input indien aanwezig.\nconst rows = $('Get Settings').all().map(i => i.json);\nconst settings = {};\nrows.forEach(r => { if (r.key) settings[r.key] = r.value; });\n\n// Detecteer of we via webhook of schedule kwamen\nlet trigger = {};\ntry { trigger = $('Parse Webhook').first().json; } catch(e) {}\nif (!trigger.action) {\n  try { trigger = $('Werkdag Check').first().json; } catch(e) {}\n}\n\nconst webhookTemplate = (trigger.template || '').trim();\nconst webhookDaglimiet = parseInt(trigger.daglimiet) || 0;\nconst webhookThrottle = parseInt(trigger.throttle_sec) || 0;\n\nreturn {\n  json: {\n    source: trigger.source || 'unknown',\n    action: trigger.action || 'send-now',\n    pitch_actief: (settings.pitch_actief || 'Nee').trim(),\n    pitch_template: webhookTemplate || (settings.pitch_template || ''),\n    pitch_daglimiet: webhookDaglimiet || parseInt(settings.pitch_daglimiet) || 20,\n    pitch_throttle_sec: webhookThrottle || parseInt(settings.pitch_throttle_sec) || 90,\n    template_came_from_webhook: !!webhookTemplate\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [736, 490],
+      "id": "bulk-merge-config",
+      "name": "Merge Config"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {"caseSensitive": false, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [
+                  {"id": "act-start", "leftValue": "={{ $json.action }}", "rightValue": "start", "operator": {"type": "string", "operation": "equals"}}
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Start"
+            },
+            {
+              "conditions": {
+                "options": {"caseSensitive": false, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [
+                  {"id": "act-stop", "leftValue": "={{ $json.action }}", "rightValue": "stop", "operator": {"type": "string", "operation": "equals"}}
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Stop"
+            },
+            {
+              "conditions": {
+                "options": {"caseSensitive": false, "leftValue": "", "typeValidation": "strict", "version": 2},
+                "conditions": [
+                  {"id": "act-send", "leftValue": "={{ $json.action }}", "rightValue": "send-now", "operator": {"type": "string", "operation": "equals"}}
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SendNow"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [960, 490],
+      "id": "bulk-action-switch",
+      "name": "Action Switch"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Settings",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "key": "pitch_actief",
+            "value": "Ja"
+          },
+          "matchingColumns": ["key"],
+          "schema": [
+            {"id":"key","displayName":"key","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"value","displayName":"value","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1184, 290],
+      "id": "bulk-set-actief",
+      "name": "Settings: pitch_actief=Ja",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Settings",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "key": "pitch_template",
+            "value": "={{ $('Merge Config').first().json.pitch_template }}"
+          },
+          "matchingColumns": ["key"],
+          "schema": [
+            {"id":"key","displayName":"key","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"value","displayName":"value","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1408, 290],
+      "id": "bulk-save-template",
+      "name": "Settings: save template",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Settings",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "key": "pitch_actief",
+            "value": "Nee"
+          },
+          "matchingColumns": ["key"],
+          "schema": [
+            {"id":"key","displayName":"key","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"value","displayName":"value","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1184, 490],
+      "id": "bulk-stop-actief",
+      "name": "Settings: pitch_actief=Nee",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: 'stop', pitch_actief: 'Nee' }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1408, 490],
+      "id": "bulk-stop-respond",
+      "name": "Respond Stop"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": false, "leftValue": "", "typeValidation": "loose", "version": 2},
+          "conditions": [
+            {
+              "id": "is-actief",
+              "leftValue": "={{ $('Merge Config').first().json.pitch_actief }}",
+              "rightValue": "Ja",
+              "operator": {"type": "string", "operation": "equals"}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1184, 690],
+      "id": "bulk-if-actief",
+      "name": "IF Campagne Actief"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1408, 690],
+      "id": "bulk-get-leads",
+      "name": "Haal Leads",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filter eligible leads + verdeel over Tom/Bas tot daglimiet\nconst leads = $input.all().map(i => i.json);\nconst cfg = $('Merge Config').first().json;\nconst daglimiet = cfg.pitch_daglimiet || 20;\n\nfunction isEligible(l) {\n  if ((l.Status || '').trim() !== 'Geaccepteerd') return false;\n  if ((l['Heeft Gereageerd'] || '').trim() === 'Ja') return false;\n  if ((l['Pitch Verzonden'] || '').trim() !== '') return false;\n  if (!l.provider_id && !l['Provider ID'] && !l.providerId) return false;\n  return true;\n}\n\nconst tomQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Tom').slice(0, daglimiet);\nconst basQueue = leads.filter(l => isEligible(l) && (l.Afzender || '').trim() === 'Bas').slice(0, daglimiet);\n\nconst combined = [...tomQueue, ...basQueue];\n\nif (combined.length === 0) {\n  return [{ json: { empty: true, message: 'Geen eligible leads vandaag', remaining: 0 } }];\n}\n\nreturn combined.map(l => {\n  const voornaam = (l.Voornaam || '').trim() || 'daar';\n  const author = (l.Afzender || '').trim();\n  const accountId = author === 'Bas' ? 'REPLACE_WITH_BAS_UNIPILE_ID' : 'behhoyRSR5y24t66aDgVQQ';\n  const template = cfg.pitch_template || '';\n  const message = template.replace(/\\{Voornaam\\}/gi, voornaam).replace(/\\{voornaam\\}/gi, voornaam);\n  return {\n    json: {\n      linkedin_url: l['Linkedin URL'] || '',\n      voornaam: voornaam,\n      author: author,\n      account_id: accountId,\n      provider_id: l.provider_id || l['Provider ID'] || l.providerId || '',\n      message: message,\n      empty: false\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1632, 690],
+      "id": "bulk-build-queue",
+      "name": "Build Send Queue"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2},
+          "conditions": [
+            {
+              "id": "not-empty",
+              "leftValue": "={{ $json.empty }}",
+              "rightValue": "",
+              "operator": {"type": "boolean", "operation": "false", "singleValue": true}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1856, 690],
+      "id": "bulk-if-has-queue",
+      "name": "IF Queue Not Empty"
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [2080, 610],
+      "id": "bulk-split",
+      "name": "Per Lead"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api18.unipile.com:14855/api/v1/chats",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-API-KEY", "value": "JJnuginS.6QBeicKk+kj/6nklsDmigUP3HMHo51Uv4VmiX6GvhOc="},
+            {"name": "accept", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {"parameterType": "formData", "name": "account_id", "value": "={{ $json.account_id }}"},
+            {"parameterType": "formData", "name": "attendees_ids", "value": "={{ $json.provider_id }}"},
+            {"parameterType": "formData", "name": "text", "value": "={{ $json.message }}"}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [2304, 610],
+      "id": "bulk-unipile-send",
+      "name": "Unipile: Verstuur Pitch",
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Linkedin URL": "={{ $('Per Lead').item.json.linkedin_url }}",
+            "Pitch Verzonden": "={{ $now.format('yyyy-MM-dd') }}"
+          },
+          "matchingColumns": ["Linkedin URL"],
+          "schema": [
+            {"id":"Linkedin URL","displayName":"Linkedin URL","required":true,"defaultMatch":true,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Pitch Verzonden","displayName":"Pitch Verzonden","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [2528, 610],
+      "id": "bulk-mark-sent",
+      "name": "Mark Pitch Verzonden",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": "={{ $('Merge Config').first().json.pitch_throttle_sec }}",
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2752, 610],
+      "id": "bulk-wait",
+      "name": "Throttle"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Eindrapport - hoeveel verstuurd, hoeveel still queued in totaal\nconst sent = $('Per Lead').context.totalItems || 0;\nconst cfg = $('Merge Config').first().json;\nreturn {\n  json: {\n    ok: true,\n    action: 'send-now',\n    source: cfg.source,\n    sent_count: sent,\n    daglimiet: cfg.pitch_daglimiet,\n    template_came_from_webhook: cfg.template_came_from_webhook\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2080, 770],
+      "id": "bulk-report",
+      "name": "Build Report"
+    },
+    {
+      "parameters": {
+        "sendTo": "info@leadkamer.nl",
+        "subject": "=SmartESG Bulk Outreach: {{ $json.sent_count }} berichten verzonden",
+        "message": "=Bulk pitch campagne batch verwerkt.\n\nBron: {{ $json.source }}\nVerzonden: {{ $json.sent_count }}\nDaglimiet: {{ $json.daglimiet }}\n\nVolgende batch: morgen 11:00 (schedule trigger).",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [2304, 770],
+      "id": "bulk-notify",
+      "name": "Notify Email",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: $('Merge Config').first().json.action, pitch_actief: 'Ja', template_saved: $('Merge Config').first().json.template_came_from_webhook, daglimiet: $('Merge Config').first().json.pitch_daglimiet, queued_today: ($('Build Send Queue').first().json.empty ? 0 : $('Build Send Queue').all().length) }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1632, 290],
+      "id": "bulk-start-respond",
+      "name": "Respond Start"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: 'send-now', queued: ($('Build Send Queue').first().json.empty ? 0 : $('Build Send Queue').all().length) }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [2080, 930],
+      "id": "bulk-sendnow-respond",
+      "name": "Respond SendNow"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Dashboard Webhook": { "main": [[{ "node": "Parse Webhook", "type": "main", "index": 0 }]] },
+    "Parse Webhook": { "main": [[{ "node": "Get Settings", "type": "main", "index": 0 }]] },
+
+    "Schedule Daily 11:00": { "main": [[{ "node": "Werkdag Check", "type": "main", "index": 0 }]] },
+    "Werkdag Check": { "main": [[{ "node": "Get Settings", "type": "main", "index": 0 }]] },
+
+    "Get Settings": { "main": [[{ "node": "Merge Config", "type": "main", "index": 0 }]] },
+    "Merge Config": { "main": [[{ "node": "Action Switch", "type": "main", "index": 0 }]] },
+
+    "Action Switch": {
+      "main": [
+        [{ "node": "Settings: pitch_actief=Ja", "type": "main", "index": 0 }],
+        [{ "node": "Settings: pitch_actief=Nee", "type": "main", "index": 0 }],
+        [{ "node": "IF Campagne Actief", "type": "main", "index": 0 }]
+      ]
+    },
+
+    "Settings: pitch_actief=Ja": { "main": [[{ "node": "Settings: save template", "type": "main", "index": 0 }]] },
+    "Settings: save template": { "main": [[{ "node": "Respond Start", "type": "main", "index": 0 }]] },
+
+    "Settings: pitch_actief=Nee": { "main": [[{ "node": "Respond Stop", "type": "main", "index": 0 }]] },
+
+    "IF Campagne Actief": {
+      "main": [
+        [{ "node": "Haal Leads", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Haal Leads": { "main": [[{ "node": "Build Send Queue", "type": "main", "index": 0 }]] },
+    "Build Send Queue": { "main": [[{ "node": "IF Queue Not Empty", "type": "main", "index": 0 }]] },
+    "IF Queue Not Empty": {
+      "main": [
+        [{ "node": "Per Lead", "type": "main", "index": 0 }],
+        [{ "node": "Build Report", "type": "main", "index": 0 }]
+      ]
+    },
+    "Per Lead": {
+      "main": [
+        [{ "node": "Build Report", "type": "main", "index": 0 }],
+        [{ "node": "Unipile: Verstuur Pitch", "type": "main", "index": 0 }]
+      ]
+    },
+    "Unipile: Verstuur Pitch": { "main": [[{ "node": "Mark Pitch Verzonden", "type": "main", "index": 0 }]] },
+    "Mark Pitch Verzonden": { "main": [[{ "node": "Throttle", "type": "main", "index": 0 }]] },
+    "Throttle": { "main": [[{ "node": "Per Lead", "type": "main", "index": 0 }]] },
+
+    "Build Report": { "main": [[{ "node": "Notify Email", "type": "main", "index": 0 }]] },
+    "Notify Email": { "main": [[{ "node": "Respond SendNow", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "smartesg-bulk-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

@@ -1,0 +1,101 @@
+{
+  "name": "SmartESG - Media List",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## MEDIA ENDPOINT\nGET /webhook/smartesg-media\n→ Listt afbeeldingen + video's uit de Drive-map\n→ Wordt gebruikt door het dashboard image-picker\n\nDrive folder: 1lpJPTvEbEpJoE9QgCHxNBzXJfRSl37D3\nDie moet gedeeld zijn als 'Iedereen met link — Lezer' anders falen de thumbnails in de browser.",
+        "height": 280,
+        "width": 720,
+        "color": 6
+      },
+      "id": "media-note-001",
+      "name": "Sticky Info",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-32, -80]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "smartesg-media",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 80],
+      "id": "media-webhook",
+      "name": "Webhook (GET media)",
+      "webhookId": "smartesg-media"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "'1lpJPTvEbEpJoE9QgCHxNBzXJfRSl37D3' in parents and trashed = false",
+        "returnAll": true,
+        "filter": {
+          "whatToSearch": "files"
+        },
+        "options": {
+          "fields": ["id", "name", "mimeType", "thumbnailLink", "webViewLink"]
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [464, 80],
+      "id": "media-list",
+      "name": "List Drive Files",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_WITH_DRIVE_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Filter naar alleen images + videos, format voor dashboard\nconst files = items.map(i => i.json);\nconst result = files\n  .filter(f => f.mimeType && (f.mimeType.startsWith('image/') || f.mimeType.startsWith('video/')))\n  .map(f => ({\n    id: f.id,\n    name: f.name,\n    mime: f.mimeType,\n    kind: f.mimeType.startsWith('video/') ? 'video' : 'image',\n    thumb: f.thumbnailLink || ('https://drive.google.com/thumbnail?id=' + f.id + '&sz=w400'),\n    view: ('https://drive.google.com/uc?export=view&id=' + f.id),\n    webViewLink: f.webViewLink || ''\n  }));\n\nreturn [{ json: { files: result, count: result.length } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [688, 80],
+      "id": "media-format",
+      "name": "Format Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.files }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {"name": "Access-Control-Allow-Origin", "value": "*"},
+              {"name": "Cache-Control", "value": "no-cache, max-age=0"}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [912, 80],
+      "id": "media-respond",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook (GET media)": { "main": [[{ "node": "List Drive Files", "type": "main", "index": 0 }]] },
+    "List Drive Files": { "main": [[{ "node": "Format Response", "type": "main", "index": 0 }]] },
+    "Format Response": { "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "smartesg-media-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

@@ -1,0 +1,1191 @@
+{
+  "name": "SmartESG - Content Machine",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## CONTENT VERZAMELAAR - RSS BRANCH\nHaalt artikelen uit RSS-feeds (alleen deindustrie.online voor nu)\n→ filtert op ESG/maakindustrie relevantie\n→ schrijft naar Backlog sheet",
+        "height": 460,
+        "width": 2400,
+        "color": 5
+      },
+      "id": "ses-note-001",
+      "name": "Sticky RSS Branch",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-48, -800]
+    },
+    {
+      "parameters": {
+        "content": "## CONTENT VERZAMELAAR - SCRAPE BRANCH\nVoor 5 sites zonder RSS: futureup, metaalunie, dnv, bureauveritas, ecovadis\nJina haalt schone markdown → Claude extract artikel-lijst → Backlog",
+        "height": 460,
+        "width": 2400,
+        "color": 6
+      },
+      "id": "ses-note-002",
+      "name": "Sticky Scrape Branch",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-48, -320]
+    },
+    {
+      "parameters": {
+        "content": "## DAGELIJKSE PIPELINE\nPakt nieuwste backlog-item → leest artikel → matcht SmartESG-thema → routeert naar Tom of Bas",
+        "height": 460,
+        "width": 2400,
+        "color": 4
+      },
+      "id": "ses-note-003",
+      "name": "Sticky Daily Pipeline",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-48, 160]
+    },
+    {
+      "parameters": {
+        "content": "## LINKEDIN POST GENEREREN\nDynamische voice (Tom of Bas) → schrijf naar Posts_Review sheet → notificatie mail → dashboard handelt review/publicatie af (zie 'SmartESG - Content Publisher' workflow)",
+        "height": 460,
+        "width": 2400,
+        "color": 3
+      },
+      "id": "ses-note-004",
+      "name": "Sticky LinkedIn Branch",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-48, 640]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [64, -640],
+      "id": "ses-sched-rss",
+      "name": "Schedule RSS"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Bronnen",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [256, -640],
+      "id": "ses-get-bronnen",
+      "name": "Get Bronnen RSS",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ses-filter-cond",
+              "leftValue": "={{ $json.RSS_URL }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [464, -640],
+      "id": "ses-filter-rss",
+      "name": "Filter Has RSS"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [672, -640],
+      "id": "ses-loop-rss",
+      "name": "Loop RSS Sources"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.RSS_URL }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [880, -640],
+      "id": "ses-rss-read",
+      "name": "RSS Read",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [880, -464],
+      "id": "ses-get-backlog-rss",
+      "name": "Get Backlog (RSS dedupe)",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ESG-FILTER voor SmartESG (MKB-maakindustrie, VSME/CSRD/MVO)\nconst rssItems = items;\nlet sourceData = {};\ntry { sourceData = $('Loop RSS Sources').item.json; } catch(e) { sourceData = { Type: 'Nieuws' }; }\n\nconst backlogItems = $('Get Backlog (RSS dedupe)').all();\nconst existingUrls = backlogItems.map(i => i.json.URL);\n\n// === GROENE LIJST (vertrouwde ESG/industrie domeinen) ===\nconst esgDomeinen = [\n  'futureup.nl', 'mvonederland.nl', 'metaalunie.nl', 'deindustrie.online',\n  'dnv.com', 'dnv.nl', 'group.bureauveritas.com', 'bureauveritas.com',\n  'ecovadis.com', 'esgtoday.com', 'esgnow.eu', 'sustainalize.com',\n  'rvo.nl', 'ser.nl', 'nen.nl',\n  'fd.nl', 'mt.nl', 'sprout.nl', 'emerce.nl', 'mtsprout.nl',\n  'klimaatakkoord.nl', 'groenebrief.nl', 'duurzaam-ondernemen.nl', 'duurzaamnieuws.nl',\n  'sciencebasedtargets.org', 'ghgprotocol.org', 'efrag.org', 'unglobalcompact.org'\n];\n\n// === RODE LIJST (verboden onderwerpen) ===\nconst verbodenWoorden = [\n  'tiktok','snapchat','gaming','crypto','bitcoin','nft',\n  'voetbal','eredivisie','knvb','olympische','psv','ajax','feyenoord',\n  'moord','overval','drugs','cocaine','kinderporno','verdachte','aangehouden',\n  'knmi','code oranje','code geel','sneeuw','storm','onweer','gladheid',\n  'tarot','horoscoop','sterrenbeeld','vacature','sollicitatie'\n];\n\n// === ESG-RELEVANTIE ZOEKTERMEN ===\nconst esgTermen = [\n  'esg','csrd','vsme','mvo','duurzaamheidsrapportage','duurzaamheid','sustainability',\n  'co2','co₂','klimaat','energietransitie','energieneutraal','net zero','klimaatdoelen',\n  'scope 1','scope 2','scope 3','ghg','broeikasgas','emissies','footprint','lca','levenscyclus',\n  'materialiteit','dubbele materialiteit','double materiality',\n  'supply chain','toeleveringsketen','keten','due diligence','ketenverantwoordelijkheid',\n  'mkb','maakindustrie','metaal','automotive','food','high-tech','industrie','productie',\n  'iso 14001','iso 26000','sbti','sbtn','science based','taxonomie','taxonomy','sfdr','cba',\n  'circulair','circulariteit','recycling','hergebruik','grondstof',\n  'rapportage','jaarverslag','transparantie','vsme rapport',\n  'efrag','europese commissie','klimaatwet','europese green deal','green deal',\n  'rvo','ser','nen','metaalunie','ondernemers','bedrijfsleven',\n  'audit','certificering','iso','assurance','verification',\n  'innovatie','transitie','energie','besparing','efficiency','transformatie'\n];\n\nconst nieuweItems = rssItems.filter(item => {\n  const link = (item.json.link || item.json.url || '').toLowerCase();\n  const title = (item.json.title || '').toLowerCase();\n  const snippet = (item.json.contentSnippet || item.json.content || '').toLowerCase();\n  const fullText = title + ' ' + snippet;\n\n  if (existingUrls.includes(item.json.link)) return false;\n\n  // Vertrouwde site? altijd laten passeren\n  const isEsgSite = esgDomeinen.some(d => link.includes(d));\n  if (isEsgSite) return true;\n\n  // Verboden onderwerp? blocken\n  const isVerboden = verbodenWoorden.some(w => fullText.includes(w));\n  if (isVerboden) return false;\n\n  // Anders: alleen door als er ESG-term in zit\n  return esgTermen.some(term => fullText.includes(term));\n});\n\nreturn nieuweItems.map(item => {\n  let samenvatting = item.json.contentSnippet || item.json.content || 'Geen samenvatting';\n  if (samenvatting.length > 2000) samenvatting = samenvatting.substring(0, 2000) + '... (ingekort)';\n  return {\n    json: {\n      URL: item.json.link || item.json.url,\n      Titel: item.json.title,\n      Samenvatting: samenvatting,\n      Type: sourceData.Type || 'Nieuws',\n      Bron_Site: sourceData.Bron || 'RSS',\n      Bron_Taal: sourceData.Taal || 'NL',\n      Datum_Toegevoegd: new Date().toISOString().split('T')[0]\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1104, -640],
+      "id": "ses-code-esg-filter",
+      "name": "ESG Filter",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ses-if-url",
+              "leftValue": "={{ $json.URL }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [1328, -640],
+      "id": "ses-if-url-rss",
+      "name": "Has URL?"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "URL": "={{ $json.URL }}",
+            "Titel": "={{ $json.Titel }}",
+            "Samenvatting": "={{ $json.Samenvatting }}",
+            "Type": "={{ $json.Type }}",
+            "Bron_Site": "={{ $json.Bron_Site }}",
+            "Bron_Taal": "={{ $json.Bron_Taal }}",
+            "Datum_Toegevoegd": "={{ $json.Datum_Toegevoegd }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {"id":"URL","displayName":"URL","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Titel","displayName":"Titel","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Samenvatting","displayName":"Samenvatting","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Type","displayName":"Type","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Bron_Site","displayName":"Bron_Site","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Bron_Taal","displayName":"Bron_Taal","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Datum_Toegevoegd","displayName":"Datum_Toegevoegd","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1568, -688],
+      "id": "ses-append-rss",
+      "name": "Append RSS to Backlog",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [64, -160],
+      "id": "ses-sched-scrape",
+      "name": "Schedule Scrape"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Scrape_Sources",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [256, -160],
+      "id": "ses-get-scrape-sources",
+      "name": "Get Scrape Sources",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [464, -160],
+      "id": "ses-get-backlog-scrape",
+      "name": "Get Backlog (Scrape dedupe)",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [672, -160],
+      "id": "ses-loop-scrape",
+      "name": "Loop Scrape Sources"
+    },
+    {
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $json.URL }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [880, -160],
+      "id": "ses-jina-scrape",
+      "name": "Jina Scrape Index",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Je krijgt de markdown-weergave van een nieuws-index pagina van {{ $('Loop Scrape Sources').item.json.Site_Naam }}.\nSite-taal: {{ $('Loop Scrape Sources').item.json.Taal }}.\nSite-URL (gebruik dit als basis voor relatieve links): {{ $('Loop Scrape Sources').item.json.URL }}\n\nINPUT MARKDOWN:\n\"\"\"\n{{ $json.data }}\n\"\"\"\n\nOPDRACHT:\nExtract de 5 MEEST RECENTE artikelen van deze pagina. Negeer navigatie, footer, sidebar, banners, events, downloads, podcasts, items zonder duidelijke titel of artikel-URL.\n\nVoor elk artikel:\n- titel: exacte titel zoals op de pagina\n- url: VOLLEDIGE URL (relatieve links absoluut maken op basis van site-URL)\n- datum: ISO-formaat (YYYY-MM-DD), of \"\" als niet zichtbaar\n- samenvatting: 1-2 zinnen uit de tekst van het artikel zelf (niet jouw eigen samenvatting)\n\nRELEVANTIE-FILTER voor SmartESG (MKB-maakindustrie, VSME/CSRD/MVO):\nBehoud alleen artikelen met aansluiting op:\n- ESG, CSRD, VSME, MVO, duurzaamheidsrapportage\n- Scope 1/2/3, CO2, klimaat, energietransitie\n- Supply chain, materialiteit, due diligence\n- MKB / maakindustrie / metaal / automotive / food / high-tech\n- Wet- en regelgeving (EU, RVO, NEN, ISO 14001/26000, taxonomie)\n- Circulariteit, recycling, transitie\n\nSkip duidelijk off-topic: HR-vacatures, productlanceringen zonder ESG-haak, puur financieel kwartaalcijfer, evenementen-aankondigingen, sport, entertainment.\n\nVERPLICHT OUTPUT FORMAAT - strikt JSON array, geen markdown wrappers, geen uitleg:\n[\n  {\"titel\": \"...\", \"url\": \"https://...\", \"datum\": \"2026-05-12\", \"samenvatting\": \"...\"}\n]\n\nAls geen enkel artikel relevant is: geef [] terug.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [1104, -160],
+      "id": "ses-agent-extract",
+      "name": "AI Extract Articles",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-opus-4-7",
+          "mode": "list",
+          "cachedResultName": "Claude Opus 4.7"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [1072, 32],
+      "id": "ses-anthropic-extract",
+      "name": "Claude (Extract)",
+      "credentials": {
+        "anthropicApi": {
+          "id": "g1b8If6eUJ1a04uD",
+          "name": "SmartESG"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output || '[]';\nconst clean = raw.replace(/```json|```/g, '').trim();\n\nlet articles = [];\ntry { articles = JSON.parse(clean); } catch(e) { return []; }\nif (!Array.isArray(articles)) return [];\n\nconst sourceData = $('Loop Scrape Sources').item.json;\nconst existingUrls = $('Get Backlog (Scrape dedupe)').all().map(i => i.json.URL);\n\nreturn articles\n  .filter(a => a && a.url && !existingUrls.includes(a.url))\n  .map(a => ({\n    json: {\n      URL: a.url,\n      Titel: a.titel || 'Onbekend',\n      Samenvatting: (a.samenvatting || '').substring(0, 2000),\n      Type: sourceData.Type || 'Scrape',\n      Bron_Site: sourceData.Site_Naam,\n      Bron_Taal: sourceData.Taal || 'NL',\n      Datum_Toegevoegd: new Date().toISOString().split('T')[0]\n    }\n  }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1328, -160],
+      "id": "ses-code-parse-scrape",
+      "name": "Parse + Dedupe Scrape"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "URL": "={{ $json.URL }}",
+            "Titel": "={{ $json.Titel }}",
+            "Samenvatting": "={{ $json.Samenvatting }}",
+            "Type": "={{ $json.Type }}",
+            "Bron_Site": "={{ $json.Bron_Site }}",
+            "Bron_Taal": "={{ $json.Bron_Taal }}",
+            "Datum_Toegevoegd": "={{ $json.Datum_Toegevoegd }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {"id":"URL","displayName":"URL","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Titel","displayName":"Titel","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Samenvatting","displayName":"Samenvatting","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Type","displayName":"Type","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Bron_Site","displayName":"Bron_Site","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Bron_Taal","displayName":"Bron_Taal","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Datum_Toegevoegd","displayName":"Datum_Toegevoegd","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1568, -160],
+      "id": "ses-append-scrape",
+      "name": "Append Scrape to Backlog",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [1, 3, 5],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [64, 320],
+      "id": "ses-sched-daily",
+      "name": "Schedule Daily Pipeline"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [256, 320],
+      "id": "ses-get-backlog-daily",
+      "name": "Get Backlog (daily)",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pak het NIEUWSTE backlog-item (laatst toegevoegd)\nlet items = $input.all();\nif (items.length === 0) return [];\n\nitems.sort((a, b) => {\n  const dA = new Date(a.json.Datum_Toegevoegd || 0);\n  const dB = new Date(b.json.Datum_Toegevoegd || 0);\n  return dB - dA;\n});\n\nconst nieuwste = items[0];\nreturn {\n  json: {\n    Zoekterm: nieuwste.json.Titel,\n    Nieuws_Context: nieuwste.json.Samenvatting,\n    Bron_URL: nieuwste.json.URL,\n    Bron_Site: nieuwste.json.Bron_Site,\n    Bron_Taal: nieuwste.json.Bron_Taal,\n    Type: nieuwste.json.Type\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [464, 320],
+      "id": "ses-pick-newest",
+      "name": "Pick Newest"
+    },
+    {
+      "parameters": {
+        "method": "HEAD",
+        "url": "={{ $json.Bron_URL }}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "maxRedirects": 5
+            }
+          },
+          "timeout": 10000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [672, 320],
+      "id": "ses-check-link",
+      "name": "Check Link",
+      "continueOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ses-link-cond",
+              "leftValue": "={{ $json.statusCode || 200 }}",
+              "rightValue": 400,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [880, 320],
+      "id": "ses-link-geldig",
+      "name": "Link Geldig?"
+    },
+    {
+      "parameters": {
+        "jsCode": "// HTTP HEAD overschrijft $json met response - herstel origineel\nconst orig = $('Pick Newest').first().json;\nreturn { json: orig };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1104, 240],
+      "id": "ses-restore",
+      "name": "Restore Article Data"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "URL",
+              "lookupValue": "={{ $('Pick Newest').first().json.Bron_URL }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1104, 400],
+      "id": "ses-zoek-dood",
+      "name": "Zoek Dode Link",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "startIndex": "={{ $json.row_number }}"
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1296, 400],
+      "id": "ses-del-dood",
+      "name": "Verwijder Dode Link",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://r.jina.ai/{{ $json.Bron_URL }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [1296, 240],
+      "id": "ses-jina-read",
+      "name": "Lees Artikel (Jina)"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Je bent de Content Analist van SmartESG.\nJouw taak: ruwe webteksten schoonmaken en voorbereiden voor de LinkedIn-redactie.\n\nINPUT:\n\"\"\"\n{{ $('Lees Artikel (Jina)').first().json.data }}\n\"\"\"\n\nINPUT-TAAL: {{ $('Pick Newest').first().json.Bron_Taal }}\n\nJOUW OPDRACHT:\n1. SCHOONMAKEN: Verwijder navigatie, footer, reclame, \"lees ook\", cookie-meldingen.\n2. BEHOUD DETAILS: Cijfers, percentages, regelgeving-namen, ISO-normen, EU-richtlijnen, jaartallen blijven staan.\n3. ANONIMISEER: Verwijder namen van onbekende personen. Quotes herschrijven naar algemene inzichten (\"ESG-experts stellen dat...\", \"Onderzoek toont aan...\"). Bekende publieke figuren (politici, EU-commissarissen, bekende CEO's) mogen blijven als relevant.\n4. STRUCTUREREN: Trek de kernpunten eruit.\n5. VERTALEN: Als input EN/DE is - vertaal kernpunten naar Nederlands maar behoud Engelse vakterminologie waar dat standaard is (bv \"scope 3 emissions\", \"double materiality\", \"taxonomy\").\n\nVERPLICHT OUTPUT FORMAAT (strikt JSON, geen markdown):\n{\n  \"clean_content\": \"De volledige opgeschoonde tekst (in NL). Inhoudelijke argumenten en cijfers behouden.\",\n  \"key_quotes\": [\"Quote 1 (geanonimiseerd, NL)\", \"Quote 2\"],\n  \"main_takeaways\": [\"Punt 1\", \"Punt 2\", \"Punt 3\"],\n  \"tone_of_voice\": \"Korte omschrijving (bv 'analytisch', 'waarschuwend', 'inspirerend').\",\n  \"esg_relevantie\": \"In 1 zin: waarom is dit relevant voor MKB-maakindustrie?\"\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [1520, 240],
+      "id": "ses-agent-analist",
+      "name": "Content Analist",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-opus-4-7",
+          "mode": "list",
+          "cachedResultName": "Claude Opus 4.7"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [1488, 432],
+      "id": "ses-anthropic-analist",
+      "name": "Claude (Analist)",
+      "credentials": {
+        "anthropicApi": {
+          "id": "g1b8If6eUJ1a04uD",
+          "name": "SmartESG"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output || '{}';\nconst clean = raw.replace(/```json|```/g, '').trim();\ntry { return { json: JSON.parse(clean) }; }\ncatch(e) { return { json: { error: 'Parse failed', raw_output: raw } }; }"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1744, 240],
+      "id": "ses-parse-content",
+      "name": "Parse Content"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Zoektermen",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1968, 240],
+      "id": "ses-get-zoektermen",
+      "name": "Get Zoektermen",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function parseDate(s){ if(!s) return 0; return new Date(s).getTime(); }\n\nconst sorted = items.sort((a,b) => parseDate(a.json.Laatst_Gebruikt) - parseDate(b.json.Laatst_Gebruikt));\n\nconst formatted = sorted.map(i => {\n  const t = i.json.Zoekterm;\n  const lu = i.json.Laatst_Gebruikt || 'Nooit';\n  return `- ${t} | (Laatst gebruikt: ${lu})`;\n}).join('\\n');\n\nreturn [{ json: { keyword_list: formatted } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2192, 240],
+      "id": "ses-maak-keywords",
+      "name": "Maak Zoekwoordenlijst"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Je bent een SmartESG-themacurator. Je koppelt een actueel artikel aan een SmartESG-content thema.\n\nINPUT ARTIKEL:\nTitel: {{ $('Pick Newest').first().json.Zoekterm }}\nBron: {{ $('Pick Newest').first().json.Bron_Site }}\nURL: {{ $('Pick Newest').first().json.Bron_URL }}\n\nGEANALYSEERDE INHOUD:\n\"\"\"\n{{ $('Parse Content').first().json.clean_content }}\n\"\"\"\n\nESG-RELEVANTIE (per Content Analist):\n{{ $('Parse Content').first().json.esg_relevantie }}\n\nBESCHIKBARE SMARTESG-THEMA'S (lang niet gebruikt komt bovenaan):\n\"\"\"\n{{ $('Maak Zoekwoordenlijst').first().json.keyword_list }}\n\"\"\"\n\nOPDRACHT:\n1. Lees de geanalyseerde inhoud.\n2. Kies het MEEST RELEVANTE thema uit de lijst. Probeer bovenaan te kiezen (lang niet gebruikt), tenzij die inhoudelijk echt niet matchen.\n3. Beoordeel of dit artikel waardevol genoeg is voor een LinkedIn-post van Tom of Bas (relevant=true). Skip overduidelijk irrelevant materiaal (relevant=false).\n4. Schrijf een 'invalshoek' (1-2 zinnen) die het artikel aan het gekozen thema verbindt.\n\nVERPLICHT OUTPUT FORMAAT (strikt JSON, geen markdown):\n{\n  \"relevant\": true,\n  \"gekozen_thema\": \"Het gekozen thema\",\n  \"invalshoek\": \"Pakkende koppeling van 1-2 zinnen.\",\n  \"bron_url\": \"{{ $('Pick Newest').first().json.Bron_URL }}\"\n}\n\nAls relevant=false, geef alleen { \"relevant\": false, \"reden\": \"...\" } terug.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [2416, 240],
+      "id": "ses-agent-thema",
+      "name": "Thema Curator",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-opus-4-7",
+          "mode": "list",
+          "cachedResultName": "Claude Opus 4.7"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [2384, 432],
+      "id": "ses-anthropic-thema",
+      "name": "Claude (Thema)",
+      "credentials": {
+        "anthropicApi": {
+          "id": "g1b8If6eUJ1a04uD",
+          "name": "SmartESG"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const raw = item.json.output || '{}';\n  const clean = raw.replace(/```json|```/g, '').trim();\n  try { return { json: JSON.parse(clean) }; }\n  catch(e) { return { json: { relevant: false, error: 'Parse failed' } }; }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2640, 240],
+      "id": "ses-parse-thema",
+      "name": "Parse Thema JSON"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ses-rel-cond",
+              "leftValue": "={{ $json.relevant }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [2864, 240],
+      "id": "ses-if-relevant",
+      "name": "Is relevant?"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Zoektermen",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Zoekterm": "={{ $json.gekozen_thema }}",
+            "Laatst_Gebruikt": "={{ $today }}"
+          },
+          "matchingColumns": ["Zoekterm"],
+          "schema": [
+            {"id":"Zoekterm","displayName":"Zoekterm","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"Laatst_Gebruikt","displayName":"Laatst_Gebruikt","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [3072, 192],
+      "id": "ses-update-thema",
+      "name": "Update Thema Laatst Gebruikt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Authors",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [3168, 320],
+      "id": "ses-get-authors",
+      "name": "Get Authors",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Author Router - alternerend Tom of Bas op basis van dag van het jaar\n// Voice/voorbeelden/config worden uit de Authors-sheet gelezen via de 'Get Authors' node\nconst now = new Date();\nconst start = new Date(now.getFullYear(), 0, 0);\nconst diff = now - start;\nconst dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));\nconst authorKey = dayOfYear % 2 === 0 ? 'Tom' : 'Bas';\n\n// Pak de juiste rij uit de Authors-sheet\nconst authorRows = $('Get Authors').all();\nconst authorRow = authorRows.find(r => (r.json.author || '').trim() === authorKey);\n\nif (!authorRow) {\n  throw new Error(`Author '${authorKey}' niet gevonden in Authors sheet. Check de 'author' kolom (waarden: Tom, Bas).`);\n}\n\nconst cfg = authorRow.json;\n\nreturn {\n  json: {\n    author: cfg.author,\n    author_naam: cfg.naam,\n    author_rol: cfg.rol,\n    author_voice: cfg.voice,\n    author_voorbeelden: cfg.voorbeelden,\n    unipile_account_id: cfg.unipile_account_id,\n    review_email: cfg.review_email,\n    thema: $('Parse Thema JSON').first().json.gekozen_thema,\n    invalshoek: $('Parse Thema JSON').first().json.invalshoek,\n    bron_url: $('Parse Thema JSON').first().json.bron_url,\n    bron_titel: $('Pick Newest').first().json.Zoekterm,\n    bron_site: $('Pick Newest').first().json.Bron_Site\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3296, 192],
+      "id": "ses-author-router",
+      "name": "Author Router (Tom/Bas)"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Schrijf een LinkedIn-post voor SmartESG.",
+        "options": {
+          "systemMessage": "=Je bent {{ $('Author Router (Tom/Bas)').first().json.author_naam }}, {{ $('Author Router (Tom/Bas)').first().json.author_rol }}.\n\nJOUW VOICE: {{ $('Author Router (Tom/Bas)').first().json.author_voice }}\n\nLEER VAN DEZE EIGEN VOORBEELDEN (CRUCIAAL VOOR DE STIJL):\nAnalyseer in onderstaande posts: zinsbouw, opening (vaak een week-aanleiding!), ritme, woordkeuze, hoe persoonlijke context wordt verweven met inhoud, hoe de afsluiting werkt. Schrijf de nieuwe post in EXACT dezelfde stijl. De post MOET PERSOONLIJKHEID HEBBEN zoals in deze voorbeelden, geen generieke AI-baseline.\n\n\"\"\"\n{{ $('Author Router (Tom/Bas)').first().json.author_voorbeelden }}\n\"\"\"\n\nOVER SMARTESG (CONTEXT - GEBRUIK SUBTIEL):\nSmart ESG (smartesg.nl) helpt MKB-maakbedrijven (15-250 medewerkers) met ESG/MVO-rapportages op VSME-standaard. Doelgroep: DGA/CEO/CFO/COO in automotive, food, high-tech, metaal. Pragmatisch, zonder consultancy-jargon, gericht op MKB-realiteit.\n\nINPUT VOOR DEZE POST:\n- Gekozen thema: {{ $('Author Router (Tom/Bas)').first().json.thema }}\n- Invalshoek: {{ $('Author Router (Tom/Bas)').first().json.invalshoek }}\n- Bron-titel: {{ $('Author Router (Tom/Bas)').first().json.bron_titel }}\n- Bron-site: {{ $('Author Router (Tom/Bas)').first().json.bron_site }}\n- Bron-URL: {{ $('Author Router (Tom/Bas)').first().json.bron_url }}\n- Volledige bron-inhoud:\n\"\"\"\n{{ $('Parse Content').first().json.clean_content }}\n\"\"\"\n- Key quotes uit bron: {{ $('Parse Content').first().json.key_quotes }}\n- Main takeaways: {{ $('Parse Content').first().json.main_takeaways }}\n\nOPDRACHT:\nSchrijf een LinkedIn-post (1500-2500 tekens) die het thema behandelt vanuit jouw perspectief. De post moet aanvoelen alsof jij hem zelf hebt geschreven, niet alsof AI hem heeft gegenereerd.\n\nSTRUCTUUR (VERPLICHT):\n1. HAAKJE (eerste 2 regels, max 200 tekens): Een prikkelende opening die mensen stopt met scrollen. Wat ze zien voor 'meer weergeven'. Gebruik een verrassend inzicht, statement, of cijfer. GEEN vraag tenzij hij echt raak is.\n\n2. LEGE REGEL\n\n3. KERN (3-5 korte alinea's): \n   - Eigen perspectief op het thema (vanuit MKB-ESG-praktijk)\n   - Concreet inzicht of cijfer uit de bron\n   - Wat dit betekent voor MKB-maakbedrijven\n   Houd alinea's kort: max 2-3 zinnen. Witregels tussen alinea's.\n\n4. AFSLUITING: Een nuchtere prikkel die mensen aan het denken zet. Geen harde CTA. Eventueel zachte verwijzing naar SmartESG-aanpak.\n\n5. HASHTAGS (max 3): Altijd #ESG plus 2 inhoudelijke (#VSME, #CSRD, #MKB, #Maakindustrie, #Duurzaamheid, afhankelijk van thema).\n\nSTIJLREGELS (HARDE EISEN):\n- Schrijf in de ik-vorm\n- NEDERLANDS (informeel: je/jij, niet u/uw)\n- Geen corporate jargon ('synergieen', 'stakeholders', 'impactful', 'leverage')\n- Geen consultancy-woorden ('cruciaal', 'in het landschap van', 'ontketenen')\n- Geen emoji-spam (max 1 emoji, alleen als natuurlijk)\n- Korte zinnen, puntig\n- VERBODEN: het lange streepje (—). Gebruik komma, punt of dubbele punt.\n\nLENGTE: 1500-2500 tekens (NIET woorden). LinkedIn kapt af na ~210 tekens, dus zorg dat het haakje binnen die grens prikkelend is.\n\nVERPLICHT OUTPUT FORMAAT (strikt JSON, geen markdown wrappers):\n{\n  \"post_tekst\": \"De volledige LinkedIn post, klaar om te plaatsen.\",\n  \"haakje\": \"De eerste 2 regels (voor preview).\",\n  \"hashtags\": [\"#ESG\", \"#...\", \"#...\"]\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [3520, 192],
+      "id": "ses-agent-writer",
+      "name": "LinkedIn Writer",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-opus-4-7",
+          "mode": "list",
+          "cachedResultName": "Claude Opus 4.7"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [3488, 384],
+      "id": "ses-anthropic-writer",
+      "name": "Claude (Writer)",
+      "credentials": {
+        "anthropicApi": {
+          "id": "g1b8If6eUJ1a04uD",
+          "name": "SmartESG"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "smartesg-writer"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [3648, 384],
+      "id": "ses-memory-writer",
+      "name": "Memory (Writer)"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.output || '{}';\nconst clean = raw.replace(/```json|```/g, '').trim();\nlet parsed = {};\ntry { parsed = JSON.parse(clean); }\ncatch(e) { parsed = { post_tekst: raw, haakje: '', hashtags: [] }; }\n\nreturn { json: { ...$('Author Router (Tom/Bas)').first().json, ...parsed } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3744, 192],
+      "id": "ses-parse-post",
+      "name": "Parse Post JSON"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format Post Data voor Posts_Review sheet\nconst data = $json;\nconst timestamp = new Date().toISOString();\nconst postId = 'post-' + timestamp.replace(/[:.]/g, '-').substring(0, 19) + '-' + (data.author || 'unknown').toLowerCase();\n\nreturn {\n  json: {\n    id: postId,\n    datum: timestamp.split('T')[0],\n    author: data.author,\n    author_naam: data.author_naam,\n    thema: data.thema,\n    invalshoek: data.invalshoek || '',\n    bron_titel: data.bron_titel,\n    bron_url: data.bron_url,\n    bron_site: data.bron_site,\n    post_tekst: data.post_tekst,\n    haakje: data.haakje || '',\n    hashtags: Array.isArray(data.hashtags) ? data.hashtags.join(' ') : '',\n    status: 'pending',\n    feedback: '',\n    linkedin_post_id: '',\n    unipile_account_id: data.unipile_account_id,\n    review_email: data.review_email,\n    generated_at: timestamp\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3968, 192],
+      "id": "ses-format-post",
+      "name": "Format Post Data"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Posts_Review",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "datum": "={{ $json.datum }}",
+            "author": "={{ $json.author }}",
+            "thema": "={{ $json.thema }}",
+            "bron_titel": "={{ $json.bron_titel }}",
+            "bron_url": "={{ $json.bron_url }}",
+            "post_tekst": "={{ $json.post_tekst }}",
+            "hashtags": "={{ $json.hashtags }}",
+            "status": "={{ $json.status }}",
+            "feedback": "={{ $json.feedback }}",
+            "linkedin_post_id": "={{ $json.linkedin_post_id }}",
+            "generated_at": "={{ $json.generated_at }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {"id":"id","displayName":"id","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"datum","displayName":"datum","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"author","displayName":"author","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"thema","displayName":"thema","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"bron_titel","displayName":"bron_titel","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"bron_url","displayName":"bron_url","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"post_tekst","displayName":"post_tekst","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"hashtags","displayName":"hashtags","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"status","displayName":"status","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"feedback","displayName":"feedback","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"linkedin_post_id","displayName":"linkedin_post_id","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true},
+            {"id":"generated_at","displayName":"generated_at","required":false,"defaultMatch":false,"display":true,"type":"string","canBeUsedToMatch":true}
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [4192, 192],
+      "id": "ses-append-review",
+      "name": "Append to Posts_Review",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $('Format Post Data').first().json.review_email }}",
+        "subject": "=[SmartESG] Nieuwe post klaar voor review ({{ $('Format Post Data').first().json.author }})",
+        "emailType": "html",
+        "message": "=<h2 style=\"font-family:-apple-system,sans-serif;color:#0f172a;margin-bottom:8px;\">Nieuwe post staat klaar voor review</h2>\n<p style=\"font-family:-apple-system,sans-serif;color:#475569;\">Voor: <strong>{{ $('Format Post Data').first().json.author_naam }}</strong></p>\n<p style=\"font-family:-apple-system,sans-serif;color:#475569;\">Thema: <strong>{{ $('Format Post Data').first().json.thema }}</strong><br>Op basis van: <em>{{ $('Format Post Data').first().json.bron_titel }}</em> ({{ $('Format Post Data').first().json.bron_site }})</p>\n\n<div style=\"background:#f8fafc;border-left:3px solid #0f766e;padding:14px 18px;border-radius:6px;margin:20px 0;font-family:-apple-system,sans-serif;\">\n<strong style=\"color:#0f172a;\">Preview:</strong><br><span style=\"color:#334155;\">{{ $('Format Post Data').first().json.haakje }}</span>\n</div>\n\n<p style=\"margin:24px 0;\"><a href=\"REPLACE_WITH_DASHBOARD_URL#content\" style=\"display:inline-block;padding:11px 22px;background:#0f766e;color:white;text-decoration:none;border-radius:6px;font-weight:600;font-family:-apple-system,sans-serif;\">Open in dashboard →</a></p>\n\n<p style=\"color:#94a3b8;font-size:12px;font-family:-apple-system,sans-serif;margin-top:30px;\">Post ID: {{ $('Format Post Data').first().json.id }}</p>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [4416, 192],
+      "id": "ses-notify-mail",
+      "name": "Notify Email",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Kqre9m8sIEemZVHb",
+          "name": "Leadkamer - Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "URL",
+              "lookupValue": "={{ $('Pick Newest').first().json.Bron_URL }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [4640, 192],
+      "id": "ses-zoek-backlog",
+      "name": "Zoek Backlog Row",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "REPLACE_WITH_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Backlog",
+          "mode": "name"
+        },
+        "startIndex": "={{ $json.row_number }}"
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [4864, 192],
+      "id": "ses-del-backlog",
+      "name": "Verwijder Backlog Row",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PrDmkr8vOWrAGENn",
+          "name": "Leadkamer - Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule RSS": { "main": [[{ "node": "Get Backlog (RSS dedupe)", "type": "main", "index": 0 }]] },
+    "Get Backlog (RSS dedupe)": { "main": [[{ "node": "Get Bronnen RSS", "type": "main", "index": 0 }]] },
+    "Get Bronnen RSS": { "main": [[{ "node": "Filter Has RSS", "type": "main", "index": 0 }]] },
+    "Filter Has RSS": { "main": [[{ "node": "Loop RSS Sources", "type": "main", "index": 0 }]] },
+    "Loop RSS Sources": {
+      "main": [
+        [],
+        [{ "node": "RSS Read", "type": "main", "index": 0 }]
+      ]
+    },
+    "RSS Read": { "main": [[{ "node": "ESG Filter", "type": "main", "index": 0 }]] },
+    "ESG Filter": { "main": [[{ "node": "Has URL?", "type": "main", "index": 0 }]] },
+    "Has URL?": {
+      "main": [
+        [{ "node": "Append RSS to Backlog", "type": "main", "index": 0 }],
+        [{ "node": "Loop RSS Sources", "type": "main", "index": 0 }]
+      ]
+    },
+    "Append RSS to Backlog": { "main": [[{ "node": "Loop RSS Sources", "type": "main", "index": 0 }]] },
+
+    "Schedule Scrape": { "main": [[{ "node": "Get Backlog (Scrape dedupe)", "type": "main", "index": 0 }]] },
+    "Get Backlog (Scrape dedupe)": { "main": [[{ "node": "Get Scrape Sources", "type": "main", "index": 0 }]] },
+    "Get Scrape Sources": { "main": [[{ "node": "Loop Scrape Sources", "type": "main", "index": 0 }]] },
+    "Loop Scrape Sources": {
+      "main": [
+        [],
+        [{ "node": "Jina Scrape Index", "type": "main", "index": 0 }]
+      ]
+    },
+    "Jina Scrape Index": { "main": [[{ "node": "AI Extract Articles", "type": "main", "index": 0 }]] },
+    "Claude (Extract)": { "ai_languageModel": [[{ "node": "AI Extract Articles", "type": "ai_languageModel", "index": 0 }]] },
+    "AI Extract Articles": { "main": [[{ "node": "Parse + Dedupe Scrape", "type": "main", "index": 0 }]] },
+    "Parse + Dedupe Scrape": { "main": [[{ "node": "Append Scrape to Backlog", "type": "main", "index": 0 }]] },
+    "Append Scrape to Backlog": { "main": [[{ "node": "Loop Scrape Sources", "type": "main", "index": 0 }]] },
+
+    "Schedule Daily Pipeline": { "main": [[{ "node": "Get Backlog (daily)", "type": "main", "index": 0 }]] },
+    "Get Backlog (daily)": { "main": [[{ "node": "Pick Newest", "type": "main", "index": 0 }]] },
+    "Pick Newest": { "main": [[{ "node": "Check Link", "type": "main", "index": 0 }]] },
+    "Check Link": { "main": [[{ "node": "Link Geldig?", "type": "main", "index": 0 }]] },
+    "Link Geldig?": {
+      "main": [
+        [{ "node": "Restore Article Data", "type": "main", "index": 0 }],
+        [{ "node": "Zoek Dode Link", "type": "main", "index": 0 }]
+      ]
+    },
+    "Zoek Dode Link": { "main": [[{ "node": "Verwijder Dode Link", "type": "main", "index": 0 }]] },
+    "Restore Article Data": { "main": [[{ "node": "Lees Artikel (Jina)", "type": "main", "index": 0 }]] },
+    "Lees Artikel (Jina)": { "main": [[{ "node": "Content Analist", "type": "main", "index": 0 }]] },
+    "Claude (Analist)": { "ai_languageModel": [[{ "node": "Content Analist", "type": "ai_languageModel", "index": 0 }]] },
+    "Content Analist": { "main": [[{ "node": "Parse Content", "type": "main", "index": 0 }]] },
+    "Parse Content": { "main": [[{ "node": "Get Zoektermen", "type": "main", "index": 0 }]] },
+    "Get Zoektermen": { "main": [[{ "node": "Maak Zoekwoordenlijst", "type": "main", "index": 0 }]] },
+    "Maak Zoekwoordenlijst": { "main": [[{ "node": "Thema Curator", "type": "main", "index": 0 }]] },
+    "Claude (Thema)": { "ai_languageModel": [[{ "node": "Thema Curator", "type": "ai_languageModel", "index": 0 }]] },
+    "Thema Curator": { "main": [[{ "node": "Parse Thema JSON", "type": "main", "index": 0 }]] },
+    "Parse Thema JSON": { "main": [[{ "node": "Is relevant?", "type": "main", "index": 0 }]] },
+    "Is relevant?": {
+      "main": [
+        [{ "node": "Update Thema Laatst Gebruikt", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Update Thema Laatst Gebruikt": { "main": [[{ "node": "Get Authors", "type": "main", "index": 0 }]] },
+    "Get Authors": { "main": [[{ "node": "Author Router (Tom/Bas)", "type": "main", "index": 0 }]] },
+    "Author Router (Tom/Bas)": { "main": [[{ "node": "LinkedIn Writer", "type": "main", "index": 0 }]] },
+    "Claude (Writer)": { "ai_languageModel": [[{ "node": "LinkedIn Writer", "type": "ai_languageModel", "index": 0 }]] },
+    "Memory (Writer)": { "ai_memory": [[{ "node": "LinkedIn Writer", "type": "ai_memory", "index": 0 }]] },
+    "LinkedIn Writer": { "main": [[{ "node": "Parse Post JSON", "type": "main", "index": 0 }]] },
+    "Parse Post JSON": { "main": [[{ "node": "Format Post Data", "type": "main", "index": 0 }]] },
+    "Format Post Data": { "main": [[{ "node": "Append to Posts_Review", "type": "main", "index": 0 }]] },
+    "Append to Posts_Review": { "main": [[{ "node": "Notify Email", "type": "main", "index": 0 }]] },
+    "Notify Email": { "main": [[{ "node": "Zoek Backlog Row", "type": "main", "index": 0 }]] },
+    "Zoek Backlog Row": { "main": [[{ "node": "Verwijder Backlog Row", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "smartesg-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
