@@ -322,11 +322,11 @@
           ]
         },
         "sendBody": true,
-        "contentType": "multipartFormData",
+        "contentType": "multipart-form-data",
         "bodyParameters": {
           "parameters": [
-            {"name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
-            {"name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"},
+            {"parameterType": "formData", "name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
+            {"parameterType": "formData", "name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"},
             {"parameterType": "formBinaryData", "name": "attachments", "inputDataFieldName": "data"}
           ]
         },
@@ -352,11 +352,11 @@
           ]
         },
         "sendBody": true,
-        "contentType": "multipartFormData",
+        "contentType": "multipart-form-data",
         "bodyParameters": {
           "parameters": [
-            {"name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
-            {"name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"}
+            {"parameterType": "formData", "name": "account_id", "value": "={{ $('Combine Post+Author').first().json.unipile_account_id }}"},
+            {"parameterType": "formData", "name": "text", "value": "={{ $('Combine Post+Author').first().json.final_post_tekst }}"}
           ]
         },
         "options": {}
