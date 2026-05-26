@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>AI Training &amp; Workshops &#8212; Forgexe</title>
-<meta name="description" content="Maak AI een kracht binnen jouw organisatie. Workshops en training voor je team: van prompt engineering tot AI-tools effectief inzetten.">
+<title>AI Trainingen &amp; Workshops &#8212; Forgexe</title>
+<meta name="description" content="Concrete AI-trainingen voor je team: ChatGPT, n8n en AI voor Sales, Marketing &amp; Operations. Vaste prijzen vanaf &#8364;499 ex btw, open inschrijving of in-company.">
 <link rel="canonical" href="https://forgexe.nl/ai-training.html">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -87,7 +87,41 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .basis-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 2rem}
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.feature-list{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr;gap:1rem}.result .number{font-size:1.5rem}.arcade-border{display:none}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}.exp-grid{grid-template-columns:1fr!important;gap:1rem}.basis-grid{grid-template-columns:1fr!important;gap:.5rem}}
+
+.training-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.training-card{background:var(--bg-el);border:1px solid var(--brd);border-radius:14px;padding:2rem;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+.training-card:hover{border-color:rgba(52,211,153,.35);transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,0,0,.10)}
+body.light .training-card:hover{box-shadow:0 18px 50px rgba(0,0,0,.06)}
+.training-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green-deep),var(--green),var(--neon-cyan));opacity:0;transition:opacity .3s}
+.training-card:hover::before{opacity:.8}
+.training-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}
+.training-icon{width:44px;height:44px;border-radius:10px;background:rgba(52,211,153,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.training-icon svg{width:22px;height:22px}
+.training-title{font-family:var(--head);font-size:1.15rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.25rem;line-height:1.25}
+.training-tagline{font-size:.7rem;color:var(--mut);font-family:var(--mono);letter-spacing:.04em}
+.training-price{text-align:right;flex-shrink:0;padding-left:.5rem;border-left:1px solid var(--brd);padding-left:1rem}
+.training-price-label{font-size:.6rem;color:var(--mut);letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.15rem}
+.training-price-amount{font-family:var(--head);font-size:1.55rem;font-weight:700;color:var(--green);line-height:1}
+.training-price-suffix{font-size:.6rem;color:var(--dim);font-family:var(--mono);margin-top:.25rem;letter-spacing:.04em}
+.training-desc{font-size:.85rem;color:var(--dim);line-height:1.75;margin-bottom:1.25rem}
+.training-section-label{font-size:.6rem;color:var(--green);letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.65rem}
+.training-list{list-style:none;margin-bottom:1.25rem}
+.training-list li{font-size:.8rem;color:var(--dim);line-height:1.7;padding-left:1.1rem;position:relative;margin-bottom:.35rem}
+.training-list li::before{content:'>';color:var(--green);font-weight:700;position:absolute;left:0;top:0}
+.training-meta{margin-top:auto;padding-top:1rem;border-top:1px dashed var(--brd);font-size:.72rem;color:var(--mut);line-height:1.6;font-family:var(--mono);margin-bottom:1.25rem}
+.training-meta strong{color:var(--dim);font-weight:500}
+.training-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--green);text-decoration:none;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:gap .3s,color .3s}
+.training-cta:hover{gap:.85rem;color:var(--green-lt)}
+.training-cta svg{width:12px;height:12px}
+
+.incompany-box{margin-top:3.5rem;padding:2.5rem 2.75rem;border:1px solid var(--brd);border-radius:14px;background:linear-gradient(135deg,var(--bg-el) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:space-between;gap:2.5rem;position:relative;overflow:hidden}
+.incompany-box::before{content:'';position:absolute;top:0;right:0;width:340px;height:100%;background:radial-gradient(ellipse at right,var(--green-glow),transparent 70%);pointer-events:none}
+.incompany-text{flex:1;min-width:0;position:relative}
+.incompany-label{font-size:.65rem;color:var(--green);letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);margin-bottom:.5rem}
+.incompany-title{font-family:var(--head);font-size:1.35rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem}
+.incompany-desc{font-size:.85rem;color:var(--dim);line-height:1.75;max-width:560px}
+.incompany-cta{flex-shrink:0;position:relative}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.feature-list{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr;gap:1rem}.result .number{font-size:1.5rem}.arcade-border{display:none}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}.exp-grid{grid-template-columns:1fr!important;gap:1rem}.basis-grid{grid-template-columns:1fr!important;gap:.5rem}.training-grid{grid-template-columns:1fr!important;gap:1rem}.training-card{padding:1.5rem}.training-card-head{flex-direction:column;align-items:flex-start;gap:.75rem}.training-price{text-align:left;padding-left:0;border-left:none;border-top:1px dashed var(--brd);padding-top:.75rem;width:100%;display:flex;align-items:baseline;gap:.5rem}.training-price-label{margin-bottom:0}.training-price-amount{font-size:1.35rem}.training-price-suffix{margin-top:0}.incompany-box{flex-direction:column;align-items:flex-start;padding:1.75rem;gap:1.25rem}.incompany-box::before{display:none}}
 </style>
 </head>
 <body class="light">
@@ -95,18 +129,22 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 <nav>
   <a href="/" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
   <div class="nav-right">
-    <ul class="nav-links"><li><a href="expertises.html">Expertises</a><div class="nav-dropdown"><a href="ai-outreach.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Outreach &amp; Leadgen</a><a href="ai-blogger.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>AI Blogger &amp; Content</a><a href="ai-ads.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>AI Ads Manager</a><a href="ai-training.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>AI Training &amp; Workshops</a><a href="ai-rapportage.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>AI Rapportage</a><a href="planning-optimalisatie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Planning Optimalisatie</a><a href="dashboarding.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Dashboarding</a></div></li><li><a href="branches.html">Branches</a><div class="nav-dropdown"><a href="branche-maakindustrie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/></svg>Maakindustrie</a><a href="branche-technische-groothandel.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Marketing &amp; Bureaus</a></div></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <ul class="nav-links"><li><a href="expertises.html">Expertises</a><div class="nav-dropdown"><a href="ai-outreach.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Outreach &amp; Leadgen</a><a href="ai-blogger.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>AI Blogger &amp; Content</a><a href="ai-ads.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>AI Ads Manager</a><a href="ai-training.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>AI Training &amp; Workshops</a><a href="ai-rapportage.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>AI Rapportage</a><a href="planning-optimalisatie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Planning Optimalisatie</a><a href="dashboarding.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Dashboarding</a></div></li><li><a href="branches.html">Branches</a><div class="nav-dropdown"><a href="branche-maakindustrie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/></svg>Maakindustrie</a><a href="branche-technische-groothandel.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Marketing &amp; Bureaus</a></div></li><li><a href="ai-training.html">Trainingen</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
     <a href="contact.html" class="nav-cta">Gratis scan</a>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+<div class="mobile-menu" id="mobileMenu"><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="ai-training.html">Trainingen</a><a href="cases.html">Cases</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
 <header class="page-hero">
-  <div class="hero-terminal"><span class="prompt">C:\forgexe\ai-training&gt;</span> forge --start team-training<span class="cursor"></span></div>
-  <h1>Maak AI een kracht<br>binnen jouw <em>team.</em></h1>
-  <p class="hero-sub">Workshops en training op maat. Van prompt engineering tot het herkennen van automatiseringsmogelijkheden in je dagelijkse werk.</p>
+  <div class="hero-terminal"><span class="prompt">C:\forgexe\trainingen&gt;</span> forge --list trainingen<span class="cursor"></span></div>
+  <h1>AI-trainingen die je team<br><em>vandaag</em> kan toepassen.</h1>
+  <p class="hero-sub">Drie concrete trainingen: ChatGPT, n8n en AI voor Sales, Marketing &amp; Operations. Vaste prijzen vanaf &#8364;499 ex btw, open inschrijving of in-company op jouw locatie.</p>
+  <div style="margin-top:2rem;display:flex;gap:.85rem;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s">
+    <a href="#trainingen" class="btn-primary" style="background:var(--green)">Bekijk trainingen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="contact.html?training=incompany" class="btn-primary" style="background:transparent;color:var(--green);border:1px solid var(--green);box-shadow:none">In-company aanvragen</a>
+  </div>
   <div class="hero-mockup">
     <div class="hero-mockup-frame">
       <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">forge-academy</span></div>
@@ -159,54 +197,114 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 </header>
 <div class="neon-line"></div>
 
-<section class="reveal">
-  <div class="section-label">C:\ai-training\wat-leer-je&gt;<span class="section-label-cursor"></span></div>
-  <h2 class="section-title">Wat leer je.</h2>
-  <p class="section-desc">We geven training voor verschillende doeleinden. Je team leert AI niet uit een boekje, maar door het te doen met de tools die er echt toe doen.</p>
+<section class="reveal" id="trainingen">
+  <div class="section-label">C:\ai-training\catalogus&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Onze trainingen.</h2>
+  <p class="section-desc">Drie praktische trainingen met vaste prijzen. Open inschrijving op een centrale locatie in Limburg, of in-company op jouw locatie. Geen theorie uit een boekje &#8212; je werkt direct met de tools die er echt toe doen.</p>
 
-  <div class="exp-grid" style="margin-top:2rem">
+  <div class="training-grid">
 
-    <div style="border:1px dashed rgba(52,211,153,.15);border-radius:12px;padding:2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:rgba(52,211,153,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3 style="font-family:var(--head);font-size:1.1rem;font-weight:600;margin-bottom:.75rem">AI in Marketing</h3>
-      <p style="font-size:.82rem;color:var(--dim);line-height:1.8;margin-bottom:1rem">Leer AI inzetten voor contentcreatie, SEO, advertenties en campagne-analyse. Van prompt engineering tot geautomatiseerde workflows.</p>
-      <div style="font-size:.65rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)">Tools</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.4rem">
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">ChatGPT</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Claude</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Gemini</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Midjourney</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Canva AI</span>
+    <article class="training-card">
+      <div class="training-card-head">
+        <div style="display:flex;align-items:flex-start;gap:.85rem;flex:1;min-width:0">
+          <div class="training-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><circle cx="9" cy="11" r="1" fill="#34d399"/><circle cx="13" cy="11" r="1" fill="#34d399"/><circle cx="17" cy="11" r="1" fill="#34d399"/></svg>
+          </div>
+          <div style="min-width:0">
+            <h3 class="training-title">ChatGPT voor Professionals</h3>
+            <div class="training-tagline">1 dag &#183; max 10 deelnemers</div>
+          </div>
+        </div>
+        <div class="training-price">
+          <div class="training-price-label">vanaf</div>
+          <div class="training-price-amount">&#8364;499</div>
+          <div class="training-price-suffix">ex btw / p.p.</div>
+        </div>
       </div>
-    </div>
+      <p class="training-desc">De praktische basis voor iedereen die slimmer wil werken met AI. Van prompt engineering tot custom GPTs &#8212; je verlaat de training met direct toepasbare workflows voor jouw rol.</p>
+      <div class="training-section-label">Wat je leert</div>
+      <ul class="training-list">
+        <li>Prompt engineering fundamentals</li>
+        <li>ChatGPT, Claude en Gemini effectief inzetten</li>
+        <li>Veilig werken met AI (privacy &amp; data)</li>
+        <li>Custom GPTs en Projects bouwen</li>
+        <li>10+ kant-en-klare prompts voor jouw rol</li>
+      </ul>
+      <div class="training-meta"><strong>Inclusief:</strong> lunch, materialen, certificaat en 30 dagen e-mail support na de training.</div>
+      <a href="contact.html?training=chatgpt" class="training-cta">Plan deze training <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </article>
 
-    <div style="border:1px dashed rgba(59,130,246,.15);border-radius:12px;padding:2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <h3 style="font-family:var(--head);font-size:1.1rem;font-weight:600;margin-bottom:.75rem">AI in Sales</h3>
-      <p style="font-size:.82rem;color:var(--dim);line-height:1.8;margin-bottom:1rem">Van lead research tot gepersonaliseerde outreach. Leer hoe AI je salesproces versnelt zonder de menselijke touch te verliezen.</p>
-      <div style="font-size:.65rem;color:#3b82f6;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)">Tools</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.4rem">
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Claude</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Apollo</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">LinkedIn Sales Nav</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">n8n</span>
+    <article class="training-card">
+      <div class="training-card-head">
+        <div style="display:flex;align-items:flex-start;gap:.85rem;flex:1;min-width:0">
+          <div class="training-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M6 8.5v3a2 2 0 002 2h8a2 2 0 002-2v-3"/><path d="M12 13.5v2"/></svg>
+          </div>
+          <div style="min-width:0">
+            <h3 class="training-title">n8n Workflow Automatisering</h3>
+            <div class="training-tagline">2 dagen &#183; max 8 deelnemers</div>
+          </div>
+        </div>
+        <div class="training-price">
+          <div class="training-price-label">vanaf</div>
+          <div class="training-price-amount">&#8364;899</div>
+          <div class="training-price-suffix">ex btw / p.p.</div>
+        </div>
       </div>
-    </div>
+      <p class="training-desc">Bouw zelf workflows die handmatige taken elimineren. In twee dagen leer je triggers, nodes, AI-koppelingen en API&#39;s &#8212; je vertrekt met minimaal &#233;&#233;n werkende automatisering uit jouw eigen processen.</p>
+      <div class="training-section-label">Wat je leert</div>
+      <ul class="training-list">
+        <li>n8n basisbeginselen en interface</li>
+        <li>Triggers, nodes en datastromen</li>
+        <li>AI-integraties (OpenAI, Claude, Gemini)</li>
+        <li>Webhooks en API-koppelingen</li>
+        <li>Eigen workflow bouwen, testen en deployen</li>
+      </ul>
+      <div class="training-meta"><strong>Inclusief:</strong> lunch beide dagen, Forgexe n8n-template library, certificaat en 60 dagen e-mail support.</div>
+      <a href="contact.html?training=n8n" class="training-cta">Plan deze training <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </article>
 
-    <div style="border:1px dashed rgba(245,166,35,.15);border-radius:12px;padding:2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:rgba(245,166,35,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-      <h3 style="font-family:var(--head);font-size:1.1rem;font-weight:600;margin-bottom:.75rem">AI in Procesoptimalisatie</h3>
-      <p style="font-size:.82rem;color:var(--dim);line-height:1.8;margin-bottom:1rem">Leer workflows bouwen die handmatige taken elimineren. Van data-invoer tot rapportage, geautomatiseerd met no-code tools.</p>
-      <div style="font-size:.65rem;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;font-family:var(--mono)">Tools</div>
-      <div style="display:flex;flex-wrap:wrap;gap:.4rem">
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">n8n</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Claude</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Gemini</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Supabase</span>
-        <span style="font-size:.7rem;padding:.25rem .6rem;border:1px solid var(--brd);border-radius:4px;color:var(--dim);font-family:var(--mono)">Airtable</span>
+    <article class="training-card">
+      <div class="training-card-head">
+        <div style="display:flex;align-items:flex-start;gap:.85rem;flex:1;min-width:0">
+          <div class="training-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div style="min-width:0">
+            <h3 class="training-title">AI voor Sales, Marketing &amp; Operations</h3>
+            <div class="training-tagline">1 dag &#183; max 10 deelnemers</div>
+          </div>
+        </div>
+        <div class="training-price">
+          <div class="training-price-label">vanaf</div>
+          <div class="training-price-amount">&#8364;549</div>
+          <div class="training-price-suffix">ex btw / p.p.</div>
+        </div>
       </div>
-    </div>
+      <p class="training-desc">Rolspecifieke training voor afdelingen die direct resultaat willen. Sales leert prospecten, marketing leert content schalen, ops leert rapportages automatiseren &#8212; allemaal vanuit &#233;&#233;n praktische dag.</p>
+      <div class="training-section-label">Wat je leert</div>
+      <ul class="training-list">
+        <li>Rolspecifieke AI-toepassingen per afdeling</li>
+        <li>Lead research &amp; outreach automatisering</li>
+        <li>Content creation en SEO met AI</li>
+        <li>Operationele rapportages en data-analyse</li>
+        <li>Tools kiezen die bij jouw afdeling passen</li>
+      </ul>
+      <div class="training-meta"><strong>Inclusief:</strong> lunch, rolspecifieke playbooks, certificaat en 30 dagen e-mail support.</div>
+      <a href="contact.html?training=sales-marketing-ops" class="training-cta">Plan deze training <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </article>
 
+  </div>
+
+  <div class="incompany-box">
+    <div class="incompany-text">
+      <div class="incompany-label">In-company op maat</div>
+      <h3 class="incompany-title">Liever met je hele team op jouw locatie?</h3>
+      <p class="incompany-desc">We komen naar je toe en stemmen de inhoud af op jullie tools, processen en sector. Vanaf 6 deelnemers vaak voordeliger dan open inschrijving. Vraag een offerte op maat aan.</p>
+    </div>
+    <div class="incompany-cta">
+      <a href="contact.html?training=incompany" class="btn-primary">Offerte op maat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
   </div>
 
   <div style="margin-top:3rem;padding:2rem;border:1px solid var(--brd);border-radius:12px">
@@ -275,7 +373,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px
 <footer>
   <div class="footer-grid">
     <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
-    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-training.html">Trainingen</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
     <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
     <div class="footer-col"><div class="footer-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.growth">Instagram</a></div>
   </div>
