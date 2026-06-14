@@ -152,8 +152,13 @@ body.light .crt-amber::after{background:radial-gradient(ellipse at center,transp
 .crt-amber{border-color:rgba(245,166,35,0.08)}
 .crt .section-label,.crt .section-title,.crt .section-desc,.crt .tech-rows,.crt .challenges-grid,.crt .challenge-answer{position:relative;z-index:2}
 .tech-row-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;font-family:var(--mono)}
-.tech-tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tech-tag{font-size:.72rem;font-family:var(--mono);color:var(--dim);padding:.4rem .9rem;border:1px solid var(--brd);border-radius:4px;transition:all .3s;white-space:nowrap}.tech-tag:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 12px rgba(52,211,153,.08)}
+.tech-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.tech-tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-family:var(--mono);color:var(--dim);padding:.55rem 1rem;border:1px solid var(--brd);border-radius:10px;background:var(--bg-el);transition:all .3s;white-space:nowrap}
+.tech-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);opacity:.45;flex-shrink:0;transition:all .3s}
+.tech-tag:hover{border-color:rgba(52,211,153,.4);color:var(--txt);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.tech-tag:hover::before{opacity:1;box-shadow:0 0 10px rgba(52,211,153,.6)}
+body.light .tech-tag{box-shadow:0 1px 2px rgba(16,24,40,.04)}
+body.light .tech-tag:hover{box-shadow:0 10px 26px rgba(16,24,40,.08)}
 
 .results{background:var(--bg-el);border:1px solid var(--brd);padding:4.5rem 3rem;margin:0 auto;max-width:1140px;position:relative;z-index:1;border-radius:18px;overflow:hidden}
 .results::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.6}
@@ -1197,10 +1202,10 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 </section>
 <div class="arcade-border"><div class="arcade-border-inner"></div></div>
 
-<section class="reveal-left crt crt-amber">
-  <div class="section-label-amber">C:\technologie&gt;<span class="section-label-cursor-amber"></span></div>
+<section class="reveal-left crt">
+  <div class="section-label">C:\technologie&gt;<span class="section-label-cursor"></span></div>
   <h2 class="section-title">Gebouwd met de<br>beste tools.</h2>
-  <p class="section-desc">Wij kiezen altijd de beste technologie voor het probleem. Geen vendor lock-in.</p>
+  <p class="section-desc">De beste technologie voor elk probleem &mdash; en naadloze integraties met de systemen die jij al gebruikt. Geen vendor lock-in.</p>
   <div class="tech-rows">
     <div>
       <div class="tech-row-label">AI &amp; Intelligence</div>
@@ -1226,7 +1231,7 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
         <span class="tech-tag">SAP</span>
       </div>
     </div>
-    <div class="tech-row-amber">
+    <div>
       <div class="tech-row-label">Analytics &amp; Tools</div>
       <div class="tech-tags">
         <span class="tech-tag">Analytics</span>
