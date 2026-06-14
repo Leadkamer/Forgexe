@@ -177,6 +177,25 @@ body.light .sector-card:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
 .sector-card:hover .sector-arrow{opacity:1;transform:none}
 .sectoren-cta{text-align:center;margin-top:2.5rem}
 @media(max-width:768px){.sectoren{padding:2.5rem 1.5rem}.sector-grid{grid-template-columns:1fr 1fr;gap:.75rem}.sector-card{padding:1.25rem}}
+.case-feature{display:grid;grid-template-columns:1.1fr 1fr;gap:2.75rem;align-items:center;margin-top:1rem;max-width:1140px}
+.case-frame{border:1px solid var(--brd);border-radius:14px;overflow:hidden;background:var(--bg-el);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+body.light .case-frame{box-shadow:0 24px 60px rgba(16,24,40,.14)}
+.case-frame-bar{display:flex;align-items:center;gap:.45rem;padding:.7rem .9rem;border-bottom:1px solid var(--brd);background:var(--bg)}
+.cdot{width:9px;height:9px;border-radius:50%;background:var(--brd)}
+.case-frame-url{margin-left:.6rem;font-family:var(--mono);font-size:.66rem;color:var(--mut)}
+.case-shot{width:100%;display:block}
+.case-shot-fallback{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;background:linear-gradient(135deg,var(--bg-el),var(--bg));color:var(--dim);font-family:var(--mono);font-size:.85rem}
+.case-client{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.9rem}
+.case-title{font-family:var(--head);font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:600;line-height:1.25;margin-bottom:1.1rem}
+.case-text{font-size:.9rem;color:var(--dim);line-height:1.8;margin-bottom:1rem}
+.case-metrics-row{display:flex;gap:2.5rem;margin:1.6rem 0 1.4rem}
+.cm-num{font-family:var(--head);font-size:2rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cm-unit{font-size:1.05rem;margin-left:.05em}
+.cm-label{font-size:.74rem;color:var(--dim);margin-top:.4rem}
+.case-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.case-tag{font-family:var(--mono);font-size:.7rem;color:var(--dim);padding:.4rem .85rem;border:1px solid var(--brd);border-radius:20px}
+.case-cta{margin-top:1.6rem}
+@media(max-width:768px){.case-feature{grid-template-columns:1fr;gap:1.75rem}.case-metrics-row{gap:1.75rem}}
 
 .results{background:var(--bg-el);border:1px solid var(--brd);padding:4.5rem 3rem;margin:0 auto;max-width:1140px;position:relative;z-index:1;border-radius:18px;overflow:hidden}
 .results::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.6}
@@ -1191,6 +1210,34 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
     <div class="result-item"><div class="rnum"><div class="number" data-target="2">0</div><div class="unit">min</div></div><div class="label">leadresponstijd (was 47 min)</div></div>
   </div>
 </div>
+
+<section class="reveal">
+  <div class="section-label">C:\cases&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Resultaten die het<br>verschil maken.</h2>
+  <p class="section-desc">Echte projecten, echte cijfers. Een greep uit wat we bouwden voor onze opdrachtgevers.</p>
+  <div class="case-feature">
+    <div class="case-visual">
+      <div class="case-frame">
+        <div class="case-frame-bar"><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="case-frame-url">fietsencatalogus &middot; nieuwsbrief-dashboard</span></div>
+        <img src="case-fietsencatalogus.png" alt="Fietsencatalogus nieuwsbrief-dashboard" class="case-shot" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="case-shot-fallback" style="display:none"><span>Fietsencatalogus</span><span style="font-size:.66rem;opacity:.6">dashboard-preview</span></div>
+      </div>
+    </div>
+    <div class="case-info">
+      <div class="case-client">Fietsencatalogus</div>
+      <h3 class="case-title">Een AI-portaal dat 14 uur per week bespaart</h3>
+      <p class="case-text">Elke maand maakte Susanne handmatig nieuwsbrieven voor zo&#39;n 30 fietsenwinkels: artikelen bedenken, keuzemails sturen, opmaken, links en beeld toevoegen, testmails versturen, akkoord afwachten en versturen via Brevo. Samen goed voor ongeveer 15 uur per week.</p>
+      <p class="case-text">Wij bouwden een AI-portaal dat de hele flow overneemt: AI selecteert branche-artikelen, stelt de keuzemail op en stuurt &#39;m naar de winkelier, verwerkt de keuzes, schrijft de nieuwsbrief in hun eigen tone of voice (bewerkbaar in het portaal), verstuurt automatisch een testmail en verzendt na akkoord naar de eindklanten. Susanne ziet per winkel de status en springt alleen in waar nodig.</p>
+      <div class="case-metrics-row">
+        <div><div class="cm-num">14<span class="cm-unit">u/wk</span></div><div class="cm-label">tijd bespaard</div></div>
+        <div><div class="cm-num">~30</div><div class="cm-label">winkels via &eacute;&eacute;n portaal</div></div>
+      </div>
+      <div class="case-tags"><span class="case-tag">AI Portaal</span><span class="case-tag">Automatisering</span><span class="case-tag">Content AI</span><span class="case-tag">Brevo</span></div>
+      <div class="case-cta"><a href="#" onclick="openScanWizard();return false;" style="font-family:var(--mono);font-size:.78rem;color:var(--green);text-decoration:none">Zo&#39;n systeem voor jouw bedrijf? Doe de gratis scan &rarr;</a></div>
+    </div>
+  </div>
+</section>
+<div class="neon-line"></div>
 
 <section class="reveal">
   <div class="section-label">C:\klanten&gt;<span class="section-label-cursor"></span></div>
