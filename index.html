@@ -155,10 +155,17 @@ body.light .crt-amber::after{background:radial-gradient(ellipse at center,transp
 .tech-tags{display:flex;flex-wrap:wrap;gap:.5rem}
 .tech-tag{font-size:.72rem;font-family:var(--mono);color:var(--dim);padding:.4rem .9rem;border:1px solid var(--brd);border-radius:4px;transition:all .3s;white-space:nowrap}.tech-tag:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 12px rgba(52,211,153,.08)}
 
-.results{background:var(--bg-el);border:1px solid var(--brd);padding:5rem;margin:0 auto;max-width:1140px;position:relative;z-index:1;padding-left:3rem;padding-right:3rem;border-radius:12px}
+.results{background:var(--bg-el);border:1px solid var(--brd);padding:4.5rem 3rem;margin:0 auto;max-width:1140px;position:relative;z-index:1;border-radius:18px;overflow:hidden}
+.results::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.6}
+.results>*{position:relative;z-index:1}
+body.light .results{box-shadow:0 1px 3px rgba(16,24,40,.05)}
 .results::before,.results::after{content:'';position:absolute;width:30px;height:30px;opacity:.25}.results::before{top:-1px;left:-1px;border-top:2px solid var(--green);border-left:2px solid var(--green)}.results::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--amber);border-right:2px solid var(--amber)}
-.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;margin-top:2.5rem}
-.result-item .number{font-size:clamp(3rem,6vw,4.5rem);font-weight:800;font-family:var(--head);line-height:1;margin-bottom:.5rem;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.result-item .label{font-size:.75rem;color:var(--dim)}
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:2.5rem}
+.result-item{text-align:center}
+.rnum{display:flex;align-items:baseline;justify-content:center;gap:.06em}
+.result-item .number{font-size:clamp(3rem,6vw,4.5rem);font-weight:800;font-family:var(--head);line-height:1;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-item .unit{font-family:var(--head);font-weight:800;font-size:clamp(1.4rem,2.8vw,2.1rem);line-height:1;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-item .label{font-size:.78rem;color:var(--dim);line-height:1.5;margin-top:.7rem}
 .case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--brd);margin-top:2.5rem}
 .case-metric{background:var(--bg);padding:2.25rem;transition:background .3s}.case-metric:hover{background:var(--card-hover)}
 .case-metric-type{font-size:.58rem;color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
@@ -1152,13 +1159,13 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 <div class="neon-line"></div>
 
 <div id="resultaten" class="results reveal">
-  <div class="section-label-amber">C:\resultaten&gt;<span class="section-label-cursor-amber"></span></div>
+  <div class="section-label">C:\resultaten&gt;<span class="section-label-cursor"></span></div>
   <h2 class="section-title">Cijfers die voor<br>zichzelf spreken.</h2>
   <div class="results-grid">
-    <div class="result-item"><div class="number" data-target="147">0</div><div class="label">% groei in<br>gekwalificeerde leads</div></div>
-    <div class="result-item"><div class="number" data-target="100">0</div><div class="label">+ uur/week bespaard<br>op handwerk</div></div>
-    <div class="result-item"><div class="number" data-target="3.2">0</div><div class="label">x gemiddelde ROAS<br>paid advertising</div></div>
-    <div class="result-item"><div class="number" data-target="2">0</div><div class="label">min leadresponstijd<br>(was 47 min)</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="147">0</div><div class="unit">%</div></div><div class="label">groei in gekwalificeerde leads</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="100">0</div><div class="unit">+</div></div><div class="label">uur/week bespaard op handwerk</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="3.2">0</div><div class="unit">x</div></div><div class="label">gemiddelde ROAS op paid advertising</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="2">0</div><div class="unit">min</div></div><div class="label">leadresponstijd (was 47 min)</div></div>
   </div>
 </div>
 
