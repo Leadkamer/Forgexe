@@ -4,6 +4,8 @@
   <url><loc>https://forgexe.nl/over-ons.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://forgexe.nl/contact.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://forgexe.nl/cases.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://forgexe.nl/case-fietsencatalogus.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://forgexe.nl/case-wijnzinnig.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://forgexe.nl/blog.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://forgexe.nl/expertises.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://forgexe.nl/branches.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
