@@ -31,7 +31,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display
 .cases-eyebrow-text::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(52,211,153,.6)}
 .page-title{font-family:var(--head);font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:1.5rem;color:var(--txt)}
 .page-intro{font-size:1rem;color:var(--dim);max-width:520px;line-height:1.8}
-.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin:4rem auto}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin:4rem auto}
 .case-item{display:flex;flex-direction:column;gap:0}
 .laptop{position:relative;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:12px 12px 0 0;padding:10px 10px 0;box-shadow:0 16px 40px rgba(0,0,0,.15)}
 body.light .laptop{box-shadow:0 16px 40px rgba(16,24,40,.12)}
@@ -68,6 +68,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
 .footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4;font-family:var(--mono)}
 .footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+@media(max-width:1024px){.cases-grid{grid-template-columns:1fr 1fr;gap:2rem}}
 @media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.wrap{padding:6rem 1.25rem 2rem}.page-title{font-size:clamp(2rem,8vw,3rem)}.cases-grid{grid-template-columns:1fr;gap:2rem;margin:2.5rem auto}.case-card{padding:1.3rem 1.4rem}.case-arrow-btn{top:1.2rem;right:1.2rem;width:32px;height:32px}.page-cta{padding:3.5rem 1.25rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
 </style>
 </head>
@@ -266,6 +267,71 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px
         <h3 class="case-card-title">Content Machine &amp; 3-segment Leadgen</h3>
         <div class="case-card-main-tag">Webapp</div>
         <div class="case-card-tags"><span class="case-mini-tag">Content AI</span><span class="case-mini-tag">LinkedIn Outreach</span><span class="case-mini-tag">MailChimp</span><span class="case-mini-tag">n8n</span></div>
+      </a>
+    </div>
+
+    <div class="case-item">
+      <div class="laptop">
+        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="400" fill="#ffffff"/>
+          <rect x="0" y="0" width="640" height="36" fill="#0a0b0e"/>
+          <path d="M14 14c0-3 2-6 5-6 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 3 5 6 0 5-10 11-10 11s-10-6-10-11z" fill="#34d399" transform="translate(0,2) scale(.55)"/>
+          <text x="36" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">Smart ESG &middot; Outreach Hub</text>
+          <rect x="556" y="9" width="72" height="18" rx="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.15)" stroke-width=".5"/>
+          <text x="592" y="22" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#ffffff">Tom</text>
+          <rect x="0" y="36" width="120" height="364" fill="#ffffff"/>
+          <line x1="120" y1="36" x2="120" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="20" y="65" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Overzicht</text>
+          <rect x="8" y="80" width="104" height="22" rx="5" fill="rgba(52,211,153,.12)"/>
+          <text x="20" y="95" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#059669">Leads</text>
+          <rect x="84" y="86" width="22" height="10" rx="5" fill="rgba(52,211,153,.25)"/>
+          <text x="95" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#059669">248</text>
+          <text x="20" y="121" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Berichten</text>
+          <text x="86" y="121" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">47</text>
+          <text x="20" y="145" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Workflows</text>
+          <text x="20" y="169" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Cijfers</text>
+          <rect x="120" y="36" width="520" height="364" fill="#f7f7f9"/>
+          <text x="132" y="60" font-family="'Outfit',sans-serif" font-size="11" font-weight="600" fill="#111827">Lead Pipeline</text>
+          <text x="132" y="73" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#9ca3af">248 leads &middot; MKB maakindustrie 15-250</text>
+          <rect x="132" y="86" width="62" height="22" rx="11" fill="#34d399"/>
+          <text x="148" y="100" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#052e16">Alle</text>
+          <rect x="167" y="93" width="20" height="9" rx="4" fill="rgba(5,46,22,.18)"/>
+          <text x="177" y="100" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#052e16">248</text>
+          <rect x="132" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="140" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Demo Metaalbouw</text>
+          <text x="140" y="154" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">CEO &middot; Metaal</text>
+          <text x="140" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.4</text>
+          <text x="170" y="186" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">AI fit-score</text>
+          <rect x="140" y="200" width="50" height="12" rx="6" fill="rgba(59,130,246,.15)"/>
+          <text x="165" y="208" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#3b82f6">Verbonden</text>
+          <rect x="304" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="312" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Voorbeeld Foods</text>
+          <text x="312" y="154" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">CFO &middot; Food</text>
+          <text x="312" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">7.9</text>
+          <text x="342" y="186" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">AI fit-score</text>
+          <rect x="312" y="200" width="32" height="12" rx="6" fill="rgba(245,166,35,.18)"/>
+          <text x="328" y="208" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">FU1</text>
+          <rect x="476" y="124" width="152" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="484" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Sample Automotive</text>
+          <text x="484" y="154" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">COO &middot; Automotive</text>
+          <text x="484" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.7</text>
+          <text x="514" y="186" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">AI fit-score</text>
+          <rect x="484" y="200" width="50" height="12" rx="6" fill="rgba(52,211,153,.15)"/>
+          <text x="509" y="208" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#059669">In gesprek</text>
+          <rect x="132" y="236" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5" opacity=".55"/>
+          <rect x="304" y="236" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5" opacity=".35"/>
+          <rect x="476" y="236" width="152" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5" opacity=".2"/>
+          <rect x="120" y="320" width="520" height="80" fill="url(#esgFadeOv)"/>
+          <defs><linearGradient id="esgFadeOv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f7f9" stop-opacity="0"/><stop offset="100%" stop-color="#f7f7f9" stop-opacity="1"/></linearGradient></defs>
+        </svg>
+        <div class="laptop-base"></div>
+      </div>
+      <a class="case-card" href="case-smartesg.html">
+        <div class="case-arrow-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+        <div class="case-card-client">Smart ESG</div>
+        <h3 class="case-card-title">AI Leadgen voor MKB-maakindustrie</h3>
+        <div class="case-card-main-tag">AI Agents</div>
+        <div class="case-card-tags"><span class="case-mini-tag">Lead Scoring</span><span class="case-mini-tag">LinkedIn (Unipile)</span><span class="case-mini-tag">Apollo</span><span class="case-mini-tag">n8n</span></div>
       </a>
     </div>
 
