@@ -376,6 +376,25 @@ body.light .tcard:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
 .res-cta{display:inline-flex;align-items:center;gap:.6rem;white-space:nowrap;background:#0a0b0e;color:#fff !important;font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.04em;padding:.95rem 1.6rem;border-radius:10px;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
 .res-cta:hover{background:#052e16;transform:translateY(-2px);box-shadow:0 10px 30px rgba(5,46,22,.3);color:#fff !important}
 @media(max-width:768px){.challenges-grid{grid-template-columns:1fr}.challenge-card.active{transform:none}#challengeAnswerContent{grid-template-columns:1fr;padding:1.75rem;gap:1.5rem}.res-cta{width:100%;justify-content:center}.reviews-grid{grid-template-columns:1fr;gap:1.5rem}.results-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.tech-panel{padding:2rem 1.5rem}}
+/* ===== SECTOREN PREVIEW ===== */
+.sectoren{max-width:1140px;margin:0 auto;background:var(--bg-el);border:1px solid var(--brd);border-radius:20px;padding:4rem 3.5rem;position:relative;overflow:hidden}
+.sectoren::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:60%;height:70%;background:radial-gradient(ellipse at center,var(--green-glow),transparent 70%);pointer-events:none}
+.sectoren>*{position:relative;z-index:1}
+body.light .sectoren{background:rgba(236,253,245,.5)}
+.sectoren .section-label,.sectoren .section-title,.sectoren .section-desc{text-align:center}
+.sectoren .section-title{margin-bottom:1.25rem}
+.sectoren .section-desc{margin:0 auto 2.75rem;max-width:580px}
+.sector-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.sector-card{display:flex;flex-direction:column;gap:1rem;padding:1.6rem;border:1px solid var(--brd);border-radius:14px;background:var(--bg);text-decoration:none;transition:all .3s;position:relative}
+.sector-card:hover{border-color:rgba(52,211,153,.4);transform:translateY(-3px);background:var(--card-hover);box-shadow:0 14px 40px rgba(0,0,0,.25)}
+body.light .sector-card{background:#fff;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+body.light .sector-card:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
+.sector-badge{width:44px;height:44px;border-radius:12px;background:var(--green-glow);border:1px solid rgba(52,211,153,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.sector-name{font-family:var(--head);font-size:1rem;font-weight:600;color:var(--txt);line-height:1.3}
+.sector-arrow{position:absolute;top:1.5rem;right:1.5rem;color:var(--green);opacity:0;transform:translate(-3px,3px);transition:all .3s}
+.sector-card:hover .sector-arrow{opacity:1;transform:none}
+.sectoren-cta{text-align:center;margin-top:2.5rem}
+@media(max-width:768px){.sectoren{padding:2.5rem 1.5rem}.sector-grid{grid-template-columns:1fr 1fr;gap:.75rem}.sector-card{padding:1.25rem}}
 </style>
 </head>
 <body class="light">
@@ -1223,6 +1242,20 @@ body.light .tcard:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
     </div>
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="#" onclick="openScanWizard();return false;" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+</section>
+<section class="reveal">
+  <div class="sectoren">
+    <div class="section-label">C:\sectoren&gt;<span class="section-label-cursor"></span></div>
+    <h2 class="section-title">Van maakindustrie tot<br>zakelijke dienstverlening.</h2>
+    <p class="section-desc">Dezelfde aanpak, afgestemd op jouw branche. Wij bouwen AI-systemen voor uiteenlopende sectoren in het Nederlandse MKB.</p>
+    <div class="sector-grid">
+      <a class="sector-card" href="branche-maakindustrie.html"><div class="sector-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l5 3v-3l5 3V6l6 3v11"/><path d="M9 20v-4h2v4"/></svg></div><div class="sector-name">Maakindustrie</div><svg class="sector-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a class="sector-card" href="branche-technische-groothandel.html"><div class="sector-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="13" width="7" height="7" rx="1"/><rect x="14" y="13" width="7" height="7" rx="1"/><rect x="8.5" y="3.5" width="7" height="7" rx="1"/></svg></div><div class="sector-name">Technische Groothandel</div><svg class="sector-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a class="sector-card" href="branche-zakelijke-dienstverlening.html"><div class="sector-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></div><div class="sector-name">Zakelijke Dienstverlening</div><svg class="sector-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a class="sector-card" href="branche-marketing-bureaus.html"><div class="sector-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l3.5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M13 8a4 4 0 0 1 0 8"/></svg></div><div class="sector-name">Marketing &amp; Bureaus</div><svg class="sector-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
+    <div class="sectoren-cta"><a href="branches.html" class="btn-primary">Bekijk alle branches <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div>
 </section>
 <div class="arcade-border"><div class="arcade-border-inner"></div></div>
 
