@@ -312,6 +312,70 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 @media(max-width:768px){div[style*='grid-template-columns:repeat(3']{grid-template-columns:1fr !important}}
 
 .scan-wizard{padding:0 1.25rem}.scan-inner{padding:2rem}.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}
+/* ===== PREVIEW SECTIONS â€” bento overrides ===== */
+.tech-panel{border-radius:14px;padding:3.5rem 3rem;margin-top:2rem}
+body.light .tech-panel{background:rgba(236,253,245,.6);border:1px solid rgba(52,211,153,.15)}
+body:not(.light) .tech-panel{background:transparent;background-image:linear-gradient(rgba(52,211,153,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(52,211,153,.025) 1px,transparent 1px);background-size:44px 44px;border:1px solid rgba(52,211,153,.08)}
+.tech-rows{margin-top:0;display:flex;flex-direction:column;gap:1.75rem}
+.tech-row-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.8rem;font-family:var(--mono)}
+.tech-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.tech-tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;font-family:var(--mono);color:var(--dim);padding:.55rem 1rem;border:1px solid var(--brd);border-radius:10px;background:var(--bg-el);transition:all .3s;white-space:nowrap}
+.tech-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);opacity:.45;flex-shrink:0;transition:all .3s}
+.tech-tag:hover{border-color:rgba(52,211,153,.4);color:var(--txt);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.tech-tag:hover::before{opacity:1;box-shadow:0 0 10px rgba(52,211,153,.6)}
+body.light .tech-tag{box-shadow:0 1px 2px rgba(16,24,40,.04)}
+body.light .tech-tag:hover{box-shadow:0 10px 26px rgba(16,24,40,.08)}
+
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:2.5rem}
+.result-item{text-align:center}
+.rnum{display:flex;align-items:baseline;justify-content:center;gap:.06em}
+.result-item .number{font-size:clamp(3rem,6vw,4.5rem);font-weight:800;font-family:var(--head);line-height:1;margin-bottom:0;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-item .unit{font-family:var(--head);font-weight:800;font-size:clamp(1.4rem,2.8vw,2.1rem);line-height:1;background:linear-gradient(135deg,var(--green),var(--green-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.result-item .label{font-size:.78rem;color:var(--dim);line-height:1.5;margin-top:.7rem}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;align-items:stretch}
+.tcard{background:var(--bg-el);border:1px solid var(--brd);border-radius:18px;padding:2rem;transition:all .3s;display:flex;flex-direction:column;gap:1.05rem;height:100%}
+.tcard:hover{transform:translateY(-3px);border-color:rgba(52,211,153,.3)}
+body.light .tcard{box-shadow:0 1px 3px rgba(16,24,40,.05)}
+body.light .tcard:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
+.tcard.hl{background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);border:none;box-shadow:0 20px 50px rgba(52,211,153,.18)}
+.tstars{font-size:.95rem;letter-spacing:3px;color:var(--green);line-height:1}
+.tcard.hl .tstars{color:#052e16}
+.tquote{font-family:var(--head);font-size:1.05rem;font-weight:600;line-height:1.4;color:var(--txt)}
+.tcard.hl .tquote{color:#052e16}
+.tbody{font-size:.86rem;color:var(--dim);line-height:1.8;flex:1}
+.tcard.hl .tbody{color:rgba(5,46,22,.84)}
+.tmeta{display:flex;align-items:center;gap:.8rem;margin-top:.2rem}
+.tavatar{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;font-weight:500;background:var(--green-glow);color:var(--green);border:1px solid rgba(52,211,153,.25)}
+.tcard.hl .tavatar{background:rgba(5,46,22,.12);color:#052e16;border-color:rgba(5,46,22,.25)}
+.tname{font-size:.85rem;font-weight:600;color:var(--txt)}
+.tcard.hl .tname{color:#052e16}
+.trole{font-size:.76rem;color:var(--mut)}
+.tcard.hl .trole{color:rgba(5,46,22,.7)}
+
+.challenges-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;background:transparent}
+.challenge-card{background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:1.75rem 1.6rem;cursor:pointer;transition:all .3s;position:relative;display:flex;flex-direction:column;gap:1.1rem;overflow:hidden}
+.challenge-card::after{display:none}
+.challenge-card:hover{border-color:rgba(52,211,153,.3);background:var(--card-hover);transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.challenge-card.active{border-color:var(--green);background:var(--card-hover);box-shadow:0 0 0 1px var(--green),0 14px 44px rgba(52,211,153,.12);transform:none}
+.challenge-ill{display:flex;align-items:center}
+.challenge-badge{width:46px;height:46px;border-radius:12px;background:rgba(52,211,153,.06);border:1px solid var(--brd);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.challenge-card:hover .challenge-badge,.challenge-card.active .challenge-badge{background:var(--green-glow);border-color:rgba(52,211,153,.3)}
+.challenge-question{font-size:.95rem;font-weight:500;line-height:1.45;color:var(--txt);transition:color .3s}
+.challenge-card.active .challenge-question{color:var(--green)}
+.ch-arrow{position:absolute;top:1.5rem;right:1.5rem;color:var(--green);opacity:0;transform:translate(-3px,3px);transition:all .3s}
+.challenge-card:hover .ch-arrow,.challenge-card.active .ch-arrow{opacity:1;transform:none}
+.challenge-answer{background:transparent;border:none;padding:0;margin-top:.85rem;display:block}
+#challengeAnswerContent{position:relative;overflow:hidden;border-radius:18px;padding:2.4rem 2.6rem;background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);display:grid;grid-template-columns:1fr auto;gap:1.4rem 2.5rem;align-items:center}
+#challengeAnswerContent::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.18),transparent 55%);pointer-events:none}
+#challengeAnswerContent>*{position:relative;z-index:1}
+.res-eyebrow{grid-column:1/-1;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(5,46,22,.72);display:flex;align-items:center;gap:.55rem}
+.res-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:#052e16;box-shadow:0 0 0 4px rgba(5,46,22,.14)}
+.challenge-answer-text h3{font-family:var(--head);font-size:1.5rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;color:#052e16}
+.challenge-answer-text p{font-size:.95rem;color:rgba(5,46,22,.82);line-height:1.65;max-width:46ch;margin-bottom:0}
+.res-cta{display:inline-flex;align-items:center;gap:.6rem;white-space:nowrap;background:#0a0b0e;color:#fff !important;font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.04em;padding:.95rem 1.6rem;border-radius:10px;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.res-cta:hover{background:#052e16;transform:translateY(-2px);box-shadow:0 10px 30px rgba(5,46,22,.3);color:#fff !important}
+@media(max-width:768px){.challenges-grid{grid-template-columns:1fr}.challenge-card.active{transform:none}#challengeAnswerContent{grid-template-columns:1fr;padding:1.75rem;gap:1.5rem}.res-cta{width:100%;justify-content:center}.reviews-grid{grid-template-columns:1fr;gap:1.5rem}.results-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.tech-panel{padding:2rem 1.5rem}}
 </style>
 </head>
 <body class="light">
@@ -622,26 +686,23 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 </div>
 <div class="neon-line"></div>
 
-<section id="uitdagingen" class="reveal crt">
+<section id="uitdagingen" class="reveal">
   <div class="section-label">C:\herkenbaar&gt;<span class="section-label-cursor"></span></div>
   <h2 class="section-title">Met welke uitdaging<br>heb jij te maken?</h2>
   <p class="section-desc">Klik op jouw situatie. Wij tonen direct hoe we het oplossen.</p>
   <div class="challenges-grid" id="challengeGrid">
-    <div class="challenge-card active" data-idx="3"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" stroke-dasharray="2 2" opacity=".5"/></svg></div></div><div class="challenge-question">Mijn tools praten niet met elkaar</div></div>
-    <div class="challenge-card" data-idx="4"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg></div></div><div class="challenge-question">Ik wil AI inzetten maar weet niet hoe</div></div>
-    <div class="challenge-card" data-idx="5"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div></div><div class="challenge-question">Mijn team moet AI leren gebruiken</div></div>
-    <div class="challenge-card" data-idx="0"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><div class="challenge-question">Ik verlies leads door trage opvolging</div></div>
-    <div class="challenge-card" data-idx="1"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><div class="challenge-question">Mijn marketing levert te weinig op</div></div>
-    <div class="challenge-card" data-idx="2"><div class="challenge-ill"><div class="challenge-icon" ><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div><div class="challenge-question">Mijn team doet te veel handwerk</div></div>
+    <div class="challenge-card active" data-idx="3"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" stroke-dasharray="2 2" opacity=".5"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Mijn tools praten niet met elkaar</div></div>
+    <div class="challenge-card" data-idx="4"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Ik wil AI inzetten maar weet niet hoe</div></div>
+    <div class="challenge-card" data-idx="5"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Mijn team moet AI leren gebruiken</div></div>
+    <div class="challenge-card" data-idx="0"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Ik verlies leads door trage opvolging</div></div>
+    <div class="challenge-card" data-idx="1"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Mijn marketing levert te weinig op</div></div>
+    <div class="challenge-card" data-idx="2"><div class="challenge-ill"><div class="challenge-badge"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div><svg class="ch-arrow" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg><div class="challenge-question">Mijn team doet te veel handwerk</div></div>
   </div>
   <div class="challenge-answer" id="challengeAnswer">
     <div id="challengeAnswerContent">
-      <div style="width:60px"><svg class="ill" viewBox="0 0 60 60" width="50" height="50" fill="none"><circle cx="30" cy="30" r="22" stroke="var(--ill-stroke)" stroke-width="1.2"/><path d="M30 14v16l10 5" stroke="var(--ill-stroke)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <div class="challenge-answer-text"><h3 id="answerTitle">Integraties die jouw systemen verbinden</h3><p id="answerDesc">CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.</p>
-        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--brd)">
-          <a href="#" onclick="openChallengeWizard();return false;" class="btn-primary" style="font-size:.78rem;padding:.75rem 1.5rem;color:#052e16">Start de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="#052e16" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
+      <div class="res-eyebrow">Dit lossen we voor je op</div>
+      <div class="challenge-answer-text"><h3 id="answerTitle">Integraties die jouw systemen verbinden</h3><p id="answerDesc">CRM, planning, facturatie, e-mail, wij bouwen de bruggen ertussen. Data stroomt automatisch, fouten verdwijnen.</p></div>
+      <a href="#" onclick="openChallengeWizard();return false;" class="res-cta">Start de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
@@ -1127,88 +1188,69 @@ body.light .exp-row:hover .exp-mockup-frame{box-shadow:0 12px 40px rgba(0,0,0,.0
 <div class="neon-line"></div>
 
 <div id="resultaten" class="results reveal">
-  <div class="section-label-amber">C:\resultaten&gt;<span class="section-label-cursor-amber"></span></div>
-  <h2 class="section-title">Cijfers die voor<br>zichzelf spreken.</h2>
+  <div class="section-label">C:\resultaten&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title" style="text-align:center">Cijfers die voor<br>zichzelf spreken.</h2>
   <div class="results-grid">
-    <div class="result-item"><div class="number" data-target="147">0</div><div class="label">% groei in<br>gekwalificeerde leads</div></div>
-    <div class="result-item"><div class="number" data-target="100">0</div><div class="label">+ uur/week bespaard<br>op handwerk</div></div>
-    <div class="result-item"><div class="number" data-target="3.2">0</div><div class="label">x gemiddelde ROAS<br>paid advertising</div></div>
-    <div class="result-item"><div class="number" data-target="2">0</div><div class="label">min leadresponstijd<br>(was 47 min)</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="147">0</div><div class="unit">%</div></div><div class="label">groei in gekwalificeerde leads</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="100">0</div><div class="unit">+</div></div><div class="label">uur/week bespaard op handwerk</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="3.2">0</div><div class="unit">x</div></div><div class="label">gemiddelde ROAS op paid advertising</div></div>
+    <div class="result-item"><div class="rnum"><div class="number" data-target="2">0</div><div class="unit">min</div></div><div class="label">leadresponstijd (was 47 min)</div></div>
   </div>
 </div>
 
 <section class="reveal">
-  <div class="section-label-amber">C:\klanten&gt;<span class="section-label-cursor-amber"></span></div>
+  <div class="section-label">C:\klanten&gt;<span class="section-label-cursor"></span></div>
+  <h2 class="section-title">Woorden die voor<br>zich spreken.</h2>
+  <p class="section-desc">Echte opdrachtgevers, echte resultaten. Dit zeggen ze over de samenwerking met Forgexe.</p>
   <div class="reviews-grid">
-    <div style="padding:2rem;border:1px dashed rgba(245,166,35,.12);border-radius:12px;transition:all .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="color:#f59e0b;font-size:1rem;letter-spacing:3px;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <h3 style="font-family:var(--head);font-size:1rem;font-weight:600;margin-bottom:1rem;line-height:1.4">Van juridische software naar concrete leads.</h3>
-      <p style="font-size:.85rem;color:var(--dim);line-height:1.9;margin-bottom:1.5rem">We zochten iemand die kon helpen onze software breder onder de aandacht te brengen. Forgexe wist onze dienst snel te doorgronden en heeft dit vertaald naar heldere campagnes en automatiseringen die aanspreken bij onze doelgroep. Sindsdien zien we een duidelijke stijging in aanvragen zonder dat we daar zelf veel omkijken naar hebben. Kort gezegd: Forgexe regelt het, denkt mee, en laat het gewoon werken.</p>
-      <p style="font-size:.78rem;color:var(--dim)"><strong style="color:var(--txt);font-weight:600">John Peters</strong> &#8212; RealCob</p>
+    <div class="tcard">
+      <div class="tstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="tquote">Van juridische software naar concrete leads.</div>
+      <p class="tbody">We zochten iemand die kon helpen onze software breder onder de aandacht te brengen. Forgexe wist onze dienst snel te doorgronden en heeft dit vertaald naar heldere campagnes en automatiseringen die aanspreken bij onze doelgroep. Sindsdien zien we een duidelijke stijging in aanvragen zonder dat we daar zelf veel omkijken naar hebben. Kort gezegd: Forgexe regelt het, denkt mee, en laat het gewoon werken.</p>
+      <div class="tmeta"><div class="tavatar">JP</div><div><div class="tname">John Peters</div><div class="trole">RealCob</div></div></div>
     </div>
-    <div style="padding:2rem;border:1px dashed rgba(52,211,153,.12);border-radius:12px;transition:all .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="color:#f59e0b;font-size:1rem;letter-spacing:3px;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <h3 style="font-family:var(--head);font-size:1rem;font-weight:600;margin-bottom:1rem;line-height:1.4">Een sterk eindresultaat.</h3>
-      <p style="font-size:.85rem;color:var(--dim);line-height:1.9;margin-bottom:1.5rem">We hebben inmiddels ons eerste project met Forgexe afgerond. Afspraken worden nagekomen en Forgexe zet zich in voor een sterk eindresultaat. Een betrouwbare en betrokken partner!</p>
-      <p style="font-size:.78rem;color:var(--dim)"><strong style="color:var(--txt);font-weight:600">Sjoerd Bruijnen</strong> &#8212; Pixelaars</p>
+    <div class="tcard hl">
+      <div class="tstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="tquote">Een sterk eindresultaat.</div>
+      <p class="tbody">We hebben inmiddels ons eerste project met Forgexe afgerond. Afspraken worden nagekomen en Forgexe zet zich in voor een sterk eindresultaat. Een betrouwbare en betrokken partner!</p>
+      <div class="tmeta"><div class="tavatar">SB</div><div><div class="tname">Sjoerd Bruijnen</div><div class="trole">Pixelaars</div></div></div>
     </div>
-    <div style="padding:2rem;border:1px dashed rgba(139,92,246,.12);border-radius:12px;transition:all .3s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.06)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-      <div style="color:#f59e0b;font-size:1rem;letter-spacing:3px;margin-bottom:1rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <h3 style="font-family:var(--head);font-size:1rem;font-weight:600;margin-bottom:1rem;line-height:1.4">Vanaf het eerste moment een zeer betrokken partner.</h3>
-      <p style="font-size:.85rem;color:var(--dim);line-height:1.9;margin-bottom:1.5rem">Streven naar een optimaal resultaat staat voorop en in het proces daar naartoe wordt constant nagedacht, bijgestuurd en geadviseerd. Er wordt een planmatige aanpak gehanteerd en de periodieke updates bevatten alle info die nodig is om het proces actief te volgen. Het contact verloopt prettig en vlot. Al met al een zeer prettige partij om mee samen te werken.</p>
-      <p style="font-size:.78rem;color:var(--dim)"><strong style="color:var(--txt);font-weight:600">Koos van den Bongard</strong> &#8212; Fun Valley Maastricht</p>
+    <div class="tcard">
+      <div class="tstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="tquote">Vanaf het eerste moment een zeer betrokken partner.</div>
+      <p class="tbody">Streven naar een optimaal resultaat staat voorop en in het proces daar naartoe wordt constant nagedacht, bijgestuurd en geadviseerd. Er wordt een planmatige aanpak gehanteerd en de periodieke updates bevatten alle info die nodig is om het proces actief te volgen. Het contact verloopt prettig en vlot. Al met al een zeer prettige partij om mee samen te werken.</p>
+      <div class="tmeta"><div class="tavatar">KB</div><div><div class="tname">Koos van den Bongard</div><div class="trole">Fun Valley Maastricht</div></div></div>
     </div>
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="#" onclick="openScanWizard();return false;" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
 </section>
 <div class="arcade-border"><div class="arcade-border-inner"></div></div>
 
-<section class="reveal-left crt crt-amber">
-  <div class="section-label-amber">C:\technologie&gt;<span class="section-label-cursor-amber"></span></div>
+<section class="reveal-left">
+  <div class="section-label">C:\technologie&gt;<span class="section-label-cursor"></span></div>
   <h2 class="section-title">Gebouwd met de<br>beste tools.</h2>
-  <p class="section-desc">Wij kiezen altijd de beste technologie voor het probleem. Geen vendor lock-in.</p>
-  <div class="tech-rows">
-    <div>
-      <div class="tech-row-label">AI &amp; Intelligence</div>
-      <div class="tech-tags">
-        <span class="tech-tag">OpenAI</span>
-        <span class="tech-tag">Anthropic</span>
-        <span class="tech-tag">Gemini</span>
-        <span class="tech-tag">n8n</span>
-        <span class="tech-tag">Unipile</span>
-        <span class="tech-tag">Nano Banana</span>
-        <span class="tech-tag">AWS</span>
+  <p class="section-desc">De beste technologie voor elk probleem &mdash; en naadloze integraties met de systemen die jij al gebruikt. Geen vendor lock-in.</p>
+  <div class="tech-panel">
+    <div class="tech-rows">
+      <div>
+        <div class="tech-row-label">AI &amp; Intelligence</div>
+        <div class="tech-tags">
+          <span class="tech-tag">OpenAI</span><span class="tech-tag">Anthropic</span><span class="tech-tag">Gemini</span><span class="tech-tag">n8n</span><span class="tech-tag">Unipile</span><span class="tech-tag">Nano Banana</span><span class="tech-tag">AWS</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-row-label">Channels &amp; CRM</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Google Ads</span><span class="tech-tag">Meta Ads</span><span class="tech-tag">LinkedIn Ads</span><span class="tech-tag">Zoho CRM</span><span class="tech-tag">Pipedrive</span><span class="tech-tag">Salesforce</span><span class="tech-tag">SAP</span>
+        </div>
+      </div>
+      <div>
+        <div class="tech-row-label">Analytics &amp; Tools</div>
+        <div class="tech-tags">
+          <span class="tech-tag">Analytics</span><span class="tech-tag">GTM</span><span class="tech-tag">WordPress</span><span class="tech-tag">Webflow</span><span class="tech-tag">Ahrefs</span><span class="tech-tag">Semrush</span><span class="tech-tag">Slack</span><span class="tech-tag">Notion</span><span class="tech-tag">Airtable</span><span class="tech-tag">Supabase</span>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="tech-row-label">Channels &amp; CRM</div>
-      <div class="tech-tags">
-        <span class="tech-tag">Google Ads</span>
-        <span class="tech-tag">Meta Ads</span>
-        <span class="tech-tag">LinkedIn Ads</span>
-        <span class="tech-tag">Zoho CRM</span>
-        <span class="tech-tag">Pipedrive</span>
-        <span class="tech-tag">Salesforce</span>
-        <span class="tech-tag">SAP</span>
-      </div>
-    </div>
-    <div class="tech-row-amber">
-      <div class="tech-row-label">Analytics &amp; Tools</div>
-      <div class="tech-tags">
-        <span class="tech-tag">Analytics</span>
-        <span class="tech-tag">GTM</span>
-        <span class="tech-tag">WordPress</span>
-        <span class="tech-tag">Webflow</span>
-        <span class="tech-tag">Ahrefs</span>
-        <span class="tech-tag">Semrush</span>
-        <span class="tech-tag">Slack</span>
-        <span class="tech-tag">Notion</span>
-        <span class="tech-tag">Airtable</span>
-        <span class="tech-tag">Supabase</span>
-      </div>
-    </div>
-  </div>
-</div>
   </div>
 </section>
 <div class="neon-line"></div>
