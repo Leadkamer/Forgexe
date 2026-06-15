@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>RealCob &#8212; Multi-segment AI Growth voor GDPR/NIS2-software &#8212; Forgexe</title>
+<meta name="description" content="Hoe we voor RealCob een multi-segment groei-systeem bouwden dat hun GDPR/NIS2 compliance-platform brengt bij DPO's, IT-managers en privacy-consultants — drie segmenten met één motor.">
+<link rel="canonical" href="https://forgexe.nl/case-realcob.html">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--tr:.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--btn-txt:#0a0b0e;--soft-bg:rgba(52,211,153,.04)}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--btn-txt:#052e16;--soft-bg:rgba(52,211,153,.05)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--txt);font-family:var(--head);font-weight:400;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
+::selection{background:var(--green);color:var(--btn-txt)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green);font-family:var(--mono)}
+.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s;font-family:var(--mono)}.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
+.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer}.toggle-track{width:36px;height:20px;background:rgba(0,0,0,.1);border-radius:10px;position:relative;border:1px solid var(--brd)}body:not(.light) .toggle-track{background:#1e293b}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center;font-family:var(--mono)}
+
+.wrap{max-width:1280px;margin:0 auto;padding:7rem 3rem 2rem}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--dim);text-decoration:none;border:1px solid var(--brd);background:var(--bg-el);padding:.55rem 1rem;border-radius:20px;transition:all .3s;margin-bottom:2.5rem}
+.back-link:hover{border-color:rgba(52,211,153,.4);color:var(--green);transform:translateX(-3px)}
+.back-link svg{width:14px;height:14px}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;margin-bottom:1.5rem;font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+.hero-pill{background:var(--green);color:var(--btn-txt);padding:.4rem 1rem;border-radius:20px;font-weight:600;font-size:.78rem}
+.hero-meta-item{display:inline-flex;align-items:center;gap:.4rem}
+.hero-meta-item svg{width:14px;height:14px;color:var(--dim)}
+.case-title-big{font-family:var(--head);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.25rem}
+.case-subtitle{font-size:1.05rem;color:var(--dim);max-width:680px;line-height:1.7;margin-bottom:3rem}
+
+.hero-laptop{background:var(--bg-el);border:1px solid var(--brd);border-radius:24px;padding:3rem;position:relative;overflow:hidden}
+body.light .hero-laptop{background:rgba(236,253,245,.4);border-color:rgba(52,211,153,.12)}
+.hero-laptop-inner{max-width:900px;margin:0 auto}
+.laptop{position:relative;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:14px 14px 0 0;padding:12px 12px 0;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.laptop::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:52px;height:5px;background:#0a0a0a;border-radius:0 0 5px 5px}
+.laptop svg{display:block;width:100%;height:auto;border-radius:5px}
+.laptop-base{height:18px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 14px 14px;position:relative;box-shadow:0 16px 36px rgba(0,0,0,.16)}
+.laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:4px;background:#0a0a0a;border-radius:0 0 8px 8px}
+
+.detail-grid{display:grid;grid-template-columns:1fr 320px;gap:4rem;margin-top:5rem;align-items:start}
+.detail-section{margin-bottom:3.5rem}
+.detail-section-head{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
+.detail-icon{width:38px;height:38px;border-radius:10px;background:var(--green-glow);border:1px solid rgba(52,211,153,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green)}
+.detail-icon svg{width:18px;height:18px}
+.detail-h2{font-family:var(--head);font-size:1.6rem;font-weight:600;letter-spacing:-.02em;color:var(--txt)}
+.detail-p{font-size:1rem;color:var(--dim);line-height:1.8;max-width:660px}
+.detail-p + .detail-p{margin-top:1rem}
+
+.approach-list{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.5rem}
+.approach-item{display:flex;align-items:flex-start;gap:.85rem;background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;padding:1.1rem 1.25rem}
+body.light .approach-item{box-shadow:0 1px 2px rgba(16,24,40,.03)}
+.approach-check{width:22px;height:22px;border-radius:50%;background:var(--green);color:#052e16;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.approach-check svg{width:12px;height:12px}
+.approach-text{font-size:.85rem;color:var(--txt);line-height:1.55}
+
+.testimonial-card{margin-top:2rem;background:linear-gradient(135deg,var(--green) 0%,var(--green-deep) 100%);border-radius:18px;padding:2rem 2.25rem;position:relative;max-width:660px}
+.testimonial-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.18),transparent 55%);pointer-events:none;border-radius:18px}
+.testimonial-card>*{position:relative;z-index:1}
+.testimonial-stars{font-size:.9rem;letter-spacing:3px;color:#052e16;line-height:1;margin-bottom:.85rem}
+.testimonial-quote{font-family:var(--head);font-size:1.05rem;font-weight:600;color:#052e16;line-height:1.45;margin-bottom:.85rem}
+.testimonial-body{font-size:.86rem;color:rgba(5,46,22,.85);line-height:1.7;margin-bottom:1.1rem}
+.testimonial-meta{display:flex;align-items:center;gap:.85rem}
+.testimonial-avatar{width:38px;height:38px;border-radius:50%;background:rgba(5,46,22,.12);color:#052e16;font-family:var(--mono);font-size:.74rem;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid rgba(5,46,22,.2)}
+.testimonial-name{font-size:.82rem;font-weight:600;color:#052e16}
+.testimonial-role{font-size:.7rem;color:rgba(5,46,22,.65);font-family:var(--mono)}
+
+.tech-block{margin-top:2.5rem}
+.tech-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem}
+.tech-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.tech-pill{background:#0a0b0e;color:#fff;font-family:var(--mono);font-size:.7rem;font-weight:500;padding:.55rem 1.1rem;border-radius:20px}
+body.light .tech-pill{box-shadow:0 2px 6px rgba(10,11,14,.18)}
+
+.sidebar-card{position:sticky;top:7rem;background:var(--bg-el);border:1px solid var(--brd);border-radius:18px;padding:2rem 1.75rem}
+body.light .sidebar-card{background:rgba(244,246,248,.8);box-shadow:0 1px 3px rgba(16,24,40,.05)}
+.sidebar-card h3{font-family:var(--head);font-size:1.05rem;font-weight:600;margin-bottom:.5rem;color:var(--txt)}
+.sidebar-card p{font-size:.85rem;color:var(--dim);line-height:1.6;margin-bottom:1.5rem}
+.sidebar-cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;width:100%;background:#0a0b0e;color:#fff;font-family:var(--mono);font-size:.78rem;font-weight:500;padding:.95rem 1.4rem;border-radius:10px;text-decoration:none;transition:all .3s}
+.sidebar-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(10,11,14,.25);color:#fff}
+.sidebar-cta svg{width:14px;height:14px}
+
+.next-section{max-width:1280px;margin:0 auto;padding:5rem 3rem 1rem}
+.next-title{font-family:var(--head);font-size:2.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:2.5rem;color:var(--txt)}
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.next-card-wrap .laptop{box-shadow:0 12px 32px rgba(0,0,0,.12)}
+
+.case-card{display:block;background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:1.6rem 1.75rem;margin-top:1.5rem;text-decoration:none;color:inherit;position:relative;transition:all .3s}
+body.light .case-card{box-shadow:0 1px 3px rgba(16,24,40,.05)}
+body.light .case-card:hover{box-shadow:0 14px 36px rgba(16,24,40,.09);border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
+body:not(.light) .case-card:hover{border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
+.case-arrow-btn{position:absolute;top:1.5rem;right:1.5rem;width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#052e16;transition:all .3s}
+.case-card:hover .case-arrow-btn{background:var(--green-lt);transform:translate(2px,-2px)}
+.case-card-client{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--green);margin-bottom:.55rem}
+.case-card-title{font-family:var(--head);font-size:1.05rem;font-weight:600;line-height:1.3;margin-bottom:1rem;color:var(--txt);padding-right:3rem}
+.case-card-main-tag{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);padding:.4rem .85rem;border-radius:20px;margin-bottom:1.1rem}
+.case-card-main-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
+.case-card-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.case-mini-tag{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.65rem;color:var(--dim);padding:.3rem .7rem;border:1px solid var(--brd);border-radius:14px}
+.case-mini-tag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);opacity:.7}
+
+.page-cta{padding:5rem 3rem 6rem;text-align:center;max-width:900px;margin:0 auto;position:relative}
+.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
+.page-cta h2{font-family:var(--head);font-size:clamp(2rem,4vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1rem;position:relative}
+.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
+.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono);border-radius:6px}
+.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}
+.btn-primary svg{width:14px;height:14px}
+
+footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
+.footer-col-title{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;font-family:var(--mono)}
+.footer-col a{display:block;font-size:.82rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
+.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green);font-family:var(--mono)}
+.footer-brand-desc{font-size:.82rem;color:var(--mut);line-height:1.6;max-width:240px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
+.footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4;font-family:var(--mono)}
+.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+
+@media(max-width:1024px){.detail-grid{grid-template-columns:1fr;gap:2rem}.sidebar-card{position:static}.approach-list{grid-template-columns:1fr}.next-grid{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.wrap{padding:5rem 1.25rem 1rem}.hero-laptop{padding:1.5rem .5rem;border-radius:14px}.hero-meta{gap:.85rem;font-size:.7rem}.case-title-big{font-size:clamp(1.8rem,8vw,2.6rem)}.case-subtitle{font-size:.92rem;margin-bottom:2rem}.detail-grid{margin-top:3rem}.detail-h2{font-size:1.3rem}.next-section{padding:3rem 1.25rem 1rem}.next-title{font-size:1.5rem}.page-cta{padding:3rem 1.25rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+</style>
+</head>
+<body class="light">
+<nav>
+  <a href="/" class="logo"><svg viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
+  <div class="nav-right">
+    <ul class="nav-links"><li><a href="expertises.html">Expertises</a></li><li><a href="branches.html">Branches</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <a href="contact.html" class="nav-cta">Gratis scan</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="theme-toggle" id="themeToggle"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+
+<div class="wrap">
+  <a href="cases.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle projecten</a>
+  <div class="hero-meta">
+    <span class="hero-pill">RealCob</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Nederland</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2026</span>
+  </div>
+  <h1 class="case-title-big">Van product naar pipeline voor RealCob</h1>
+  <p class="case-subtitle">Multi-channel AI-systeem dat RealCob&#39;s GDPR &amp; NIS2 compliance-platform brengt bij DPO&#39;s, IT-managers en privacy-consultants &mdash; drie segmenten, &eacute;&eacute;n motor.</p>
+
+  <div class="hero-laptop">
+    <div class="hero-laptop-inner">
+      <div class="laptop">
+        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="400" fill="#ffffff"/>
+          <rect x="0" y="0" width="640" height="36" fill="#0f172a"/>
+          <circle cx="20" cy="18" r="10" fill="#4f46e5"/>
+          <text x="20" y="22" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="10" font-weight="800" fill="#ffffff">R</text>
+          <text x="36" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">RealCob</text>
+          <text x="86" y="22" font-family="'JetBrains Mono',monospace" font-size="8" fill="#94a3b8">&middot; Growth Hub</text>
+          <rect x="560" y="9" width="68" height="18" rx="4" fill="rgba(79,70,229,.15)" stroke="rgba(79,70,229,.35)" stroke-width=".5"/>
+          <text x="594" y="22" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#a5b4fc">John P.</text>
+          <rect x="0" y="36" width="130" height="364" fill="#ffffff"/>
+          <line x1="130" y1="36" x2="130" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="20" y="65" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Overzicht</text>
+          <rect x="8" y="80" width="114" height="22" rx="5" fill="rgba(79,70,229,.1)"/>
+          <text x="20" y="95" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#4338ca">Campagnes</text>
+          <rect x="100" y="86" width="18" height="10" rx="5" fill="rgba(79,70,229,.25)"/>
+          <text x="109" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#4338ca">3</text>
+          <text x="20" y="121" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Leads</text>
+          <text x="86" y="121" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">67</text>
+          <text x="20" y="145" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Content</text>
+          <text x="20" y="169" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Demo&#39;s</text>
+          <text x="86" y="169" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">16</text>
+          <text x="20" y="193" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4b5563">Cijfers</text>
+          <rect x="8" y="220" width="114" height="86" rx="6" fill="rgba(79,70,229,.04)" stroke="rgba(79,70,229,.18)" stroke-width=".5"/>
+          <text x="14" y="234" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="700" letter-spacing=".1em" fill="#4f46e5">DEZE MAAND</text>
+          <text x="14" y="254" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#111827">67</text>
+          <text x="36" y="254" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#6b7280">leads</text>
+          <text x="14" y="272" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#111827">16</text>
+          <text x="36" y="272" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#6b7280">demo&#39;s</text>
+          <text x="14" y="290" font-family="'Outfit',sans-serif" font-size="11" font-weight="700" fill="#059669">6</text>
+          <text x="28" y="290" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#059669">klanten</text>
+          <rect x="130" y="36" width="510" height="364" fill="#f7f7fb"/>
+          <text x="142" y="60" font-family="'Outfit',sans-serif" font-size="11" font-weight="600" fill="#111827">Multi-segment Campagnes</text>
+          <text x="142" y="73" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#9ca3af">3 actieve campagnes &middot; per doelgroep aangepaste copy</text>
+          <rect x="556" y="46" width="76" height="22" rx="6" fill="#0f172a"/>
+          <text x="572" y="60" font-family="'JetBrains Mono',monospace" font-size="6.5" font-weight="600" fill="#ffffff">+ Campagne</text>
+          <g font-family="'JetBrains Mono',monospace">
+            <rect x="142" y="92" width="486" height="78" rx="8" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".6"/>
+            <rect x="142" y="92" width="5" height="78" rx="2" fill="#4f46e5"/>
+            <text x="158" y="112" font-family="'Outfit',sans-serif" font-size="10" font-weight="600" fill="#111827">DPO &amp; Privacy Officers</text>
+            <rect x="290" y="103" width="50" height="13" rx="6" fill="rgba(79,70,229,.12)"/>
+            <text x="315" y="112" text-anchor="middle" font-size="5.5" font-weight="600" fill="#4338ca">SEGMENT 1</text>
+            <text x="158" y="125" font-size="6" fill="#9ca3af">Zorg &middot; Overheid &middot; Onderwijs</text>
+            <polyline points="158,152 178,148 198,144 218,138 238,134 258,128 278,124" stroke="#4f46e5" stroke-width="1.2" fill="none"/>
+            <text x="410" y="138" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">28</text>
+            <text x="410" y="156" font-size="6" fill="#9ca3af">leads</text>
+            <text x="486" y="138" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">8</text>
+            <text x="486" y="156" font-size="6" fill="#9ca3af">demo&#39;s</text>
+            <text x="558" y="138" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#059669">3</text>
+            <text x="558" y="156" font-size="6" fill="#059669">klanten</text>
+            <rect x="142" y="184" width="486" height="78" rx="8" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".6"/>
+            <rect x="142" y="184" width="5" height="78" rx="2" fill="#06b6d4"/>
+            <text x="158" y="204" font-family="'Outfit',sans-serif" font-size="10" font-weight="600" fill="#111827">IT-managers MKB</text>
+            <rect x="270" y="195" width="50" height="13" rx="6" fill="rgba(6,182,212,.12)"/>
+            <text x="295" y="204" text-anchor="middle" font-size="5.5" font-weight="600" fill="#0891b2">SEGMENT 2</text>
+            <text x="158" y="217" font-size="6" fill="#9ca3af">NIS2-kritieke ketens &middot; 50-250 medewerkers</text>
+            <polyline points="158,244 178,242 198,238 218,234 238,228 258,224 278,222" stroke="#06b6d4" stroke-width="1.2" fill="none"/>
+            <text x="410" y="230" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">24</text>
+            <text x="410" y="248" font-size="6" fill="#9ca3af">leads</text>
+            <text x="486" y="230" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">5</text>
+            <text x="486" y="248" font-size="6" fill="#9ca3af">demo&#39;s</text>
+            <text x="558" y="230" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#059669">2</text>
+            <text x="558" y="248" font-size="6" fill="#059669">klanten</text>
+            <rect x="142" y="276" width="486" height="78" rx="8" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".6"/>
+            <rect x="142" y="276" width="5" height="78" rx="2" fill="#f97316"/>
+            <text x="158" y="296" font-family="'Outfit',sans-serif" font-size="10" font-weight="600" fill="#111827">Privacy Consultants</text>
+            <rect x="286" y="287" width="44" height="13" rx="6" fill="rgba(249,115,22,.12)"/>
+            <text x="308" y="296" text-anchor="middle" font-size="5.5" font-weight="600" fill="#ea580c">PARTNER</text>
+            <text x="158" y="309" font-size="6" fill="#9ca3af">Channel-partners &middot; herverkoop-track</text>
+            <polyline points="158,336 178,334 198,330 218,326 238,322 258,318 278,314" stroke="#f97316" stroke-width="1.2" fill="none"/>
+            <text x="410" y="322" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">15</text>
+            <text x="410" y="340" font-size="6" fill="#9ca3af">leads</text>
+            <text x="478" y="322" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#111827">3</text>
+            <text x="478" y="340" font-size="6" fill="#9ca3af">partnerships</text>
+            <text x="558" y="322" font-family="'Outfit',sans-serif" font-size="17" font-weight="700" fill="#059669">1</text>
+            <text x="558" y="340" font-size="6" fill="#059669">partner</text>
+          </g>
+          <rect x="130" y="340" width="510" height="60" fill="url(#rcFade)"/>
+          <defs><linearGradient id="rcFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f7fb" stop-opacity="0"/><stop offset="100%" stop-color="#f7f7fb" stop-opacity="1"/></linearGradient></defs>
+        </svg>
+        <div class="laptop-base"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div>
+      <div class="detail-section">
+        <div class="detail-section-head">
+          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h2 class="detail-h2">De uitdaging</h2>
+        </div>
+        <p class="detail-p">John Peters van RealCob bouwde een sterk product: een platform met AI-agent dat GDPR en NIS2 in begrijpelijke taal uitlegt en compliance-gaten omzet in concrete actiepunten. Setup binnen een uur, volledig compliance-inzicht binnen een dag, audit-ready rapportage. Een echte productverdienste &mdash; maar wie kent het?</p>
+        <p class="detail-p">De doelgroep is gefragmenteerd: KMO-eigenaren die NIS2 nooit op de radar hadden, DPO&#39;s bij zorginstellingen en overheid, IT-managers in kritieke ketens, plus privacy-consultants die het kunnen herverkopen aan hun klanten. Vier groepen met vier verschillende pijnpunten en evenveel verschillende boodschappen. Handmatig per segment outreach doen kost meer tijd dan een founder beschikbaar heeft. Klassieke cold ads werken slecht: compliance wordt langzaam vertrouwd, niet impulsief gekocht.</p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-head">
+          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+          <h2 class="detail-h2">De oplossing</h2>
+        </div>
+        <p class="detail-p">Een multi-segment groei-systeem dat per doelgroep andere taal gebruikt, maar &eacute;&eacute;n centrale motor draait. Voor DPO&#39;s, IT-managers en privacy-consultants is er elk een eigen LinkedIn-campagne (via Unipile) met aangepaste copy: een DPO bij een ziekenhuis krijgt een andere openings-zin dan een IT-manager in een logistiek bedrijf. De toon volgt RealCob&#39;s eigen &quot;uitleg in begrijpelijke taal&quot;-stijl &mdash; geen juridisch jargon, geen sales-pitch.</p>
+        <p class="detail-p">Parallel daaraan draait een content-engine die wekelijks publiceert rond concrete vragen: verwerkersovereenkomst checken, NIS2-deadlines, audit-voorbereiding. Inkomende leads worden gescoord op fit en geleid naar een demo of een multi-step nurture-flow als ze nog niet demo-klaar zijn. Voor privacy-consultants een aparte partner-track: zij krijgen geen demo-pitch, maar een channel-aanbod.</p>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-quote">Van juridische software naar concrete leads.</div>
+          <p class="testimonial-body">We zochten iemand die kon helpen onze software breder onder de aandacht te brengen. Forgexe wist onze dienst snel te doorgronden en heeft dit vertaald naar heldere campagnes en automatiseringen die aanspreken bij onze doelgroep. Sindsdien zien we een duidelijke stijging in aanvragen zonder dat we daar zelf veel omkijken naar hebben.</p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar">JP</div>
+            <div>
+              <div class="testimonial-name">John Peters</div>
+              <div class="testimonial-role">RealCob</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-head">
+          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h2 class="detail-h2">Onze aanpak</h2>
+        </div>
+        <div class="approach-list">
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Doelgroep-mapping: DPO&#39;s, IT-managers, KMO-eigenaren, Privacy Consultants</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Per segment eigen LinkedIn-copy in RealCob&#39;s begrijpelijke taal-stijl</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Sector-targeting: zorg, overheid, onderwijs, NIS2-kritieke ketens</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">AI-content engine: GDPR/NIS2 blog en social wekelijks</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">SEO-strategie op compliance-zoekopdrachten met audit-intent</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Partner-channel voor privacy-consultants met herverkoop-aanbod</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Multi-step nurture-flow voor leads die nog niet demo-klaar zijn</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Demo-bookings via ge&iuml;ntegreerde flow naar RealCob&#39;s CRM</div></div>
+        </div>
+      </div>
+
+      <a href="cases.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle projecten</a>
+
+      <div class="tech-block">
+        <div class="tech-label">Technologie</div>
+        <div class="tech-pills">
+          <span class="tech-pill">AI Outreach</span><span class="tech-pill">Content AI</span><span class="tech-pill">LinkedIn (Unipile)</span><span class="tech-pill">SEO</span><span class="tech-pill">n8n</span><span class="tech-pill">Multi-segment Campaigns</span><span class="tech-pill">CRM-koppeling</span><span class="tech-pill">Marketing Automation</span>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="sidebar-card">
+        <h3>Vergelijkbare resultaten?</h3>
+        <p>Ontdek wat een AI-systeem kan doen voor jouw bedrijf.</p>
+        <a href="contact.html" class="sidebar-cta">Plan een demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="next-section">
+  <h2 class="next-title">Meer projecten</h2>
+  <div class="next-grid">
+    <div class="next-card-wrap">
+      <div class="laptop">
+        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="400" fill="#ffffff"/>
+          <rect x="0" y="0" width="640" height="36" fill="#0a0b0e"/>
+          <path d="M14 14c0-3 2-6 5-6 2 0 4 1 5 3 1-2 3-3 5-3 3 0 5 3 5 6 0 5-10 11-10 11s-10-6-10-11z" fill="#34d399" transform="translate(0,2) scale(.55)"/>
+          <text x="36" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">Smart ESG &middot; Outreach Hub</text>
+          <rect x="0" y="36" width="120" height="364" fill="#ffffff"/>
+          <line x1="120" y1="36" x2="120" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <rect x="8" y="80" width="104" height="22" rx="5" fill="rgba(52,211,153,.12)"/>
+          <text x="20" y="95" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#059669">Leads</text>
+          <rect x="120" y="36" width="520" height="364" fill="#f7f7f9"/>
+          <rect x="132" y="86" width="62" height="22" rx="11" fill="#34d399"/>
+          <text x="148" y="100" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#052e16">Alle</text>
+          <rect x="132" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="140" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Demo Metaalbouw</text>
+          <text x="140" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.4</text>
+          <rect x="304" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="312" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Voorbeeld Foods</text>
+          <text x="312" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">7.9</text>
+          <rect x="476" y="124" width="152" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="484" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Sample Automotive</text>
+          <text x="484" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.7</text>
+          <rect x="120" y="240" width="520" height="160" fill="url(#esgFadeR)"/>
+          <defs><linearGradient id="esgFadeR" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f7f7f9" stop-opacity="0"/><stop offset="100%" stop-color="#f7f7f9" stop-opacity="1"/></linearGradient></defs>
+        </svg>
+        <div class="laptop-base"></div>
+      </div>
+      <a class="case-card" href="case-smartesg.html">
+        <div class="case-arrow-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+        <div class="case-card-client">Smart ESG</div>
+        <h3 class="case-card-title">AI Leadgen voor MKB-maakindustrie</h3>
+        <div class="case-card-main-tag">AI Agents</div>
+        <div class="case-card-tags"><span class="case-mini-tag">Lead Scoring</span><span class="case-mini-tag">Apollo</span></div>
+      </a>
+    </div>
+    <div class="next-card-wrap">
+      <div class="laptop">
+        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="400" fill="#ffffff"/>
+          <rect x="0" y="0" width="640" height="36" fill="#0a0b0e"/>
+          <circle cx="20" cy="18" r="10" fill="#8b5cf6"/>
+          <text x="20" y="22" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="10" font-weight="800" fill="#ffffff">D</text>
+          <text x="36" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">DNA-talent &middot; Outreach Studio</text>
+          <rect x="0" y="36" width="120" height="364" fill="#ffffff"/>
+          <line x1="120" y1="36" x2="120" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <rect x="8" y="80" width="104" height="22" rx="5" fill="rgba(52,211,153,.12)"/>
+          <text x="20" y="95" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#059669">Outreach</text>
+          <rect x="120" y="36" width="520" height="364" fill="#fafafb"/>
+          <rect x="132" y="86" width="50" height="22" rx="11" fill="#34d399"/>
+          <text x="148" y="100" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#052e16">Alle</text>
+          <rect x="132" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="140" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Demo Loopbaancoach</text>
+          <text x="140" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.7</text>
+          <rect x="304" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="312" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Voorbeeld HR Adviseur</text>
+          <text x="312" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">7.9</text>
+          <rect x="476" y="124" width="152" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
+          <text x="484" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Sample Life Coach</text>
+          <text x="484" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.3</text>
+          <rect x="120" y="240" width="520" height="160" fill="url(#dnaFadeR)"/>
+          <defs><linearGradient id="dnaFadeR" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fafafb" stop-opacity="0"/><stop offset="100%" stop-color="#fafafb" stop-opacity="1"/></linearGradient></defs>
+        </svg>
+        <div class="laptop-base"></div>
+      </div>
+      <a class="case-card" href="case-dna-talent.html">
+        <div class="case-arrow-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+        <div class="case-card-client">DNA-talent</div>
+        <h3 class="case-card-title">AI Outreach voor coaches &amp; HR</h3>
+        <div class="case-card-main-tag">AI Agents</div>
+        <div class="case-card-tags"><span class="case-mini-tag">Tone-of-Voice AI</span><span class="case-mini-tag">Unipile</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="page-cta">
+  <h2>Klaar voor jouw eigen<br>AI-systeem?</h2>
+  <p>Elk project start met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
+  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
+    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  });
+});
+document.getElementById('themeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('light');
+});
+</script>
+
+<style>
+elevenlabs-convai{--el-branding-display:none}
+elevenlabs-convai::part(branding){display:none!important}
+elevenlabs-convai::part(powered-by){display:none!important}
+</style>
+<elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
