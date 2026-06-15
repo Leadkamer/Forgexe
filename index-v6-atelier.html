@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Forgexe, AI-engineering shop voor het Nederlandse MKB</title>
+<meta name="description" content="Forgexe bouwt AI-medewerkers en automatisering bovenop je bestaande tools. Voor het Nederlandse MKB.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ════════════════ TOKENS (OKLCH) ════════════════ */
+:root{
+  --bg:oklch(98% 0.005 105);
+  --surface:oklch(99.5% 0.003 105);
+  --surface-soft:oklch(95.5% 0.006 105);
+  --ink:oklch(20% 0.018 260);
+  --ink-dim:oklch(45% 0.014 260);
+  --ink-mut:oklch(62% 0.010 260);
+  --line:oklch(89% 0.010 260);
+  --line-strong:oklch(78% 0.013 260);
+  --growth:oklch(75% 0.18 162);
+  --growth-soft:oklch(95% 0.04 162);
+  --growth-deep:oklch(42% 0.13 162);
+  --ops:oklch(75% 0.16 75);
+  --ops-soft:oklch(95% 0.04 75);
+  --ops-deep:oklch(42% 0.13 75);
+  --display:'Geist',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --tr:.32s cubic-bezier(.16,1,.3,1);
+  --tr-fast:.18s cubic-bezier(.4,0,.2,1);
+}
+
+/* ════════════════ RESET ════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--display);font-weight:400;line-height:1.55;
+  font-feature-settings:'ss01','cv11';
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--ink);color:var(--bg)}
+
+/* ════════════════ LAYOUT PRIMITIVES ════════════════ */
+.col{max-width:1320px;margin:0 auto;padding:0 1.8rem}
+.col-wide{max-width:1480px;margin:0 auto;padding:0 1.8rem}
+.col-narrow{max-width:920px;margin:0 auto;padding:0 1.8rem}
+
+/* ════════════════ NAV (flat strip, geen card) ════════════════ */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in oklch, var(--bg) 85%, transparent);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.05rem 0;
+}
+.brand{
+  display:inline-flex;align-items:baseline;gap:.65rem;
+  font-family:var(--display);font-size:1.08rem;font-weight:700;
+  letter-spacing:-.01em;color:var(--ink);
+}
+.brand svg{align-self:center}
+.brand-meta{
+  font-family:var(--mono);font-size:.66rem;font-weight:500;
+  color:var(--ink-mut);letter-spacing:.04em;
+  padding-left:.7rem;border-left:1px solid var(--line);
+}
+.nav-links{display:flex;align-items:center;gap:.4rem}
+.nav-links a{
+  font-family:var(--display);font-size:.86rem;font-weight:500;
+  color:var(--ink-dim);padding:.45rem .85rem;border-radius:6px;
+  transition:color var(--tr-fast),background var(--tr-fast);
+}
+.nav-links a:hover{color:var(--ink);background:var(--surface-soft)}
+.nav-links a.active{color:var(--ink);font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--ink);color:var(--bg);
+  font-family:var(--display);font-size:.85rem;font-weight:600;
+  padding:.7rem 1.15rem;border-radius:7px;
+  transition:transform var(--tr-fast),background var(--tr-fast);
+}
+.nav-cta:hover{background:oklch(15% 0.018 260);transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px;stroke-width:2.4}
+
+.hamburger{
+  display:none;width:38px;height:38px;border-radius:6px;
+  align-items:center;justify-content:center;border:1px solid var(--line);
+}
+.hamburger span{width:14px;height:1.5px;background:var(--ink);position:relative}
+.hamburger span::before,.hamburger span::after{
+  content:'';position:absolute;left:0;width:14px;height:1.5px;background:var(--ink);
+}
+.hamburger span::before{top:-4px}
+.hamburger span::after{top:4px}
+
+/* ════════════════ TYPOGRAPHY ════════════════ */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  color:var(--ink-mut);letter-spacing:.05em;text-transform:lowercase;
+}
+.eyebrow::before{
+  content:'';width:18px;height:1px;background:var(--ink-mut);
+}
+.eyebrow.growth{color:var(--growth-deep)}
+.eyebrow.growth::before{background:var(--growth-deep)}
+.eyebrow.ops{color:var(--ops-deep)}
+.eyebrow.ops::before{background:var(--ops-deep)}
+
+h1.display{
+  font-family:var(--display);
+  font-size:clamp(2.6rem,6.4vw,5.2rem);
+  font-weight:700;line-height:.98;letter-spacing:-.04em;
+  color:var(--ink);
+}
+h2.display{
+  font-family:var(--display);
+  font-size:clamp(2rem,4.5vw,3.4rem);
+  font-weight:600;line-height:1.02;letter-spacing:-.03em;
+  color:var(--ink);
+}
+h3{
+  font-family:var(--display);font-size:1.25rem;font-weight:600;
+  letter-spacing:-.015em;color:var(--ink);
+}
+.lead{
+  font-family:var(--display);
+  font-size:clamp(1rem,1.4vw,1.18rem);
+  font-weight:400;line-height:1.55;color:var(--ink-dim);
+  max-width:65ch;
+}
+
+/* ════════════════ BUTTONS ════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--display);font-weight:600;font-size:.92rem;
+  padding:.95rem 1.4rem;border-radius:8px;
+  transition:transform var(--tr-fast),background var(--tr-fast),box-shadow var(--tr-fast),color var(--tr-fast);
+  white-space:nowrap;
+}
+.btn svg{width:14px;height:14px;stroke-width:2.4;transition:transform var(--tr-fast)}
+.btn:hover svg{transform:translate(2px,-2px)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-ink:hover{background:oklch(13% 0.018 260);transform:translateY(-1px);box-shadow:0 10px 26px oklch(20% 0.018 260 / .18)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--ink);background:var(--bg)}
+.btn-growth{background:var(--growth);color:oklch(20% 0.06 162)}
+.btn-growth:hover{background:oklch(80% 0.19 162);transform:translateY(-1px);box-shadow:0 10px 26px oklch(75% 0.18 162 / .35)}
+
+/* ════════════════ HERO ════════════════ */
+.hero{
+  padding:5.5rem 0 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.25fr .9fr;gap:5rem;
+  align-items:center;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+  font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);
+}
+.hero-eyebrow .signal{
+  display:inline-flex;align-items:center;gap:.4rem;
+  color:var(--growth-deep);font-weight:600;
+}
+.hero-eyebrow .signal::before{
+  content:'';width:7px;height:7px;border-radius:50%;
+  background:var(--growth);
+  box-shadow:0 0 0 3px color-mix(in oklch, var(--growth) 30%, transparent);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+.hero h1{margin-bottom:1.6rem}
+.hero h1 .smede{
+  font-style:italic;font-weight:500;color:var(--growth-deep);
+}
+.hero-lead{
+  font-size:clamp(1.05rem,1.5vw,1.22rem);line-height:1.5;
+  color:var(--ink-dim);max-width:42ch;margin-bottom:2.5rem;
+}
+.hero-cta{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-foot{
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);
+  display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;
+}
+.hero-foot span{display:inline-flex;align-items:center;gap:.4rem}
+.hero-foot .tick{color:var(--growth-deep);font-weight:700}
+
+.hero-schema{
+  position:relative;
+  aspect-ratio:1/1;width:100%;max-width:480px;justify-self:end;
+}
+.hero-schema svg{width:100%;height:100%}
+
+/* ════════════════ SECTION BASE ════════════════ */
+section{padding:6rem 0;position:relative}
+.section-eyebrow-row{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;
+}
+.section-eyebrow-row .index{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--ink-mut);
+}
+.hr-strong{height:1px;background:var(--line);width:100%;margin:0}
+.hr-ink{height:1px;background:var(--ink);width:100%;margin:0}
+
+/* ════════════════ PROOF STRIP ════════════════ */
+.proof{
+  padding:2.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.proof-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;
+}
+.proof-text{
+  font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);
+  letter-spacing:.02em;flex-shrink:0;
+}
+.proof-text strong{color:var(--ink);font-weight:700}
+.proof-logos{
+  display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;
+}
+.proof-logos img{height:24px;width:auto;opacity:.55;filter:grayscale(1) contrast(1.05);transition:opacity var(--tr-fast),filter var(--tr-fast)}
+.proof-logos img:hover{opacity:1;filter:grayscale(0)}
+
+/* ════════════════ KERN: WAT WE DOEN ════════════════ */
+.kern-grid{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;
+}
+.kern-spec{
+  margin-top:2.5rem;border-top:1px solid var(--ink);
+}
+.spec-row{
+  display:grid;grid-template-columns:.18fr 1fr;gap:1.5rem;align-items:baseline;
+  padding:1.3rem 0;border-bottom:1px solid var(--line);
+}
+.spec-id{
+  font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--ink-mut);
+  letter-spacing:.04em;padding-top:.15rem;
+}
+.spec-body strong{
+  display:block;font-family:var(--display);font-size:1.15rem;font-weight:600;
+  color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em;
+}
+.spec-body span{
+  font-family:var(--display);font-size:.92rem;color:var(--ink-dim);line-height:1.55;
+}
+
+/* ════════════════ PIJLERS: GROWTH / OPS ════════════════ */
+.pijlers{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:0;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  margin-top:2.5rem;
+}
+.pijler{
+  padding:3rem;border-right:1px solid var(--line);
+}
+.pijler:last-child{border-right:none}
+.pijler-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--mono);font-size:.76rem;font-weight:600;
+  padding:.4rem .7rem;border-radius:5px;margin-bottom:1.5rem;
+}
+.pijler.growth .pijler-tag{background:var(--growth-soft);color:var(--growth-deep)}
+.pijler.ops .pijler-tag{background:var(--ops-soft);color:var(--ops-deep)}
+.pijler h3{
+  font-size:clamp(1.6rem,2.4vw,2.1rem);font-weight:600;letter-spacing:-.025em;
+  line-height:1.05;margin-bottom:1rem;
+}
+.pijler p{
+  font-family:var(--display);font-size:1rem;color:var(--ink-dim);
+  line-height:1.55;margin-bottom:2rem;max-width:42ch;
+}
+.pijler-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.pijler-list li{
+  display:grid;grid-template-columns:.25fr 1fr auto;gap:1rem;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--line);
+  font-family:var(--display);font-size:.95rem;
+}
+.pijler-list li:last-child{border-bottom:none}
+.pijler-list .item-id{
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);font-weight:500;
+}
+.pijler-list .item-name{color:var(--ink);font-weight:500}
+.pijler-list .item-name em{font-style:normal;color:var(--ink-mut);font-weight:400}
+.pijler-list .item-arrow{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-mut);transition:transform var(--tr-fast),color var(--tr-fast),background var(--tr-fast);
+}
+.pijler-list li:hover .item-arrow{color:var(--ink);background:var(--surface-soft);transform:rotate(-12deg)}
+.pijler-list .item-arrow svg{width:11px;height:11px;stroke-width:2.4}
+
+/* ════════════════ UITDAGINGEN (long-form Q&A) ════════════════ */
+.uit-list{
+  margin-top:2.5rem;border-top:1px solid var(--ink);
+}
+.uit-row{
+  display:grid;grid-template-columns:.16fr 1fr 1.4fr;gap:2.5rem;
+  padding:2rem 0;border-bottom:1px solid var(--line);align-items:start;
+}
+.uit-row .uit-id{
+  font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--ink-mut);
+  letter-spacing:.04em;padding-top:.3rem;
+}
+.uit-q{
+  font-family:var(--display);font-size:1.45rem;font-weight:600;letter-spacing:-.02em;
+  line-height:1.15;color:var(--ink);
+}
+.uit-a{
+  font-family:var(--display);font-size:1rem;color:var(--ink-dim);line-height:1.6;
+}
+.uit-a a{color:var(--growth-deep);font-weight:600;border-bottom:1px solid var(--growth);padding-bottom:1px}
+
+/* ════════════════ AANPAK (3 stappen) ════════════════ */
+.stappen{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:2.5rem;
+  border-top:1px solid var(--ink);
+}
+.stap{padding:2.5rem 0;border-right:1px solid var(--line);padding-right:2rem}
+.stap:last-child{border-right:none}
+.stap-id{
+  font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--ink-mut);
+  letter-spacing:.06em;margin-bottom:.7rem;
+}
+.stap h3{font-size:1.45rem;letter-spacing:-.02em;margin-bottom:.75rem}
+.stap p{
+  font-family:var(--display);font-size:.95rem;color:var(--ink-dim);line-height:1.55;
+}
+.stap-tijd{
+  margin-top:1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);
+  display:inline-flex;align-items:center;gap:.4rem;
+  border:1px solid var(--line);padding:.3rem .55rem;border-radius:4px;
+}
+
+/* ════════════════ CASES (project-sheet) ════════════════ */
+.cases-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  margin-bottom:0;
+}
+.cases-sheet{margin-top:2.5rem;border-top:1px solid var(--ink)}
+.case-row{
+  display:grid;grid-template-columns:.12fr .85fr 1fr .55fr .12fr;gap:2rem;
+  padding:1.7rem 0;border-bottom:1px solid var(--line);align-items:center;
+  transition:background var(--tr-fast);
+}
+.case-row:hover{background:var(--surface-soft)}
+.case-row:hover .case-arrow{transform:rotate(-12deg);background:var(--ink);color:var(--bg)}
+.case-row .case-id{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--ink-mut);
+  letter-spacing:.04em;
+}
+.case-row .case-client{
+  font-family:var(--display);font-size:1.15rem;font-weight:600;letter-spacing:-.015em;color:var(--ink);
+}
+.case-row .case-client em{
+  display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;
+  color:var(--ink-mut);font-weight:500;margin-top:.2rem;letter-spacing:.02em;
+}
+.case-row .case-what{
+  font-family:var(--display);font-size:.95rem;color:var(--ink-dim);line-height:1.5;
+}
+.case-row .case-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.case-tag{
+  font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);
+  border:1px solid var(--line);padding:.2rem .55rem;border-radius:4px;font-weight:500;letter-spacing:.02em;
+}
+.case-tag.growth{color:var(--growth-deep);border-color:var(--growth-soft);background:color-mix(in oklch,var(--growth-soft) 60%, transparent)}
+.case-tag.ops{color:var(--ops-deep);border-color:var(--ops-soft);background:color-mix(in oklch,var(--ops-soft) 60%, transparent)}
+.case-arrow{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);color:var(--ink-dim);
+  transition:all var(--tr-fast);
+}
+.case-arrow svg{width:13px;height:13px;stroke-width:2.2}
+
+/* ════════════════ SECTOREN ════════════════ */
+.sectoren-inline{
+  display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-top:2rem;
+}
+.sector-chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--display);font-size:.92rem;font-weight:500;
+  padding:.65rem 1.05rem;border-radius:7px;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink);
+  transition:all var(--tr-fast);
+}
+.sector-chip:hover{border-color:var(--ink);transform:translateY(-1px)}
+.sector-chip svg{width:14px;height:14px;color:var(--ink-mut);stroke-width:1.8}
+
+/* ════════════════ TESTIMONIAL (editorial pull) ════════════════ */
+.test-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:2.5rem;
+}
+.test-block{
+  border-top:1px solid var(--ink);padding-top:2rem;
+}
+.test-quote{
+  font-family:var(--display);font-size:clamp(1.4rem,1.8vw,1.8rem);
+  font-weight:500;letter-spacing:-.02em;line-height:1.25;
+  color:var(--ink);margin-bottom:1.5rem;
+}
+.test-quote::before{
+  content:'\201C';display:block;font-size:3rem;line-height:1;color:var(--growth-deep);
+  margin-bottom:.4rem;font-family:Georgia,serif;font-weight:400;
+}
+.test-meta{
+  display:flex;align-items:center;gap:.9rem;
+  padding-top:1rem;border-top:1px solid var(--line);
+}
+.test-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--ink);color:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:600;font-size:.85rem;
+}
+.test-name{font-family:var(--display);font-size:.95rem;font-weight:600;color:var(--ink);line-height:1.2}
+.test-role{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);margin-top:.1rem}
+
+/* ════════════════ BIG CTA ════════════════ */
+.cta-row{
+  display:grid;grid-template-columns:1fr .8fr;gap:5rem;align-items:end;
+  padding:3rem 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.cta-row h2{
+  font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:600;letter-spacing:-.03em;line-height:1;
+}
+.cta-row h2 .smede{font-style:italic;font-weight:500;color:var(--growth-deep)}
+.cta-actions{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:flex-end}
+.cta-promise{
+  margin-top:1rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);
+  display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;
+}
+.cta-promise .tick{color:var(--growth-deep);font-weight:700}
+
+/* ════════════════ FAQ ════════════════ */
+.faq-list{margin-top:2.5rem;border-top:1px solid var(--ink)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:.16fr 1fr auto;gap:2rem;
+  padding:1.7rem 0;align-items:center;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-num{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--ink-mut);
+}
+.faq-q{
+  font-family:var(--display);font-size:1.15rem;font-weight:500;letter-spacing:-.015em;
+  color:var(--ink);
+}
+.faq-toggle{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;color:var(--ink);
+  transition:all var(--tr-fast);
+}
+.faq-item[open] .faq-toggle{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.faq-toggle svg{width:13px;height:13px;stroke-width:2.2;transition:transform var(--tr-fast)}
+.faq-item[open] .faq-toggle svg{transform:rotate(45deg)}
+.faq-a{
+  display:grid;grid-template-columns:.16fr 1fr;gap:2rem;
+  padding:0 0 2rem 0;
+}
+.faq-a-text{
+  font-family:var(--display);font-size:1rem;color:var(--ink-dim);line-height:1.65;
+  max-width:65ch;
+}
+
+/* ════════════════ FOOTER ════════════════ */
+footer{
+  padding:5rem 0 2.5rem;border-top:1px solid var(--ink);margin-top:6rem;
+}
+.foot-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;
+}
+.foot-brand-block .brand{font-size:1.3rem;margin-bottom:1.2rem}
+.foot-tagline{
+  font-family:var(--display);font-size:1.6rem;font-weight:500;letter-spacing:-.025em;
+  line-height:1.1;color:var(--ink);max-width:22ch;margin-bottom:1.4rem;
+}
+.foot-tagline em{font-style:italic;font-weight:500;color:var(--growth-deep)}
+.foot-where{
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);
+  display:flex;align-items:center;gap:.6rem;
+}
+.foot-where::before{
+  content:'';width:7px;height:7px;border-radius:50%;background:var(--growth);
+  box-shadow:0 0 0 3px color-mix(in oklch, var(--growth) 30%, transparent);
+}
+.foot-col-title{
+  font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--ink-mut);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.2rem;
+}
+.foot-col a{
+  display:block;font-family:var(--display);font-size:.95rem;color:var(--ink);
+  padding:.3rem 0;transition:color var(--tr-fast);
+}
+.foot-col a:hover{color:var(--growth-deep)}
+.foot-bottom{
+  display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;
+  padding-top:2.5rem;margin-top:3rem;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);
+}
+.foot-prompt{font-family:var(--mono);color:var(--ink)}
+.foot-prompt span{color:var(--growth-deep)}
+.foot-bottom-right{display:flex;gap:1.4rem}
+.foot-bottom-right a:hover{color:var(--ink)}
+
+/* ════════════════ REVEAL ANIMATION ════════════════ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ════════════════ RESPONSIVE ════════════════ */
+@media(max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-schema{justify-self:start;max-width:380px}
+  .kern-grid{grid-template-columns:1fr;gap:2rem}
+  .pijlers{grid-template-columns:1fr}
+  .pijler{border-right:none;border-bottom:1px solid var(--line)}
+  .pijler:last-child{border-bottom:none}
+  .stappen{grid-template-columns:1fr}
+  .stap{border-right:none;border-bottom:1px solid var(--line);padding-right:0}
+  .stap:last-child{border-bottom:none}
+  .test-grid{grid-template-columns:1fr;gap:3rem}
+  .cta-row{grid-template-columns:1fr;gap:2rem;align-items:flex-start}
+  .cta-actions{justify-content:flex-start}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+}
+@media(max-width:700px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:4rem 0}
+  .hero{padding:3rem 0 2rem}
+  .hero-eyebrow{flex-direction:column;align-items:flex-start;gap:.6rem}
+  .uit-row{grid-template-columns:1fr;gap:.8rem}
+  .uit-row .uit-id{padding-top:0}
+  .uit-q{font-size:1.2rem}
+  .case-row{grid-template-columns:auto 1fr auto;gap:1rem;padding:1.4rem 0}
+  .case-row .case-what,.case-row .case-tags{grid-column:1/-1}
+  .spec-row{grid-template-columns:1fr;gap:.4rem}
+  .spec-id{padding-top:0}
+  .pijler{padding:2.2rem 1.5rem}
+  .faq-item summary,.faq-a{grid-template-columns:1fr;gap:.6rem}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+}
+
+/* ════════════════ MOBILE MENU ════════════════ */
+.mob-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:60;flex-direction:column;padding:5rem 1.8rem 2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{padding:1.1rem 0;font-family:var(--display);font-size:1.4rem;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line)}
+.mob-close{position:absolute;top:1.3rem;right:1.5rem;font-size:1.5rem;color:var(--ink);background:none;border:none;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav>
+  <div class="col-wide nav-inner">
+    <a href="/" class="brand">
+      <svg viewBox="0 0 40 40" width="26" height="26" fill="none" aria-hidden="true">
+        <rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--ink)"/>
+        <rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--ink)"/>
+        <rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--ink)"/>
+        <polygon points="27,16 38,24 27,32" fill="var(--ink)"/>
+      </svg>
+      forgexe<span class="brand-meta">/ zwolle.nl</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="expertises.html">Expertises</a>
+      <a href="cases.html">Cases</a>
+      <a href="over-ons.html">Over ons</a>
+      <a href="pricing.html">Prijzen</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-cta" onclick="openScan()">
+        Doe de bedrijfsscan
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </button>
+      <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Sluiten">&times;</button>
+  <a href="/">Home</a>
+  <a href="expertises.html">Expertises</a>
+  <a href="cases.html">Cases</a>
+  <a href="over-ons.html">Over ons</a>
+  <a href="pricing.html">Prijzen</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section class="hero">
+  <div class="col-wide hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="signal">live, 30+ klanten actief</span>
+        <span>v.2026 / forgexe.nl</span>
+      </div>
+      <h1 class="display">
+        Wij <span class="smede">smeden</span> je AI-machine, bovenop je bestaande stack.
+      </h1>
+      <p class="hero-lead">
+        AI-medewerkers en automatisering, op maat gebouwd voor het Nederlandse MKB. Geen tools die je moet leren, geen bureau dat campagnes verkoopt. Een werkend systeem dat aan jouw werkwijze is gemaakt.
+      </p>
+      <div class="hero-cta">
+        <button class="btn btn-ink" onclick="openScan()">
+          Doe de bedrijfsscan
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn-line">Plan een kennismaking</a>
+      </div>
+      <div class="hero-foot">
+        <span><span class="tick">&#10003;</span> Rapport binnen 48u</span>
+        <span><span class="tick">&#10003;</span> Reactie binnen 2u</span>
+        <span><span class="tick">&#10003;</span> 100% gratis</span>
+      </div>
+    </div>
+
+    <!-- Hero schema: integratie-topologie i.p.v. ASCII wave -->
+    <div class="hero-schema" aria-hidden="true">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="oklch(75% 0.18 162)" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="oklch(75% 0.18 162)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Outer chip-nodes (existing tools) -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" fill="oklch(45% 0.014 260)">
+          <!-- Top ring -->
+          <g transform="translate(240 60)">
+            <rect x="-44" y="-14" width="88" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-32" cy="0" r="3" fill="oklch(75% 0.18 162)"/>
+            <text x="-22" y="3" font-weight="600">Outlook</text>
+          </g>
+          <g transform="translate(380 130)">
+            <rect x="-46" y="-14" width="92" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-34" cy="0" r="3" fill="oklch(75% 0.18 162)"/>
+            <text x="-24" y="3" font-weight="600">Pipedrive</text>
+          </g>
+          <g transform="translate(420 280)">
+            <rect x="-44" y="-14" width="88" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-32" cy="0" r="3" fill="oklch(75% 0.16 75)"/>
+            <text x="-22" y="3" font-weight="600">Exact</text>
+          </g>
+          <g transform="translate(360 400)">
+            <rect x="-46" y="-14" width="92" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-34" cy="0" r="3" fill="oklch(75% 0.16 75)"/>
+            <text x="-24" y="3" font-weight="600">Mailchimp</text>
+          </g>
+          <g transform="translate(180 430)">
+            <rect x="-44" y="-14" width="88" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-32" cy="0" r="3" fill="oklch(75% 0.18 162)"/>
+            <text x="-22" y="3" font-weight="600">LinkedIn</text>
+          </g>
+          <g transform="translate(60 360)">
+            <rect x="-42" y="-14" width="84" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-30" cy="0" r="3" fill="oklch(75% 0.16 75)"/>
+            <text x="-20" y="3" font-weight="600">Slack</text>
+          </g>
+          <g transform="translate(35 220)">
+            <rect x="-42" y="-14" width="84" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-30" cy="0" r="3" fill="oklch(75% 0.18 162)"/>
+            <text x="-20" y="3" font-weight="600">Apollo</text>
+          </g>
+          <g transform="translate(85 90)">
+            <rect x="-44" y="-14" width="88" height="28" rx="14" fill="oklch(99.5% 0.003 105)" stroke="oklch(89% 0.010 260)"/>
+            <circle cx="-32" cy="0" r="3" fill="oklch(75% 0.16 75)"/>
+            <text x="-22" y="3" font-weight="600">Notion</text>
+          </g>
+        </g>
+
+        <!-- Connection lines -->
+        <g stroke="oklch(78% 0.013 260)" stroke-width="1" fill="none" stroke-dasharray="3 4" opacity=".7">
+          <path d="M 240 80 L 240 220"/>
+          <path d="M 374 144 L 260 220"/>
+          <path d="M 414 280 L 270 240"/>
+          <path d="M 354 414 L 260 260"/>
+          <path d="M 186 416 L 240 260"/>
+          <path d="M 76 354 L 220 250"/>
+          <path d="M 51 234 L 220 230"/>
+          <path d="M 101 104 L 220 220"/>
+        </g>
+
+        <!-- Central hub glow -->
+        <circle cx="240" cy="240" r="80" fill="url(#hubGlow)"/>
+
+        <!-- Central hub: Forgexe node -->
+        <g>
+          <circle cx="240" cy="240" r="46" fill="oklch(20% 0.018 260)" stroke="oklch(75% 0.18 162)" stroke-width="1.5"/>
+          <text x="240" y="236" text-anchor="middle" font-family="Geist, sans-serif" font-size="13" font-weight="700" fill="oklch(98% 0.005 105)" letter-spacing="0.06em">FORGEXE</text>
+          <text x="240" y="252" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="oklch(75% 0.18 162)" letter-spacing="0.1em">orchestrating</text>
+        </g>
+
+        <!-- Pulsing rings around hub -->
+        <circle cx="240" cy="240" r="60" fill="none" stroke="oklch(75% 0.18 162)" stroke-width="1" opacity=".25"/>
+        <circle cx="240" cy="240" r="78" fill="none" stroke="oklch(75% 0.18 162)" stroke-width=".7" opacity=".15"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PROOF STRIP ════════════════ -->
+<div class="proof">
+  <div class="col-wide proof-inner">
+    <div class="proof-text">
+      <strong>30+ MKB-bedrijven</strong> draaien hun groei en operatie op systemen die wij smeedden.
+    </div>
+    <div class="proof-logos">
+      <img src="logo-ahrend.png" alt="Ahrend">
+      <img src="logo-vanmeurs.svg" alt="Van Meurs">
+      <img src="logo-dnatalent.png" alt="DNA-talent">
+      <img src="logo-cobotx.png" alt="CobotX">
+      <img src="logo-chargeblock.png" alt="ChargeBlock">
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ KERN: WAT WE DOEN ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 01</span>
+      <span class="eyebrow">wat we doen</span>
+    </div>
+    <div class="kern-grid">
+      <h2 class="display">
+        We bouwen <em style="font-style:italic;font-weight:500">jouw machine</em>.<br>
+        Niet ons platform.
+      </h2>
+      <div>
+        <p class="lead">
+          Geen SaaS-template waar je je werkwijze naar moet voegen. Geen marketingcampagnes die elke maand opnieuw ingekocht moeten worden. Geen consultant met een PowerPoint.
+        </p>
+        <p class="lead" style="margin-top:1.25rem">
+          Wij zijn een engineering-shop. We brengen jouw processen in kaart, identificeren waar AI vandaag al impact maakt, en bouwen vervolgens de systemen erbovenop. Op maat, in jouw stack, met jouw tone-of-voice.
+        </p>
+      </div>
+    </div>
+
+    <div class="kern-spec">
+      <div class="spec-row">
+        <div class="spec-id">// 01.1</div>
+        <div class="spec-body">
+          <strong>AI-medewerkers die werken in jouw tools</strong>
+          <span>Geen aparte inbox, geen losse interface. Reacties komen binnen waar jouw team al kijkt: Outlook, Slack, je CRM.</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-id">// 01.2</div>
+        <div class="spec-body">
+          <strong>Bovenop wat er staat, niet ervoor in de plaats</strong>
+          <span>Pipedrive blijft Pipedrive. Exact blijft Exact. We verbinden, automatiseren en versterken, geen migraties.</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-id">// 01.3</div>
+        <div class="spec-body">
+          <strong>Engineering, geen prompt-engineering</strong>
+          <span>Productie-grade builds met monitoring, escalatie en feedback-loops. Niet een ChatGPT-trucje dat de eerste keer goed gaat en daarna stuk.</span>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-id">// 01.4</div>
+        <div class="spec-body">
+          <strong>Compound, geen campagne</strong>
+          <span>Wat we bouwen draait 24/7 en wordt beter met de tijd. Geen maandelijkse ad-spend die verdampt.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PIJLERS: GROWTH + OPS ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 02</span>
+      <span class="eyebrow">twee pijlers</span>
+    </div>
+    <h2 class="display" style="max-width:18ch">
+      Voor je groei. Voor je operatie.
+    </h2>
+
+    <div class="pijlers">
+      <div class="pijler growth">
+        <span class="pijler-tag"><span style="width:7px;height:7px;border-radius:50%;background:var(--growth);display:inline-block"></span>FORGE.GROWTH</span>
+        <h3>AI-medewerkers die klanten binnenhalen.</h3>
+        <p>Leads vinden, kwalificeren en opvolgen. Content schrijven en distribueren. Advertenties dagelijks optimaliseren. Werk dat normaal een sales- of marketing-team kost, maar dan 24/7 en zonder dat het uit de hand loopt.</p>
+        <ul class="pijler-list">
+          <li>
+            <span class="item-id">01</span>
+            <span class="item-name">AI Outreach <em>/ multi-channel leadgen</em></span>
+            <a href="ai-outreach.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">02</span>
+            <span class="item-name">AI Blogger <em>/ SEO &amp; content engine</em></span>
+            <a href="ai-blogger.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">03</span>
+            <span class="item-name">AI Ads Manager <em>/ Google &amp; Meta optimalisatie</em></span>
+            <a href="ai-ads.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">04</span>
+            <span class="item-name">Funnels &amp; landingen <em>/ build, A/B, learnings</em></span>
+            <a href="expertises.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pijler ops">
+        <span class="pijler-tag"><span style="width:7px;height:7px;border-radius:50%;background:var(--ops);display:inline-block"></span>FORGE.OPS</span>
+        <h3>AI-medewerkers die je operatie laten draaien.</h3>
+        <p>Intake, opvolging, planning, rapportage, alles wat je team van de productieve uren afhoudt. We verbinden de tools die je al gebruikt en automatiseren wat herhaalt.</p>
+        <ul class="pijler-list">
+          <li>
+            <span class="item-id">05</span>
+            <span class="item-name">Procesautomation <em>/ intake tot factuur</em></span>
+            <a href="expertises.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">06</span>
+            <span class="item-name">Integraties <em>/ CRM, ERP, planning</em></span>
+            <a href="expertises.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">07</span>
+            <span class="item-name">AI Rapportage <em>/ dashboards die mee-denken</em></span>
+            <a href="ai-rapportage.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+          <li>
+            <span class="item-id">08</span>
+            <span class="item-name">Planning Optimalisatie <em>/ AI-gestuurd</em></span>
+            <a href="planning-optimalisatie.html" class="item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ UITDAGINGEN ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 03</span>
+      <span class="eyebrow">veel gehoord</span>
+    </div>
+    <h2 class="display" style="max-width:22ch">Misschien herken je een van deze.</h2>
+
+    <div class="uit-list">
+      <div class="uit-row">
+        <div class="uit-id">// 03.1</div>
+        <div class="uit-q">"Mijn team verliest leads door trage opvolging."</div>
+        <div class="uit-a">Leads die niet binnen vijf minuten een reactie krijgen, zijn voor tachtig procent verloren. AI-medewerkers reageren binnen twee minuten, kwalificeren en plannen direct in. <a href="ai-outreach.html">Hoe dat werkt</a>.</div>
+      </div>
+      <div class="uit-row">
+        <div class="uit-id">// 03.2</div>
+        <div class="uit-q">"Mijn tools praten niet met elkaar."</div>
+        <div class="uit-a">CRM, planning, facturatie, mail, allemaal losse eilandjes. We bouwen de bruggen ertussen, zonder dat je iets hoeft te vervangen. <a href="expertises.html">Onze integratie-stack</a>.</div>
+      </div>
+      <div class="uit-row">
+        <div class="uit-id">// 03.3</div>
+        <div class="uit-q">"Mijn team doet te veel handwerk."</div>
+        <div class="uit-a">Intake, rapportage, data invoeren, alles wat herhaalt. Wij automatiseren de repetitieve tachtig procent, jouw team houdt de twintig procent over die er echt toe doet.</div>
+      </div>
+      <div class="uit-row">
+        <div class="uit-id">// 03.4</div>
+        <div class="uit-q">"Mijn marketing levert te weinig op."</div>
+        <div class="uit-a">Losse campagnes zonder samenhang werken niet meer. Wij bouwen groei-systemen: SEO, ads, content en funnels die elkaar versterken in plaats van naast elkaar te bestaan.</div>
+      </div>
+      <div class="uit-row">
+        <div class="uit-id">// 03.5</div>
+        <div class="uit-q">"Mijn team moet leren met AI te werken."</div>
+        <div class="uit-a">In-company trainingen: prompt-engineering, AI-tools effectief inzetten, automatiseringsmogelijkheden herkennen. Praktisch, in jouw context, niet theoretisch. <a href="ai-training.html">AI Training</a>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ AANPAK ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 04</span>
+      <span class="eyebrow">aanpak</span>
+    </div>
+    <h2 class="display" style="max-width:20ch">Drie stappen, geen jarenlange implementatie.</h2>
+
+    <div class="stappen">
+      <div class="stap">
+        <div class="stap-id">STAP_01</div>
+        <h3>Bedrijfsscan</h3>
+        <p>We scannen je groei-kanalen en processen. Je krijgt een rapport met de drie grootste kansen, prioritering en realistische ROI.</p>
+        <div class="stap-tijd">~ 48u rapport</div>
+      </div>
+      <div class="stap" style="padding-left:2rem">
+        <div class="stap-id">STAP_02</div>
+        <h3>Smeden</h3>
+        <p>We bouwen je AI-medewerkers en automatisering op je bestaande tools. Geen migraties, geen herinrichting, geen leercurve voor je team.</p>
+        <div class="stap-tijd">~ 4 tot 6 weken</div>
+      </div>
+      <div class="stap" style="padding-left:2rem">
+        <div class="stap-id">STAP_03</div>
+        <h3>Compound</h3>
+        <p>Het systeem draait 24/7. We monitoren, optimaliseren en schalen mee. Jouw team focust op waar het toe doet.</p>
+        <div class="stap-tijd">~ doorlopend</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ CASES ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="cases-head">
+      <div>
+        <div class="section-eyebrow-row">
+          <span class="index">// 05</span>
+          <span class="eyebrow">wat we hebben gesmeed</span>
+        </div>
+        <h2 class="display" style="max-width:20ch">Zes systemen, draaiend bij echte MKB-bedrijven.</h2>
+      </div>
+      <a href="cases.html" class="btn btn-line">
+        Alle cases
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+
+    <div class="cases-sheet">
+      <a href="case-realcob.html" class="case-row">
+        <div class="case-id">#001</div>
+        <div class="case-client">RealCob<em>GDPR/NIS2 compliance-software</em></div>
+        <div class="case-what">Multi-segment AI-leadgen: drie LinkedIn-campagnes met aangepaste copy per ICP, demo-bookings via een centrale flow.</div>
+        <div class="case-tags">
+          <span class="case-tag growth">Outreach</span>
+          <span class="case-tag growth">Content</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+      <a href="case-technetium.html" class="case-row">
+        <div class="case-id">#002</div>
+        <div class="case-client">Technetium Talent<em>AI-vacatureplatform techniek</em></div>
+        <div class="case-what">Active sourcing-platform dat techniek-talent actief benadert in plaats van te wachten op een CV. Per-match pricing.</div>
+        <div class="case-tags">
+          <span class="case-tag">Webapp</span>
+          <span class="case-tag growth">Matching</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+      <a href="case-smartesg.html" class="case-row">
+        <div class="case-id">#003</div>
+        <div class="case-client">Smart ESG<em>ESG-software voor MKB-maakindustrie</em></div>
+        <div class="case-what">AI-leadgen met lead-scoring en personalisatie op functie en sector. 1.224 berichten per maand, volledig automatisch.</div>
+        <div class="case-tags">
+          <span class="case-tag growth">Outreach</span>
+          <span class="case-tag ops">Scoring</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+      <a href="case-dna-talent.html" class="case-row">
+        <div class="case-id">#004</div>
+        <div class="case-client">DNA-talent<em>Coaches &amp; HR-trainers</em></div>
+        <div class="case-what">LinkedIn-outreach met tone-of-voice AI op de stijl van de eigenaar. Persoonlijke nudges, geen scraped data in de opener.</div>
+        <div class="case-tags">
+          <span class="case-tag growth">Outreach</span>
+          <span class="case-tag growth">Content AI</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+      <a href="case-wijnzinnig.html" class="case-row">
+        <div class="case-id">#005</div>
+        <div class="case-client">Wijnzinnig!<em>Wijnbedrijf, B2B en kerstpakketten</em></div>
+        <div class="case-what">Content-machine voor drie kanalen, plus driedelig leadgen-systeem voor zakelijke kerstpakket-aanvragen.</div>
+        <div class="case-tags">
+          <span class="case-tag growth">Content AI</span>
+          <span class="case-tag ops">Mail-flow</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+      <a href="case-fietsencatalogus.html" class="case-row">
+        <div class="case-id">#006</div>
+        <div class="case-client">Fietsencatalogus<em>Nieuwsbrief-platform fietsenbranche</em></div>
+        <div class="case-what">Klantportaal met AI-content-pipeline: artikelen kiezen, edits doen, campagnes versturen via Brevo, alles in een omgeving.</div>
+        <div class="case-tags">
+          <span class="case-tag">Webapp</span>
+          <span class="case-tag ops">Content-flow</span>
+        </div>
+        <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TESTIMONIALS ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 06</span>
+      <span class="eyebrow">woorden van klanten</span>
+    </div>
+    <h2 class="display" style="max-width:20ch">Wat ze er zelf van zeggen.</h2>
+
+    <div class="test-grid">
+      <div class="test-block">
+        <p class="test-quote">Goed consult. Door alle processen door te nemen, kom je tot de punten waar AI echt van waarde kan zijn. Forgexe komt tot de kern en biedt een praktische oplossing.</p>
+        <div class="test-meta">
+          <div class="test-avatar">IV</div>
+          <div>
+            <div class="test-name">Ivar de Vries</div>
+            <div class="test-role">Mede-eigenaar / Ladgend Media</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-block">
+        <p class="test-quote">Forgexe heeft ons een webshop-scraper gebouwd die productdata uit honderden bronnen automatisch binnenhaalt. Werk van dagen kopiëren is werk van uren geworden.</p>
+        <div class="test-meta">
+          <div class="test-avatar">R</div>
+          <div>
+            <div class="test-name">Reitze</div>
+            <div class="test-role">E-commerce manager / Prody Ecom</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SECTOREN ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 07</span>
+      <span class="eyebrow">in welke sector</span>
+    </div>
+    <h2 class="display" style="max-width:24ch">Van maakindustrie tot zakelijke dienstverlening.</h2>
+    <p class="lead" style="margin-top:1.5rem;max-width:55ch">
+      Dezelfde aanpak, afgestemd op jouw branche. We bouwen AI-systemen voor uiteenlopende sectoren in het Nederlandse MKB.
+    </p>
+    <div class="sectoren-inline">
+      <a href="branche-maakindustrie.html" class="sector-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/></svg>
+        Maakindustrie
+      </a>
+      <a href="branche-technische-groothandel.html" class="sector-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Technische Groothandel
+      </a>
+      <a href="branche-zakelijke-dienstverlening.html" class="sector-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        Zakelijke Dienstverlening
+      </a>
+      <a href="branche-marketing-bureaus.html" class="sector-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Marketing &amp; Bureaus
+      </a>
+      <a href="contact.html" class="sector-chip">Andere sector? +</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ BIG CTA ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="cta-row">
+      <div>
+        <div class="section-eyebrow-row" style="margin-bottom:1.2rem">
+          <span class="index">// 08</span>
+          <span class="eyebrow">aan de slag</span>
+        </div>
+        <h2 class="display">
+          Klaar om je groei te <span class="smede">smeden</span>?
+        </h2>
+        <p class="lead" style="margin-top:1.5rem;max-width:42ch">
+          Eén gesprek. Nul risico. Concreet rapport binnen 48 uur, ook als we niet de juiste match zijn.
+        </p>
+      </div>
+      <div>
+        <div class="cta-actions">
+          <button class="btn btn-ink" onclick="openScan()">
+            Doe de bedrijfsscan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </button>
+          <a href="contact.html" class="btn btn-line">Kennismaking</a>
+        </div>
+        <div class="cta-promise">
+          <span><span class="tick">&#10003;</span> 100% gratis</span>
+          <span><span class="tick">&#10003;</span> Rapport in 48u</span>
+          <span><span class="tick">&#10003;</span> Reactie in 2u</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FAQ ════════════════ -->
+<section class="reveal">
+  <div class="col">
+    <div class="section-eyebrow-row">
+      <span class="index">// 09</span>
+      <span class="eyebrow">veelgestelde vragen</span>
+    </div>
+    <h2 class="display" style="max-width:22ch">Alles wat je wilt weten voor je begint.</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.1</span>
+          <span class="faq-q">Wat bedoelen jullie met 'AI-medewerker'?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Een AI-medewerker is geen robot die je team vervangt. Het is een slim systeem dat het werk doet waar je team geen tijd voor heeft: leads opvolgen, rapporten bouwen, content schrijven, planning optimaliseren. Je AI-medewerker handelt 80% van de standaardgevallen zelfstandig af en escaleert de rest naar je team. Zo krijgt je team meer gedaan zonder extra personeel.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.2</span>
+          <span class="faq-q">Voor welk type bedrijf is Forgexe?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Nederlandse MKB-bedrijven vanaf 15 medewerkers. Van technische dienstverleners tot SaaS, accountancy en e-commerce.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.3</span>
+          <span class="faq-q">Hoe snel zie ik resultaat?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Eerste automations binnen 4-6 weken. Paid ads binnen 2 weken. SEO compound na 3-4 maanden.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.4</span>
+          <span class="faq-q">Moet ik mijn tools vervangen?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Nee. Wij bouwen bovenop jouw bestaande systemen. Geen migraties, geen leercurve.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.5</span>
+          <span class="faq-q">Wat is het verschil met een marketingbureau?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Bureaus leveren campagnes. Wij smeden systemen die 24/7 draaien en beter worden met de tijd.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.6</span>
+          <span class="faq-q">Hoe zit het met data en privacy?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Jouw data blijft van jou. Wij werken AVG-compliant, gebruiken geen data voor andere klanten en slaan alles op binnen de EU.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.7</span>
+          <span class="faq-q">Kan ik klein beginnen en later opschalen?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">Absoluut. De meeste klanten starten met één automation of één kanaal en breiden uit zodra ze resultaat zien. Onze systemen zijn gebouwd om mee te groeien.</div>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="faq-num">// 09.8</span>
+          <span class="faq-q">Wat als het niet werkt?</span>
+          <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-num"></span>
+          <div class="faq-a-text">We starten altijd met een gratis scan zodat we vooraf weten of en waar de kansen liggen. Geen kansen? Dan zijn we eerlijk en besparen we je de investering.</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+  <div class="col">
+    <div class="foot-grid">
+      <div class="foot-brand-block">
+        <a href="/" class="brand" style="font-size:1.3rem;margin-bottom:1.4rem">
+          <svg viewBox="0 0 40 40" width="28" height="28" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--ink)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--ink)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--ink)"/><polygon points="27,16 38,24 27,32" fill="var(--ink)"/></svg>
+          forgexe
+        </a>
+        <p class="foot-tagline">AI-systemen die jouw groei en operatie 24/7 uitvoeren, voor het Nederlandse MKB.</p>
+        <div class="foot-where">Zwolle, Nederland</div>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Bedrijf</div>
+        <a href="pricing.html">Prijzen</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="blog.html">Blog</a>
+        <a href="cases.html">Cases</a>
+        <a href="ai-training.html">Trainingen</a>
+        <a href="ai-act.html">AI Act</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Branches</div>
+        <a href="branche-maakindustrie.html">Maakindustrie</a>
+        <a href="branche-technische-groothandel.html">Technische Groothandel</a>
+        <a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a>
+        <a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Contact</div>
+        <a href="mailto:info@forgexe.nl">info@forgexe.nl</a>
+        <a href="tel:+31850805439">+31 (0) 85 080 54 39</a>
+        <a href="https://wa.me/31618031022">WhatsApp</a>
+        <a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a>
+        <a href="https://www.instagram.com/forgexe.growth">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; 2026 Forgexe</div>
+      <div class="foot-prompt"><span>C:\&gt;</span> execute growth</div>
+      <div class="foot-bottom-right">
+        <a href="privacy.html">Privacy</a>
+        <a href="voorwaarden.html">Voorwaarden</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openScan(){
+  alert('De bedrijfsscan-wizard wordt na approval van het v6-design weer ingebouwd. Voor nu: mail info@forgexe.nl of bel +31 85 080 54 39.');
+}
+var ro = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, {threshold:.1, rootMargin:'-40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+</script>
+
+</body>
+</html>
