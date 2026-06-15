@@ -39,7 +39,7 @@ body.light .hero-laptop{background:rgba(236,253,245,.4);border-color:rgba(52,211
 .hero-laptop-inner{max-width:900px;margin:0 auto}
 .laptop{position:relative;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:14px 14px 0 0;padding:12px 12px 0;box-shadow:0 20px 60px rgba(0,0,0,.18)}
 .laptop::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:52px;height:5px;background:#0a0a0a;border-radius:0 0 5px 5px}
-.laptop svg{display:block;width:100%;height:auto;border-radius:5px}
+.laptop svg,.laptop img{display:block;width:100%;height:auto;border-radius:5px;object-fit:cover}
 .laptop-base{height:18px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 14px 14px;position:relative;box-shadow:0 16px 36px rgba(0,0,0,.16)}
 .laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:4px;background:#0a0a0a;border-radius:0 0 8px 8px}
 
@@ -150,139 +150,7 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px
   <div class="hero-laptop">
     <div class="hero-laptop-inner">
       <div class="laptop">
-        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rcHeroBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fdf2f8"/><stop offset="45%" stop-color="#fce7f3"/><stop offset="100%" stop-color="#e0e7ff"/></linearGradient>
-            <radialGradient id="rcGlow1" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="#f0abfc" stop-opacity=".55"/><stop offset="100%" stop-color="#f0abfc" stop-opacity="0"/></radialGradient>
-            <radialGradient id="rcGlow2" cx=".5" cy=".5" r=".5"><stop offset="0%" stop-color="#a5b4fc" stop-opacity=".5"/><stop offset="100%" stop-color="#a5b4fc" stop-opacity="0"/></radialGradient>
-            <filter id="rcShadow"><feGaussianBlur in="SourceAlpha" stdDeviation="2"/><feOffset dx="0" dy="1.5" result="off"/><feComponentTransfer><feFuncA type="linear" slope=".18"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          </defs>
-          <rect width="640" height="400" fill="url(#rcHeroBg)"/>
-          <circle cx="60" cy="220" r="120" fill="url(#rcGlow1)"/>
-          <circle cx="540" cy="120" r="110" fill="url(#rcGlow2)"/>
-          <rect x="0" y="0" width="640" height="14" fill="#0a0b0e"/>
-          <rect x="14" y="3" width="8" height="6" fill="#ae1c28"/>
-          <rect x="14" y="6" width="8" height="3" fill="#ffffff"/>
-          <rect x="14" y="8" width="8" height="3" fill="#21468b"/>
-          <text x="26" y="9" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#ffffff">Nederlands &#9662;</text>
-          <text x="624" y="9" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#ffffff">Inloggen</text>
-          <rect x="0" y="14" width="640" height="36" fill="rgba(255,255,255,.55)"/>
-          <rect x="20" y="22" width="18" height="20" rx="3.5" fill="#3b82f6"/>
-          <path d="M24 27 L29 25 L34 27 L34 33 L29 38 L24 33 Z" fill="#ffffff"/>
-          <path d="M27 30 L28.5 31.5 L31.5 28.5" stroke="#3b82f6" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="44" y="38" font-family="'Outfit',sans-serif" font-size="14" font-weight="800" fill="#0f172a">RealCob</text>
-          <text x="320" y="36" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">Home</text>
-          <text x="350" y="36" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">Functionaliteiten</text>
-          <text x="410" y="36" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">Prijzen</text>
-          <text x="438" y="36" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">Oplossingen &#9662;</text>
-          <text x="486" y="36" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">Gratis tools &#9662;</text>
-          <rect x="540" y="22" width="90" height="20" rx="3" fill="#ff9500"/>
-          <text x="585" y="36" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="600" fill="#ffffff">Probeer 30 dagen gratis</text>
-          <text x="24" y="100" font-family="'Outfit',sans-serif" font-size="16" font-weight="800" fill="#0f172a">RealCob maakt je organisatie</text>
-          <text x="24" y="120" font-family="'Outfit',sans-serif" font-size="16" font-weight="800" fill="#0f172a">AVG/NIS2-compliant. Stap</text>
-          <text x="24" y="140" font-family="'Outfit',sans-serif" font-size="16" font-weight="800" fill="#0f172a">voor stap.</text>
-          <text x="24" y="162" font-family="'Outfit',sans-serif" font-size="7" fill="#374151">Onze <tspan font-weight="700" fill="#0f172a">AI-agent</tspan> legt alles uit in duidelijke taal en zet gaps om in</text>
-          <text x="24" y="173" font-family="'Outfit',sans-serif" font-size="7" fill="#374151">concrete acties.</text>
-          <rect x="24" y="188" width="118" height="24" rx="4" fill="#ff9500"/>
-          <text x="83" y="203" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" font-weight="700" fill="#ffffff">Probeer 30 dagen gratis</text>
-          <rect x="148" y="188" width="106" height="24" rx="4" fill="#2563eb"/>
-          <text x="201" y="203" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" font-weight="700" fill="#ffffff">Plan direct een demo</text>
-          <text x="24" y="226" font-family="'JetBrains Mono',monospace" font-size="6.5" font-weight="700" fill="#16a34a">&#10003;</text>
-          <text x="34" y="226" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">Geen creditcard nodig</text>
-          <circle cx="64" cy="290" r="32" fill="#1e3a8a"/>
-          <g fill="#facc15">
-            <circle cx="64" cy="265" r="1.4"/>
-            <circle cx="78" cy="271" r="1.4"/>
-            <circle cx="87" cy="283" r="1.4"/>
-            <circle cx="90" cy="296" r="1.4"/>
-            <circle cx="87" cy="308" r="1.4"/>
-            <circle cx="78" cy="317" r="1.4"/>
-            <circle cx="64" cy="320" r="1.4"/>
-            <circle cx="50" cy="317" r="1.4"/>
-            <circle cx="41" cy="308" r="1.4"/>
-            <circle cx="38" cy="296" r="1.4"/>
-            <circle cx="41" cy="283" r="1.4"/>
-            <circle cx="50" cy="271" r="1.4"/>
-          </g>
-          <text x="64" y="288" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5" font-weight="800" letter-spacing=".08em" fill="#ffffff">MADE IN</text>
-          <text x="64" y="298" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="800" letter-spacing=".08em" fill="#ffffff">EUROPE</text>
-          <rect x="296" y="72" width="330" height="244" rx="10" fill="#ffffff" stroke="rgba(0,0,0,.06)" stroke-width=".5" filter="url(#rcShadow)"/>
-          <text x="312" y="92" font-family="'Outfit',sans-serif" font-size="10" font-weight="700" fill="#0f172a">Test de AVG bestendigheid</text>
-          <rect x="312" y="100" width="48" height="13" rx="3" fill="#10b981"/>
-          <text x="319" y="109" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ffffff">&#9776;</text>
-          <text x="336" y="109" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="600" fill="#ffffff">Instructies</text>
-          <rect x="312" y="118" width="78" height="13" rx="3" fill="#4f46e5"/>
-          <text x="351" y="127" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="600" fill="#ffffff">&#8595; Download totaaloverzicht</text>
-          <rect x="394" y="118" width="62" height="13" rx="3" fill="#4f46e5"/>
-          <text x="425" y="127" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="600" fill="#ffffff">Download registers</text>
-          <rect x="460" y="118" width="98" height="13" rx="3" fill="#fde68a"/>
-          <text x="509" y="127" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="600" fill="#92400e">Heeft u een vraag over de AVG?</text>
-          <line x1="312" y1="140" x2="616" y2="140" stroke="rgba(0,0,0,.05)" stroke-width=".5"/>
-          <text x="312" y="156" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">Start, voltooi of doe de vragen hieronder opnieuw. Vul tenminste &eacute;&eacute;n keer per periode...</text>
-          <circle cx="320" cy="172" r="4" fill="#ef4444"/>
-          <text x="320" y="174" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="700" fill="#ffffff">&#10005;</text>
-          <text x="332" y="174" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">1. Is de AVG van toepassing op het bedrijf?</text>
-          <rect x="332" y="180" width="110" height="11" rx="2" fill="#ff9500"/>
-          <text x="387" y="188" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ffffff">Voltooi de test voor 02.06.2026</text>
-          <rect x="332" y="194" width="44" height="10" rx="2" fill="#a78bfa"/>
-          <text x="354" y="201" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ffffff">Start / Voortgang</text>
-          <rect x="378" y="194" width="62" height="10" rx="2" fill="#a78bfa"/>
-          <text x="409" y="201" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ffffff">Bekijk eerdere resultaten</text>
-          <rect x="442" y="194" width="32" height="10" rx="2" fill="#fde68a"/>
-          <text x="458" y="201" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#92400e">Opnieuw</text>
-          <circle cx="320" cy="218" r="4" fill="#ef4444"/>
-          <text x="320" y="220" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="700" fill="#ffffff">&#10005;</text>
-          <text x="332" y="220" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">2. Is het bedrijf verplicht een Functionaris Gegevensbescherming aan te stellen?</text>
-          <rect x="332" y="226" width="110" height="11" rx="2" fill="#ff9500"/>
-          <text x="387" y="234" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ffffff">Voltooi de test voor 02.02.2026</text>
-          <rect x="332" y="240" width="44" height="10" rx="2" fill="#a78bfa"/>
-          <text x="354" y="247" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ffffff">Start / Voortgang</text>
-          <rect x="378" y="240" width="62" height="10" rx="2" fill="#a78bfa"/>
-          <text x="409" y="247" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ffffff">Bekijk eerdere resultaten</text>
-          <rect x="442" y="240" width="32" height="10" rx="2" fill="#fde68a"/>
-          <text x="458" y="247" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#92400e">Opnieuw</text>
-          <circle cx="320" cy="264" r="4" fill="#ef4444"/>
-          <text x="320" y="266" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="700" fill="#ffffff">&#10005;</text>
-          <text x="332" y="266" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">3. Is de kennis van de AVG en controle op de uitvoering ervan voldoende?</text>
-          <rect x="332" y="272" width="110" height="11" rx="2" fill="#ff9500"/>
-          <text x="387" y="280" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ffffff">Voltooi de test voor 02.03.2026</text>
-          <circle cx="320" cy="304" r="4" fill="#ef4444"/>
-          <text x="320" y="306" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="700" fill="#ffffff">&#10005;</text>
-          <text x="332" y="306" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#0f172a">4. Voldoen alle websites aan alle verplichtingen t.a.v. cookies?</text>
-          <rect x="442" y="160" width="186" height="156" rx="10" fill="#ffffff" stroke="rgba(0,0,0,.06)" stroke-width=".5" filter="url(#rcShadow)"/>
-          <rect x="442" y="160" width="186" height="22" rx="10" fill="#ffffff"/>
-          <rect x="442" y="174" width="186" height="8" fill="#ffffff"/>
-          <rect x="450" y="165" width="14" height="14" rx="3" fill="#3b82f6"/>
-          <path d="M453 169 L457 167 L461 169 L461 175 L457 178 L453 175 Z" fill="#ffffff"/>
-          <text x="468" y="176" font-family="'Outfit',sans-serif" font-size="7" font-weight="700" fill="#0f172a">RealCob AI Agent</text>
-          <text x="610" y="176" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="6" fill="#9ca3af">&#10005;</text>
-          <line x1="442" y1="184" x2="628" y2="184" stroke="rgba(0,0,0,.05)" stroke-width=".5"/>
-          <circle cx="466" cy="208" r="9" fill="#dbeafe"/>
-          <path d="M462 205 L467 203 L472 205 L472 211 L467 214 L462 211 Z" fill="#3b82f6"/>
-          <text x="466" y="226" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="700" fill="#0f172a">RealCob AI Agent</text>
-          <text x="466" y="234" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">Today</text>
-          <rect x="586" y="226" width="34" height="11" rx="5.5" fill="#3b82f6"/>
-          <text x="603" y="234" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6" font-weight="600" fill="#ffffff">Hallo</text>
-          <rect x="450" y="244" width="160" height="22" rx="6" fill="#f3f4f6"/>
-          <text x="456" y="253" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">Welkom bij RealCob!</text>
-          <text x="456" y="262" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">Waar kan ik je vandaag mee helpen?</text>
-          <rect x="450" y="270" width="80" height="10" rx="5" fill="#e0e7ff"/>
-          <text x="490" y="277" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#4338ca">Scan uitleg of hulp</text>
-          <rect x="534" y="270" width="92" height="10" rx="5" fill="#e0e7ff"/>
-          <text x="580" y="277" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#4338ca">Vragen over rapportage</text>
-          <rect x="450" y="282" width="92" height="10" rx="5" fill="#e0e7ff"/>
-          <text x="496" y="289" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#4338ca">Certificering &amp; monitoring</text>
-          <rect x="566" y="282" width="60" height="10" rx="5" fill="#3b82f6"/>
-          <text x="596" y="289" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ffffff">Scan uitleg of hulp</text>
-          <rect x="450" y="298" width="170" height="14" rx="7" fill="#ffffff" stroke="rgba(0,0,0,.1)" stroke-width=".5"/>
-          <text x="456" y="307" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">Type your message...</text>
-          <circle cx="612" cy="305" r="4" fill="#3b82f6"/>
-          <text x="612" y="307" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5" fill="#ffffff">&#9658;</text>
-          <rect x="0" y="320" width="640" height="80" fill="url(#rcFadeBottom)"/>
-          <defs><linearGradient id="rcFadeBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0e7ff" stop-opacity="0"/><stop offset="100%" stop-color="#e0e7ff" stop-opacity=".95"/></linearGradient></defs>
-          <circle cx="600" cy="370" r="14" fill="#3b82f6"/>
-          <path d="M593 366 L604 366 Q607 366 607 369 L607 372 Q607 375 604 375 L600 375 L596 379 L596 375 L596 375 Q593 375 593 372 Z" fill="#ffffff"/>
-        </svg>
+        <img src="case-realcob-preview.png" alt="RealCob &mdash; AVG/NIS2 compliance platform" loading="lazy" />
 
         <div class="laptop-base"></div>
       </div>
