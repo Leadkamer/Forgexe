@@ -325,41 +325,27 @@ nav{
   transition:all var(--tr);position:relative;
 }
 .case-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,11,14,.08);border-color:var(--line-strong)}
-.case-laptop{padding:1.5rem 1.5rem 1.5rem;background:#fafbfc}
+.case-laptop{padding:1.5rem 1.5rem 0;background:#fafbfc}
 .case-laptop-frame{
-  background:#0f1115;
-  border-radius:9px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 14px 32px rgba(10,11,14,.22),inset 0 0 0 1px rgba(255,255,255,.04);
+  background:linear-gradient(180deg,#2a2a2a,#0a0a0a);
+  border-radius:10px 10px 0 0;padding:8px 8px 0;position:relative;
+  box-shadow:0 12px 28px rgba(10,11,14,.18);
 }
 .case-laptop-frame::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;height:26px;
-  background:#1c1f26;
-  border-bottom:1px solid rgba(0,0,0,.45);
-  background-image:
-    radial-gradient(circle 4.5px at 14px 13px, #ff5f57 100%, transparent 0),
-    radial-gradient(circle 4.5px at 30px 13px, #febc2e 100%, transparent 0),
-    radial-gradient(circle 4.5px at 46px 13px, #28c840 100%, transparent 0),
-    linear-gradient(#1c1f26,#1c1f26);
-  background-repeat:no-repeat;
-  z-index:2;
-}
-.case-laptop-frame::after{
-  content:attr(data-title);
-  position:absolute;top:0;left:0;right:0;height:26px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:.66rem;color:#7a8497;
-  letter-spacing:.04em;
-  pointer-events:none;z-index:3;
+  content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);
+  width:34px;height:3px;background:#0a0a0a;border-radius:0 0 3px 3px;
 }
 .case-laptop-frame img,.case-laptop-frame svg{
-  display:block;width:100%;height:auto;
+  display:block;width:100%;height:auto;border-radius:3px;
   aspect-ratio:640/400;object-fit:cover;object-position:top;
-  margin-top:26px;border-radius:0;
 }
-.case-laptop-base{display:none}
+.case-laptop-base{
+  display:block;height:10px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);
+  margin:0 -3%;border-radius:0 0 10px 10px;position:relative;
+}
+.case-laptop-base::after{
+  content:'';position:absolute;top:0;left:42%;width:16%;height:2px;background:#0a0a0a;border-radius:0 0 4px 4px;
+}
 .case-body{padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
 .case-client{
   display:inline-flex;align-items:center;gap:.45rem;
@@ -769,7 +755,7 @@ footer{
   <div class="cases-grid">
     <a href="case-realcob.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/realcob.sh"><img src="case-realcob-preview.png" alt="RealCob"></div></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-realcob-preview.png" alt="RealCob"></div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">RealCob</span>
         <div class="case-title">Multi-segment AI Growth voor GDPR/NIS2</div>
@@ -778,7 +764,7 @@ footer{
     </a>
     <a href="case-technetium.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/technetium-talent.sh"><img src="case-technetium-preview.png" alt="Technetium Talent"></div></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-technetium-preview.png" alt="Technetium Talent"></div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Technetium</span>
         <div class="case-title">Actief AI-vacatureplatform voor de techniek</div>
@@ -787,9 +773,9 @@ footer{
     </a>
     <a href="case-smartesg.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/smart-esg.sh">
+      <div class="case-laptop"><div class="case-laptop-frame">
         <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#fafaf6"/><rect x="0" y="0" width="640" height="34" fill="#0f172a"/><circle cx="22" cy="17" r="6" fill="#34d399"/><text x="38" y="22" font-family="'Outfit'" font-size="10" font-weight="600" fill="#fff">Smart ESG &middot; Outreach Dashboard</text><text x="40" y="78" font-family="'Outfit'" font-size="22" font-weight="700" fill="#0f172a">AI Leadgen voor MKB-maakindustrie</text><text x="40" y="100" font-family="'Outfit'" font-size="11" fill="#6b7280">1994 leads &middot; 1224 verzonden &middot; 42 geaccepteerd</text></svg>
-      </div></div>
+      </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Smart ESG</span>
         <div class="case-title">AI Leadgen voor MKB-maakindustrie</div>
@@ -798,9 +784,9 @@ footer{
     </a>
     <a href="case-dna-talent.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/dna-talent.sh">
+      <div class="case-laptop"><div class="case-laptop-frame">
         <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#f7f9fc"/><rect x="0" y="0" width="640" height="34" fill="#1d6b66"/><text x="22" y="22" font-family="'Outfit'" font-size="10" font-weight="700" fill="#fff">DNA-talent &middot; Leadgen</text><text x="40" y="78" font-family="'Outfit'" font-size="22" font-weight="700" fill="#0f172a">AI Outreach voor coaches &amp; HR</text><text x="40" y="100" font-family="'Outfit'" font-size="11" fill="#6b7280">689 leads &middot; 293 verstuurd &middot; 87 reacties</text></svg>
-      </div></div>
+      </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">DNA-talent</span>
         <div class="case-title">AI Outreach voor coaches &amp; HR</div>
@@ -809,9 +795,9 @@ footer{
     </a>
     <a href="case-wijnzinnig.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/wijnzinnig.sh">
+      <div class="case-laptop"><div class="case-laptop-frame">
         <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#faf7f4"/><rect x="0" y="0" width="640" height="60" fill="#7c2d3a"/><text x="22" y="36" font-family="serif" font-style="italic" font-size="18" font-weight="600" fill="#fff">Wijnzinnig! &middot; Content Machine</text><text x="40" y="100" font-family="'Outfit'" font-size="20" font-weight="700" fill="#0f172a">Content Machine + 3-segment Leadgen</text></svg>
-      </div></div>
+      </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Wijnzinnig!</span>
         <div class="case-title">Content Machine voor wijnsector</div>
@@ -820,9 +806,9 @@ footer{
     </a>
     <a href="case-fietsencatalogus.html" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame" data-title="~/forgexe/fietsencatalogus.sh">
+      <div class="case-laptop"><div class="case-laptop-frame">
         <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#fff"/><rect x="0" y="0" width="640" height="34" fill="#0a0b0e"/><text x="22" y="22" font-family="'Outfit'" font-size="10" font-weight="600" fill="#f97316">fietsencatalogus.nl &middot; Nieuwsbrief Dashboard</text><text x="40" y="80" font-family="'Outfit'" font-size="20" font-weight="700" fill="#0f172a">Nieuwsbrief Portaal &amp; AI Content</text></svg>
-      </div></div>
+      </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Fietsencatalogus</span>
         <div class="case-title">Nieuwsbrief Portaal &amp; AI Content Pipeline</div>
