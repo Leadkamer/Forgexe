@@ -382,29 +382,123 @@ footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px
     <div class="next-card-wrap">
       <div class="laptop">
         <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="640" height="400" fill="#ffffff"/>
-          <rect x="0" y="0" width="640" height="36" fill="#0a0b0e"/>
-          <circle cx="20" cy="18" r="10" fill="#8b5cf6"/>
-          <text x="20" y="22" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="10" font-weight="800" fill="#ffffff">D</text>
-          <text x="36" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">DNA-talent &middot; Outreach Studio</text>
-          <rect x="0" y="36" width="120" height="364" fill="#ffffff"/>
-          <line x1="120" y1="36" x2="120" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <rect x="8" y="80" width="104" height="22" rx="5" fill="rgba(52,211,153,.12)"/>
-          <text x="20" y="95" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#059669">Outreach</text>
-          <rect x="120" y="36" width="520" height="364" fill="#fafafb"/>
-          <rect x="132" y="86" width="50" height="22" rx="11" fill="#34d399"/>
-          <text x="148" y="100" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#052e16">Alle</text>
-          <rect x="132" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="140" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Demo Loopbaancoach</text>
-          <text x="140" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.7</text>
-          <rect x="304" y="124" width="164" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="312" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Voorbeeld HR Adviseur</text>
-          <text x="312" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">7.9</text>
-          <rect x="476" y="124" width="152" height="100" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="484" y="142" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="600" fill="#111827">Sample Life Coach</text>
-          <text x="484" y="186" font-family="'Outfit',sans-serif" font-size="16" font-weight="700" fill="#059669">8.3</text>
-          <rect x="120" y="240" width="520" height="160" fill="url(#dnaFadeS)"/>
-          <defs><linearGradient id="dnaFadeS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fafafb" stop-opacity="0"/><stop offset="100%" stop-color="#fafafb" stop-opacity="1"/></linearGradient></defs>
+          <defs>
+            <filter id="dnaBlur" x="0" y="0"><feGaussianBlur stdDeviation="1.6"/></filter>
+            <linearGradient id="dnaLeftFade" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffffff" stop-opacity="1"/><stop offset="100%" stop-color="#ffffff" stop-opacity=".5"/></linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="#f7f9fc"/>
+          <g opacity=".55" filter="url(#dnaBlur)">
+            <rect x="0" y="0" width="270" height="400" fill="#ffffff"/>
+            <rect x="14" y="14" width="22" height="22" rx="5" fill="#1d6b66"/>
+            <text x="42" y="22" font-family="'Outfit',sans-serif" font-size="9" font-weight="700" fill="#0f172a">DNA-talent</text>
+            <text x="42" y="32" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#6b7280">Leadgen Dashboard &middot; Dany</text>
+            <text x="14" y="76" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">LEADS</text>
+            <rect x="14" y="80" width="50" height="2.5" rx="1" fill="#e5e7eb"/>
+            <rect x="14" y="80" width="50" height="2.5" rx="1" fill="#1d6b66"/>
+            <text x="14" y="98" font-family="'Outfit',sans-serif" font-size="13" font-weight="700" fill="#0f172a">689</text>
+            <text x="74" y="76" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">VERSTUURD</text>
+            <rect x="74" y="80" width="50" height="2.5" rx="1" fill="#e5e7eb"/>
+            <rect x="74" y="80" width="42" height="2.5" rx="1" fill="#1d6b66"/>
+            <text x="74" y="98" font-family="'Outfit',sans-serif" font-size="13" font-weight="700" fill="#0f172a">293</text>
+            <text x="134" y="76" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">REACTIES</text>
+            <rect x="134" y="80" width="50" height="2.5" rx="1" fill="#e5e7eb"/>
+            <rect x="134" y="80" width="8" height="2.5" rx="1" fill="#1d6b66"/>
+            <text x="134" y="98" font-family="'Outfit',sans-serif" font-size="13" font-weight="700" fill="#0f172a">87</text>
+            <text x="196" y="76" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">FOLLOW-UP</text>
+            <rect x="196" y="80" width="50" height="2.5" rx="1" fill="#e5e7eb"/>
+            <rect x="196" y="80" width="6" height="2.5" rx="1" fill="#1d6b66"/>
+            <text x="196" y="98" font-family="'Outfit',sans-serif" font-size="13" font-weight="700" fill="#0f172a">61</text>
+            <rect x="14" y="118" width="22" height="14" rx="7" fill="#0f172a"/>
+            <text x="25" y="127" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="600" fill="#ffffff">Alle</text>
+            <rect x="40" y="118" width="40" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".4"/>
+            <rect x="84" y="118" width="46" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".4"/>
+            <rect x="134" y="118" width="46" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".4"/>
+            <rect x="184" y="118" width="40" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".4"/>
+            <rect x="0" y="148" width="270" height="20" fill="#f9fafb"/>
+            <rect x="0" y="172" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="186" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <text x="60" y="186" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <text x="110" y="186" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <rect x="220" y="178" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+            <rect x="0" y="196" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="210" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <text x="60" y="210" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <text x="110" y="210" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <rect x="220" y="202" width="14" height="10" rx="5" fill="rgba(244,63,94,.18)"/>
+            <rect x="0" y="220" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="234" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <text x="60" y="234" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <text x="110" y="234" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">&#9472;&#9472;</text>
+            <rect x="220" y="226" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+            <rect x="0" y="244" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="258" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <rect x="220" y="250" width="14" height="10" rx="5" fill="rgba(52,211,153,.22)"/>
+            <rect x="0" y="268" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="282" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <rect x="220" y="274" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+            <rect x="0" y="292" width="270" height="22" fill="#ffffff"/>
+            <text x="14" y="306" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">10 mei</text>
+            <rect x="220" y="298" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+            <rect x="0" y="316" width="270" height="22" fill="#ffffff"/>
+            <rect x="220" y="322" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+            <rect x="0" y="340" width="270" height="22" fill="#ffffff"/>
+            <rect x="220" y="346" width="14" height="10" rx="5" fill="rgba(245,166,35,.18)"/>
+          </g>
+          <rect x="260" y="0" width="380" height="400" fill="#ffffff"/>
+          <line x1="260" y1="0" x2="260" y2="400" stroke="rgba(0,0,0,.06)" stroke-width=".5"/>
+          <text x="276" y="32" font-family="'Outfit',sans-serif" font-size="14" font-weight="700" fill="#0f172a">&#9472;&#9472;</text>
+          <text x="276" y="48" font-family="'Outfit',sans-serif" font-size="7.5" fill="#6b7280">Trainer bij &#9472;&#9472;</text>
+          <rect x="606" y="22" width="20" height="20" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <line x1="612" y1="28" x2="620" y2="36" stroke="#6b7280" stroke-width="1"/>
+          <line x1="620" y1="28" x2="612" y2="36" stroke="#6b7280" stroke-width="1"/>
+          <text x="276" y="74" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="700" letter-spacing=".1em" fill="#374151">OPVOLGING</text>
+          <rect x="276" y="80" width="74" height="18" rx="9" fill="#0f172a"/>
+          <circle cx="284" cy="89" r="2" fill="#6b7280"/>
+          <text x="316" y="92" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#ffffff">Geen actie</text>
+          <rect x="354" y="80" width="92" height="18" rx="9" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <circle cx="362" cy="89" r="2" fill="#3b82f6"/>
+          <text x="402" y="92" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">Gesprek gestart</text>
+          <rect x="450" y="80" width="98" height="18" rx="9" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <text x="458" y="92" font-family="'JetBrains Mono',monospace" font-size="6" fill="#8b5cf6">&#8617;</text>
+          <text x="500" y="92" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">Heeft gereageerd</text>
+          <rect x="276" y="104" width="92" height="18" rx="9" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <text x="284" y="116" font-family="'JetBrains Mono',monospace" font-size="6.5" font-weight="600" fill="#10b981">&#10003;</text>
+          <text x="324" y="116" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">Ge&iuml;nteresseerd</text>
+          <rect x="372" y="104" width="92" height="18" rx="9" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <circle cx="380" cy="113" r="2" fill="#f5a623"/>
+          <text x="420" y="116" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">&#8635; Follow-up nodig</text>
+          <rect x="468" y="104" width="80" height="18" rx="9" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
+          <text x="476" y="116" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="600" fill="#ef4444">&#10005;</text>
+          <text x="510" y="116" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" fill="#374151">Geen interesse</text>
+          <line x1="276" y1="138" x2="624" y2="138" stroke="rgba(0,0,0,.06)" stroke-width=".5"/>
+          <text x="276" y="156" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">STATUS</text>
+          <rect x="276" y="162" width="64" height="14" rx="7" fill="#fef9e7" stroke="#fde68a" stroke-width=".5"/>
+          <circle cx="284" cy="169" r="2" fill="#b45309"/>
+          <text x="316" y="172" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" font-weight="600" fill="#b45309">Verzenden</text>
+          <text x="450" y="156" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">AI SCORE</text>
+          <text x="450" y="178" font-family="'Outfit',sans-serif" font-size="13" font-weight="700" fill="#0f172a">7</text>
+          <text x="462" y="178" font-family="'Outfit',sans-serif" font-size="8" fill="#9ca3af">/10</text>
+          <text x="276" y="200" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">HAAK</text>
+          <text x="276" y="214" font-family="'Outfit',sans-serif" font-size="7" fill="#0f172a">vast_template</text>
+          <text x="450" y="200" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">STRATEGIE</text>
+          <text x="450" y="214" font-family="'Outfit',sans-serif" font-size="7" fill="#0f172a">vast_template</text>
+          <text x="276" y="234" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">SECTOR</text>
+          <text x="276" y="248" font-family="'Outfit',sans-serif" font-size="7" fill="#0f172a">professional training</text>
+          <text x="450" y="234" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">LOCATIE</text>
+          <text x="450" y="248" font-family="'Outfit',sans-serif" font-size="7" fill="#0f172a">Tilburg</text>
+          <line x1="276" y1="262" x2="624" y2="262" stroke="rgba(0,0,0,.06)" stroke-width=".5"/>
+          <text x="276" y="278" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">LINKEDIN</text>
+          <text x="276" y="291" font-family="'JetBrains Mono',monospace" font-size="6" fill="#3b82f6">linkedin.com/in/&#9472;&#9472;</text>
+          <text x="276" y="308" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">FOLLOW-UP BERICHT</text>
+          <rect x="276" y="312" width="348" height="40" rx="6" fill="#fafbfc" stroke="#e5e7eb" stroke-width=".5"/>
+          <text x="282" y="324" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">Hoi &#9472;&#9472;, leuk dat we verbonden zijn. Ik ben heel benieuwd</text>
+          <text x="282" y="332" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">wat jij precies doet. Zelf werk ik veel met coaches en vind</text>
+          <text x="282" y="340" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">het leuk om te verbinden met mensen die met ontwikkeling</text>
+          <text x="282" y="348" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">bezig zijn. Groetjes Dany</text>
+          <text x="276" y="368" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">NUDGE BERICHT</text>
+          <rect x="276" y="372" width="348" height="22" rx="6" fill="#fafbfc" stroke="#e5e7eb" stroke-width=".5"/>
+          <text x="282" y="384" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">Hoi &#9472;&#9472;, ik ben oprecht benieuwd: wat doe jij precies in je werk?</text>
+          <text x="282" y="392" font-family="'Outfit',sans-serif" font-size="5.5" fill="#0f172a">Groetjes, Dany</text>
         </svg>
         <div class="laptop-base"></div>
       </div>
