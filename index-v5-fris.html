@@ -47,45 +47,52 @@ body{
 ::selection{background:var(--green);color:#052e16}
 img{max-width:100%;height:auto;display:block}
 
-/* ────────── shell ────────── */
-.shell{max-width:1280px;margin:0 auto;padding:14px}
+/* ────────── shell (breder) ────────── */
+.shell{max-width:1480px;margin:0 auto;padding:18px}
 
-/* ────────── nav ────────── */
+/* ────────── nav (geen pill meer — platte strip met card-radius) ────────── */
 nav{
-  position:sticky;top:14px;z-index:50;
+  position:sticky;top:18px;z-index:50;
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 22px;
-  background:rgba(255,255,255,.78);
+  padding:1.1rem 1.8rem;
+  background:rgba(255,255,255,.88);
   backdrop-filter:saturate(180%) blur(14px);
   -webkit-backdrop-filter:saturate(180%) blur(14px);
   border:1px solid var(--line);
-  border-radius:var(--radius-pill);
+  border-radius:var(--radius-xl);
   box-shadow:0 6px 24px rgba(10,11,14,.04);
 }
-.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
 .brand svg{flex-shrink:0}
-.brand-text{font-family:var(--head);font-size:1.02rem;font-weight:800;letter-spacing:.04em}
-.nav-center{display:flex;align-items:center;gap:.25rem;background:var(--ink);border-radius:var(--radius-pill);padding:6px}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.brand-mono{font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);margin-left:.5rem;letter-spacing:.08em;font-weight:500;border-left:1px solid var(--line);padding-left:.7rem}
+.nav-center{display:flex;align-items:center;gap:.25rem}
 .nav-center a{
-  color:#cbd5e1;text-decoration:none;
-  font-family:var(--head);font-size:.82rem;font-weight:500;
-  padding:.55rem 1rem;border-radius:var(--radius-pill);transition:all var(--tr);
+  position:relative;
+  color:var(--ink-dim);text-decoration:none;
+  font-family:var(--head);font-size:.88rem;font-weight:500;
+  padding:.5rem 1rem;transition:color var(--tr);
 }
-.nav-center a:hover{color:#fff}
-.nav-center a.active{background:#fff;color:var(--ink)}
-.nav-right{display:flex;align-items:center;gap:.6rem}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{
+  content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;
+  height:2px;background:var(--green);border-radius:1px;
+}
+.nav-right{display:flex;align-items:center;gap:.8rem}
 .lang-pill{
   display:inline-flex;align-items:center;gap:.4rem;
-  padding:.5rem .9rem;border:1px solid var(--line);border-radius:var(--radius-pill);
+  padding:.45rem .9rem .45rem 0;
   background:transparent;color:var(--ink-dim);
-  font-family:var(--mono);font-size:.72rem;font-weight:500;text-decoration:none;
+  font-family:var(--mono);font-size:.72rem;font-weight:600;text-decoration:none;
+  border-right:1px solid var(--line);
 }
-.lang-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.lang-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.18)}
 .nav-cta{
   display:inline-flex;align-items:center;gap:.5rem;
   background:var(--ink);color:#fff;text-decoration:none;
-  padding:.7rem 1.1rem;border-radius:var(--radius-pill);
-  font-family:var(--head);font-size:.82rem;font-weight:600;
+  padding:.75rem 1.2rem;border-radius:var(--radius-pill);
+  font-family:var(--head);font-size:.84rem;font-weight:600;
   transition:all var(--tr);border:none;cursor:pointer;
 }
 .nav-cta:hover{background:#000;transform:translateY(-1px)}
