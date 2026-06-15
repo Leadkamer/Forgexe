@@ -522,6 +522,50 @@ footer{
 .mobile-menu.open{display:flex}
 .mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
 .mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+/* ────────── scan-wizard modal ────────── */
+.scan-modal{position:fixed;inset:0;background:rgba(10,11,14,.55);display:none;align-items:center;justify-content:center;padding:1.4rem;z-index:200;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto}
+.scan-modal.open{display:flex;animation:scanFadeIn .25s ease forwards}
+@keyframes scanFadeIn{from{opacity:0}to{opacity:1}}
+.scan-card{background:var(--card-bg);border-radius:var(--radius-xl);max-width:620px;width:100%;padding:2.4rem 2.2rem;position:relative;box-shadow:0 24px 60px rgba(10,11,14,.28);animation:scanScaleIn .35s cubic-bezier(.16,1,.3,1) forwards;margin:auto}
+@keyframes scanScaleIn{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.scan-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:#fafbfc;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-dim);font-size:1.2rem;cursor:pointer;line-height:1;font-family:var(--head)}
+.scan-close:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.scan-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green-deep);letter-spacing:.06em;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.scan-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.2)}
+.scan-question{font-family:var(--head);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.6rem;line-height:1.15}
+.scan-hint{font-family:var(--head);font-size:.85rem;color:var(--ink-mut);margin-bottom:1.2rem;line-height:1.5}
+.scan-options{display:flex;gap:.5rem;flex-wrap:wrap}
+.scan-options.col{flex-direction:column}
+.scan-options.col .scan-option{width:100%}
+.scan-option{padding:.85rem 1.3rem;background:#fafbfc;border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:500;cursor:pointer;border-radius:8px;transition:all var(--tr);text-align:left}
+.scan-option:hover{border-color:var(--green-deep);background:var(--green-soft);color:var(--green-deep);transform:translateY(-1px)}
+.scan-option.selected{border-color:var(--green-deep);background:var(--green-soft);color:var(--green-deep)}
+.scan-back{background:none;border:none;color:var(--ink-mut);font-family:var(--mono);font-size:.74rem;cursor:pointer;padding:0;margin-bottom:1.2rem;transition:color var(--tr);display:inline-flex;align-items:center;gap:.35rem}
+.scan-back:hover{color:var(--ink)}
+.scan-form{display:flex;flex-direction:column;gap:.7rem}
+.scan-form-row{display:flex;gap:.7rem}
+.scan-form-row input{flex:1;padding:.85rem 1rem;font-size:.85rem;font-family:var(--mono);background:#fafbfc;border:1px solid var(--line);color:var(--ink);outline:none;border-radius:8px;transition:all var(--tr)}
+.scan-form-row input:focus{border-color:var(--green-deep);background:#fff;box-shadow:0 0 0 3px rgba(52,211,153,.15)}
+.scan-form-row input::placeholder{color:var(--ink-mut)}
+.scan-privacy{display:flex;align-items:flex-start;gap:.6rem;font-family:var(--head);font-size:.8rem;color:var(--ink-dim);line-height:1.5;cursor:pointer;margin-top:.4rem}
+.scan-privacy input{margin-top:.2rem;accent-color:var(--green-deep);flex-shrink:0}
+.scan-privacy a{color:var(--green-deep);font-weight:600}
+.scan-progress{height:3px;background:var(--line);border-radius:2px;margin-top:1.8rem;overflow:hidden}
+.scan-progress-bar{height:100%;background:var(--green);transition:width .5s cubic-bezier(.16,1,.3,1);border-radius:2px}
+.scan-step{display:none}
+.scan-step.active{display:block;animation:scanStepIn .35s ease-out forwards}
+@keyframes scanStepIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.scan-done-title{font-family:var(--head);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.02em;line-height:1.15}
+.scan-done-desc{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);margin-bottom:1.6rem;line-height:1.5}
+.scan-done-checks{display:flex;gap:1.4rem;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);padding-top:1.2rem;border-top:1px solid var(--line)}
+.scan-done-checks span strong{color:var(--green-deep);font-weight:700}
+@media(max-width:600px){
+  .scan-card{padding:1.8rem 1.4rem 1.6rem}
+  .scan-options{flex-direction:column}
+  .scan-form-row{flex-direction:column}
+  .scan-done-checks{flex-direction:column;gap:.5rem}
+}
 </style>
 </head>
 <body>
@@ -692,9 +736,49 @@ footer{
   </div>
   <div class="builds-grid">
     <div class="build-card tall highlight">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem">
         <div class="build-icon" style="margin-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <span style="font-family:var(--mono);font-size:.72rem;font-weight:700;color:#052e16;letter-spacing:.12em">FORGE.GROWTH</span>
+      </div>
+      <!-- mini outreach-pipeline mockup -->
+      <div style="background:#052e16;border-radius:12px;padding:1.1rem;margin-bottom:1.4rem;box-shadow:0 8px 22px rgba(5,46,22,.32)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem">
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.25);display:inline-block"></span>
+            <span style="font-family:var(--mono);font-size:.66rem;color:var(--green-lt);font-weight:600;letter-spacing:.06em">AI OUTREACH &middot; LIVE</span>
+          </div>
+          <span style="font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.4)">vandaag</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.9rem">
+          <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.55rem .5rem">
+            <div style="font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.4);letter-spacing:.06em">DISCOVERED</div>
+            <div style="font-family:var(--head);font-size:1.05rem;font-weight:700;color:#fff;margin-top:.15rem">247</div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border-radius:6px;padding:.55rem .5rem">
+            <div style="font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.4);letter-spacing:.06em">CONTACTED</div>
+            <div style="font-family:var(--head);font-size:1.05rem;font-weight:700;color:#fff;margin-top:.15rem">189</div>
+          </div>
+          <div style="background:rgba(52,211,153,.12);border-radius:6px;padding:.55rem .5rem">
+            <div style="font-family:var(--mono);font-size:.55rem;color:var(--green-lt);letter-spacing:.06em">REPLIED</div>
+            <div style="font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--green-lt);margin-top:.15rem">42</div>
+          </div>
+          <div style="background:rgba(52,211,153,.2);border-radius:6px;padding:.55rem .5rem;border:1px solid rgba(52,211,153,.4)">
+            <div style="font-family:var(--mono);font-size:.55rem;color:var(--green-lt);letter-spacing:.06em">SQL</div>
+            <div style="font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--green-lt);margin-top:.15rem">14</div>
+          </div>
+        </div>
+        <!-- mini sparkline -->
+        <svg viewBox="0 0 280 38" style="width:100%;height:auto;display:block">
+          <defs>
+            <linearGradient id="growthFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#34d399" stop-opacity=".45"/>
+              <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 0 30 L 28 26 L 56 22 L 84 24 L 112 18 L 140 14 L 168 16 L 196 10 L 224 8 L 252 5 L 280 4 L 280 38 L 0 38 Z" fill="url(#growthFill)"/>
+          <path d="M 0 30 L 28 26 L 56 22 L 84 24 L 112 18 L 140 14 L 168 16 L 196 10 L 224 8 L 252 5 L 280 4" fill="none" stroke="#34d399" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="280" cy="4" r="2.5" fill="#fff" stroke="#34d399" stroke-width="1.4"/>
+        </svg>
       </div>
       <h3>AI-medewerkers voor jouw groei.</h3>
       <p style="margin-bottom:1.2rem">Leads binnenhalen, opvolgen, kwalificeren, content schrijven, advertenties optimaliseren. 24/7 actief, beter wordend met de tijd.</p>
@@ -711,12 +795,68 @@ footer{
       </div>
     </div>
     <div class="build-card amber">
-      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem">
         <div class="build-icon" style="margin-bottom:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
         <span style="font-family:var(--mono);font-size:.72rem;font-weight:700;color:#3a2400;letter-spacing:.12em">FORGE.OPS</span>
       </div>
+      <!-- mini workflow-mockup -->
+      <div style="background:#3a2400;border-radius:12px;padding:1.1rem;margin-bottom:1.4rem;box-shadow:0 8px 22px rgba(58,36,0,.32)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem">
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,.25);display:inline-block"></span>
+            <span style="font-family:var(--mono);font-size:.66rem;color:var(--amber-lt);font-weight:600;letter-spacing:.06em">WORKFLOW &middot; RUNNING</span>
+          </div>
+          <span style="font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.4)">98.4%&nbsp;success</span>
+        </div>
+        <svg viewBox="0 0 280 80" style="width:100%;height:auto;display:block">
+          <!-- nodes -->
+          <g font-family="'JetBrains Mono',monospace" font-size="6.5" font-weight="600">
+            <rect x="4" y="28" width="48" height="24" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(245,166,35,.4)" stroke-width="1"/>
+            <text x="28" y="43" text-anchor="middle" fill="#fff">Outlook</text>
+            <rect x="76" y="28" width="58" height="24" rx="5" fill="rgba(245,166,35,.18)" stroke="rgba(245,166,35,.55)" stroke-width="1"/>
+            <text x="105" y="43" text-anchor="middle" fill="#fff">AI Parse</text>
+            <rect x="158" y="28" width="56" height="24" rx="5" fill="rgba(245,166,35,.28)" stroke="var(--amber)" stroke-width="1"/>
+            <text x="186" y="43" text-anchor="middle" fill="#fff">Decide</text>
+            <rect x="238" y="28" width="40" height="24" rx="5" fill="rgba(34,197,94,.25)" stroke="rgba(34,197,94,.6)" stroke-width="1"/>
+            <text x="258" y="43" text-anchor="middle" fill="#fff">CRM</text>
+          </g>
+          <!-- connectors -->
+          <g stroke="rgba(245,166,35,.55)" stroke-width="1.2" fill="none">
+            <line x1="52" y1="40" x2="76" y2="40" stroke-dasharray="3 3"/>
+            <line x1="134" y1="40" x2="158" y2="40" stroke-dasharray="3 3"/>
+            <line x1="214" y1="40" x2="238" y2="40" stroke-dasharray="3 3"/>
+          </g>
+          <!-- arrowheads -->
+          <g fill="rgba(245,166,35,.7)">
+            <polygon points="74,37 78,40 74,43"/>
+            <polygon points="156,37 160,40 156,43"/>
+            <polygon points="236,37 240,40 236,43"/>
+          </g>
+          <!-- labels above/below -->
+          <g font-family="'JetBrains Mono',monospace" font-size="5.5" fill="rgba(255,255,255,.5)">
+            <text x="28" y="22" text-anchor="middle">trigger</text>
+            <text x="105" y="22" text-anchor="middle">extract</text>
+            <text x="186" y="22" text-anchor="middle">route</text>
+            <text x="258" y="22" text-anchor="middle">sync</text>
+            <text x="28" y="68" text-anchor="middle">142 mails</text>
+            <text x="105" y="68" text-anchor="middle">142 ok</text>
+            <text x="186" y="68" text-anchor="middle">138 ok</text>
+            <text x="258" y="68" text-anchor="middle">138 sync</text>
+          </g>
+        </svg>
+        <div style="display:flex;gap:.6rem;margin-top:.9rem">
+          <div style="flex:1;background:rgba(255,255,255,.04);border-radius:6px;padding:.5rem .6rem">
+            <div style="font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.4);letter-spacing:.06em">VANDAAG</div>
+            <div style="font-family:var(--head);font-size:.95rem;font-weight:700;color:#fff;margin-top:.15rem">142 runs</div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,.04);border-radius:6px;padding:.5rem .6rem">
+            <div style="font-family:var(--mono);font-size:.55rem;color:rgba(255,255,255,.4);letter-spacing:.06em">UREN BESPAARD</div>
+            <div style="font-family:var(--head);font-size:.95rem;font-weight:700;color:var(--amber-lt);margin-top:.15rem">31u</div>
+          </div>
+        </div>
+      </div>
       <h3>AI-medewerkers voor jouw operatie.</h3>
-      <p>Automatisering die intake, opvolging, rapportage en planning afhandelt. Geen tools vervangen &mdash; we verbinden wat er al staat.</p>
+      <p>Automatisering die intake, opvolging, rapportage en planning afhandelt. Geen tools vervangen, we verbinden wat er al staat.</p>
       <div class="build-tags" style="margin-top:.9rem">
         <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Procesautomation</span>
         <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Integraties</span>
@@ -1054,6 +1194,94 @@ footer{
 
 </div><!-- /shell -->
 
+<!-- ════════════ SCAN-WIZARD MODAL ════════════ -->
+<div class="scan-modal" id="scanModal" role="dialog" aria-modal="true" aria-labelledby="scanTitle">
+  <div class="scan-card">
+    <button class="scan-close" onclick="closeScan()" aria-label="Sluiten">&times;</button>
+    <div class="scan-eyebrow">C:\forgexe\scan &middot; gratis bedrijfsscan</div>
+
+    <div class="scan-step active" id="scanStep1">
+      <h3 class="scan-question" id="scanTitle">Hoeveel medewerkers heeft je bedrijf?</h3>
+      <div class="scan-options">
+        <button class="scan-option" onclick="nextScanStep(1,'medewerkers','1-15')">1 tot 15</button>
+        <button class="scan-option" onclick="nextScanStep(1,'medewerkers','15-50')">15 tot 50</button>
+        <button class="scan-option" onclick="nextScanStep(1,'medewerkers','50-200')">50 tot 200</button>
+        <button class="scan-option" onclick="nextScanStep(1,'medewerkers','200+')">200+</button>
+      </div>
+    </div>
+
+    <div class="scan-step" id="scanStep2">
+      <button class="scan-back" onclick="prevScanStep(2)">&larr; Terug</button>
+      <h3 class="scan-question">In welke branche ben je actief?</h3>
+      <div class="scan-options col">
+        <button class="scan-option" onclick="nextScanStep(2,'branche','Maakindustrie')">Maakindustrie</button>
+        <button class="scan-option" onclick="nextScanStep(2,'branche','Technische Groothandel')">Technische Groothandel</button>
+        <button class="scan-option" onclick="nextScanStep(2,'branche','Zakelijke Dienstverlening')">Zakelijke Dienstverlening</button>
+        <button class="scan-option" onclick="nextScanStep(2,'branche','Marketing &amp; Bureaus')">Marketing &amp; Bureaus</button>
+        <button class="scan-option" onclick="nextScanStep(2,'branche','Anders')">Anders</button>
+      </div>
+    </div>
+
+    <div class="scan-step" id="scanStep3">
+      <button class="scan-back" onclick="prevScanStep(3)">&larr; Terug</button>
+      <h3 class="scan-question">Waar ligt je grootste uitdaging?</h3>
+      <div class="scan-options col">
+        <button class="scan-option" onclick="nextScanStep(3,'uitdaging','Meer leads en klanten')">Meer leads en klanten</button>
+        <button class="scan-option" onclick="nextScanStep(3,'uitdaging','Efficientere operatie')">Effici&euml;ntere operatie</button>
+        <button class="scan-option" onclick="nextScanStep(3,'uitdaging','Beide')">Beide</button>
+      </div>
+    </div>
+
+    <div class="scan-step" id="scanStep4">
+      <button class="scan-back" onclick="prevScanStep(4)">&larr; Terug</button>
+      <h3 class="scan-question">Welke tools gebruik je nu?</h3>
+      <p class="scan-hint">Selecteer alles dat van toepassing is. Klik nogmaals om te de-selecteren.</p>
+      <div class="scan-options col" id="toolOptions"></div>
+      <button class="btn-pill primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+
+    <div class="scan-step" id="scanStep5">
+      <button class="scan-back" onclick="prevScanStep(5)">&larr; Terug</button>
+      <h3 class="scan-question">Hoe snel wil je resultaat zien?</h3>
+      <div class="scan-options col">
+        <button class="scan-option" onclick="nextScanStep(5,'urgentie','Zo snel mogelijk')">Zo snel mogelijk</button>
+        <button class="scan-option" onclick="nextScanStep(5,'urgentie','Binnen 3 maanden')">Binnen 3 maanden</button>
+        <button class="scan-option" onclick="nextScanStep(5,'urgentie','Ik orienteer me nog')">Ik ori&euml;nteer me nog</button>
+      </div>
+    </div>
+
+    <div class="scan-step" id="scanStep6">
+      <button class="scan-back" onclick="prevScanStep(6)">&larr; Terug</button>
+      <h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3>
+      <form class="scan-form" onsubmit="submitScan(event)">
+        <div class="scan-form-row">
+          <input type="text" id="scanNaam" placeholder="Jouw naam" required>
+          <input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required>
+        </div>
+        <div class="scan-form-row">
+          <input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required>
+          <input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)">
+        </div>
+        <label class="scan-privacy"><input type="checkbox" id="scanPrivacy" required><span>Ik ga akkoord met het <a href="privacy.html" target="_blank">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
+        <button type="submit" class="btn-pill primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </form>
+    </div>
+
+    <div class="scan-step" id="scanDone">
+      <div class="scan-eyebrow" style="color:var(--amber-deep)"><span style="background:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,.2)"></span>C:\forgexe\scan &middot; processing</div>
+      <h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3>
+      <p class="scan-done-desc">Je ontvangt jouw rapport binnen 48 uur. We nemen zo snel mogelijk contact op om door te nemen wat we vinden.</p>
+      <div class="scan-done-checks">
+        <span><strong>&#10003;</strong> Rapport binnen 48 uur</span>
+        <span><strong>&#10003;</strong> Reactie binnen 2 uur</span>
+        <span><strong>&#10003;</strong> 100% gratis</span>
+      </div>
+    </div>
+
+    <div class="scan-progress"><div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div></div>
+  </div>
+</div>
+
 <script>
 // ASCII wave animation in hero — subtle terminal-style
 (function(){
@@ -1116,11 +1344,82 @@ var ro = new IntersectionObserver(function(es){
 }, {threshold:.1});
 document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
 
-// FAQ open one at a time? keep multi-open for now
-// Scan modal placeholder
+// ─── Scan-wizard ───
+var scanData = {};
+var SCAN_TOTAL_STEPS = 6;
+var toolsByUitdaging = {
+  'Meer leads en klanten': ['CRM (Zoho, Pipedrive, Salesforce)', 'LinkedIn', 'Google Ads', 'Meta Ads', 'E-mail marketing (Mailchimp, ActiveCampaign)', 'WordPress / Webflow', 'Geen van deze'],
+  'Efficientere operatie': ['ERP (SAP, Exact, AFAS)', 'Boekhoudpakket', 'Planningssoftware', 'Google Workspace', 'Microsoft 365', 'Slack / Teams', 'Geen van deze'],
+  'Beide': ['CRM (Zoho, Pipedrive, Salesforce)', 'ERP (SAP, Exact, AFAS)', 'Google Ads / Meta Ads', 'Google Workspace', 'Microsoft 365', 'Boekhoudpakket', 'E-mail marketing', 'Geen van deze']
+};
 function openScan(){
-  alert('Scan wizard wordt na approval van het v5-design weer ingebouwd. Voor nu: mail info@forgexe.nl of bel +31 85 080 54 39.');
+  scanData = {};
+  document.querySelectorAll('.scan-step').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('scanStep1').classList.add('active');
+  document.getElementById('scanProgressBar').style.width = Math.round((1/SCAN_TOTAL_STEPS)*100) + '%';
+  document.getElementById('scanModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+function closeScan(){
+  document.getElementById('scanModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function nextScanStep(step, key, value){
+  scanData[key] = value;
+  var next = step + 1;
+  if (step === 3) { buildToolOptions(); }
+  document.getElementById('scanStep' + step).classList.remove('active');
+  document.getElementById('scanStep' + next).classList.add('active');
+  document.getElementById('scanProgressBar').style.width = Math.round((next/SCAN_TOTAL_STEPS)*100) + '%';
+}
+function prevScanStep(step){
+  var prev = step - 1;
+  document.getElementById('scanStep' + step).classList.remove('active');
+  document.getElementById('scanStep' + prev).classList.add('active');
+  document.getElementById('scanProgressBar').style.width = Math.round((prev/SCAN_TOTAL_STEPS)*100) + '%';
+}
+function buildToolOptions(){
+  var container = document.getElementById('toolOptions');
+  var tools = toolsByUitdaging[scanData.uitdaging] || toolsByUitdaging['Beide'];
+  container.innerHTML = '';
+  tools.forEach(function(tool){
+    var btn = document.createElement('button');
+    btn.className = 'scan-option';
+    btn.type = 'button';
+    btn.textContent = tool;
+    btn.onclick = function(){ btn.classList.toggle('selected'); };
+    container.appendChild(btn);
+  });
+}
+function submitTools(){
+  var selected = [];
+  document.querySelectorAll('#toolOptions .selected').forEach(function(b){ selected.push(b.textContent); });
+  scanData.tools = selected.length ? selected.join(', ') : 'Geen geselecteerd';
+  document.getElementById('scanStep4').classList.remove('active');
+  document.getElementById('scanStep5').classList.add('active');
+  document.getElementById('scanProgressBar').style.width = Math.round((5/SCAN_TOTAL_STEPS)*100) + '%';
+}
+function submitScan(e){
+  e.preventDefault();
+  scanData.naam = document.getElementById('scanNaam').value;
+  scanData.bedrijf = document.getElementById('scanBedrijf').value;
+  scanData.email = document.getElementById('scanEmail').value;
+  scanData.telefoon = document.getElementById('scanTelefoon').value;
+  document.getElementById('scanStep6').classList.remove('active');
+  document.getElementById('scanDone').classList.add('active');
+  document.getElementById('scanProgressBar').style.width = '100%';
+  fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-scan', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(scanData)
+  }).catch(function(){});
+}
+document.getElementById('scanModal').addEventListener('click', function(e){
+  if (e.target === this) closeScan();
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape' && document.getElementById('scanModal').classList.contains('open')) closeScan();
+});
 </script>
 
 </body>
