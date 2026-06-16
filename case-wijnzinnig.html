@@ -4,560 +4,356 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>Wijnzinnig! &#8212; Content Machine &amp; 3-segment Leadgen &#8212; Forgexe</title>
-<meta name="description" content="Hoe we voor wijnbedrijf Wijnzinnig! een Content Machine + leadgeneratie-platform bouwden voor 3 klantsegmenten: bedrijven, horeca en particulieren.">
+<title>Wijnzinnig! | Forgexe Case</title>
+<meta name="description" content="Content Machine en 3-segment leadgen voor wijnbedrijf Wijnzinnig! Bedrijven, horeca en particulieren in 1 omgeving.">
+<meta property="og:title" content="Wijnzinnig! | Forgexe Case">
+<meta property="og:description" content="AI-platform met content-generatie en gesegmenteerde leadgen voor wijn-sector.">
+<meta property="og:type" content="article">
 <link rel="canonical" href="https://forgexe.nl/case-wijnzinnig.html">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--tr:.35s ease}
-body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--btn-txt:#0a0b0e;--soft-bg:rgba(52,211,153,.04)}
-body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--btn-txt:#052e16;--soft-bg:rgba(52,211,153,.05)}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--txt);font-family:var(--head);font-weight:400;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
-::selection{background:var(--green);color:var(--btn-txt)}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green);font-family:var(--mono)}
-.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s;font-family:var(--mono)}.nav-links a:hover{color:var(--green)}
-.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
-.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer}.toggle-track{width:36px;height:20px;background:rgba(0,0,0,.1);border-radius:10px;position:relative;border:1px solid var(--brd)}body:not(.light) .toggle-track{background:#1e293b}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center;font-family:var(--mono)}
+:root{
+  --mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;
+  --green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;
+  --amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;
+  --page-bg:#f4f6f8;--card-bg:#ffffff;
+  --ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;
+  --line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);
+  --radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;
+  --tr:.32s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+::selection{background:var(--green);color:#052e16}
+img{max-width:100%;height:auto;display:block}
 
-.wrap{max-width:1280px;margin:0 auto;padding:7rem 3rem 2rem}
-.back-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;color:var(--dim);text-decoration:none;border:1px solid var(--brd);background:var(--bg-el);padding:.55rem 1rem;border-radius:20px;transition:all .3s;margin-bottom:2.5rem}
-.back-link:hover{border-color:rgba(52,211,153,.4);color:var(--green);transform:translateX(-3px)}
-.back-link svg{width:14px;height:14px}
-.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;margin-bottom:1.5rem;font-family:var(--mono);font-size:.78rem;color:var(--dim)}
-.hero-pill{background:var(--green);color:var(--btn-txt);padding:.4rem 1rem;border-radius:20px;font-weight:600;font-size:.78rem}
-.hero-meta-item{display:inline-flex;align-items:center;gap:.4rem}
-.hero-meta-item svg{width:14px;height:14px;color:var(--dim)}
-.case-title-big{font-family:var(--head);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.25rem}
-.case-subtitle{font-size:1.05rem;color:var(--dim);max-width:680px;line-height:1.7;margin-bottom:3rem}
+.shell{max-width:1480px;margin:0 auto;padding:18px}
 
-.hero-laptop{background:var(--bg-el);border:1px solid var(--brd);border-radius:24px;padding:3rem;position:relative;overflow:hidden}
-body.light .hero-laptop{background:rgba(236,253,245,.4);border-color:rgba(52,211,153,.12)}
-.hero-laptop-inner{max-width:900px;margin:0 auto}
-.laptop{position:relative;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:14px 14px 0 0;padding:12px 12px 0;box-shadow:0 20px 60px rgba(0,0,0,.18)}
-.laptop::before{content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);width:52px;height:5px;background:#0a0a0a;border-radius:0 0 5px 5px}
-.laptop svg{display:block;width:100%;height:auto;border-radius:5px}
-.laptop-base{height:18px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 14px 14px;position:relative;box-shadow:0 16px 36px rgba(0,0,0,.16)}
-.laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:4px;background:#0a0a0a;border-radius:0 0 8px 8px}
+nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.8rem;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:0 6px 24px rgba(10,11,14,.04)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.nav-center{display:flex;align-items:center;gap:.25rem}
+.nav-center a{position:relative;color:var(--ink-dim);text-decoration:none;font-family:var(--head);font-size:.88rem;font-weight:500;padding:.5rem 1rem;transition:color var(--tr)}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;height:2px;background:var(--green);border-radius:1px}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.75rem 1.2rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);border:none;cursor:pointer}
+.nav-cta:hover{background:#000;transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.hamburger span{width:14px;height:1.5px;background:var(--ink)}
 
-.detail-grid{display:grid;grid-template-columns:1fr 320px;gap:4rem;margin-top:5rem;align-items:start}
-.detail-section{margin-bottom:3.5rem}
-.detail-section-head{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
-.detail-icon{width:38px;height:38px;border-radius:10px;background:var(--green-glow);border:1px solid rgba(52,211,153,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green)}
-.detail-icon svg{width:18px;height:18px}
-.detail-h2{font-family:var(--head);font-size:1.6rem;font-weight:600;letter-spacing:-.02em;color:var(--txt)}
-.detail-p{font-size:1rem;color:var(--dim);line-height:1.8;max-width:660px}
-.detail-p + .detail-p{margin-top:1rem}
+.section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;position:relative;overflow:hidden;border:1px solid var(--line)}
+@media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+.section-h2{font-family:var(--head);font-weight:700;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
 
-.approach-list{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1.5rem}
-.approach-item{display:flex;align-items:flex-start;gap:.85rem;background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;padding:1.1rem 1.25rem}
-body.light .approach-item{box-shadow:0 1px 2px rgba(16,24,40,.03)}
-.approach-check{width:22px;height:22px;border-radius:50%;background:var(--green);color:#052e16;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line);position:relative;overflow:hidden}
+@media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--green)}
+.hero-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-pill{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:#052e16;padding:.5rem 1rem;border-radius:9px;font-family:var(--head);font-size:.82rem;font-weight:700;letter-spacing:.04em}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:#052e16}
+.hero-meta-item{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);font-weight:500;letter-spacing:.05em}
+.hero-meta-item svg{width:13px;height:13px}
+.case-title-big{font-family:var(--head);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:22ch}
+.case-subtitle{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.15rem);color:var(--ink-dim);max-width:62ch;line-height:1.55;margin-bottom:3rem;font-weight:400}
+.case-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-top:2rem;border-top:1px solid var(--line)}
+@media(max-width:700px){.case-stats{grid-template-columns:repeat(2,1fr)}}
+.case-stat{display:flex;flex-direction:column;gap:.2rem}
+.case-stat-num{font-family:var(--head);font-size:1.6rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.case-stat-label{font-family:var(--mono);font-size:.68rem;color:var(--ink-mut);letter-spacing:.06em}
+
+.hero-laptop{margin-top:3rem;padding:2rem;background:#fafbfc;border-radius:var(--radius-md);border:1px solid var(--line)}
+.laptop-frame{background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:10px 10px 0 0;padding:8px 8px 0;position:relative;box-shadow:0 18px 40px rgba(10,11,14,.22)}
+.laptop-frame::before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:38px;height:3px;background:#0a0a0a;border-radius:0 0 3px 3px}
+.laptop-frame img{display:block;width:100%;height:auto;border-radius:3px;aspect-ratio:640/400;object-fit:cover;object-position:top}
+.laptop-base{height:12px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 14px 14px;position:relative}
+.laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:2px;background:#0a0a0a;border-radius:0 0 4px 4px}
+
+.detail-grid{display:grid;grid-template-columns:1.8fr 1fr;gap:3rem;align-items:start}
+@media(max-width:1000px){.detail-grid{grid-template-columns:1fr}}
+.detail-section{margin-bottom:3rem}
+.detail-section-head{display:flex;align-items:center;gap:.85rem;margin-bottom:1.2rem}
+.detail-icon{width:38px;height:38px;border-radius:50%;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center}
+.detail-icon svg{width:18px;height:18px;stroke-width:1.8}
+.detail-h2{font-family:var(--head);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.detail-p{font-family:var(--head);font-size:1rem;color:var(--ink-dim);line-height:1.65;margin-bottom:1.1rem}
+.detail-p:last-child{margin-bottom:0}
+
+.approach-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.approach-item{display:flex;align-items:flex-start;gap:.85rem;background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:.95rem 1.1rem}
+.approach-check{width:22px;height:22px;border-radius:50%;background:var(--green);color:#052e16;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
 .approach-check svg{width:12px;height:12px}
-.approach-text{font-size:.85rem;color:var(--txt);line-height:1.55}
+.approach-text{font-family:var(--head);font-size:.92rem;color:var(--ink);line-height:1.5}
 
-.tech-block{margin-top:2.5rem}
-.tech-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem}
-.tech-pills{display:flex;flex-wrap:wrap;gap:.5rem}
-.tech-pill{background:#0a0b0e;color:#fff;font-family:var(--mono);font-size:.7rem;font-weight:500;padding:.55rem 1.1rem;border-radius:20px}
-body.light .tech-pill{box-shadow:0 2px 6px rgba(10,11,14,.18)}
+.testimonial-inline{margin-top:2rem;background:var(--green);border-radius:var(--radius-md);padding:2rem 2.25rem;position:relative}
+.testimonial-stars{color:#052e16;font-size:.9rem;letter-spacing:.2em;margin-bottom:.75rem;font-weight:700}
+.testimonial-quote{font-family:var(--head);font-size:1.25rem;font-weight:700;color:#052e16;line-height:1.3;margin-bottom:.8rem;letter-spacing:-.015em}
+.testimonial-body{font-family:var(--head);font-size:.92rem;color:#052e16;opacity:.88;line-height:1.6;margin-bottom:1.4rem}
+.testimonial-meta{display:flex;align-items:center;gap:.7rem;padding-top:1rem;border-top:1px solid rgba(5,46,22,.18)}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:#052e16;color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:.85rem}
+.testimonial-name{font-family:var(--head);font-size:.92rem;font-weight:700;color:#052e16;line-height:1.1}
+.testimonial-role{font-family:var(--mono);font-size:.72rem;color:#052e16;opacity:.72;margin-top:.1rem}
 
-.sidebar-card{position:sticky;top:7rem;background:var(--bg-el);border:1px solid var(--brd);border-radius:18px;padding:2rem 1.75rem}
-body.light .sidebar-card{background:rgba(244,246,248,.8);box-shadow:0 1px 3px rgba(16,24,40,.05)}
-.sidebar-card h3{font-family:var(--head);font-size:1.05rem;font-weight:600;margin-bottom:.5rem;color:var(--txt)}
-.sidebar-card p{font-size:.85rem;color:var(--dim);line-height:1.6;margin-bottom:1.5rem}
-.sidebar-cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;width:100%;background:#0a0b0e;color:#fff;font-family:var(--mono);font-size:.78rem;font-weight:500;padding:.95rem 1.4rem;border-radius:10px;text-decoration:none;transition:all .3s}
-.sidebar-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(10,11,14,.25);color:#fff}
-.sidebar-cta svg{width:14px;height:14px}
+.sidebar-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem;position:sticky;top:120px}
+.sidebar-card h3{font-family:var(--head);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em}
+.sidebar-card p{font-family:var(--head);font-size:.88rem;color:var(--ink-dim);line-height:1.55;margin-bottom:1.2rem}
+.sidebar-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.7rem 1.1rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);width:100%;justify-content:center;border:none;cursor:pointer}
+.sidebar-cta:hover{background:#000;transform:translateY(-1px)}
+.sidebar-cta svg{width:13px;height:13px}
+.sidebar-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.sidebar-tag-label{font-family:var(--mono);font-size:.68rem;color:var(--ink-mut);letter-spacing:.06em;text-transform:uppercase;font-weight:600;width:100%;margin-bottom:.4rem}
+.sidebar-tag{padding:.3rem .65rem;background:#fff;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);font-size:.66rem;color:var(--ink-dim);font-weight:500}
 
-.next-section{max-width:1280px;margin:0 auto;padding:5rem 3rem 1rem}
-.next-title{font-family:var(--head);font-size:2.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:2.5rem;color:var(--txt)}
-.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.next-card-wrap .laptop{box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.5rem}
+@media(max-width:1100px){.next-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.next-grid{grid-template-columns:1fr}}
+.case-card{background:#fafbfc;border-radius:var(--radius-lg);border:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all var(--tr);position:relative}
+.case-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,11,14,.08);border-color:var(--line-strong)}
+.case-laptop{padding:1.5rem 1.5rem 0;background:#fafbfc}
+.case-laptop-frame{background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:10px 10px 0 0;padding:8px 8px 0;position:relative;box-shadow:0 12px 28px rgba(10,11,14,.18)}
+.case-laptop-frame::before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:34px;height:3px;background:#0a0a0a;border-radius:0 0 3px 3px}
+.case-laptop-frame img,.case-laptop-frame svg{display:block;width:100%;height:auto;border-radius:3px;aspect-ratio:640/400;object-fit:cover;object-position:top}
+.case-laptop-base{height:10px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 10px 10px;position:relative}
+.case-laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:2px;background:#0a0a0a;border-radius:0 0 4px 4px}
+.case-body{padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.case-client{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.7rem;color:var(--green);font-weight:600;letter-spacing:.06em}
+.case-client::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
+.case-title-card{font-family:var(--head);font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.25;margin-top:.2rem}
+.case-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.case-tag{padding:.3rem .65rem;background:#fff;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);font-size:.62rem;color:var(--ink-dim);font-weight:500}
+.case-arrow{position:absolute;top:1.2rem;right:1.2rem;width:34px;height:34px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;color:#fff;transition:all var(--tr);z-index:2}
+.case-card:hover .case-arrow{background:var(--green);color:#052e16;transform:rotate(-12deg)}
+.case-arrow svg{width:13px;height:13px}
 
-.case-card{display:block;background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:1.6rem 1.75rem;margin-top:1.5rem;text-decoration:none;color:inherit;position:relative;transition:all .3s}
-body.light .case-card{box-shadow:0 1px 3px rgba(16,24,40,.05)}
-body.light .case-card:hover{box-shadow:0 14px 36px rgba(16,24,40,.09);border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
-body:not(.light) .case-card:hover{border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
-.case-arrow-btn{position:absolute;top:1.5rem;right:1.5rem;width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;color:#052e16;transition:all .3s}
-.case-card:hover .case-arrow-btn{background:var(--green-lt);transform:translate(2px,-2px)}
-.case-card-client{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--green);margin-bottom:.55rem}
-.case-card-title{font-family:var(--head);font-size:1.2rem;font-weight:600;line-height:1.3;margin-bottom:1rem;color:var(--txt);padding-right:3rem}
-.case-card-main-tag{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25);padding:.4rem .85rem;border-radius:20px;margin-bottom:1.1rem}
-.case-card-main-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
-.case-card-tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.case-mini-tag{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.65rem;color:var(--dim);padding:.3rem .7rem;border:1px solid var(--brd);border-radius:14px}
-.case-mini-tag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);opacity:.7}
+.cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
+.cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
+.cta-card h2 em{font-style:italic;font-weight:800}
+.cta-card p{font-family:var(--head);font-size:.96rem;color:#052e16;opacity:.85;margin-bottom:2rem;max-width:480px;line-height:1.55}
+.cta-card .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:900px){.cta-card{padding:2.5rem 1.6rem}}
 
-.page-cta{padding:5rem 3rem 6rem;text-align:center;max-width:900px;margin:0 auto;position:relative}
-.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
-.page-cta h2{font-family:var(--head);font-size:clamp(2rem,4vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1rem;position:relative}
-.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
-.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono);border-radius:6px}
-.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}
-.btn-primary svg{width:14px;height:14px}
+.btn-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head);font-weight:600;font-size:.88rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all var(--tr)}
+.btn-pill svg{width:14px;height:14px}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
+.btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-pill.primary{background:var(--green);color:#052e16}
+.btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
 
-footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1280px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
-.footer-col-title{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;font-family:var(--mono)}
-.footer-col a{display:block;font-size:.82rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
-.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green);font-family:var(--mono)}
-.footer-brand-desc{font-size:.82rem;color:var(--mut);line-height:1.6;max-width:240px}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
-.footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4;font-family:var(--mono)}
-.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
+footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
+.foot-brand{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.foot-brand-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.foot-desc{font-family:var(--head);font-size:.85rem;color:var(--ink-dim);line-height:1.55;max-width:280px;margin-bottom:1rem}
+.foot-col-title{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.foot-col a{display:block;font-family:var(--head);font-size:.86rem;color:var(--ink);text-decoration:none;margin-bottom:.5rem;transition:color var(--tr)}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
+.foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
 
-@media(max-width:1024px){.detail-grid{grid-template-columns:1fr;gap:2rem}.sidebar-card{position:static}.approach-list{grid-template-columns:1fr}.next-grid{grid-template-columns:1fr}}
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.wrap{padding:5rem 1.25rem 1rem}.hero-laptop{padding:1.5rem .5rem;border-radius:14px}.hero-meta{gap:.85rem;font-size:.7rem}.case-title-big{font-size:clamp(1.8rem,8vw,2.6rem)}.case-subtitle{font-size:.92rem;margin-bottom:2rem}.detail-grid{margin-top:3rem}.detail-h2{font-size:1.3rem}.next-section{padding:3rem 1.25rem 1rem}.next-title{font-size:1.5rem}.page-cta{padding:3rem 1.25rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
+.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:1100px){.nav-center{display:none}}
+@media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+.scan-modal{position:fixed;inset:0;background:rgba(10,11,14,.55);display:none;align-items:center;justify-content:center;padding:1.4rem;z-index:200;backdrop-filter:blur(6px);overflow-y:auto}
+.scan-modal.open{display:flex;animation:scanFadeIn .25s ease forwards}
+@keyframes scanFadeIn{from{opacity:0}to{opacity:1}}
+.scan-card{background:var(--card-bg);border-radius:var(--radius-xl);max-width:620px;width:100%;padding:2.4rem 2.2rem;position:relative;box-shadow:0 24px 60px rgba(10,11,14,.28);margin:auto}
+.scan-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:#fafbfc;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-dim);font-size:1.2rem;cursor:pointer;line-height:1}
+.scan-close:hover{background:var(--ink);color:#fff}
+.scan-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.06em;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.scan-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.2)}
+.scan-question{font-family:var(--head);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.6rem;line-height:1.15}
+.scan-hint{font-family:var(--head);font-size:.85rem;color:var(--ink-mut);margin-bottom:1.2rem;line-height:1.5}
+.scan-options{display:flex;gap:.5rem;flex-wrap:wrap}
+.scan-options.col{flex-direction:column}
+.scan-options.col .scan-option{width:100%}
+.scan-option{padding:.85rem 1.3rem;background:#fafbfc;border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:500;cursor:pointer;border-radius:8px;transition:all var(--tr);text-align:left}
+.scan-option:hover{border-color:var(--green);background:var(--green-soft);color:var(--green);transform:translateY(-1px)}
+.scan-option.selected{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.scan-back{background:none;border:none;color:var(--ink-mut);font-family:var(--mono);font-size:.74rem;cursor:pointer;padding:0;margin-bottom:1.2rem}
+.scan-back:hover{color:var(--ink)}
+.scan-form{display:flex;flex-direction:column;gap:.7rem}
+.scan-form-row{display:flex;gap:.7rem}
+.scan-form-row input{flex:1;padding:.85rem 1rem;font-size:.85rem;font-family:var(--mono);background:#fafbfc;border:1px solid var(--line);color:var(--ink);outline:none;border-radius:8px}
+.scan-form-row input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(52,211,153,.15)}
+.scan-form-row input::placeholder{color:var(--ink-mut)}
+.scan-privacy{display:flex;align-items:flex-start;gap:.6rem;font-family:var(--head);font-size:.8rem;color:var(--ink-dim);line-height:1.5;cursor:pointer;margin-top:.4rem}
+.scan-privacy input{margin-top:.2rem;accent-color:var(--green);flex-shrink:0}
+.scan-privacy a{color:var(--green);font-weight:600}
+.scan-progress{height:3px;background:var(--line);border-radius:2px;margin-top:1.8rem;overflow:hidden}
+.scan-progress-bar{height:100%;background:var(--green);transition:width .5s cubic-bezier(.16,1,.3,1);border-radius:2px}
+.scan-step{display:none}
+.scan-step.active{display:block}
+.scan-done-title{font-family:var(--head);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.02em}
+.scan-done-desc{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);margin-bottom:1.6rem;line-height:1.5}
+.scan-done-checks{display:flex;gap:1.4rem;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);padding-top:1.2rem;border-top:1px solid var(--line)}
+.scan-done-checks span strong{color:var(--green);font-weight:700}
+@media(max-width:600px){.scan-card{padding:1.8rem 1.4rem 1.6rem}.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}
 </style>
 </head>
-<body class="light">
+<body>
+
+<div class="shell">
+
 <nav>
-  <a href="/" class="logo"><svg viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
-  <div class="nav-right">
-    <ul class="nav-links"><li><a href="expertises.html">Expertises</a></li><li><a href="branches.html">Branches</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
-    <a href="contact.html" class="nav-cta">Gratis scan</a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    <div class="theme-toggle" id="themeToggle"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
+  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html" class="active">Cases</a><a href="contact.html">Contact</a></div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <button class="nav-cta" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
 
-<div class="wrap">
-  <a href="cases.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle projecten</a>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+
+<header class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="cases.html">Cases</a> &middot; <span>Wijnzinnig!</span></div>
   <div class="hero-meta">
     <span class="hero-pill">Wijnzinnig!</span>
-    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Sint-Oedenrode</span>
-    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2026</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Sint-Oedenrode</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>2026</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M9 4v16"/></svg>Webapp</span>
   </div>
-  <h1 class="case-title-big">Content Machine &amp; 3-segment Leadgen Platform</h1>
-  <p class="case-subtitle">AI-platform voor wijnbedrijf Wijnzinnig! dat content-generatie en gesegmenteerde leadgeneratie combineert &mdash; voor bedrijven, horeca en particulieren in &eacute;&eacute;n omgeving.</p>
-
-  <div class="hero-laptop">
-    <div class="hero-laptop-inner">
-      <div class="laptop">
-        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="wzWine" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c1820"/><stop offset="100%" stop-color="#7a1f2b"/></linearGradient>
-            <linearGradient id="wzBottomFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#faf6ec" stop-opacity="0"/><stop offset="100%" stop-color="#faf6ec" stop-opacity="1"/></linearGradient>
-          </defs>
-          <rect width="640" height="400" fill="#faf6ec"/>
-          <rect x="0" y="0" width="640" height="108" fill="url(#wzWine)"/>
-          <text x="320" y="22" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" letter-spacing=".15em" fill="#d4c5a8">&#9472;&#9472;&#9472;  WIJNZINNIG! DASHBOARD</text>
-          <rect x="376" y="14" width="86" height="14" rx="7" fill="rgba(74,124,94,.32)"/>
-          <circle cx="386" cy="21" r="2.2" fill="#7dd397"/>
-          <text x="424" y="24" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#a8d4b8">LIVE VERBONDEN</text>
-          <text x="320" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="500" font-style="italic" fill="#f5e6c8">Jouw content &amp; klanten op &eacute;&eacute;n plek</text>
-          <rect x="468" y="14" width="40" height="18" rx="9" fill="rgba(245,230,200,.08)"/>
-          <text x="488" y="26" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" fill="#d4c5a8">Welkom</text>
-          <rect x="512" y="14" width="44" height="18" rx="9" fill="#d4a435"/>
-          <text x="528" y="26" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" font-weight="600" fill="#5c1820">Posts</text>
-          <circle cx="548" cy="18" r="4.5" fill="rgba(92,24,32,.4)"/>
-          <text x="548" y="20" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="4.5" font-weight="700" fill="#5c1820">9</text>
-          <rect x="560" y="14" width="44" height="18" rx="9" fill="rgba(245,230,200,.08)"/>
-          <text x="582" y="26" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" fill="#d4c5a8">Kalender</text>
-          <rect x="608" y="14" width="0" height="18" rx="9" fill="rgba(245,230,200,.08)"/>
-          <text x="616" y="26" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" fill="#d4c5a8">Mijn klanten</text>
-          <rect x="20" y="118" width="600" height="44" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.04)" stroke-width=".5"/>
-          <text x="34" y="138" font-family="Georgia,serif" font-size="12" font-weight="600" font-style="italic" fill="#0f172a">Posts</text>
-          <text x="34" y="153" font-family="'Outfit',sans-serif" font-size="6" fill="#6b7280">Per kanaal een eigen tekst schrijven, of laat AI een opzetje voor maken. Plaats wanneer je er klaar voor bent.</text>
-          <rect x="20" y="172" width="290" height="226" rx="10" fill="#ffffff" stroke="rgba(0,0,0,.04)" stroke-width=".5"/>
-          <rect x="32" y="184" width="266" height="68" rx="8" fill="#fef3c7" stroke="#fde68a" stroke-width=".6"/>
-          <text x="40" y="198" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".06em" fill="#b45309">&#10024; AI-HELPER &mdash; TYPE EEN ONDERWERP OF IDEE</text>
-          <rect x="40" y="204" width="250" height="22" rx="4" fill="#ffffff" stroke="#fde68a" stroke-width=".5"/>
-          <text x="46" y="218" font-family="'Outfit',sans-serif" font-size="6" fill="#9ca3af">Bv. &#39;Nieuwe Sauvignon Blanc binnen, zomers fris&#39;</text>
-          <rect x="40" y="232" width="130" height="14" rx="7" fill="#a78947"/>
-          <text x="105" y="241" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="600" fill="#ffffff">&#10024; Genereer post voor alle 3 kanalen</text>
-          <text x="176" y="241" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">Tip: kies eerst kanalen</text>
-          <text x="32" y="266" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">1. WELKE KANALEN?</text>
-          <rect x="32" y="272" width="66" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-          <rect x="36" y="275" width="14" height="14" rx="3" fill="#0a66c2"/>
-          <text x="43" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="800" fill="#ffffff">in</text>
-          <text x="76" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">LinkedIn</text>
-          <rect x="102" y="272" width="68" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-          <rect x="106" y="275" width="14" height="14" rx="3" fill="url(#wzIg)"/>
-          <defs><linearGradient id="wzIg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e1306c"/><stop offset="100%" stop-color="#fd1d1d"/></linearGradient></defs>
-          <text x="113" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6" font-weight="800" fill="#ffffff">IG</text>
-          <text x="146" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">Instagram</text>
-          <rect x="174" y="272" width="60" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-          <rect x="178" y="275" width="14" height="14" rx="3" fill="#1877f2"/>
-          <text x="185" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="800" fill="#ffffff">f</text>
-          <text x="212" y="285" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6" fill="#374151">Facebook</text>
-          <text x="32" y="308" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="700" letter-spacing=".1em" fill="#374151">2. TEKST PER KANAAL</text>
-          <text x="124" y="308" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">&mdash; elk kanaal eigen tekst</text>
-          <text x="44" y="322" font-family="'Outfit',sans-serif" font-size="6" font-weight="600" fill="#0a66c2">LinkedIn</text>
-          <rect x="36" y="326" width="44" height="1.5" fill="#0a66c2"/>
-          <text x="92" y="322" font-family="'Outfit',sans-serif" font-size="6" fill="#9ca3af">Instagram</text>
-          <text x="142" y="322" font-family="'Outfit',sans-serif" font-size="6" fill="#9ca3af">Facebook</text>
-          <rect x="32" y="332" width="266" height="58" rx="6" fill="#fefce8" stroke="#fbbf24" stroke-width=".6"/>
-          <text x="40" y="346" font-family="'Outfit',sans-serif" font-size="6" fill="#9ca3af">Type je LinkedIn post hier...</text>
-          <text x="40" y="384" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#9ca3af">0/3000 tekens</text>
-          <text x="328" y="190" font-family="Georgia,serif" font-size="9.5" font-weight="600" font-style="italic" fill="#0f172a">&#128161; Idee&euml;n van de Content Machine</text>
-          <text x="328" y="203" font-family="'Outfit',sans-serif" font-size="5.5" fill="#6b7280">9 teksten die de AI voor je heeft geschreven op basis van</text>
-          <text x="328" y="211" font-family="'Outfit',sans-serif" font-size="5.5" fill="#6b7280">RSS-bronnen. Klik &quot;Pak op&quot; om te laden.</text>
-          <rect x="324" y="218" width="296" height="86" rx="8" fill="#ffffff" stroke="rgba(0,0,0,.08)" stroke-width=".5"/>
-          <rect x="332" y="226" width="44" height="11" rx="5.5" fill="rgba(59,130,246,.14)"/>
-          <text x="354" y="234" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="600" fill="#3b82f6">Social_idea</text>
-          <rect x="380" y="226" width="32" height="11" rx="5.5" fill="rgba(59,130,246,.08)"/>
-          <text x="396" y="234" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#3b82f6">social</text>
-          <text x="612" y="234" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">2026-05-24</text>
-          <text x="332" y="252" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#0f172a">&#127863; duurzame wijn</text>
-          <text x="332" y="266" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">Wist je dat er wijnstokken bestaan die nog nooit opnieuw</text>
-          <text x="332" y="274" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">hoefden te beginnen? Op Tenerife liep ik tussen druiven-</text>
-          <text x="332" y="282" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">stokken die ouder zijn dan mijn overgrootouders, nog...</text>
-          <rect x="332" y="288" width="186" height="14" rx="7" fill="#5c1820"/>
-          <text x="425" y="297" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="500" fill="#ffffff">&rarr; Pak deze tekst op</text>
-          <rect x="524" y="288" width="42" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-          <text x="545" y="297" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" fill="#6b7280">&times; Skip</text>
-          <rect x="324" y="310" width="296" height="86" rx="8" fill="#ffffff" stroke="rgba(0,0,0,.08)" stroke-width=".5"/>
-          <rect x="332" y="318" width="44" height="11" rx="5.5" fill="rgba(59,130,246,.14)"/>
-          <text x="354" y="326" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" font-weight="600" fill="#3b82f6">Social_idea</text>
-          <rect x="380" y="318" width="32" height="11" rx="5.5" fill="rgba(59,130,246,.08)"/>
-          <text x="396" y="326" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5" fill="#3b82f6">social</text>
-          <text x="612" y="326" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="5" fill="#9ca3af">2026-05-26</text>
-          <text x="332" y="344" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#0f172a">&#127863; wijn cadeau</text>
-          <text x="332" y="358" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">Wist je dat de Romeinen pijpleidingen aanlegden om wijn</text>
-          <text x="332" y="366" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">naar het graf van een dierbare te laten stromen? Wijn</text>
-          <text x="332" y="374" font-family="'Outfit',sans-serif" font-size="5.5" fill="#374151">geven we al duizenden jaren aan elkaar cadeau. Bij...</text>
-          <rect x="332" y="380" width="186" height="14" rx="7" fill="#5c1820"/>
-          <text x="425" y="389" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" font-weight="500" fill="#ffffff">&rarr; Pak deze tekst op</text>
-          <rect x="524" y="380" width="42" height="14" rx="7" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-          <text x="545" y="389" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="5.5" fill="#6b7280">&times; Skip</text>
-          <rect x="0" y="370" width="640" height="30" fill="url(#wzBottomFade)"/>
-        </svg>
-        <div class="laptop-base"></div>
-      </div>
-    </div>
+  <h1 class="case-title-big">Content Machine en 3-segment Leadgen.</h1>
+  <p class="case-subtitle">AI-platform voor wijnbedrijf Wijnzinnig! dat content-generatie en gesegmenteerde leadgeneratie combineert, voor bedrijven, horeca en particulieren in &eacute;&eacute;n omgeving.</p>
+  <div class="case-stats">
+    <div class="case-stat"><span class="case-stat-num">3</span><span class="case-stat-label">SEGMENTEN</span></div>
+    <div class="case-stat"><span class="case-stat-num">380+</span><span class="case-stat-label">RSS BRONNEN</span></div>
+    <div class="case-stat"><span class="case-stat-num">120+</span><span class="case-stat-label">WIJNEN</span></div>
+    <div class="case-stat"><span class="case-stat-num">di/do/vr</span><span class="case-stat-label">AUTO-PUBLISH</span></div>
   </div>
+  <div class="hero-laptop"><div class="laptop-frame"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#faf7f4"/><rect x="0" y="0" width="640" height="60" fill="#7c2d3a"/><text x="22" y="36" font-family="serif" font-style="italic" font-size="18" font-weight="600" fill="#fff">Wijnzinnig! &middot; Content Machine</text><text x="40" y="100" font-family="Outfit,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Content Machine + 3-segment Leadgen</text></svg></div><div class="laptop-base"></div></div>
+</header>
 
+<section class="section-card reveal">
   <div class="detail-grid">
     <div>
       <div class="detail-section">
-        <div class="detail-section-head">
-          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-          <h2 class="detail-h2">De uitdaging</h2>
-        </div>
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h2 class="detail-h2">De uitdaging</h2></div>
         <p class="detail-p">Daan, eigenaresse van Wijnzinnig!, doet alles wat met content, sales en klantcommunicatie te maken heeft zelf. Bedrijven, horeca en particulieren zijn ieder een eigen segment met een eigen aanpak. Daarbij maandelijkse blog- en social-content voor 120+ wijnen, wijnkaart-aanvragen, kerstpakketten en kalender-pieken zoals Pasen en Koningsdag.</p>
-        <p class="detail-p">Het webshop-systeem is bovendien een custom CMS zonder API: blog publiceren is letterlijk handmatig kopi&euml;ren. Resultaat: drukke weken = geen acquisitie, en kansen voor relatiegeschenken of horeca-afspraken vallen tussen wal en schip.</p>
+        <p class="detail-p">Het webshop-systeem is bovendien een custom CMS zonder API: blog publiceren is letterlijk handmatig kopi&euml;ren. Resultaat: drukke weken betekenen geen acquisitie, en kansen voor relatiegeschenken of horeca-afspraken vallen tussen wal en schip.</p>
       </div>
-
       <div class="detail-section">
-        <div class="detail-section-head">
-          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg></div>
-          <h2 class="detail-h2">De oplossing</h2>
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg></div><h2 class="detail-h2">De oplossing</h2></div>
+        <p class="detail-p">We bouwden een Content Machine dashboard dat di/do/vr om 09:00 automatisch AI-blogs (800 woorden) en social posts (150 woorden) genereert uit een RSS-backlog van 380+ wijn-artikelen. Daan reviewt in &eacute;&eacute;n overzicht en kiest wat live gaat, in haar eigen tone of voice, zonder corporate clich&eacute;s.</p>
+        <p class="detail-p">Daaraan gekoppeld een 3-segment outreach pipeline: bedrijven via LinkedIn-flow (2 berichten via Unipile en opvolg-mail) voor relatiegeschenken, horeca via mail met afspraak-knop (25km radius), particulieren via wijnkaart-automation die Outlook scrapt en aanvragers tagt in MailChimp. Plus kalender-templates voor Pasen, Secretaressedag, Koningsdag, Bouwvak en Kerst, inclusief de kerst-staffel (aug 10% / sept 5% / nov 0%) die vroege bestellingen spreidt.</p>
         </div>
-        <p class="detail-p">We bouwden een Content Machine dashboard dat di/do/vr om 09:00 automatisch AI-blogs (800 woorden) en social posts (150 woorden) genereert uit een RSS-backlog van 380+ wijn-artikelen. Daan reviewt in &eacute;&eacute;n overzicht en kiest wat live gaat &mdash; in haar eigen tone of voice, zonder em-dashes of corporate clich&eacute;s.</p>
-        <p class="detail-p">Daaraan gekoppeld een 3-segment outreach pipeline: bedrijven via LinkedIn-flow (2 berichten via Unipile + opvolg-mail) voor relatiegeschenken, horeca via mail met afspraak-knop (25km radius), particulieren via wijnkaart-automation die Outlook scrapt en aanvragers tagt in MailChimp. Plus kalender-templates voor Pasen, Secretaressedag, Koningsdag, Bouwvak en Kerst &mdash; inclusief de kerst-staffel (aug 10% / sept 5% / nov 0%) die vroege bestellingen spreidt.</p>
       </div>
-
       <div class="detail-section">
-        <div class="detail-section-head">
-          <div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <h2 class="detail-h2">Onze aanpak</h2>
-        </div>
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h2 class="detail-h2">Onze aanpak</h2></div>
         <div class="approach-list">
           <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Content Machine dashboard met di/do/vr 09:00 auto-schedule</div></div>
-          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">AI blog-generator (800w) + social post-generator (150w)</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">AI blog-generator (800w) en social post-generator (150w)</div></div>
           <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">RSS-backlog scraper met 380+ artikelen, max 2-3 per bron</div></div>
-          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">3-segment outreach pipeline: bedrijven / horeca / particulieren</div></div>
-          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">LinkedIn-flow: 2 berichten via Unipile + 1-week-timer + mail-follow-up</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">3-segment outreach pipeline: bedrijven, horeca, particulieren</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">LinkedIn-flow: 2 berichten via Unipile, 1-week-timer, mail-follow-up</div></div>
           <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Horeca-mailflow met afspraak-knop binnen 25km radius</div></div>
-          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Wijnkaart-automation: Outlook scrapen &rarr; MailChimp tag &rarr; template</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Wijnkaart-automation: Outlook scrapen, MailChimp tag, template</div></div>
           <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Kalender-templates: Pasen, Koningsdag, Bouwvak, Kerst-staffel</div></div>
         </div>
       </div>
-
-      <a href="cases.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Alle projecten</a>
-
-      <div class="tech-block">
-        <div class="tech-label">Technologie</div>
-        <div class="tech-pills">
-          <span class="tech-pill">Webapp</span><span class="tech-pill">Content AI</span><span class="tech-pill">OpenAI</span><span class="tech-pill">LinkedIn (Unipile)</span><span class="tech-pill">MailChimp</span><span class="tech-pill">n8n</span><span class="tech-pill">RSS Aggregation</span><span class="tech-pill">Outlook</span>
-        </div>
-      </div>
     </div>
-
     <aside>
       <div class="sidebar-card">
         <h3>Vergelijkbare resultaten?</h3>
-        <p>Ontdek wat een AI-systeem kan doen voor jouw bedrijf.</p>
-        <a href="contact.html" class="sidebar-cta">Plan een demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-      </div>
+        <p>Ontdek wat een AI-systeem kan doen voor jouw bedrijf. Gratis bedrijfsscan, rapport binnen 48 uur.</p>
+        <button class="sidebar-cta" onclick="openScan()">Plan een scan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+        <div class="sidebar-tags">
+          <span class="sidebar-tag-label">Technologie</span><span class="sidebar-tag">Webapp</span><span class="sidebar-tag">Content AI</span><span class="sidebar-tag">OpenAI</span><span class="sidebar-tag">LinkedIn (Unipile)</span><span class="sidebar-tag">MailChimp</span><span class="sidebar-tag">n8n</span><span class="sidebar-tag">RSS Aggregation</span><span class="sidebar-tag">Outlook</span></div>
     </aside>
-  </div>
-</div>
-
-<section class="next-section">
-  <h2 class="next-title">Meer projecten</h2>
-  <div class="next-grid">
-    <div class="next-card-wrap">
-      <div class="laptop">
-        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="640" height="400" fill="#ffffff"/>
-          <rect x="0" y="0" width="640" height="36" fill="#0a0b0e"/>
-          <circle cx="20" cy="18" r="9" fill="#f97316"/>
-          <text x="34" y="15" font-family="'JetBrains Mono',monospace" font-size="6" font-weight="700" fill="#f97316">fietsen</text>
-          <text x="34" y="22" font-family="'JetBrains Mono',monospace" font-size="6" font-weight="700" fill="#f97316">catalogus.nl</text>
-          <text x="80" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="500" fill="#ffffff">Nieuwsbrief Dashboard</text>
-          <rect x="0" y="36" width="120" height="364" fill="#ffffff"/>
-          <line x1="120" y1="36" x2="120" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <rect x="8" y="50" width="104" height="22" rx="5" fill="rgba(249,115,22,.1)"/>
-          <text x="20" y="65" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#f97316">Overzicht</text>
-          <rect x="120" y="36" width="520" height="364" fill="#f5f5f5"/>
-          <rect x="132" y="50" width="56" height="22" rx="11" fill="#34d399"/>
-          <text x="148" y="64" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="600" fill="#052e16">Alle</text>
-          <rect x="132" y="92" width="120" height="76" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="140" y="108" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#111827">Demo Tweewielers</text>
-          <rect x="258" y="92" width="120" height="76" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="266" y="108" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#111827">Voorbeeldfiets B</text>
-          <rect x="384" y="92" width="120" height="76" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="392" y="108" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#111827">Test Cycles</text>
-          <rect x="510" y="92" width="118" height="76" rx="6" fill="#ffffff" stroke="rgba(0,0,0,0.08)" stroke-width=".5"/>
-          <text x="518" y="108" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#111827">Sample Rijwielen</text>
-          <rect x="120" y="168" width="520" height="232" fill="url(#fcFade)"/>
-          <defs><linearGradient id="fcFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5" stop-opacity="0"/><stop offset="100%" stop-color="#f5f5f5" stop-opacity="1"/></linearGradient></defs>
-        </svg>
-        <div class="laptop-base"></div>
-      </div>
-      <a class="case-card" href="case-fietsencatalogus.html">
-        <div class="case-arrow-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-        <div class="case-card-client">Fietsencatalogus</div>
-        <h3 class="case-card-title">Nieuwsbrief Portaal &amp; AI Content Pipeline</h3>
-        <div class="case-card-main-tag">Webapp</div>
-        <div class="case-card-tags"><span class="case-mini-tag">Content AI</span><span class="case-mini-tag">Brevo</span></div>
-      </a>
-    </div>
-    <div class="next-card-wrap">
-      <div class="laptop">
-        <svg viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="640" height="400" fill="#ffffff"/>
-          <rect x="14" y="10" width="26" height="26" rx="6" fill="#10b981"/>
-          <polyline points="19,24 23,24 25,19 27,29 29,24 35,24" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="46" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="700" fill="#0f172a">Smart ESG</text>
-          <text x="46" y="33" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#6b7280">Outreach Dashboard</text>
-          <rect x="138" y="14" width="76" height="20" rx="10" fill="#065f46"/>
-          <text x="152" y="27" font-family="'Outfit',sans-serif" font-size="7" font-weight="600" fill="#ffffff">Leads</text>
-          <rect x="178" y="17" width="30" height="14" rx="7" fill="rgba(255,255,255,.22)"/>
-          <text x="193" y="27" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6.5" font-weight="600" fill="#ffffff">1994</text>
-          <rect x="220" y="14" width="60" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
-          <text x="232" y="27" font-family="'Outfit',sans-serif" font-size="7" fill="#6b7280">Content</text>
-          <rect x="263" y="17" width="14" height="14" rx="7" fill="rgba(245,166,35,.15)"/>
-          <text x="270" y="27" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" font-weight="600" fill="#b45309">11</text>
-          <rect x="286" y="14" width="70" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
-          <text x="298" y="27" font-family="'Outfit',sans-serif" font-size="7" fill="#6b7280">Downloads</text>
-          <rect x="340" y="17" width="14" height="14" rx="7" fill="rgba(249,115,22,.18)"/>
-          <text x="347" y="27" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" font-weight="600" fill="#ea580c">1</text>
-          <rect x="440" y="14" width="86" height="20" rx="10" fill="rgba(245,166,35,.14)"/>
-          <circle cx="450" cy="24" r="2.5" fill="#f5a623"/>
-          <text x="486" y="27" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#b45309">35 te reviewen</text>
-          <rect x="532" y="14" width="46" height="20" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width=".6"/>
-          <text x="555" y="27" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#6b7280">Ververs</text>
-          <rect x="584" y="14" width="50" height="20" rx="10" fill="rgba(52,211,153,.16)"/>
-          <circle cx="593" cy="24" r="2.5" fill="#10b981"/>
-          <text x="613" y="27" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="6.5" font-weight="500" fill="#047857">1994 leads</text>
-          <g font-family="'JetBrains Mono',monospace">
-            <text x="14" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">LEADS</text>
-            <rect x="14" y="61" width="96" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="14" y="61" width="96" height="3" rx="1.5" fill="#10b981"/>
-            <text x="14" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">1994</text>
-            <text x="120" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">TER REVIEW</text>
-            <rect x="120" y="61" width="96" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="120" y="61" width="6" height="3" rx="1.5" fill="#f5a623"/>
-            <text x="120" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">35</text>
-            <text x="226" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">VERZONDEN</text>
-            <rect x="226" y="61" width="96" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="226" y="61" width="60" height="3" rx="1.5" fill="#10b981"/>
-            <text x="226" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">1224</text>
-            <text x="332" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">GEACCEPTEERD</text>
-            <rect x="332" y="61" width="96" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="332" y="61" width="5" height="3" rx="1.5" fill="#10b981"/>
-            <text x="332" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">42</text>
-            <text x="438" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">FOLLOW-UP</text>
-            <rect x="438" y="61" width="96" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="438" y="61" width="14" height="3" rx="1.5" fill="#10b981"/>
-            <text x="438" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">179</text>
-            <text x="544" y="55" font-size="5" letter-spacing=".1em" fill="#9ca3af">GEREAGEERD</text>
-            <rect x="544" y="61" width="86" height="3" rx="1.5" fill="#e5e7eb"/>
-            <rect x="544" y="61" width="5" height="3" rx="1.5" fill="#10b981"/>
-            <text x="544" y="84" font-family="'Outfit',sans-serif" font-size="15" font-weight="700" fill="#0f172a">38</text>
-          </g>
-          <g font-family="'JetBrains Mono',monospace">
-            <rect x="14" y="98" width="34" height="16" rx="8" fill="#065f46"/>
-            <text x="31" y="108" text-anchor="middle" font-size="6" font-weight="600" fill="#ffffff">Alle</text>
-            <rect x="52" y="98" width="34" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <circle cx="60" cy="106" r="2" fill="#f5a623"/>
-            <text x="73" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Tom</text>
-            <rect x="90" y="98" width="34" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <circle cx="98" cy="106" r="2" fill="#3b82f6"/>
-            <text x="111" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Bas</text>
-            <rect x="128" y="98" width="62" height="16" rx="8" fill="rgba(245,166,35,.14)" stroke="rgba(245,166,35,.32)" stroke-width=".5"/>
-            <text x="150" y="108" text-anchor="middle" font-size="6" font-weight="600" fill="#b45309">Ter Review</text>
-            <rect x="174" y="101" width="14" height="10" rx="5" fill="rgba(245,166,35,.28)"/>
-            <text x="181" y="108" text-anchor="middle" font-size="5.5" font-weight="600" fill="#b45309">35</text>
-            <rect x="196" y="98" width="30" height="16" rx="8" fill="#065f46"/>
-            <text x="211" y="108" text-anchor="middle" font-size="6" font-weight="600" fill="#ffffff">Alle</text>
-            <rect x="230" y="98" width="36" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <text x="248" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Nieuw</text>
-            <rect x="270" y="98" width="48" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <text x="294" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Verzenden</text>
-            <rect x="322" y="98" width="48" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <text x="346" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Verzonden</text>
-            <rect x="374" y="98" width="54" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <text x="401" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Geaccepteerd</text>
-            <rect x="432" y="98" width="44" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width=".5"/>
-            <text x="454" y="108" text-anchor="middle" font-size="6" fill="#6b7280">Follow-up</text>
-            <rect x="510" y="96" width="86" height="20" rx="10" fill="#f97316"/>
-            <text x="553" y="109" text-anchor="middle" font-family="'Outfit',sans-serif" font-size="7" font-weight="600" fill="#ffffff">Pitch campagne</text>
-          </g>
-          <rect x="0" y="124" width="640" height="20" fill="#f9fafb"/>
-          <g font-family="'JetBrains Mono',monospace" font-size="5.5" letter-spacing=".06em" fill="#6b7280">
-            <text x="14" y="138">DATUM</text>
-            <text x="62" y="138">AFZENDER</text>
-            <text x="112" y="138">NAAM</text>
-            <text x="198" y="138">BEDRIJF</text>
-            <text x="296" y="138">FUNCTIE</text>
-            <text x="430" y="138">SECTOR</text>
-            <text x="490" y="138">SCORE</text>
-            <text x="528" y="138">HOOK</text>
-            <text x="580" y="138">STATUS</text>
-          </g>
-          <g font-family="'Outfit',sans-serif" font-size="6.8" fill="#111827">
-            <rect x="0" y="148" width="640" height="32" fill="rgba(254,252,232,.4)"/>
-            <text x="14" y="167" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-08</text>
-            <rect x="62" y="158" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="167" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="167">&mdash;&mdash;</text>
-            <text x="198" y="167">&mdash;&mdash;</text>
-            <text x="296" y="167" font-size="6.4" fill="#374151">Director Mining &amp; Energy</text>
-            <text x="430" y="167" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">chemicals</text>
-            <text x="500" y="167" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">7</text>
-            <rect x="525" y="158" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="167" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="158" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="167" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-            <rect x="0" y="180" width="640" height="32" fill="rgba(254,252,232,.2)"/>
-            <text x="14" y="199" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-07</text>
-            <rect x="62" y="190" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="199" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="199">&mdash;&mdash;</text>
-            <text x="198" y="199">&mdash;&mdash;</text>
-            <text x="296" y="199" font-size="6.4" fill="#374151">CEO &amp; Founder &middot; Composites</text>
-            <text x="430" y="199" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">plastics</text>
-            <text x="500" y="199" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">8</text>
-            <rect x="525" y="190" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="199" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="190" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="199" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-            <rect x="0" y="212" width="640" height="32" fill="rgba(254,252,232,.4)"/>
-            <text x="14" y="231" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-07</text>
-            <rect x="62" y="222" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="231" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="231">&mdash;&mdash;</text>
-            <text x="198" y="231">&mdash;&mdash;</text>
-            <text x="296" y="231" font-size="6.4" fill="#374151">Hands-on executive / investor</text>
-            <text x="430" y="231" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">nanotechnology</text>
-            <text x="500" y="231" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">8</text>
-            <rect x="525" y="222" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="231" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="222" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="231" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-            <rect x="0" y="244" width="640" height="32" fill="rgba(254,252,232,.2)"/>
-            <text x="14" y="263" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-07</text>
-            <rect x="62" y="254" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="263" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="263">&mdash;&mdash;</text>
-            <text x="198" y="263">&mdash;&mdash;</text>
-            <text x="296" y="263" font-size="6.4" fill="#374151">CFO &middot; Structuring &amp; Scaling</text>
-            <text x="430" y="263" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">semiconductors</text>
-            <text x="500" y="263" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">7</text>
-            <rect x="525" y="254" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="263" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="254" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="263" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-            <rect x="0" y="276" width="640" height="32" fill="rgba(254,252,232,.4)"/>
-            <text x="14" y="295" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-07</text>
-            <rect x="62" y="286" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="295" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="295">&mdash;&mdash;</text>
-            <text x="198" y="295">&mdash;&mdash;</text>
-            <text x="296" y="295" font-size="6.4" fill="#374151">Field Sales Engineer</text>
-            <text x="430" y="295" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">medical devices</text>
-            <text x="500" y="295" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">7</text>
-            <rect x="525" y="286" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="295" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="286" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="295" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-            <rect x="0" y="308" width="640" height="32" fill="rgba(254,252,232,.2)"/>
-            <text x="14" y="327" font-family="'JetBrains Mono',monospace" font-size="6" fill="#374151">2026-05-07</text>
-            <rect x="62" y="318" width="22" height="13" rx="6.5" fill="#dbeafe"/>
-            <text x="73" y="327" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#1d4ed8">Bas</text>
-            <text x="112" y="327">&mdash;&mdash;</text>
-            <text x="198" y="327">&mdash;&mdash;</text>
-            <text x="296" y="327" font-size="6.4" fill="#374151">Manager QHSE</text>
-            <text x="430" y="327" font-family="'JetBrains Mono',monospace" font-size="5.8" fill="#6b7280">chemicals</text>
-            <text x="500" y="327" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">7</text>
-            <rect x="525" y="318" width="40" height="13" rx="6.5" fill="rgba(245,166,35,.14)"/>
-            <text x="545" y="327" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" font-weight="600" fill="#b45309">Vacature</text>
-            <rect x="572" y="318" width="58" height="13" rx="6.5" fill="#eff6ff" stroke="#dbeafe" stroke-width=".5"/>
-            <text x="601" y="327" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#1e40af">&rarr; Follow-up</text>
-          </g>
-          <rect x="0" y="320" width="640" height="80" fill="url(#esgDashFade)"/>
-          <defs><linearGradient id="esgDashFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="100%" stop-color="#ffffff" stop-opacity="1"/></linearGradient></defs>
-        </svg>
-        <div class="laptop-base"></div>
-      </div>
-      <a class="case-card" href="case-smartesg.html">
-        <div class="case-arrow-btn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-        <div class="case-card-client">Smart ESG</div>
-        <h3 class="case-card-title">AI Leadgen voor MKB-maakindustrie</h3>
-        <div class="case-card-main-tag">AI Agents</div>
-        <div class="case-card-tags"><span class="case-mini-tag">Lead Scoring</span><span class="case-mini-tag">Apollo</span></div>
-      </a>
-    </div>
   </div>
 </section>
 
-<section class="page-cta">
-  <h2>Klaar voor jouw eigen<br>AI-systeem?</h2>
-  <p>Elk project start met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
-  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<section class="section-card reveal">
+  <span class="eyebrow">&gt; C:\meer-projecten</span>
+  <h2 class="section-h2">Andere systemen die we hebben gesmeed.</h2>
+  <div class="next-grid">
+    <a href="case-technetium.html" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-technetium-preview.png" alt="Technetium Talent"></div><div class="case-laptop-base"></div></div>
+      <div class="case-body"><span class="case-client">Technetium Talent</span><div class="case-title-card">Actief AI-vacatureplatform voor de techniek</div><div class="case-tags"><span class="case-tag">Webapp</span><span class="case-tag">AI Matching</span><span class="case-tag">SaaS</span></div></div>
+    </a>
+    <a href="case-smartesg.html" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#fafaf6"/><rect x="0" y="0" width="640" height="34" fill="#0f172a"/><circle cx="22" cy="17" r="6" fill="#34d399"/><text x="38" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="600" fill="#fff">Smart ESG &middot; Outreach Dashboard</text><text x="40" y="78" font-family="'Outfit',sans-serif" font-size="22" font-weight="700" fill="#0f172a">AI Leadgen voor MKB-maakindustrie</text></svg></div><div class="case-laptop-base"></div></div>
+      <div class="case-body"><span class="case-client">Smart ESG</span><div class="case-title-card">AI Leadgen voor MKB-maakindustrie</div><div class="case-tags"><span class="case-tag">Lead Scoring</span><span class="case-tag">LinkedIn</span><span class="case-tag">Apollo</span></div></div>
+    </a>
+    <a href="case-dna-talent.html" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg"><rect width="640" height="400" fill="#f7f9fc"/><rect x="0" y="0" width="640" height="34" fill="#1d6b66"/><text x="22" y="22" font-family="'Outfit',sans-serif" font-size="10" font-weight="700" fill="#fff">DNA-talent &middot; Leadgen</text><text x="40" y="78" font-family="'Outfit',sans-serif" font-size="22" font-weight="700" fill="#0f172a">AI Outreach voor coaches &amp; HR</text></svg></div><div class="case-laptop-base"></div></div>
+      <div class="case-body"><span class="case-client">DNA-talent</span><div class="case-title-card">AI Outreach voor coaches &amp; HR</div><div class="case-tags"><span class="case-tag">Tone-of-Voice</span><span class="case-tag">Unipile</span><span class="case-tag">Content AI</span></div></div>
+    </a>
+  </div>
+</section>
+
+<section class="cta-card reveal">
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
+  <h2>Klaar voor je eigen <em>pipeline</em>?</h2>
+  <p>Eerste rapport binnen 48 uur. Concreet, meetbaar, zonder verplichtingen. Ook als we niet de juiste match zijn.</p>
+  <div class="btn-row"><button class="btn-pill dark" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button><a href="contact.html" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a></div>
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
-    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
-    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a></div>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand"><svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="foot-brand-text">FORGEXE</span></div>
+      <p class="foot-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p>
+    </div>
+    <div class="foot-col"><div class="foot-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-training.html">Trainingen</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><div class="foot-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="foot-col"><div class="foot-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.growth">Instagram</a></div>
   </div>
-  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+  <div class="foot-bottom"><div>&copy; 2026 Forgexe</div><div class="foot-tagline">C:\&gt; execute growth</div><div style="display:flex;gap:1.2rem"><a href="privacy.html" style="color:var(--ink-mut);text-decoration:none">Privacy</a><a href="voorwaarden.html" style="color:var(--ink-mut);text-decoration:none">Voorwaarden</a><a href="disclaimer.html" style="color:var(--ink-mut);text-decoration:none">Disclaimer</a></div></div>
 </footer>
 
-<script>
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileMenu').classList.toggle('open');
-});
-document.querySelectorAll('#mobileMenu a').forEach(function(a) {
-  a.addEventListener('click', function() {
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('mobileMenu').classList.remove('open');
-  });
-});
-document.getElementById('themeToggle').addEventListener('click', function() {
-  document.body.classList.toggle('light');
-});
-</script>
+</div>
 
-<style>
-elevenlabs-convai{--el-branding-display:none}
-elevenlabs-convai::part(branding){display:none!important}
-elevenlabs-convai::part(powered-by){display:none!important}
-</style>
-<elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<div class="scan-modal" id="scanModal" role="dialog" aria-modal="true">
+  <div class="scan-card">
+    <button class="scan-close" onclick="closeScan()" aria-label="Sluiten">&times;</button>
+    <div class="scan-eyebrow">C:\forgexe\scan &middot; gratis bedrijfsscan</div>
+    <div class="scan-step active" id="scanStep1"><h3 class="scan-question">Hoeveel medewerkers heeft je bedrijf?</h3><div class="scan-options"><button class="scan-option" onclick="nextScanStep(1,'medewerkers','1-15')">1 tot 15</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','15-50')">15 tot 50</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','50-200')">50 tot 200</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','200+')">200+</button></div></div>
+    <div class="scan-step" id="scanStep2"><button class="scan-back" onclick="prevScanStep(2)">&larr; Terug</button><h3 class="scan-question">In welke branche ben je actief?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(2,'branche','Maakindustrie')">Maakindustrie</button><button class="scan-option" onclick="nextScanStep(2,'branche','Technische Groothandel')">Technische Groothandel</button><button class="scan-option" onclick="nextScanStep(2,'branche','Zakelijke Dienstverlening')">Zakelijke Dienstverlening</button><button class="scan-option" onclick="nextScanStep(2,'branche','Marketing &amp; Bureaus')">Marketing &amp; Bureaus</button><button class="scan-option" onclick="nextScanStep(2,'branche','Anders')">Anders</button></div></div>
+    <div class="scan-step" id="scanStep3"><button class="scan-back" onclick="prevScanStep(3)">&larr; Terug</button><h3 class="scan-question">Waar ligt je grootste uitdaging?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Meer leads en klanten')">Meer leads en klanten</button><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Efficientere operatie')">Effici&euml;ntere operatie</button><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Beide')">Beide</button></div></div>
+    <div class="scan-step" id="scanStep4"><button class="scan-back" onclick="prevScanStep(4)">&larr; Terug</button><h3 class="scan-question">Welke tools gebruik je nu?</h3><p class="scan-hint">Selecteer alles dat van toepassing is.</p><div class="scan-options col" id="toolOptions"></div><button class="btn-pill primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="scan-step" id="scanStep5"><button class="scan-back" onclick="prevScanStep(5)">&larr; Terug</button><h3 class="scan-question">Hoe snel wil je resultaat zien?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(5,'urgentie','Zo snel mogelijk')">Zo snel mogelijk</button><button class="scan-option" onclick="nextScanStep(5,'urgentie','Binnen 3 maanden')">Binnen 3 maanden</button><button class="scan-option" onclick="nextScanStep(5,'urgentie','Ik orienteer me nog')">Ik ori&euml;nteer me nog</button></div></div>
+    <div class="scan-step" id="scanStep6"><button class="scan-back" onclick="prevScanStep(6)">&larr; Terug</button><h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3><form class="scan-form" onsubmit="submitScan(event)"><div class="scan-form-row"><input type="text" id="scanNaam" placeholder="Jouw naam" required><input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required></div><div class="scan-form-row"><input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required><input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)"></div><label class="scan-privacy"><input type="checkbox" id="scanPrivacy" required><span>Ik ga akkoord met het <a href="privacy.html" target="_blank">privacybeleid</a>.</span></label><button type="submit" class="btn-pill primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></form></div>
+    <div class="scan-step" id="scanDone"><div class="scan-eyebrow">C:\forgexe\scan &middot; processing</div><h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3><p class="scan-done-desc">Je ontvangt jouw rapport binnen 48 uur.</p><div class="scan-done-checks"><span><strong>&#10003;</strong> Rapport binnen 48 uur</span><span><strong>&#10003;</strong> Reactie binnen 2 uur</span><span><strong>&#10003;</strong> 100% gratis</span></div></div>
+    <div class="scan-progress"><div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div></div>
+  </div>
+</div>
+
+<script>
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+var scanData={},SCAN_TOTAL_STEPS=6;
+var toolsByUitdaging={'Meer leads en klanten':['CRM (Zoho, Pipedrive, Salesforce)','LinkedIn','Google Ads','Meta Ads','E-mail marketing (Mailchimp, ActiveCampaign)','WordPress / Webflow','Geen van deze'],'Efficientere operatie':['ERP (SAP, Exact, AFAS)','Boekhoudpakket','Planningssoftware','Google Workspace','Microsoft 365','Slack / Teams','Geen van deze'],'Beide':['CRM (Zoho, Pipedrive, Salesforce)','ERP (SAP, Exact, AFAS)','Google Ads / Meta Ads','Google Workspace','Microsoft 365','Boekhoudpakket','E-mail marketing','Geen van deze']};
+function openScan(){scanData={};document.querySelectorAll('.scan-step').forEach(function(s){s.classList.remove('active')});document.getElementById('scanStep1').classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((1/SCAN_TOTAL_STEPS)*100)+'%';document.getElementById('scanModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeScan(){document.getElementById('scanModal').classList.remove('open');document.body.style.overflow=''}
+function nextScanStep(step,key,value){scanData[key]=value;var next=step+1;if(step===3)buildToolOptions();document.getElementById('scanStep'+step).classList.remove('active');document.getElementById('scanStep'+next).classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((next/SCAN_TOTAL_STEPS)*100)+'%'}
+function prevScanStep(step){var prev=step-1;document.getElementById('scanStep'+step).classList.remove('active');document.getElementById('scanStep'+prev).classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((prev/SCAN_TOTAL_STEPS)*100)+'%'}
+function buildToolOptions(){var c=document.getElementById('toolOptions');var t=toolsByUitdaging[scanData.uitdaging]||toolsByUitdaging['Beide'];c.innerHTML='';t.forEach(function(tool){var b=document.createElement('button');b.className='scan-option';b.type='button';b.textContent=tool;b.onclick=function(){b.classList.toggle('selected')};c.appendChild(b)})}
+function submitTools(){var sel=[];document.querySelectorAll('#toolOptions .selected').forEach(function(b){sel.push(b.textContent)});scanData.tools=sel.length?sel.join(', '):'Geen geselecteerd';document.getElementById('scanStep4').classList.remove('active');document.getElementById('scanStep5').classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((5/SCAN_TOTAL_STEPS)*100)+'%'}
+function submitScan(e){e.preventDefault();scanData.naam=document.getElementById('scanNaam').value;scanData.bedrijf=document.getElementById('scanBedrijf').value;scanData.email=document.getElementById('scanEmail').value;scanData.telefoon=document.getElementById('scanTelefoon').value;document.getElementById('scanStep6').classList.remove('active');document.getElementById('scanDone').classList.add('active');document.getElementById('scanProgressBar').style.width='100%';fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(scanData)}).catch(function(){})}
+document.getElementById('scanModal').addEventListener('click',function(e){if(e.target===this)closeScan()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('scanModal').classList.contains('open'))closeScan()});
+</script>
 </body>
 </html>
