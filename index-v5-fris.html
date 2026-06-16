@@ -1277,30 +1277,20 @@ footer{
 </div>
 
 <script>
-// Pixel-network animation: terminal-style pixels, nodes + traveling data packets
 (function(){
   var c = document.getElementById('asciiWave');
   if (!c) return;
   var ctx = c.getContext('2d');
   var dpr = window.devicePixelRatio || 1;
-  // pixel-snap: round to integer coords for crisp pixels
-  function snap(v){ return Math.round(v); }
   ctx.imageSmoothingEnabled = false;
 
   var W, H;
-  var nodes = [];
-  var edges = [];
-  var packets = [];
-  var bgPixels = []; // achtergrond twinkles
+  // Coarse grid resolutie: kleine cellen = halftone/8-bit pixel feel
+  var CELL = 7;          // 1 pixel = 7px op het scherm
+  var cols, rows;
 
-  var nodeSpec = [
-    [.40,.10],[.56,.06],[.71,.13],[.86,.08],[.94,.22],
-    [.36,.26],[.52,.22],[.68,.30],[.83,.28],[.96,.38],
-    [.42,.42],[.58,.40],[.74,.46],[.90,.44],
-    [.36,.58],[.52,.60],[.68,.64],[.84,.58],[.94,.66],
-    [.40,.76],[.56,.80],[.72,.78],[.88,.82],
-    [.46,.92],[.66,.94]
-  ];
+  // Subtiele traveling brightspots (klein aantal, extra leven)
+  var packets = [];
 
   function resize(){
     var parent = c.parentElement;
@@ -1311,190 +1301,113 @@ footer{
     ctx.setTransform(1,0,0,1,0,0);
     ctx.scale(dpr, dpr);
     ctx.imageSmoothingEnabled = false;
-    nodes = nodeSpec.map(function(p, i){
-      var jx = ((i * 23) % 17 - 8) * 0.4;
-      var jy = ((i * 41) % 13 - 6) * 0.4;
-      return { x: snap(W * p[0] + jx), y: snap(H * p[1] + jy), pulse: 0 };
-    });
-    // edges: elke node verbonden met 2 dichtstbijzijnde buren
-    edges = [];
-    for (var i = 0; i < nodes.length; i++){
-      var dists = [];
-      for (var j = 0; j < nodes.length; j++){
-        if (i === j) continue;
-        var dx = nodes[i].x - nodes[j].x;
-        var dy = nodes[i].y - nodes[j].y;
-        dists.push({ j: j, d: Math.sqrt(dx*dx + dy*dy) });
-      }
-      dists.sort(function(a,b){ return a.d - b.d; });
-      for (var k = 0; k < 2; k++){
-        var jj = dists[k].j;
-        var exists = false;
-        for (var e = 0; e < edges.length; e++){
-          if ((edges[e].from === i && edges[e].to === jj) ||
-              (edges[e].from === jj && edges[e].to === i)){ exists = true; break; }
-        }
-        if (!exists) edges.push({ from: i, to: jj, dx: nodes[jj].x - nodes[i].x, dy: nodes[jj].y - nodes[i].y, len: dists[k].d });
-      }
-    }
-    // background pixels: scatter random twinkles in de rechter zone
-    bgPixels = [];
-    var gridStep = 12;
-    for (var gy = 0; gy < H; gy += gridStep){
-      for (var gx = 0; gx < W; gx += gridStep){
-        var fx = gx / W;
-        if (fx < 0.34) continue;
-        // willekeurige selectie (~40%) + jitter binnen de grid-cel
-        if (Math.random() < 0.42){
-          bgPixels.push({
-            x: snap(gx + Math.random() * gridStep),
-            y: snap(gy + Math.random() * gridStep),
-            phase: Math.random() * Math.PI * 2,
-            speed: 0.008 + Math.random() * 0.018
-          });
-        }
-      }
-    }
+    cols = Math.ceil(W / CELL);
+    rows = Math.ceil(H / CELL);
   }
   resize();
   window.addEventListener('resize', resize);
 
   function spawnPacket(){
-    if (!edges.length) return;
-    var edge = edges[Math.floor(Math.random() * edges.length)];
-    var forward = Math.random() < 0.5;
     packets.push({
-      edge: edge,
-      t: forward ? 0 : 1,
-      speed: (forward ? 1 : -1) * (0.010 + Math.random() * 0.008),
-      bright: Math.random() < 0.5
+      x: Math.random() * cols * 0.4 + cols * 0.4,
+      y: Math.random() * rows * 0.8 + rows * 0.1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.4,
+      life: 0,
+      maxLife: 180 + Math.random() * 140,
+      bright: Math.random() < 0.55
     });
   }
-  for (var s = 0; s < 5; s++) spawnPacket();
+  for (var s = 0; s < 3; s++) spawnPacket();
 
-  function maskAlpha(x, y){
-    var fx = x / W;
-    var leftFade = Math.max(0, (fx - 0.32) / 0.18);
-    leftFade = Math.min(1, leftFade);
-    return leftFade;
+  // Field-functie: combineerde sinussen creeeren organische 'inkt' golven
+  function field(fx, fy, t){
+    var v = 0;
+    v += Math.sin(fx * 2.6 + t * 0.32) * 0.55;
+    v += Math.sin(fy * 2.2 - t * 0.24) * 0.50;
+    v += Math.sin((fx + fy * 0.7) * 1.8 + t * 0.38) * 0.45;
+    v += Math.sin((fx * 0.6 - fy * 1.3) * 2.1 - t * 0.18) * 0.40;
+    v += Math.sin((fx + fy) * 3.2 + t * 0.55) * 0.22;
+    return v; // ~ -2.1 .. 2.1
   }
 
-  // draw helpers — pixel-style
-  function px(x, y, size, color, alpha){
-    ctx.fillStyle = 'rgba(' + color + ',' + alpha.toFixed(3) + ')';
-    ctx.fillRect(snap(x - size/2), snap(y - size/2), size, size);
+  // text-zone mask: links onzichtbaar (waar hero-tekst staat)
+  function maskAlpha(fx){
+    var m = (fx - 0.30) / 0.20;
+    if (m < 0) return 0;
+    if (m > 1) return 1;
+    return m;
   }
 
   var t = 0;
   function draw(){
     ctx.clearRect(0, 0, W, H);
-    t += 1;
+    t += 0.022;
 
-    // ── background twinkles ──
-    for (var b = 0; b < bgPixels.length; b++){
-      var bp = bgPixels[b];
-      var ma = maskAlpha(bp.x, bp.y);
-      if (ma < 0.04) continue;
-      var tw = 0.5 + 0.5 * Math.sin(bp.phase + t * bp.speed);
-      var alpha = (0.05 + tw * 0.12) * ma;
-      px(bp.x, bp.y, 2, '148,163,184', alpha);
-    }
+    // ── render het 'inkt' veld als pixel-grid ──
+    for (var ry = 0; ry < rows; ry++){
+      for (var rx = 0; rx < cols; rx++){
+        var fx = rx / cols;
+        var fy = ry / rows;
+        var ma = maskAlpha(fx);
+        if (ma < 0.03) continue;
 
-    // ── edges (dashed pixel-lijn voor terminal vibe) ──
-    for (var i = 0; i < edges.length; i++){
-      var ed = edges[i];
-      var a = nodes[ed.from], bN = nodes[ed.to];
-      var mx = (a.x + bN.x) / 2;
-      var my = (a.y + bN.y) / 2;
-      var mAlpha = maskAlpha(mx, my);
-      if (mAlpha < 0.05) continue;
-      var steps = Math.floor(ed.len / 5); // 1 pixel per 5 px
-      for (var st = 0; st < steps; st++){
-        // dashed pattern: 2 zichtbaar, 2 niet
-        if ((st % 4) >= 2) continue;
-        var pp = st / steps;
-        var ex = a.x + ed.dx * pp;
-        var ey = a.y + ed.dy * pp;
-        px(ex, ey, 1.5, '52,211,153', 0.18 * mAlpha);
-      }
-    }
+        var v = field(fx * 8, fy * 6, t);
 
-    // ── nodes (pixel-squares) ──
-    for (var n = 0; n < nodes.length; n++){
-      var node = nodes[n];
-      var ma2 = maskAlpha(node.x, node.y);
-      if (ma2 < 0.04) { node.pulse *= 0.92; continue; }
-      var pulse = node.pulse;
-      var coreSize = 3 + pulse * 4;
-      var coreAlpha = (0.4 + pulse * 0.55) * ma2;
-      // outer glow ring: 4 cardinal pixels
-      if (pulse > 0.15){
-        var ringAlpha = pulse * 0.32 * ma2;
-        var offset = 4 + pulse * 3;
-        px(node.x + offset, node.y, 2, '74,222,128', ringAlpha);
-        px(node.x - offset, node.y, 2, '74,222,128', ringAlpha);
-        px(node.x, node.y + offset, 2, '74,222,128', ringAlpha);
-        px(node.x, node.y - offset, 2, '74,222,128', ringAlpha);
-      }
-      // core
-      px(node.x, node.y, coreSize, '52,211,153', coreAlpha);
-      // bright center when pulsing
-      if (pulse > 0.4){
-        px(node.x, node.y, Math.max(2, coreSize - 2), '74,222,128', pulse * ma2);
-      }
-      node.pulse *= 0.93;
-    }
-
-    // ── packets met trail ──
-    for (var p = packets.length - 1; p >= 0; p--){
-      var pk = packets[p];
-      pk.t += pk.speed;
-      var arrived = (pk.speed > 0 && pk.t >= 1) || (pk.speed < 0 && pk.t <= 0);
-      if (arrived){
-        var destIdx = pk.speed > 0 ? pk.edge.to : pk.edge.from;
-        nodes[destIdx].pulse = 1;
-        if (Math.random() < 0.70){
-          var candidates = [];
-          for (var e2 = 0; e2 < edges.length; e2++){
-            if (edges[e2] === pk.edge) continue;
-            if (edges[e2].from === destIdx || edges[e2].to === destIdx) candidates.push(edges[e2]);
-          }
-          if (candidates.length){
-            var nextEdge = candidates[Math.floor(Math.random() * candidates.length)];
-            var goingFwd = nextEdge.from === destIdx;
-            packets.push({
-              edge: nextEdge,
-              t: goingFwd ? 0 : 1,
-              speed: (goingFwd ? 1 : -1) * (0.010 + Math.random() * 0.008),
-              bright: pk.bright
-            });
+        // pakket-influence (lichte boost rondom packets)
+        for (var p = 0; p < packets.length; p++){
+          var pk = packets[p];
+          var pdx = rx - pk.x;
+          var pdy = ry - pk.y;
+          var d2 = pdx * pdx + pdy * pdy;
+          if (d2 < 80){
+            var falloff = Math.exp(-d2 * 0.04);
+            v += falloff * (pk.bright ? 1.3 : 0.8);
           }
         }
-        packets.splice(p, 1);
-        continue;
+
+        // tier-based color mapping (halftone-look)
+        if (v < -0.55) continue;
+        var rC, gC, bC, alpha;
+        if (v > 1.10){
+          rC = 74; gC = 222; bC = 128; // helder lime
+          alpha = Math.min(1, (v - 1.10) * 0.85 + 0.55) * ma;
+        } else if (v > 0.55){
+          rC = 52; gC = 211; bC = 153; // brand groen
+          alpha = ((v - 0.55) / 0.55) * 0.55 * ma + 0.18 * ma;
+        } else if (v > 0.05){
+          rC = 52; gC = 211; bC = 153;
+          alpha = (v / 0.55) * 0.22 * ma + 0.05 * ma;
+        } else if (v > -0.30){
+          // faint amber/grey overgang
+          rC = 245; gC = 166; bC = 35; // amber, heel licht
+          alpha = (0.30 + v) / 0.35 * 0.06 * ma;
+        } else {
+          rC = 148; gC = 163; bC = 184; // koel grijs rust
+          alpha = 0.04 * ma;
+        }
+        if (alpha < 0.025) continue;
+        ctx.fillStyle = 'rgba(' + rC + ',' + gC + ',' + bC + ',' + alpha.toFixed(3) + ')';
+        ctx.fillRect(rx * CELL, ry * CELL, CELL - 1, CELL - 1);
       }
-      var fromN = nodes[pk.edge.from];
-      var toN = nodes[pk.edge.to];
-      var px2 = fromN.x + (toN.x - fromN.x) * pk.t;
-      var py2 = fromN.y + (toN.y - fromN.y) * pk.t;
-      var ma3 = maskAlpha(px2, py2);
-      if (ma3 < 0.04) continue;
-      var col = pk.bright ? '74,222,128' : '52,211,153';
-      // trail: 5 fading pixels behind packet, in edge direction
-      var dirSign = pk.speed > 0 ? -1 : 1; // trail away from movement
-      for (var tr = 1; tr <= 5; tr++){
-        var trailT = pk.t + dirSign * tr * 0.022;
-        if (trailT < 0 || trailT > 1) continue;
-        var tx = fromN.x + (toN.x - fromN.x) * trailT;
-        var ty = fromN.y + (toN.y - fromN.y) * trailT;
-        px(tx, ty, 2, col, (0.5 - tr * 0.09) * ma3);
-      }
-      // core packet pixel
-      px(px2, py2, 4, col, 0.98 * ma3);
     }
 
-    // maintain packet flow (meer activity)
-    if (packets.length < 9 && Math.random() < 0.055) spawnPacket();
+    // ── update packets (subtiele bright brightspots die meandeen) ──
+    for (var p2 = packets.length - 1; p2 >= 0; p2--){
+      var pk2 = packets[p2];
+      pk2.life++;
+      pk2.x += pk2.vx;
+      pk2.y += pk2.vy;
+      // lichte richting-bias zodat ze niet stilstaan
+      pk2.vx += (Math.random() - 0.5) * 0.03;
+      pk2.vy += (Math.random() - 0.5) * 0.03;
+      pk2.vx = Math.max(-0.6, Math.min(0.6, pk2.vx));
+      pk2.vy = Math.max(-0.5, Math.min(0.5, pk2.vy));
+      if (pk2.life > pk2.maxLife || pk2.x < cols * 0.3 || pk2.x > cols + 5 || pk2.y < -5 || pk2.y > rows + 5){
+        packets.splice(p2, 1);
+      }
+    }
+    if (packets.length < 4 && Math.random() < 0.03) spawnPacket();
 
     requestAnimationFrame(draw);
   }
