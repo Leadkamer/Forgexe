@@ -1283,16 +1283,27 @@ footer{
 </div>
 
 <script>
-// Data-pulse network animation in hero — geen tekst, geen undefined-bug
+// Node-network animation: AI agents (nodes) + data packets traveling tussen ze
 (function(){
   var c = document.getElementById('asciiWave');
   if (!c) return;
   var ctx = c.getContext('2d');
   var dpr = window.devicePixelRatio || 1;
-  var W, H, cols, rows;
-  var spacing = 14;
-  var dotSize = 2.4;
-  var waves = [];
+  var W, H;
+  var nodes = [];
+  var edges = [];
+  var packets = [];
+
+  // Posities biased naar rechts+boven (text staat links)
+  // x: 35-95% van width, y: 5-90% van height
+  var nodeSpec = [
+    [.42,.10],[.58,.06],[.72,.14],[.86,.08],[.93,.22],
+    [.38,.28],[.55,.24],[.70,.32],[.84,.30],
+    [.45,.46],[.62,.44],[.78,.50],[.92,.46],
+    [.40,.62],[.58,.66],[.74,.68],[.88,.62],
+    [.46,.82],[.66,.84],[.82,.84]
+  ];
+
   function resize(){
     var parent = c.parentElement;
     var rect = parent.getBoundingClientRect();
@@ -1301,57 +1312,161 @@ footer{
     c.style.width = W + 'px'; c.style.height = H + 'px';
     ctx.setTransform(1,0,0,1,0,0);
     ctx.scale(dpr, dpr);
-    cols = Math.ceil(W / spacing);
-    rows = Math.ceil(H / spacing);
+    nodes = nodeSpec.map(function(p, i){
+      // wat lichte variatie zodat het niet stijf voelt
+      var jx = ((i * 23) % 17 - 8) * 0.6;
+      var jy = ((i * 41) % 13 - 6) * 0.6;
+      return { x: W * p[0] + jx, y: H * p[1] + jy, pulse: 0 };
+    });
+    // Edges: elke node krijgt 2 dichtstbijzijnde buren als edge
+    edges = [];
+    for (var i = 0; i < nodes.length; i++){
+      var dists = [];
+      for (var j = 0; j < nodes.length; j++){
+        if (i === j) continue;
+        var dx = nodes[i].x - nodes[j].x;
+        var dy = nodes[i].y - nodes[j].y;
+        dists.push({ j: j, d: Math.sqrt(dx*dx + dy*dy) });
+      }
+      dists.sort(function(a,b){ return a.d - b.d; });
+      for (var k = 0; k < 2; k++){
+        var jj = dists[k].j;
+        var exists = false;
+        for (var e = 0; e < edges.length; e++){
+          if ((edges[e].from === i && edges[e].to === jj) ||
+              (edges[e].from === jj && edges[e].to === i)){ exists = true; break; }
+        }
+        if (!exists) edges.push({ from: i, to: jj });
+      }
+    }
   }
   resize();
   window.addEventListener('resize', resize);
-  function spawnWave(){
-    var dir = Math.random() < 0.65 ? 1 : -1;
-    waves.push({
-      x: dir > 0 ? -10 : cols + 10,
-      speed: dir * (0.05 + Math.random() * 0.06),
-      intensity: 0.7 + Math.random() * 0.35,
-      yCenter: rows * (0.15 + Math.random() * 0.75),
-      ySpread: 16 + Math.random() * 14
+
+  function spawnPacket(){
+    if (!edges.length) return;
+    var edge = edges[Math.floor(Math.random() * edges.length)];
+    var forward = Math.random() < 0.5;
+    packets.push({
+      edge: edge,
+      t: forward ? 0 : 1,
+      speed: (forward ? 1 : -1) * (0.006 + Math.random() * 0.006),
+      bright: Math.random() < 0.4
     });
   }
-  spawnWave(); spawnWave();
+  // start met 3 packets
+  spawnPacket(); spawnPacket(); spawnPacket();
+
+  function maskAlpha(x, y){
+    // Fade out left+top zone waar hero-tekst staat (max-width:780px → ~60% van card)
+    var fx = x / W;
+    var fy = y / H;
+    // text-zone mask: links boven krijgt 0, rest open
+    var leftFade = Math.max(0, (fx - 0.32) / 0.18); // 0 tot 1 over x=32-50%
+    leftFade = Math.min(1, leftFade);
+    return leftFade;
+  }
+
   function draw(){
     ctx.clearRect(0, 0, W, H);
-    for (var i = waves.length - 1; i >= 0; i--){
-      waves[i].x += waves[i].speed;
-      if (waves[i].x < -14 || waves[i].x > cols + 14) waves.splice(i, 1);
+
+    // edges (subtiele lijnen)
+    for (var i = 0; i < edges.length; i++){
+      var a = nodes[edges[i].from];
+      var b = nodes[edges[i].to];
+      var mx = (a.x + b.x) / 2;
+      var my = (a.y + b.y) / 2;
+      var mAlpha = maskAlpha(mx, my);
+      if (mAlpha < 0.05) continue;
+      ctx.strokeStyle = 'rgba(52,211,153,' + (0.10 * mAlpha).toFixed(3) + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
     }
-    if (Math.random() < 0.012) spawnWave();
-    for (var y = 0; y < rows; y++){
-      for (var x = 0; x < cols; x++){
-        var fx = x / cols;
-        var fy = y / rows;
-        var mask = Math.pow(1 - fx * 0.65, 1.4) * Math.pow(1 - fy * 0.4, 1.1);
-        if (mask < 0.06) continue;
-        var alpha = 0.05 * mask;
-        var bright = 0;
-        for (var w = 0; w < waves.length; w++){
-          var ww = waves[w];
-          var dx = (x - ww.x);
-          var dy = (y - ww.yCenter);
-          var distSq = dx * dx * 0.55 + (dy * dy) / (ww.ySpread * ww.ySpread) * 12;
-          if (distSq < 22){
-            var falloff = Math.exp(-distSq * 0.16);
-            if (falloff > bright) bright = ww.intensity * falloff * mask;
+
+    // nodes
+    for (var n = 0; n < nodes.length; n++){
+      var node = nodes[n];
+      var ma = maskAlpha(node.x, node.y);
+      if (ma < 0.04) { node.pulse *= 0.92; continue; }
+      var r = 2.6 + node.pulse * 5;
+      var glow = 0.35 + node.pulse * 0.55;
+      // outer glow ring (alleen bij pulse)
+      if (node.pulse > 0.15){
+        ctx.fillStyle = 'rgba(74,222,128,' + (node.pulse * 0.18 * ma).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, r + 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // core dot
+      ctx.fillStyle = 'rgba(52,211,153,' + (glow * ma).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+      ctx.fill();
+      // bright core when pulsing
+      if (node.pulse > 0.4){
+        ctx.fillStyle = 'rgba(74,222,128,' + (node.pulse * ma).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, r * 0.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // decay pulse
+      node.pulse *= 0.92;
+    }
+
+    // packets
+    for (var p = packets.length - 1; p >= 0; p--){
+      var pk = packets[p];
+      pk.t += pk.speed;
+      var arrived = (pk.speed > 0 && pk.t >= 1) || (pk.speed < 0 && pk.t <= 0);
+      if (arrived){
+        var destIdx = pk.speed > 0 ? pk.edge.to : pk.edge.from;
+        nodes[destIdx].pulse = 1;
+        // 65% chance: continue from this node via another edge
+        if (Math.random() < 0.65){
+          var candidates = [];
+          for (var e = 0; e < edges.length; e++){
+            if (edges[e] === pk.edge) continue;
+            if (edges[e].from === destIdx || edges[e].to === destIdx) candidates.push(edges[e]);
+          }
+          if (candidates.length){
+            var nextEdge = candidates[Math.floor(Math.random() * candidates.length)];
+            var goingFwd = nextEdge.from === destIdx;
+            packets.push({
+              edge: nextEdge,
+              t: goingFwd ? 0 : 1,
+              speed: (goingFwd ? 1 : -1) * (0.006 + Math.random() * 0.006),
+              bright: pk.bright
+            });
           }
         }
-        alpha = Math.min(0.92, alpha + bright * 0.78);
-        if (alpha < 0.04) continue;
-        var rC, gC, bC;
-        if (bright > 0.32){ rC = 74; gC = 222; bC = 128; }
-        else if (bright > 0.08){ rC = 52; gC = 211; bC = 153; }
-        else { rC = 148; gC = 163; bC = 184; }
-        ctx.fillStyle = 'rgba(' + rC + ',' + gC + ',' + bC + ',' + alpha.toFixed(3) + ')';
-        ctx.fillRect(x * spacing + (spacing - dotSize) / 2, y * spacing + (spacing - dotSize) / 2, dotSize, dotSize);
+        packets.splice(p, 1);
+        continue;
       }
+      var fromN = nodes[pk.edge.from];
+      var toN = nodes[pk.edge.to];
+      var px = fromN.x + (toN.x - fromN.x) * pk.t;
+      var py = fromN.y + (toN.y - fromN.y) * pk.t;
+      var ma2 = maskAlpha(px, py);
+      if (ma2 < 0.04) continue;
+      var col = pk.bright ? '74,222,128' : '52,211,153';
+      // trail / halo
+      ctx.fillStyle = 'rgba(' + col + ',' + (0.22 * ma2).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(px, py, 6, 0, Math.PI * 2);
+      ctx.fill();
+      // core
+      ctx.fillStyle = 'rgba(' + col + ',' + (0.95 * ma2).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+      ctx.fill();
     }
+
+    // maintain packet flow
+    if (packets.length < 6 && Math.random() < 0.035) spawnPacket();
+
     requestAnimationFrame(draw);
   }
   draw();
