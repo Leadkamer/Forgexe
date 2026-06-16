@@ -4,302 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>Planning Optimalisatie &#8212; Forgexe</title>
-<meta name="description" content="Je AI-planner optimaliseert je productieplanning continu. Van orderintake tot productievloer, alles geoptimaliseerd.">
+<title>Planning Optimalisatie | Forgexe</title>
+<meta name="description" content="AI-gestuurde productieplanning en capaciteitsoptimalisatie. Realtime data uit ERP/MES, slimme suggesties die stilstand voorkomen.">
+<meta property="og:title" content="Planning Optimalisatie | Forgexe">
+<meta property="og:description" content="AI-gestuurde productieplanning en capaciteitsoptimalisatie. Realtime data uit ERP/MES, slimme suggesties die stilstand voorkomen.">
+<meta property="og:type" content="website">
 <link rel="canonical" href="https://forgexe.nl/planning-optimalisatie.html">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:0.35s ease;--amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;--amber-glow:rgba(245,166,35,0.12)}
-body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--sl:0.008;--card-hover:#131620;--nav-bg:rgba(10,11,14,0.92);--grid-line:rgba(52,211,153,0.02);--tog-bg:#1e293b;--btn-txt:#0a0b0e;--neon-opacity:0.08;--grid-opacity:0.25;--ill-stroke:var(--green);--ill-opacity:0.7;--success:#4ade80}
-body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--sl:0;--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.95);--grid-line:rgba(52,211,153,0.006);--tog-bg:#d1d5db;--btn-txt:#052e16;--neon-opacity:0.03;--grid-opacity:0.04;--ill-stroke:#059669;--ill-opacity:0.6}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr)}
-::selection{background:var(--green);color:var(--btn-txt)}
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:9999}
-body::before{content:'';position:fixed;inset:0;opacity:.015;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;opacity:var(--grid-opacity);mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 10%,transparent 70%)}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd)}
-.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}.logo-mark{flex-shrink:0}.logo-text{font-size:1.05rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
-.nav-right{display:flex;align-items:center;gap:2rem}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--green)}
-.nav-links li{position:relative;padding-bottom:.75rem;margin-bottom:-.75rem}.nav-dropdown{display:none;position:absolute;top:calc(100% + .75rem);left:50%;transform:translateX(-50%);width:240px;background:var(--bg-el);border:1px solid var(--brd);border-radius:8px;padding:.5rem 0;box-shadow:0 8px 32px rgba(0,0,0,.15);z-index:200}.nav-dropdown::after{content:'';position:absolute;top:-1rem;left:0;right:0;height:1rem}.nav-links li:hover .nav-dropdown{display:block}.nav-dropdown::before{content:'';position:absolute;top:-6px;left:50%;width:12px;height:12px;background:var(--bg-el);border-left:1px solid var(--brd);border-top:1px solid var(--brd);transform:translateX(-50%) rotate(45deg)}.nav-dropdown a{display:flex;align-items:center;gap:.6rem;padding:.55rem 1.25rem;font-size:.68rem;letter-spacing:.06em;text-transform:none;color:var(--dim);transition:all .2s;white-space:nowrap}.nav-dropdown a:hover{color:var(--green);background:var(--card-hover)}.nav-dropdown a svg{width:14px;height:14px;flex-shrink:0;opacity:.5;transition:opacity .2s}.nav-dropdown a:hover svg{opacity:1}
-@keyframes dropIn{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}.nav-links li:hover .nav-dropdown{display:block;animation:dropIn .2s ease}
-.nav-cta{padding:.55rem 1.3rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);transition:all .3s;border-radius:6px}.nav-cta:hover{background:var(--green-lt)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:101}.hamburger span{display:block;width:22px;height:2px;background:var(--dim);transition:all .3s}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}.mobile-menu.open{display:flex}.mobile-menu a{color:var(--txt);text-decoration:none;font-size:1.1rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;transition:color .3s}.mobile-menu a:hover{color:var(--green)}.mobile-menu .nav-cta{display:inline-flex;padding:.75rem 2rem;font-size:.82rem}
-.theme-toggle{display:flex;align-items:center;gap:.4rem;cursor:pointer;-webkit-user-select:none;user-select:none}.toggle-track{width:36px;height:20px;background:var(--tog-bg);border-radius:10px;position:relative;transition:background var(--tr);border:1px solid var(--brd)}.toggle-knob{width:14px;height:14px;background:var(--green);border-radius:50%;position:absolute;top:2px;left:2px;transition:transform var(--tr);box-shadow:0 0 6px rgba(52,211,153,.4)}body.light .toggle-knob{transform:translateX(16px)}.toggle-icon{font-size:.6rem;color:var(--dim);width:12px;text-align:center}
-
-section{padding:10rem 3rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.section-label{font-size:.8rem;color:var(--green);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor{display:inline-block;width:8px;height:15px;background:var(--green);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(52,211,153,.5)}
-.section-label-amber{font-size:.8rem;color:var(--amber);margin-bottom:1.5rem;font-family:var(--mono)}.section-label-cursor-amber{display:inline-block;width:8px;height:15px;background:var(--amber);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(245,166,35,.5)}
-.section-title{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;margin-bottom:2rem}
-.section-desc{font-size:.95rem;color:var(--dim);max-width:560px;line-height:1.9;margin-bottom:4rem}
-.neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--green-deep),var(--green),var(--neon-cyan),transparent);opacity:var(--neon-opacity);max-width:1200px;margin:0 auto}
-.arcade-border{display:none;padding:0 3rem;max-width:1200px;margin:2.5rem auto}.arcade-border-inner{height:1px;background:repeating-linear-gradient(90deg,var(--green) 0px,var(--green) 4px,transparent 4px,transparent 8px,var(--neon-cyan) 8px,var(--neon-cyan) 12px,transparent 12px,transparent 16px);opacity:var(--neon-opacity)}
-.btn-primary{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.25rem;background:var(--green);color:var(--btn-txt);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;font-family:var(--mono);border-radius:6px}.btn-primary:hover{background:var(--green-lt);transform:translateY(-2px);box-shadow:0 12px 40px rgba(52,211,153,.3)}.btn-primary svg{width:14px;height:14px}
-.reveal{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes bl{50%{opacity:0}}
-@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-.page-hero{padding:10rem 3rem 4rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.hero-mockup{max-width:680px;margin-top:3rem;opacity:0;animation:fu .8s ease forwards .9s}
-.hero-mockup-frame{background:var(--bg-el);border:1px solid var(--brd);border-radius:12px;overflow:hidden;transition:all .4s}
-.hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
-body.light .hero-mockup-frame:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
-.hero-mockup-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--brd);background:var(--bg)}
-.hero-mockup-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}
-.hero-mockup-bar-title{font-family:var(--mono);font-size:.65rem;color:var(--dim);margin-left:auto;opacity:.5}
-@keyframes mockupPulse{0%,100%{opacity:.4}50%{opacity:.8}}
-.page-hero .hero-terminal{font-size:.8rem;color:var(--mut);margin-bottom:2rem;opacity:0;animation:fu .8s ease forwards .3s}.page-hero .prompt{color:var(--amber)}.page-hero .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);margin-left:2px;animation:bl 1s step-end infinite;vertical-align:middle;box-shadow:0 0 10px rgba(245,166,35,.5)}
-.page-hero h1{font-family:var(--head);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;opacity:0;animation:fu .8s ease forwards .5s}
-.page-hero h1 em{font-style:normal;color:var(--amber)}
-.page-hero .hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.8;max-width:600px;opacity:0;animation:fu .8s ease forwards .7s}
-
-.feature-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.feature-list li{display:flex;align-items:flex-start;gap:1rem;font-size:.88rem;color:var(--dim);line-height:1.7}
-.feature-list li::before{content:'>';color:var(--amber);font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px}
-
-.steps{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem}
-.step{border:1px solid var(--brd);padding:2rem;transition:background .3s}.step:hover{background:var(--card-hover)}
-.step::before{content:attr(data-step);font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);display:block;margin-bottom:.75rem;line-height:1}
-.step-amber::before{color:var(--amber)}
-.step-title{font-family:var(--head);font-size:1.05rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.01em}
-.step p{font-size:.82rem;color:var(--dim);line-height:1.8}
-
-.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2rem}
-.result{border:1px solid var(--brd);padding:2rem;text-align:center;transition:background .3s}.result:hover{background:var(--card-hover)}
-.result .number{font-size:2rem;font-weight:700;color:var(--green);font-family:var(--mono);line-height:1;margin-bottom:.5rem}
-.result-amber .number{color:var(--amber)}
-.result .label{font-size:.75rem;color:var(--dim);line-height:1.5}
-
-.audience-box{border:1px solid var(--brd);padding:3rem;max-width:700px;margin-top:2rem}
-.audience-box p{font-size:.95rem;color:var(--dim);line-height:1.9}
-
-.page-cta{padding:10rem 3rem;text-align:center;position:relative;z-index:1}.page-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,var(--amber-glow) 0%,transparent 70%);pointer-events:none}
-.page-cta h2{font-family:var(--head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;position:relative}.page-cta p{font-size:.95rem;color:var(--dim);margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;position:relative}
-
-footer{padding:5rem 3rem 2.5rem;border-top:1px solid var(--brd);max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;margin-bottom:2.5rem}
-.footer-col-title{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem}
-.footer-col a{display:block;font-size:.82rem;color:var(--dim);text-decoration:none;margin-bottom:.5rem;transition:color .3s}.footer-col a:hover{color:var(--green)}
-.footer-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}.footer-brand-text{font-size:.9rem;font-weight:700;letter-spacing:.15em;color:var(--green)}
-.footer-brand-desc{font-size:.82rem;color:var(--mut);line-height:1.6;max-width:240px}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--brd)}
-.footer-bottom-left{font-size:.78rem;color:var(--mut)}.footer-tagline{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-top:.25rem;opacity:.4}
-.footer-bottom-right{display:flex;gap:1.25rem}.footer-bottom-right a{font-size:.78rem;color:var(--dim);text-decoration:none;transition:color .3s}.footer-bottom-right a:hover{color:var(--green)}
-
-@media(max-width:768px){nav{padding:.75rem 1.25rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.page-hero{padding:7rem 1.25rem 2rem}section{padding:5rem 1.25rem}.section-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:1.5rem}.section-desc{font-size:.88rem;margin-bottom:2.5rem}.btn-primary{font-size:.78rem;padding:.85rem 1.75rem;width:100%;justify-content:center}.feature-list{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr;gap:1rem}.result .number{font-size:1.5rem}.arcade-border{display:none}.neon-line{margin:0 1.25rem}.footer-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.footer-brand{justify-content:center}.footer-brand-desc{margin:0 auto}.footer-col{text-align:center}.footer-bottom{flex-direction:column;gap:.75rem;text-align:center}}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;--amber:#f5a623;--amber-lt:#ffc247;--page-bg:#f4f6f8;--card-bg:#ffffff;--ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;--line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);--radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;--tr:.32s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:#052e16}
+img{max-width:100%;height:auto;display:block}
+.shell{max-width:1480px;margin:0 auto;padding:18px}
+nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.8rem;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:0 6px 24px rgba(10,11,14,.04)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.nav-center{display:flex;align-items:center;gap:.25rem}
+.nav-center a{position:relative;color:var(--ink-dim);text-decoration:none;font-family:var(--head);font-size:.88rem;font-weight:500;padding:.5rem 1rem;transition:color var(--tr)}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;height:2px;background:var(--green);border-radius:1px}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.75rem 1.2rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);border:none;cursor:pointer}
+.nav-cta:hover{background:#000;transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.hamburger span{width:14px;height:1.5px;background:var(--ink)}
+.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line)}
+@media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--green)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+.page-hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:22ch}
+.page-hero h1 em{font-style:italic;font-weight:600;color:var(--green)}
+.page-hero p.lead{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.18rem);color:var(--ink-dim);max-width:60ch;line-height:1.55;margin-bottom:2rem;font-weight:400}
+.section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;border:1px solid var(--line)}
+@media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.section-h2{font-family:var(--head);font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
+.section-sub{font-family:var(--head);font-size:1rem;color:var(--ink-dim);max-width:580px;line-height:1.65;font-weight:400}
+.steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:3rem}
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr}}
+.step-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem 1.8rem}
+.step-num{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:1rem}
+.step-card h3{font-family:var(--head);font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:.7rem}
+.step-card p{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55}
+.cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
+.cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
+.cta-card h2 em{font-style:italic;font-weight:800}
+.cta-card p{font-family:var(--head);font-size:.96rem;color:#052e16;opacity:.85;margin-bottom:2rem;max-width:480px;line-height:1.55}
+.cta-card .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:900px){.cta-card{padding:2.5rem 1.6rem}}
+.btn-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head);font-weight:600;font-size:.88rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all var(--tr)}
+.btn-pill svg{width:14px;height:14px}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
+.btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-pill.primary{background:var(--green);color:#052e16}
+.btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
+footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
+.foot-brand{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.foot-brand-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.foot-desc{font-family:var(--head);font-size:.85rem;color:var(--ink-dim);line-height:1.55;max-width:280px;margin-bottom:1rem}
+.foot-col-title{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.foot-col a{display:block;font-family:var(--head);font-size:.86rem;color:var(--ink);text-decoration:none;margin-bottom:.5rem;transition:color var(--tr)}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
+.foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
+.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){.nav-center{display:none}}
+@media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}</style>
 </head>
-<body class="light">
-<div class="neon-grid"></div>
+<body>
+<div class="shell">
 <nav>
-  <a href="/" class="logo"><svg class="logo-mark" viewBox="0 0 40 40" width="30" height="30" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="logo-text">FORGEXE</span></a>
-  <div class="nav-right">
-    <ul class="nav-links"><li><a href="expertises.html">Expertises</a><div class="nav-dropdown"><a href="ai-outreach.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>AI Outreach &amp; Leadgen</a><a href="ai-blogger.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>AI Blogger &amp; Content</a><a href="ai-ads.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>AI Ads Manager</a><a href="ai-training.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>AI Training &amp; Workshops</a><a href="ai-rapportage.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>AI Rapportage</a><a href="planning-optimalisatie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Planning Optimalisatie</a><a href="dashboarding.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Dashboarding</a></div></li><li><a href="branches.html">Branches</a><div class="nav-dropdown"><a href="branche-maakindustrie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-4h6v4"/></svg>Maakindustrie</a><a href="branche-technische-groothandel.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Marketing &amp; Bureaus</a></div></li><li><a href="ai-training.html">Trainingen</a></li><li><a href="cases.html">Cases</a></li><li><a href="pricing.html">Prijzen</a></li><li><a href="contact.html">Contact</a></li></ul>
-    <a href="contact.html" class="nav-cta">Gratis scan</a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    <div class="theme-toggle" id="themeToggle" role="button" aria-label="Wissel thema"><span class="toggle-icon">D</span><div class="toggle-track"><div class="toggle-knob"></div></div><span class="toggle-icon">L</span></div>
+  <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
+  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html" class="active">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <a href="contact.html" class="nav-cta">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu"><a href="expertises.html">Expertises</a><a href="branches.html">Branches</a><a href="ai-training.html">Trainingen</a><a href="cases.html">Cases</a><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="contact.html" class="nav-cta">Gratis scan</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
 
 <header class="page-hero">
-  <div class="hero-terminal"><span class="prompt">C:\forgexe\planning&gt;</span> forge --optimize production-schedule<span class="cursor"></span></div>
-  <h1>Planning die<br><em>meedenkt.</em></h1>
-  <p class="hero-sub">Je AI-planner optimaliseert je productieplanning continu. Van orderintake tot productievloer, alles geoptimaliseerd.</p>
-  <div class="hero-mockup">
-    <div class="hero-mockup-frame">
-      <div class="hero-mockup-bar"><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-dot"></span><span class="hero-mockup-bar-title">planning-ai</span></div>
-      <div style="padding:0;min-height:0">
-        <svg viewBox="0 0 520 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-          <text x="14" y="18" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">PRODUCTIEPLANNING</text>
-          <rect x="140" y="4" width="50" height="20" rx="5" fill="rgba(244,63,94,.1)"/><text x="165" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="#f43f5e">Week</text>
-          <rect x="194" y="4" width="50" height="20" rx="5" fill="rgba(244,63,94,.04)"/><text x="219" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" fill="var(--dim)" opacity=".5">Maand</text>
-          <rect x="430" y="4" width="80" height="20" rx="5" fill="#f43f5e"/><text x="470" y="18" text-anchor="middle" font-family="var(--mono)" font-size="7" font-weight="600" fill="var(--bg)">AI Optimaliseer</text>
-          <rect x="10" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
-          <text x="20" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Bezetting</text>
-          <text x="20" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="#34d399">94%</text>
-          <text x="52" y="64" font-family="var(--mono)" font-size="6" fill="#34d399">&#9650;8%</text>
-          <rect x="138" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
-          <text x="148" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Stilstand</text>
-          <text x="148" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="#34d399">-30%</text>
-          <rect x="266" y="32" width="120" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
-          <text x="276" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Levertijd</text>
-          <text x="276" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="var(--txt)">3.2 dgn</text>
-          <text x="328" y="64" font-family="var(--mono)" font-size="6" fill="#34d399">&#9660;2d</text>
-          <rect x="394" y="32" width="116" height="40" rx="6" fill="var(--bg-el)" stroke="var(--brd)" stroke-width=".8"/>
-          <text x="404" y="48" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">Orders actief</text>
-          <text x="404" y="64" font-family="var(--head)" font-size="13" font-weight="700" fill="var(--txt)">18</text>
-          <rect x="10" y="82" width="500" height="20" fill="rgba(244,63,94,.03)"/>
-          <text x="20" y="96" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">TAAK</text>
-          <text x="110" y="96" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">ORDER</text>
-          <text x="180" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Ma 7</text>
-          <text x="230" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Di 8</text>
-          <text x="280" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Wo 9</text>
-          <text x="330" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Do 10</text>
-          <text x="380" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Vr 11</text>
-          <text x="430" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Za 12</text>
-          <text x="480" y="96" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="var(--dim)" opacity=".4">Zo 13</text>
-          <line x1="155" y1="102" x2="155" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="205" y1="102" x2="205" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="255" y1="102" x2="255" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="305" y1="102" x2="305" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="355" y1="102" x2="355" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="405" y1="102" x2="405" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="455" y1="102" x2="455" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="505" y1="102" x2="505" y2="240" stroke="var(--brd)" stroke-width=".3" stroke-dasharray="2 3"/>
-          <line x1="290" y1="88" x2="290" y2="240" stroke="#f43f5e" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
-          <rect x="280" y="82" width="20" height="12" rx="3" fill="#f43f5e"/><text x="290" y="91" text-anchor="middle" font-family="var(--mono)" font-size="6" font-weight="600" fill="var(--bg)">Nu</text>
-          <line x1="10" y1="102" x2="510" y2="102" stroke="var(--brd)" stroke-width=".3"/>
-          <text x="20" y="118" font-family="var(--mono)" font-size="7" fill="var(--txt)">Frezen CNC</text>
-          <text x="110" y="118" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2641</text>
-          <rect x="160" y="107" width="140" height="18" rx="4" fill="rgba(244,63,94,.1)" stroke="rgba(244,63,94,.15)" stroke-width=".5"/>
-          <rect x="160" y="107" width="95" height="18" rx="4" fill="rgba(244,63,94,.2)"/>
-          <text x="200" y="119" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f43f5e">68%</text>
-          <line x1="10" y1="130" x2="510" y2="130" stroke="var(--brd)" stroke-width=".3"/>
-          <text x="20" y="146" font-family="var(--mono)" font-size="7" fill="var(--txt)">Assemblage</text>
-          <text x="110" y="146" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2641</text>
-          <rect x="260" y="135" width="170" height="18" rx="4" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.15)" stroke-width=".5"/>
-          <rect x="260" y="135" width="50" height="18" rx="4" fill="rgba(245,166,35,.2)"/>
-          <text x="280" y="147" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#f5a623">30%</text>
-          <line x1="10" y1="158" x2="510" y2="158" stroke="var(--brd)" stroke-width=".3"/>
-          <text x="20" y="174" font-family="var(--mono)" font-size="7" fill="var(--txt)">Lakstraat</text>
-          <text x="110" y="174" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
-          <rect x="200" y="163" width="200" height="18" rx="4" fill="rgba(52,211,153,.08)" stroke="rgba(52,211,153,.25)" stroke-width=".8"/>
-          <rect x="200" y="163" width="90" height="18" rx="4" fill="rgba(52,211,153,.2)"/>
-          <text x="240" y="175" text-anchor="middle" font-family="var(--mono)" font-size="5.5" fill="#34d399">45%</text>
-          <rect x="394" y="163" width="34" height="18" rx="4" fill="rgba(52,211,153,.15)"/><text x="411" y="175" text-anchor="middle" font-family="var(--mono)" font-size="6" fill="#34d399">&#9733;AI</text>
-          <line x1="10" y1="186" x2="510" y2="186" stroke="var(--brd)" stroke-width=".3"/>
-          <text x="20" y="202" font-family="var(--mono)" font-size="7" fill="var(--txt)">Kwaliteit</text>
-          <text x="110" y="202" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
-          <rect x="340" y="191" width="120" height="18" rx="4" fill="rgba(139,92,246,.08)" stroke="rgba(139,92,246,.15)" stroke-width=".5"/>
-          <text x="350" y="203" font-family="var(--mono)" font-size="5.5" fill="#8b5cf6">Wacht</text>
-          <line x1="10" y1="214" x2="510" y2="214" stroke="var(--brd)" stroke-width=".3"/>
-          <text x="20" y="230" font-family="var(--mono)" font-size="7" fill="var(--txt)">Verzending</text>
-          <text x="110" y="230" font-family="var(--mono)" font-size="6" fill="var(--dim)" opacity=".5">#2639</text>
-          <rect x="420" y="219" width="80" height="18" rx="4" fill="rgba(59,130,246,.08)" stroke="rgba(59,130,246,.15)" stroke-width=".5"/>
-          <text x="430" y="231" font-family="var(--mono)" font-size="5.5" fill="#3b82f6">Gepland</text>
-          <rect x="10" y="248" width="500" height="26" rx="6" fill="rgba(52,211,153,.04)" stroke="rgba(52,211,153,.12)" stroke-width=".5"/>
-          <circle cx="24" cy="261" r="4" fill="#34d399" style="animation:mockupPulse 2s ease-in-out infinite"/><text x="34" y="265" font-family="var(--mono)" font-size="7" fill="#34d399">AI monitoring actief</text>
-          <text x="200" y="265" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">Laatste optimalisatie: 2 min geleden</text>
-          <text x="420" y="265" font-family="var(--mono)" font-size="6.5" fill="var(--dim)" opacity=".5">5 orders in wachtrij</text>
-        </svg>
-      </div>
-    </div>
-  </div>
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="expertises.html">Diensten</a> &middot; <span>Planning Optimalisatie</span></div>
+  <span class="eyebrow">&gt; C:\diensten\planning-optimalisatie</span>
+  <h1>Planning die <em>zelf</em> meedenkt.</h1>
+  <p class="lead">Een AI-medewerker die je productieplanning leest, knelpunten signaleert en optimalisaties voorstelt. Minder stilstand, hogere on-time delivery, zonder dat je planner gek wordt van Excel.</p>
+  <a href="contact.html" class="btn-pill primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
 </header>
-<div class="neon-line"></div>
 
-<section class="reveal">
-  <div class="section-label-amber">C:\planning\wat-het-doet&gt;<span class="section-label-cursor-amber"></span></div>
-  <h2 class="section-title">Wat het doet.</h2>
-  <p class="section-desc">Je AI-planner neemt het over van je achterlopende Excel-sheets. AI optimaliseert je productie continu en signaleert problemen voordat ze ontstaan.</p>
-  <ul class="feature-list">
-    <li>Optimaliseert productieplanning op basis van orders, capaciteit en deadlines</li>
-    <li>Visualiseert alles in een real-time dashboard</li>
-    <li>Signaleert bottlenecks voordat ze problemen worden</li>
-    <li>Integreert met je ERP en planningssoftware</li>
-  </ul>
-</section>
-<div class="neon-line"></div>
-
-<section class="reveal">
-  <div class="section-label-amber">C:\planning\hoe-het-werkt&gt;<span class="section-label-cursor-amber"></span></div>
-  <h2 class="section-title">Hoe het werkt.</h2>
-  <p class="section-desc">Van reactief plannen naar voorspellend optimaliseren in vier stappen.</p>
-  <div class="steps">
-    <div class="step step-amber" data-step="01">
-      <div class="step-title">Systemen koppelen</div>
-      <p>We verbinden je ERP, planningssoftware, CRM en orderhistorie. Alle data wordt real-time gesynchroniseerd voor een compleet beeld.</p>
-    </div>
-    <div class="step step-amber" data-step="02">
-      <div class="step-title">AI-model trainen</div>
-      <p>Op basis van jouw productiedata en patronen leert het AI-model hoe jouw bedrijf werkt. Doorlooptijden, seizoenspatronen, machinecapaciteit &#8212; alles wordt meegenomen.</p>
-    </div>
-    <div class="step step-amber" data-step="03">
-      <div class="step-title">Dashboard bouwen</div>
-      <p>Real-time overzicht van orders, capaciteit en deadlines. Op elke schaal &#8212; van individuele machine tot complete productielijn.</p>
-    </div>
-    <div class="step step-amber" data-step="04">
-      <div class="step-title">Optimaliseren</div>
-      <p>AI stelt planningswijzigingen voor op basis van actuele data. Minder stilstand, betere doorstroming, hogere on-time delivery.</p>
-    </div>
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\hoe-het-werkt</span>
+  <h2 class="section-h2">Hoe het werkt.</h2></div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">&gt; STAP_01</div><h3>Data en systemen</h3><p>We verbinden je ERP, planningssoftware, CRM en orderhistorie. Alle data wordt real-time gesynchroniseerd voor een compleet beeld.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_02</div><h3>AI-modellen trainen</h3><p>Op basis van jouw productiedata en patronen leert het AI-model hoe jouw bedrijf werkt. Doorlooptijden, seizoenspatronen, machinecapaciteit.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_03</div><h3>Real-time inzicht</h3><p>Real-time overzicht van orders, capaciteit en deadlines. Op elke schaal, van individuele machine tot complete productielijn.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_04</div><h3>Slimme optimalisatie</h3><p>AI stelt planningswijzigingen voor op basis van actuele data. Minder stilstand, betere doorstroming, hogere on-time delivery.</p></div>
   </div>
 </section>
-<div class="neon-line"></div>
 
-<section class="reveal">
-  <div class="section-label-amber">C:\planning\resultaten&gt;<span class="section-label-cursor-amber"></span></div>
-  <h2 class="section-title">Resultaten.</h2>
-  <p class="section-desc">Dit is wat AI-gestuurde planning oplevert voor productiebedrijven.</p>
-  <div class="results-grid">
-    <div class="result result-amber"><div class="number">-30%</div><div class="label">minder stilstand door<br>betere planning</div></div>
-    <div class="result result-amber"><div class="number">95%</div><div class="label">on-time delivery<br>(was 78%)</div></div>
-    <div class="result result-amber"><div class="number">Real-time</div><div class="label">overzicht voor<br>management</div></div>
-    <div class="result result-amber"><div class="number">100%</div><div class="label">voorspellend in plaats<br>van reactief plannen</div></div>
+<section class="cta-card reveal">
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
+  <h2>Klaar om je <em>planning ai</em> te smeden?</h2>
+  <p>Eerste rapport binnen 48 uur. Concreet, meetbaar, zonder verplichtingen.</p>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="contact.html" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a>
   </div>
-</section>
-<div class="neon-line"></div>
-
-<section class="reveal">
-  <div class="section-label-amber">C:\planning\voor-wie&gt;<span class="section-label-cursor-amber"></span></div>
-  <h2 class="section-title">Voor wie.</h2>
-  <div class="audience-box">
-    <p>Maakindustrie en productiebedrijven die worstelen met handmatige planning, onvoorspelbare doorlooptijden en gebrek aan overzicht. Je weet dat je productie effici&#235;nter kan, maar je mist de tools en data om dat te realiseren. Onze AI brengt alles samen &#8212; en denkt mee over de optimale planning.</p>
-  </div>
-</section>
-<div class="neon-line"></div>
-
-<section class="page-cta reveal">
-  <h2>Klaar om je AI-planner<br>in te zetten?</h2>
-  <p>We starten met een gratis bedrijfsscan. Concreet, meetbaar, zonder verplichtingen.</p>
-  <a href="contact.html" class="btn-primary">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col"><div class="footer-brand"><svg viewBox="0 0 40 40" width="24" height="24" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="footer-brand-text">FORGEXE</span></div><p class="footer-brand-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p></div>
-    <div class="footer-col"><div class="footer-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-training.html">Trainingen</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><div class="footer-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
-    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.growth">Instagram</a></div>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand"><svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="foot-brand-text">FORGEXE</span></div>
+      <p class="foot-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p>
+    </div>
+    <div class="foot-col"><div class="foot-col-title">Bedrijf</div><a href="pricing.html">Prijzen</a><a href="over-ons.html">Over ons</a><a href="blog.html">Blog</a><a href="cases.html">Cases</a><a href="ai-training.html">Trainingen</a><a href="ai-act.html">AI Act</a><a href="contact.html">Contact</a></div>
+    <div class="foot-col"><div class="foot-col-title">Branches</div><a href="branche-maakindustrie.html">Maakindustrie</a><a href="branche-technische-groothandel.html">Technische Groothandel</a><a href="branche-zakelijke-dienstverlening.html">Zakelijke Dienstverlening</a><a href="branche-marketing-bureaus.html">Marketing &amp; Bureaus</a></div>
+    <div class="foot-col"><div class="foot-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.growth">Instagram</a></div>
   </div>
-  <div class="footer-bottom"><div class="footer-bottom-left">&#169; 2026 Forgexe<div class="footer-tagline">C:\&gt; execute growth</div></div><div class="footer-bottom-right"><a href="privacy.html">Privacy</a><a href="voorwaarden.html">Voorwaarden</a><a href="disclaimer.html">Disclaimer</a></div></div>
+  <div class="foot-bottom"><div>&copy; 2026 Forgexe</div><div class="foot-tagline">C:\&gt; execute growth</div><div style="display:flex;gap:1.2rem"><a href="privacy.html" style="color:var(--ink-mut);text-decoration:none">Privacy</a><a href="voorwaarden.html" style="color:var(--ink-mut);text-decoration:none">Voorwaarden</a><a href="disclaimer.html" style="color:var(--ink-mut);text-decoration:none">Disclaimer</a></div></div>
 </footer>
 
-<script>
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileMenu').classList.toggle('open');
-});
-document.querySelectorAll('#mobileMenu a').forEach(function(a) {
-  a.addEventListener('click', function() {
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('mobileMenu').classList.remove('open');
-  });
-});
-document.getElementById('themeToggle').addEventListener('click', function() {
-  document.body.classList.toggle('light');
-});
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(en) {
-    if (en.isIntersecting) en.target.classList.add('visible');
-  });
-}, {threshold: 0.08});
-document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-</script>
-  <div style="display:flex;gap:.75rem;flex-shrink:0">
-  </div>
 </div>
 <script>
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
 </script>
-
-<style>
-elevenlabs-convai{--el-branding-display:none}
-elevenlabs-convai::part(branding){display:none!important}
-elevenlabs-convai::part(powered-by){display:none!important}
-</style>
-<elevenlabs-convai agent-id="agent_6401kncm3rh8ee8sq65wwbf4mfsk"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
