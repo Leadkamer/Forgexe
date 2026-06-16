@@ -53,6 +53,31 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .step-num{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:1rem}
 .step-card h3{font-family:var(--head);font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:.7rem}
 .step-card p{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55}
+.train-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
+@media(max-width:1000px){.train-grid{grid-template-columns:1fr}}
+.train-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:2.2rem 1.9rem;display:flex;flex-direction:column;position:relative}
+.train-card.popular{background:#052e16;color:#fff;border:none}
+.train-card.popular .train-name,.train-card.popular .train-tagline,.train-card.popular .train-price-num,.train-card.popular .train-price-unit{color:#fff}
+.train-card.popular .train-features li{color:rgba(255,255,255,.85)}
+.train-card.popular .train-features li::before{background:var(--green-lt);color:#052e16}
+.train-card.popular .train-meta{color:rgba(255,255,255,.55)}
+.train-card.popular .btn-pill.dark{background:var(--green);color:#052e16}
+.train-card.popular .btn-pill.dark:hover{background:var(--green-lt)}
+.train-badge{position:absolute;top:-12px;right:1.4rem;background:var(--green);color:#052e16;font-family:var(--mono);font-size:.66rem;font-weight:700;padding:.4rem .8rem;border-radius:7px;letter-spacing:.08em}
+.train-name{font-family:var(--head);font-size:1.3rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);margin-bottom:.35rem}
+.train-tagline{font-family:var(--head);font-size:.88rem;color:var(--ink-dim);margin-bottom:1.6rem}
+.train-price{display:flex;align-items:baseline;gap:.3rem;margin-bottom:.5rem}
+.train-price-num{font-family:var(--head);font-size:2.3rem;font-weight:800;color:var(--ink);letter-spacing:-.025em}
+.train-price-unit{font-family:var(--mono);font-size:.82rem;color:var(--ink-dim)}
+.train-meta{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);margin-bottom:1.6rem}
+.train-features{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem;flex:1}
+.train-features li{font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.45;padding-left:1.6rem;position:relative}
+.train-features li::before{content:'\2713';position:absolute;left:0;top:.05rem;width:18px;height:18px;border-radius:50%;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.train-note{margin-top:2rem;padding:1.2rem 1.4rem;background:#f8fafc;border:1px dashed var(--line-strong);border-radius:var(--radius-md);display:flex;align-items:flex-start;gap:.85rem;font-family:var(--head);font-size:.88rem;color:var(--ink-dim);line-height:1.55}
+.train-note strong{color:var(--ink);font-weight:600}
+.train-note-icon{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center}
+.train-note-icon svg{width:17px;height:17px;stroke-width:1.8}
+.train-card .btn-pill.dark{width:100%;justify-content:center}
 .cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
 .cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
 .cta-card h2 em{font-style:italic;font-weight:800}
@@ -115,6 +140,63 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
     <div class="step-card"><div class="step-num">&gt; STAP_02</div><h3>Praktische trainingsdagen</h3><p>Praktische sessies met jullie eigen tools en processen als uitgangspunt. Geen theorie, maar direct toepasbare kennis.</p></div>
     <div class="step-card"><div class="step-num">&gt; STAP_03</div><h3>Begeleide implementatie</h3><p>Je team gaat direct aan de slag. Wij begeleiden de eerste weken zodat AI daadwerkelijk onderdeel wordt van het dagelijks werk.</p></div>
     <div class="step-card"><div class="step-num">&gt; STAP_04</div><h3>Doorlopende ondersteuning</h3><p>Vragen, optimalisaties, nieuwe use-cases: wij blijven beschikbaar zodat AI zich blijft uitbetalen op de werkvloer.</p></div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\tarieven</span>
+  <h2 class="section-h2">Drie tracks. <em>Vaste prijs</em>, in-company.</h2>
+  <p class="section-sub" style="margin:1rem auto 0">Op jouw locatie of online. Tot 8 deelnemers per training. Alle prijzen exclusief BTW.</p></div>
+  <div class="train-grid">
+    <div class="train-card">
+      <div class="train-name">Workshop</div>
+      <div class="train-tagline">1 dag kennismaking met AI</div>
+      <div class="train-price"><span class="train-price-num">&euro;1.950</span><span class="train-price-unit">/dag</span></div>
+      <div class="train-meta">Tot 8 deelnemers &middot; geen setup</div>
+      <ul class="train-features">
+        <li>1 dag in-company op jouw locatie</li>
+        <li>AI-tools direct toepassen op eigen casus</li>
+        <li>Prompt engineering basics</li>
+        <li>AI-geletterdheid (EU AI Act art. 4)</li>
+        <li>Werkboek + slide-deck na afloop</li>
+      </ul>
+      <button type="button" class="btn-pill dark" onclick="openScan()">Plan een workshop <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    </div>
+    <div class="train-card popular">
+      <span class="train-badge">MEEST GEKOZEN</span>
+      <div class="train-name">Team Track</div>
+      <div class="train-tagline">2 dagen + 4 weken begeleiding</div>
+      <div class="train-price"><span class="train-price-num">&euro;4.950</span><span class="train-price-unit">vaste prijs</span></div>
+      <div class="train-meta">Tot 8 deelnemers &middot; incl. follow-up</div>
+      <ul class="train-features">
+        <li>2 trainingsdagen in-company</li>
+        <li>4 weken implementatie-begeleiding</li>
+        <li>Custom prompts voor jullie processen</li>
+        <li>Wekelijkse vraag-sessie (30 min)</li>
+        <li>AI-geletterdheid + tool-onboarding</li>
+        <li>Use-case-cookbook op maat</li>
+      </ul>
+      <button type="button" class="btn-pill dark" onclick="openScan()">Start Team Track <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    </div>
+    <div class="train-card">
+      <div class="train-name">In-company Program</div>
+      <div class="train-tagline">3 dagen + 3 maanden coaching</div>
+      <div class="train-price"><span class="train-price-num">vanaf &euro;9.500</span></div>
+      <div class="train-meta">Op maat &middot; meerdere teams mogelijk</div>
+      <ul class="train-features">
+        <li>3 trainingsdagen verspreid over kwartaal</li>
+        <li>3 maanden 1-op-1 coaching</li>
+        <li>Train-the-trainer voor interne AI-champion</li>
+        <li>Maandelijkse strategie-sessie met CTO/CEO</li>
+        <li>Custom AI-policy en governance setup</li>
+        <li>Compliance-pakket (EU AI Act art. 4 + 13)</li>
+      </ul>
+      <a href="contact.html" class="btn-pill dark">Plan een gesprek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
+  </div>
+  <div class="train-note">
+    <div class="train-note-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+    <div><strong>Standaard inbegrepen bij elk Forgexe-pakket:</strong> een verkorte AI-geletterdheidstraining voor je team, ter naleving van EU AI Act artikel 4. Hierboven zie je de losse, uitgebreide trainings-tracks voor teams die actief met AI willen werken.</div>
   </div>
 </section>
 
