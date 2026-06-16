@@ -73,6 +73,22 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
 .btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.compare-wrap{margin-top:3rem;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card-bg)}
+.compare-scroll{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;min-width:720px;font-family:var(--head)}
+.compare-table thead th{background:#fafbfc;text-align:left;padding:1.2rem 1.4rem;font-family:var(--head);font-size:.95rem;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);letter-spacing:-.01em}
+.compare-table thead th:first-child{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--ink-mut);letter-spacing:.1em;text-transform:uppercase}
+.compare-table thead th.col-pro{background:#052e16;color:#fff;position:relative}
+.compare-table thead th.col-pro::after{content:'meest gekozen';position:absolute;top:.45rem;right:1rem;background:var(--green);color:#052e16;font-family:var(--mono);font-size:.55rem;font-weight:700;padding:.2rem .5rem;border-radius:5px;letter-spacing:.08em;text-transform:uppercase}
+.compare-table tbody td{padding:1rem 1.4rem;font-size:.9rem;color:var(--ink-dim);border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+.compare-table tbody tr:last-child td{border-bottom:none}
+.compare-table tbody td:first-child{font-weight:600;color:var(--ink);font-size:.88rem}
+.compare-table tbody td.col-pro{background:rgba(5,46,22,.035);color:var(--ink)}
+.compare-table .check{color:var(--green);font-weight:700;font-size:1rem}
+.compare-table .dash{color:var(--ink-mut)}
+.compare-table .mini{display:block;font-family:var(--mono);font-size:.65rem;color:var(--ink-mut);margin-top:.2rem;letter-spacing:.04em;font-weight:500}
+.compare-foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 1.6rem;background:#fafbfc;border-top:1px solid var(--line);font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);flex-wrap:wrap}
+.compare-foot strong{color:var(--ink);font-weight:600;font-family:var(--head);font-size:.85rem}
 .faq-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:.6rem}
 .faq-item{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.1rem 1.4rem}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;list-style:none;font-family:var(--head);font-size:1rem;font-weight:500;color:var(--ink)}
@@ -113,13 +129,13 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 <div class="shell">
 <nav>
   <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
-  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
   <div style="display:flex;align-items:center;gap:.8rem">
-    <a href="contact.html" class="nav-cta">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="index.html#scan" class="nav-cta">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
 
 <header class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Prijzen</span></div>
@@ -145,13 +161,13 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
         <li>Binnen 1 week operationeel</li>
         <li>Maandelijkse rapportage</li>
       </ul>
-      <a href="contact.html" class="btn-pill ghost">Gratis bedrijfsscan</a>
+      <a href="index.html#scan" class="btn-pill ghost">Gratis bedrijfsscan</a>
     </div>
     <div class="tier-card popular">
       <span class="tier-badge">MEEST GEKOZEN</span>
       <div class="tier-name">Forge.Pro</div>
       <div class="tier-tagline">Op maat voor bedrijven die schalen</div>
-      <div class="tier-price"><span class="tier-price-num">vanaf &euro;1.250</span><span class="tier-price-unit">/maand</span></div>
+      <div class="tier-price"><span class="tier-price-num">&euro;1.250</span><span class="tier-price-unit">/maand</span></div>
       <div class="tier-meta">Eenmalige ontwikkelingskosten op maat</div>
       <ul class="tier-features">
         <li>3-4 AI-medewerkers (mix bestaand en nieuw)</li>
@@ -161,7 +177,7 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
         <li>Maandelijkse rapportage</li>
         <li>Tweewekelijkse check-in</li>
       </ul>
-      <a href="contact.html" class="btn-pill dark">Gratis bedrijfsscan</a>
+      <a href="index.html#scan" class="btn-pill dark">Gratis bedrijfsscan</a>
     </div>
     <div class="tier-card">
       <div class="tier-name">Forge.Scale</div>
@@ -177,6 +193,46 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
         <li>24/7 monitoring en optimalisatie</li>
       </ul>
       <a href="contact.html" class="btn-pill ghost">Plan een gesprek</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center">
+    <span class="eyebrow">&gt; C:\vergelijk</span>
+    <h2 class="section-h2">Wat krijg je per pakket.</h2>
+    <p class="section-sub" style="margin:1rem auto 0">Eerlijk overzicht van wat is inbegrepen. Pakketten schalen mee in complexiteit, aantal medewerkers en mate van maatwerk.</p>
+  </div>
+  <div class="compare-wrap">
+    <div class="compare-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Wat zit erin</th>
+            <th>Forge.Start</th>
+            <th class="col-pro">Forge.Pro</th>
+            <th>Forge.Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AI-medewerkers</td><td>2 stuks<span class="mini">kant-en-klaar</span></td><td class="col-pro">3 tot 4<span class="mini">mix bestaand + nieuw</span></td><td>5 of meer<span class="mini">volledig op maat</span></td></tr>
+          <tr><td>Mate van maatwerk</td><td><span class="dash">Geen</span><span class="mini">uit ons aanbod</span></td><td class="col-pro"><span class="check">&#10003;</span> Gericht maatwerk<span class="mini">jouw situatie</span></td><td><span class="check">&#10003;&#10003;</span> 100% maatwerk<span class="mini">eigen brand & UI</span></td></tr>
+          <tr><td>Tijd tot live</td><td>1 week</td><td class="col-pro">4 weken</td><td>6 weken</td></tr>
+          <tr><td>Koppelingen met je tools</td><td>Basis<span class="mini">tot 2 systemen</span></td><td class="col-pro">Uitgebreid<span class="mini">tot 5 systemen</span></td><td>Volledig<span class="mini">onbeperkt</span></td></tr>
+          <tr><td>Proces-optimalisatie</td><td><span class="dash">&minus;</span></td><td class="col-pro"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+          <tr><td>Rapportage</td><td>Maandelijks<span class="mini">standaard template</span></td><td class="col-pro">Maandelijks<span class="mini">aangepast op jouw KPIs</span></td><td>Maandelijks + custom dashboards<span class="mini">in jouw tools</span></td></tr>
+          <tr><td>Strategie & check-ins</td><td><span class="dash">&minus;</span></td><td class="col-pro">Tweewekelijkse check-in</td><td>Maandelijkse strategie-sessie</td></tr>
+          <tr><td>24/7 monitoring & optimalisatie</td><td><span class="dash">&minus;</span></td><td class="col-pro"><span class="dash">Werkdagen</span></td><td><span class="check">&#10003;</span> Inclusief</td></tr>
+          <tr><td>Dedicated Forgexe-team</td><td><span class="dash">&minus;</span></td><td class="col-pro"><span class="dash">Shared</span></td><td><span class="check">&#10003;</span></td></tr>
+          <tr><td>Onboarding & training</td><td>Self-service handleiding</td><td class="col-pro">Live onboarding (2u)</td><td>In-company workshop (halve dag)</td></tr>
+          <tr><td>Looptijd</td><td>Maandelijks opzegbaar</td><td class="col-pro">6 maanden</td><td>12 maanden</td></tr>
+          <tr><td>Setup-investering</td><td><span class="check">&#10003;</span> Geen</td><td class="col-pro">Eenmalig op maat</td><td>Eenmalig op maat</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="compare-foot">
+      <strong>Niet zeker welk pakket?</strong>
+      <a href="index.html#scan" class="btn-pill dark" style="width:auto">Doe de gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     </div>
   </div>
 </section>
@@ -200,7 +256,7 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
   <h2>Twijfel je welk pakket bij je past?</h2>
   <p>Doe de gratis bedrijfsscan, dan komen we daar samen achter. Rapport binnen 48 uur.</p>
   <div class="btn-row">
-    <a href="contact.html" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="index.html#scan" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <a href="contact.html" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a>
   </div>
 </section>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Diensten | Forgexe</title>
-<meta name="description" content="Zeven Forgexe diensten: AI Outreach, AI Blogger, AI Ads, AI Training, AI Rapportage, Planning Optimalisatie en Custom Platforms.">
+<meta name="description" content="Zeven Forgexe diensten waar AI-medewerkers het werk doen: outreach, content, ads, training, rapportage, planning en custom platforms.">
 <meta property="og:title" content="Diensten | Forgexe">
 <meta property="og:description" content="Zeven Forgexe diensten waar AI-medewerkers het werk doen.">
 <meta property="og:type" content="website">
@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;--amber:#f5a623;--amber-lt:#ffc247;--page-bg:#f4f6f8;--card-bg:#ffffff;--ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;--line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);--radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;--tr:.32s cubic-bezier(.4,0,.2,1)}
+<style>
+:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;--amber:#f5a623;--amber-lt:#ffc247;--page-bg:#f4f6f8;--card-bg:#ffffff;--ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;--line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);--radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;--tr:.32s cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -33,26 +34,126 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .nav-cta svg{width:13px;height:13px}
 .hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
 .hamburger span{width:14px;height:1.5px;background:var(--ink)}
-.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line)}
+
+.page-hero{position:relative;padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line);overflow:hidden}
 @media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 95% 12%,rgba(52,211,153,.18) 0%,transparent 48%),radial-gradient(circle at 80% 80%,rgba(245,166,35,.08) 0%,transparent 55%);pointer-events:none}
+.page-hero > *{position:relative}
 .breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
 .breadcrumb a:hover{color:var(--green)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
-.page-hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:22ch}
+.page-hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.2rem;max-width:18ch}
 .page-hero h1 em{font-style:italic;font-weight:600;color:var(--green)}
-.page-hero p.lead{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.18rem);color:var(--ink-dim);max-width:60ch;line-height:1.55;margin-bottom:2rem;font-weight:400}
+.page-hero p.lead{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.18rem);color:var(--ink-dim);max-width:48ch;line-height:1.55;margin-bottom:0;font-weight:400}
+
 .section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;border:1px solid var(--line)}
 @media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.section-eyebrow-center{text-align:center;margin-bottom:2.5rem}
 .section-h2{font-family:var(--head);font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
-.section-sub{font-family:var(--head);font-size:1rem;color:var(--ink-dim);max-width:580px;line-height:1.65;font-weight:400}
-.steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:3rem}
-@media(max-width:900px){.steps-grid{grid-template-columns:1fr}}
-.step-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem 1.8rem}
-.step-num{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:1rem}
-.step-card h3{font-family:var(--head);font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:.7rem}
-.step-card p{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55}
+.section-h2 em{font-style:italic;font-weight:800;color:var(--green)}
+.section-sub{font-family:var(--head);font-size:1rem;color:var(--ink-dim);max-width:580px;margin:0 auto;line-height:1.65;font-weight:400}
+
+.tiles-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:2.5rem}
+@media(max-width:1100px){.tiles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.tiles-grid{grid-template-columns:1fr}}
+.tile{position:relative;border-radius:var(--radius-md);padding:1.8rem 1.7rem;display:flex;flex-direction:column;min-height:300px;text-decoration:none;color:inherit;overflow:hidden;border:1px solid var(--line);transition:all var(--tr)}
+.tile:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(10,11,14,.09)}
+.tile.span-3{grid-column:span 3}
+.tile.span-4{grid-column:span 4}
+.tile.span-2{grid-column:span 2}
+.tile.span-6{grid-column:span 6}
+@media(max-width:1100px){.tile.span-3,.tile.span-4,.tile.span-2,.tile.span-6{grid-column:span 2}}
+@media(max-width:640px){.tile.span-3,.tile.span-4,.tile.span-2,.tile.span-6{grid-column:span 1}}
+.tile-light{background:#fafbfc}
+.tile-mid{background:#fff;border:1px solid var(--line-strong)}
+.tile-dark{background:#052e16;color:#fff;border:none}
+.tile-dark .tile-title,.tile-dark .tile-desc{color:#fff}
+.tile-dark .tile-desc{color:rgba(255,255,255,.78)}
+.tile-dark .tile-tag{background:rgba(255,255,255,.1);color:var(--green-lt)}
+.tile-dark .tile-arrow{background:var(--green);color:#052e16}
+.tile-green{background:var(--green);color:#052e16;border:none}
+.tile-green .tile-title,.tile-green .tile-desc{color:#052e16}
+.tile-green .tile-tag{background:rgba(5,46,22,.1);color:#052e16}
+.tile-green .tile-arrow{background:#052e16;color:var(--green)}
+.tile-amber{background:#fff6e1;border:1px solid #f4d68a}
+.tile-amber .tile-tag{background:rgba(245,166,35,.18);color:#7c4a00}
+.tile-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(52,211,153,.13);color:var(--green-deep);font-family:var(--mono);font-size:.62rem;font-weight:700;padding:.32rem .55rem;border-radius:6px;letter-spacing:.1em;text-transform:uppercase;width:fit-content;margin-bottom:1.1rem}
+.tile-tag svg{width:11px;height:11px}
+.tile-title{font-family:var(--head);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.55rem;color:var(--ink)}
+.tile-desc{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55;max-width:42ch}
+.tile-arrow{position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)}
+.tile:hover .tile-arrow{transform:rotate(-12deg)}
+.tile-arrow svg{width:13px;height:13px}
+.tile-visual{margin-top:auto;padding-top:1.4rem;display:flex;align-items:flex-end;gap:.4rem;flex-wrap:wrap;min-height:80px}
+
+.bars{display:flex;align-items:flex-end;gap:5px;height:62px;width:100%}
+.bars span{flex:1;border-radius:3px;background:rgba(10,11,14,.18);min-width:7px}
+.bars span.hi{background:var(--green)}
+.tile-dark .bars span{background:rgba(255,255,255,.15)}
+.tile-dark .bars span.hi{background:var(--green-lt)}
+.dots-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.dots-row span{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:rgba(10,11,14,.06);font-family:var(--mono);font-size:.62rem;color:var(--ink);font-weight:600}
+.tile-green .dots-row span{background:rgba(5,46,22,.12)}
+.pill-set{display:flex;flex-wrap:wrap;gap:6px}
+.pill-set span{font-family:var(--mono);font-size:.62rem;font-weight:500;color:var(--ink);background:rgba(10,11,14,.06);padding:.28rem .55rem;border-radius:5px;letter-spacing:.04em}
+.tile-dark .pill-set span{background:rgba(255,255,255,.1);color:#fff}
+.tile-amber .pill-set span{background:rgba(245,166,35,.18);color:#7c4a00}
+.terminal-mini{font-family:var(--mono);font-size:.7rem;line-height:1.55;color:#7ee2b6;background:#03130a;border-radius:8px;padding:.85rem 1rem;width:100%;max-height:120px;overflow:hidden}
+.terminal-mini b{color:#fff;font-weight:700}
+.line-meter{height:6px;border-radius:3px;background:rgba(10,11,14,.08);overflow:hidden;width:100%;margin-bottom:.5rem}
+.line-meter span{display:block;height:100%;background:var(--green);border-radius:3px}
+.tile-dark .line-meter{background:rgba(255,255,255,.12)}
+.tile-dark .line-meter span{background:var(--green-lt)}
+
+.tile-meta-row{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);letter-spacing:.08em;margin-top:.7rem;text-transform:uppercase;font-weight:600}
+.tile-dark .tile-meta-row{color:rgba(255,255,255,.55)}
+.tile-meta-row::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+.aanpak-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:3rem;position:relative}
+@media(max-width:1100px){.aanpak-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.aanpak-grid{grid-template-columns:1fr}}
+.step{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.6rem;position:relative}
+.step.dark{background:#052e16;color:#fff;border:none}
+.step.dark .step-name,.step.dark p{color:#fff}
+.step.dark p{color:rgba(255,255,255,.78)}
+.step.dark .step-icon{background:rgba(52,211,153,.18);color:var(--green-lt)}
+.step-icon{width:38px;height:38px;border-radius:9px;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center}
+.step-icon svg{width:18px;height:18px;stroke-width:1.8}
+.step-num-label{font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);letter-spacing:.12em;font-weight:600;text-transform:uppercase}
+.step.dark .step-num-label{color:rgba(255,255,255,.55)}
+.step-name{font-family:var(--head);font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+.step p{font-family:var(--head);font-size:.84rem;color:var(--ink-dim);line-height:1.5}
+
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
+@media(max-width:900px){.result-grid{grid-template-columns:1fr}}
+.result-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem 1.6rem;position:relative;overflow:hidden}
+.result-card.dark{background:#052e16;color:#fff;border:none}
+.result-card.dark .result-num,.result-card.dark .result-label,.result-card.dark p{color:#fff}
+.result-card.dark p{color:rgba(255,255,255,.7)}
+.result-card.green{background:var(--green);color:#052e16;border:none}
+.result-card.green .result-num,.result-card.green .result-label,.result-card.green p{color:#052e16}
+.result-label{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(10,11,14,.04);padding:.28rem .55rem;border-radius:6px;width:fit-content;margin-bottom:1.3rem}
+.result-card.dark .result-label{background:rgba(255,255,255,.08)}
+.result-card.green .result-label{background:rgba(5,46,22,.1)}
+.result-num{font-family:var(--head);font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-.025em;line-height:1;color:var(--ink);margin-bottom:.8rem}
+.result-card p{font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.55}
+.result-card .meter{margin-top:1.4rem;height:6px;border-radius:3px;background:rgba(10,11,14,.07);overflow:hidden}
+.result-card.dark .meter{background:rgba(255,255,255,.12)}
+.result-card.green .meter{background:rgba(5,46,22,.15)}
+.result-card .meter span{display:block;height:100%;background:var(--green);border-radius:3px}
+.result-card.dark .meter span{background:var(--green-lt)}
+.result-card.green .meter span{background:#052e16}
+
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.5rem}
+@media(max-width:900px){.trust-row{grid-template-columns:1fr}}
+.trust-card{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.6rem 1.6rem;display:flex;flex-direction:column;gap:.6rem}
+.trust-icon{width:36px;height:36px;border-radius:9px;background:#0a0b0e;color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem}
+.trust-icon svg{width:18px;height:18px;stroke-width:1.7}
+.trust-card h3{font-family:var(--head);font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+.trust-card p{font-family:var(--head);font-size:.86rem;color:var(--ink-dim);line-height:1.55}
+
 .cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
 .cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
 .cta-card h2 em{font-style:italic;font-weight:800}
@@ -65,8 +166,7 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
 .btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
 .btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.btn-pill.primary{background:var(--green);color:#052e16}
-.btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
+
 footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
 .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
 @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
@@ -78,6 +178,7 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 .foot-col a:hover{color:var(--green)}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
 .foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
+
 .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:translateY(0)}
 @media(max-width:1100px){.nav-center{display:none}}
@@ -86,86 +187,230 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 .mobile-menu.open{display:flex}
 .mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
 .mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
-.steps-grid{grid-template-columns:repeat(3,1fr)}
-@media(max-width:1100px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.steps-grid{grid-template-columns:1fr}}
-.step-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,11,14,.08);border-color:var(--line-strong)}
-.step-card:hover .branch-arrow{background:var(--green);color:#052e16;transform:rotate(-12deg)}</style>
+</style>
 </head>
 <body>
 <div class="shell">
 <nav>
   <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
-  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html" class="active">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+  <div class="nav-center"><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html" class="active">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
   <div style="display:flex;align-items:center;gap:.8rem">
-    <a href="contact.html" class="nav-cta">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="index.html#scan" class="nav-cta">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
 
 <header class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Diensten</span></div>
   <span class="eyebrow">&gt; C:\diensten</span>
-  <h1>Zeven AI-medewerkers, <em>klaar om te smeden</em>.</h1>
-  <p class="lead">Geen losse trucjes maar systemen die met elkaar samenwerken. Pak er &eacute;&eacute;n, pak ze allemaal, of laat ons het juiste combineren in jouw stack.</p>
+  <h1>De AI-werkbank achter <em>jouw</em> groei.</h1>
+  <p class="lead">Zeven AI-medewerkers en een custom platform. Pak er &eacute;&eacute;n, pak ze allemaal, of laat ons ze samen smeden in jouw stack.</p>
 </header>
 
 <section class="section-card reveal">
-  <div style="text-align:center"><span class="eyebrow">&gt; C:\overzicht</span>
-  <h2 class="section-h2">Onze AI-medewerkers.</h2></div>
-  <div class="steps-grid" style="margin-top:3rem">
-    <a href="ai-outreach.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <h3>AI Outreach & Leadgen</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">AI-medewerkers die jouw ideale klanten vinden, persoonlijk benaderen en opvolgen. Geen koude spam, geen handmatig werk: gewoon nieuwe gesp...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+  <div class="section-eyebrow-center">
+    <span class="eyebrow">&gt; C:\overzicht</span>
+    <h2 class="section-h2">Zeven diensten, &eacute;&eacute;n <em>missie</em>.</h2>
+    <p class="section-sub">Geen losse trucjes. Een werkbank waar AI-medewerkers samenwerken aan je groei en je operatie.</p>
+  </div>
+
+  <div class="tiles-grid">
+
+    <a href="ai-outreach.html" class="tile tile-dark span-4">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> LEADGEN</div>
+      <div class="tile-title">AI Outreach &amp; Leadgen</div>
+      <p class="tile-desc">AI-medewerkers vinden je ideale klanten, schrijven persoonlijke openers en volgen op. Multi-channel: LinkedIn, e-mail, signal-triggers. Jij krijgt warme gesprekken in je agenda.</p>
+      <div class="tile-visual">
+        <div class="terminal-mini">
+          &gt; <b>scan</b> doelgroep: MKB maakindustrie<br>
+          &gt; gevonden: 1.224 matches<br>
+          &gt; <b>opener</b>.draft x312<br>
+          &gt; afspraken ingepland: <span style="color:#fff">17</span>
+        </div>
+      </div>
+      <div class="tile-meta-row">24/7 actief &middot; 5 kanalen</div>
     </a>
-    <a href="ai-blogger.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-      <h3>AI Blogger & Content</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Een AI-medewerker die wekelijks ranking-waardige artikelen schrijft in jouw tone of voice. Van keyword-research tot live publicatie, zonde...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="ai-blogger.html" class="tile tile-light span-2">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"/></svg> CONTENT</div>
+      <div class="tile-title">AI Blogger &amp; Content</div>
+      <p class="tile-desc">Wekelijks ranking-waardige artikelen in jouw tone of voice. Van keyword-research tot live publicatie.</p>
+      <div class="tile-visual">
+        <div style="width:100%">
+          <div class="line-meter"><span style="width:88%"></span></div>
+          <div class="line-meter"><span style="width:74%"></span></div>
+          <div class="line-meter"><span style="width:92%"></span></div>
+          <div class="line-meter" style="margin-bottom:0"><span style="width:60%"></span></div>
+        </div>
+      </div>
     </a>
-    <a href="ai-ads.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
-      <h3>AI Ads Manager</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Een AI-medewerker die je campagnes 24/7 monitort, optimaliseert en bijstuurt. Lagere CPA, hogere ROAS, zonder dat je elke ochtend in een d...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="ai-ads.html" class="tile tile-amber span-2">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">CAMPAIGNS</div>
+      <div class="tile-title">AI Ads Manager</div>
+      <p class="tile-desc">Campagnes 24/7 gemonitord, geoptimaliseerd en bijgestuurd. Lagere CPA, hogere ROAS.</p>
+      <div class="tile-visual">
+        <div class="bars">
+          <span style="height:30%"></span><span style="height:42%"></span><span class="hi" style="height:60%;background:#f5a623"></span><span style="height:52%"></span><span class="hi" style="height:78%;background:#f5a623"></span><span style="height:46%"></span><span class="hi" style="height:88%;background:#f5a623"></span><span style="height:65%"></span><span class="hi" style="height:95%;background:#f5a623"></span>
+        </div>
+      </div>
     </a>
-    <a href="ai-training.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <h3>AI Training & Workshops</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Geen theoretische workshops, maar praktische sessies met jullie eigen tools en processen. We trainen je team om AI dagelijks te gebruiken ...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="ai-rapportage.html" class="tile tile-mid span-2">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">DATA &amp; KPI</div>
+      <div class="tile-title">AI Rapportage</div>
+      <p class="tile-desc">Een AI-medewerker die data verbindt, KPIs presenteert en rapportages oplevert waar je iets aan hebt.</p>
+      <div class="tile-visual">
+        <div class="pill-set">
+          <span>HubSpot</span><span>Looker</span><span>SAP</span><span>GA4</span><span>Stripe</span><span>+12</span>
+        </div>
+      </div>
     </a>
-    <a href="ai-rapportage.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <h3>AI Rapportage</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Geen handmatig data verzamelen uit 7 systemen. Een AI-medewerker die je data verbindt, de juiste KPIs presenteert en rapportages levert wa...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="ai-training.html" class="tile tile-green span-2">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">UPSKILL</div>
+      <div class="tile-title">AI Training &amp; Workshops</div>
+      <p class="tile-desc">In-company sessies met jullie eigen tools. Prompt engineering, AI in dagelijks werk, no-fluff.</p>
+      <div class="tile-visual">
+        <div class="dots-row">
+          <span>JK</span><span>MD</span><span>TR</span><span>SH</span><span>+9</span>
+        </div>
+      </div>
     </a>
-    <a href="planning-optimalisatie.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-      <h3>Planning Optimalisatie</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Een AI-medewerker die je productieplanning leest, knelpunten signaleert en optimalisaties voorstelt. Minder stilstand, hogere on-time deli...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="planning-optimalisatie.html" class="tile tile-light span-2">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">OPS</div>
+      <div class="tile-title">Planning Optimalisatie</div>
+      <p class="tile-desc">AI leest je productie- of leveringsplanning, signaleert knelpunten en stelt optimalisaties voor.</p>
+      <div class="tile-visual">
+        <div class="bars">
+          <span class="hi" style="height:55%"></span><span style="height:42%"></span><span class="hi" style="height:78%"></span><span style="height:60%"></span><span class="hi" style="height:88%"></span><span style="height:50%"></span><span class="hi" style="height:72%"></span><span style="height:45%"></span><span class="hi" style="height:92%"></span><span style="height:65%"></span>
+        </div>
+      </div>
     </a>
-    <a href="dashboarding.html" class="step-card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.7rem;position:relative;transition:all var(--tr);padding-right:3.2rem">
-      <div style="width:42px;height:42px;border-radius:10px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;stroke-width:1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <h3>Dashboarding & AI Platform</h3>
-      <p style="font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5">Een custom platform dat exact past bij hoe jullie werken. Dashboards, integraties en automatiseringen op maat, onder jullie eigen merknaam...</p>
-      <div class="branch-arrow" style="position:absolute;top:1.4rem;right:1.4rem;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+
+    <a href="dashboarding.html" class="tile tile-dark span-6">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> AI PLATFORM OP MAAT</div>
+      <div class="tile-title" style="font-size:1.8rem;max-width:24ch">Custom platform onder jouw merknaam, gebouwd met onze AI-first workflow.</div>
+      <p class="tile-desc" style="max-width:54ch">Van klantenportaal tot intern dashboard. Dashboards, integraties en automatiseringen op maat. Pixel-perfect, razendsnel, jouw merk.</p>
+      <div class="tile-visual" style="min-height:60px">
+        <div class="pill-set">
+          <span>Klantenportaal</span><span>CRM-integratie</span><span>Custom AI agents</span><span>Live dashboards</span><span>White-label</span><span>SSO</span>
+        </div>
+      </div>
     </a>
+
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div class="section-eyebrow-center">
+    <span class="eyebrow">&gt; C:\aanpak</span>
+    <h2 class="section-h2">Vijf stappen van scan tot <em>smeden</em>.</h2>
+    <p class="section-sub">Geen maanden vooronderzoek. Binnen vier weken draait stap 1 in productie.</p>
+  </div>
+
+  <div class="aanpak-grid">
+    <div class="step">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <div class="step-num-label">STAP_01</div>
+      <div class="step-name">Bedrijfsscan</div>
+      <p>30 min online. Wij scannen je groei-kanalen en processen. Rapport binnen 48 uur.</p>
+    </div>
+    <div class="step dark">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="step-num-label">STAP_02</div>
+      <div class="step-name">Discovery</div>
+      <p>Een dag langs de processen. Drie grootste hefbomen analyseren en valideren.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <div class="step-num-label">STAP_03</div>
+      <div class="step-name">Scope &amp; roadmap</div>
+      <p>Helder voorstel met scope, planning en realistische ROI. Vaste prijs, geen verrassingen.</p>
+    </div>
+    <div class="step dark">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6"/><path d="M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24"/><path d="M1 12h6m10 0h6"/><path d="M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg></div>
+      <div class="step-num-label">STAP_04</div>
+      <div class="step-name">Smeden &amp; testen</div>
+      <p>We bouwen op jouw bestaande stack. Tussentijdse demo's, geen big-bang oplevering.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="step-num-label">STAP_05</div>
+      <div class="step-name">Compound</div>
+      <p>Handover, training en doorlopende SLA. Wij monitoren, optimaliseren en schalen mee.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div class="section-eyebrow-center">
+    <span class="eyebrow">&gt; C:\resultaten</span>
+    <h2 class="section-h2">Meetbaar verschil, vanaf <em>dag &eacute;&eacute;n</em>.</h2>
+    <p class="section-sub">Cijfers uit echte Forgexe-projecten in het Nederlandse MKB. Niet representatief voor iedereen, wel realistisch.</p>
+  </div>
+  <div class="result-grid">
+    <div class="result-card dark">
+      <span class="result-label">SALES</span>
+      <div class="result-num">+312%</div>
+      <p>Meer gekwalificeerde aanvragen na 6 maanden AI Outreach bij een SaaS-klant.</p>
+      <div class="meter"><span style="width:82%"></span></div>
+    </div>
+    <div class="result-card green">
+      <span class="result-label">OPS</span>
+      <div class="result-num">17u</div>
+      <p>Per week minder handwerk bij een technische groothandel na 2 AI-medewerkers.</p>
+      <div class="meter"><span style="width:68%"></span></div>
+    </div>
+    <div class="result-card">
+      <span class="result-label">MARKETING</span>
+      <div class="result-num">3,4x</div>
+      <p>Hogere ROAS bij een DTC-merk binnen 90 dagen na overstap naar AI Ads management.</p>
+      <div class="meter"><span style="width:74%"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div class="section-eyebrow-center">
+    <span class="eyebrow">&gt; C:\beveiliging</span>
+    <h2 class="section-h2">AVG-proof, EU-data, jouw <em>regie</em>.</h2>
+    <p class="section-sub">We bouwen volgens privacy-by-design. Jouw data blijft van jou, in de EU, met strikte toegangscontrole.</p>
+  </div>
+  <div class="trust-row">
+    <div class="trust-card">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+      <h3>End-to-end versleuteling</h3>
+      <p>AES-256 in transit en at rest. Zero-knowledge waar mogelijk. Jouw data is veilig bij ons.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <h3>AVG-proof &amp; EU-hosted</h3>
+      <p>Data blijft in de EU. Privacy by design in elk project dat we bouwen, AI Act compliant.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c-1.27 4.39-5.18 7.5-9 7.5-3.82 0-7.73-3.11-9-7.5 1.27-4.39 5.18-7.5 9-7.5 3.82 0 7.73 3.11 9 7.5z"/></svg></div>
+      <h3>Strikte toegangscontrole</h3>
+      <p>Gebruikers zien alleen hun eigen data. Toegang afgedwongen op database-niveau, audit-trail standaard.</p>
+    </div>
   </div>
 </section>
 
 <section class="cta-card reveal">
-  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\anders</div>
-  <h2>Niet zeker welke <em>past</em>?</h2>
-  <p>Doe de gratis bedrijfsscan, dan komen we samen achter wat de grootste hefboom is voor jouw bedrijf.</p>
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
+  <h2>Niet zeker welke dienst <em>past</em>?</h2>
+  <p>Doe de gratis bedrijfsscan, dan komen we samen achter wat de grootste hefboom is voor jouw bedrijf. Rapport binnen 48 uur.</p>
   <div class="btn-row">
-    <a href="contact.html" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="index.html#scan" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <a href="contact.html" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a>
   </div>
 </section>

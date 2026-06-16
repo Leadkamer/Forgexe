@@ -634,10 +634,11 @@ footer{
     <div class="proof-bar-sub">Maakindustrie &middot; Technische groothandel &middot; Zakelijke dienstverlening &middot; Marketing</div>
   </div>
   <div class="proof-logos">
-    <img src="logo-ahrend.png" alt="Ahrend">
-    <img src="logo-vanmeurs.svg" alt="Van Meurs">
+    <img src="logo-realcob.png" alt="RealCob">
+    <img src="logo-technetium.svg" alt="Technetium">
+    <img src="logo-smartesg.webp" alt="Smart ESG">
     <img src="logo-dnatalent.png" alt="DNA-talent">
-    <span class="proof-more">en 27 anderen</span>
+    <span class="proof-more">en 26 anderen</span>
   </div>
   <a href="cases.html" class="proof-cta">
     Bekijk cases
@@ -981,11 +982,12 @@ footer{
     </div>
   </div>
   <div class="logos-row">
-    <img src="logo-ahrend.png" alt="Ahrend">
-    <img src="logo-cobotx.png" alt="CobotX">
-    <img src="logo-chargeblock.png" alt="ChargeBlock">
-    <img src="logo-vanmeurs.svg" alt="Van Meurs">
+    <img src="logo-realcob.png" alt="RealCob">
+    <img src="logo-technetium.svg" alt="Technetium">
+    <img src="logo-smartesg.webp" alt="Smart ESG">
     <img src="logo-dnatalent.png" alt="DNA-talent">
+    <img src="logo-wijnzinnig.webp" alt="Wijnzinnig">
+    <img src="logo-mploy.svg" alt="Mploy">
   </div>
 </section>
 
@@ -1423,6 +1425,9 @@ function openScan(){
   document.getElementById('scanProgressBar').style.width = Math.round((1/SCAN_TOTAL_STEPS)*100) + '%';
   document.getElementById('scanModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+if (window.location.hash === '#scan'){
+  window.addEventListener('DOMContentLoaded', function(){ setTimeout(openScan, 220); });
 }
 function closeScan(){
   document.getElementById('scanModal').classList.remove('open');
