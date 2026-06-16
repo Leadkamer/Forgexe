@@ -126,7 +126,7 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .location-card .right-btn svg{width:13px;height:13px}
 @media(max-width:760px){.location-card .right-btn{position:static;margin-top:1.2rem;width:fit-content}}
 
-/* vacatures CTA (green airflows-style) */
+/* partnerprogramma CTA (green airflows-style) */
 .cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
 .cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
 .cta-card h2 em{font-style:italic;font-weight:800}
@@ -175,52 +175,12 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 </nav>
 <div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
 
-<!-- ════════════ HERO SPLIT ════════════ -->
-<div class="hero-split">
-  <header class="hero-main">
-    <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Over ons</span></div>
-    <span class="eyebrow">&gt; C:\over-forgexe</span>
-    <h1>Op een missie om MKB-bedrijven te <em>smeden</em> tot AI-first.</h1>
-    <p class="lead">Geen bureau met 50 man. Een compact team dat AI-medewerkers bouwt die jouw bedrijf 24/7 laten draaien. Volledige eigendom voor de klant, geen vendor lock-in.</p>
-  </header>
-  <aside class="hero-side">
-    <div>
-      <div class="hs-eyebrow">&gt; C:\stats</div>
-      <p>Klein team. Korte lijnen. Iedereen die je spreekt is ook degene die bouwt.</p>
-    </div>
-    <div class="hs-meta">
-      <div>4 specialisten + <b>4 AI-medewerkers</b></div>
-      <div>30+ MKB-projecten</div>
-      <div>HQ: Nederland, oost</div>
-    </div>
-  </aside>
-</div>
-
-<!-- ════════════ WORKSPACE STRIP (vervangt foto's met stylized terminal-frames) ════════════ -->
-<div class="workspace-strip reveal">
-  <div class="ws-frame">
-    <div class="ws-stage">
-      <div class="ws-mini-terminal">
-        &gt; <b>forgexe</b> &middot; v3<br>
-        &gt; init pipeline...<br>
-        &gt; <b>agents</b>.spawn(4)<br>
-        &gt; ok &middot; running &nbsp;<span style="color:#fff">[●]</span>
-      </div>
-    </div>
-    <div class="ws-overlay"></div>
-    <div class="ws-label"><span class="ws-name">Werkplaats</span><span class="ws-tag">live</span></div>
-  </div>
-  <div class="ws-frame amber">
-    <div class="ws-stage"><div class="ws-grid-dots" style="background-image:radial-gradient(circle,rgba(245,166,35,.32) 1px,transparent 1.4px)"></div></div>
-    <div class="ws-overlay" style="background:linear-gradient(180deg,transparent 30%,rgba(15,9,3,.85) 100%)"></div>
-    <div class="ws-label"><span class="ws-name">FORGE.OPS</span><span class="ws-tag" style="color:#ffc247">ops</span></div>
-  </div>
-  <div class="ws-frame green">
-    <div class="ws-stage"><div class="ws-circuit"></div><div class="ws-grid-dots"></div></div>
-    <div class="ws-overlay"></div>
-    <div class="ws-label"><span class="ws-name">FORGE.GROWTH</span><span class="ws-tag">growth</span></div>
-  </div>
-</div>
+<header class="hero-main" style="margin:14px 0">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Over ons</span></div>
+  <span class="eyebrow">&gt; C:\over-forgexe</span>
+  <h1>Op een missie om MKB-bedrijven te <em>smeden</em> tot AI-first.</h1>
+  <p class="lead">Geen bureau met 50 man. Een compact team dat AI-medewerkers bouwt die jouw bedrijf 24/7 laten draaien. Volledige eigendom voor de klant, geen vendor lock-in.</p>
+</header>
 
 <!-- ════════════ PRINCIPES (airflows-inspired 4-grid, one green) ════════════ -->
 <section class="section-card reveal">
@@ -322,20 +282,20 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
   </svg>
   <div style="position:relative;z-index:2">
     <span class="loc-tag">Waar we werken</span>
-    <h2 class="loc-h2">Vanuit het oosten, voor <em>heel Nederland</em>.</h2>
-    <p class="loc-sub">Compact team, korte lijnen, hands-on op locatie waar het waarde toevoegt. Klanten verspreid over de Benelux en Duitsland.</p>
+    <h2 class="loc-h2">Vanuit Panningen, voor <em>heel Nederland</em>.</h2>
+    <p class="loc-sub">Compact team in het hart van Noord-Limburg, korte lijnen, hands-on op locatie waar het waarde toevoegt. Klanten verspreid over de Benelux en Duitsland.</p>
   </div>
-  <a href="contact.html" class="right-btn">Werk bij ons <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  <a href="contact.html" class="right-btn">Partner worden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
 </section>
 
 <!-- ════════════ CTA ════════════ -->
 <section class="cta-card reveal">
   <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
-  <h2>Wil je deel uitmaken van het <em>verhaal</em>?</h2>
-  <p>We groeien en zoeken engineers en strategen die geloven dat AI de toekomst van bedrijfssoftware is. Of word klant en laat ons jouw systeem smeden.</p>
+  <h2>Wil je <em>partner</em> worden van Forgexe?</h2>
+  <p>Wij werken samen met bureaus, freelancers en software-partners die AI-medewerkers bij hun klanten willen inzetten. Stuur een bericht, dan kijken we of er een match is.</p>
   <div class="btn-row">
-    <a href="index.html#scan" class="btn-pill dark">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-    <a href="contact.html" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a>
+    <a href="contact.html" class="btn-pill dark">Word partner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="index.html#scan" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Gratis bedrijfsscan</a>
   </div>
 </section>
 

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mploy Blog Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e13;
+    --panel: #131920;
+    --panel-2: #0f141a;
+    --border: #1e2832;
+    --text: #e8ecf1;
+    --muted: #6b7a8a;
+    --accent: #34d399;
+    --accent-hover: #4ade80;
+    --accent-deep: #059669;
+    --danger: #f87171;
+    --warn: #fbbf24;
+    --info: #60a5fa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 700; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel-2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header h1 { font-size: 20px; color: var(--accent); letter-spacing: -0.5px; }
+  header .brand { display: flex; align-items: center; gap: 12px; }
+  header .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .toolbar { display: flex; gap: 8px; align-items: center; }
+  .toolbar .status { font-size: 11px; color: var(--muted); }
+
+  button, .btn {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  button:hover, .btn:hover { border-color: var(--accent); color: var(--accent); }
+  button.primary { background: var(--accent); color: #0a0e13; border-color: var(--accent); font-weight: 700; }
+  button.primary:hover { background: var(--accent-hover); color: #0a0e13; }
+  button.danger { border-color: var(--danger); color: var(--danger); }
+  button.danger:hover { background: var(--danger); color: #0a0e13; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  main { padding: 24px; max-width: 1600px; margin: 0 auto; }
+
+  /* LIST VIEW */
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .list-header h2 { font-size: 22px; }
+  .list-header .count { color: var(--muted); font-size: 12px; }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+  .concept-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .concept-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .concept-card .titel { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .concept-card .meta { display: flex; gap: 10px; font-size: 11px; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; }
+  .concept-card .samenvatting { font-size: 12px; color: var(--muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .concept-card .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge.pending { background: rgba(251, 191, 36, 0.15); color: var(--warn); }
+  .badge.approved { background: rgba(52, 211, 153, 0.15); color: var(--accent); }
+  .badge.rejected { background: rgba(248, 113, 113, 0.15); color: var(--danger); }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+  }
+  .empty h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
+
+  /* DETAIL VIEW */
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 1100px) { .detail-grid { grid-template-columns: 1fr; } }
+
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    resize: vertical;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .field textarea { min-height: 80px; }
+  #html-editor { min-height: 500px; font-size: 12px; line-height: 1.6; }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+  }
+  .panel h3 { font-size: 14px; color: var(--accent); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .preview-frame {
+    width: 100%;
+    min-height: 500px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .faq-item {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .faq-item input,
+  .faq-item textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .faq-item input:focus,
+  .faq-item textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .faq-item input {
+    font-weight: 600;
+    padding-right: 40px;
+  }
+  .faq-item textarea {
+    min-height: 70px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .faq-item .remove-faq {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 4px 8px;
+    font-size: 10px;
+    z-index: 2;
+  }
+
+  .actions {
+    position: sticky;
+    bottom: 0;
+    background: var(--panel-2);
+    border-top: 1px solid var(--border);
+    padding: 16px 24px;
+    margin: 24px -24px -24px -24px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+  }
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+  }
+  .modal h3 { margin-bottom: 16px; color: var(--accent); }
+  .modal .field { margin-bottom: 14px; }
+  .modal .actions { position: static; background: none; border: none; margin: 16px 0 0 0; padding: 0; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--panel);
+    border: 1px solid var(--accent);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    z-index: 200;
+    animation: slideUp 0.3s;
+  }
+  .toast.error { border-color: var(--danger); color: var(--danger); }
+  @keyframes slideUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+  .loader {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="dot"></div>
+    <h1>Mploy Blog Dashboard</h1>
+  </div>
+  <div class="toolbar">
+    <span class="status" id="status-text">—</span>
+    <button id="refresh-btn">↻ Vernieuwen</button>
+    <button id="config-btn">⚙ Config</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- LIST VIEW -->
+  <section id="list-view">
+    <div class="list-header">
+      <h2>Wachtend op goedkeuring</h2>
+      <span class="count" id="list-count"></span>
+    </div>
+    <div id="concept-list"></div>
+  </section>
+
+  <!-- DETAIL VIEW -->
+  <section id="detail-view" hidden>
+    <div class="detail-header">
+      <button id="back-btn">← Terug naar lijst</button>
+      <span class="status" id="detail-status"></span>
+    </div>
+
+    <div class="detail-grid">
+
+      <div>
+        <div class="panel">
+          <h3>Metadata</h3>
+          <div class="field">
+            <label>Titel (H1)</label>
+            <input type="text" id="f-titel">
+          </div>
+          <div class="field">
+            <label>SEO Title (max 60 tekens)</label>
+            <input type="text" id="f-seo-title" maxlength="80">
+          </div>
+          <div class="field">
+            <label>Slug</label>
+            <input type="text" id="f-slug">
+          </div>
+          <div class="field">
+            <label>Samenvatting / Meta Description</label>
+            <textarea id="f-samenvatting"></textarea>
+          </div>
+          <div class="field">
+            <label>Focus Keyphrase</label>
+            <input type="text" id="f-keyphrase" readonly>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+          <h3>Blog HTML</h3>
+          <div class="field">
+            <textarea id="html-editor" spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+          <h3>Veelgestelde vragen</h3>
+          <div id="faqs-container"></div>
+          <button id="add-faq-btn" style="margin-top: 8px;">+ FAQ toevoegen</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel" style="position: sticky; top: 100px;">
+          <h3>Live Preview</h3>
+          <iframe id="preview" class="preview-frame"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button id="reject-btn" class="danger">✕ Afwijzen</button>
+      <button id="rewrite-btn">↻ AI Herschrijven</button>
+      <button id="approve-btn" class="primary">✓ Goedkeuren & Publiceren</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONFIG MODAL -->
+<div class="modal-overlay" id="config-modal" hidden>
+  <div class="modal">
+    <h3>Configuratie</h3>
+    <div class="field">
+      <label>Lijst URL (GET concepten)</label>
+      <input type="text" id="cfg-list-url" placeholder="https://leadkamer.app.n8n.cloud/webhook/mploy-concepten">
+    </div>
+    <div class="field">
+      <label>Publish URL (POST actie)</label>
+      <input type="text" id="cfg-publish-url" placeholder="https://leadkamer.app.n8n.cloud/webhook/mploy-publish">
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin-bottom: 10px;">
+      Lijst URL: haalt wachtende concepten op uit de Concepten sheet.<br>
+      Publish URL: ontvangt goedkeuring/afwijzing en publiceert naar WordPress.
+    </p>
+    <div class="actions">
+      <button id="cfg-cancel">Annuleren</button>
+      <button id="cfg-save" class="primary">Opslaan</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL (voor wijzigen/afwijzen) -->
+<div class="modal-overlay" id="feedback-modal" hidden>
+  <div class="modal">
+    <h3 id="feedback-title">Feedback</h3>
+    <div class="field">
+      <label>Toelichting</label>
+      <textarea id="feedback-text" rows="4" placeholder="Optioneel..."></textarea>
+    </div>
+    <div class="actions">
+      <button id="feedback-cancel">Annuleren</button>
+      <button id="feedback-confirm" class="primary">Bevestigen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var STORAGE_KEY = 'mploy_dashboard_config_v1';
+  var config = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  var concepts = [];
+  var currentConcept = null;
+  var pendingAction = null;
+
+  // ====== ELEMENTEN ======
+  var $ = function(id) { return document.getElementById(id); };
+  var listView = $('list-view');
+  var detailView = $('detail-view');
+  var listEl = $('concept-list');
+  var countEl = $('list-count');
+  var statusEl = $('status-text');
+
+  // ====== API ======
+  async function fetchConcepts() {
+    if (!config.listUrl) {
+      showConfig();
+      return;
+    }
+    setStatus('Laden...');
+    try {
+      var res = await fetch(config.listUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      var text = await res.text();
+      var data = text ? JSON.parse(text) : [];
+      // n8n kan een array teruggeven of {data: [...]}
+      concepts = Array.isArray(data) ? data : (data.data || data.concepten || []);
+      renderList();
+      setStatus(concepts.length + ' concept(en) geladen');
+    } catch (err) {
+      setStatus('Fout bij laden', true);
+      toast('Kon concepten niet laden: ' + err.message, true);
+    }
+  }
+
+  async function sendAction(action, payload) {
+    if (!currentConcept) return false;
+    if (!config.publishUrl) {
+      toast('Publish URL niet ingesteld (⚙ Config)', true);
+      return false;
+    }
+    setStatus('Versturen...');
+    try {
+      var body = Object.assign({
+        action: action,
+        id: currentConcept.id,
+        focus_keyphrase: currentConcept.focus_keyphrase || '',
+        categorie_id: currentConcept.categorie_id || '',
+        image_prompt: currentConcept.image_prompt || '',
+        bron_url: currentConcept.bron_url || ''
+      }, payload || {});
+      var res = await fetch(config.publishUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      setStatus('Verstuurd');
+      return true;
+    } catch (err) {
+      setStatus('Fout', true);
+      toast('Versturen mislukt: ' + err.message, true);
+      return false;
+    }
+  }
+
+  // ====== LIST RENDER ======
+  function renderList() {
+    listEl.innerHTML = '';
+    countEl.textContent = concepts.length + (concepts.length === 1 ? ' concept' : ' concepten');
+
+    if (concepts.length === 0) {
+      listEl.innerHTML = '<div class="empty"><h3>Geen wachtende concepten</h3><p>Zodra n8n een nieuwe blog genereert verschijnt deze hier.</p></div>';
+      return;
+    }
+
+    var grid = document.createElement('div');
+    grid.className = 'concept-grid';
+
+    concepts.forEach(function(c) {
+      var card = document.createElement('div');
+      card.className = 'concept-card';
+      card.innerHTML = ''
+        + '<div class="titel"></div>'
+        + '<div class="meta">'
+        +   '<span class="badge pending">' + (c.status || 'pending') + '</span>'
+        +   '<span>' + formatDate(c.created_at) + '</span>'
+        + '</div>'
+        + '<div class="samenvatting"></div>';
+      card.querySelector('.titel').textContent = c.titel || '(geen titel)';
+      card.querySelector('.samenvatting').textContent = c.samenvatting || '';
+      card.addEventListener('click', function() { openDetail(c); });
+      grid.appendChild(card);
+    });
+
+    listEl.appendChild(grid);
+  }
+
+  function formatDate(s) {
+    if (!s) return '';
+    try {
+      var d = new Date(s);
+      return d.toLocaleDateString('nl-NL', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+    } catch(e) { return s; }
+  }
+
+  // ====== DETAIL VIEW ======
+  function openDetail(concept) {
+    currentConcept = concept;
+    listView.hidden = true;
+    detailView.hidden = false;
+    window.scrollTo(0, 0);
+
+    $('f-titel').value = concept.titel || '';
+    $('f-seo-title').value = concept.seo_title || '';
+    $('f-slug').value = concept.slug || '';
+    $('f-samenvatting').value = concept.samenvatting || '';
+    $('f-keyphrase').value = concept.focus_keyphrase || '';
+    $('html-editor').value = concept.html || '';
+
+    var faqs = parseFaqs(concept.faqs_json);
+    renderFaqs(faqs);
+
+    updatePreview();
+    $('detail-status').textContent = 'Status: ' + (concept.status || 'pending');
+  }
+
+  function parseFaqs(raw) {
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw;
+    try { return JSON.parse(raw); } catch(e) { return []; }
+  }
+
+  function renderFaqs(faqs) {
+    var c = $('faqs-container');
+    c.innerHTML = '';
+    faqs.forEach(function(f, i) {
+      c.appendChild(buildFaqItem(f.vraag || '', f.antwoord || '', i));
+    });
+  }
+
+  function buildFaqItem(vraag, antwoord, index) {
+    var wrap = document.createElement('div');
+    wrap.className = 'faq-item';
+    wrap.innerHTML = ''
+      + '<button class="remove-faq danger">✕</button>'
+      + '<input type="text" placeholder="Vraag" value="">'
+      + '<textarea placeholder="Antwoord"></textarea>';
+    wrap.querySelector('input').value = vraag;
+    wrap.querySelector('textarea').value = antwoord;
+    wrap.querySelector('.remove-faq').addEventListener('click', function() {
+      wrap.remove();
+    });
+    return wrap;
+  }
+
+  function collectFaqs() {
+    var items = $('faqs-container').querySelectorAll('.faq-item');
+    var out = [];
+    items.forEach(function(el) {
+      var v = el.querySelector('input').value.trim();
+      var a = el.querySelector('textarea').value.trim();
+      if (v || a) out.push({ vraag: v, antwoord: a });
+    });
+    return out;
+  }
+
+  function collectEditedData() {
+    return {
+      titel: $('f-titel').value.trim(),
+      seo_title: $('f-seo-title').value.trim(),
+      slug: $('f-slug').value.trim(),
+      samenvatting: $('f-samenvatting').value.trim(),
+      html: $('html-editor').value,
+      faqs: collectFaqs()
+    };
+  }
+
+  function updatePreview() {
+    var doc = $('preview').contentDocument;
+    var html = $('html-editor').value || '';
+    var titel = $('f-titel').value || '';
+    doc.open();
+    doc.write(
+      '<html><head><style>'
+      + 'body { font-family: -apple-system, Segoe UI, sans-serif; padding: 24px; background: #0a0e13; color: #e8ecf1; line-height: 1.6; max-width: 720px; }'
+      + 'h1 { font-size: 28px; margin-bottom: 16px; color: #fff; }'
+      + 'h2 { font-size: 22px; margin: 24px 0 10px; color: #fff; }'
+      + 'h3 { font-size: 18px; margin: 18px 0 8px; color: #fff; }'
+      + 'p { margin-bottom: 14px; color: #e8ecf1; }'
+      + 'a { color: #34d399; }'
+      + 'ul, ol { margin: 0 0 14px 24px; color: #e8ecf1; }'
+      + 'li { margin-bottom: 6px; }'
+      + 'strong { color: #fff; }'
+      + '</style></head><body>'
+      + '<h1>' + escapeHtml(titel) + '</h1>'
+      + html
+      + '</body></html>'
+    );
+    doc.close();
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function backToList() {
+    detailView.hidden = true;
+    listView.hidden = false;
+    currentConcept = null;
+  }
+
+  // ====== ACTIONS ======
+  async function doApprove() {
+    if (!confirm('Blog goedkeuren en publiceren?')) return;
+    var data = collectEditedData();
+    var ok = await sendAction('approve', data);
+    if (ok) {
+      toast('✓ Goedgekeurd — publicatie gestart');
+      concepts = concepts.filter(function(c) { return c.id !== currentConcept.id; });
+      backToList();
+      renderList();
+    }
+  }
+
+  async function doReject() {
+    askFeedback('Reden van afwijzing', async function(feedback) {
+      var ok = await sendAction('reject', { feedback: feedback });
+      if (ok) {
+        toast('Afgewezen');
+        concepts = concepts.filter(function(c) { return c.id !== currentConcept.id; });
+        backToList();
+        renderList();
+      }
+    });
+  }
+
+  async function doRewrite() {
+    askFeedback('Wat moet de AI aanpassen?', async function(feedback) {
+      if (!feedback) { toast('Geef feedback mee', true); return; }
+      var data = Object.assign(collectEditedData(), { feedback: feedback });
+      var ok = await sendAction('edit', data);
+      if (ok) {
+        toast('AI herschrijft... refresh over ~30s');
+        concepts = concepts.filter(function(c) { return c.id !== currentConcept.id; });
+        backToList();
+        renderList();
+      }
+    });
+  }
+
+  function askFeedback(title, onConfirm) {
+    $('feedback-title').textContent = title;
+    $('feedback-text').value = '';
+    $('feedback-modal').hidden = false;
+    pendingAction = onConfirm;
+  }
+
+  // ====== CONFIG MODAL ======
+  function showConfig() {
+    $('cfg-list-url').value = config.listUrl || '';
+    $('cfg-publish-url').value = config.publishUrl || '';
+    $('config-modal').hidden = false;
+  }
+  function saveConfig() {
+    config.listUrl = $('cfg-list-url').value.trim();
+    config.publishUrl = $('cfg-publish-url').value.trim();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+    $('config-modal').hidden = true;
+    fetchConcepts();
+  }
+
+  // ====== HELPERS ======
+  function setStatus(text, isError) {
+    statusEl.textContent = text;
+    statusEl.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+  }
+  function toast(msg, isError) {
+    var t = document.createElement('div');
+    t.className = 'toast' + (isError ? ' error' : '');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function() { t.remove(); }, 3500);
+  }
+
+  // ====== EVENT BINDINGS ======
+  $('refresh-btn').addEventListener('click', fetchConcepts);
+  $('config-btn').addEventListener('click', showConfig);
+  $('cfg-save').addEventListener('click', saveConfig);
+  $('cfg-cancel').addEventListener('click', function() { $('config-modal').hidden = true; });
+  $('back-btn').addEventListener('click', backToList);
+  $('approve-btn').addEventListener('click', doApprove);
+  $('reject-btn').addEventListener('click', doReject);
+  $('rewrite-btn').addEventListener('click', doRewrite);
+  $('add-faq-btn').addEventListener('click', function() {
+    $('faqs-container').appendChild(buildFaqItem('', '', 0));
+  });
+  $('html-editor').addEventListener('input', updatePreview);
+  $('f-titel').addEventListener('input', updatePreview);
+
+  $('feedback-cancel').addEventListener('click', function() {
+    $('feedback-modal').hidden = true;
+    pendingAction = null;
+  });
+  $('feedback-confirm').addEventListener('click', function() {
+    var fb = $('feedback-text').value.trim();
+    $('feedback-modal').hidden = true;
+    if (pendingAction) {
+      var fn = pendingAction;
+      pendingAction = null;
+      fn(fb);
+    }
+  });
+
+  // ====== INIT ======
+  if (!config.listUrl) {
+    showConfig();
+  } else {
+    fetchConcepts();
+  }
+
+})();
+</script>
+</body>
+</html>
