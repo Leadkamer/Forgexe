@@ -26,7 +26,7 @@
   --ink-mut:#8d9bb5;
   --line:rgba(10,11,14,.08);
   --line-strong:rgba(10,11,14,.14);
-  --radius-xl:28px;
+  --radius-xl:16px;
   --radius-lg:20px;
   --radius-md:14px;
   --radius-pill:999px;
@@ -370,7 +370,7 @@ nav{
 .cases-cta-row{display:flex;justify-content:center;margin-top:2.5rem}
 
 /* ────────── testimonials ────────── */
-.test-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3rem}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
 @media(max-width:1100px){.test-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.test-grid{grid-template-columns:1fr}}
 .test-card{
@@ -401,7 +401,7 @@ nav{
 .dark-card .eyebrow{color:var(--green-lt)}
 .dark-card .eyebrow::before{background:var(--green)}
 .dark-card .section-h2{color:#fff}
-.dark-card .section-sub{color:#cbd5e1}
+.dark-card .section-sub{color:#cbd5e1;margin-left:auto;margin-right:auto}
 .sectors-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:2.5rem;max-width:760px;margin-left:auto;margin-right:auto}
 .sector-pill{
   display:inline-flex;align-items:center;gap:.55rem;
@@ -590,7 +590,6 @@ footer{
     <a href="contact.html">Contact</a>
   </div>
   <div class="nav-right">
-    <span class="lang-pill"><span class="dot"></span>NL</span>
     <button class="nav-cta" onclick="openScan()">
       Gratis bedrijfsscan
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -858,10 +857,10 @@ footer{
       <h3>AI-medewerkers voor jouw operatie.</h3>
       <p>Automatisering die intake, opvolging, rapportage en planning afhandelt. Geen tools vervangen, we verbinden wat er al staat.</p>
       <div class="build-tags" style="margin-top:.9rem">
-        <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Procesautomation</span>
-        <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Integraties</span>
-        <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Rapportage</span>
-        <span class="build-tag" style="background:#3a2400;color:var(--amber-lt);border-color:#3a2400">Planning AI</span>
+        <span class="build-tag" style="background:#fff4d6;color:#7c4a00;border-color:#fff4d6;font-weight:600">Procesautomation</span>
+        <span class="build-tag" style="background:#fff4d6;color:#7c4a00;border-color:#fff4d6;font-weight:600">Integraties</span>
+        <span class="build-tag" style="background:#fff4d6;color:#7c4a00;border-color:#fff4d6;font-weight:600">Rapportage</span>
+        <span class="build-tag" style="background:#fff4d6;color:#7c4a00;border-color:#fff4d6;font-weight:600">Planning AI</span>
       </div>
     </div>
     <div class="build-card">
@@ -872,9 +871,9 @@ footer{
       <p>Van klantenportaal tot intern dashboard. Alles in &eacute;&eacute;n omgeving die op jouw werkwijze is gebouwd , niet een SaaS-template waar je je naar moet voegen.</p>
     </div>
     <div class="build-card">
-      <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-      <h3>High-performance websites</h3>
-      <p>Marketing-sites met agentic SEO en GEO, AI-gestuurde content en analytics die meedenken. Van landing tot volledig webapp-platform.</p>
+      <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>AI Agents &amp; Automations</h3>
+      <p>Multi-step agents die zelfstandig data ophalen, beslissingen nemen en andere systemen aansturen. Voor processen die niet in een lineaire automation passen, maar wel elke dag terugkomen.</p>
     </div>
     <div class="build-card">
       <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
@@ -969,23 +968,18 @@ footer{
   <div class="test-grid">
     <div class="test-card first">
       <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-      <p class="test-quote">"Goed consult. Door alle processen door te nemen, kom je tot de punten waar AI echt van waarde kan zijn. Forgexe komt tot de kern en een praktische oplossing te bieden."</p>
-      <div class="test-meta"><div class="test-avatar">IV</div><div><div class="test-name">Ivar de Vries</div><div class="test-role">Mede-Eigenaar, Ladgend Media</div></div></div>
+      <p class="test-quote">"Van juridische software naar concrete leads. We zochten iemand die kon helpen onze software breder onder de aandacht te brengen. Forgexe wist onze dienst snel te doorgronden en heeft dit vertaald naar heldere campagnes en automatiseringen. Sindsdien zien we een duidelijke stijging in aanvragen zonder dat we daar zelf veel omkijken naar hebben. Forgexe regelt het, denkt mee, en laat het gewoon werken."</p>
+      <div class="test-meta"><div class="test-avatar">JP</div><div><div class="test-name">John Peters</div><div class="test-role">RealCob</div></div></div>
     </div>
     <div class="test-card">
       <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-      <p class="test-quote">"Forgexe heeft ons een webshop scraper gebouwd die productdata uit honderden bronnen automatisch binnenhaalt. Werk van dagen kopi&euml;ren was, draait nu elke nacht."</p>
-      <div class="test-meta"><div class="test-avatar">RH</div><div><div class="test-name">Reitze</div><div class="test-role">E-commerce Manager</div></div></div>
+      <p class="test-quote">"Een sterk eindresultaat. We hebben inmiddels ons eerste project met Forgexe afgerond. Afspraken worden nagekomen en Forgexe zet zich in voor een sterk eindresultaat. Een betrouwbare en betrokken partner."</p>
+      <div class="test-meta"><div class="test-avatar">SB</div><div><div class="test-name">Sjoerd Bruijnen</div><div class="test-role">Pixelaars</div></div></div>
     </div>
     <div class="test-card">
       <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-      <p class="test-quote">"Geen standaard oplossing, samen gekeken naar processen die we konden automatiseren. AI First!"</p>
-      <div class="test-meta"><div class="test-avatar">WB</div><div><div class="test-name">Wilbert</div><div class="test-role">Founder, Move Your Machine</div></div></div>
-    </div>
-    <div class="test-card">
-      <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
-      <p class="test-quote">"Door de automatisering van Forgexe is onze data-entry volledig geautomatiseerd. Automatisch en foutloos."</p>
-      <div class="test-meta"><div class="test-avatar">R</div><div><div class="test-name">Ruben</div><div class="test-role">Founder, Ruben werkt</div></div></div>
+      <p class="test-quote">"Vanaf het eerste moment een zeer betrokken partner. Streven naar een optimaal resultaat staat voorop. Er wordt een planmatige aanpak gehanteerd en de periodieke updates bevatten alle info die nodig is om het proces actief te volgen. Een zeer prettige partij om mee samen te werken."</p>
+      <div class="test-meta"><div class="test-avatar">KB</div><div><div class="test-name">Koos van den Bongard</div><div class="test-role">Fun Valley Maastricht</div></div></div>
     </div>
   </div>
   <div class="logos-row">
