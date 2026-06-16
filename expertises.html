@@ -146,13 +146,21 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .result-card.dark .meter span{background:var(--green-lt)}
 .result-card.green .meter span{background:#052e16}
 
-.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.5rem}
-@media(max-width:900px){.trust-row{grid-template-columns:1fr}}
-.trust-card{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.6rem 1.6rem;display:flex;flex-direction:column;gap:.6rem}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2.5rem}
+@media(max-width:1100px){.trust-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.trust-row{grid-template-columns:1fr}}
+.trust-card{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.55rem}
 .trust-icon{width:36px;height:36px;border-radius:9px;background:#0a0b0e;color:var(--green);display:flex;align-items:center;justify-content:center;margin-bottom:.4rem}
 .trust-icon svg{width:18px;height:18px;stroke-width:1.7}
-.trust-card h3{font-family:var(--head);font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
-.trust-card p{font-family:var(--head);font-size:.86rem;color:var(--ink-dim);line-height:1.55}
+.trust-card .trust-mini{font-family:var(--mono);font-size:.62rem;color:var(--green-deep);background:var(--green-soft);padding:.22rem .5rem;border-radius:5px;letter-spacing:.08em;font-weight:700;width:fit-content;text-transform:uppercase}
+.trust-card h3{font-family:var(--head);font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.25}
+.trust-card p{font-family:var(--head);font-size:.84rem;color:var(--ink-dim);line-height:1.55}
+.trust-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;padding:1.4rem 1.6rem;background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);flex-wrap:wrap}
+.trust-foot-text{font-family:var(--mono);font-size:.78rem;color:var(--ink-dim);letter-spacing:.02em}
+.trust-foot-text strong{color:var(--ink);font-weight:600;font-family:var(--head);font-size:.92rem}
+.trust-foot a{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--head);font-weight:600;font-size:.86rem;color:var(--ink);text-decoration:none;background:#fff;border:1.5px solid var(--line-strong);padding:.65rem 1.1rem;border-radius:9px;transition:all var(--tr)}
+.trust-foot a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.trust-foot a svg{width:13px;height:13px}
 
 .cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
 .cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
@@ -382,26 +390,39 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 
 <section class="section-card reveal">
   <div class="section-eyebrow-center">
-    <span class="eyebrow">&gt; C:\beveiliging</span>
-    <h2 class="section-h2">AVG-proof, EU-data, jouw <em>regie</em>.</h2>
-    <p class="section-sub">We bouwen volgens privacy-by-design. Jouw data blijft van jou, in de EU, met strikte toegangscontrole.</p>
+    <span class="eyebrow">&gt; C:\ai-act-ready</span>
+    <h2 class="section-h2">EU AI Act compliant, vanaf <em>dag &eacute;&eacute;n</em>.</h2>
+    <p class="section-sub">Elk Forgexe-systeem is gebouwd volgens de EU AI Act, met AVG/GDPR als ondergrens. Vier pijlers waar wij jouw compliance op draaien.</p>
   </div>
   <div class="trust-row">
     <div class="trust-card">
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <span class="trust-mini">AI Act art. 13 + 14</span>
+      <h3>Transparantie &amp; menselijk toezicht.</h3>
+      <p>AI-medewerkers identificeren zich altijd als AI. Bij twijfel of impactvolle keuzes escaleren ze naar een mens. Jij houdt de regie, AI doet het werk eronder.</p>
+    </div>
+    <div class="trust-card">
       <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-      <h3>End-to-end versleuteling</h3>
-      <p>AES-256 in transit en at rest. Zero-knowledge waar mogelijk. Jouw data is veilig bij ons.</p>
+      <span class="trust-mini">AVG / GDPR</span>
+      <h3>EU-data, end-to-end versleuteld.</h3>
+      <p>Data blijft binnen de EU, AES-256 in transit en at rest. Jouw data wordt nooit gebruikt om externe modellen te trainen. Privacy by design, geen uitzonderingen.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-      <h3>AVG-proof &amp; EU-hosted</h3>
-      <p>Data blijft in de EU. Privacy by design in elk project dat we bouwen, AI Act compliant.</p>
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <span class="trust-mini">AI Act art. 12</span>
+      <h3>Documentatie &amp; audit-trail.</h3>
+      <p>Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen, welke data, welke beslissingen. Logging staat standaard aan, klaar voor toezicht of interne audit.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c-1.27 4.39-5.18 7.5-9 7.5-3.82 0-7.73-3.11-9-7.5 1.27-4.39 5.18-7.5 9-7.5 3.82 0 7.73 3.11 9 7.5z"/></svg></div>
-      <h3>Strikte toegangscontrole</h3>
-      <p>Gebruikers zien alleen hun eigen data. Toegang afgedwongen op database-niveau, audit-trail standaard.</p>
+      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+      <span class="trust-mini">AI Act art. 4</span>
+      <h3>AI-geletterdheid voor je team.</h3>
+      <p>Sinds februari 2025 verplicht. Korte training inbegrepen bij elk pakket. Jouw team weet hoe AI werkt en welke risico's eraan zitten, zonder dat je een advocaat hoeft te bellen.</p>
     </div>
+  </div>
+  <div class="trust-foot">
+    <div class="trust-foot-text"><strong>Wij regelen jouw EU AI Act compliance, einde verhaal.</strong><br>Modelkeuze, documentatie, toezicht en training: standaard bij elk Forgexe-project.</div>
+    <a href="ai-act.html">Volledige AI Act-aanpak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </section>
 
