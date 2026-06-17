@@ -213,11 +213,20 @@ nav{
 @media(max-width:900px){.bottlenecks-grid{grid-template-columns:1fr;gap:10px}}
 .bottle-card{
   background:#fafbfc;border-radius:var(--radius-md);
-  padding:1.5rem;border:1px solid var(--line);
+  padding:1.5rem;padding-right:3.6rem;border:1px solid var(--line);
   display:flex;flex-direction:column;gap:.6rem;
-  cursor:pointer;transition:all var(--tr);
+  cursor:pointer;transition:all var(--tr);position:relative;
 }
 .bottle-card:hover{background:#fff;border-color:var(--line-strong);transform:translateY(-2px)}
+.bottle-arrow{
+  position:absolute;top:1.2rem;right:1.2rem;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--tr);
+}
+.bottle-arrow svg{width:13px;height:13px;stroke-width:2.4}
+.bottle-card:hover .bottle-arrow{background:var(--green);color:#052e16;transform:rotate(-12deg)}
 .bottle-icon{
   width:34px;height:34px;border-radius:8px;
   background:var(--card-bg);border:1px solid var(--line);
@@ -760,11 +769,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <div class="bottlenecks-grid" style="margin-top:3rem;text-align:left">
     <div class="bottle-card" onclick="openScan()">
+      <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
       <div class="bottle-title">Ik verlies leads door trage opvolging</div>
       <p class="bottle-body">Leads die niet binnen 5 minuten een reactie krijgen, zijn voor 80% verloren. AI-medewerkers reageren binnen 2 minuten, plannen direct in.</p>
     </div>
     <div class="bottle-card" onclick="openScan()">
+      <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" stroke-dasharray="2 2"/></svg></div>
       <div class="bottle-title">Mijn tools praten niet met elkaar</div>
       <p class="bottle-body">CRM, planning, facturatie, mail , allemaal losse eilandjes. Wij bouwen de bruggen ertussen zodat data automatisch stroomt.</p>
@@ -776,16 +787,19 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       </div>
     </div>
     <div class="bottle-card" onclick="openScan()">
+      <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
       <div class="bottle-title">Mijn team doet te veel handwerk</div>
       <p class="bottle-body">Intake, opvolging, rapportage, data invoeren , werk dat hun tijd opslokt. Wij automatiseren de repetitieve 80%, jullie focus blijft op de 20% die telt.</p>
     </div>
     <div class="bottle-card" onclick="openScan()">
+      <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
       <div class="bottle-title">Mijn marketing levert te weinig op</div>
       <p class="bottle-body">Losse campagnes zonder samenhang. Wij bouwen multichannel groei-systemen: SEO, ads, content en funnels die elkaar versterken.</p>
     </div>
     <div class="bottle-card" onclick="openScan()">
+      <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a7 7 0 0 1 4 12.7V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.3A7 7 0 0 1 12 2z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
       <div class="bottle-title">Mijn team moet AI leren gebruiken</div>
       <p class="bottle-body">In-company trainingen: prompt engineering, AI-tools effectief inzetten, automatiseringsmogelijkheden herkennen. Praktisch, geen theorie.</p>
