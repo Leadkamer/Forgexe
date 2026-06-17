@@ -413,6 +413,20 @@ nav{
 .logos-row .logo-chip img{height:32px}
 .logos-row .logo-chip img[alt="Wijnzinnig"]{height:54px}
 
+/* ────────── tech stack ────────── */
+.tech-stack-rows{display:flex;flex-direction:column;gap:1.6rem;margin-top:2.5rem}
+.tech-row{display:grid;grid-template-columns:160px 1fr;gap:1.4rem;align-items:start;padding:1.2rem 0;border-top:1px solid var(--line)}
+.tech-row:first-child{border-top:none;padding-top:0}
+.tech-row-label{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.14em;color:var(--green);text-transform:uppercase;padding-top:.3rem;display:flex;align-items:center;gap:.45rem}
+.tech-row-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+.tech-row.amber .tech-row-label{color:var(--amber-deep,#c47f0a)}
+.tech-row.amber .tech-row-label::before{background:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,.2)}
+.tech-tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tech-tag{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--ink-dim);background:#fafbfc;border:1px solid var(--line);padding:.45rem .85rem;border-radius:8px;transition:all var(--tr)}
+.tech-tag:hover{color:var(--green);border-color:var(--green);background:var(--green-soft)}
+.tech-row.amber .tech-tag:hover{color:var(--amber-deep,#c47f0a);border-color:var(--amber);background:#fff4d6}
+@media(max-width:760px){.tech-row{grid-template-columns:1fr;gap:.6rem;padding:1rem 0}}
+
 /* ────────── sectoren (dark card) ────────── */
 .dark-card{background:var(--ink);color:#fff;border-radius:var(--radius-xl);padding:5rem 4rem;margin:14px 0;border:none;text-align:center;position:relative;overflow:hidden}
 .dark-card .eyebrow{color:var(--green-lt)}
@@ -1001,11 +1015,15 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div class="build-card">
       <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
       <h3>AI Agents &amp; Automations</h3>
+      <div class="build-bar"><div class="build-bar-fill" style="width:92%"></div></div>
+      <p style="margin-bottom:.4rem"><strong style="color:var(--green);font-weight:700">92% van repetitieve beslissingen autonoom</strong></p>
       <p>Multi-step agents die zelfstandig data ophalen, beslissingen nemen en andere systemen aansturen. Voor processen die niet in een lineaire automation passen, maar wel elke dag terugkomen.</p>
     </div>
     <div class="build-card" style="grid-column:span 2">
       <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
       <h3>AI Training voor je team</h3>
+      <div class="build-bar"><div class="build-bar-fill" style="width:85%"></div></div>
+      <p style="margin-bottom:.4rem"><strong style="color:var(--green);font-weight:700">85% van het team gebruikt AI dagelijks na 1 trainingsdag</strong></p>
       <p>In-company workshops over prompt engineering, AI-tools effectief inzetten en automatiseringsmogelijkheden herkennen. Praktisch, niet theoretisch.</p>
     </div>
   </div>
@@ -1084,6 +1102,62 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </a>
   </div>
   <div class="cases-cta-row"><a href="cases.html" class="btn-pill dark">Bekijk alle cases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
+</section>
+
+<!-- ════════════ TECH STACK ════════════ -->
+<section class="section-card reveal">
+  <div style="text-align:center">
+    <span class="eyebrow">&gt; C:\stack</span>
+    <h2 class="section-h2">De gereedschapskist<br>waarmee we smeden.</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">We zijn vendor-vrij: per project kiezen we de beste tool, niet de tool waar we provisie op krijgen. Dit zijn de bouwblokken die we het vaakst inzetten.</p>
+  </div>
+  <div class="tech-stack-rows">
+    <div class="tech-row">
+      <div class="tech-row-label">AI &amp; Intelligence</div>
+      <div class="tech-tags">
+        <span class="tech-tag">OpenAI</span>
+        <span class="tech-tag">Anthropic</span>
+        <span class="tech-tag">Gemini</span>
+        <span class="tech-tag">n8n</span>
+        <span class="tech-tag">Unipile</span>
+        <span class="tech-tag">Nano Banana</span>
+        <span class="tech-tag">AWS</span>
+        <span class="tech-tag">Supabase</span>
+        <span class="tech-tag">Apollo</span>
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-row-label">Channels &amp; CRM</div>
+      <div class="tech-tags">
+        <span class="tech-tag">Google Ads</span>
+        <span class="tech-tag">Meta Ads</span>
+        <span class="tech-tag">LinkedIn Ads</span>
+        <span class="tech-tag">Zoho CRM</span>
+        <span class="tech-tag">Pipedrive</span>
+        <span class="tech-tag">Salesforce</span>
+        <span class="tech-tag">HubSpot</span>
+        <span class="tech-tag">SAP</span>
+        <span class="tech-tag">Exact</span>
+        <span class="tech-tag">Brevo</span>
+        <span class="tech-tag">MailChimp</span>
+      </div>
+    </div>
+    <div class="tech-row amber">
+      <div class="tech-row-label">Analytics &amp; Tools</div>
+      <div class="tech-tags">
+        <span class="tech-tag">GA4</span>
+        <span class="tech-tag">GTM</span>
+        <span class="tech-tag">WordPress</span>
+        <span class="tech-tag">Webflow</span>
+        <span class="tech-tag">Ahrefs</span>
+        <span class="tech-tag">Semrush</span>
+        <span class="tech-tag">Slack</span>
+        <span class="tech-tag">Notion</span>
+        <span class="tech-tag">Airtable</span>
+        <span class="tech-tag">Looker Studio</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ════════════ TESTIMONIALS ════════════ -->
