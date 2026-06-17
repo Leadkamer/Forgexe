@@ -191,9 +191,12 @@ nav{
 .proof-bar-left{display:flex;flex-direction:column;gap:.3rem;min-width:0}
 .proof-bar-label{font-family:var(--mono);font-size:.74rem;color:var(--ink);font-weight:600}
 .proof-bar-sub{font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);max-width:380px;line-height:1.55}
-.proof-logos{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
-.proof-logos img{height:26px;width:auto;opacity:.78;mix-blend-mode:multiply;transition:all var(--tr)}
-.proof-logos img:hover{opacity:1}
+.proof-logos{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.logo-chip{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.4rem .85rem;height:44px;transition:all var(--tr);box-shadow:0 1px 2px rgba(10,11,14,.03)}
+.logo-chip.dark{background:#0a0b0e;border-color:#0a0b0e}
+.logo-chip:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(10,11,14,.08);border-color:var(--line-strong)}
+.logo-chip img{height:22px;width:auto;display:block;opacity:.85;transition:opacity var(--tr)}
+.logo-chip:hover img{opacity:1}
 .proof-more{
   display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-dim);
   white-space:nowrap;
@@ -405,8 +408,9 @@ nav{
   display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
   padding:2rem 0 0;margin-top:2.5rem;border-top:1px solid var(--line);
 }
-.logos-row img{height:30px;width:auto;opacity:.78;mix-blend-mode:multiply;transition:all var(--tr)}
-.logos-row img:hover{opacity:1}
+.logos-row{gap:.7rem!important}
+.logos-row .logo-chip{height:48px;padding:.45rem 1rem}
+.logos-row .logo-chip img{height:26px}
 
 /* ────────── sectoren (dark card) ────────── */
 .dark-card{background:var(--ink);color:#fff;border-radius:var(--radius-xl);padding:5rem 4rem;margin:14px 0;border:none;text-align:center;position:relative;overflow:hidden}
@@ -749,11 +753,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div class="proof-bar-sub">Maakindustrie &middot; Technische groothandel &middot; Zakelijke dienstverlening &middot; Marketing</div>
   </div>
   <div class="proof-logos">
-    <img src="logo-realcob.png" alt="RealCob">
-    <img src="logo-technetium.svg" alt="Technetium">
-    <img src="logo-smartesg.webp" alt="Smart ESG">
-    <img src="logo-dnatalent.png" alt="DNA-talent">
-    <span class="proof-more">en 26 anderen</span>
+    <span class="logo-chip dark"><img src="logo-realcob.png" alt="RealCob"></span>
+    <span class="logo-chip dark"><img src="logo-technetium.svg" alt="Technetium"></span>
+    <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG"></span>
+    <span class="logo-chip dark"><img src="logo-dnatalent.png" alt="DNA-talent"></span>
+    <span class="logo-chip dark"><img src="logo-fesma.png" alt="FESMA"></span>
+    <span class="logo-chip"><img src="logo-fietsencatalogus.jpg" alt="Fietsencatalogus"></span>
+    <span class="proof-more">en 23 anderen</span>
   </div>
   <a href="cases.html" class="proof-cta">
     Bekijk cases
@@ -1102,12 +1108,15 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </div>
   </div>
   <div class="logos-row">
-    <img src="logo-realcob.png" alt="RealCob">
-    <img src="logo-technetium.svg" alt="Technetium">
-    <img src="logo-smartesg.webp" alt="Smart ESG">
-    <img src="logo-dnatalent.png" alt="DNA-talent">
-    <img src="logo-wijnzinnig.webp" alt="Wijnzinnig">
-    <img src="logo-mploy.svg" alt="Mploy">
+    <span class="logo-chip dark"><img src="logo-realcob.png" alt="RealCob"></span>
+    <span class="logo-chip dark"><img src="logo-technetium.svg" alt="Technetium"></span>
+    <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG"></span>
+    <span class="logo-chip dark"><img src="logo-dnatalent.png" alt="DNA-talent"></span>
+    <span class="logo-chip"><img src="logo-wijnzinnig.webp" alt="Wijnzinnig"></span>
+    <span class="logo-chip dark"><img src="logo-mploy.svg" alt="Mploy"></span>
+    <span class="logo-chip"><img src="logo-fietsencatalogus.jpg" alt="Fietsencatalogus"></span>
+    <span class="logo-chip dark"><img src="logo-influid.svg" alt="Influid"></span>
+    <span class="logo-chip dark"><img src="logo-fesma.png" alt="FESMA"></span>
   </div>
 </section>
 
