@@ -414,18 +414,44 @@ nav{
 .logos-row .logo-chip img[alt="Wijnzinnig"]{height:54px}
 
 /* ────────── tech stack ────────── */
-.tech-stack-rows{display:flex;flex-direction:column;gap:1.6rem;margin-top:2.5rem}
-.tech-row{display:grid;grid-template-columns:160px 1fr;gap:1.4rem;align-items:start;padding:1.2rem 0;border-top:1px solid var(--line)}
-.tech-row:first-child{border-top:none;padding-top:0}
-.tech-row-label{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.14em;color:var(--green);text-transform:uppercase;padding-top:.3rem;display:flex;align-items:center;gap:.45rem}
-.tech-row-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.18)}
-.tech-row.amber .tech-row-label{color:var(--amber-deep,#c47f0a)}
-.tech-row.amber .tech-row-label::before{background:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,.2)}
-.tech-tags{display:flex;flex-wrap:wrap;gap:.45rem}
-.tech-tag{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--ink-dim);background:#fafbfc;border:1px solid var(--line);padding:.45rem .85rem;border-radius:8px;transition:all var(--tr)}
-.tech-tag:hover{color:var(--green);border-color:var(--green);background:var(--green-soft)}
-.tech-row.amber .tech-tag:hover{color:var(--amber-deep,#c47f0a);border-color:var(--amber);background:#fff4d6}
-@media(max-width:760px){.tech-row{grid-template-columns:1fr;gap:.6rem;padding:1rem 0}}
+.stack-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin:2rem auto 0;max-width:760px}
+.stack-stat{display:inline-flex;align-items:center;gap:.55rem;background:#fafbfc;border:1px solid var(--line);padding:.6rem 1.1rem;border-radius:999px;font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);font-weight:500}
+.stack-stat-num{font-family:var(--head);font-size:1rem;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.stack-stat.live::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.22);animation:stackPulse 1.8s ease-in-out infinite}
+@keyframes stackPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+.stack-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
+@media(max-width:1000px){.stack-cards{grid-template-columns:1fr}}
+.stack-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem 1.6rem;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.9rem;transition:all var(--tr)}
+.stack-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green)}
+.stack-card.amber::before{background:var(--amber)}
+.stack-card.dark{background:#052e16;color:#fff;border:none}
+.stack-card.dark::before{background:var(--green-lt)}
+.stack-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(10,11,14,.08)}
+.stack-card .stack-eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--green);font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:.45rem}
+.stack-card.amber .stack-eyebrow{color:var(--amber-deep,#c47f0a)}
+.stack-card.dark .stack-eyebrow{color:var(--green-lt)}
+.stack-card .stack-num{font-family:var(--mono);font-size:.62rem;color:var(--ink-mut);letter-spacing:.12em;font-weight:600;background:#fff;border:1px solid var(--line);padding:.18rem .5rem;border-radius:6px}
+.stack-card.dark .stack-num{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.7)}
+.stack-card.amber .stack-num{background:#fff}
+.stack-card-head{display:flex;justify-content:space-between;align-items:center}
+.stack-card-icon{width:38px;height:38px;border-radius:9px;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center}
+.stack-card-icon svg{width:18px;height:18px;stroke-width:1.7}
+.stack-card.amber .stack-card-icon{background:#fff4d6;color:#7c4a00}
+.stack-card.dark .stack-card-icon{background:rgba(52,211,153,.18);color:var(--green-lt)}
+.stack-card h3{font-family:var(--head);font-size:1.2rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);line-height:1.2;margin-top:.2rem}
+.stack-card.dark h3{color:#fff}
+.stack-card-desc{font-family:var(--head);font-size:.84rem;color:var(--ink-dim);line-height:1.5;font-weight:400}
+.stack-card.dark .stack-card-desc{color:rgba(255,255,255,.7)}
+.stack-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.7rem}
+.stack-tag{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line);padding:.38rem .7rem;border-radius:7px;transition:all var(--tr)}
+.stack-tag:hover{color:var(--green);border-color:var(--green);transform:translateY(-1px)}
+.stack-card.amber .stack-tag:hover{color:var(--amber-deep,#c47f0a);border-color:var(--amber)}
+.stack-card.dark .stack-tag{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#fff}
+.stack-card.dark .stack-tag:hover{background:var(--green);color:#052e16;border-color:var(--green);transform:translateY(-1px)}
+.stack-foot{margin-top:2.5rem;padding:1.4rem 1.6rem;background:#0a0b0e;color:#7ee2b6;border-radius:var(--radius-md);font-family:var(--mono);font-size:.78rem;display:flex;align-items:center;gap:.7rem;line-height:1.4}
+.stack-foot::before{content:'$';color:var(--green-lt);font-weight:700}
+.stack-foot b{color:#fff;font-weight:700}
+@media(max-width:600px){.stack-stats{gap:.4rem}.stack-stat{font-size:.7rem;padding:.5rem .9rem}.stack-foot{font-size:.72rem;padding:1.1rem 1.2rem}}
 
 /* ────────── sectoren (dark card) ────────── */
 .dark-card{background:var(--ink);color:#fff;border-radius:var(--radius-xl);padding:5rem 4rem;margin:14px 0;border:none;text-align:center;position:relative;overflow:hidden}
@@ -771,7 +797,6 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span class="logo-chip"><img src="logo-technetium.svg" alt="Technetium"></span>
     <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG"></span>
     <span class="logo-chip"><img src="logo-dnatalent.png" alt="DNA-talent"></span>
-    <span class="logo-chip"><img src="logo-wijnzinnig.webp" alt="Wijnzinnig"></span>
     <span class="logo-chip"><img src="logo-fietsencatalogus.jpg" alt="Fietsencatalogus"></span>
     <span class="logo-chip"><img src="logo-mploy.svg" alt="Mploy"></span>
     <span class="logo-chip"><img src="logo-influid.svg" alt="Influid"></span>
@@ -1108,56 +1133,85 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <section class="section-card reveal">
   <div style="text-align:center">
     <span class="eyebrow">&gt; C:\stack</span>
-    <h2 class="section-h2">De gereedschapskist<br>waarmee we smeden.</h2>
-    <p class="section-sub" style="margin-left:auto;margin-right:auto">We zijn vendor-vrij: per project kiezen we de beste tool, niet de tool waar we provisie op krijgen. Dit zijn de bouwblokken die we het vaakst inzetten.</p>
-  </div>
-  <div class="tech-stack-rows">
-    <div class="tech-row">
-      <div class="tech-row-label">AI &amp; Intelligence</div>
-      <div class="tech-tags">
-        <span class="tech-tag">OpenAI</span>
-        <span class="tech-tag">Anthropic</span>
-        <span class="tech-tag">Gemini</span>
-        <span class="tech-tag">n8n</span>
-        <span class="tech-tag">Unipile</span>
-        <span class="tech-tag">Nano Banana</span>
-        <span class="tech-tag">AWS</span>
-        <span class="tech-tag">Supabase</span>
-        <span class="tech-tag">Apollo</span>
-      </div>
-    </div>
-    <div class="tech-row">
-      <div class="tech-row-label">Channels &amp; CRM</div>
-      <div class="tech-tags">
-        <span class="tech-tag">Google Ads</span>
-        <span class="tech-tag">Meta Ads</span>
-        <span class="tech-tag">LinkedIn Ads</span>
-        <span class="tech-tag">Zoho CRM</span>
-        <span class="tech-tag">Pipedrive</span>
-        <span class="tech-tag">Salesforce</span>
-        <span class="tech-tag">HubSpot</span>
-        <span class="tech-tag">SAP</span>
-        <span class="tech-tag">Exact</span>
-        <span class="tech-tag">Brevo</span>
-        <span class="tech-tag">MailChimp</span>
-      </div>
-    </div>
-    <div class="tech-row amber">
-      <div class="tech-row-label">Analytics &amp; Tools</div>
-      <div class="tech-tags">
-        <span class="tech-tag">GA4</span>
-        <span class="tech-tag">GTM</span>
-        <span class="tech-tag">WordPress</span>
-        <span class="tech-tag">Webflow</span>
-        <span class="tech-tag">Ahrefs</span>
-        <span class="tech-tag">Semrush</span>
-        <span class="tech-tag">Slack</span>
-        <span class="tech-tag">Notion</span>
-        <span class="tech-tag">Airtable</span>
-        <span class="tech-tag">Looker Studio</span>
-      </div>
+    <h2 class="section-h2">De gereedschapskist<br>waarmee we <em style="font-style:italic;color:var(--green);font-weight:800">smeden</em>.</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">Vendor-vrij. Per project de beste tool, niet de tool waar we provisie op krijgen.</p>
+    <div class="stack-stats">
+      <span class="stack-stat"><span class="stack-stat-num">30+</span> tools in productie</span>
+      <span class="stack-stat"><span class="stack-stat-num">12+</span> AI-modellen</span>
+      <span class="stack-stat"><span class="stack-stat-num">100%</span> vendor-vrij</span>
+      <span class="stack-stat live">live in <span class="stack-stat-num">30+</span> bedrijven</span>
     </div>
   </div>
+
+  <div class="stack-cards">
+    <div class="stack-card dark">
+      <div class="stack-card-head">
+        <div class="stack-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 00-3 3 3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3-3z"/><circle cx="12" cy="17" r="2"/><path d="M12 10v5"/></svg></div>
+        <span class="stack-num">01 &middot; 9 tools</span>
+      </div>
+      <div class="stack-eyebrow">&gt; AI &amp; Intelligence</div>
+      <h3>De brein-laag</h3>
+      <p class="stack-card-desc">LLM-providers, vector-stores en orchestratie. Per use-case kiezen we het model dat het meest accuraat antwoordt voor de minste kosten.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">OpenAI</span>
+        <span class="stack-tag">Anthropic</span>
+        <span class="stack-tag">Gemini</span>
+        <span class="stack-tag">n8n</span>
+        <span class="stack-tag">Unipile</span>
+        <span class="stack-tag">Nano Banana</span>
+        <span class="stack-tag">AWS</span>
+        <span class="stack-tag">Supabase</span>
+        <span class="stack-tag">Apollo</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <div class="stack-card-head">
+        <div class="stack-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg></div>
+        <span class="stack-num">02 &middot; 11 tools</span>
+      </div>
+      <div class="stack-eyebrow">&gt; Channels &amp; CRM</div>
+      <h3>De zenuw-laag</h3>
+      <p class="stack-card-desc">Waar leads binnenkomen en waar deals worden gesloten. We sluiten aan op wat jij al gebruikt, zodat je team geen nieuwe tool hoeft te leren.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">Google Ads</span>
+        <span class="stack-tag">Meta Ads</span>
+        <span class="stack-tag">LinkedIn Ads</span>
+        <span class="stack-tag">Zoho CRM</span>
+        <span class="stack-tag">Pipedrive</span>
+        <span class="stack-tag">Salesforce</span>
+        <span class="stack-tag">HubSpot</span>
+        <span class="stack-tag">SAP</span>
+        <span class="stack-tag">Exact</span>
+        <span class="stack-tag">Brevo</span>
+        <span class="stack-tag">MailChimp</span>
+      </div>
+    </div>
+
+    <div class="stack-card amber">
+      <div class="stack-card-head">
+        <div class="stack-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <span class="stack-num">03 &middot; 10 tools</span>
+      </div>
+      <div class="stack-eyebrow">&gt; Analytics &amp; Tools</div>
+      <h3>De meet-laag</h3>
+      <p class="stack-card-desc">Wat niet gemeten wordt, kan niet geoptimaliseerd. Dashboards, attributie, content-stacks en de tools die je team dagelijks gebruikt.</p>
+      <div class="stack-tags">
+        <span class="stack-tag">GA4</span>
+        <span class="stack-tag">GTM</span>
+        <span class="stack-tag">WordPress</span>
+        <span class="stack-tag">Webflow</span>
+        <span class="stack-tag">Ahrefs</span>
+        <span class="stack-tag">Semrush</span>
+        <span class="stack-tag">Slack</span>
+        <span class="stack-tag">Notion</span>
+        <span class="stack-tag">Airtable</span>
+        <span class="stack-tag">Looker Studio</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stack-foot">forge <b>--describe</b> jouw stack &middot; we koppelen aan elke combinatie van bovenstaande tools, plus de 80% die we hier niet hebben getoond</div>
 </section>
 
 <!-- ════════════ TESTIMONIALS ════════════ -->
@@ -1188,7 +1242,6 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span class="logo-chip"><img src="logo-technetium.svg" alt="Technetium"></span>
     <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG"></span>
     <span class="logo-chip"><img src="logo-dnatalent.png" alt="DNA-talent"></span>
-    <span class="logo-chip"><img src="logo-wijnzinnig.webp" alt="Wijnzinnig"></span>
     <span class="logo-chip"><img src="logo-mploy.svg" alt="Mploy"></span>
     <span class="logo-chip"><img src="logo-fietsencatalogus.jpg" alt="Fietsencatalogus"></span>
     <span class="logo-chip"><img src="logo-influid.svg" alt="Influid"></span>
