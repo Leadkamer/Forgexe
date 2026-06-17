@@ -103,7 +103,8 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 @media(max-width:1000px){.team-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.team-grid{grid-template-columns:1fr}}
 .team-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem 1.4rem;text-align:center}
-.team-avatar{width:80px;height:80px;border-radius:50%;background:var(--ink);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:1.6rem;margin:0 auto 1.2rem}
+.team-avatar{width:96px;height:96px;border-radius:50%;background:var(--ink);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:1.6rem;margin:0 auto 1.2rem;overflow:hidden;position:relative;border:2px solid var(--line)}
+.team-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .team-name{font-family:var(--head);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em}
 .team-role{font-family:var(--mono);font-size:.7rem;color:var(--green);font-weight:600;letter-spacing:.06em;margin-bottom:.9rem}
 .team-bio{font-family:var(--head);font-size:.86rem;color:var(--ink-dim);line-height:1.55}
@@ -324,25 +325,25 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   </div>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar">SA</div>
+      <div class="team-avatar"><img src="team-sedat.png" alt="Sedat Ayar" loading="lazy"></div>
       <div class="team-name">Sedat Ayar</div>
       <div class="team-role">FOUNDER &middot; STRATEGY</div>
       <p class="team-bio">Architect van groei-systemen en AI-strategie. Verbindt technologie met bedrijfsresultaat. Van Google Ads tot n8n, alles begint bij de strategie.</p>
     </div>
     <div class="team-card">
-      <div class="team-avatar">MV</div>
+      <div class="team-avatar"><img src="team-maurice.jpg" alt="Maurice" loading="lazy"></div>
       <div class="team-name">Maurice</div>
       <div class="team-role">TECH LEAD</div>
       <p class="team-bio">Bouwt de technische ruggengraat van elk systeem. Van custom integraties tot complexe automations, Maurice zorgt dat het draait, schaalt en niet breekt.</p>
     </div>
     <div class="team-card">
-      <div class="team-avatar">JE</div>
+      <div class="team-avatar"><img src="team-jesse.png" alt="Jesse" loading="lazy"></div>
       <div class="team-name">Jesse</div>
       <div class="team-role">AI ENGINEER</div>
       <p class="team-bio">Ontwerpt en traint de AI-agents die 24/7 voor je werken. Van prompt engineering tot agent-architectuur, Jesse maakt AI praktisch en betrouwbaar.</p>
     </div>
     <div class="team-card">
-      <div class="team-avatar">SM</div>
+      <div class="team-avatar"><img src="team-samuel.jpg" alt="Samuël" loading="lazy"></div>
       <div class="team-name">Samu&euml;l</div>
       <div class="team-role">PROCESS ANALYST</div>
       <p class="team-bio">Analyseert processen zodat AI kan ondersteunen waar het er echt toe doet. Samu&euml;l brengt structuur en implementeert.</p>
