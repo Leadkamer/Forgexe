@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#0a0b0e"/>
+<stop offset="100%" stop-color="#03130a"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.85" cy="0.25" r="0.6">
+<stop offset="0%" stop-color="#34d399" stop-opacity="0.35"/>
+<stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<rect width="1200" height="630" fill="url(#glow)"/>
+<g opacity="0.08">
+<line x1="0" y1="160" x2="1200" y2="160" stroke="#34d399" stroke-width="0.5"/>
+<line x1="0" y1="320" x2="1200" y2="320" stroke="#34d399" stroke-width="0.5"/>
+<line x1="0" y1="480" x2="1200" y2="480" stroke="#34d399" stroke-width="0.5"/>
+<line x1="200" y1="0" x2="200" y2="630" stroke="#34d399" stroke-width="0.5"/>
+<line x1="500" y1="0" x2="500" y2="630" stroke="#34d399" stroke-width="0.5"/>
+<line x1="800" y1="0" x2="800" y2="630" stroke="#34d399" stroke-width="0.5"/>
+<line x1="1000" y1="0" x2="1000" y2="630" stroke="#34d399" stroke-width="0.5"/>
+</g>
+<text x="80" y="120" font-family="JetBrains Mono,monospace" font-size="20" fill="#34d399" font-weight="600" letter-spacing="3">&gt; C:\forgexe --status</text>
+<g transform="translate(80 200)">
+<rect width="12" height="64" rx="2" fill="#34d399"/>
+<rect width="42" height="12" rx="2" fill="#34d399"/>
+<rect y="26" width="30" height="10" rx="2" fill="#34d399"/>
+<polygon points="48,28 70,42 48,56" fill="#34d399"/>
+</g>
+<text x="180" y="252" font-family="Outfit,sans-serif" font-size="84" font-weight="900" fill="#ffffff" letter-spacing="-2">FORGEXE</text>
+<text x="80" y="380" font-family="Outfit,sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="-1.5">AI-medewerkers die jouw</text>
+<text x="80" y="448" font-family="Outfit,sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="-1.5">groei <tspan font-style="italic" fill="#34d399">smeden</tspan>.</text>
+<text x="80" y="540" font-family="Outfit,sans-serif" font-size="24" font-weight="400" fill="#94a3b8" letter-spacing="0">Voor het Nederlandse MKB &middot; In-company AI · Vendor-vrij</text>
+<g transform="translate(80 580)">
+<circle cx="6" cy="6" r="6" fill="#34d399"/>
+<text x="22" y="11" font-family="JetBrains Mono,monospace" font-size="14" font-weight="600" fill="#94a3b8" letter-spacing="1.5">30+ MKB-BEDRIJVEN · LIVE</text>
+</g>
+<g transform="translate(1000 80)" opacity="0.85">
+<rect width="120" height="36" rx="18" fill="rgba(52,211,153,0.18)" stroke="#34d399" stroke-width="1"/>
+<circle cx="20" cy="18" r="4" fill="#34d399"/>
+<text x="34" y="23" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#34d399" letter-spacing="1">ONLINE</text>
+</g>
+</svg>
