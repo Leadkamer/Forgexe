@@ -47,8 +47,8 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .hero-side p{font-family:var(--head);font-size:.95rem;color:var(--ink-dim);line-height:1.6}
 .hero-side .hs-meta{display:flex;flex-direction:column;gap:.5rem;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.74rem;color:var(--ink)}
 .hero-side .hs-meta b{color:var(--green);font-weight:700}
-.hero-photo{position:relative;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);min-height:420px;background:#0a0b0e}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hero-photo{position:relative;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);min-height:520px;background:#0a0b0e}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;object-position:center 22%}
 .hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,11,14,.55) 100%);pointer-events:none}
 .hero-photo .photo-badge{position:absolute;left:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,11,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;padding:.55rem .9rem;border-radius:999px;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.08em;z-index:2}
 .hero-photo .photo-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.25);animation:photoPulse 1.8s ease-in-out infinite}
