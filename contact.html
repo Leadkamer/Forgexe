@@ -472,7 +472,7 @@ function submitContact(e){
   .then(function(resp){
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     form.style.display = 'none';
-    success.innerHTML = '<strong>Dank, je bericht is binnen!</strong><br>We reageren binnen 2 uur op werkdagen via ' + data.email + '.';
+    success.innerHTML = '<strong>Dank, je bericht is binnen!</strong><br>We reageren binnen 2 uur op werkdagen.';
     success.classList.add('show');
   })
   .catch(function(){
