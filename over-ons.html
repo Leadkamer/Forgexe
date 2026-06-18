@@ -38,10 +38,15 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 /* hero with split */
 .hero-split{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:start;margin:14px 0;padding:0}
 @media(max-width:1100px){.hero-split{grid-template-columns:1fr;gap:0}}
-.hero-main{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-xl);padding:4rem 3.5rem;position:relative;overflow:hidden}
-@media(max-width:900px){.hero-main{padding:2.5rem 1.5rem}}
-.hero-main::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 95% 12%,rgba(52,211,153,.16) 0%,transparent 48%),radial-gradient(circle at 80% 80%,rgba(245,166,35,.06) 0%,transparent 55%);pointer-events:none}
-.hero-main > *{position:relative}
+.hero-main{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-xl);padding:3.5rem;position:relative;overflow:hidden;margin:14px 0;display:grid;grid-template-columns:1.35fr 1fr;gap:2.8rem;align-items:stretch}
+@media(max-width:1000px){.hero-main{grid-template-columns:1fr;gap:1.6rem;padding:2.5rem 1.5rem}}
+.hero-main::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 95% 12%,rgba(52,211,153,.22) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(245,166,35,.06) 0%,transparent 55%);pointer-events:none;z-index:0}
+.hero-main > *{position:relative;z-index:1}
+.hero-text{display:flex;flex-direction:column;justify-content:center}
+.hero-image{position:relative;border-radius:var(--radius-md);overflow:hidden;background:#0a0b0e;min-height:440px}
+.hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+.hero-image::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 100% 0%,rgba(52,211,153,.55) 0%,transparent 58%),radial-gradient(circle at 0% 100%,rgba(52,211,153,.22) 0%,transparent 50%);mix-blend-mode:screen;pointer-events:none}
+@media(max-width:1000px){.hero-image{min-height:300px}}
 .hero-side{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius-xl);padding:2rem 1.8rem;display:flex;flex-direction:column;justify-content:space-between;min-height:280px}
 .hero-side .hs-eyebrow{font-family:var(--mono);font-size:.7rem;color:var(--green);letter-spacing:.12em;font-weight:600;text-transform:lowercase;margin-bottom:.7rem}
 .hero-side p{font-family:var(--head);font-size:.95rem;color:var(--ink-dim);line-height:1.6}
@@ -311,18 +316,17 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 </nav>
 <div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="over-ons.html">Over ons</a><a href="expertises.html">Diensten</a><a href="branches.html">Branches</a><a href="cases.html">Cases</a><a href="contact.html">Contact</a></div>
 
-<div class="hero-split">
-  <header class="hero-main" style="margin:0">
+<header class="hero-main">
+  <div class="hero-text">
     <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Over ons</span></div>
     <span class="eyebrow">&gt; C:\over-forgexe</span>
     <h1>Op een missie om MKB-bedrijven te <em>smeden</em> tot AI-first.</h1>
     <p class="lead">Geen bureau met 50 man. Een compact team dat AI-medewerkers bouwt die jouw bedrijf 24/7 laten draaien. Volledige eigendom voor de klant, geen vendor lock-in.</p>
-  </header>
-  <aside class="hero-photo">
+  </div>
+  <div class="hero-image">
     <img src="team-werkplek.jpg" alt="Forgexe team aan het werk" loading="eager">
-    <span class="photo-badge">live team &middot; Panningen</span>
-  </aside>
-</div>
+  </div>
+</header>
 
 <!-- ════════════ PRINCIPES (airflows-inspired 4-grid, one green) ════════════ -->
 <section class="section-card reveal">
