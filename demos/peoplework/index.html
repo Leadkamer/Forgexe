@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People Work Service — Operations Command Center</title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Demo met fictieve data — gebouwd door Forgexe. Niet indexeren. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== HUISSTIJL People Work Service — teal + oranje (uit screenshot) ===== */
+:root{
+  --brand:#17485a;          /* hoofdkleur — petrol/teal (header & vacaturekaart) */
+  --brand-deep:#0f3441;
+  --brand-light:#2d6e84;
+  --accent:#f07f1a;         /* accentkleur — oranje (Portaal/Meer weten knoppen) */
+  --accent-deep:#d96d0c;
+  --accent-soft:#fdefe0;
+  --page:#eef1f4;
+  --card:#ffffff;
+  --ink:#152631;
+  --ink-dim:#566570;
+  --ink-mut:#90a0a8;
+  --line:#e2e8ec;
+  --line-soft:#eef2f5;
+  --prio-high:#e23b3b;  --prio-high-bg:#fdecec;
+  --prio-mid:#e2920f;   --prio-mid-bg:#fdf4e3;
+  --prio-low:#1f9d6b;   --prio-low-bg:#e8f7f0;
+  --cat-huis:#2d6e84;   --cat-huis-bg:#e7f0f3;
+  --cat-admin:#7c5cbf;  --cat-admin-bg:#f1ecfa;
+  --cat-loon:#1f9d8f;   --cat-loon-bg:#e6f6f4;
+  --cat-plan:#f07f1a;   --cat-plan-bg:#fdefe0;
+  --ok:#1f9d6b;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(15,52,65,.04),0 4px 16px rgba(15,52,65,.06);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--page);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.app{max-width:1380px;margin:0 auto;padding:0 18px 18px}
+
+/* ===== UTILITY STRIP (zoals hun donkere topbalk) ===== */
+.util{display:flex;align-items:center;justify-content:space-between;background:var(--brand);color:#fff;font-size:12px;padding:8px 22px;border-radius:0 0 10px 10px}
+.util-l{opacity:.92}.util-l b{font-weight:700}
+.util-r{display:flex;align-items:center;gap:14px}
+.util-lang{font-weight:600;opacity:.8;letter-spacing:.06em}
+.util-portal{background:var(--accent);color:#fff;font-weight:700;padding:5px 13px;border-radius:7px;display:inline-flex;align-items:center;gap:6px}
+@media(max-width:680px){.util-l{display:none}}
+
+/* ===== TOPBAR ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 22px;box-shadow:var(--shadow);margin-top:14px}
+.brand{display:flex;align-items:center;gap:13px}
+.logo-mark{width:40px;height:40px;flex-shrink:0}
+.logo-word{font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1;color:var(--brand)}
+.logo-word .o{color:var(--accent)}
+.logo-werkt{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;font-style:italic;color:var(--accent);margin-top:2px;letter-spacing:.02em}
+.brand-divider{width:1px;height:34px;background:var(--line);margin:0 4px}
+.brand-sub{font-size:12.5px;color:var(--ink-dim);font-weight:600;line-height:1.3}
+.brand-sub span{display:block;font-size:10.5px;color:var(--ink-mut);font-weight:500}
+.top-right{display:flex;align-items:center;gap:18px}
+.live-pill{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--ok);background:var(--prio-low-bg);padding:6px 12px;border-radius:999px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(31,157,107,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,157,107,.5)}70%{box-shadow:0 0 0 7px rgba(31,157,107,0)}100%{box-shadow:0 0 0 0 rgba(31,157,107,0)}}
+.top-date{font-size:12.5px;color:var(--ink-dim);font-weight:500}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--brand-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+
+/* ===== PAGE TITLE ===== */
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;margin:22px 4px 14px;flex-wrap:wrap;gap:12px}
+.page-head h1{font-family:'Poppins',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--brand)}
+.page-head p{font-size:13px;color:var(--ink-dim);margin-top:3px}
+.page-head .sub-accent{color:var(--accent);font-weight:600}
+
+/* ===== KPI ROW ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand)}
+.kpi.k-accent::after{background:var(--accent)}
+.kpi.k-high::after{background:var(--prio-high)}
+.kpi.k-ok::after{background:var(--ok)}
+.kpi-label{font-size:11.5px;color:var(--ink-mut);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi-val{font-family:'Poppins',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:6px;line-height:1;color:var(--brand)}
+.kpi-sub{font-size:11.5px;margin-top:7px;font-weight:500;color:var(--ink-dim);display:flex;align-items:center;gap:5px}
+.trend-down{color:var(--ok);font-weight:700}
+.trend-up{color:var(--accent);font-weight:700}
+
+/* ===== LAYOUT ===== */
+.grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
+.panel-head h2{font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:700;color:var(--brand)}
+.panel-head .count{font-size:12px;color:var(--ink-mut);font-weight:600}
+
+/* ===== FILTER TABS ===== */
+.filters{display:flex;gap:8px;padding:14px 20px 4px;flex-wrap:wrap}
+.fbtn{border:1px solid var(--line);background:#fff;color:var(--ink-dim);font-family:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
+.fbtn:hover{border-color:var(--brand-light);color:var(--brand)}
+.fbtn.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.fbtn .fc{width:8px;height:8px;border-radius:50%}
+
+/* ===== FEED ===== */
+.feed{padding:8px 14px 16px}
+.msg{border:1px solid var(--line);border-radius:12px;margin:10px 6px;overflow:hidden;transition:box-shadow .18s,border-color .18s;background:#fff}
+.msg:hover{box-shadow:0 6px 20px rgba(20,40,80,.08);border-color:var(--line)}
+.msg.prio-high{border-left:4px solid var(--prio-high)}
+.msg.prio-mid{border-left:4px solid var(--prio-mid)}
+.msg.prio-low{border-left:4px solid var(--prio-low)}
+.msg-top{display:flex;gap:13px;padding:14px 16px;cursor:pointer;align-items:flex-start}
+.m-ava{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;background:var(--brand-light)}
+.m-body{flex:1;min-width:0}
+.m-line1{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.m-name{font-weight:700;font-size:13.5px}
+.m-flag{font-size:13px}
+.m-time{font-size:11.5px;color:var(--ink-mut);font-weight:500}
+.wa-ico{width:14px;height:14px;flex-shrink:0}
+.m-text{font-size:13px;color:var(--ink-dim);margin-top:4px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.m-tags{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap;align-items:center}
+.tag{font-size:11px;font-weight:700;padding:4px 9px;border-radius:7px;display:inline-flex;align-items:center;gap:5px;letter-spacing:.01em}
+.tag .ti{font-size:11px}
+.prio-badge{font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:7px;text-transform:uppercase;letter-spacing:.04em}
+.pb-high{background:var(--prio-high-bg);color:var(--prio-high)}
+.pb-mid{background:var(--prio-mid-bg);color:var(--prio-mid)}
+.pb-low{background:var(--prio-low-bg);color:var(--prio-low)}
+.m-status{margin-left:auto;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:flex;align-items:center;gap:5px}
+.st-open{background:#fdecec;color:var(--prio-high)}
+.st-busy{background:var(--accent-soft);color:var(--accent)}
+.st-done{background:var(--prio-low-bg);color:var(--prio-low)}
+.chev{margin-left:8px;color:var(--ink-mut);transition:transform .2s;flex-shrink:0}
+.msg.open .chev{transform:rotate(180deg)}
+
+/* ===== DETAIL ===== */
+.detail{max-height:0;overflow:hidden;transition:max-height .3s ease;background:#fafbfd;border-top:1px solid transparent}
+.msg.open .detail{max-height:520px;border-top-color:var(--line-soft)}
+.detail-in{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dcard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+.dcard.full{grid-column:1/-1}
+.dcard h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-mut);font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.ai-reason{font-size:12.5px;color:var(--ink);line-height:1.55}
+.ai-reason b{color:var(--brand)}
+.p4f{display:flex;flex-direction:column;gap:7px}
+.p4f-row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+.p4f-row span{color:var(--ink-mut);font-weight:500}
+.p4f-row b{color:var(--ink);font-weight:600;text-align:right}
+.route{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:12.5px}
+.route .pill{background:var(--brand);color:#fff;font-weight:600;padding:4px 10px;border-radius:7px;font-size:11.5px;display:inline-flex;align-items:center;gap:5px}
+.route .arrow{color:var(--ink-mut);font-weight:700}
+.route .who{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.route .who .wa-mini{width:22px;height:22px;border-radius:50%;background:var(--brand-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700}
+.actions{grid-column:1/-1;display:flex;gap:9px;flex-wrap:wrap}
+.act{font-family:inherit;font-size:12.5px;font-weight:600;padding:9px 15px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:7px}
+.act:hover{border-color:var(--brand-light)}
+.act.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.act.primary:hover{background:var(--accent-deep)}
+.act.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+
+/* ===== SIDEBAR ===== */
+.side{display:flex;flex-direction:column;gap:18px;position:sticky;top:18px}
+.s-sec{padding:16px 18px}
+.s-sec h3{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--brand);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.s-sec h3 .mini{font-size:11px;color:var(--ink-mut);font-weight:600}
+.coord{margin-bottom:13px}
+.coord:last-child{margin-bottom:0}
+.coord-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.coord-name{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600}
+.coord-ava{width:24px;height:24px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
+.coord-num{font-size:12px;font-weight:700;color:var(--ink-dim)}
+.bar{height:7px;background:var(--line-soft);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px}
+.cat-row{display:flex;align-items:center;gap:10px;margin-bottom:11px;font-size:12.5px}
+.cat-row:last-child{margin-bottom:0}
+.cat-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.cat-name{flex:1;font-weight:500;color:var(--ink-dim)}
+.cat-bar{width:90px;height:6px;background:var(--line-soft);border-radius:3px;overflow:hidden}
+.cat-bar i{display:block;height:100%;border-radius:3px}
+.cat-val{font-weight:700;font-size:12px;width:20px;text-align:right}
+.workers{display:flex;flex-direction:column;gap:9px}
+.worker{display:flex;align-items:center;gap:10px;font-size:12.5px;padding:9px 11px;border:1px solid var(--line-soft);border-radius:9px;background:#fafbfd}
+.worker .wdot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--prio-low-bg)}
+.worker b{font-weight:600}
+.worker span{color:var(--ink-mut);font-size:11px;display:block;margin-top:1px}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--ink);color:#fff;padding:13px 18px;border-radius:11px;font-size:13px;font-weight:500;box-shadow:0 12px 32px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px;transform:translateY(120%);opacity:0;transition:all .35s cubic-bezier(.2,.9,.3,1);z-index:99;max-width:340px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast .ti{font-size:16px}
+.new-flash{animation:flash 1.6s ease}
+@keyframes flash{0%{background:var(--accent-soft)}100%{background:#fff}}
+
+/* ===== FOOTER ===== */
+.foot{text-align:center;margin:26px 0 8px;font-size:11.5px;color:var(--ink-mut)}
+.foot b{color:var(--ink-dim);font-weight:600}
+.foot .fx{color:var(--brand);font-weight:700}
+
+@media(max-width:1080px){.grid{grid-template-columns:1fr}.side{position:static}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.kpis{grid-template-columns:1fr}.detail-in{grid-template-columns:1fr}.m-status{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- UTILITY STRIP (zoals hun donkere topbalk) -->
+  <div class="util">
+    <div class="util-l">Open en bereikbaar op werkdagen van <b>08:30</b> tot <b>17:30</b> uur &nbsp;·&nbsp; 0492 - 820 900</div>
+    <div class="util-r">
+      <span class="util-lang">NL | EN</span>
+      <span class="util-portal">Portaal →</span>
+    </div>
+  </div>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="27" cy="9" r="5" fill="#f07f1a"/>
+        <path d="M9 30c5-1 9-3 12-7 3-4 6-5 10-4l8 3-2 6-7-2c-2 0-3 1-4 3l9 13-6 3-9-12-7 9-6-3 9-12c-3 1-6 1-10 0z" fill="#f07f1a"/>
+        <path d="M12 31c4-1 7-3 10-6" stroke="#17485a" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="logo-word">People<span class="o">Work</span>Service</div>
+        <div class="logo-werkt">Werkt!</div>
+      </div>
+      <div class="brand-divider"></div>
+      <div class="brand-sub">Operations Command Center<span>interne berichtencentrale</span></div>
+    </div>
+    <div class="top-right">
+      <div class="live-pill"><span class="live-dot"></span> Live — AI actief</div>
+      <div class="top-date" id="topDate"></div>
+      <div class="avatar">WO</div>
+    </div>
+  </div>
+
+  <!-- PAGE HEAD -->
+  <div class="page-head">
+    <div>
+      <h1>Berichtencentrale</h1>
+      <p>Alle WhatsApp-berichten automatisch gerangschikt, geprioriteerd en doorgezet naar de juiste afdeling. <span class="sub-accent">De mens houdt het laatste woord.</span></p>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">Berichten vandaag</div>
+      <div class="kpi-val">47</div>
+      <div class="kpi-sub"><span class="trend-up">▲ 12</span> t.o.v. gisteren</div>
+    </div>
+    <div class="kpi k-high">
+      <div class="kpi-label">Hoge prioriteit</div>
+      <div class="kpi-val" id="kpiHigh">4</div>
+      <div class="kpi-sub">open — vraagt actie</div>
+    </div>
+    <div class="kpi k-ok">
+      <div class="kpi-label">Gem. reactietijd</div>
+      <div class="kpi-val">7 min</div>
+      <div class="kpi-sub"><span class="trend-down">▼ van ~2 uur</span></div>
+    </div>
+    <div class="kpi k-accent">
+      <div class="kpi-label">Automatisch afgehandeld</div>
+      <div class="kpi-val">61%</div>
+      <div class="kpi-sub">zonder tussenkomst coördinator</div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <!-- MAIN: FEED -->
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Inkomende berichten</h2>
+        <span class="count" id="feedCount"></span>
+      </div>
+      <div class="filters" id="filters">
+        <button class="fbtn active" data-cat="all">Alles</button>
+        <button class="fbtn" data-cat="huisvesting"><span class="fc" style="background:var(--cat-huis)"></span>Huisvesting</button>
+        <button class="fbtn" data-cat="loonstrook"><span class="fc" style="background:var(--cat-loon)"></span>Loonstrook</button>
+        <button class="fbtn" data-cat="administratie"><span class="fc" style="background:var(--cat-admin)"></span>Administratie</button>
+        <button class="fbtn" data-cat="planning"><span class="fc" style="background:var(--cat-plan)"></span>Planning</button>
+        <button class="fbtn" data-cat="high">🔴 Hoog</button>
+      </div>
+      <div class="feed" id="feed"></div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="side">
+      <div class="panel s-sec">
+        <h3>Taakverdeling <span class="mini">vandaag</span></h3>
+        <div class="coord">
+          <div class="coord-top"><div class="coord-name"><span class="coord-ava" style="background:#17485a">WO</span>Wout</div><div class="coord-num">3 open</div></div>
+          <div class="bar"><i style="width:60%;background:var(--brand)"></i></div>
+        </div>
+        <div class="coord">
+          <div class="coord-top"><div class="coord-name"><span class="coord-ava" style="background:#7c5cbf">SI</span>Silvia · administratie</div><div class="coord-num">4 open</div></div>
+          <div class="bar"><i style="width:80%;background:var(--cat-admin)"></i></div>
+        </div>
+        <div class="coord">
+          <div class="coord-top"><div class="coord-name"><span class="coord-ava" style="background:#2d6cb5">TO</span>Tomasz · huisvesting</div><div class="coord-num">2 open</div></div>
+          <div class="bar"><i style="width:40%;background:var(--cat-huis)"></i></div>
+        </div>
+      </div>
+
+      <div class="panel s-sec">
+        <h3>Categorieën <span class="mini">vandaag</span></h3>
+        <div class="cat-row"><span class="cat-dot" style="background:var(--cat-huis)"></span><span class="cat-name">Huisvesting</span><span class="cat-bar"><i style="width:100%;background:var(--cat-huis)"></i></span><span class="cat-val">14</span></div>
+        <div class="cat-row"><span class="cat-dot" style="background:var(--cat-loon)"></span><span class="cat-name">Loonstrook</span><span class="cat-bar"><i style="width:86%;background:var(--cat-loon)"></i></span><span class="cat-val">12</span></div>
+        <div class="cat-row"><span class="cat-dot" style="background:var(--cat-admin)"></span><span class="cat-name">Administratie</span><span class="cat-bar"><i style="width:64%;background:var(--cat-admin)"></i></span><span class="cat-val">9</span></div>
+        <div class="cat-row"><span class="cat-dot" style="background:var(--cat-plan)"></span><span class="cat-name">Planning</span><span class="cat-bar"><i style="width:57%;background:var(--cat-plan)"></i></span><span class="cat-val">8</span></div>
+        <div class="cat-row"><span class="cat-dot" style="background:var(--ink-mut)"></span><span class="cat-name">Overig</span><span class="cat-bar"><i style="width:28%;background:var(--ink-mut)"></i></span><span class="cat-val">4</span></div>
+      </div>
+
+      <div class="panel s-sec">
+        <h3>AI-medewerkers <span class="mini">4 actief</span></h3>
+        <div class="workers">
+          <div class="worker"><span class="wdot"></span><div><b>De Triagist</b><span>triëren & prioriteren</span></div></div>
+          <div class="worker"><span class="wdot"></span><div><b>De Dispatcher</b><span>routing naar Teams</span></div></div>
+          <div class="worker"><span class="wdot"></span><div><b>De Onboarding-buddy</b><span>feedback nieuwe starters</span></div></div>
+          <div class="worker"><span class="wdot"></span><div><b>De Loon- &amp; Betaal-assistent</b><span>loonstrook & betalingen</span></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">Demo-omgeving · fictieve data · aangedreven door <span class="fx">Forgexe</span> — <b>execute growth</b></div>
+</div>
+
+<div class="toast" id="toast"><span class="ti">⚡</span><span id="toastTxt"></span></div>
+
+<script>
+var WA='<svg class="wa-ico" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
+
+var MSGS=[
+ {id:1,name:'Andrzej Kowalski',flag:'🇵🇱',ini:'AK',col:'#17485a',text:'Ik wil stoppen met dit werk. Het gaat zo echt niet meer, ik slaap al een week slecht in mijn kamer.',cat:'planning',catLabel:'Algemeen / Verloop',prio:'high',time:'2 min',status:'open',
+   reason:'Bevat een expliciet <b>vertreksignaal</b> ("ik wil stoppen"). Direct als HOOG gemarkeerd — dit vraagt persoonlijk contact, niet automatisch beantwoorden.',
+   woont:'Heistraat 155, Eindhoven',werkt:'Thibaut Assembly B.V.',functie:'Assemblagemedewerker',dossier:'2 weken in dienst · 1 eerdere huisvestingsklacht',
+   kanaal:'Coördinatie',coord:'Wout',cini:'WO'},
+ {id:2,name:'Maria Nowak',flag:'🇵🇱',ini:'MN',col:'#2d6cb5',text:'De verwarming op Heistraat 155 doet het niet meer en het is hier echt koud geworden. Kan iemand kijken?',cat:'huisvesting',catLabel:'Huisvesting',prio:'high',time:'8 min',status:'open',
+   reason:'Herkend als <b>defect in huisvesting</b> op een gedeeld adres (meerdere bewoners geraakt). Verhoogde prioriteit wegens koude + meerdere personen.',
+   woont:'Heistraat 155, Eindhoven',werkt:'Van Berlo Logistiek',functie:'Orderpicker',dossier:'Adres gedeeld met 5 bewoners',
+   kanaal:'Huisvesting',coord:'Tomasz',cini:'TO'},
+ {id:3,name:'Pablo García',flag:'🇪🇸',ini:'PG',col:'#1f9d8f',text:'Ik snap mijn loonstrook niet. Er staat veel minder op dan ik had verwacht voor afgelopen week.',cat:'loonstrook',catLabel:'Loonstrook',prio:'mid',time:'21 min',status:'busy',
+   reason:'Loonstrook-vraag. De Loon-assistent vergeleek de strook met EasyFlex en signaleert een <b>mogelijke inhoudingsfout</b> → doorgezet naar administratie i.p.v. standaard uitleg.',
+   woont:'Kerkstraat 12, Helmond',werkt:'Thibaut Assembly B.V.',functie:'Heftruckchauffeur',dossier:'Personeelsnr. 4471 · week 26',
+   kanaal:'Administratie',coord:'Silvia',cini:'SI'},
+ {id:4,name:'Stefan Dumitru',flag:'🇷🇴',ini:'SD',col:'#f07f1a',text:'Mijn trein naar Eindhoven heeft vertraging. Hoe laat word ik opgehaald van het station vandaag?',cat:'planning',catLabel:'Planning / Vervoer',prio:'high',time:'1 min',status:'open',
+   reason:'<b>Tijdsgevoelige</b> vervoersvraag (aankomst vandaag). HOOG geprioriteerd zodat de planning direct kan schakelen.',
+   woont:'Nog in te plannen — arriveert vandaag',werkt:'Intake gepland 14:00',functie:'Nieuwe uitzendkracht',dossier:'Eerste werkdag morgen',
+   kanaal:'Planning',coord:'Wout',cini:'WO'},
+ {id:5,name:'Ion Popescu',flag:'🇷🇴',ini:'IP',col:'#7c5cbf',text:'Mijn uren kloppen niet. Ik heb zaterdag gewerkt maar zie die uren niet terug op mijn overzicht.',cat:'administratie',catLabel:'Administratie / Uren',prio:'mid',time:'34 min',status:'open',
+   reason:'Discrepantie in <b>gewerkte uren</b>. Vereist contact met de opdrachtgever om de zaterdaguren te verifiëren — taak aangemaakt voor administratie.',
+   woont:'Industrieweg 8, Gemert',werkt:'Van Berlo Logistiek',functie:'Heftruckchauffeur',dossier:'Personeelsnr. 4318 · week 25-26',
+   kanaal:'Administratie',coord:'Silvia',cini:'SI'},
+ {id:6,name:'Joana Silva',flag:'🇵🇹',ini:'JS',col:'#2d6cb5',text:'Ik ben ziek en weet niet hoe ik een afspraak bij de dokter maak hier in Nederland. Kan iemand mij helpen?',cat:'huisvesting',catLabel:'Zorg / Welzijn',prio:'mid',time:'47 min',status:'busy',
+   reason:'Veelvoorkomende <b>zorgvraag</b> bij nieuwe internationale krachten. AI stuurde alvast de standaard-uitleg over zorgverzekering; coördinator volgt persoonlijk op.',
+   woont:'Kerkstraat 12, Helmond',werkt:'Food Partners Brabant',functie:'Productiemedewerker',dossier:'6 weken in dienst',
+   kanaal:'Coördinatie',coord:'Tomasz',cini:'TO'},
+ {id:7,name:'Andrei Ivanov',flag:'🇧🇬',ini:'AI',col:'#1f9d6b',text:'Ik moet nog €3,10 betalen voor de huisvesting deze week? Klopt dat bedrag?',cat:'loonstrook',catLabel:'Betaling (PKS)',prio:'low',time:'1 u',status:'done',
+   reason:'Kleine <b>PKS-bijbetaling</b>. Volledig automatisch afgehandeld: de Betaal-assistent bevestigde het bedrag en stuurde direct een betaalverzoek. Geen coördinator nodig.',
+   woont:'Industrieweg 8, Gemert',werkt:'Van Berlo Logistiek',functie:'Orderpicker',dossier:'Betaling verstuurd · €3,10',
+   kanaal:'Automatisch',coord:'Betaal-assistent',cini:'€'},
+ {id:8,name:'Carlos Mendes',flag:'🇵🇹',ini:'CM',col:'#f07f1a',text:'(Automatische check-in dag 3) "Het werk bevalt goed, fijne collega’s. Alleen het vervoer ’s ochtends is soms krap."',cat:'planning',catLabel:'Onboarding-feedback',prio:'mid',time:'1 u',status:'busy',
+   reason:'Proactieve <b>check-in</b> door de Onboarding-buddy. Sentiment positief, maar één aandachtspunt (vervoer) gesignaleerd → taak voor planning om op te volgen.',
+   woont:'Dorpsstraat 44, Beek en Donk',werkt:'Food Partners Brabant',functie:'Productiemedewerker',dossier:'3 dagen in dienst · sentiment: positief',
+   kanaal:'Planning',coord:'Wout',cini:'WO'}
+];
+
+var CATMETA={
+ huisvesting:{label:'Huisvesting',ico:'🏠',col:'var(--cat-huis)',bg:'var(--cat-huis-bg)'},
+ administratie:{label:'Administratie',ico:'📋',col:'var(--cat-admin)',bg:'var(--cat-admin-bg)'},
+ loonstrook:{label:'Loonstrook',ico:'💶',col:'var(--cat-loon)',bg:'var(--cat-loon-bg)'},
+ planning:{label:'Planning',ico:'📅',col:'var(--cat-plan)',bg:'var(--cat-plan-bg)'}
+};
+var PRIO={high:{cls:'pb-high',label:'Hoog'},mid:{cls:'pb-mid',label:'Normaal'},low:{cls:'pb-low',label:'Laag'}};
+var STATUS={open:{cls:'st-open',label:'Open'},busy:{cls:'st-busy',label:'In behandeling'},done:{cls:'st-done',label:'Afgehandeld'}};
+
+var curFilter='all';
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function msgHTML(m){
+ var cm=CATMETA[m.cat], pr=PRIO[m.prio], st=STATUS[m.status];
+ var catTag='<span class="tag" style="background:'+cm.bg+';color:'+cm.col+'"><span class="ti">'+cm.ico+'</span>'+esc(m.catLabel)+'</span>';
+ var prTag='<span class="prio-badge '+pr.cls+'">'+pr.label+'</span>';
+ var stTag='<span class="m-status '+st.cls+'">'+st.label+'</span>';
+ var chev='<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
+ return '<div class="msg prio-'+m.prio+'" data-cat="'+m.cat+'" data-prio="'+m.prio+'" id="msg'+m.id+'">'+
+   '<div class="msg-top" onclick="toggle('+m.id+')">'+
+     '<div class="m-ava" style="background:'+m.col+'">'+m.ini+'</div>'+
+     '<div class="m-body">'+
+       '<div class="m-line1">'+WA+'<span class="m-name">'+esc(m.name)+'</span><span class="m-flag">'+m.flag+'</span><span class="m-time">'+m.time+'</span></div>'+
+       '<div class="m-text">'+esc(m.text)+'</div>'+
+       '<div class="m-tags">'+catTag+prTag+stTag+'</div>'+
+     '</div>'+chev+
+   '</div>'+
+   '<div class="detail"><div class="detail-in">'+
+     '<div class="dcard"><h4>🤖 AI-analyse — De Triagist</h4><div class="ai-reason">'+m.reason+'</div></div>'+
+     '<div class="dcard"><h4>🗂️ Verrijkt uit Plan4Flex</h4><div class="p4f">'+
+       '<div class="p4f-row"><span>Woont</span><b>'+esc(m.woont)+'</b></div>'+
+       '<div class="p4f-row"><span>Werkt bij</span><b>'+esc(m.werkt)+'</b></div>'+
+       '<div class="p4f-row"><span>Functie</span><b>'+esc(m.functie)+'</b></div>'+
+       '<div class="p4f-row"><span>Dossier</span><b>'+esc(m.dossier)+'</b></div>'+
+     '</div></div>'+
+     '<div class="dcard full"><h4>↪️ Routing — De Dispatcher</h4><div class="route">'+
+       '<span class="pill">📨 WhatsApp</span><span class="arrow">→</span>'+
+       '<span class="pill" style="background:'+CATMETA[m.cat].col+'">'+CATMETA[m.cat].ico+' Teams · '+esc(m.kanaal)+'</span>'+
+       '<span class="arrow">→</span><span class="who"><span class="wa-mini">'+m.cini+'</span>'+esc(m.coord)+'</span>'+
+     '</div></div>'+
+     '<div class="actions">'+
+       (m.status==='done'
+         ? '<button class="act ok" disabled>✓ Automatisch afgehandeld</button>'
+         : '<button class="act primary" onclick="event.stopPropagation();notify(\'Taak doorgezet naar Teams · '+esc(m.kanaal)+' ('+esc(m.coord)+')\')">↪️ Doorzetten naar Teams</button>'+
+           '<button class="act" onclick="event.stopPropagation();notify(\'Gemarkeerd als afgehandeld\')">✓ Markeer afgehandeld</button>'+
+           '<button class="act" onclick="event.stopPropagation();notify(\'Geopend in WhatsApp\')">💬 Persoonlijk antwoorden</button>')+
+     '</div>'+
+   '</div></div>'+
+ '</div>';
+}
+
+function render(){
+ var feed=document.getElementById('feed');
+ var html='';
+ for(var i=0;i<MSGS.length;i++){
+   var m=MSGS[i];
+   if(curFilter==='all'||(curFilter==='high'&&m.prio==='high')||m.cat===curFilter){html+=msgHTML(m)}
+ }
+ feed.innerHTML=html;
+ var shown=feed.querySelectorAll('.msg').length;
+ document.getElementById('feedCount').textContent=shown+' van '+MSGS.length+' berichten';
+}
+
+function toggle(id){
+ var el=document.getElementById('msg'+id);
+ el.classList.toggle('open');
+}
+
+function notify(txt){
+ var t=document.getElementById('toast');
+ document.getElementById('toastTxt').textContent=txt;
+ t.classList.add('show');
+ clearTimeout(window._tt);
+ window._tt=setTimeout(function(){t.classList.remove('show')},2600);
+}
+
+document.getElementById('filters').addEventListener('click',function(e){
+ var b=e.target.closest('.fbtn');if(!b)return;
+ var btns=document.querySelectorAll('.fbtn');
+ for(var i=0;i<btns.length;i++)btns[i].classList.remove('active');
+ b.classList.add('active');
+ curFilter=b.getAttribute('data-cat');
+ render();
+});
+
+// datum
+(function(){
+ var d=new Date();
+ var days=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+ var mon=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+ var hh=('0'+d.getHours()).slice(-2),mm=('0'+d.getMinutes()).slice(-2);
+ document.getElementById('topDate').textContent=days[d.getDay()]+' '+d.getDate()+' '+mon[d.getMonth()]+' · '+hh+':'+mm;
+})();
+
+render();
+
+// Live-demo: nieuw bericht valt binnen
+setTimeout(function(){
+ MSGS.unshift({id:99,name:'Lukas Schmidt',flag:'🇩🇪',ini:'LS',col:'#e23b3b',text:'Ik ben vandaag ziek en kan niet komen werken. Wil je de klant informeren?',cat:'planning',catLabel:'Ziekmelding',prio:'high',time:'nu',status:'open',
+  reason:'Live binnengekomen. Herkend als <b>ziekmelding</b> → HOOG: de opdrachtgever moet vandaag geïnformeerd worden zodat de bezetting klopt.',
+  woont:'Dorpsstraat 44, Beek en Donk',werkt:'Food Partners Brabant',functie:'Productiemedewerker',dossier:'1e ziekmelding dit kwartaal',
+  kanaal:'Planning',coord:'Wout',cini:'WO'});
+ if(curFilter==='all'||curFilter==='high'||curFilter==='planning'){render()}
+ var first=document.querySelector('.msg');
+ if(first){first.classList.add('new-flash')}
+ document.getElementById('kpiHigh').textContent='5';
+ notify('Nieuw bericht getrieerd: ziekmelding · HOOG → Planning (Wout)');
+},20000);
+</script>
+</body>
+</html>
