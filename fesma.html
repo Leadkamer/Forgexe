@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Procesautomatisering voor de maakindustrie — Forgexe × Fesma</title>
+<meta name="description" content="Forgexe en Fesma automatiseren processen in de maakindustrie: orderverwerking, offertes, planning en rapportage — bovenop je bestaande systemen. Start met een gratis scan op locatie.">
+<link rel="canonical" href="https://forgexe.nl/fesma.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://forgexe.nl/fesma.html">
+<meta property="og:title" content="Procesautomatisering voor de maakindustrie — Forgexe × Fesma">
+<meta property="og:description" content="Minder handwerk rond je productie, meer marge onder de streep. Gratis scan op locatie bij jouw maakbedrijf.">
+<meta property="og:image" content="https://forgexe.nl/og-forgexe.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Procesautomatisering voor de maakindustrie — Forgexe × Fesma">
+<meta name="twitter:description" content="Minder handwerk rond je productie, meer marge onder de streep. Gratis scan op locatie.">
+<meta name="twitter:image" content="https://forgexe.nl/og-forgexe.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--neon-cyan:#00f0ff;--tr:.35s ease}
+body{--bg:#0a0b0e;--bg-el:#10121a;--txt:#e2e8f0;--dim:#8d9bb5;--mut:#475569;--brd:rgba(255,255,255,0.06);--green-glow:rgba(52,211,153,0.12);--card-hover:#131620;--nav-bg:rgba(10,11,14,0.9);--btn-txt:#0a0b0e;--grid-line:rgba(52,211,153,0.02);--sl:0.008}
+body.light{--bg:#f4f6f8;--bg-el:#ffffff;--txt:#111827;--dim:#4b5563;--mut:#9ca3af;--brd:rgba(0,0,0,0.08);--green-glow:rgba(52,211,153,0.06);--card-hover:#ecfdf5;--nav-bg:rgba(244,246,248,0.92);--btn-txt:#052e16;--grid-line:rgba(52,211,153,0.05);--sl:0}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);font-weight:300;line-height:1.7;overflow-x:hidden;transition:background var(--tr),color var(--tr);-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,var(--sl)) 2px,rgba(0,0,0,var(--sl)) 4px);pointer-events:none;z-index:999}
+.neon-grid{position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0}
+::selection{background:var(--green);color:var(--btn-txt)}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 2rem}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.1;letter-spacing:-.02em}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--brd)}
+.nav-in{max-width:1160px;margin:0 auto;padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.cobrand{display:flex;align-items:center;gap:.85rem}
+.cobrand img.mark{height:30px;width:auto;display:block}
+.cobrand img.fesma{height:26px;width:auto;display:block;border-radius:4px}
+.cobrand .x{color:var(--mut);font-family:var(--mono);font-size:1rem}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--green),var(--green-lt));color:var(--btn-txt);font-family:var(--mono);font-size:.78rem;font-weight:600;padding:.7rem 1.3rem;border-radius:9px;text-decoration:none;white-space:nowrap;transition:all .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(52,211,153,.25)}
+@media(max-width:640px){.nav-cta{display:none}.cobrand img.mark{height:26px}.cobrand img.fesma{height:22px}}
+
+/* SECTION SHELL */
+section{position:relative;z-index:1;padding:5.5rem 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:1.4rem}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.stitle{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:1.1rem}
+.sdesc{font-size:.98rem;color:var(--dim);max-width:620px;line-height:1.85;font-family:var(--mono);font-weight:300}
+
+/* HERO */
+.hero{padding-top:4.5rem;padding-bottom:5rem}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.2vw,3.9rem);margin-bottom:1.5rem}
+.hero h1 .grad{background:linear-gradient(135deg,var(--green),var(--neon-cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.05rem;color:var(--dim);line-height:1.9;max-width:560px;margin-bottom:2rem;font-family:var(--mono);font-weight:300}
+.hero-cta-row{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--green),var(--green-lt));color:var(--btn-txt);font-family:var(--mono);font-size:.86rem;font-weight:600;padding:1rem 1.9rem;border-radius:11px;text-decoration:none;border:none;cursor:pointer;transition:all .3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(52,211,153,.28)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;color:var(--txt);font-family:var(--mono);font-size:.84rem;font-weight:500;padding:1rem 1.4rem;border:1px solid var(--brd);border-radius:11px;text-decoration:none;transition:all .3s}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.hero-micro{display:flex;gap:1.4rem;flex-wrap:wrap;font-family:var(--mono);font-size:.76rem;color:var(--mut)}
+.hero-micro span{display:inline-flex;align-items:center;gap:.4rem}
+.hero-micro span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+/* HERO REPORT CARD */
+.report{background:var(--bg-el);border:1px solid var(--brd);border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);position:relative}
+body.light .report{box-shadow:0 30px 70px rgba(16,24,40,.14)}
+.report::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green-deep),var(--green),var(--neon-cyan))}
+.report-bar{display:flex;align-items:center;gap:.45rem;padding:.75rem 1rem;border-bottom:1px solid var(--brd);background:var(--bg)}
+.rdot{width:9px;height:9px;border-radius:50%;background:var(--brd)}
+.report-bar-t{margin-left:.6rem;font-family:var(--mono);font-size:.66rem;color:var(--mut)}
+.report-body{padding:1.6rem}
+.report-body .rlabel{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:1rem}
+.rrow{display:flex;align-items:flex-start;gap:.8rem;padding:.85rem 0;border-bottom:1px solid var(--brd)}
+.rrow:last-of-type{border-bottom:none}
+.rnum-b{width:24px;height:24px;border-radius:7px;background:var(--green-glow);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;font-weight:600;flex-shrink:0}
+.rrow-t{font-family:var(--head);font-size:.92rem;font-weight:600;color:var(--txt)}
+.rrow-s{font-family:var(--mono);font-size:.74rem;color:var(--dim);margin-top:.15rem}
+.report-foot{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--green-deep));display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.report-foot .rf-num{font-family:var(--head);font-size:1.7rem;font-weight:800;color:#052e16;line-height:1}
+.report-foot .rf-lbl{font-family:var(--mono);font-size:.72rem;color:rgba(5,46,22,.8)}
+
+/* PARTNER */
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem}
+.partner-card{background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:2rem}
+.partner-card .pc-logo{height:30px;margin-bottom:1.1rem;display:flex;align-items:center}
+.partner-card .pc-logo img{height:100%;width:auto}
+.partner-card h3{font-size:1.15rem;margin-bottom:.6rem}
+.partner-card p{font-family:var(--mono);font-size:.84rem;color:var(--dim);line-height:1.8;font-weight:300}
+.plus{display:none}
+
+/* BENTO PROBLEMS */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-top:2.5rem}
+.bcard{background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:1.75rem 1.6rem;display:flex;flex-direction:column;gap:1rem;transition:all .3s}
+.bcard:hover{transform:translateY(-3px);border-color:rgba(52,211,153,.3);box-shadow:0 14px 40px rgba(0,0,0,.22)}
+body.light .bcard{box-shadow:0 1px 3px rgba(16,24,40,.05)}
+body.light .bcard:hover{box-shadow:0 16px 40px rgba(16,24,40,.09)}
+.bbadge{width:44px;height:44px;border-radius:12px;background:var(--green-glow);border:1px solid rgba(52,211,153,.18);display:flex;align-items:center;justify-content:center;color:var(--green)}
+.bcard h3{font-size:1rem;font-weight:600}
+.bcard p{font-family:var(--mono);font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300}
+
+/* SOLUTION CARDS */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-top:2.5rem}
+.sol-card{background:var(--bg-el);border:1px solid var(--brd);border-radius:16px;padding:1.75rem;transition:all .3s}
+.sol-card:hover{transform:translateY(-3px);border-color:rgba(52,211,153,.3)}
+body.light .sol-card{box-shadow:0 1px 3px rgba(16,24,40,.05)}
+.sol-card .stag{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);background:var(--green-glow);padding:.2rem .55rem;border-radius:4px}
+.sol-card h3{font-size:1.02rem;font-weight:600;margin:.9rem 0 .5rem}
+.sol-card p{font-family:var(--mono);font-size:.8rem;color:var(--dim);line-height:1.7;font-weight:300}
+.sol-card.hl{background:linear-gradient(135deg,var(--green),var(--green-deep));border:none;box-shadow:0 20px 46px rgba(52,211,153,.2)}
+.sol-card.hl .stag{color:#052e16;background:rgba(5,46,22,.15)}
+.sol-card.hl h3{color:#052e16}
+.sol-card.hl p{color:rgba(5,46,22,.82)}
+
+/* SCAN STEPS */
+.scan-wrap{background:var(--bg-el);border:1px solid var(--brd);border-radius:20px;padding:3rem;position:relative;overflow:hidden;margin-top:.5rem}
+.scan-wrap::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:60%;height:70%;background:radial-gradient(ellipse,var(--green-glow),transparent 70%);pointer-events:none}
+.scan-wrap>*{position:relative;z-index:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.step{padding:1.75rem;border:1px solid var(--brd);border-radius:14px;background:var(--bg)}
+body.light .step{background:#fff}
+.step .snum{font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--green);width:38px;height:38px;border-radius:10px;background:var(--green-glow);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.step h3{font-size:1.02rem;font-weight:600;margin-bottom:.5rem}
+.step p{font-family:var(--mono);font-size:.8rem;color:var(--dim);line-height:1.75;font-weight:300}
+.scan-cta{text-align:center;margin-top:2.25rem}
+
+/* FINAL / FORM */
+.cta-final{background:var(--bg-el);border:1px solid var(--brd);border-radius:22px;padding:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 0% 0%,var(--green-glow),transparent 45%);pointer-events:none}
+.cta-final>*{position:relative;z-index:1}
+.cta-final h2{font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:1rem}
+.cta-final p{font-family:var(--mono);font-size:.9rem;color:var(--dim);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
+.cta-benefits{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.cta-benefits li{display:flex;align-items:flex-start;gap:.65rem;font-family:var(--mono);font-size:.84rem;color:var(--txt)}
+.cta-benefits li svg{flex-shrink:0;margin-top:2px;color:var(--green)}
+.lead-form{display:flex;flex-direction:column;gap:.85rem}
+.lead-form .frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.lead-form label{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:.35rem}
+.lead-form input,.lead-form select{width:100%;padding:.8rem .95rem;font-family:var(--mono);font-size:.85rem;background:var(--bg);border:1px solid var(--brd);border-radius:9px;color:var(--txt);outline:none;transition:border-color .3s}
+body.light .lead-form input,body.light .lead-form select{background:#fff}
+.lead-form input:focus,.lead-form select:focus{border-color:var(--green)}
+.lead-form input::placeholder{color:var(--mut)}
+.lead-form button{margin-top:.4rem}
+.form-note{font-family:var(--mono);font-size:.7rem;color:var(--mut);text-align:center}
+.form-ok{display:none;text-align:center;padding:2.5rem 1rem}
+.form-ok .ok-badge{width:56px;height:56px;border-radius:50%;background:var(--green-glow);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.form-ok h3{font-size:1.3rem;margin-bottom:.6rem}
+.form-ok p{font-family:var(--mono);font-size:.85rem;color:var(--dim)}
+
+/* FAQ */
+.faq-list{max-width:760px;margin:2rem auto 0}
+.faq-item{border-bottom:1px solid var(--brd)}
+.faq-q{width:100%;text-align:left;background:none;border:none;color:var(--txt);font-family:var(--head);font-size:1rem;font-weight:600;padding:1.35rem 2rem 1.35rem 0;cursor:pointer;position:relative;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq-q .fi{color:var(--green);font-size:1.3rem;transition:transform .3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{font-family:var(--mono);font-size:.84rem;color:var(--dim);line-height:1.8;font-weight:300;padding:0 0 1.35rem}
+.faq-item.open .faq-a{max-height:280px}
+.faq-item.open .fi{transform:rotate(45deg)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--brd);padding:2.5rem 0;margin-top:2rem}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.76rem;color:var(--mut)}
+.foot-in a{color:var(--dim);text-decoration:none}.foot-in a:hover{color:var(--green)}
+
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .partner-grid,.cta-final{grid-template-columns:1fr}
+  .cta-final{padding:2rem;gap:2rem}
+  .bento,.sol-grid,.steps{grid-template-columns:1fr}
+  .scan-wrap{padding:1.75rem}
+  section{padding:4rem 0}
+  .lead-form .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="light">
+<div class="neon-grid"></div>
+
+<nav>
+  <div class="nav-in">
+    <div class="cobrand">
+      <img src="forgexe-mark-green.svg" alt="Forgexe" class="mark" onerror="this.outerHTML='<span style=&quot;font-family:var(--head);font-weight:800;color:var(--green)&quot;>Forgexe</span>'">
+      <span class="x">&times;</span>
+      <img src="logo-fesma.png" alt="Fesma" class="fesma" onerror="this.outerHTML='<span style=&quot;font-family:var(--head);font-weight:700&quot;>Fesma</span>'">
+    </div>
+    <a href="#scan" class="nav-cta">Gratis scan op locatie</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Forgexe &times; Fesma &middot; voor de maakindustrie</div>
+      <h1>Minder handwerk rond je productie. <span class="grad">Meer marge onder de streep.</span></h1>
+      <p class="hero-sub">Samen met Fesma helpt Forgexe maakbedrijven om orderverwerking, offertes, planning en rapportage te automatiseren &mdash; bovenop je bestaande systemen, zonder migraties. Begin met een gratis scan op locatie: wij komen langs, brengen je processen in kaart en laten zien waar de grootste winst zit.</p>
+      <div class="hero-cta-row">
+        <a href="#scan" class="btn-primary">Plan je gratis scan op locatie <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#hoe" class="btn-ghost">Hoe werkt de scan?</a>
+      </div>
+      <div class="hero-micro"><span>Bij jou op locatie</span><span>Vrijblijvend</span><span>Rapport binnen 2 weken</span></div>
+    </div>
+
+    <div class="report" aria-hidden="true">
+      <div class="report-bar"><span class="rdot"></span><span class="rdot"></span><span class="rdot"></span><span class="report-bar-t">scan-rapport &middot; jouw maakbedrijf</span></div>
+      <div class="report-body">
+        <div class="rlabel">3 grootste automatiseringskansen</div>
+        <div class="rrow"><div class="rnum-b">1</div><div><div class="rrow-t">Orderintake &amp; verwerking</div><div class="rrow-s">Van mailbox naar ERP, automatisch ingelezen en gecontroleerd.</div></div></div>
+        <div class="rrow"><div class="rnum-b">2</div><div><div class="rrow-t">Offertes genereren</div><div class="rrow-s">Op basis van specificaties en calculatie, in minuten i.p.v. uren.</div></div></div>
+        <div class="rrow"><div class="rnum-b">3</div><div><div class="rrow-t">Productieplanning &amp; rapportage</div><div class="rrow-s">Realtime inzicht, geen losse Excel-sheets meer.</div></div></div>
+        <div class="report-foot"><span class="rf-lbl">geschatte besparing</span><span class="rf-num">10&ndash;20 u/week</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">De samenwerking</div>
+    <h2 class="stitle">Maakindustrie-kennis &times; AI-automatisering.</h2>
+    <p class="sdesc">Fesma kent de maakindustrie van binnenuit. Forgexe bouwt de AI-systemen en automatiseringen. Samen vertalen we jouw dagelijkse processen naar systemen die het werk overnemen.</p>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="pc-logo"><img src="forgexe-mark-green.svg" alt="Forgexe" onerror="this.parentNode.innerHTML='<span style=&quot;font-family:var(--head);font-weight:800;font-size:1.2rem;color:var(--green)&quot;>Forgexe</span>'"></div>
+        <h3>Forgexe &mdash; AI &amp; automatisering</h3>
+        <p>Wij smeden AI-medewerkers en automations die 24/7 draaien: orderverwerking, offertes, planning, rapportage en dashboards. Gebouwd bovenop je bestaande ERP en tools &mdash; geen vervanging, geen migraties.</p>
+      </div>
+      <div class="partner-card">
+        <div class="pc-logo"><img src="logo-fesma.png" alt="Fesma" onerror="this.parentNode.innerHTML='<span style=&quot;font-family:var(--head);font-weight:700;font-size:1.2rem&quot;>Fesma</span>'"></div>
+        <h3>Fesma &mdash; partner in de maakindustrie</h3>
+        <p>Fesma brengt jarenlange ervaring en een sterk netwerk in de maakindustrie. Die branchekennis zorgt dat de automatiseringen aansluiten op hoe het er op de werkvloer &eacute;cht aan toe gaat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Herkenbaar?</div>
+    <h2 class="stitle">De tijdvreters die elk<br>maakbedrijf tegenkomt.</h2>
+    <p class="sdesc">Niet op de werkvloer, maar eromheen. De administratie en coördinatie die groei in de weg zitten.</p>
+    <div class="bento">
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div><h3>Orders met de hand overtypen</h3><p>Bestellingen komen per mail of PDF binnen en worden handmatig in het ERP gezet. Foutgevoelig en traag.</p></div>
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg></div><h3>Offertes duren te lang</h3><p>Elke offerte is opnieuw calculeren, opmaken en narekenen. Klanten wachten, deals koelen af.</p></div>
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div><h3>Planning in Excel</h3><p>Productieplanning leeft in losse sheets. Niemand heeft realtime het totaaloverzicht.</p></div>
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Systemen praten niet</h3><p>ERP, CAD, voorraad en boekhouding staan los. Data wordt telkens opnieuw ingevoerd.</p></div>
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><h3>Geen zicht op nacalculatie</h3><p>Achteraf weet je niet welke order winst maakte. Sturen op marge gebeurt op gevoel.</p></div>
+      <div class="bcard"><div class="bbadge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div><h3>Personeel schaars</h3><p>Goede mensen zijn moeilijk te vinden. Kostbare uren gaan op aan repeterend administratief werk.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Wat we automatiseren</div>
+    <h2 class="stitle">AI-medewerkers voor<br>het werk rond je productie.</h2>
+    <p class="sdesc">Concrete toepassingen die we bouwen op jouw bestaande systemen. Je team houdt de regie, de routine gaat automatisch.</p>
+    <div class="sol-grid">
+      <a class="sol-card hl" href="#scan" style="text-decoration:none"><span class="stag">Populair</span><h3>Orderverwerking</h3><p>Orders uit mail en PDF automatisch inlezen, controleren en in je ERP zetten. Minder fouten, direct verwerkt.</p></a>
+      <a class="sol-card" href="#scan" style="text-decoration:none"><span class="stag">Sales</span><h3>Offerte-automatisering</h3><p>Offertes genereren op basis van specificaties en calculatieregels. Van uren naar minuten.</p></a>
+      <a class="sol-card" href="#scan" style="text-decoration:none"><span class="stag">Operatie</span><h3>Productieplanning</h3><p>Planning en capaciteit realtime inzichtelijk, gevoed vanuit je orders. Geen losse sheets meer.</p></a>
+      <a class="sol-card" href="#scan" style="text-decoration:none"><span class="stag">Inkoop</span><h3>Voorraad &amp; inkoop</h3><p>Automatische signalen en bestelvoorstellen op basis van verbruik en levertijden.</p></a>
+      <a class="sol-card" href="#scan" style="text-decoration:none"><span class="stag">Inzicht</span><h3>Rapportage &amp; dashboards</h3><p>KPI&#39;s, marge en doorlooptijd in &eacute;&eacute;n overzicht, automatisch bijgewerkt uit al je systemen.</p></a>
+      <a class="sol-card" href="#scan" style="text-decoration:none"><span class="stag">Kantoor</span><h3>Documentverwerking</h3><p>Facturen, pakbonnen en certificaten automatisch herkennen, classificeren en routeren.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW: SCAN -->
+<section id="hoe">
+  <div class="wrap">
+    <div class="scan-wrap">
+      <div style="text-align:center">
+        <div class="eyebrow" style="justify-content:center">De gratis scan op locatie</div>
+        <h2 class="stitle" style="margin-bottom:.8rem">Hoe de scan werkt.</h2>
+        <p class="sdesc" style="margin:0 auto">In &eacute;&eacute;n bezoek weet je waar de grootste winst zit &mdash; zonder verplichtingen.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="snum">1</div><h3>Wij komen naar je toe</h3><p>Op locatie in jouw bedrijf. We lopen met je mee over de werkvloer en op kantoor om te zien hoe het echt werkt.</p></div>
+        <div class="step"><div class="snum">2</div><h3>We brengen je processen in kaart</h3><p>Samen met Fesma spotten we de grootste tijdvreters en waar systemen niet op elkaar aansluiten.</p></div>
+        <div class="step"><div class="snum">3</div><h3>Je krijgt een concreet rapport</h3><p>De 3 grootste automatiseringskansen, met verwachte besparing en een realistische aanpak. Vrijblijvend.</p></div>
+      </div>
+      <div class="scan-cta"><a href="#scan" class="btn-primary">Plan je gratis scan op locatie <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA + FORM -->
+<section id="scan">
+  <div class="wrap">
+    <div class="cta-final">
+      <div>
+        <div class="eyebrow">Plan je scan</div>
+        <h2>Gratis scan op locatie bij jouw maakbedrijf.</h2>
+        <p>Laat je gegevens achter, dan plannen we samen een bezoek in. Binnen twee weken na de scan heb je een concreet rapport in handen.</p>
+        <ul class="cta-benefits">
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Bij jou op locatie, door Forgexe &amp; Fesma</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Volledig vrijblijvend, geen verplichtingen</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Concreet rapport met de 3 grootste kansen</li>
+          <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Gebouwd op je bestaande systemen &mdash; geen migraties</li>
+        </ul>
+      </div>
+      <div>
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="frow">
+            <div><label>Bedrijf</label><input name="bedrijf" required placeholder="Jouw maakbedrijf"></div>
+            <div><label>Naam</label><input name="naam" required placeholder="Voor- en achternaam"></div>
+          </div>
+          <div class="frow">
+            <div><label>E-mail</label><input name="email" type="email" required placeholder="jij@bedrijf.nl"></div>
+            <div><label>Telefoon</label><input name="telefoon" type="tel" required placeholder="06 12345678"></div>
+          </div>
+          <div>
+            <label>Aantal medewerkers</label>
+            <select name="grootte">
+              <option value="">Kies...</option>
+              <option>1&ndash;10</option><option>11&ndash;50</option><option>51&ndash;100</option><option>100+</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Plan mijn gratis scan <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <div class="form-note">We nemen binnen 1 werkdag contact op. Je gegevens gebruiken we alleen hiervoor.</div>
+        </form>
+        <div class="form-ok" id="formOk">
+          <div class="ok-badge"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Bedankt! Je aanvraag staat genoteerd.</h3>
+          <p>We nemen binnen 1 werkdag contact op om je scan op locatie in te plannen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div style="text-align:center"><div class="eyebrow" style="justify-content:center">Veelgestelde vragen</div><h2 class="stitle">Goed om te weten.</h2></div>
+    <div class="faq-list" id="faq">
+      <div class="faq-item"><button class="faq-q">Wat kost de scan? <span class="fi">+</span></button><div class="faq-a"><p>Niets. De scan op locatie is gratis en vrijblijvend. Je krijgt een rapport met de grootste kansen; of je daarna met ons verder wilt, bepaal je zelf.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Moet ik mijn ERP of systemen vervangen? <span class="fi">+</span></button><div class="faq-a"><p>Nee. We bouwen bovenop wat je al hebt &mdash; ERP, CAD, voorraad, boekhouding. Geen migraties, geen dubbele invoer, geen leercurve voor je team.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Hoe lang duurt het voordat ik resultaat zie? <span class="fi">+</span></button><div class="faq-a"><p>Na de scan heb je binnen twee weken een concreet rapport. De eerste automatiseringen staan doorgaans binnen enkele weken live.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Voor welk type maakbedrijf is dit? <span class="fi">+</span></button><div class="faq-a"><p>Voor Nederlandse maakbedrijven &mdash; van metaalbewerking en machinebouw tot toelevering en assemblage &mdash; die groeien maar vastlopen in administratie en coördinatie.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="cobrand"><img src="forgexe-mark-green.svg" alt="Forgexe" class="mark" style="height:24px" onerror="this.outerHTML='<span style=&quot;font-family:var(--head);font-weight:800;color:var(--green)&quot;>Forgexe</span>'"><span class="x">&times;</span><span style="font-family:var(--head);font-weight:700">Fesma</span></div>
+    <div>&copy; Forgexe &times; Fesma &middot; <a href="index.html">forgexe.nl</a> &middot; <a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+// FAQ toggle
+document.getElementById('faq').addEventListener('click', function(e){
+  var q = e.target.closest('.faq-q'); if(!q) return;
+  q.parentNode.classList.toggle('open');
+});
+
+// Lead form
+// Zet LEAD_WEBHOOK op je n8n/Brevo webhook-URL om leads automatisch te ontvangen.
+// Zolang die leeg is, valt het formulier terug op een e-mail naar info@forgexe.nl.
+var LEAD_WEBHOOK = '';
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  if(!f.checkValidity()){ f.reportValidity(); return; }
+  var data = {
+    bedrijf: f.bedrijf.value, naam: f.naam.value, email: f.email.value,
+    telefoon: f.telefoon.value, grootte: f.grootte.value,
+    bron: 'Landingspagina Fesma x Forgexe', pagina: location.href
+  };
+  var btn = f.querySelector('button'); btn.disabled = true; btn.style.opacity = '.6';
+  function done(){ f.style.display='none'; document.getElementById('formOk').style.display='block'; }
+  if(LEAD_WEBHOOK){
+    fetch(LEAD_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+      .then(done).catch(function(){ mailFallback(data); done(); });
+  } else {
+    mailFallback(data); done();
+  }
+});
+function mailFallback(d){
+  var body = 'Nieuwe scan-aanvraag (Fesma x Forgexe)%0D%0A%0D%0A'
+    + 'Bedrijf: '+encodeURIComponent(d.bedrijf)+'%0D%0A'
+    + 'Naam: '+encodeURIComponent(d.naam)+'%0D%0A'
+    + 'E-mail: '+encodeURIComponent(d.email)+'%0D%0A'
+    + 'Telefoon: '+encodeURIComponent(d.telefoon)+'%0D%0A'
+    + 'Medewerkers: '+encodeURIComponent(d.grootte);
+  window.location.href = 'mailto:info@forgexe.nl?subject='+encodeURIComponent('Gratis scan op locatie — '+d.bedrijf)+'&body='+body;
+}
+</script>
+</body>
+</html>
