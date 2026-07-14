@@ -1,7 +1,7 @@
 # Forgexe Website
 
 ## Project
-Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site gehost op GitHub Pages: https://leadkamer.github.io/forgexe-website/
+Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site gehost op **Vercel**: https://www.forgexe.nl (apex forgexe.nl redirect naar www).
 
 ## Taal
 - Alle copy op de site is in het **Nederlands** (informeel: je/jij/jouw, niet u/uw)
@@ -34,7 +34,13 @@ Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site g
 - Email adressen schrijven als "naam at domein.nl" (Cloudflare email protection)
 - Geen verwijzingen naar "Leadkamer" in zichtbare content
 
+## Hosting & URL's
+- Vercel deployt automatisch bij push naar `main`; `vercel.json` heeft `cleanUrls: true`
+- Canonieke URL-vorm: `https://www.forgexe.nl/pagina` (zonder .html, met www)
+- Interne links altijd schrijven als `/pagina` (root-relatief, zonder .html)
+- `_archive/` en `leadkamer-placeholder/` staan in .gitignore en deployen niet mee
+- GitHub Pages voor dit repo is uitgeschakeld (was duplicate content)
+
 ## Git
-- Repo: https://github.com/Leadkamer/forgexe-website
-- Branch: master
-- GitHub Pages actief vanuit /
+- Repo: https://github.com/Leadkamer/Forgexe
+- Branch: main
