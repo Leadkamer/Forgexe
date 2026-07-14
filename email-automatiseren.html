@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026) | Forgexe</title>
-<meta name="description" content="AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. In deze gids: alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.">
-<meta property="og:title" content="Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026)">
-<meta property="og:description" content="AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. Alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.">
-<meta property="og:type" content="article">
-<link rel="canonical" href="https://www.forgexe.nl/wat-kost-ai-automatisering">
+<title>E-mail automatiseren met AI: inbox-triage en conceptantwoorden | Forgexe</title>
+<meta name="description" content="Inkomende mail automatisch sorteren, routeren en beantwoorden met AI. Je team opent een voorgesorteerde inbox met conceptantwoorden klaar in jouw toon.">
+<meta property="og:title" content="E-mail automatiseren met AI: inbox-triage en conceptantwoorden | Forgexe">
+<meta property="og:description" content="Inkomende mail automatisch sorteren, routeren en beantwoorden met AI. Je team opent een voorgesorteerde inbox met conceptantwoorden klaar in jouw toon.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.forgexe.nl/email-automatiseren">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -187,13 +187,17 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .def-card{background:#fafbfc;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:var(--radius-md);padding:1.8rem 2rem;margin-top:2.2rem;max-width:760px}
 .def-card p{font-family:var(--head);font-size:1.02rem;color:var(--ink);line-height:1.65}
 .def-card p strong{font-weight:700}
+.honest-note{display:flex;gap:.8rem;align-items:flex-start;margin-top:1.6rem;max-width:760px;font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.6}
+.honest-note svg{flex-shrink:0;margin-top:.15rem}
+.honest-note a{color:var(--green-deep);font-weight:600;text-decoration:none}
+.honest-note a:hover{text-decoration:underline}
 .compare-wrap{margin-top:3rem}
 .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .compare-table{width:100%;border-collapse:collapse;font-family:var(--head);font-size:.92rem}
 .compare-table th{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mut);text-align:left;padding:.9rem 1.1rem;border-bottom:1px solid var(--line-strong)}
 .compare-table th.hl{color:var(--green-deep)}
 .compare-table td{padding:.95rem 1.1rem;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:top;line-height:1.5}
-.compare-table td:first-child{font-weight:600;color:var(--ink)}
+.compare-table td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 .compare-table td.hl{background:rgba(52,211,153,.07);color:var(--ink);font-weight:500}
 .faq-list{margin-top:2.6rem;max-width:820px}
 .faq-list details{border-bottom:1px solid var(--line);padding:1.25rem 0}
@@ -204,49 +208,37 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .faq-a{padding-top:.85rem;font-family:var(--head);font-size:.94rem;color:var(--ink-dim);line-height:1.65;max-width:70ch}
 .faq-a a{color:var(--green-deep);font-weight:600;text-decoration:none}
 .faq-a a:hover{text-decoration:underline}
-.prose{font-family:var(--head);font-size:1rem;color:var(--ink-dim);line-height:1.7;max-width:70ch;margin-top:1.2rem}
-.prose a{color:var(--green-deep);font-weight:600;text-decoration:none}
-.prose a:hover{text-decoration:underline}
-.prose strong{color:var(--ink)}
-.warn-list{margin-top:2.4rem;display:grid;gap:12px;max-width:820px}
-.warn-item{display:flex;gap:1rem;align-items:flex-start;background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.3rem 1.5rem}
-.warn-item svg{flex-shrink:0;margin-top:.2rem}
-.warn-item h4{font-family:var(--head);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
-.warn-item p{font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.55}
-.calc-card{background:#0a0b0e;border-radius:var(--radius-md);padding:2.2rem 2.4rem;margin-top:2.6rem;max-width:820px}
-.calc-card .calc-label{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:1.2rem}
-.calc-row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-family:var(--head);font-size:.94rem;color:#c4cbd8}
-.calc-row.total{border-bottom:none;padding-top:1rem;color:#fff;font-weight:700;font-size:1.05rem}
-.calc-row.total span:last-child{color:var(--green)}
-@media(max-width:760px){.calc-card{padding:1.6rem 1.2rem!important}}
+.task-link{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green-deep);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem;margin-top:.9rem;letter-spacing:.05em}
+.task-link:hover{text-decoration:underline}
+.proof-strip{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+.proof-tag{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--ink-dim);background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.45rem .9rem}
 </style>
 <!-- ==FORGEXE-SEO== -->
-<meta property="og:url" content="https://www.forgexe.nl/wat-kost-ai-automatisering">
+<meta property="og:url" content="https://www.forgexe.nl/email-automatiseren">
 <meta property="og:image" content="https://www.forgexe.nl/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Forgexe — AI-medewerkers voor het Nederlandse MKB">
 <meta property="og:site_name" content="Forgexe">
 <meta property="og:locale" content="nl_NL">
-<meta property="article:published_time" content="2026-07-14">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026)">
-<meta name="twitter:description" content="AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. Alle prijsmodellen, voorbeelden, verborgen kosten en terugverdientijd.">
+<meta name="twitter:title" content="E-mail automatiseren met AI: inbox-triage en conceptantwoorden | Forgexe">
+<meta name="twitter:description" content="Inkomende mail automatisch sorteren, routeren en beantwoorden met AI. Je team opent een voorgesorteerde inbox met conceptantwoorden klaar in jouw toon.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
 <meta name="theme-color" content="#0a0b0e">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
 <!-- ==/FORGEXE-SEO== -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.forgexe.nl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.forgexe.nl/blog"},{"@type":"ListItem","position":3,"name":"Wat kost AI-automatisering?","item":"https://www.forgexe.nl/wat-kost-ai-automatisering"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026)","description":"AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. Alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.","image":"https://www.forgexe.nl/og-image.png","url":"https://www.forgexe.nl/wat-kost-ai-automatisering","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.forgexe.nl/wat-kost-ai-automatisering"},"datePublished":"2026-07-14","dateModified":"2026-07-14","inLanguage":"nl-NL","author":{"@type":"Organization","name":"Forgexe","url":"https://www.forgexe.nl/"},"publisher":{"@type":"Organization","name":"Forgexe","url":"https://www.forgexe.nl/","logo":{"@type":"ImageObject","url":"https://www.forgexe.nl/forgexe-mark-green.svg"}}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost een AI-agent laten bouwen?","acceptedAnswer":{"@type":"Answer","text":"In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van 2.500 tot 9.000 euro plus maandelijkse kosten voor tools en onderhoud. Bij een abonnementsmodel zoals dat van Forgexe vervalt de eenmalige investering en betaal je vanaf 500 euro per maand, alles inbegrepen."}},{"@type":"Question","name":"Wat kost een AI-chatbot voor mijn website?","acceptedAnswer":{"@type":"Answer","text":"Marktprijzen voor een zakelijke AI-chatbot liggen tussen de 2.000 en 10.000 euro eenmalig, plus 50 tot 300 euro per maand voor hosting en AI-verbruik. De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen."}},{"@type":"Question","name":"Hoe snel verdient AI-automatisering zich terug?","acceptedAnswer":{"@type":"Answer","text":"In de praktijk ligt de terugverdientijd voor MKB-automatiseringen meestal tussen de 2 en 6 maanden. Een automatisering die 6 uur per week bespaart, levert bij gemiddelde loonkosten al snel meer dan 1.000 euro per maand op."}},{"@type":"Question","name":"Is zelf bouwen goedkoper dan uitbesteden?","acceptedAnswer":{"@type":"Answer","text":"Op papier wel, in de praktijk vaak niet. Zelf bouwen kost intern veel uren, en zelfgebouwde flows vallen zonder onderhoud regelmatig om. De verborgen kosten zitten in de tijd van je duurste mensen en in processen die stilvallen zonder dat iemand het merkt."}},{"@type":"Question","name":"Betaal ik per gebruiker of per proces?","acceptedAnswer":{"@type":"Answer","text":"Bij de meeste automatiseringspartijen betaal je per proces of per abonnement, niet per gebruiker. Dat is een belangrijk verschil met softwarelicenties: een automatisering die eenmaal draait, werkt voor je hele team zonder extra kosten per persoon."}},{"@type":"Question","name":"Zijn er verborgen kosten bij AI-automatisering?","acceptedAnswer":{"@type":"Answer","text":"Die kunnen er zijn: AI-verbruikskosten die meegroeien met volume, per-taak-tarieven bij tools als Zapier, en onderhoud dat niet in de offerte zat. Vraag altijd wat er gebeurt na oplevering en wie betaalt als er iets stukgaat."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.forgexe.nl/"},{"@type":"ListItem","position":2,"name":"Diensten","item":"https://www.forgexe.nl/expertises"},{"@type":"ListItem","position":3,"name":"E-mail automatiseren","item":"https://www.forgexe.nl/email-automatiseren"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"E-mail automatiseren met AI","serviceType":"AI inbox-triage, routering en conceptantwoorden voor inkomende e-mail","provider":{"@type":"Organization","name":"Forgexe","url":"https://www.forgexe.nl/"},"areaServed":"NL","audience":{"@type":"BusinessAudience","name":"Nederlands MKB vanaf 15 medewerkers"},"description":"E-mail automatiseren met AI voor het MKB: inkomende mail automatisch classificeren, routeren en beantwoorden. Conceptantwoorden in jouw tone of voice, urgente zaken direct gesignaleerd.","offers":{"@type":"Offer","priceCurrency":"EUR","price":"500","priceSpecification":{"@type":"UnitPriceSpecification","price":"500","priceCurrency":"EUR","unitText":"per maand, vanaf"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Leest de AI al mijn mail, is dat veilig?","acceptedAnswer":{"@type":"Answer","text":"De automatisering draait in jouw omgeving en je data blijft van jou. We maken vooraf duidelijke AVG-afspraken over wat de AI wel en niet mag zien, en niets van je mailverkeer wordt gebruikt om modellen van derden te trainen."}},{"@type":"Question","name":"Verstuurt de AI zelf antwoorden?","acceptedAnswer":{"@type":"Answer","text":"Alleen als jij dat instelt. Standaard zet de AI conceptantwoorden klaar en klikt een mens op verzenden. Voor simpele standaardvragen kun je ervoor kiezen om direct te laten beantwoorden; jij bepaalt per type mail waar de grens ligt."}},{"@type":"Question","name":"Werkt dit met Outlook en Gmail?","acceptedAnswer":{"@type":"Answer","text":"Ja, met beide. Ook gedeelde mailboxen zoals info@ of support@ koppelen we aan de automatisering, en dat is meestal precies waar de meeste winst zit."}},{"@type":"Question","name":"Wat kost e-mail automatisering?","acceptedAnswer":{"@type":"Answer","text":"Bij Forgexe werk je met een abonnement vanaf 500 euro per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent."}},{"@type":"Question","name":"Hoe leert de AI onze tone of voice?","acceptedAnswer":{"@type":"Answer","text":"We trainen op voorbeelden uit je eigen verzonden mail, aangevuld met richtlijnen over hoe jullie klanten aanspreken. Elke keer dat iemand een concept aanpast voordat het de deur uitgaat, is dat feedback waarmee de antwoorden beter worden."}},{"@type":"Question","name":"Kan dit samen met leadopvolging?","acceptedAnswer":{"@type":"Answer","text":"Ja. Een offerte-aanvraag die binnenkomt kan direct een opvolgflow starten: kwalificeren, in je CRM zetten en een eerste reactie klaarzetten. E-mail automatisering en leadgeneratie versterken elkaar, en samen vormen ze de basis van een AI-medewerker."}}]}</script>
 </head>
 <body>
 <div class="shell">
 <nav>
   <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
-  <div class="nav-center"><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a>
+  <div class="nav-center"><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises" class="active">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
     <a href="/contact">Contact</a></div>
   <div style="display:flex;align-items:center;gap:.8rem">
     <button class="nav-cta" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
@@ -256,123 +248,97 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
 
 <header class="page-hero">
-  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/blog">Blog</a> &middot; <span>Wat kost AI-automatisering?</span></div>
-  <span class="eyebrow">&gt; C:\kennisbank\kosten</span>
-  <h1>Wat kost AI-automatisering voor het MKB? De <em>eerlijke</em> cijfers.</h1>
-  <p class="lead">Bijna niemand in deze markt zet prijzen op zijn website. Wij wel, inclusief wat de rest rekent. Dit is het complete kostenplaatje voor 2026: prijsmodellen, voorbeelden, verborgen kosten en wanneer het zich terugverdient.</p>
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/expertises">Diensten</a> &middot; <span>E-mail automatiseren</span></div>
+  <span class="eyebrow">&gt; C:\diensten\email</span>
+  <h1>E-mail automatiseren met AI: jouw inbox, <em>voorgesorteerd</em>.</h1>
+  <p class="lead">Kenniswerkers besteden ruwweg een kwart van hun werkweek aan e-mail. Het grootste deel daarvan is sorteren, doorsturen en hetzelfde antwoord voor de tiende keer typen. Precies dat automatiseren we.</p>
+  <button class="btn-pill primary" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+  <div class="proof-strip">
+    <span class="proof-tag">INBOX-TRIAGE</span>
+    <span class="proof-tag">CONCEPTANTWOORDEN</span>
+    <span class="proof-tag">SLIMME ROUTERING</span>
+    <span class="proof-tag">OUTLOOK &amp; GMAIL</span>
+    <span class="proof-tag">URGENTIE-DETECTIE</span>
+  </div>
 </header>
 
 <section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\het-korte-antwoord</span>
-  <h2 class="section-h2">Het korte antwoord.</h2>
+  <span class="eyebrow">&gt; C:\wat-is-inbox-triage</span>
+  <h2 class="section-h2">Wat is inbox-triage?</h2>
   <div class="def-card">
-    <p>Voor een MKB-bedrijf kost AI-automatisering in 2026 meestal <strong>tussen de &euro;500 en &euro;2.500 per maand</strong>, afhankelijk van het aantal processen en de complexiteit. Veel bureaus rekenen daarnaast een eenmalig bouwtraject van &euro;2.500 tot &euro;9.000. Bij een abonnementsmodel vervalt die eenmalige investering en betaal je een vast maandbedrag waar bouwen, hosting en onderhoud in zitten.</p>
+    <p><strong>Inbox-triage</strong> betekent dat een AI-medewerker elke inkomende mail leest, herkent waar hij over gaat (vraag, klacht, factuur, offerte-aanvraag, spam) en de juiste actie onderneemt: routeren naar de juiste collega, een conceptantwoord klaarzetten, of direct afhandelen. Je team opent 's ochtends geen berg ongesorteerde mail meer, maar een inbox waarin het werk al is voorgesorteerd.</p>
   </div>
-  <p class="prose">Dat is de samenvatting. Maar "het hangt ervan af" is een irritant antwoord als je een budget moet maken, dus hieronder maken we het concreet: waar de prijs uit bestaat, wat verschillende prijsmodellen betekenen voor jouw risico, en welke bedragen er in de Nederlandse markt worden gerekend.</p>
+  <div class="honest-note">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--green-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    <span>Eerlijk is eerlijk: de AI verstuurt niet zomaar zelf. Bij alles wat gevoelig is kijkt een mens eerst mee, en jij bepaalt waar die grens ligt. Volledig automatisch beantwoorden kan, maar alleen voor de mailtypen die jij daarvoor aanwijst.</span>
+  </div>
 </section>
 
 <section class="section-card reveal">
-  <div style="text-align:center"><span class="eyebrow">&gt; C:\prijsopbouw</span>
-  <h2 class="section-h2">Waar betaal je eigenlijk voor?</h2>
-  <p class="section-sub" style="margin:0 auto">Elke AI-automatisering heeft vier kostencomponenten. Wie er maar twee offreert, komt later met de andere twee.</p></div>
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\wat-doet-het</span>
+  <h2 class="section-h2">Wat de automatisering doet.</h2>
+  <p class="section-sub" style="margin:0 auto">Zes taken die vandaag nog handwerk zijn, en morgen vanzelf gebeuren.</p></div>
   <div class="steps-grid">
-    <div class="step-card"><div class="step-num">&gt; KOSTEN_01</div><h3>Bouwen</h3><p>Het ontwerpen en bouwen van de automatisering zelf: het proces doorgronden, de flow bouwen, testen en live brengen. Bij bureaus het eenmalige traject, bij abonnementen verwerkt in het maandbedrag.</p></div>
-    <div class="step-card"><div class="step-num">&gt; KOSTEN_02</div><h3>AI-verbruik</h3><p>Elk AI-model rekent per gebruik. Voor de meeste MKB-automatiseringen is dit &euro;10 tot &euro;150 per maand, maar het groeit mee met je volume. Vraag altijd wie dit betaalt en wie het bewaakt.</p></div>
-    <div class="step-card"><div class="step-num">&gt; KOSTEN_03</div><h3>Tools en hosting</h3><p>Het platform waarop je automatisering draait. Van &euro;20 per maand voor een n8n-omgeving tot honderden euro's bij per-taak-tools zoals Zapier als je volume groeit.</p></div>
-    <div class="step-card"><div class="step-num">&gt; KOSTEN_04</div><h3>Beheer en doorontwikkeling</h3><p>De vergeten post. API's veranderen, systemen krijgen updates, processen schuiven. Zonder onderhoud valt elke automatisering vroeg of laat om. Reken op 10 tot 20% van de bouwkosten per jaar, of een abonnement waar het in zit.</p></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_01</div><h3>Classificeren</h3><p>Elke inkomende mail krijgt automatisch een label op onderwerp en urgentie: vraag, klacht, factuur, offerte-aanvraag of ruis. Zo weet iedereen in een oogopslag wat er speelt.</p></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_02</div><h3>Routeren</h3><p>Elke mail landt direct bij de juiste persoon of afdeling. Geen doorstuur-pingpong meer waarbij een klantvraag drie keer van mailbox wisselt voordat iemand hem oppakt.</p></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_03</div><h3>Conceptantwoorden</h3><p>Voor mails die een antwoord verdienen staat er al een concept klaar, geschreven in jouw tone of voice. Jij leest, past eventueel aan en klikt op verzenden.</p></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_04</div><h3>Direct afhandelen</h3><p>Standaardvragen zoals openingstijden, leverstatus of een factuurkopie worden automatisch beantwoord, als jij dat wilt. Jij bepaalt per type mail wat vanzelf mag en wat langs een mens moet.</p></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_05</div><h3>Data eruit halen</h3><p>Bestellingen, aanvragen en facturen worden automatisch uitgelezen en in je systemen gezet. Geen overtypen meer van bijlage naar boekhouding of CRM.</p><a href="/factuurverwerking-automatiseren" class="task-link">MEER OVER FACTUURVERWERKING &rarr;</a></div>
+    <div class="step-card"><div class="step-num">&gt; MAIL_06</div><h3>Signaleren</h3><p>Urgente zaken en boze klanten liggen meteen bovenop de stapel, met een melding naar de juiste persoon. Precies de mails die je niet wilt missen, mis je niet meer.</p></div>
   </div>
 </section>
 
 <section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\prijsmodellen</span>
-  <h2 class="section-h2">De drie prijsmodellen in de markt.</h2>
-  <p class="section-sub">Hetzelfde werk, drie manieren van afrekenen. Het verschil zit in wie het risico draagt.</p>
+  <span class="eyebrow">&gt; C:\voor-en-na</span>
+  <h2 class="section-h2">Zonder en met een AI-inbox.</h2>
+  <p class="section-sub">Het verschil zit niet in minder mail, maar in wat je team ermee hoeft te doen.</p>
   <div class="compare-wrap">
     <div class="compare-scroll">
       <table class="compare-table">
-        <thead><tr><th></th><th>Uurtarief</th><th>Eenmalig traject</th><th class="hl">Abonnement</th></tr></thead>
+        <thead><tr><th></th><th>Zonder</th><th class="hl">Met AI-inbox</th></tr></thead>
         <tbody>
-          <tr><td>Typische prijs</td><td>&euro;90 tot &euro;150 per uur</td><td>&euro;2.500 tot &euro;9.000 vooraf</td><td class="hl">&euro;500 tot &euro;2.500 per maand</td></tr>
-          <tr><td>Voorspelbaarheid</td><td>Laag, uren lopen op</td><td>Hoog voor de bouw, daarna onbekend</td><td class="hl">Hoog, vast bedrag</td></tr>
-          <tr><td>Onderhoud</td><td>Losse facturen achteraf</td><td>Apart contract of niet geregeld</td><td class="hl">Inbegrepen</td></tr>
-          <tr><td>Risico ligt bij</td><td>Jou</td><td>Jou, na oplevering</td><td class="hl">De leverancier</td></tr>
-          <tr><td>Past bij</td><td>Los advies of klein klusje</td><td>E&eacute;n afgebakend project</td><td class="hl">Doorlopend automatiseren</td></tr>
+          <tr><td>Eerste reactie op een klantvraag</td><td>Uren tot dagen</td><td class="hl">Minuten</td></tr>
+          <tr><td>Tijd aan sorteren per dag</td><td>30 tot 60 minuten per persoon</td><td class="hl">Vrijwel nul</td></tr>
+          <tr><td>Gemiste mails</td><td>Regelmatig, vooral bij drukte</td><td class="hl">Gesignaleerd voordat het een probleem wordt</td></tr>
+          <tr><td>Antwoordkwaliteit</td><td>Wisselt per persoon en drukte</td><td class="hl">Consistent, in jouw toon</td></tr>
+          <tr><td>Piekdrukte en vakantie</td><td>Achterstand die je weken achtervolgt</td><td class="hl">Verwerkt bij binnenkomst</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-  <p class="prose">Wij werken zelf met het abonnementsmodel (vanaf &euro;500 per maand met <a href="/pricing">Forge.Start</a>), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Maar ook hier eerlijk: heb je één klein, afgebakend klusje, dan kan een eenmalig traject bij een ander prima passen.</p>
 </section>
 
 <section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\voorbeelden</span>
-  <h2 class="section-h2">Concrete voorbeelden uit de markt.</h2>
-  <p class="section-sub">Wat Nederlandse partijen in 2026 rekenen voor veelgevraagde automatiseringen.</p>
-  <div class="compare-wrap">
-    <div class="compare-scroll">
-      <table class="compare-table">
-        <thead><tr><th>Automatisering</th><th>Marktprijs eenmalig</th><th>Plus per maand</th></tr></thead>
-        <tbody>
-          <tr><td>AI-chatbot voor je website</td><td>&euro;2.000 tot &euro;10.000</td><td>&euro;50 tot &euro;300</td></tr>
-          <tr><td><a href="/leadgeneratie-automatiseren" style="color:var(--green-deep);text-decoration:none">Leadgen-systeem (outreach + opvolging)</a></td><td>&euro;3.000 tot &euro;9.000</td><td>&euro;150 tot &euro;500</td></tr>
-          <tr><td><a href="/factuurverwerking-automatiseren" style="color:var(--green-deep);text-decoration:none">Factuur- en documentverwerking</a></td><td>&euro;2.500 tot &euro;7.500</td><td>&euro;100 tot &euro;400</td></tr>
-          <tr><td>Rapportage-automatisering</td><td>&euro;1.500 tot &euro;5.000</td><td>&euro;50 tot &euro;250</td></tr>
-          <tr><td><a href="/ai-agent-laten-bouwen" style="color:var(--green-deep);text-decoration:none">AI-agent op maat</a></td><td>&euro;2.500 tot &euro;9.000+</td><td>&euro;100 tot &euro;500</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <p class="prose">Ter vergelijking: bij Forgexe zitten dit soort automatiseringen in een abonnement vanaf &euro;500 per maand, zonder eenmalig bouwtraject. Wat je precies krijgt per tier staat op de <a href="/pricing">prijzenpagina</a>, en in onze <a href="/cases">cases</a> zie je wat er in de praktijk gebouwd wordt.</p>
-</section>
-
-<section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\terugverdientijd</span>
-  <h2 class="section-h2">Wanneer verdient het zich terug?</h2>
-  <p class="prose" style="margin-top:1.6rem">De meeste MKB-automatiseringen verdienen zichzelf in <strong>2 tot 6 maanden</strong> terug. De rekensom is simpeler dan hij lijkt: tel de uren die een proces nu kost, vermenigvuldig met de loonkosten, en zet dat naast het maandbedrag.</p>
-  <div class="calc-card">
-    <div class="calc-label">&gt; REKENVOORBEELD: OFFERTEPROCES AUTOMATISEREN</div>
-    <div class="calc-row"><span>Tijd per week aan offertes opstellen</span><span>6 uur</span></div>
-    <div class="calc-row"><span>Loonkosten per uur (incl. werkgeverslasten)</span><span>&euro;45</span></div>
-    <div class="calc-row"><span>Kosten van het handwerk per maand</span><span>&euro;1.170</span></div>
-    <div class="calc-row"><span>Abonnement AI-automatisering</span><span>&euro;500</span></div>
-    <div class="calc-row total"><span>Besparing per maand</span><span>+ &euro;670</span></div>
-  </div>
-  <p class="prose">En dit rekent alleen de uren. De snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.</p>
-</section>
-
-<section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\verborgen-kosten</span>
-  <h2 class="section-h2">Verborgen kosten waar je op moet letten.</h2>
-  <p class="section-sub">De vragen die je elke aanbieder (ook ons) zou moeten stellen voordat je tekent.</p>
-  <div class="warn-list">
-    <div class="warn-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div><h4>AI-verbruik dat stilletjes oploopt</h4><p>AI-modellen rekenen per gebruik. Een agent die ongecontroleerd draait, kan honderden euro's per maand extra kosten. Vraag: wie bewaakt het verbruik en zit er een plafond op?</p></div></div>
-    <div class="warn-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div><h4>Per-taak-tarieven die meegroeien</h4><p>Tools als Zapier rekenen per uitgevoerd taakje. Bij 100 taken per maand is dat niks, bij 50.000 is het een serieuze kostenpost. Vraag: wat kost dit bij tien keer zoveel volume?</p></div></div>
-    <div class="warn-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div><h4>Vendor lock-in</h4><p>Sommige partijen bouwen op hun eigen platform. Stap je over, dan ben je alles kwijt. Vraag: van wie is wat er gebouwd wordt, en wat neem ik mee als we uit elkaar gaan?</p></div></div>
-    <div class="warn-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div><h4>Onderhoud dat niet geregeld is</h4><p>De grootste. Een automatisering zonder onderhoudsafspraak valt binnen een jaar om, en dan begint de meter opnieuw. Vraag: wat gebeurt er na oplevering, en wie betaalt als er iets breekt?</p></div></div>
-    <div class="warn-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg><div><h4>Een AI-agent waar een workflow volstond</h4><p>Hoe complexer de oplossing, hoe hoger de prijs. Maar veel processen hebben helemaal geen AI nodig, een simpele workflow is dan sneller, goedkoper en betrouwbaarder. Vraag: kan dit ook zonder AI?</p></div></div>
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\proces</span>
+  <h2 class="section-h2">Zo werken we.</h2></div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">&gt; STAP_01</div><h3>Bedrijfsscan</h3><p>Kort gesprek over je processen en je mailverkeer. Binnen 48 uur heb je jouw drie grootste automatiseringskansen op een rij. Vrijblijvend.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_02</div><h3>Mailstromen in kaart</h3><p>We analyseren welke typen mail binnenkomen, hoe vaak, en welke actie elk type nodig heeft. Dat wordt de blauwdruk voor de automatisering.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_03</div><h3>Bouwen en trainen op jouw toon</h3><p>We bouwen de flows en trainen de AI op voorbeelden uit je eigen verzonden mail, zodat concepten klinken zoals jullie. Eerste werkende versie binnen 4 tot 6 weken.</p></div>
+    <div class="step-card"><div class="step-num">&gt; STAP_04</div><h3>Live met controlemomenten, daarna beheer</h3><p>We gaan live terwijl een mens meekijkt, en breiden pas uit als de resultaten kloppen. Daarna bewaken en verbeteren we doorlopend. Vanaf &euro;500 per maand, alles inbegrepen. Zie <a href="/pricing" style="color:var(--green-deep);font-weight:600;text-decoration:none">prijzen</a>.</p></div>
   </div>
 </section>
 
-<section class="section-card reveal">
+<section class="section-card reveal" id="faq">
   <span class="eyebrow">&gt; C:\faq</span>
-  <h2 class="section-h2">Veelgestelde vragen over kosten.</h2>
+  <h2 class="section-h2">Veelgestelde vragen over e-mail automatiseren.</h2>
   <div class="faq-list">
-    <details><summary>Wat kost een AI-agent laten bouwen?</summary><div class="faq-a">In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van &euro;2.500 tot &euro;9.000 plus maandelijkse kosten voor tools en onderhoud. Bij een abonnementsmodel zoals dat van Forgexe vervalt de eenmalige investering en betaal je vanaf &euro;500 per maand, alles inbegrepen. Meer daarover op de pagina <a href="/ai-agent-laten-bouwen">AI-agent laten bouwen</a>.</div></details>
-    <details><summary>Wat kost een AI-chatbot voor mijn website?</summary><div class="faq-a">Marktprijzen voor een zakelijke AI-chatbot liggen tussen de &euro;2.000 en &euro;10.000 eenmalig, plus &euro;50 tot &euro;300 per maand voor hosting en AI-verbruik. De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen.</div></details>
-    <details><summary>Hoe snel verdient AI-automatisering zich terug?</summary><div class="faq-a">In de praktijk ligt de terugverdientijd voor MKB-automatiseringen meestal tussen de 2 en 6 maanden. Een automatisering die 6 uur per week bespaart, levert bij gemiddelde loonkosten al snel meer dan &euro;1.000 per maand op.</div></details>
-    <details><summary>Is zelf bouwen goedkoper dan uitbesteden?</summary><div class="faq-a">Op papier wel, in de praktijk vaak niet. Zelf bouwen kost intern veel uren, en zelfgebouwde flows vallen zonder onderhoud regelmatig om. De verborgen kosten zitten in de tijd van je duurste mensen en in processen die stilvallen zonder dat iemand het merkt. Vastgelopen? Onze <a href="/n8n-specialist">n8n-specialisten</a> nemen zelfgebouwde workflows over.</div></details>
-    <details><summary>Betaal ik per gebruiker of per proces?</summary><div class="faq-a">Bij de meeste automatiseringspartijen betaal je per proces of per abonnement, niet per gebruiker. Dat is een belangrijk verschil met softwarelicenties: een automatisering die eenmaal draait, werkt voor je hele team zonder extra kosten per persoon. Zo werkt een <a href="/ai-medewerker">AI-medewerker</a> voor iedereen tegelijk.</div></details>
-    <details><summary>Zijn er verborgen kosten bij AI-automatisering?</summary><div class="faq-a">Die kunnen er zijn: AI-verbruikskosten die meegroeien met volume, per-taak-tarieven bij tools als Zapier, en onderhoud dat niet in de offerte zat. Vraag altijd wat er gebeurt na oplevering en wie betaalt als er iets stukgaat. Bij Forgexe zit alles in het maandbedrag, zie de <a href="/pricing">prijzenpagina</a>.</div></details>
+    <details><summary>Leest de AI al mijn mail, is dat veilig?</summary><div class="faq-a">De automatisering draait in jouw omgeving en je data blijft van jou. We maken vooraf duidelijke AVG-afspraken over wat de AI wel en niet mag zien, en niets van je mailverkeer wordt gebruikt om modellen van derden te trainen.</div></details>
+    <details><summary>Verstuurt de AI zelf antwoorden?</summary><div class="faq-a">Alleen als jij dat instelt. Standaard zet de AI conceptantwoorden klaar en klikt een mens op verzenden. Voor simpele standaardvragen kun je ervoor kiezen om direct te laten beantwoorden; jij bepaalt per type mail waar de grens ligt.</div></details>
+    <details><summary>Werkt dit met Outlook en Gmail?</summary><div class="faq-a">Ja, met beide. Ook gedeelde mailboxen zoals info@ of support@ koppelen we aan de automatisering, en dat is meestal precies waar de meeste winst zit.</div></details>
+    <details><summary>Wat kost e-mail automatisering?</summary><div class="faq-a">Bij Forgexe werk je met een abonnement vanaf &euro;500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. Alle abonnementen staan op de <a href="/pricing">prijzenpagina</a>, en in onze <a href="/wat-kost-ai-automatisering">kostengids</a> zie je wat de markt rekent.</div></details>
+    <details><summary>Hoe leert de AI onze tone of voice?</summary><div class="faq-a">We trainen op voorbeelden uit je eigen verzonden mail, aangevuld met richtlijnen over hoe jullie klanten aanspreken. Elke keer dat iemand een concept aanpast voordat het de deur uitgaat, is dat feedback waarmee de antwoorden beter worden.</div></details>
+    <details><summary>Kan dit samen met leadopvolging?</summary><div class="faq-a">Ja. Een offerte-aanvraag die binnenkomt kan direct een opvolgflow starten: kwalificeren, in je CRM zetten en een eerste reactie klaarzetten. E-mail automatisering en <a href="/leadgeneratie-automatiseren">leadgeneratie</a> versterken elkaar, en samen vormen ze de basis van een <a href="/ai-medewerker">AI-medewerker</a>.</div></details>
   </div>
 </section>
 
 <section class="cta-card reveal">
   <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
-  <h2>Weten wat het voor <em>jouw bedrijf</em> kost?</h2>
-  <p>Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij, met een concreet prijsplaatje. Vrijblijvend.</p>
+  <h2>Klaar voor een inbox die <em>zichzelf sorteert</em>?</h2>
+  <p>Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.</p>
   <div class="btn-row">
     <button class="btn-pill dark" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
-    <a href="/pricing" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Bekijk onze prijzen</a>
+    <a href="/contact" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a>
   </div>
 </section>
 
