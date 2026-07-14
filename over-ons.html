@@ -181,7 +181,7 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 
 .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
 .reveal.in{opacity:1;transform:translateY(0)}
-@media(max-width:1100px){.nav-center{display:none}}
+@media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
 @media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
 .mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
 .mobile-menu.open{display:flex}
@@ -308,13 +308,14 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <div class="shell">
 <nav>
   <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
-  <div class="nav-center"><a href="/">Home</a><a href="/over-ons" class="active">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/contact">Contact</a></div>
+  <div class="nav-center"><a href="/">Home</a><a href="/over-ons" class="active">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
+    <a href="/contact">Contact</a></div>
   <div style="display:flex;align-items:center;gap:.8rem">
     <button class="nav-cta" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
 
 <header class="hero-main">
   <div class="hero-text">
@@ -372,7 +373,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   </div>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar"><img src="team-sedat.png" alt="Sedat Ayar" loading="lazy"></div>
+      <div class="team-avatar"><img src="team-sedat.webp" alt="Sedat Ayar" loading="lazy" width="800" height="800"></div>
       <div class="team-name">Sedat Ayar</div>
       <div class="team-role">FOUNDER &middot; STRATEGY</div>
       <p class="team-bio">Architect van groei-systemen en AI-strategie. Verbindt technologie met bedrijfsresultaat. Van Google Ads tot n8n, alles begint bij de strategie.</p>
@@ -386,7 +387,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       <a href="https://www.linkedin.com/in/maurice-veraa-73a356a4/" class="team-linkedin" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67h-3.55V9h3.4v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43A2.06 2.06 0 113.27 5.37a2.06 2.06 0 012.07 2.06zM3.56 20.45h3.56V9H3.56v11.45z"/></svg>LinkedIn</a>
     </div>
     <div class="team-card">
-      <div class="team-avatar"><img src="team-jesse.png" alt="Jesse" loading="lazy"></div>
+      <div class="team-avatar"><img src="team-jesse.webp" alt="Jesse" loading="lazy" width="800" height="800"></div>
       <div class="team-name">Jesse</div>
       <div class="team-role">AI ENGINEER</div>
       <p class="team-bio">Ontwerpt en traint de AI-agents die 24/7 voor je werken. Van prompt engineering tot agent-architectuur, Jesse maakt AI praktisch en betrouwbaar.</p>

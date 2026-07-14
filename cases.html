@@ -143,7 +143,7 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 .reveal.in{opacity:1;transform:translateY(0)}
 
 /* responsive */
-@media(max-width:1100px){.nav-center{display:none}}
+@media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
 @media(max-width:700px){.nav-right .lang-pill{display:none}.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
 .mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
 .mobile-menu.open{display:flex}
@@ -325,6 +325,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="/expertises">Diensten</a>
     <a href="/branches">Branches</a>
     <a href="/cases" class="active">Cases</a>
+    <a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
     <a href="/contact">Contact</a>
   </div>
   <div class="nav-right">
@@ -343,7 +344,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <a href="/expertises">Diensten</a>
   <a href="/branches">Branches</a>
   <a href="/cases">Cases</a>
-  <a href="/contact">Contact</a>
+  <a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a>
 </div>
 
 <!-- ════════════ HERO ════════════ -->
@@ -375,7 +376,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <div class="cases-grid">
     <a href="/case-realcob" class="case-card" data-cats="growth">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-realcob-preview.png" alt="RealCob"></div><div class="case-laptop-base"></div></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-realcob-preview.webp" alt="RealCob" width="1896" height="939"></div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">RealCob</span>
         <div class="case-title">Multi-segment AI Growth voor GDPR/NIS2</div>
@@ -386,7 +387,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
     <a href="/case-technetium" class="case-card" data-cats="growth webapp">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-technetium-preview.png" alt="Technetium Talent"></div><div class="case-laptop-base"></div></div>
+      <div class="case-laptop"><div class="case-laptop-frame"><img src="case-technetium-preview.webp" alt="Technetium Talent" width="1896" height="941"></div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Technetium Talent</span>
         <div class="case-title">Actief AI-vacatureplatform voor de techniek</div>
@@ -398,7 +399,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="/case-smartesg" class="case-card" data-cats="growth ops">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="case-laptop"><div class="case-laptop-frame">
-        <img src="case-smartesg-preview.png" alt="Smart ESG Outreach Dashboard" loading="lazy">
+        <img src="case-smartesg-preview.webp" alt="Smart ESG Outreach Dashboard" loading="lazy" width="1911" height="938">
       </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Smart ESG</span>
@@ -411,7 +412,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="/case-dna-talent" class="case-card" data-cats="growth">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="case-laptop"><div class="case-laptop-frame">
-        <img src="case-dna-talent-preview.png" alt="DNA-talent Leadgen Dashboard" loading="lazy">
+        <img src="case-dna-talent-preview.webp" alt="DNA-talent Leadgen Dashboard" loading="lazy" width="1911" height="940">
       </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">DNA-talent</span>
@@ -424,7 +425,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="/case-wijnzinnig" class="case-card" data-cats="ops">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="case-laptop"><div class="case-laptop-frame">
-        <img src="case-wijnzinnig-preview.png" alt="Wijnzinnig Content Machine Dashboard" loading="lazy">
+        <img src="case-wijnzinnig-preview.webp" alt="Wijnzinnig Content Machine Dashboard" loading="lazy" width="1895" height="938">
       </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Wijnzinnig!</span>
@@ -437,7 +438,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="/case-fietsencatalogus" class="case-card" data-cats="ops webapp">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="case-laptop"><div class="case-laptop-frame">
-        <img src="case-fietsencatalogus-preview.png" alt="Fietsencatalogus Nieuwsbrief Portaal" loading="lazy">
+        <img src="case-fietsencatalogus-preview.webp" alt="Fietsencatalogus Nieuwsbrief Portaal" loading="lazy" width="1893" height="934">
       </div><div class="case-laptop-base"></div></div>
       <div class="case-body">
         <span class="case-client">Fietsencatalogus</span>
