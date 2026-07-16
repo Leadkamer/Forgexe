@@ -222,6 +222,22 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .hero-flow{margin-top:2.6rem;max-width:880px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .hero-flow::-webkit-scrollbar{display:none}
 .hero-flow-svg{width:100%;min-width:680px;height:auto;display:block}
+.split-sec{display:grid;grid-template-columns:1.05fr .92fr;gap:3.2rem;align-items:center}
+@media(max-width:1000px){.split-sec{grid-template-columns:1fr;gap:2.2rem}}
+@media(min-width:1001px){.split-sec.flip .split-vis{order:-1}}
+.mock-window{background:#0a0b0e;border-radius:16px;box-shadow:0 24px 60px rgba(10,11,14,.16);overflow:hidden}
+.mock-bar{display:flex;align-items:center;gap:6px;padding:.85rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.mock-bar>span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.14)}
+.mock-title{font-family:var(--mono);font-size:.64rem;color:#8d9bb5;margin-left:.6rem;letter-spacing:.06em}
+.mock-badge{margin-left:auto;font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--green);letter-spacing:.12em}
+.mock-body{padding:1.15rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.mock-row{display:flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05);border-radius:9px;padding:.58rem .8rem;font-family:var(--mono);font-size:.71rem;color:#c4cbd8;line-height:1.4}
+.mock-time{color:#64748b;font-size:.64rem;flex-shrink:0}
+.mock-ok{margin-left:auto;color:var(--green);flex-shrink:0}
+.mock-tag{margin-left:auto;font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:#052e16;background:var(--green);border-radius:99px;padding:.22rem .6rem;font-weight:700;flex-shrink:0;white-space:nowrap}
+.mock-tag.warn{background:var(--amber)}
+.mock-tag.dim{background:rgba(255,255,255,.12);color:#c4cbd8}
+.mock-spk{color:#64748b;font-size:.6rem;letter-spacing:.08em;flex-shrink:0;min-width:3.4rem}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/ai-telefonist">
@@ -267,12 +283,17 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 </header>
 
 <section class="section-card reveal">
-  <span class="eyebrow">&gt; C:\wat-is-het</span>
+  <div class="split-sec">
+    <div class="split-txt">
+<span class="eyebrow">&gt; C:\wat-is-het</span>
   <h2 class="section-h2">Wat is een AI-telefonist?</h2>
   <div class="def-card">
     <p>Een <strong>AI-telefonist</strong> is software die inkomende telefoontjes aanneemt, vragen beantwoordt, afspraken inplant en gesprekken doorverbindt of samenvat naar je team. Hij werkt <strong>24/7</strong>: ook tijdens de lunch, in de vakantie en op momenten van piekdrukte wanneer je team de telefoon niet kan opnemen.</p>
   </div>
   <p class="prose">Geen keuzemenu dus ("toets 1 voor..."), maar een echt gesprek. De beller stelt een vraag zoals hij die aan een collega zou stellen, en de AI begrijpt de vraag, antwoordt of handelt hem af. Het verschil met de robotstemmen van een paar jaar geleden is groter dan je denkt.</p>
+    </div>
+    <div class="split-vis"><div class="mock-window" aria-hidden="true"><div class="mock-bar"><span></span><span></span><span></span><div class="mock-title">C:\forgexe\telefonist</div><div class="mock-badge">&#9679; GESPREK</div></div><div class="mock-body"><div class="mock-row"><span class="mock-spk">BELLER</span><span>Kan ik morgen langskomen?</span></div><div class="mock-row"><span class="mock-spk">AI</span><span>Morgen om 10:30 is er ruimte. Zal ik die inplannen?</span></div><div class="mock-row"><span class="mock-spk">BELLER</span><span>Ja, graag.</span></div><div class="mock-row"><span>afspraak ingepland &middot; di 10:30</span><span class="mock-ok">&#10003;</span></div><div class="mock-row"><span>samenvatting naar je mailbox</span><span class="mock-ok">&#10003;</span></div></div></div></div>
+  </div>
 </section>
 
 <section class="section-card reveal">
