@@ -295,7 +295,72 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span>Eerlijk advies vooraf: veel "AI-agent-projecten" hadden een simpele workflow moeten zijn. Heeft je proces duidelijke regels en geen taal of interpretatie nodig? Dan bouwen we een workflow, sneller en goedkoper. Wil je liever denken in rollen dan in techniek? Kijk dan naar onze <a href="/ai-medewerker">AI-medewerkers</a>.</span>
   </div>
     </div>
-    <div class="split-vis"><div class="anim-card"><iframe src="/animatie-ai-agent" title="Animatie: hoe een AI-agent beslist" loading="lazy"></iframe></div></div>
+    <div class="split-vis"><div class="anim-card" aria-label="Animatie: hoe een AI-agent beslist">
+<svg id="agtAnim" viewBox="0 0 600 400" style="position:absolute;inset:0;width:100%;height:100%">
+<defs><filter id="agGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<text x="28" y="38" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2" fill="#64748b">C:\FORGEXE&gt; AGENT.RUN</text>
+<g id="agMail" opacity="0"><rect x="34" y="182" width="96" height="38" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="82" y="205" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="600" letter-spacing="1" fill="#c4cbd8">MAIL IN</text></g>
+<g fill="none" stroke="#1d3d31" stroke-width="1.6"><path id="ag0" d="M130 201 H 218"/><path id="ag1" d="M382 201 C 420 201 420 105 458 105"/><path id="ag2" d="M382 201 H 458"/><path id="ag3" d="M382 201 C 420 201 420 297 458 297"/></g>
+<g id="agPulsen"></g>
+<g transform="translate(218 178)"><rect width="164" height="46" rx="11" fill="#052e16" stroke="#34d399" stroke-width="1.2"/><circle cx="20" cy="23" r="4.5" fill="#34d399" filter="url(#agGlow)"/><text x="36" y="27" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600" letter-spacing="1" fill="#fff">AI-AGENT</text></g>
+<g font-family="'JetBrains Mono',monospace" font-size="10.5" font-weight="600" letter-spacing="1">
+  <g><rect x="458" y="84" width="112" height="40" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="514" y="108" text-anchor="middle" fill="#c4cbd8">CRM</text></g>
+  <g><rect x="458" y="180" width="112" height="40" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="514" y="204" text-anchor="middle" fill="#c4cbd8">MAIL UIT</text></g>
+  <g><rect x="458" y="276" width="112" height="40" rx="9" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="514" y="300" text-anchor="middle" fill="#c4cbd8">AGENDA</text></g>
+</g>
+<text id="agDenk" x="300" y="146" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1" fill="#34d399" opacity="0"></text>
+<g id="agCheck" opacity="0"><rect x="218" y="248" width="164" height="30" rx="8" fill="rgba(52,211,153,.1)" stroke="rgba(52,211,153,.5)"/><text x="300" y="267" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#34d399">MENS KIJKT MEE &#10003;</text></g>
+<text x="28" y="376" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.5" fill="#64748b" id="agStatus">WACHT OP SIGNAAL...</text>
+</svg>
+<script>
+(function(){
+  var svg = document.getElementById('agtAnim'); if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mail = document.getElementById('agMail'), denk = document.getElementById('agDenk'), chk = document.getElementById('agCheck'), st = document.getElementById('agStatus');
+  var pulsen = document.getElementById('agPulsen');
+  var DENK = ['intentie: offerte-aanvraag','klant herkend: #1042','prijzen opgehaald'];
+  var DOEL = [1, 0, 2], STATUS = ['conceptofferte klaargezet','deal bijgewerkt in CRM','afspraak ingepland'];
+  var beurt = 0, gestart = false;
+  mail.style.transition = 'opacity .4s'; denk.style.transition = 'opacity .3s'; chk.style.transition = 'opacity .3s';
+  function puls(padId, cb){
+    var pad = document.getElementById(padId);
+    var c = document.createElementNS(NS,'circle');
+    c.setAttribute('r',3.6); c.setAttribute('fill','#34d399'); c.setAttribute('filter','url(#agGlow)');
+    pulsen.appendChild(c);
+    var L = pad.getTotalLength(), t0 = null;
+    function stap(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / 600, 1);
+      var pt = pad.getPointAtLength(L * p);
+      c.setAttribute('cx',pt.x); c.setAttribute('cy',pt.y);
+      if (p < 1) requestAnimationFrame(stap); else { pulsen.removeChild(c); cb && cb(); }
+    }
+    requestAnimationFrame(stap);
+  }
+  function loop(){
+    mail.style.opacity = 1; st.textContent = 'SIGNAAL ONTVANGEN';
+    setTimeout(function(){ puls('ag0', function(){
+      var i = 0;
+      function volgende(){
+        if (i < DENK.length){ denk.textContent = '&gt; ' + DENK[i]; denk.innerHTML = '&gt; ' + DENK[i]; denk.style.opacity = 1; i++; setTimeout(function(){ denk.style.opacity = 0; setTimeout(volgende, 140); }, 620); }
+        else {
+          var doel = DOEL[beurt % 3];
+          puls('ag' + (doel + 1), function(){
+            st.textContent = STATUS[beurt % 3].toUpperCase();
+            chk.style.opacity = 1;
+            setTimeout(function(){ chk.style.opacity = 0; mail.style.opacity = 0; beurt++; setTimeout(loop, 900); }, 1400);
+          });
+        }
+      }
+      volgende();
+    }); }, 500);
+  }
+  function start(){ if (gestart) return; gestart = true; if (reduced){ mail.style.opacity = 1; chk.style.opacity = 1; st.textContent = 'CONCEPTOFFERTE KLAARGEZET'; return; } loop(); }
+  if ('IntersectionObserver' in window){ var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ start(); io.disconnect(); } }); }, { threshold: .25 }); io.observe(svg); } else start();
+})();
+</script>
+</div></div>
   </div>
 </section>
 

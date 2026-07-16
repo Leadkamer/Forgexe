@@ -297,7 +297,78 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span>Eerlijk is eerlijk: de AI verstuurt niet zomaar zelf. Bij alles wat gevoelig is kijkt een mens eerst mee, en jij bepaalt waar die grens ligt. Volledig automatisch beantwoorden kan, maar alleen voor de mailtypen die jij daarvoor aanwijst.</span>
   </div>
     </div>
-    <div class="split-vis"><div class="anim-card"><iframe src="/animatie-email" title="Animatie: inbox-triage in actie" loading="lazy"></iframe></div></div>
+    <div class="split-vis"><div class="anim-card" aria-label="Animatie: inbox-triage in actie">
+<svg id="emlAnim" viewBox="0 0 600 400" style="position:absolute;inset:0;width:100%;height:100%">
+<text x="28" y="38" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2" fill="#64748b">C:\FORGEXE&gt; INBOX.TRIAGE</text>
+<line x1="60" y1="150" x2="540" y2="150" stroke="#34d399" stroke-width="1.2" stroke-dasharray="5 5" opacity=".55"/>
+<text x="540" y="138" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1.5" fill="#34d399">AI-SCAN</text>
+<g id="emlLanes" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" letter-spacing="1">
+  <text x="105" y="330" text-anchor="middle" fill="#34d399">SALES</text>
+  <text x="235" y="330" text-anchor="middle" fill="#059669">ADMINISTRATIE</text>
+  <text x="365" y="330" text-anchor="middle" fill="#f5a623">URGENT</text>
+  <text x="495" y="330" text-anchor="middle" fill="#64748b">ARCHIEF</text>
+  <text id="emlT0" x="105" y="352" text-anchor="middle" fill="#c4cbd8" font-size="13">0</text>
+  <text id="emlT1" x="235" y="352" text-anchor="middle" fill="#c4cbd8" font-size="13">0</text>
+  <text id="emlT2" x="365" y="352" text-anchor="middle" fill="#c4cbd8" font-size="13">0</text>
+  <text id="emlT3" x="495" y="352" text-anchor="middle" fill="#c4cbd8" font-size="13">0</text>
+</g>
+<g id="emlVeld"></g>
+<g id="emlConcept" opacity="0"><rect x="368" y="60" width="204" height="28" rx="8" fill="rgba(52,211,153,.1)" stroke="rgba(52,211,153,.5)"/><text x="470" y="78" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#34d399">CONCEPTANTWOORD KLAAR &#10003;</text></g>
+</svg>
+<script>
+(function(){
+  var svg = document.getElementById('emlAnim'); if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var veld = document.getElementById('emlVeld'), concept = document.getElementById('emlConcept');
+  var lanes = [105, 235, 365, 495], kleuren = ['#34d399','#059669','#f5a623','#64748b'];
+  var tellers = [0,0,0,0], n = 0, gestart = false;
+  concept.style.transition = 'opacity .35s';
+  function envelop(x, y){
+    var g = document.createElementNS(NS,'g');
+    g.setAttribute('transform','translate(' + x + ' ' + y + ')');
+    g.innerHTML = '<rect x="-16" y="-11" width="32" height="22" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)"/><path d="M-16 -9 L0 3 L16 -9" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>';
+    veld.appendChild(g);
+    return g;
+  }
+  function beweeg(g, x0, y0, x1, y1, dur, cb){
+    var t0 = null;
+    function stap(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1), e = p * (2 - p);
+      g.setAttribute('transform','translate(' + (x0 + (x1 - x0) * e) + ' ' + (y0 + (y1 - y0) * e) + ')');
+      if (p < 1) requestAnimationFrame(stap); else cb && cb();
+    }
+    requestAnimationFrame(stap);
+  }
+  function drop(){
+    var lane = n % 4 === 3 ? 2 : (n % 4);
+    n++;
+    var x = 120 + ((n * 97) % 360);
+    var g = envelop(x, 52);
+    beweeg(g, x, 52, x, 150, 700, function(){
+      var ring = document.createElementNS(NS,'circle');
+      ring.setAttribute('cx',0); ring.setAttribute('cy',0); ring.setAttribute('r',20);
+      ring.setAttribute('fill','none'); ring.setAttribute('stroke',kleuren[lane]); ring.setAttribute('opacity',.8);
+      g.appendChild(ring);
+      setTimeout(function(){
+        g.removeChild(ring);
+        beweeg(g, x, 150, lanes[lane], 300, 620, function(){
+          veld.removeChild(g);
+          tellers[lane]++;
+          document.getElementById('emlT' + lane).textContent = tellers[lane];
+          if (lane === 0 && tellers[0] % 2 === 1){ concept.style.opacity = 1; setTimeout(function(){ concept.style.opacity = 0; }, 1300); }
+        });
+      }, 320);
+    });
+    if (n >= 24){ n = 0; tellers = [0,0,0,0]; }
+    setTimeout(drop, 1400);
+  }
+  function start(){ if (gestart) return; gestart = true; if (reduced){ document.getElementById('emlT0').textContent = 4; document.getElementById('emlT1').textContent = 3; document.getElementById('emlT2').textContent = 1; document.getElementById('emlT3').textContent = 5; return; } drop(); }
+  if ('IntersectionObserver' in window){ var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ start(); io.disconnect(); } }); }, { threshold: .25 }); io.observe(svg); } else start();
+})();
+</script>
+</div></div>
   </div>
 </section>
 

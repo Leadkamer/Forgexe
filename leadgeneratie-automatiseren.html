@@ -297,7 +297,70 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span>Eerlijk is eerlijk: automatisering maakt slechte outreach alleen maar sneller slecht. Het werkt pas met een scherpe doelgroep en een bericht dat ergens over gaat. Dat zeggen we er altijd bij, en daar beginnen we dus ook mee.</span>
   </div>
     </div>
-    <div class="split-vis"><div class="anim-card"><iframe src="/animatie-leadgeneratie" title="Animatie: leadopvolging in actie" loading="lazy"></iframe></div></div>
+    <div class="split-vis"><div class="anim-card" aria-label="Animatie: de reis van een lead">
+<svg id="ldgAnim" viewBox="0 0 600 400" style="position:absolute;inset:0;width:100%;height:100%">
+<defs><filter id="ldGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<text x="28" y="38" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2" fill="#64748b">C:\FORGEXE&gt; LEADGEN.PIPELINE</text>
+<g fill="none" stroke="#1d3d31" stroke-width="1.6"><line x1="120" y1="150" x2="180" y2="150"/><line x1="300" y1="150" x2="360" y2="150"/><line x1="480" y1="150" x2="510" y2="150"/></g>
+<g font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" letter-spacing="1">
+  <g><rect x="30" y="128" width="90" height="44" rx="10" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="75" y="147" text-anchor="middle" fill="#c4cbd8">GEVONDEN</text><text x="75" y="162" text-anchor="middle" fill="#64748b" font-weight="400">past bij ICP</text></g>
+  <g><rect x="180" y="128" width="120" height="44" rx="10" fill="#052e16" stroke="#34d399" stroke-width="1.2"/><text x="240" y="147" text-anchor="middle" fill="#fff">BENADERD</text><text x="240" y="162" text-anchor="middle" fill="rgba(255,255,255,.55)" font-weight="400">persoonlijk</text></g>
+  <g><rect x="360" y="128" width="120" height="44" rx="10" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><text x="420" y="147" text-anchor="middle" fill="#c4cbd8">OPGEVOLGD</text><text x="420" y="162" text-anchor="middle" fill="#64748b" font-weight="400">juiste moment</text></g>
+  <g><rect x="510" y="128" width="62" height="44" rx="10" fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.12)"/><g fill="none" stroke="#34d399" stroke-width="1.6" stroke-linecap="round"><rect x="530" y="139" width="22" height="20" rx="3"/><path d="M530 145.5h22M536 136.5v5M546 136.5v5"/><rect x="542" y="150" width="5" height="4.5" rx="1" fill="#34d399" stroke="none"/></g></g>
+</g>
+<g id="ldgLead" opacity="0"><circle cx="0" cy="0" r="13" fill="#052e16" stroke="#34d399" stroke-width="1.4" filter="url(#ldGlow)"/><circle cx="0" cy="-2.5" r="3.4" fill="#34d399"/><path d="M-5.5 6 C-5.5 1.5 5.5 1.5 5.5 6" fill="none" stroke="#34d399" stroke-width="1.6"/></g>
+<text id="ldgPersona" x="28" y="222" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1" fill="#64748b"></text>
+<g id="ldgBadge" opacity="0"><rect x="360" y="80" width="120" height="26" rx="13" fill="rgba(52,211,153,.14)" stroke="#34d399"/><text x="420" y="97" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#34d399">REACTIE &#9679;</text></g>
+<g id="ldgStop" opacity="0"><rect x="188" y="228" width="180" height="26" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/><text x="278" y="245" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" letter-spacing=".5" fill="#64748b">geen reactie &middot; netjes gestopt</text></g>
+<text x="28" y="352" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2" fill="#64748b">DEZE WEEK</text>
+<text id="ldgTeller" x="28" y="376" font-family="'JetBrains Mono',monospace" font-size="17" font-weight="700" fill="#fff">3 <tspan font-size="10" fill="#34d399" letter-spacing="1">GESPREKKEN INGEPLAND</tspan></text>
+</svg>
+<script>
+(function(){
+  var svg = document.getElementById('ldgAnim'); if (!svg) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lead = document.getElementById('ldgLead'), badge = document.getElementById('ldgBadge'), stop = document.getElementById('ldgStop'), pers = document.getElementById('ldgPersona'), tel = document.getElementById('ldgTeller');
+  var PERSONAS = ['ops-manager &middot; maakindustrie','office manager &middot; groothandel','directeur &middot; dienstverlening'];
+  var week = 3, beurt = 0, gestart = false;
+  lead.style.transition = 'opacity .4s'; badge.style.transition = 'opacity .3s'; stop.style.transition = 'opacity .5s';
+  function zet(x, y){ lead.setAttribute('transform','translate(' + x + ' ' + y + ')'); }
+  function glij(x0, x1, y, dur, cb){
+    var t0 = null;
+    function stap(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1), e = p * (2 - p);
+      zet(x0 + (x1 - x0) * e, y);
+      if (p < 1) requestAnimationFrame(stap); else cb && cb();
+    }
+    requestAnimationFrame(stap);
+  }
+  function reis(){
+    pers.innerHTML = '&gt; ' + PERSONAS[beurt % 3];
+    zet(75, 195); lead.style.opacity = 1;
+    setTimeout(function(){ glij(75, 240, 195, 700, function(){
+      setTimeout(function(){ glij(240, 420, 195, 700, function(){
+        setTimeout(function(){
+          badge.style.opacity = 1;
+          setTimeout(function(){ glij(420, 541, 195, 550, function(){
+            badge.style.opacity = 0;
+            week++; tel.innerHTML = week + ' <tspan font-size="10" fill="#34d399" letter-spacing="1">GESPREKKEN INGEPLAND</tspan>';
+            setTimeout(function(){
+              lead.style.opacity = 0;
+              if (beurt % 3 === 1){ stop.style.opacity = 1; setTimeout(function(){ stop.style.opacity = 0; }, 1600); }
+              beurt++;
+              if (week >= 9) week = 3;
+              setTimeout(reis, 1300);
+            }, 700);
+          }); }, 900);
+        }, 600);
+      }); }, 800);
+    }); }, 700);
+  }
+  function start(){ if (gestart) return; gestart = true; if (reduced){ zet(541, 195); lead.style.opacity = 1; return; } reis(); }
+  if ('IntersectionObserver' in window){ var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ start(); io.disconnect(); } }); }, { threshold: .25 }); io.observe(svg); } else start();
+})();
+</script>
+</div></div>
   </div>
 </section>
 
