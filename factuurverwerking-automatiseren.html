@@ -231,6 +231,8 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .mock-tag.warn{background:var(--amber)}
 .mock-tag.dim{background:rgba(255,255,255,.12);color:#c4cbd8}
 .mock-spk{color:#64748b;font-size:.6rem;letter-spacing:.08em;flex-shrink:0;min-width:3.4rem}
+.anim-card{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#0a0b0e;box-shadow:0 24px 60px rgba(10,11,14,.16)}
+.anim-card iframe{position:absolute;inset:0;width:100%;height:calc(100% + 54px);border:0}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/factuurverwerking-automatiseren">
@@ -295,7 +297,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span>Eerlijk: 100% automatisch bestaat niet en moet je ook niet willen. Het doel is dat 90 tot 95% van je facturen zonder mensenhanden doorloopt, en dat de rest met een reden bij de juiste persoon op de goedkeurstapel ligt.</span>
   </div>
     </div>
-    <div class="split-vis"><div class="mock-window" aria-hidden="true"><div class="mock-bar"><span></span><span></span><span></span><div class="mock-title">C:\forgexe\facturen</div><div class="mock-badge">&#9679; VERWERKT</div></div><div class="mock-body"><div class="mock-row"><span>factuur_1184.pdf ontvangen</span></div><div class="mock-row"><span>leverancier herkend</span><span class="mock-ok">&#10003;</span></div><div class="mock-row"><span>&euro; 1.240,50 &middot; btw 21% klopt</span><span class="mock-ok">&#10003;</span></div><div class="mock-row"><span>geen dubbele boeking</span><span class="mock-ok">&#10003;</span></div><div class="mock-row"><span>geboekt in je pakket</span><span class="mock-tag">KLAAR</span></div></div></div></div>
+    <div class="split-vis"><div class="anim-card"><iframe src="/animatie-factuurverwerking" title="Animatie: factuurverwerking in actie" loading="lazy"></iframe></div></div></div>
   </div>
 </section>
 

@@ -231,6 +231,8 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .mock-tag.warn{background:var(--amber)}
 .mock-tag.dim{background:rgba(255,255,255,.12);color:#c4cbd8}
 .mock-spk{color:#64748b;font-size:.6rem;letter-spacing:.08em;flex-shrink:0;min-width:3.4rem}
+.anim-card{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#0a0b0e;box-shadow:0 24px 60px rgba(10,11,14,.16)}
+.anim-card iframe{position:absolute;inset:0;width:100%;height:calc(100% + 54px);border:0}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/email-automatiseren">
@@ -295,7 +297,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <span>Eerlijk is eerlijk: de AI verstuurt niet zomaar zelf. Bij alles wat gevoelig is kijkt een mens eerst mee, en jij bepaalt waar die grens ligt. Volledig automatisch beantwoorden kan, maar alleen voor de mailtypen die jij daarvoor aanwijst.</span>
   </div>
     </div>
-    <div class="split-vis"><div class="mock-window" aria-hidden="true"><div class="mock-bar"><span></span><span></span><span></span><div class="mock-title">C:\forgexe\inbox</div><div class="mock-badge">&#9679; TRIAGE AAN</div></div><div class="mock-body"><div class="mock-row"><span>offerte-aanvraag &middot; Bakker BV</span><span class="mock-tag">SALES</span></div><div class="mock-row"><span>factuur leverancier &middot; pdf</span><span class="mock-tag">ADMINISTRATIE</span></div><div class="mock-row"><span>klacht over levering</span><span class="mock-tag warn">URGENT</span></div><div class="mock-row"><span>nieuwsbrief &middot; extern</span><span class="mock-tag dim">ARCHIEF</span></div><div class="mock-row"><span>conceptantwoord klaargezet</span><span class="mock-ok">&#10003;</span></div></div></div></div>
+    <div class="split-vis"><div class="anim-card"><iframe src="/animatie-email" title="Animatie: inbox-triage in actie" loading="lazy"></iframe></div></div></div>
   </div>
 </section>
 
