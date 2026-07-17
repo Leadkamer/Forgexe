@@ -98,7 +98,8 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:3rem;max-width:900px;margin-left:auto;margin-right:auto}
 @media(max-width:760px){.team-grid{grid-template-columns:1fr}}
 .team-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem 1.6rem;display:flex;gap:1.2rem;align-items:flex-start;text-align:left}
-.team-avatar{width:52px;height:52px;border-radius:50%;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:1rem;flex-shrink:0}
+.team-avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--green-soft)}
+.team-avatar img{width:100%;height:100%;object-fit:cover}
 .team-card .role{font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--green);letter-spacing:.1em;display:block;margin-bottom:.3rem}
 .team-card h3{font-family:var(--head);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
 .team-card p{font-family:var(--head);font-size:.88rem;color:var(--ink-dim);line-height:1.55}
@@ -403,18 +404,18 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <h2 class="section-h2">Wie er op jouw vloer staan.</h2></div>
   <div class="team-grid">
     <div class="team-card">
-      <div class="team-avatar">SE</div>
+      <div class="team-avatar"><img src="team-sedat.webp" alt="Sedat Ayar" loading="lazy" width="800" height="800"></div>
       <div>
         <span class="role">FORGEXE &middot; AI &amp; AUTOMATISERING</span>
-        <h3>Sedat</h3>
+        <h3>Sedat Ayar</h3>
         <p>Bouwt AI-medewerkers en systeemkoppelingen voor het Nederlandse MKB. Kijkt op de vloer direct waar AI het meeste oplevert — en waar niet.</p>
       </div>
     </div>
     <div class="team-card">
-      <div class="team-avatar">SA</div>
+      <div class="team-avatar"><img src="team-samuel.jpg" alt="Samuël" loading="lazy"></div>
       <div>
         <span class="role">FESMA &middot; PROCES &amp; ERP</span>
-        <h3>Samuel</h3>
+        <h3>Samu&euml;l</h3>
         <p>Kent de processen van maakbedrijven van binnenuit — van orderflow tot ERP. Legt bloot waar tijd, marge en overzicht weglekken.</p>
       </div>
     </div>
