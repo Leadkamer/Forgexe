@@ -226,5 +226,6 @@
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(scanData)
     }).catch(function(){});
+    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'bedrijfsscan' });
   };
 })();
