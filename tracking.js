@@ -41,6 +41,12 @@
     try { window.fbq('track', event, data || {}); } catch (e) {}
   };
 
+  /* Eigen events (voor inzicht, niet voor optimalisatie) */
+  window.fxTrackCustom = function(event, data){
+    if (lees() !== 'ja' || !window.fbq) return;
+    try { window.fbq('trackCustom', event, data || {}); } catch (e) {}
+  };
+
   function verwijderBanner(){
     var el = document.getElementById('fxConsent');
     if (el && el.parentNode) el.parentNode.removeChild(el);

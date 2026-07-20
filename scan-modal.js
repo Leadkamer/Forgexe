@@ -171,6 +171,7 @@
     document.getElementById('scanProgressBar').style.width = Math.round((1/SCAN_TOTAL_STEPS)*100) + '%';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (window.fxTrack) window.fxTrack('InitiateCheckout', { content_name: 'bedrijfsscan', bron: window.location.pathname });
   };
   window.closeScan = function(){
     document.getElementById('scanModal').classList.remove('open');
@@ -183,6 +184,7 @@
     document.getElementById('scanStep' + step).classList.remove('active');
     document.getElementById('scanStep' + next).classList.add('active');
     document.getElementById('scanProgressBar').style.width = Math.round((next/SCAN_TOTAL_STEPS)*100) + '%';
+    if (window.fxTrackCustom) window.fxTrackCustom('ScanStap', { stap: next, van: step });
   };
   window.prevScanStep = function(step){
     var prev = step - 1;
@@ -209,6 +211,7 @@
     scanData.tools = selected.length ? selected.join(', ') : 'Geen geselecteerd';
     document.getElementById('scanStep4').classList.remove('active');
     document.getElementById('scanStep5').classList.add('active');
+    if (window.fxTrackCustom) window.fxTrackCustom('ScanStap', { stap: 5, van: 4 });
     document.getElementById('scanProgressBar').style.width = Math.round((5/SCAN_TOTAL_STEPS)*100) + '%';
   };
   window.submitScan = function(e){
