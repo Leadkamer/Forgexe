@@ -1,10 +1,11 @@
 /* Forgexe tracking met consent
-   - Meta-pixel wordt pas geladen na expliciete toestemming (AVG)
+   - Meta-pixel EN Google Analytics 4 laden pas na expliciete toestemming (AVG)
    - Keuze wordt 6 maanden onthouden in localStorage
-   - window.fxTrack('Lead') stuurt een conversie-event als er toestemming is
+   - window.fxTrack('Lead') stuurt een event naar zowel Meta als GA4
 */
 (function(){
   var PIXEL_ID = '3371968756387934';
+  var GA_ID = 'G-3F9QV63H16';
   var KEY = 'fx-consent';
   var TERMIJN = 182 * 24 * 60 * 60 * 1000; // 6 maanden
 
@@ -35,16 +36,36 @@
     window.fbq('track', 'PageView');
   }
 
-  /* Conversie-events: veilig aanroepbaar, doet niets zonder toestemming */
+  function laadGA(){
+    if (window.gtag) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+
+  function laadTracking(){
+    laadPixel();
+    laadGA();
+  }
+
+  /* Conversie-events: veilig aanroepbaar, doet niets zonder toestemming.
+     Stuurt naar zowel Meta (fbq) als Google Analytics (gtag). */
   window.fxTrack = function(event, data){
-    if (lees() !== 'ja' || !window.fbq) return;
-    try { window.fbq('track', event, data || {}); } catch (e) {}
+    if (lees() !== 'ja') return;
+    try { if (window.fbq) window.fbq('track', event, data || {}); } catch (e) {}
+    try { if (window.gtag) window.gtag('event', event, data || {}); } catch (e) {}
   };
 
   /* Eigen events (voor inzicht, niet voor optimalisatie) */
   window.fxTrackCustom = function(event, data){
-    if (lees() !== 'ja' || !window.fbq) return;
-    try { window.fbq('trackCustom', event, data || {}); } catch (e) {}
+    if (lees() !== 'ja') return;
+    try { if (window.fbq) window.fbq('trackCustom', event, data || {}); } catch (e) {}
+    try { if (window.gtag) window.gtag('event', event, data || {}); } catch (e) {}
   };
 
   function verwijderBanner(){
@@ -55,7 +76,7 @@
   function kies(keuze){
     bewaar(keuze);
     verwijderBanner();
-    if (keuze === 'ja') laadPixel();
+    if (keuze === 'ja') laadTracking();
   }
   window.fxConsentKies = kies;
 
@@ -101,7 +122,7 @@
 
   function init(){
     var keuze = lees();
-    if (keuze === 'ja') { laadPixel(); return; }
+    if (keuze === 'ja') { laadTracking(); return; }
     if (keuze === 'nee') return;
     toonBanner();
   }
