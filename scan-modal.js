@@ -43,6 +43,9 @@
     + '.scan-done-checks span strong{color:var(--green,#34d399);font-weight:700}'
     + '.scan-submit{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head,sans-serif);font-weight:600;font-size:.88rem;border:none;cursor:pointer;transition:all .32s;background:var(--green,#34d399);color:#052e16}'
     + '.scan-submit:hover{background:var(--green-lt,#4ade80);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}'
+    /* iOS zoomt automatisch in op invoervelden kleiner dan 16px. Op mobiel
+       dus exact 16px, anders springt het formulier bij elke tik in beeld. */
+    + '@media(max-width:900px){.scan-form-row input{font-size:16px}}'
     + '@media(max-width:600px){.scan-card{padding:1.8rem 1.4rem 1.6rem}.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}';
 
   var styleEl = document.createElement('style');

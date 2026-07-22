@@ -77,6 +77,9 @@
     + '.fx-chat-voet button{width:40px;flex-shrink:0;background:var(--ink,#0a0b0e);color:#fff;border:none;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}'
     + '.fx-chat-voet button:hover{background:var(--green,#34d399);color:#052e16}'
     + '.fx-chat-voet button:disabled{opacity:.4;cursor:not-allowed}'
+    /* iOS zoomt automatisch in op invoervelden kleiner dan 16px. Op mobiel
+       dus exact 16px, anders springt het scherm bij elke tik in het veld. */
+    + '@media(max-width:900px){.fx-chat-voet input{font-size:16px}}'
     + '@media(max-width:520px){#fxChat{right:12px;bottom:calc(12px + var(--fx-banner,0px));left:12px}'
     + '#fxChatKnop{margin-left:auto}'
     + '#fxChatPaneel{width:100%;max-width:none;height:min(80vh,calc(100vh - 90px))}}'

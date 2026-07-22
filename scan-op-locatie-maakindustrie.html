@@ -230,6 +230,9 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .scan-submit:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
 @media(max-width:600px){.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}
 /* ==/SCAN-MODAL== */
+
+/* iOS zoomt in op invoervelden onder 16px */
+@media(max-width:900px){input,textarea,select{font-size:16px!important}}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/scan-op-locatie-maakindustrie">

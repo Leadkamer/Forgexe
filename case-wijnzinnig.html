@@ -308,6 +308,9 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .case-shot-bar{display:flex;align-items:center;gap:5px;padding:9px 12px;background:#0a0b0e}
 .case-shot-bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
 .case-shot img{display:block;width:100%;height:auto}
+
+/* iOS zoomt in op invoervelden onder 16px */
+@media(max-width:900px){input,textarea,select{font-size:16px!important}}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/case-wijnzinnig">
