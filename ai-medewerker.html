@@ -256,6 +256,11 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .wie-naam{font-family:var(--head);font-size:.95rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
 .wie-rol{font-family:var(--mono);font-size:.64rem;color:var(--green-deep);font-weight:600;letter-spacing:.06em;margin-top:.25rem}
 @media(max-width:900px){.wie-strip{padding:2rem 1.5rem;border-radius:14px}.wie-grid{grid-template-columns:1fr 1fr;gap:20px;margin-top:1.6rem}.wie-foto{width:72px;height:72px}}
+.wie-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.wie-link{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--head);font-size:.86rem;font-weight:600;color:var(--ink);text-decoration:none;border:1.5px solid var(--line-strong);border-radius:9px;padding:.6rem 1.1rem;white-space:nowrap;transition:all var(--tr);flex-shrink:0}
+.wie-link:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px)}
+.wie-link svg{width:13px;height:13px}
+@media(max-width:900px){.wie-head{gap:1.1rem}.wie-link{align-self:flex-start}}
 </style>
 <!-- ==FORGEXE-SEO== -->
 <meta property="og:url" content="https://www.forgexe.nl/ai-medewerker">
@@ -465,8 +470,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 </section>
 
 <div class="wie-strip reveal">
-  <div class="wie-kop">Wie je aan de lijn krijgt</div>
-  <p class="wie-sub">Geen bureau met 50 man. Een compact team dat jouw AI-medewerker zelf bouwt.</p>
+  <div class="wie-head">
+    <div>
+      <div class="wie-kop">Wie je aan de lijn krijgt</div>
+      <p class="wie-sub">Geen bureau met 50 man. Een compact team dat jouw AI-medewerker zelf bouwt.</p>
+    </div>
+    <a href="/over-ons" class="wie-link">Meer over ons <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
   <div class="wie-grid">
     <div class="wie-p"><div class="wie-foto"><img src="team-sedat.webp" alt="Sedat Ayar" loading="lazy" width="800" height="800"></div><div class="wie-naam">Sedat</div><div class="wie-rol">FOUNDER &middot; STRATEGY</div></div>
     <div class="wie-p"><div class="wie-foto"><img src="team-maurice.jpg" alt="Maurice" loading="lazy"></div><div class="wie-naam">Maurice</div><div class="wie-rol">TECH LEAD</div></div>
