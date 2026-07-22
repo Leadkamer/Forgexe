@@ -1,0 +1,58 @@
+PAGINA: /case-smartesg
+TITEL: Smart ESG
+OMSCHRIJVING: AI-leadgen voor MKB-maakindustrie. 166 nodes pipeline, lead scoring met Claude Sonnet 4.6, 3-staps LinkedIn outreach.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+De uitdaging
+Smart ESG biedt VSME-rapportages aan MKB-maakbedrijven van 15 tot 250 medewerkers. De doelgroep, DGA, CEO of CFO bij metaal, food, high-tech of automotive, is niet sales-savvy en zit niet te wachten op pitches. Klassieke LinkedIn-spam werkt averechts.
+Tom moet tegelijk leadkwalificatie doen, persoonlijke berichten schrijven en opvolgen. Als consultant kan hij geen tientallen uren per week aan handmatige outreach besteden, en VSME-kennis vraagt eerst om educatie, daarna pas om verkoop.
+De oplossing
+Een autonome pipeline van 166 nodes in n8n. Apollo en Google Maps leveren dagelijks nieuwe MKB-maakbedrijven aan, LinkedIn-scraping verrijkt met functie en signalen, Claude Sonnet 4.6 scoort elke lead op fit (sector, omvang, profiel-hints zoals vacatures of Duitsland-expansie).
+De copy-strategie is bewust 3-staps en bewust niet-pitchy. Het connectie-bericht is een neutrale zin zonder vraag of product, FU1 deelt een blog op basis van de sterkste hook (vacature, Duitsland of functie-fallback), FU2 stelt pas dan een gerichte ESG-vraag, afhankelijk van de functie-categorie. Tom ziet alleen wat écht reageert.
+Onze aanpak
+Lead sourcing via Apollo en Google Maps op sector- en omvang-criteria
+Bulk LinkedIn-enrichment: functie, signalen en profiel-hints
+AI fit-scoring op Claude Sonnet 4.6 met sector-specifieke prompts
+3-staps copy-strategie: connect, blog, ESG-vraag
+Connectiebericht zonder pitch, bewust neutraal en kort
+Hook-detectie: vacature, Duitsland-expansie of functie-fallback
+LinkedIn outreach via Unipile met dagelijkse rate-limits
+Slimme nudge na FU2 zonder ge-pings, respect voor de doelgroep
+Vergelijkbare resultaten?
+Ontdek wat een AI-systeem kan doen voor jouw bedrijf. Gratis bedrijfsscan, quick wins binnen 48 uur.
+Plan een scan
+Technologie AI Leadgen Claude Sonnet 4.6 Apollo Google Maps API LinkedIn (Unipile) n8n Lead Scoring VSME
+> C:\meer-projecten
+Andere systemen die we hebben gesmeed.
+Technetium Talent Actief AI-vacatureplatform voor de techniek
+Webapp AI Matching SaaS
+Smart ESG AI Leadgen voor MKB-maakindustrie
+Lead Scoring LinkedIn Apollo
+DNA-talent AI Outreach voor coaches & HR
+Tone-of-Voice Unipile Content AI
+> C:\forgexe\klaar
+Klaar voor je eigen pipeline ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan Plan een kennismaking
+C:\forgexe\scan · gratis bedrijfsscan
+Hoeveel medewerkers heeft je bedrijf?
+1 tot 15 15 tot 50 50 tot 200 200+
+Terug In welke branche ben je actief?
+Maakindustrie Technische Groothandel Zakelijke Dienstverlening Marketing & Bureaus Anders
+Terug Waar ligt je grootste uitdaging?
+Meer leads en klanten Efficiëntere operatie Beide
+Terug Welke tools gebruik je nu?
+Selecteer alles dat van toepassing is.
+Volgende
+Terug Hoe snel wil je resultaat zien?
+Zo snel mogelijk Binnen 3 maanden Ik oriënteer me nog
+Terug Waar kunnen we je rapport naartoe sturen?
+Ik ga akkoord met het privacybeleid . Verstuur scanverzoek
+C:\forgexe\scan · processing
+Bedankt! Je scanverzoek is ontvangen.
+We nemen binnen 48 uur contact op met jouw drie grootste quick wins.
+ja Quick wins binnen 48 uur ja Reactie binnen 2 uur ja 100% gratis

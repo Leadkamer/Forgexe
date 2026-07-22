@@ -1,0 +1,49 @@
+OVERZICHT VAN ALLE PAGINAS OP FORGEXE.NL
+
+ai-act — Hoe Forgexe omgaat met de EU AI Act voor onze klanten en onze eigen werkwijze.
+ai-ads — AI-gestuurde advertenties op Google, Meta en LinkedIn. Automatische bid- en budget-optimalisatie, dagelijkse iteratie.
+ai-agent-laten-bouwen — Laat een AI-agent bouwen die echt in productie draait: leads opvolgen, e-mail verwerken, offertes maken. Op jouw tools, vendor-vrij, eerste versie in 4 tot 6 weken.
+ai-blogger — AI Blogger systeem dat SEO-content schrijft in jouw tone of voice. Markt-onderzoek, on-page SEO en directe CMS-publicatie.
+ai-medewerker — Een AI-medewerker neemt terugkerend werk volledig over: leads, e-mail, rapportages en planning. Op maat gesmeed, draait in jouw eigen tools. Vanaf EUR 500 per maand.
+ai-outreach — AI-Outreach en leadgen-systemen: ICP-targeting, gepersonaliseerde berichten via LinkedIn en e-mail, automatische follow-up.
+ai-rapportage — Geautomatiseerde rapportages uit je CRM, boekhouding en projectmanagement. Op maat, op tijd, in het juiste kanaal.
+ai-telefonist — Wat kan een AI-telefonist in 2026, wat kost het en wanneer past het wel of niet bij je bedrijf? Eerlijke marktprijzen, mogelijkheden en valkuilen voor MKB.
+ai-training — AI-trainingen in-company: prompt engineering, AI-tools effectief inzetten, automatiseringsmogelijkheden herkennen.
+blog-5-processen-automatiseren — Van lead-opvolging tot facturatie: deze vijf processen kosten je team uren per week en zijn relatief eenvoudig te automatiseren.
+blog-ai-agents-salesteam — AI-agents nemen repetitieve taken over zodat je team zich kan focussen op wat mensen het beste doen: relaties bouwen en deals sluiten.
+blog-ai-strategie-bestaande-tools — Je hoeft niet alles om te gooien. De beste AI-implementaties bouwen voort op wat je al hebt. Zo begin je.
+blog-crm-integraties — Je CRM is pas waardevol als het verbonden is met de rest van je tools. Deze integraties maken het verschil.
+blog-linkedin-outreach-ai — We vergeleken handmatige LinkedIn outreach met een AI-gestuurde aanpak. Het verschil in respons en conversie was opvallend.
+blog-roi-procesautomatisering — Vergeet de beloftes van 10x productiviteit. Dit is wat procesautomatisering realistisch oplevert voor een MKB-bedrijf.
+blog-zomer-automatiseren — In de zomer gaat het tempo automatisch wat omlaag. Een mooie kans om eens te kijken welke processen in je bedrijf efficiënter kunnen. Geen druk, gewoon nadenken.
+blog — Praktische kennis over AI, automatisering en groei voor het Nederlandse MKB. Geen hype, wel resultaat.
+branche-maakindustrie — AI-systemen voor maakbedrijven: offerteflow, productieplanning en ERP-integraties zonder verstoring van de productie.
+branche-marketing-bureaus — AI-systemen voor marketing- en communicatiebureaus: eigen pipeline, klant-rapportages en onboarding op rails.
+branche-technische-groothandel — AI-automatisering voor technische groothandels: orderdesk, ERP-koppelingen en voorraadvragen die in minuten worden afgehandeld.
+branche-zakelijke-dienstverlening — AI-automatisering voor consultants, accountants en advocaten. Intakes, rapportages en dossierwerk grotendeels geautomatiseerd.
+branches — Forgexe bouwt AI-systemen voor MKB in vier branches: maakindustrie, technische groothandel, zakelijke dienstverlening en marketing-bureaus.
+case-dna-talent — AI-outreach voor coaches en HR-professionals in Dany's eigen warme tone-of-voice. Voor de Me.Scan opleiding.
+case-fietsencatalogus — AI-portaal dat de maandelijkse nieuwsbrieven voor 30+ aangesloten fietsenwinkels volledig automatiseert via Brevo.
+case-realcob — Hoe Forgexe voor RealCob een multi-segment AI-leadgen systeem bouwde: drie LinkedIn-campagnes voor DPO's, IT-managers en privacy-consultants.
+case-smartesg — AI-leadgen voor MKB-maakindustrie. 166 nodes pipeline, lead scoring met Claude Sonnet 4.6, 3-staps LinkedIn outreach.
+case-technetium — AI-vacatureplatform voor de techniek. Actieve sourcing via LinkedIn outreach, Per Match en Hire Success pricing.
+case-wijnzinnig — Content Machine en 3-segment leadgen voor wijnbedrijf Wijnzinnig! Bedrijven, horeca en particulieren in 1 omgeving.
+cases — Zes systemen die Forgexe heeft gesmeed voor Nederlandse MKB-bedrijven. Van AI-leadgen tot custom platforms.
+contact — Direct contact met Forgexe. Mail, bel of WhatsApp. Plus gratis bedrijfsscan met quick wins binnen 48 uur.
+dashboarding — Custom AI-platforms: jouw eigen ecosysteem van dashboards, integraties en automatiseringen. Op maat gebouwd, white-label.
+disclaimer — Disclaimer voor het gebruik van forgexe.nl en de informatie die wij delen.
+email-automatiseren — Inkomende mail automatisch sorteren, routeren en beantwoorden met AI. Je team opent een voorgesorteerde inbox met conceptantwoorden klaar in jouw toon.
+expertises — Zeven Forgexe diensten waar AI-medewerkers het werk doen: outreach, content, ads, training, rapportage, planning en custom platforms.
+factuurverwerking-automatiseren — Inkomende facturen automatisch uitlezen, controleren en klaarzetten in je boekhoudpakket. Van 10 tot 15 minuten handwerk naar seconden per factuur.
+index — Forgexe smeedt AI-medewerkers voor het Nederlandse MKB. Leads, processen en rapportages op de automatische piloot, zonder extra personeel.
+leadgeneratie-automatiseren — Leadgeneratie automatiseren voor B2B: van prospect vinden tot afspraak in de agenda. Ontdek hoe een geautomatiseerd leadgen-systeem werkt en wat het kost.
+n8n-specialist — Nederlandse n8n-specialist voor het MKB: wij bouwen, hosten en beheren n8n-workflows en AI-agents die in productie draaien. Ook redding van vastgelopen DIY-flows.
+n8n-vs-make-vs-zapier — n8n, Make of Zapier? Eerlijke vergelijking op kosten, AVG, AI-mogelijkheden en schaalbaarheid, speciaal voor het Nederlandse MKB. Inclusief keuzehulp.
+over-ons — Forgexe is een compact team van specialisten dat AI-systemen bouwt die jouw bedrijf autonoom laten draaien. Voor het Nederlandse MKB.
+pilot — Forge.Pilot brengt al je data samen in één wekelijks overzicht. Marketing, sales en operations — samengevat in gewone taal. Schrijf je in voor vroege toegang.
+planning-optimalisatie — AI-gestuurde productieplanning en capaciteitsoptimalisatie. Realtime data uit ERP/MES, slimme suggesties die stilstand voorkomen.
+pricing — Drie pakketten voor het smeden van AI-medewerkers: Forge.Start vanaf €500/mnd, Forge.Pro vanaf €1.250/mnd, Forge.Scale custom.
+privacy — Privacybeleid van Forgexe. Hoe wij omgaan met persoonlijke gegevens.
+scan-op-locatie-maakindustrie — Gratis AI- & processcan op locatie voor maakbedrijven. Forgexe en Fesma lopen een ochtend mee op jouw vloer en leveren binnen 48 uur jouw drie grootste quick wins.
+voorwaarden — Algemene voorwaarden van Forgexe voor dienstverlening en levering.
+wat-kost-ai-automatisering — AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. In deze gids: alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.

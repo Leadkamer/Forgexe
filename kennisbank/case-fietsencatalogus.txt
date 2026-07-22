@@ -1,0 +1,58 @@
+PAGINA: /case-fietsencatalogus
+TITEL: Fietsencatalogus
+OMSCHRIJVING: AI-portaal dat de maandelijkse nieuwsbrieven voor 30+ aangesloten fietsenwinkels volledig automatiseert via Brevo.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+De uitdaging
+Susanne maakte elke maand handmatig nieuwsbrieven voor ongeveer 30 fietsenwinkels. Per winkel: branche-artikelen selecteren, keuzemail samenstellen en versturen, opmaken, links en beeld toevoegen, testmail rondsturen, akkoord afwachten en pas dan verzenden via Brevo.
+Bij elkaar zo'n 15 uur per week aan repetitief werk, geen ruimte voor strategie, nieuwe klanten of de aansluiting van extra winkels. Eén persoon werd de bottleneck van het hele model.
+De oplossing
+Een centraal AI-portaal dat de hele flow overneemt. AI selecteert branche-artikelen uit RSS-bronnen, stelt een keuzemail samen en stuurt 'm naar de winkelier. Die kiest 3 tot 5 artikelen aan en het systeem schrijft de nieuwsbrief in de eigen tone of voice van die winkel.
+De winkel krijgt een testmail met preview en akkoord-knop. Bij akkoord wordt de nieuwsbrief automatisch via Brevo verzonden naar het eindklantenbestand. Susanne ziet per winkel de status in één overzicht en springt alleen in waar nodig, van uitvoerder naar regisseur.
+Onze aanpak
+Centraal dashboard met overzicht per winkel en status-filters
+AI artikelselectie uit branche-RSS feeds (max 2-3 per bron)
+Keuzemail-flow: winkelier krijgt selectie, kiest 3-5 artikelen
+AI nieuwsbrief-generator met per-winkel tone-of-voice
+Testmail met preview en akkoord-knop voor de winkelier
+Automatische verzending via Brevo bij akkoord
+Rollen-systeem: marketing- en winkel-views met juiste rechten
+Foto-beheer en thumbnails per artikel direct in het portaal
+Vergelijkbare resultaten?
+Ontdek wat een AI-systeem kan doen voor jouw bedrijf. Gratis bedrijfsscan, quick wins binnen 48 uur.
+Plan een scan
+Technologie SaaS Content AI OpenAI Brevo n8n RSS Aggregation Rollen-systeem
+> C:\meer-projecten
+Andere systemen die we hebben gesmeed.
+Technetium Talent Actief AI-vacatureplatform voor de techniek
+Webapp AI Matching SaaS
+Smart ESG AI Leadgen voor MKB-maakindustrie
+Lead Scoring LinkedIn Apollo
+DNA-talent AI Outreach voor coaches & HR
+Tone-of-Voice Unipile Content AI
+> C:\forgexe\klaar
+Klaar voor je eigen pipeline ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan Plan een kennismaking
+C:\forgexe\scan · gratis bedrijfsscan
+Hoeveel medewerkers heeft je bedrijf?
+1 tot 15 15 tot 50 50 tot 200 200+
+Terug In welke branche ben je actief?
+Maakindustrie Technische Groothandel Zakelijke Dienstverlening Marketing & Bureaus Anders
+Terug Waar ligt je grootste uitdaging?
+Meer leads en klanten Efficiëntere operatie Beide
+Terug Welke tools gebruik je nu?
+Selecteer alles dat van toepassing is.
+Volgende
+Terug Hoe snel wil je resultaat zien?
+Zo snel mogelijk Binnen 3 maanden Ik oriënteer me nog
+Terug Waar kunnen we je rapport naartoe sturen?
+Ik ga akkoord met het privacybeleid . Verstuur scanverzoek
+C:\forgexe\scan · processing
+Bedankt! Je scanverzoek is ontvangen.
+We nemen binnen 48 uur contact op met jouw drie grootste quick wins.
+ja Quick wins binnen 48 uur ja Reactie binnen 2 uur ja 100% gratis

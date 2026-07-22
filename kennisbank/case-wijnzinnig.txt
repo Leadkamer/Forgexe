@@ -1,0 +1,58 @@
+PAGINA: /case-wijnzinnig
+TITEL: Wijnzinnig!
+OMSCHRIJVING: Content Machine en 3-segment leadgen voor wijnbedrijf Wijnzinnig! Bedrijven, horeca en particulieren in 1 omgeving.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+De uitdaging
+Daan, eigenaresse van Wijnzinnig!, doet alles wat met content, sales en klantcommunicatie te maken heeft zelf. Bedrijven, horeca en particulieren zijn ieder een eigen segment met een eigen aanpak. Daarbij maandelijkse blog- en social-content voor 120+ wijnen, wijnkaart-aanvragen, kerstpakketten en kalender-pieken zoals Pasen en Koningsdag.
+Het webshop-systeem is bovendien een custom CMS zonder API: blog publiceren is letterlijk handmatig kopiëren. Resultaat: drukke weken betekenen geen acquisitie, en kansen voor relatiegeschenken of horeca-afspraken vallen tussen wal en schip.
+De oplossing
+We bouwden een Content Machine dashboard dat di/do/vr om 09:00 automatisch AI-blogs (800 woorden) en social posts (150 woorden) genereert uit een RSS-backlog van 380+ wijn-artikelen. Daan reviewt in één overzicht en kiest wat live gaat, in haar eigen tone of voice, zonder corporate clichés.
+Daaraan gekoppeld een 3-segment outreach pipeline: bedrijven via LinkedIn-flow (2 berichten via Unipile en opvolg-mail) voor relatiegeschenken, horeca via mail met afspraak-knop (25km radius), particulieren via wijnkaart-automation die Outlook scrapt en aanvragers tagt in MailChimp. Plus kalender-templates voor Pasen, Secretaressedag, Koningsdag, Bouwvak en Kerst, inclusief de kerst-staffel (aug 10% / sept 5% / nov 0%) die vroege bestellingen spreidt.
+Onze aanpak
+Content Machine dashboard met di/do/vr 09:00 auto-schedule
+AI blog-generator (800w) en social post-generator (150w)
+RSS-backlog scraper met 380+ artikelen, max 2-3 per bron
+3-segment outreach pipeline: bedrijven, horeca, particulieren
+LinkedIn-flow: 2 berichten via Unipile, 1-week-timer, mail-follow-up
+Horeca-mailflow met afspraak-knop binnen 25km radius
+Wijnkaart-automation: Outlook scrapen, MailChimp tag, template
+Kalender-templates: Pasen, Koningsdag, Bouwvak, Kerst-staffel
+Vergelijkbare resultaten?
+Ontdek wat een AI-systeem kan doen voor jouw bedrijf. Gratis bedrijfsscan, quick wins binnen 48 uur.
+Plan een scan
+Technologie Webapp Content AI OpenAI LinkedIn (Unipile) MailChimp n8n RSS Aggregation Outlook
+> C:\meer-projecten
+Andere systemen die we hebben gesmeed.
+Technetium Talent Actief AI-vacatureplatform voor de techniek
+Webapp AI Matching SaaS
+Smart ESG AI Leadgen voor MKB-maakindustrie
+Lead Scoring LinkedIn Apollo
+DNA-talent AI Outreach voor coaches & HR
+Tone-of-Voice Unipile Content AI
+> C:\forgexe\klaar
+Klaar voor je eigen pipeline ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan Plan een kennismaking
+C:\forgexe\scan · gratis bedrijfsscan
+Hoeveel medewerkers heeft je bedrijf?
+1 tot 15 15 tot 50 50 tot 200 200+
+Terug In welke branche ben je actief?
+Maakindustrie Technische Groothandel Zakelijke Dienstverlening Marketing & Bureaus Anders
+Terug Waar ligt je grootste uitdaging?
+Meer leads en klanten Efficiëntere operatie Beide
+Terug Welke tools gebruik je nu?
+Selecteer alles dat van toepassing is.
+Volgende
+Terug Hoe snel wil je resultaat zien?
+Zo snel mogelijk Binnen 3 maanden Ik oriënteer me nog
+Terug Waar kunnen we je rapport naartoe sturen?
+Ik ga akkoord met het privacybeleid . Verstuur scanverzoek
+C:\forgexe\scan · processing
+Bedankt! Je scanverzoek is ontvangen.
+We nemen binnen 48 uur contact op met jouw drie grootste quick wins.
+ja Quick wins binnen 48 uur ja Reactie binnen 2 uur ja 100% gratis

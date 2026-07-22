@@ -1,0 +1,119 @@
+PAGINA: /ai-act
+TITEL: EU AI Act Compliance
+OMSCHRIJVING: Hoe Forgexe omgaat met de EU AI Act voor onze klanten en onze eigen werkwijze.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+Laatst bijgewerkt: 1 januari 2026
+De EU AI Act stelt eisen aan bedrijven die AI gebruiken. Wij zorgen dat jij compliant blijft, zonder dat je je in juridische details hoeft te verdiepen.
+C:\ai-act\overview>
+Wat is de EU AI Act?
+De EU AI Act is de eerste uitgebreide AI-wetgeving wereldwijd. Sinds augustus 2024 van kracht, met een gefaseerde invoering tot 2027. De wet regelt hoe bedrijven AI mogen gebruiken in Europa.
+De wet werkt met een risico-gebaseerde aanpak : hoe meer impact een AI-systeem heeft op mensen, hoe strikter de regels. Van volledig vrij gebruik tot compleet verboden.
+Voor het Nederlandse MKB betekent dit: je moet weten welke AI je gebruikt, hoe het werkt, en wie ervoor verantwoordelijk is. Forgexe regelt dat voor jou.
+C:\ai-act\risk-categories>
+De vier risico-categorieen .
+De AI Act deelt AI-systemen in vier groepen. Hoe hoger het risico voor mensen, hoe strenger de regels.
+Onaanvaardbaar risico
+Verboden
+Social scoring door overheden
+Manipulatie van kwetsbare groepen
+Real-time biometrische identificatie in publieke ruimtes
+Emotie-herkenning op werk en in onderwijs
+Hoog risico
+Strikte eisen
+AI in werving en HR (CV-screening, sollicitatiebeoordeling)
+AI in onderwijs (cijfers, examens)
+AI in kritieke infrastructuur
+AI in rechtspraak en wetshandhaving
+Medische apparaten met AI
+Beperkt risico
+Transparantie-eisen
+Chatbots → moeten zich identificeren als AI
+Deepfakes → moeten gelabeld zijn
+AI-gegenereerde content → herkenbaar maken
+Minimaal risico
+Vrij gebruik
+Spam filters
+AI in games
+Productiviteitstools
+C:\ai-act\requirements>
+De belangrijkste verplichtingen .
+Zes kerneisen die gelden voor organisaties die AI gebruiken binnen de EU.
+// 01
+AI-geletterdheid
+Verplicht sinds feb 2025. Je medewerkers moeten begrijpen wat AI is, hoe het werkt, en welke risico's eraan zitten. Geldt voor elke organisatie die AI gebruikt.
+// 02
+Transparantie naar gebruikers
+Mensen moeten weten wanneer ze met AI te maken hebben. Een chatbot moet zich identificeren. AI-content moet als zodanig herkenbaar zijn.
+// 03
+Menselijk toezicht
+Bij belangrijke beslissingen moet er altijd een mens kunnen ingrijpen. AI mag niet autonoom over mensen beslissen zonder vangnet.
+// 04
+Documentatie en logging
+Je moet kunnen aantonen welke AI-systemen je gebruikt, hoe ze werken, en wat ze doen. Logboeken zijn verplicht voor hoog-risico AI.
+// 05
+Data governance
+Trainingsdata moet representatief, accuraat en bias-gecontroleerd zijn. Je bent verantwoordelijk voor de kwaliteit.
+// 06
+Cybersecurity en robuustheid
+AI-systemen moeten bestand zijn tegen aanvallen en fouten. Geen single points of failure die je hele operatie platleggen.
+C:\forgexe\compliance>
+Hoe Forgexe jouw compliance regelt.
+Wij zorgen dat elk systeem dat we voor je bouwen voldoet aan de AI Act , op zes manieren.
+01
+Wij kiezen de juiste AI-tools
+Wij gebruiken alleen AI-modellen van vertrouwde providers (OpenAI, Anthropic, Google) die zelf AI Act-compliant zijn. Geen onbetrouwbare modellen of datasets.
+02
+Wij zorgen voor transparantie
+Onze AI-medewerkers identificeren zich altijd als AI in contact met derden. Geen verborgen bots, geen misleiding. Klanten en prospects weten wat ze krijgen.
+03
+Jij behoudt menselijk toezicht
+Onze systemen escaleren altijd naar een mens bij twijfel of belangrijke beslissingen. Jij houdt de controle, AI doet het werk eronder.
+04
+Wij leveren documentatie
+Bij elk Forgexe-systeem krijg je documentatie: welke modellen, welke data, welke logica. Klaar voor toezicht of audit.
+05
+Wij trainen jouw team
+Standaard bij elk pakket: een korte AI-geletterdheidstraining voor jouw team. Voldoe direct aan artikel 4 van de AI Act.
+06
+Wij monitoren continu
+Wijzigingen in de wet, nieuwe richtlijnen, updates aan modellen , wij volgen het en passen jouw systemen aan. Jij hoeft niks te onthouden.
+C:\ai-act\mkb>
+Wat dit betekent voor jou .
+Voor het Nederlandse MKB
+De meeste Forgexe-systemen vallen in de categorieen beperkt risico of minimaal risico . Dat betekent dat je geen extra vergunningen nodig hebt en geen complexe audits. Wel moet je voldoen aan de transparantie-eisen en de AI-geletterdheidsverplichting , en daar zorgen wij voor.
+Werk je in werving, HR, finance of healthcare ? Dan kan je AI-toepassing in de hoog-risico categorie vallen. Geen probleem , wij begeleiden je door de extra eisen heen en zorgen dat alles compliant is voordat we live gaan.
+C:\ai-act\timeline>
+De tijdlijn .
+De AI Act wordt gefaseerd ingevoerd. Dit zijn de belangrijkste data.
+Aug 2024
+AI Act in werking
+Feb 2025
+Verboden AI-systemen + AI-geletterdheidsplicht
+Aug 2025
+Regels voor General Purpose AI (GPT-4, Claude, etc.)
+Aug 2026
+Meeste hoog-risico verplichtingen
+Aug 2027
+Volledige naleving van alle regels
+C:\ai-act\faq>
+Veelgestelde vragen.
+Moet ik mij als MKB'er zorgen maken om de AI Act? +
+Niet als je met Forgexe werkt. Wij zorgen dat alle systemen die we voor je bouwen voldoen aan de wet. Je hoeft je niet te verdiepen in juridische details.
+Wat als de wet verandert? +
+Wij volgen alle ontwikkelingen rondom de AI Act. Als er iets verandert dat jouw systemen raakt, passen we het aan zonder dat je daar iets voor hoeft te doen.
+Krijg ik documentatie voor een eventuele audit? +
+Ja. Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen we gebruiken, welke data, welke beslissingen. Klaar voor toezicht.
+Wat is AI-geletterdheid en waarom is het verplicht? +
+Sinds februari 2025 moeten alle organisaties zorgen dat hun medewerkers begrijpen hoe AI werkt en welke risico's eraan zitten. Wij verzorgen een korte training voor je team , standaard inbegrepen.
+Is mijn data veilig bij Forgexe? +
+Ja. Wij gebruiken alleen Europese servers, alle data wordt versleuteld, en we zijn AVG-compliant. Jouw data wordt nooit gebruikt om externe modellen te trainen.
+Wat als mijn AI-toepassing onder hoog-risico valt? +
+Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan , geen verrassingen achteraf.
+Klaar om compliant te starten?
+Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen , volledig binnen de EU AI Act.
+Plan een gratis bedrijfsscan

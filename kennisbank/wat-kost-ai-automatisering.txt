@@ -1,0 +1,90 @@
+PAGINA: /wat-kost-ai-automatisering
+TITEL: Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026)
+OMSCHRIJVING: AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. In deze gids: alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\het-korte-antwoord
+Het korte antwoord.
+Voor een MKB-bedrijf kost AI-automatisering in 2026 meestal tussen de EUR 500 en EUR 2.500 per maand , afhankelijk van het aantal processen en de complexiteit. Wie liever eenmalig afrekent, betaalt in de markt EUR 2.500 tot EUR 9.000 per project. Bij een abonnement zit bouwen, hosting en onderhoud in een vast maandbedrag; bij een project betaal je eenmalig en ben je daarna zelf eigenaar. Beide routes bestaan, ook bij ons.
+Dat is de samenvatting. Maar "het hangt ervan af" is een irritant antwoord als je een budget moet maken, dus hieronder maken we het concreet: waar de prijs uit bestaat, wat verschillende prijsmodellen betekenen voor jouw risico, en welke bedragen er in de Nederlandse markt worden gerekend.
+> C:\prijsopbouw
+Waar betaal je eigenlijk voor?
+Elke AI-automatisering heeft vier kostencomponenten. Wie er maar twee offreert, komt later met de andere twee.
+> KOSTEN_01
+Bouwen
+Het ontwerpen en bouwen van de automatisering zelf: het proces doorgronden, de flow bouwen, testen en live brengen. Bij bureaus het eenmalige traject, bij abonnementen verwerkt in het maandbedrag.
+> KOSTEN_02
+AI-verbruik
+Elk AI-model rekent per gebruik. Voor de meeste MKB-automatiseringen is dit EUR 10 tot EUR 150 per maand, maar het groeit mee met je volume. Vraag altijd wie dit betaalt en wie het bewaakt.
+> KOSTEN_03
+Tools en hosting
+Het platform waarop je automatisering draait. Van EUR 20 per maand voor een n8n-omgeving tot honderden euro's bij per-taak-tools zoals Zapier als je volume groeit.
+> KOSTEN_04
+Beheer en doorontwikkeling
+De vergeten post. API's veranderen, systemen krijgen updates, processen schuiven. Zonder onderhoud valt elke automatisering vroeg of laat om. Reken op 10 tot 20% van de bouwkosten per jaar, of een abonnement waar het in zit.
+> C:\prijsmodellen
+De drie prijsmodellen in de markt.
+Hetzelfde werk, drie manieren van afrekenen. Het verschil zit in wie het risico draagt.
+| Uurtarief | Eenmalig traject | Abonnement |
+Typische prijs | EUR 90 tot EUR 150 per uur | EUR 2.500 tot EUR 9.000 vooraf | EUR 500 tot EUR 2.500 per maand |
+Voorspelbaarheid | Laag, uren lopen op | Hoog voor de bouw, daarna onbekend | Hoog, vast bedrag |
+Onderhoud | Losse facturen achteraf | Apart contract of niet geregeld | Inbegrepen |
+Risico ligt bij | Jou | Jou, na oplevering | De leverancier |
+Past bij | Los advies of klein klusje | Eén afgebakend project | Doorlopend automatiseren |
+Wij werken zelf met het abonnementsmodel (vanaf EUR 500 per maand met Forge.Start ), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Voor groter maatwerk (Forge.Pro) komt daar een eenmalige ontwikkelinvestering bij die we vooraf vastleggen. En wil je helemaal geen abonnement? Dat kan bij ons ook: met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles volledig aan je over, met beheer als optie in plaats van verplichting.
+> C:\voorbeelden
+Concrete voorbeelden uit de markt.
+Wat Nederlandse partijen in 2026 rekenen voor veelgevraagde automatiseringen.
+Automatisering | Marktprijs eenmalig | Plus per maand |
+AI-chatbot voor je website | EUR 2.000 tot EUR 10.000 | EUR 50 tot EUR 300 |
+Leadgen-systeem (outreach + opvolging) | EUR 3.000 tot EUR 9.000 | EUR 150 tot EUR 500 |
+Factuur- en documentverwerking | EUR 2.500 tot EUR 7.500 | EUR 100 tot EUR 400 |
+Rapportage-automatisering | EUR 1.500 tot EUR 5.000 | EUR 50 tot EUR 250 |
+AI-agent op maat | EUR 2.500 tot EUR 9.000+ | EUR 100 tot EUR 500 |
+Ter vergelijking: bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten, en voor groter maatwerk spreken we de eenmalige investering vooraf vast af. Wat je precies krijgt per tier staat op de prijzenpagina , en in onze cases zie je wat er in de praktijk gebouwd wordt.
+> C:\terugverdientijd
+Wanneer verdient het zich terug?
+De meeste MKB-automatiseringen verdienen zichzelf in 2 tot 6 maanden terug. De rekensom is simpeler dan hij lijkt: tel de uren die een proces nu kost, vermenigvuldig met de loonkosten, en zet dat naast het maandbedrag.
+> REKENVOORBEELD: OFFERTEPROCES AUTOMATISEREN
+Tijd per week aan offertes opstellen 6 uur
+Loonkosten per uur (incl. werkgeverslasten) EUR 45
+Kosten van het handwerk per maand EUR 1.170
+Abonnement AI-automatisering EUR 500
+Besparing per maand + EUR 670
+En dit rekent alleen de uren. De snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.
+> C:\verborgen-kosten
+Verborgen kosten waar je op moet letten.
+De vragen die je elke aanbieder (ook ons) zou moeten stellen voordat je tekent.
+AI-verbruik dat stilletjes oploopt
+AI-modellen rekenen per gebruik. Een agent die ongecontroleerd draait, kan honderden euro's per maand extra kosten. Vraag: wie bewaakt het verbruik en zit er een plafond op?
+Per-taak-tarieven die meegroeien
+Tools als Zapier rekenen per uitgevoerd taakje. Bij 100 taken per maand is dat niks, bij 50.000 is het een serieuze kostenpost. Vraag: wat kost dit bij tien keer zoveel volume?
+Vendor lock-in
+Sommige partijen bouwen op hun eigen platform. Stap je over, dan ben je alles kwijt. Vraag: van wie is wat er gebouwd wordt, en wat neem ik mee als we uit elkaar gaan?
+Onderhoud dat niet geregeld is
+De grootste. Een automatisering zonder onderhoudsafspraak valt binnen een jaar om, en dan begint de meter opnieuw. Vraag: wat gebeurt er na oplevering, en wie betaalt als er iets breekt?
+Een AI-agent waar een workflow volstond
+Hoe complexer de oplossing, hoe hoger de prijs. Maar veel processen hebben helemaal geen AI nodig, een simpele workflow is dan sneller, goedkoper en betrouwbaarder. Vraag: kan dit ook zonder AI?
+> C:\faq
+Veelgestelde vragen over kosten.
+Wat kost een AI-agent laten bouwen?
+In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van EUR 2.500 tot EUR 9.000 plus maandelijkse kosten voor tools en onderhoud. Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) spreken we een eenmalige ontwikkelinvestering vooraf af, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles aan je over. Meer daarover op de pagina AI-agent laten bouwen .
+Wat kost een AI-chatbot voor mijn website?
+Marktprijzen voor een zakelijke AI-chatbot liggen tussen de EUR 2.000 en EUR 10.000 eenmalig, plus EUR 50 tot EUR 300 per maand voor hosting en AI-verbruik. De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen.
+Hoe snel verdient AI-automatisering zich terug?
+In de praktijk ligt de terugverdientijd voor MKB-automatiseringen meestal tussen de 2 en 6 maanden. Een automatisering die 6 uur per week bespaart, levert bij gemiddelde loonkosten al snel meer dan EUR 1.000 per maand op.
+Is zelf bouwen goedkoper dan uitbesteden?
+Op papier wel, in de praktijk vaak niet. Zelf bouwen kost intern veel uren, en zelfgebouwde flows vallen zonder onderhoud regelmatig om. De verborgen kosten zitten in de tijd van je duurste mensen en in processen die stilvallen zonder dat iemand het merkt. Vastgelopen? Onze n8n-specialisten nemen zelfgebouwde workflows over.
+Betaal ik per gebruiker of per proces?
+Bij de meeste automatiseringspartijen betaal je per proces of per abonnement, niet per gebruiker. Dat is een belangrijk verschil met softwarelicenties: een automatisering die eenmaal draait, werkt voor je hele team zonder extra kosten per persoon. Zo werkt een AI-medewerker voor iedereen tegelijk.
+Zijn er verborgen kosten bij AI-automatisering?
+Die kunnen er zijn: AI-verbruikskosten die meegroeien met volume, per-taak-tarieven bij tools als Zapier, en onderhoud dat niet in de offerte zat. Vraag altijd wat er gebeurt na oplevering en wie betaalt als er iets stukgaat. Bij Forgexe zit alles in het maandbedrag, zie de prijzenpagina .
+> C:\forgexe\klaar
+Weten wat het voor jouw bedrijf kost?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij, met een concreet prijsplaatje. Vrijblijvend.
+Gratis bedrijfsscan
+Bekijk onze prijzen

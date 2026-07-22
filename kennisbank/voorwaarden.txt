@@ -1,0 +1,82 @@
+PAGINA: /voorwaarden
+TITEL: Algemene Voorwaarden
+OMSCHRIJVING: Algemene voorwaarden van Forgexe voor dienstverlening en levering.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+Laatst bijgewerkt: 1 januari 2026
+Artikel 1 , Definities
+De Opdrachtnemer: Forgexe, AI-automatiseringsbedrijf gevestigd in Maastricht en ingeschreven bij de Kamer van Koophandel onder nummer 83002677.
+De Opdrachtgever: De natuurlijke- of rechtspersoon welke met Opdrachtnemer (Forgexe) enige schriftelijke en/of mondelinge, al dan niet aanvullende overeenkomst heeft gesloten met Forgexe, gebruik maakt van de diensten welke Forgexe aanbiedt of aan wie Forgexe een offerte heeft uitgebracht waarop deze Algemene Voorwaarden van toepassing zijn.
+Diensten: De diensten welke Forgexe aanbiedt. Onder andere, maar niet beperkt tot: AI-automations, AI-agents, geautomatiseerde workflows, data-enrichment, lead scoring, social media marketing en optimalisatie, website development en design, online leadgeneratie, zoekmachinemarketing en -optimalisatie, consultancy, Google Ads, e-mailmarketingcampagnes en aanverwante AI-diensten.
+Overeenkomst: De overeenkomst welke gesloten wordt ten behoeve van het gebruik van de door Forgexe aangeboden diensten.
+AI-diensten: Alle diensten waarbij gebruik wordt gemaakt van kunstmatige intelligentie, machine learning, geautomatiseerde besluitvorming of large language models (LLM’s), waaronder AI-agents, geautomatiseerde outreach-workflows, lead scoring, data-enrichment en AI-gegenereerde content.
+Workflow / Automation: Een geautomatiseerd proces dat via platformen zoals n8n, Zapier of vergelijkbare tools meerdere applicaties en databronnen verbindt om taken zonder handmatige tussenkomst uit te voeren.
+AI-agent: Een autonoom of semi-autonoom softwaresysteem dat via AI-modellen zelfstandig taken uitvoert, beslissingen neemt en acties initieert op basis van instructies en/of contextdata van de Opdrachtgever.
+Derde Partij Platforms: Externe diensten, API’s en platformen waarvan Forgexe gebruik maakt bij het uitvoeren van AI-diensten, waaronder maar niet beperkt tot: Apollo, LinkedIn, Phantombuster, Unipile, Anthropic Claude API, OpenAI, Google Maps Platform en n8n Cloud.
+AI-output: Alle resultaten, berichten, analyses, scores, aanbevelingen of andere uitkomsten gegenereerd door AI-systemen in het kader van de geleverde diensten.
+Artikel 2 , Toepasselijkheid
+Deze voorwaarden zijn van toepassing op iedere aanbieding, offerte, de daaruit voortvloeiende diensten van welke aard dan ook inbegrepen, en overeenkomst tussen een Opdrachtgever en Opdrachtnemer (Forgexe) waarop Opdrachtnemer deze voorwaarden van toepassing heeft verklaard, voor zover van deze voorwaarden niet door partijen schriftelijk is afgeweken.
+Opdrachtnemer wijst de toepasselijkheid van algemene voorwaarden van de Opdrachtgever uitdrukkelijk van de hand. Indien een bepaling in deze algemene voorwaarden op enig moment deels of volledig nietig is of vernietigd wordt, blijft het overige volledig van toepassing.
+Artikel 3 , Eigendomsvoorbehoud
+Alle door Opdrachtnemer geleverde zaken binnen het kader van de overeenkomst blijven eigendom van Opdrachtnemer totdat de Opdrachtgever alle verplichtingen uit de met Opdrachtnemer gesloten overeenkomst(en) deugdelijk is nagekomen. Het onder eigendomsvoorbehoud geleverde mag niet worden doorverkocht en mag nimmer als betaalmiddel worden gebruikt.
+Artikel 4 , Betalingscondities
+Alle facturen zullen door de Opdrachtgever worden betaald overeenkomstig op de factuur vermelde betalingscondities. Bij gebrek aan specifieke condities dient de factuur binnen tien (10) dagen na factuurdatum te worden voldaan. Alle prijzen en kostenramingen zijn exclusief BTW, tenzij anders vermeld.
+Indien de Opdrachtgever in gebreke blijft in de tijdige betaling van een factuur, is hij van rechtswege in verzuim en is een rente verschuldigd van 1% per maand, tenzij de wettelijke rente hoger is.
+Artikel 5 , Incassokosten
+Indien de Opdrachtgever in gebreke of in verzuim is met het nakomen van zijn verplichtingen, komen alle kosten ter verkrijging van voldoening, zowel buiten als in rechte, voor rekening van de Opdrachtgever.
+Artikel 6 , Contractduur en overeenkomst
+Opdrachtnemer zal de overeengekomen diensten naar beste inzicht, kennis, vermogen en overeenkomstig de eisen van goed vakmanschap uitvoeren. Opdrachtnemer kan echter niet garanderen dat met de uit te voeren werkzaamheden het door Opdrachtgever beoogde rendement of resultaat wordt bereikt.
+Wijzigingen en aanvullingen op een overeenkomst gelden slechts indien Opdrachtnemer ze schriftelijk vastlegt.
+Artikel 7 , Ontbinding en opzegging
+Opdrachtnemer is bevoegd de nakoming op te schorten of de overeenkomst te ontbinden indien de Opdrachtgever zijn verplichtingen niet, onvolledig of niet tijdig nakomt.
+Bij overeenkomsten met een onbepaalde looptijd dient de Opdrachtgever een opzegtermijn van één (1) maand in acht te nemen. Een overeenkomst voor bepaalde tijd is niet tussentijds opzegbaar en wordt na afloop automatisch verlengd voor eenzelfde periode, behoudens opzegging met inachtneming van een opzegtermijn van twee (2) servicemaanden.
+Indien de Opdrachtgever een overeenkomst opzegt, dient hij de gemaakte kosten met betrekking tot de tot dan verrichte werkzaamheden integraal te betalen.
+Artikel 8 , Aard van de AI-dienstverlening
+Forgexe levert AI-diensten op basis van een inspanningsverplichting. Forgexe garandeert geen specifieke resultaten, conversieverhoudingen of aantallen gegenereerde leads, tenzij schriftelijk anders overeengekomen.
+AI-systemen en geautomatiseerde workflows zijn inherent afhankelijk van de kwaliteit van inputdata, de werking van Derde Partij Platforms en de accuraatheid van AI-modellen. Forgexe is niet aansprakelijk voor uitkomsten die voortvloeien uit onjuiste, onvolledige of verouderde inputdata van de Opdrachtgever.
+Opdrachtgever is zelf verantwoordelijk voor het controleren van AI-output alvorens deze te gebruiken voor beslissingen met aanzienlijke zakelijke, juridische of financiële consequenties.
+Artikel 9 , Afhankelijkheid van Derde Partij Platforms
+De uitvoering van AI-diensten is mede afhankelijk van de beschikbaarheid, werking en gebruiksvoorwaarden van Derde Partij Platforms. Forgexe heeft geen invloed op wijzigingen, uitval, blokkades of beleidswijzigingen van deze platforms.
+Wijzigingen in API-limieten, tarieven of beschikbaarheid van Derde Partij Platforms gelden als overmacht en bevrijden Forgexe van aansprakelijkheid. Extra kosten die hieruit voortvloeien worden na voorafgaande kennisgeving doorberekend.
+Artikel 10 , Aansprakelijkheid voor AI-output
+AI-output wordt gegenereerd op basis van statistische modellen en kan fouten, onnauwkeurigheden of verouderde informatie bevatten. Forgexe is niet aansprakelijk voor schade die voortvloeit uit het gebruik van AI-output zonder adequate verificatie door de Opdrachtgever.
+De Opdrachtgever is verantwoordelijk voor het instellen van adequate controle- en goedkeuringsprocessen bij het gebruik van AI-agents die namens hem communiceren of handelingen verrichten.
+De totale aansprakelijkheid van Forgexe voor schade voortvloeiend uit AI-diensten is beperkt tot het bedrag dat één (1) maand voorafgaand aan de schadeveroorzakende gebeurtenis door de Opdrachtgever is betaald voor de betreffende AI-dienst.
+Artikel 11 , Acceptabel gebruik en compliance
+Opdrachtgever is verantwoordelijk voor het gebruik van de geleverde AI-diensten in overeenstemming met alle toepasselijke wet- en regelgeving, waaronder de AVG, de Telecommunicatiewet en de ePrivacy-verordening.
+Het is Opdrachtgever niet toegestaan de AI-diensten te gebruiken voor:
+het versturen van ongewenste commerciële communicatie zonder wettelijke grondslag;
+het omzeilen van beveiligingssystemen of gebruiksvoorwaarden van Derde Partij Platforms;
+het genereren of verspreiden van misleidende, discriminerende of anderszins onrechtmatige content;
+activiteiten die in strijd zijn met de openbare orde of goede zeden.
+Bij overtreding is Forgexe gerechtigd de dienstverlening per direct te staken. Opdrachtgever vrijwaart Forgexe volledig voor alle aanspraken van derden die hieruit voortvloeien.
+Artikel 12 , Continuïteit en onderhoud AI-diensten
+Forgexe spant zich in om overeengekomen AI-workflows en agents operationeel te houden. Bij storingen zal Forgexe zich inspannen om deze binnen een redelijke termijn te verhelpen.
+Forgexe is niet aansprakelijk voor downtime of verminderde functionaliteit als gevolg van gepland of ongepland onderhoud door Derde Partij Platforms.
+Artikel 13 , Intellectuele eigendommen
+Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten , waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen , blijven te allen tijde eigendom van Opdrachtnemer.
+AI-output die specifiek is gegenereerd op basis van data en instructies van de Opdrachtgever is eigendom van de Opdrachtgever, mits alle betalingsverplichtingen zijn nagekomen.
+Forgexe behoudt het recht om generieke methodologieën en best practices opnieuw te gebruiken voor andere opdrachtgevers, zonder dat daarbij vertrouwelijke informatie wordt gedeeld.
+Bij overtreding van dit artikel is Opdrachtgever een boete verschuldigd van tweeduizend euro (€ 2.000,-) per overtreding, naast eventuele schadevergoeding.
+Artikel 14 , Privacy en gegevensbescherming
+Voor zover Forgexe persoonsgegevens verwerkt namens de Opdrachtgever, handelt Forgexe als Verwerker en de Opdrachtgever als Verwerkingsverantwoordelijke in de zin van de AVG. Indien nodig sluiten partijen een afzonderlijke Verwerkersovereenkomst.
+Opdrachtgever garandeert dat aangeleverde data rechtmatig is verkregen. Forgexe verwerkt persoonsgegevens uitsluitend voor de uitvoering van de overeengekomen diensten.
+Na beëindiging van de overeenkomst worden persoonsgegevens op verzoek teruggeleverd. Zonder verzoek worden gegevens binnen zes (6) maanden permanent vernietigd.
+Artikel 15 , Aansprakelijkheid
+De aansprakelijkheid van Opdrachtnemer is beperkt tot maximaal de factuurwaarde van de order waarop de aansprakelijkheid betrekking heeft. Niet voor vergoeding in aanmerking komt: indirecte schade, gevolgschade, gederfde winst en omzetderving.
+Iedere vordering tot schadevergoeding vervalt door het verloop van twaalf (12) maanden na het ontstaan van de vordering.
+Artikel 16 , Overmacht
+Opdrachtnemer is niet aansprakelijk voor schade als gevolg van overmacht. Onder overmacht wordt mede verstaan: oorlog, overstroming, brand, bedrijfsstoornissen, storingen in internetverbindingen, uitval van elektriciteit, maatregelen van overheidswege, niet-levering door derden, ziekte van medewerkers, en API-wijzigingen, uitval of beleidswijzigingen van Derde Partij Platforms.
+Indien de overmachtssituatie langer duurt dan één (1) maand, zijn partijen gerechtigd de overeenkomst te ontbinden zonder verplichting tot schadevergoeding.
+Artikel 17 , Offertes en aanbiedingen
+Aanbiedingen en offertes zijn vrijblijvend en geldig gedurende veertien (14) dagen, tenzij anders aangegeven. Prijzen zijn exclusief BTW.
+Artikel 18 , Vrijwaring
+Opdrachtgever vrijwaart Opdrachtnemer geheel en onvoorwaardelijk tegen alle aanspraken van derden tot vergoeding van schade, behoudens opzet of grove schuld aan de zijde van Opdrachtnemer.
+Artikel 19 , Klachten
+Klachten dienen direct na ontdekking schriftelijk aan Forgexe te worden gemeld. Indien geen expliciete garantietermijn is overeengekomen, geldt een termijn van zes (6) maanden na levering.
+Artikel 20 , Toepasselijk recht
+Op alle rechtsbetrekkingen waarbij Opdrachtnemer partij is, is uitsluitend Nederlands recht van toepassing. Partijen zullen pas een beroep op de rechter doen nadat zij zich tot het uiterste hebben ingespannen een geschil in onderling overleg te beslechten.

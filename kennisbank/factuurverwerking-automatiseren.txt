@@ -1,0 +1,80 @@
+PAGINA: /factuurverwerking-automatiseren
+TITEL: Factuurverwerking automatiseren met AI
+OMSCHRIJVING: Inkomende facturen automatisch uitlezen, controleren en klaarzetten in je boekhoudpakket. Van 10 tot 15 minuten handwerk naar seconden per factuur.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\nu-vs-straks
+Hoe het nu gaat vs hoe het kan.
+Handmatige factuurverwerking kost gemiddeld 10 tot 15 minuten per factuur: openen, overtikken, controleren, boeken en archiveren. Bij honderd facturen per maand ben je zo twee tot drie werkdagen kwijt aan werk dat niemand leuk vindt. Geautomatiseerd duurt dezelfde factuur seconden, en kijkt een mens alleen nog naar de uitzonderingen die het systeem eruit pikt.
+Eerlijk: 100% automatisch bestaat niet en moet je ook niet willen. Het doel is dat 90 tot 95% van je facturen zonder mensenhanden doorloopt, en dat de rest met een reden bij de juiste persoon op de goedkeurstapel ligt.
+> C:\wat-het-doet
+Wat de automatisering doet.
+Van binnenkomst tot archief: elke stap die je team nu handmatig doet, maar dan in seconden.
+> FACT_01
+Facturen binnenhalen
+Uit je mailbox, leveranciersportalen en scans. Eén centrale intake, ongeacht hoe de factuur binnenkomt: PDF, foto of e-factuur.
+> FACT_02
+Uitlezen met AI
+De AI leest leverancier, factuurnummer, bedragen, btw en regels uit. Ook bij slechte scans en afwijkende formaten, zonder dat je per leverancier een sjabloon hoeft in te richten.
+> FACT_03
+Controleren
+Automatische checks op btw-nummer, bedragen, dubbele facturen en afwijkingen ten opzichte van de inkooporder. Wat niet klopt, wordt gemarkeerd in plaats van geboekt.
+> FACT_04
+Boeken in je pakket
+Via een koppeling met Exact, Moneybird, e-Boekhouden, Twinfield of wat je ook gebruikt. Met de juiste grootboekrekening en kostenplaats, klaar voor betaling.
+> FACT_05
+Goedkeurflow
+Uitzonderingen en facturen boven een drempelbedrag gaan naar de juiste persoon ter goedkeuring. De rest loopt automatisch door. Jij bepaalt de regels.
+> FACT_06
+Archiveren en audit-trail
+Elke factuur en elke beslissing terugvindbaar, met wie wat wanneer heeft goedgekeurd. De 7 jaar bewaarplicht is standaard gedekt.
+> C:\rekenvoorbeeld
+Handmatig vs geautomatiseerd.
+Wat het verschil concreet betekent, per factuur en per maand.
+| Handmatig | Geautomatiseerd |
+Tijd per factuur | 10 tot 15 minuten overtikken en boeken | Seconden, plus korte controle van uitzonderingen |
+Kosten per factuur | Marktonderzoek noemt tot ruim EUR 17 per handmatig verwerkte factuur | Minder dan EUR 1 per factuur |
+Fouten | Overtypfouten, verkeerde grootboekrekening, dubbel betaald | Validatie op regels, afwijkingen gemarkeerd |
+Piekdrukte | Stapels na vakantie of maandafsluiting | Verwerkt bij binnenkomst, 24/7 |
+Terugvindbaarheid | Mapjes, mail en losse schijven | Alles centraal, met volledige audit-trail |
+> C:\peppol-2030
+E-facturatie wordt de norm. Wees er klaar voor.
+Vanaf 2030 wordt e-facturatie via Peppol stapsgewijs verplicht voor B2B-facturen in Nederland; de wetgeving daarvoor is in voorbereiding. Wie nu zijn factuurproces automatiseert, sluit straks moeiteloos aan op die standaard.
+Dat is geen reden voor paniek, wel een reden om je factuurproces niet nog vijf jaar op overtikken te laten draaien. Een geautomatiseerde intake verwerkt PDF's, scans en Peppol-berichten door dezelfde pijplijn, dus je bent voorbereid zonder extra project.
+> C:\proces
+Zo werken we.
+> STAP_01
+Bedrijfsscan
+Kort gesprek over je factuurproces, volumes en boekhoudpakket. Binnen 48 uur heb je jouw drie grootste quick wins op een rij. Vrijblijvend.
+> STAP_02
+Bouwen op jouw pakket
+We bouwen de automatisering op je bestaande boekhoudpakket en mailbox, in n8n en dus vendor-vrij. Eerste werkende versie binnen 4 tot 6 weken.
+> STAP_03
+Live met goedkeurflow
+We draaien op echte facturen terwijl we meekijken. De goedkeurflow staat vanaf dag één aan, zodat er nooit iets ongezien wordt geboekt.
+> STAP_04
+Beheer en doorontwikkeling
+We bewaken de flow, vangen fouten af en breiden uit naar andere documentstromen. Abonnement vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+> C:\faq
+Veelgestelde vragen over factuurverwerking automatiseren.
+Werkt dit met mijn boekhoudpakket?
+Vrijwel altijd. We koppelen met de gangbare Nederlandse pakketten zoals Exact, Moneybird, e-Boekhouden en Twinfield, en met veel andere systemen via hun API. We zijn vendor-vrij: we bouwen op jouw pakket, niet andersom.
+Wat kost factuurverwerking automatiseren?
+In de markt betaal je vaak eenmalig EUR 2.500 tot EUR 7.500 voor de implementatie, plus maandelijkse kosten per factuur of per gebruiker. Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. In onze kostengids zie je wat de markt rekent.
+Hoe gaat het systeem om met verkeerde of frauduleuze facturen?
+Elke factuur gaat door validatieregels: klopt het btw-nummer, wijkt het rekeningnummer af van eerdere facturen van deze leverancier, is de factuur al eerder binnengekomen, wijkt het bedrag af van de inkooporder. Alles wat afwijkt gaat naar een mens ter goedkeuring. Er wordt dus nooit blind geboekt.
+Is dit AVG-proof?
+Ja. Je facturen blijven in je eigen systemen en we kunnen alles op Europese servers hosten, inclusief de AI-verwerking. Je data wordt niet gebruikt om modellen van derden te trainen.
+Hoeveel facturen per maand moet ik hebben wil dit uitkunnen?
+Vanaf enkele tientallen facturen per maand is automatiseren al zinvol. Rekenvoorbeeld: 100 facturen per maand tegen 12 minuten per stuk is 20 uur handwerk. Tegen EUR 40 per uur is dat EUR 800 per maand aan verwerkingstijd, nog los van fouten en herstelwerk. Een abonnement vanaf EUR 500 per maand verdient zich dan direct terug.
+Kunnen jullie ook offertes en andere documenten verwerken?
+Ja. Dezelfde aanpak werkt voor offertes, pakbonnen, contracten, orderbevestigingen en inkomende mail. We bouwen AI-agents die elk type document uitlezen, interpreteren en in je systemen zetten.
+> C:\forgexe\klaar
+Klaar om je factuurverwerking te automatiseren?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

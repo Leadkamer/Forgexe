@@ -1,0 +1,83 @@
+PAGINA: /ai-agent-laten-bouwen
+TITEL: AI-agent laten bouwen? Op maat en in productie
+OMSCHRIJVING: Laat een AI-agent bouwen die echt in productie draait: leads opvolgen, e-mail verwerken, offertes maken. Op jouw tools, vendor-vrij, eerste versie in 4 tot 6 weken.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\wat-is-het
+Wat is een AI-agent?
+Een AI-agent is software die zelfstandig taken uitvoert én daarbij beslissingen neemt. Hij leest een binnenkomende mail, begrijpt wat er gevraagd wordt, zoekt de juiste gegevens op en onderneemt actie. Waar een klassieke automatisering vaste regels volgt, kan een agent omgaan met taal, context en uitzonderingen.
+Eerlijk advies vooraf: veel "AI-agent-projecten" hadden een simpele workflow moeten zijn. Heeft je proces duidelijke regels en geen taal of interpretatie nodig? Dan bouwen we een workflow, sneller en goedkoper. Wil je liever denken in rollen dan in techniek? Kijk dan naar onze AI-medewerkers .
+> C:\use-cases
+Wat kun je laten bouwen?
+Elke agent wordt op maat gesmeed voor jouw proces. Dit bouwen we het vaakst.
+> AGENT_01
+Lead-agent
+Vindt prospects, schrijft persoonlijke berichten, volgt op en zet warme reacties in je agenda. Zo bouwden we voor een recruitmentplatform een volledige AI-leadgen-machine.
+BEKIJK DE CASE
+> AGENT_02
+Inbox-agent
+Leest inkomende mail, herkent de intentie, zet conceptantwoorden klaar en routeert naar de juiste collega. Jouw team opent 's ochtends een voorgesorteerde inbox.
+> AGENT_03
+Offerte-agent
+Zet een aanvraag om in een conceptofferte op basis van jouw prijzen en voorwaarden. Van aanvraag tot verstuurbare offerte in minuten in plaats van dagen.
+> AGENT_04
+Content-agent
+Schrijft blogs, nieuwsbrieven en socialmedia-posts in jouw tone of voice, op basis van jouw input en actualiteit. Consistent publiceren zonder schrijfavonden.
+BEKIJK DE CASE
+> AGENT_05
+Rapportage-agent
+Verzamelt cijfers uit je systemen en levert elke week een kant-en-klaar rapport af. Voor management, klanten of beide.
+MEER OVER RAPPORTAGE
+> AGENT_06
+Signaal-agent
+Bewaakt bronnen die voor jou belangrijk zijn: vacatures, nieuws, socials of marktplaatsen. Zodra er een koopsignaal verschijnt, ligt het bij je sales op tafel.
+> C:\chatgpt-vs-agent
+Waarom niet gewoon ChatGPT?
+Goede vraag. Voor los denkwerk is ChatGPT prima. Voor terugkerend werk in je bedrijf zit het verschil hier.
+| Eigen AI-agent | ChatGPT |
+Werkt | Zelfstandig, dag en nacht | Alleen als jij ernaast zit |
+Kent | Jouw klanten, prijzen en processen | Alleen wat jij per keer plakt |
+Gekoppeld aan | Je CRM, mail, agenda en administratie | Niets, je kopieert alles handmatig |
+Consistentie | Elke keer hetzelfde proces | Afhankelijk van wie de prompt schrijft |
+Data | Blijft in jouw systemen, AVG-proof | Gaat naar een extern chatvenster |
+> INVESTERING
+Vanaf EUR 500 / maand
+Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af, en liever helemaal geen abonnement? Forge.Project: eenmalig bouwen vanaf EUR 7.500, alles wordt overgedragen.
+Bekijk alle prijzen
+> C:\proces
+Van idee naar draaiende agent in 4 stappen.
+> STAP_01
+Bedrijfsscan
+Kort gesprek over je proces. Binnen 48 uur weet je welke agent (of workflow) het meeste oplevert, met jouw drie grootste quick wins op een rij.
+> STAP_02
+Bouwen
+We bouwen op n8n, gekoppeld aan jouw tools. Eerste werkende versie binnen 4 tot 6 weken, met controlemomenten waar dat moet.
+> STAP_03
+Live en bijsturen
+De agent draait op echte data terwijl wij meekijken. We sturen bij tot de output klopt en je team erop vertrouwt.
+> STAP_04
+Bewaken en uitbouwen
+We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet in heldere rapportages wat de agent oplevert.
+> C:\faq
+Veelgestelde vragen over AI-agents laten bouwen.
+Wat kost het om een AI-agent te laten bouwen?
+Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start). Voor groter maatwerk (Forge.Pro) geldt een eenmalige ontwikkelinvestering die we vooraf vastleggen. Hosting, bewaking en doorontwikkeling zitten altijd in het maandbedrag. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Hoe lang duurt het bouwen van een AI-agent?
+De eerste werkende versie draait binnen 4 tot 6 weken in je eigen omgeving. Daarna sturen we bij op basis van echte data en breiden we stap voor stap uit.
+Waarom geen ChatGPT gebruiken in plaats van een eigen AI-agent?
+ChatGPT is een assistent waar je zelf mee moet werken: jij stelt de vraag, jij plakt het antwoord. Een AI-agent werkt zelfstandig in je systemen, kent jouw data en processen, en voert taken uit zonder dat iemand erom vraagt. Voor terugkerend werk is dat het verschil tussen een handig hulpmiddel en een extra paar handen.
+Op welke tools bouwen jullie AI-agents?
+We bouwen vendor-vrij, vooral op n8n, gekoppeld aan de tools die je al gebruikt: je CRM, mailbox, agenda, Excel of boekhoudpakket. Alles blijft jouw eigendom en je zit nergens aan vast.
+Heb ik een AI-agent nodig of een gewone workflow?
+Niet elk proces heeft een AI-agent nodig. Een vaste taak met duidelijke regels is vaak beter en goedkoper af met een workflow. Een agent is pas nodig als er beslissingen of taal in het spel zijn, zoals mail interpreteren of berichten schrijven. In de bedrijfsscan krijg je het eerlijke antwoord voor jouw situatie.
+Wat gebeurt er als de AI-agent een fout maakt?
+We bouwen controlemomenten in: bij belangrijke acties kijkt eerst een mens mee voordat er iets de deur uitgaat. Daarnaast bewaken we elke agent doorlopend en zien we afwijkingen voordat jij er last van hebt. Hoe dat in de praktijk werkt zie je in onze cases .
+> C:\forgexe\klaar
+Klaar om jouw AI-agent te laten smeden?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

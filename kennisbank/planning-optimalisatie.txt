@@ -1,0 +1,28 @@
+PAGINA: /planning-optimalisatie
+TITEL: Planning Optimalisatie
+OMSCHRIJVING: AI-gestuurde productieplanning en capaciteitsoptimalisatie. Realtime data uit ERP/MES, slimme suggesties die stilstand voorkomen.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\hoe-het-werkt
+Hoe het werkt.
+> STAP_01
+Data en systemen
+We verbinden je ERP, planningssoftware, CRM en orderhistorie. Alle data wordt real-time gesynchroniseerd voor een compleet beeld.
+> STAP_02
+AI-modellen trainen
+Op basis van jouw productiedata en patronen leert het AI-model hoe jouw bedrijf werkt. Doorlooptijden, seizoenspatronen, machinecapaciteit.
+> STAP_03
+Real-time inzicht
+Real-time overzicht van orders, capaciteit en deadlines. Op elke schaal, van individuele machine tot complete productielijn.
+> STAP_04
+Slimme optimalisatie
+AI stelt planningswijzigingen voor op basis van actuele data. Minder stilstand, betere doorstroming, hogere on-time delivery.
+> C:\forgexe\klaar
+Klaar om je planning ai te smeden?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

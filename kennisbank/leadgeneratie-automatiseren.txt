@@ -1,0 +1,77 @@
+PAGINA: /leadgeneratie-automatiseren
+TITEL: Leadgeneratie automatiseren voor B2B
+OMSCHRIJVING: Leadgeneratie automatiseren voor B2B: van prospect vinden tot afspraak in de agenda. Ontdek hoe een geautomatiseerd leadgen-systeem werkt en wat het kost.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\wat-is-het
+Wat is geautomatiseerde leadgeneratie?
+Leadgeneratie automatiseren betekent dat software het repeterende werk van new business overneemt: prospects vinden die bij je passen, hun gegevens verrijken, ze persoonlijk benaderen via LinkedIn en e-mail, en opvolgen tot er een reactie komt. Jouw team stapt pas in als er een echt gesprek ontstaat, en de afspraak staat dan al in de agenda.
+Eerlijk is eerlijk: automatisering maakt slechte outreach alleen maar sneller slecht. Het werkt pas met een scherpe doelgroep en een bericht dat ergens over gaat. Dat zeggen we er altijd bij, en daar beginnen we dus ook mee.
+> C:\het-systeem
+Het systeem in 6 onderdelen.
+Van "wie willen we eigenlijk spreken" tot een afspraak in de agenda: dit is wat er onder de motorkap draait.
+> LEADGEN_01
+Doelgroep bepalen
+Alles begint bij een scherp ideaal klantprofiel (ICP): welke branche, welke functie, welke bedrijfsgrootte. Hoe scherper dit staat, hoe beter alles wat erna komt.
+> LEADGEN_02
+Prospects vinden en verrijken
+Het systeem zoekt bedrijven en mensen die aan je profiel voldoen en vult de gegevens automatisch aan: bedrijfsdata, LinkedIn-profiel, e-mailadres. Geen lijstjes meer kopen of handmatig uitzoeken.
+> LEADGEN_03
+Persoonlijke benadering
+Berichten via LinkedIn en e-mail, geschreven op de situatie van de prospect in plaats van een template met een voornaam erin. Dit is de dienst die wij uitvoeren als AI Outreach.
+MEER OVER AI OUTREACH
+> LEADGEN_04
+Automatische opvolging
+De meeste deals ontstaan pas na meerdere contactmomenten, en precies daar verslapt het handmatig. Het systeem volgt op op het juiste moment en stopt direct zodra iemand reageert.
+> LEADGEN_05
+Warme leads naar je agenda
+Reacties worden herkend en geïnterpreteerd. Geïnteresseerde prospects krijgen een voorstel voor een afspraak, je agenda wordt gevuld en je CRM automatisch bijgewerkt.
+> LEADGEN_06
+Signalen en meting
+Wat werkt en wat niet zie je terug in heldere rapportages. En koopsignalen zoals vacatures of bedrijfsnieuws kunnen als trigger dienen, zodat je aanklopt op het moment dat het relevant is.
+> C:\vergelijking
+Handmatig versus geautomatiseerd.
+Handmatige leadgen werkt, tot de agenda volloopt en het stilvalt. Dit is het verschil in de praktijk.
+| Handmatige leadgen | Geautomatiseerd |
+Tijd per week | Uren zoeken en tikken | Minuten controleren |
+Consistentie | Afhankelijk van drukte, valt stil bij projecten | Elke week hetzelfde ritme, ook in vakanties |
+Opvolging | Verwatert na het eerste bericht | Automatisch op het juiste moment |
+Meetbaarheid | Onduidelijk wat werkt | Alles gemeten, dus elke maand beter |
+Toon | Haastwerk tussen andere taken door | Doordacht en persoonlijk, vooraf scherpgesteld |
+> C:\proces
+Zo pakken we het aan.
+> STAP_01
+Bedrijfsscan
+Kort gesprek over je salesproces en je doelgroep. Binnen 48 uur heb je jouw drie grootste quick wins op een rij. Vrijblijvend.
+> STAP_02
+Doelgroep en propositie scherp
+We bepalen samen wie je wilt bereiken en met welke boodschap. Dit fundament bepaalt of het systeem gesprekken oplevert of genegeerd wordt, dus hier nemen we de tijd voor.
+> STAP_03
+Systeem bouwen en live
+We bouwen het complete systeem, vendor-vrij en meestal op n8n, zodat alles jouw eigendom blijft. Eerste werkende versie binnen 4 tot 6 weken.
+> STAP_04
+Optimaliseren op cijfers
+We meten wat werkt en stellen doelgroep, boodschap en timing maandelijks bij. Abonnement vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+> C:\faq
+Veelgestelde vragen over leadgeneratie automatiseren.
+Is geautomatiseerde outreach niet gewoon spam?
+Nee, mits je het goed doet: een scherpe doelgroep, een boodschap die relevant is voor de ontvanger, een menselijke toon en beperkte volumes. Automatisering die dat mist is inderdaad spam, alleen dan sneller. Wij bouwen bewust conservatief: liever minder berichten die ergens over gaan dan veel berichten die genegeerd worden.
+Werkt dit op LinkedIn zonder geblokkeerd te raken?
+Ja, als je de spelregels respecteert. We blijven ruim binnen de limieten van LinkedIn, bouwen menselijk gedrag in zoals variatie en pauzes, en sturen geen massale volumes. Accounts komen in de problemen door agressieve tooling op hoog volume; precies dat doen wij niet.
+Wat kost leadgeneratie automatiseren?
+In de markt betaal je voor een leadgen-systeem al snel EUR 3.000 tot EUR 9.000 eenmalig, plus maandelijkse kosten voor tooling en beheer. Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. In onze kostengids zetten we de markttarieven op een rij.
+Hoe snel zie ik resultaat?
+De eerste werkende versie staat binnen 4 tot 6 weken live. De eerste gesprekken volgen meestal binnen enkele weken na livegang, afhankelijk van je doelgroep en propositie. Daarna wordt het systeem elke maand beter, omdat we optimaliseren op wat de cijfers laten zien.
+Werkt dit ook voor nichemarkten?
+Juist daar. Een kleinere doelgroep betekent dat elk bericht raak moet zijn, en dat is precies waar personalisatie op basis van bedrijfsdata het verschil maakt. In een niche kun je je geen wegwerp-outreach veroorloven; een doordacht systeem dat elke prospect serieus neemt wel.
+Wat hebben jullie hier zelf mee gebouwd?
+Meerdere leadgen-systemen die in productie draaien bij klanten, van signal monitoring tot complete outreach-machines met automatische opvolging. Bekijk onze cases voor de details, bijvoorbeeld de case van Technetium .
+> C:\forgexe\klaar
+Klaar om je leadgeneratie te smeden?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

@@ -1,0 +1,28 @@
+PAGINA: /ai-rapportage
+TITEL: AI Rapportage
+OMSCHRIJVING: Geautomatiseerde rapportages uit je CRM, boekhouding en projectmanagement. Op maat, op tijd, in het juiste kanaal.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\hoe-het-werkt
+Hoe het werkt.
+> STAP_01
+Databronnen koppelen
+We verbinden je CRM, boekhoudsoftware, projectmanagement en andere tools. Al je data op één plek, real-time gesynchroniseerd.
+> STAP_02
+Rapportages op maat
+Jouw KPIs, jouw layout, jouw branding. We bouwen rapportage-templates die precies laten zien wat jij nodig hebt.
+> STAP_03
+Geautomatiseerde generatie
+Rapportages worden op schema gegenereerd. Dagelijks, wekelijks, maandelijks of op basis van triggers en events.
+> STAP_04
+Distributie en alerts
+Per e-mail, Slack, Teams of in een live dashboard. Elke stakeholder krijgt de juiste informatie op het juiste moment.
+> C:\forgexe\klaar
+Klaar om je ai rapportage te smeden?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

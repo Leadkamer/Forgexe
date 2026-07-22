@@ -1,0 +1,77 @@
+PAGINA: /email-automatiseren
+TITEL: E-mail automatiseren met AI: inbox-triage en conceptantwoorden
+OMSCHRIJVING: Inkomende mail automatisch sorteren, routeren en beantwoorden met AI. Je team opent een voorgesorteerde inbox met conceptantwoorden klaar in jouw toon.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\wat-is-inbox-triage
+Wat is inbox-triage?
+Inbox-triage betekent dat een AI-medewerker elke inkomende mail leest, herkent waar hij over gaat (vraag, klacht, factuur, offerte-aanvraag, spam) en de juiste actie onderneemt: routeren naar de juiste collega, een conceptantwoord klaarzetten, of direct afhandelen. Je team opent 's ochtends geen berg ongesorteerde mail meer, maar een inbox waarin het werk al is voorgesorteerd.
+Eerlijk is eerlijk: de AI verstuurt niet zomaar zelf. Bij alles wat gevoelig is kijkt een mens eerst mee, en jij bepaalt waar die grens ligt. Volledig automatisch beantwoorden kan, maar alleen voor de mailtypen die jij daarvoor aanwijst.
+> C:\wat-doet-het
+Wat de automatisering doet.
+Zes taken die vandaag nog handwerk zijn, en morgen vanzelf gebeuren.
+> MAIL_01
+Classificeren
+Elke inkomende mail krijgt automatisch een label op onderwerp en urgentie: vraag, klacht, factuur, offerte-aanvraag of ruis. Zo weet iedereen in een oogopslag wat er speelt.
+> MAIL_02
+Routeren
+Elke mail landt direct bij de juiste persoon of afdeling. Geen doorstuur-pingpong meer waarbij een klantvraag drie keer van mailbox wisselt voordat iemand hem oppakt.
+> MAIL_03
+Conceptantwoorden
+Voor mails die een antwoord verdienen staat er al een concept klaar, geschreven in jouw tone of voice. Jij leest, past eventueel aan en klikt op verzenden.
+> MAIL_04
+Direct afhandelen
+Standaardvragen zoals openingstijden, leverstatus of een factuurkopie worden automatisch beantwoord, als jij dat wilt. Jij bepaalt per type mail wat vanzelf mag en wat langs een mens moet.
+> MAIL_05
+Data eruit halen
+Bestellingen, aanvragen en facturen worden automatisch uitgelezen en in je systemen gezet. Geen overtypen meer van bijlage naar boekhouding of CRM.
+MEER OVER FACTUURVERWERKING
+> MAIL_06
+Signaleren
+Urgente zaken en boze klanten liggen meteen bovenop de stapel, met een melding naar de juiste persoon. Precies de mails die je niet wilt missen, mis je niet meer.
+> C:\voor-en-na
+Zonder en met een AI-inbox.
+Het verschil zit niet in minder mail, maar in wat je team ermee hoeft te doen.
+| Zonder | Met AI-inbox |
+Eerste reactie op een klantvraag | Uren tot dagen | Minuten |
+Tijd aan sorteren per dag | 30 tot 60 minuten per persoon | Vrijwel nul |
+Gemiste mails | Regelmatig, vooral bij drukte | Gesignaleerd voordat het een probleem wordt |
+Antwoordkwaliteit | Wisselt per persoon en drukte | Consistent, in jouw toon |
+Piekdrukte en vakantie | Achterstand die je weken achtervolgt | Verwerkt bij binnenkomst |
+> C:\proces
+Zo werken we.
+> STAP_01
+Bedrijfsscan
+Kort gesprek over je processen en je mailverkeer. Binnen 48 uur heb je jouw drie grootste automatiseringskansen op een rij. Vrijblijvend.
+> STAP_02
+Mailstromen in kaart
+We analyseren welke typen mail binnenkomen, hoe vaak, en welke actie elk type nodig heeft. Dat wordt de blauwdruk voor de automatisering.
+> STAP_03
+Bouwen en trainen op jouw toon
+We bouwen de flows en trainen de AI op voorbeelden uit je eigen verzonden mail, zodat concepten klinken zoals jullie. Eerste werkende versie binnen 4 tot 6 weken.
+> STAP_04
+Live met controlemomenten, daarna beheer
+We gaan live terwijl een mens meekijkt, en breiden pas uit als de resultaten kloppen. Daarna bewaken en verbeteren we doorlopend. Vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+> C:\faq
+Veelgestelde vragen over e-mail automatiseren.
+Leest de AI al mijn mail, is dat veilig?
+De automatisering draait in jouw omgeving en je data blijft van jou. We maken vooraf duidelijke AVG-afspraken over wat de AI wel en niet mag zien, en niets van je mailverkeer wordt gebruikt om modellen van derden te trainen.
+Verstuurt de AI zelf antwoorden?
+Alleen als jij dat instelt. Standaard zet de AI conceptantwoorden klaar en klikt een mens op verzenden. Voor simpele standaardvragen kun je ervoor kiezen om direct te laten beantwoorden; jij bepaalt per type mail waar de grens ligt.
+Werkt dit met Outlook en Gmail?
+Ja, met beide. Ook gedeelde mailboxen zoals info@ of support@ koppelen we aan de automatisering, en dat is meestal precies waar de meeste winst zit.
+Wat kost e-mail automatisering?
+Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Hoe leert de AI onze tone of voice?
+We trainen op voorbeelden uit je eigen verzonden mail, aangevuld met richtlijnen over hoe jullie klanten aanspreken. Elke keer dat iemand een concept aanpast voordat het de deur uitgaat, is dat feedback waarmee de antwoorden beter worden.
+Kan dit samen met leadopvolging?
+Ja. Een offerte-aanvraag die binnenkomt kan direct een opvolgflow starten: kwalificeren, in je CRM zetten en een eerste reactie klaarzetten. E-mail automatisering en leadgeneratie versterken elkaar, en samen vormen ze de basis van een AI-medewerker .
+> C:\forgexe\klaar
+Klaar voor een inbox die zichzelf sorteert ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking
