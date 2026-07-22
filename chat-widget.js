@@ -1,5 +1,5 @@
 /* Forgexe chat-widget
-   Zwevende knop rechtsonder + chatpaneel. Praat met de n8n-agent (Forge).
+   Zwevende knop rechtsonder + chatpaneel. Praat met de n8n-agent (Casper).
    De agent zet [SCAN] achter zijn bericht zodra de bezoeker gekwalificeerd is;
    dat token wordt hier weggehaald en vervangen door een knop naar openScan().
 */
@@ -60,7 +60,6 @@
     + '.fx-chat-voet button{width:40px;flex-shrink:0;background:var(--ink,#0a0b0e);color:#fff;border:none;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}'
     + '.fx-chat-voet button:hover{background:var(--green,#34d399);color:#052e16}'
     + '.fx-chat-voet button:disabled{opacity:.4;cursor:not-allowed}'
-    + '.fx-chat-klein{font-family:var(--mono,monospace);font-size:.6rem;color:var(--ink-mut,#8d9bb5);text-align:center;padding:0 .8rem .7rem;background:var(--card-bg,#fff);letter-spacing:.04em}'
     + '@media(max-width:520px){#fxChat{right:12px;bottom:calc(12px + var(--fx-banner,0px));left:12px}'
     + '#fxChatKnop{margin-left:auto}'
     + '#fxChatPaneel{width:100%;max-width:none;height:min(80vh,calc(100vh - 90px))}}'
@@ -79,7 +78,7 @@
     + '<div id="fxChatPaneel" role="dialog" aria-label="Chat met Forgexe">'
     + '  <div class="fx-chat-kop">'
     + '    <div class="fx-chat-avatar">' + LOGO + '</div>'
-    + '    <div><div class="fx-chat-titel">Forge</div><div class="fx-chat-status">DIGITALE COLLEGA</div></div>'
+    + '    <div><div class="fx-chat-titel">Casper</div><div class="fx-chat-status">DIGITALE COLLEGA</div></div>'
     + '    <button type="button" class="fx-chat-sluit" aria-label="Chat sluiten">&times;</button>'
     + '  </div>'
     + '  <div class="fx-chat-berichten" id="fxChatBerichten"></div>'
@@ -89,11 +88,10 @@
     + '      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
     + '    </button>'
     + '  </form>'
-    + '  <div class="fx-chat-klein">GEEN MENS AAN DE OVERKANT &middot; ANTWOORDEN KUNNEN AFWIJKEN</div>'
     + '</div>'
     + '<button type="button" id="fxChatKnop">'
     + '  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.8-.9L3 21l1.9-5a8.4 8.4 0 0 1-.9-3.8 8.4 8.4 0 0 1 8.4-8.7h.5a8.4 8.4 0 0 1 8.1 8.1z"/></svg>'
-    + '  Vraag het Forge'
+    + '  Chat met Casper'
     + '</button>';
   document.body.appendChild(wrap);
 
@@ -196,7 +194,7 @@
   function open(){
     wrap.classList.add('open');
     if (!lijst.children.length){
-      toonBericht('Hoi. Ik ben Forge, de digitale collega van Forgexe. Vertel kort wat je bedrijf doet, dan zeg ik je eerlijk of hier iets te automatiseren valt.', 'bot');
+      toonBericht('Hoi. Ik ben Casper, de digitale collega van Forgexe. Vertel kort wat je bedrijf doet, dan zeg ik je eerlijk of hier iets te automatiseren valt.', 'bot');
     }
     try { sessionStorage.setItem(OPEN_KEY, '1'); } catch (e) {}
     if (window.fxTrackCustom) window.fxTrackCustom('ChatGeopend', { bron: window.location.pathname });
