@@ -109,6 +109,16 @@
     return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  /* Het model glipt er af en toe een gedachtestreepje of een non-breaking
+     hyphen doorheen. Die passen niet bij onze schrijfstijl, dus weg ermee. */
+  function schoon(t){
+    return String(t)
+      .replace(/\s+[—–]\s+/g, ', ')
+      .replace(/[—–]/g, '-')
+      .replace(/[‑‐]/g, '-')
+      .replace(/[  ]/g, ' ');
+  }
+
   /* interne links (/prijzen) klikbaar maken, verder alles escapen */
   function opmaak(t){
     return veilig(t).replace(/(^|[\s(])\/([a-z0-9-]+)/g, function(m, voor, pad){
@@ -168,7 +178,7 @@
       body: JSON.stringify({ bericht: tekst, sessionId: sessieId(), pagina: window.location.pathname })
     }).then(function(r){ return r.json(); }).then(function(d){
       haalTypt();
-      var antwoord = (d && d.reply) ? String(d.reply) : 'Sorry, ik kreeg geen antwoord terug. Probeer het nog een keer.';
+      var antwoord = (d && d.reply) ? schoon(d.reply) : 'Sorry, ik kreeg geen antwoord terug. Probeer het nog een keer.';
       var scan = antwoord.indexOf('[SCAN]') !== -1;
       antwoord = antwoord.replace(/\[SCAN\]/g, '').trim();
       toonBericht(antwoord, 'bot');
