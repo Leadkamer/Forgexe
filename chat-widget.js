@@ -8,9 +8,13 @@
 
   var ENDPOINT = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-chat';
   var SLEUTEL = 'fx-chat-sessie';
-  var OPEN_KEY = 'fx-chat-gezien';
+  var LOG_KEY = 'fx-chat-log';
+  var OPEN_KEY = 'fx-chat-open';
+  var SCAN_KEY = 'fx-chat-scan';
+  var MAX_LOG = 40;
   var bezig = false;
   var sessie = null;
+  var log = [];
 
   function sessieId(){
     if (sessie) return sessie;
@@ -24,6 +28,19 @@
       sessie = 'fx-' + Date.now().toString(36);
     }
     return sessie;
+  }
+
+  /* Het gesprek moet een paginawissel overleven. n8n onthoudt de inhoud al
+     via de sessionId, hier bewaren we wat de bezoeker op het scherm zag. */
+  function onthoud(sleutel, waarde){
+    try { sessionStorage.setItem(sleutel, waarde); } catch (e) {}
+  }
+  function opgehaald(sleutel){
+    try { return sessionStorage.getItem(sleutel); } catch (e) { return null; }
+  }
+  function bewaarLog(){
+    if (log.length > MAX_LOG) log = log.slice(-MAX_LOG);
+    onthoud(LOG_KEY, JSON.stringify(log));
   }
 
   var css = ''
@@ -124,15 +141,20 @@
     });
   }
 
-  function toonBericht(tekst, wie){
+  /* bewaren = false bij het terugzetten van een eerder gesprek */
+  function toonBericht(tekst, wie, bewaren){
     var el = document.createElement('div');
     el.className = 'fx-bericht ' + wie;
     el.innerHTML = wie === 'bot' ? opmaak(tekst) : veilig(tekst);
     lijst.appendChild(el);
     scrollOmlaag();
+    if (bewaren !== false){
+      log.push({ t: tekst, w: wie });
+      bewaarLog();
+    }
   }
 
-  function toonScanKnop(){
+  function toonScanKnop(bewaren){
     /* Een eerdere knop staat inmiddels uit beeld. Verplaats hem naar onderen
        in plaats van hem te negeren, anders verwijst Casper naar een knop
        die de bezoeker nergens ziet. */
@@ -150,6 +172,7 @@
     };
     lijst.appendChild(knop);
     scrollOmlaag();
+    if (bewaren !== false) onthoud(SCAN_KEY, '1');
   }
 
   function toonTypt(){
@@ -195,17 +218,38 @@
     });
   }
 
-  function open(){
+  /* Zet een gesprek van een vorige pagina terug op het scherm. */
+  function herstel(){
+    var rauw = opgehaald(LOG_KEY);
+    if (!rauw) return false;
+    var eerder;
+    try { eerder = JSON.parse(rauw); } catch (e) { return false; }
+    if (!eerder || !eerder.length) return false;
+
+    log = eerder;
+    eerder.forEach(function(b){ toonBericht(b.t, b.w, false); });
+    if (opgehaald(SCAN_KEY) === '1') toonScanKnop(false);
+    return true;
+  }
+
+  function toonPaneel(){
     wrap.classList.add('open');
     if (!lijst.children.length){
       toonBericht('Hoi. Ik ben Casper, de digitale collega van Forgexe. Vertel kort wat je bedrijf doet, dan zeg ik je eerlijk of hier iets te automatiseren valt.', 'bot');
     }
-    try { sessionStorage.setItem(OPEN_KEY, '1'); } catch (e) {}
-    if (window.fxTrackCustom) window.fxTrackCustom('ChatGeopend', { bron: window.location.pathname });
-    setTimeout(function(){ invoer.focus(); }, 120);
+    onthoud(OPEN_KEY, '1');
+    setTimeout(function(){ scrollOmlaag(); invoer.focus(); }, 120);
   }
 
-  function sluit(){ wrap.classList.remove('open'); }
+  function open(){
+    toonPaneel();
+    if (window.fxTrackCustom) window.fxTrackCustom('ChatGeopend', { bron: window.location.pathname });
+  }
+
+  function sluit(){
+    wrap.classList.remove('open');
+    onthoud(OPEN_KEY, '0');
+  }
 
   wrap.querySelector('#fxChatKnop').onclick = open;
   wrap.querySelector('.fx-chat-sluit').onclick = sluit;
@@ -223,6 +267,10 @@
   });
 
   window.fxChatOpen = open;
+
+  /* Liep er al een gesprek op een vorige pagina? Zet het terug, en open het
+     paneel weer als het openstond toen de bezoeker doorklikte. */
+  if (herstel() && opgehaald(OPEN_KEY) === '1') toonPaneel();
 
   /* De cookiebanner zit ook onderaan. Zolang die er staat schuift de chat
      erboven; zodra hij weg is zakt de knop terug naar zijn eigen hoek. */
