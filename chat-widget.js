@@ -27,7 +27,7 @@
   }
 
   var css = ''
-    + '#fxChat{position:fixed;right:20px;bottom:20px;z-index:190;font-family:var(--head,system-ui,sans-serif)}'
+    + '#fxChat{position:fixed;right:20px;bottom:calc(20px + var(--fx-banner,0px));z-index:190;font-family:var(--head,system-ui,sans-serif);transition:bottom .3s cubic-bezier(.16,1,.3,1)}'
     + '#fxChatKnop{display:flex;align-items:center;gap:.55rem;background:var(--green,#34d399);color:#052e16;border:none;border-radius:999px;padding:.85rem 1.25rem;font-family:var(--head,system-ui,sans-serif);font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:0 10px 30px rgba(5,46,22,.22);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s}'
     + '#fxChatKnop:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(5,46,22,.28)}'
     + '#fxChatKnop:active{transform:translateY(0)}'
@@ -61,7 +61,7 @@
     + '.fx-chat-voet button:hover{background:var(--green,#34d399);color:#052e16}'
     + '.fx-chat-voet button:disabled{opacity:.4;cursor:not-allowed}'
     + '.fx-chat-klein{font-family:var(--mono,monospace);font-size:.6rem;color:var(--ink-mut,#8d9bb5);text-align:center;padding:0 .8rem .7rem;background:var(--card-bg,#fff);letter-spacing:.04em}'
-    + '@media(max-width:520px){#fxChat{right:12px;bottom:12px;left:12px}'
+    + '@media(max-width:520px){#fxChat{right:12px;bottom:calc(12px + var(--fx-banner,0px));left:12px}'
     + '#fxChatKnop{margin-left:auto}'
     + '#fxChatPaneel{width:100%;max-width:none;height:min(80vh,calc(100vh - 90px))}}'
     + '@media(prefers-reduced-motion:reduce){#fxChat *,#fxChat{animation:none!important;transition:none!important}}';
@@ -211,4 +211,17 @@
   });
 
   window.fxChatOpen = open;
+
+  /* De cookiebanner zit ook onderaan. Zolang die er staat schuift de chat
+     erboven; zodra hij weg is zakt de knop terug naar zijn eigen hoek. */
+  function meetBanner(){
+    var banner = document.getElementById('fxConsent');
+    var hoogte = banner ? banner.offsetHeight + 14 : 0;
+    document.documentElement.style.setProperty('--fx-banner', hoogte + 'px');
+  }
+  meetBanner();
+  if (window.MutationObserver){
+    new MutationObserver(meetBanner).observe(document.body, { childList: true });
+  }
+  window.addEventListener('resize', meetBanner);
 })();
