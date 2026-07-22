@@ -133,7 +133,11 @@
   }
 
   function toonScanKnop(){
-    if (lijst.querySelector('.fx-scan-knop')) return;
+    /* Een eerdere knop staat inmiddels uit beeld. Verplaats hem naar onderen
+       in plaats van hem te negeren, anders verwijst Casper naar een knop
+       die de bezoeker nergens ziet. */
+    var oud = lijst.querySelector('.fx-scan-knop');
+    if (oud && oud.parentNode) oud.parentNode.removeChild(oud);
     var knop = document.createElement('button');
     knop.type = 'button';
     knop.className = 'fx-scan-knop';
