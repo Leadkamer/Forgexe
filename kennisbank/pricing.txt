@@ -1,6 +1,6 @@
 PAGINA: /pricing
 TITEL: Prijzen
-OMSCHRIJVING: Drie pakketten voor het smeden van AI-medewerkers: Forge.Start vanaf €500/mnd, Forge.Pro vanaf €1.250/mnd, Forge.Scale custom.
+OMSCHRIJVING: Doorlopende pakketten (Forge.Start vanaf €500/mnd, Forge.Pro €1.250/mnd, Forge.Scale op maat) of eenmalig eigenaar met Forge.Project vanaf €7.500. Nooit setup bovenop je abonnement.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
