@@ -65,7 +65,7 @@ We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet 
 > C:\faq
 Veelgestelde vragen over AI-agents laten bouwen.
 Wat kost het om een AI-agent te laten bouwen?
-Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start). Voor groter maatwerk (Forge.Pro) geldt een eenmalige ontwikkelinvestering die we vooraf vastleggen. Hosting, bewaking en doorontwikkeling zitten altijd in het maandbedrag. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start). Voor groter maatwerk (Forge.Pro) reken je geen setup-kosten vooraf: de ontwikkeling, hosting, bewaking en doorontwikkeling zitten allemaal in het maandbedrag, waarvoor we minimaal 6 maanden aanhouden. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
 Hoe lang duurt het bouwen van een AI-agent?
 De eerste werkende versie draait binnen 4 tot 6 weken in je eigen omgeving. Daarna sturen we bij op basis van echte data en breiden we stap voor stap uit.
 Waarom geen ChatGPT gebruiken in plaats van een eigen AI-agent?

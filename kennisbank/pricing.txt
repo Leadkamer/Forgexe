@@ -22,7 +22,7 @@ MEEST GEKOZEN
 Forge.Pro
 Op maat voor bedrijven die schalen
 EUR 1.250 /maand
-+ eenmalige ontwikkelinvestering, vooraf vastgelegd · 6 of 12 maanden
+Geen setup-kosten · minimaal 6 maanden
 3-4 AI-medewerkers (mix bestaand en nieuw)
 Maatwerk voor jouw specifieke situatie
 Proces-optimalisatie en koppelingen
@@ -41,10 +41,11 @@ Maandelijkse rapportage en custom dashboards
 Maandelijkse strategie-sessie
 24/7 monitoring en optimalisatie
 Plan een gesprek
-> LIEVER GEEN ABONNEMENT?
+> EENMALIG — JIJ WORDT EIGENAAR
 Forge.Project
 vanaf EUR 7.500 eenmalig
-Eén afgebakend project: wij bouwen, leveren op en dragen alles over. Geen maandbedrag en alles blijft van jou. Beheer erbij kan altijd nog, maar hoeft niet.
+Geen abonnement · geen lock-in
+Wij bouwen 1 tot 2 AI-medewerkers, leveren op en dragen alles volledig over — van jou, voor altijd. Support na oplevering kan altijd nog, op uurbasis.
 Gratis bedrijfsscan
 > C:\vergelijk
 Wat krijg je per pakket.
@@ -65,15 +66,15 @@ Dedicated Forgexe-team | nee | Shared | ja |
 Onboarding & training | Self-service handleiding | Live onboarding (2u) | In-company workshop (halve dag) |
 Looptijd | Maandelijks opzegbaar | 6 maanden | 12 maanden |
 EU AI Act compliance | ja Standaard incl. AI-geletterdheidstraining | ja Standaard incl. audit-documentatie | ja Standaard incl. risico-impact-assessment |
-Setup-investering | ja Geen | Eenmalig op maat | Eenmalig op maat |
+Setup-investering | ja Geen | ja Geen verwerkt in maandbedrag | Op maat |
 Niet zeker welk pakket?
 Doe de gratis bedrijfsscan
 > C:\faq
 Veelgestelde vragen.
 Zijn er verborgen kosten?
-Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup en is maandelijks opzegbaar. Forge.Pro kent een eenmalige ontwikkelinvestering voor maatwerk, die leggen we vooraf vast. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 7.500, inclusief volledige overdracht.
+Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup en is maandelijks opzegbaar. Forge.Pro heeft ook geen aparte setup-kosten: de maatwerk-investering verwerken we in het maandbedrag, daarom werken we met minimaal 6 maanden. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 7.500, inclusief volledige overdracht.
 Is er een minimum contractduur?
-Forge.Start is maandelijks opzegbaar. Forge.Pro en Forge.Scale werken meestal met een 6 of 12 maanden contract, vanwege de maatwerk-investering aan onze kant.
+Forge.Start is maandelijks opzegbaar. Forge.Pro werkt met minimaal 6 maanden en Forge.Scale met 12 maanden, omdat we de maatwerk-investering in het maandbedrag verwerken in plaats van als setup-kosten vooraf. Wil je geen looptijd? Kies dan Forge.Project: eenmalig, zonder abonnement.
 Wat als ik wil opschalen van Start naar Pro?
 Geen probleem. Veel klanten starten met Forge.Start en stappen na 2-3 maanden over naar Forge.Pro zodra ze resultaat zien. We rekenen geen overstap-kosten.
 Wat zit er bij maandelijkse rapportage?
