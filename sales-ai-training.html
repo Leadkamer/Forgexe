@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales & AI Training — Fidecon × Forgexe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1B2A55;
+    --navy-deep: #111D3E;
+    --navy-light: #2A3E6E;
+    --green: #4AAD3F;
+    --green-bright: #55C44A;
+    --green-dark: #3A8E32;
+    --green-pale: #E8F5E6;
+    --sky: #EEF2F9;
+    --cloud: #F6F8FC;
+    --white: #FFFFFF;
+    --slate: #4A5568;
+    --slate-light: #718096;
+    --ink: #1A1F2E;
+    --border: #DEE5F0;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+    padding: 14px 48px; box-shadow: 0 2px 24px rgba(27,42,85,0.08);
+  }
+  .nav-brands { display: flex; align-items: center; gap: 14px; }
+  .brand-lockup { display: inline-flex; align-items: center; gap: 8px; }
+  .brand-lockup svg { display: block; }
+  .brand-word {
+    font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 700;
+    letter-spacing: -0.3px; transition: color 0.4s;
+  }
+  .brand-fidecon { color: var(--white); }
+  nav.scrolled .brand-fidecon { color: var(--navy); }
+  .brand-forgexe .brand-word { color: #34d399; }
+  nav.scrolled .brand-forgexe .brand-word { color: #059669; }
+  .nav-x { color: rgba(255,255,255,0.45); font-size: 15px; font-weight: 300; transition: color 0.4s; }
+  nav.scrolled .nav-x { color: var(--slate-light); }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-link {
+    font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-link:hover { color: var(--white); }
+  nav.scrolled .nav-link { color: var(--slate); }
+  nav.scrolled .nav-link:hover { color: var(--navy); }
+  .nav-cta {
+    padding: 10px 24px; background: var(--green); color: var(--white);
+    font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+    border: none; border-radius: 8px; text-decoration: none; cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover {
+    background: var(--green-bright); transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(74,173,63,0.3);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 40%, var(--navy-light) 100%);
+    overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(74,173,63,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(74,173,63,0.05) 0%, transparent 40%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-deco {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    width: 380px; height: 380px; opacity: 0.04; animation: float 10s ease-in-out infinite;
+  }
+  .hero-deco svg { width: 100%; height: 100%; }
+  .hero-content {
+    position: relative; z-index: 2; padding: 140px 48px 100px;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+  }
+  .hero-eyebrow-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+  .hero-eyebrow-text {
+    font-size: 13px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--green);
+  }
+  .hero-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.5vw, 80px); font-weight: 700;
+    color: var(--white); line-height: 1.08; margin-bottom: 28px; max-width: 700px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.35s both;
+  }
+  .hero-heading em { font-style: italic; color: var(--green-bright); font-weight: 500; }
+  .hero-desc {
+    font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.75);
+    max-width: 520px; font-weight: 300; margin-bottom: 44px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+  }
+  .hero-actions {
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.65s both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;
+    background: var(--green); color: var(--white); font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 600; border: none; border-radius: 8px;
+    text-decoration: none; cursor: pointer; transition: all 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: var(--green-bright); transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(74,173,63,0.3);
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;
+    background: transparent; color: rgba(255,255,255,0.9); font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 500; border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.5); color: var(--white);
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-stats {
+    position: absolute; right: 48px; bottom: 100px;
+    display: flex; flex-direction: column; gap: 28px; z-index: 2;
+    animation: fadeIn 1s ease 1s both;
+  }
+  .hero-stat { text-align: right; }
+  .hero-stat-val {
+    font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--white);
+  }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2;
+    animation: fadeIn 1s ease 1.2s both;
+  }
+  .scroll-hint span {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35);
+  }
+  .scroll-dot {
+    width: 2px; height: 32px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+    border-radius: 2px; animation: float 2s ease-in-out infinite;
+  }
+
+  /* SHARED */
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-label-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .section-label-text {
+    font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--green-dark);
+  }
+  .section-label-text.on-dark { color: var(--green); }
+  h2.sh {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 44px); font-weight: 600; line-height: 1.2;
+    color: var(--navy); margin-bottom: 16px;
+  }
+  h2.sh em { font-style: italic; color: var(--green-dark); }
+  h2.sh.on-dark { color: var(--white); }
+  h2.sh.on-dark em { color: var(--green-bright); }
+
+  /* INTRO */
+  .intro { padding: 120px 48px; background: var(--white); }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .intro-text p { font-size: 17px; line-height: 1.8; color: var(--slate); font-weight: 300; }
+  .intro-cards { display: flex; flex-direction: column; gap: 14px; }
+  .intro-card {
+    padding: 24px 28px; border-radius: 12px; background: var(--cloud);
+    border: 1px solid var(--border); position: relative; overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .intro-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  }
+  .intro-card:nth-child(1)::before { background: var(--navy); }
+  .intro-card:nth-child(2)::before { background: var(--green); }
+  .intro-card:nth-child(3)::before { background: var(--navy-light); }
+  .intro-card:hover {
+    transform: translateX(6px); box-shadow: 0 6px 24px rgba(27,42,85,0.07);
+    border-color: transparent;
+  }
+  .intro-card h3 { font-weight: 600; font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .intro-card p { font-size: 14px; color: var(--slate); line-height: 1.6; font-weight: 300; }
+
+  /* PROGRAM */
+  .program {
+    padding: 120px 48px; background: var(--navy-deep); position: relative; overflow: hidden;
+  }
+  .program::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 90%, rgba(74,173,63,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 10%, rgba(74,173,63,0.04) 0%, transparent 40%);
+  }
+  .program-header { margin-bottom: 60px; position: relative; z-index: 2; }
+  .program-header p {
+    font-size: 16px; color: rgba(255,255,255,0.55); max-width: 480px;
+    line-height: 1.7; font-weight: 300;
+  }
+  .timeline { position: relative; z-index: 2; }
+  .timeline::before {
+    content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom,
+      var(--navy-light), var(--green-dark) 25%, var(--navy-light) 50%, var(--green-dark) 75%, var(--navy-light));
+    opacity: 0.4;
+  }
+  .day {
+    display: grid; grid-template-columns: 100px 1fr; gap: 48px;
+    padding: 32px 0; position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .day:last-child { border-bottom: none; }
+  .day-left { text-align: right; padding-top: 4px; position: relative; }
+  .day-left::after {
+    content: ''; position: absolute; right: -35px; top: 10px;
+    width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid;
+  }
+  .day.sales .day-left::after {
+    border-color: rgba(255,255,255,0.5); background: rgba(27,42,85,0.6);
+    box-shadow: 0 0 16px rgba(255,255,255,0.1);
+  }
+  .day.ai .day-left::after {
+    border-color: var(--green); background: rgba(74,173,63,0.2);
+    box-shadow: 0 0 16px rgba(74,173,63,0.2);
+  }
+  .day-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; }
+  .day.sales .day-num { color: rgba(255,255,255,0.9); }
+  .day.ai .day-num { color: var(--green); }
+  .day-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  .day.sales .day-tag { color: rgba(255,255,255,0.35); }
+  .day.ai .day-tag { color: var(--green-dark); }
+  .day-right { padding-left: 24px; }
+  .day-title {
+    font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600;
+    color: var(--white); margin-bottom: 14px; line-height: 1.3;
+  }
+  .day-items { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; list-style: none; }
+  .day-items li {
+    font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 300;
+    padding: 5px 0 5px 18px; position: relative; line-height: 1.5;
+  }
+  .day.sales .day-items li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 8px; height: 2px; background: rgba(255,255,255,0.3); border-radius: 1px;
+  }
+  .day.ai .day-items li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 8px; height: 2px; background: var(--green); opacity: 0.6; border-radius: 1px;
+  }
+
+  /* TRAINERS */
+  .trainers-section { padding: 120px 48px; background: var(--cloud); }
+  .trainers-header { margin-bottom: 56px; }
+  .trainers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .trainer-card {
+    padding: 44px 36px; border-radius: 16px; background: var(--white);
+    border: 1px solid var(--border); position: relative; overflow: hidden;
+    transition: all 0.35s ease;
+  }
+  .trainer-card:hover {
+    transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,42,85,0.08);
+    border-color: transparent;
+  }
+  .trainer-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  }
+  .trainer-card:nth-child(1)::before { background: linear-gradient(to right, var(--navy), var(--navy-light)); }
+  .trainer-card:nth-child(2)::before { background: linear-gradient(to right, var(--green-dark), var(--green)); }
+  .trainer-avatar {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    color: var(--white); font-weight: 600; margin-bottom: 24px;
+  }
+  .trainer-card:nth-child(1) .trainer-avatar { background: linear-gradient(135deg, var(--navy), var(--navy-light)); }
+  .trainer-card:nth-child(2) .trainer-avatar { background: linear-gradient(135deg, var(--green-dark), var(--green)); }
+  .trainer-tag {
+    display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 5px 12px; border-radius: 6px; margin-bottom: 16px;
+  }
+  .trainer-card:nth-child(1) .trainer-tag { background: var(--sky); color: var(--navy); }
+  .trainer-card:nth-child(2) .trainer-tag { background: var(--green-pale); color: var(--green-dark); }
+  .trainer-name {
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .trainer-role { font-size: 14px; color: var(--slate-light); margin-bottom: 16px; }
+  .trainer-bio { font-size: 15px; line-height: 1.7; color: var(--slate); font-weight: 300; }
+  .trainer-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .trainer-skill {
+    font-size: 12px; padding: 5px 12px; border-radius: 6px; font-weight: 500;
+    background: var(--cloud); color: var(--slate); border: 1px solid var(--border);
+  }
+
+  /* DETAILS */
+  .details { padding: 100px 48px; background: var(--white); border-top: 1px solid var(--border); }
+  .details-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .detail-item { padding: 36px 28px; text-align: center; position: relative; }
+  .detail-item:not(:last-child)::after {
+    content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: var(--border);
+  }
+  .detail-icon {
+    width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .detail-item:nth-child(odd) .detail-icon { background: var(--sky); }
+  .detail-item:nth-child(even) .detail-icon { background: var(--green-pale); }
+  .detail-value {
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700;
+    color: var(--navy); margin-bottom: 6px;
+  }
+  .detail-desc { font-size: 13px; color: var(--slate-light); line-height: 1.5; }
+
+  /* INCLUDES */
+  .includes { padding: 100px 48px; background: var(--cloud); }
+  .includes-header { text-align: center; margin-bottom: 48px; }
+  .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .include-card {
+    padding: 28px 24px; border-radius: 12px; background: var(--white);
+    border: 1px solid var(--border); transition: all 0.3s ease;
+  }
+  .include-card:hover {
+    border-color: var(--green); transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(74,173,63,0.08);
+  }
+  .include-icon {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--green-pale);
+    display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px;
+  }
+  .include-title { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 6px; }
+  .include-desc { font-size: 13px; color: var(--slate); line-height: 1.6; font-weight: 300; }
+
+  /* CTA */
+  .cta {
+    position: relative; padding: 120px 48px;
+    background: linear-gradient(160deg, var(--navy-deep), var(--navy));
+    overflow: hidden; text-align: center;
+  }
+  .cta::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(74,173,63,0.06) 0%, transparent 60%);
+  }
+  .cta-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4.5vw, 48px); font-weight: 600;
+    color: var(--white); line-height: 1.15; margin-bottom: 20px;
+  }
+  .cta h2 em { font-style: italic; color: var(--green-bright); }
+  .cta-sub {
+    font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7;
+    margin-bottom: 36px; font-weight: 300;
+  }
+  .cta-price-box {
+    display: inline-flex; align-items: baseline; gap: 12px;
+    margin-bottom: 36px; padding: 20px 40px;
+    border: 1px solid rgba(74,173,63,0.25); border-radius: 14px;
+    background: rgba(74,173,63,0.06);
+  }
+  .cta-price-amount {
+    font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 700; color: var(--white);
+  }
+  .cta-price-info { font-size: 14px; color: rgba(255,255,255,0.6); text-align: left; line-height: 1.5; }
+  .cta-price-info strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 18px 48px;
+    background: var(--green); color: var(--white); font-family: 'Outfit', sans-serif;
+    font-size: 16px; font-weight: 600; border: none; border-radius: 10px;
+    text-decoration: none; cursor: pointer; transition: all 0.3s ease; margin-bottom: 56px;
+  }
+  .cta-btn:hover {
+    background: var(--green-bright); transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(74,173,63,0.3);
+  }
+  .cta-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 48px; }
+  .cta-contacts { display: flex; justify-content: center; gap: 56px; }
+  .cta-contact { text-align: center; }
+  .cta-contact-name {
+    font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); margin-bottom: 2px;
+  }
+  .cta-contact-role { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+  .cta-contact-info { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.9; }
+  .cta-contact-info a { color: var(--green-bright); text-decoration: none; transition: color 0.2s; }
+  .cta-contact-info a:hover { color: var(--white); }
+
+  /* FOOTER */
+  footer {
+    padding: 20px 48px; background: #080D1A;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span { font-size: 12px; color: rgba(255,255,255,0.2); }
+  footer a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.6); }
+
+  /* RESPONSIVE */
+  /* TRAINING TABS */
+  .training-tabs {
+    display: flex; gap: 8px; margin-bottom: 40px; position: relative; z-index: 2;
+  }
+  .training-tab {
+    padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.3s ease; border: 1.5px solid rgba(255,255,255,0.12);
+    background: transparent; color: rgba(255,255,255,0.5);
+    font-family: 'Outfit', sans-serif;
+  }
+  .training-tab.active {
+    background: var(--green); color: var(--white); border-color: var(--green);
+    box-shadow: 0 4px 16px rgba(74,173,63,0.25);
+  }
+  .training-tab:hover:not(.active) {
+    border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+  }
+  .training-round { display: none; }
+  .training-round.active { display: block; }
+
+  .day-date {
+    font-size: 12px; font-weight: 500; margin-top: 6px; letter-spacing: 0.3px;
+  }
+  .day.sales .day-date { color: rgba(255,255,255,0.4); }
+  .day.ai .day-date { color: rgba(74,173,63,0.6); }
+  .day-date-tbd {
+    font-style: italic; opacity: 0.6;
+  }
+
+  /* PHOTO AVATARS */
+  .trainer-photo {
+    width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+    margin-bottom: 16px; border: none; display: block;
+  }
+  .trainer-monogram {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700;
+    color: #fff; letter-spacing: 1px;
+  }
+  .trainer-monogram-fd { background: linear-gradient(135deg, var(--navy), var(--navy-light)); }
+  .trainer-monogram-fx { background: linear-gradient(135deg, var(--green-dark), var(--green)); }
+
+  /* REGISTRATION FORM */
+  .form-section {
+    padding: 100px 48px; background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+  .form-inner {
+    max-width: 640px; margin: 0 auto;
+  }
+  .form-header { text-align: center; margin-bottom: 40px; }
+  .form-header p {
+    font-size: 16px; color: var(--slate); line-height: 1.7; font-weight: 300; margin-top: 8px;
+  }
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 13px; font-weight: 600; color: var(--navy); letter-spacing: 0.2px;
+  }
+  .form-input, .form-select, .form-textarea {
+    padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--ink);
+    background: var(--cloud); transition: all 0.3s ease; outline: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--green); background: var(--white);
+    box-shadow: 0 0 0 3px rgba(74,173,63,0.1);
+  }
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--slate-light);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select { cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+  }
+  .form-submit {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 16px 36px; margin-top: 8px;
+    background: var(--green); color: var(--white); font-family: 'Outfit', sans-serif;
+    font-size: 16px; font-weight: 600; border: none; border-radius: 8px;
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .form-submit:hover {
+    background: var(--green-bright); transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(74,173,63,0.25);
+  }
+  .form-note {
+    text-align: center; margin-top: 16px; font-size: 12px; color: var(--slate-light);
+  }
+
+  /* PARTNERS BAND */
+  .partners {
+    padding: 64px 48px; background: var(--white);
+    border-top: 1px solid var(--border); text-align: center;
+  }
+  .partners-eyebrow {
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--slate-light); margin-bottom: 30px;
+  }
+  .partners-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 44px; flex-wrap: wrap;
+  }
+  .partner { display: flex; align-items: center; gap: 16px; }
+  .partner svg { display: block; }
+  .partner-text { text-align: left; line-height: 1; }
+  .partner-fidecon .partner-name {
+    font-family: 'Outfit', sans-serif; font-size: 40px; font-weight: 800;
+    color: #1C3E72; letter-spacing: -0.5px;
+  }
+  .partner-fidecon .partner-tag {
+    display: block; font-size: 13px; font-weight: 500; color: #5AB130;
+    letter-spacing: 1px; margin-top: 4px;
+  }
+  .partner-forgexe .partner-name {
+    font-family: 'Outfit', sans-serif; font-size: 40px; font-weight: 700;
+    color: #059669; letter-spacing: 2px;
+  }
+  .partners-x { font-size: 30px; font-weight: 200; color: var(--slate-light); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 12px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 120px 24px 80px; }
+    .hero-stats, .hero-deco { display: none; }
+    .intro { padding: 80px 24px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+    .program { padding: 80px 24px; }
+    .timeline::before { display: none; }
+    .day { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+    .day-left { text-align: left; }
+    .day-left::after { display: none; }
+    .day-right { padding-left: 0; }
+    .day-items { grid-template-columns: 1fr; }
+    .trainers-section { padding: 80px 24px; }
+    .trainers-grid { grid-template-columns: 1fr; }
+    .details { padding: 60px 24px; }
+    .details-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .detail-item::after { display: none; }
+    .includes { padding: 80px 24px; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .cta { padding: 80px 24px; }
+    .cta-contacts { flex-direction: column; gap: 28px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .training-tabs { flex-direction: column; }
+    .form-section { padding: 80px 24px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .partners { padding: 48px 24px; }
+    .partners-row { gap: 24px; }
+    .partner-fidecon .partner-name,
+    .partner-forgexe .partner-name { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brands">
+    <span class="brand-lockup brand-fidecon" aria-label="Fidecon">
+      <svg class="fd-icon" viewBox="0 0 120 96" width="32" height="26" role="img" aria-hidden="true">
+        <path d="M16 66 Q60 96 104 66" stroke="#5AB130" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="32" cy="34" r="12" fill="#5AB130"/>
+        <path d="M16 70 Q16 48 32 48 Q48 48 48 70 Z" fill="#5AB130"/>
+        <circle cx="88" cy="34" r="12" fill="#5AB130"/>
+        <path d="M72 70 Q72 48 88 48 Q104 48 104 70 Z" fill="#5AB130"/>
+        <circle cx="60" cy="26" r="13" fill="currentColor"/>
+        <path d="M42 68 Q42 44 60 44 Q78 44 78 68 Z" fill="currentColor"/>
+      </svg>
+      <span class="brand-word">Fidecon</span>
+    </span>
+    <span class="nav-x">×</span>
+    <span class="brand-lockup brand-forgexe" aria-label="Forgexe">
+      <svg viewBox="0 0 120 120" width="24" height="24" role="img" aria-hidden="true">
+        <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+        <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+        <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+        <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+      </svg>
+      <span class="brand-word">Forgexe</span>
+    </span>
+  </div>
+  <div class="nav-links">
+    <a href="#over" class="nav-link">Over de training</a>
+    <a href="#programma" class="nav-link">Programma</a>
+    <a href="#trainers" class="nav-link">Trainers</a>
+    <a href="#inschrijven" class="nav-cta">Inschrijven →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-deco">
+    <svg viewBox="0 0 200 200" fill="none">
+      <circle cx="60" cy="60" r="40" fill="white" opacity="0.3"/>
+      <circle cx="120" cy="60" r="40" fill="white" opacity="0.5"/>
+      <circle cx="90" cy="120" r="40" fill="white" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      <span class="hero-eyebrow-text">3-daags trainingsprogramma</span>
+    </div>
+    <h1 class="hero-heading">Verkoop slimmer<br>met <em>Sales & AI</em></h1>
+    <p class="hero-desc">Leer de principes die topverkopers inzetten om meerwaarde te verkopen — versterkt met de kracht van AI en automation om je salesresultaten structureel te verbeteren.</p>
+    <div class="hero-actions">
+      <a href="#inschrijven" class="btn-primary">Schrijf je in →</a>
+      <a href="#programma" class="btn-outline">Bekijk het programma</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">3</div>
+      <div class="hero-stat-label">Trainingsdagen</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">9</div>
+      <div class="hero-stat-label">Max. deelnemers</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">6 mnd</div>
+      <div class="hero-stat-label">Platform toegang</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Ontdek meer</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<section class="intro" id="over">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          <span class="section-label-text">Waarom deze training</span>
+        </div>
+        <h2 class="sh">De verkoper <em>én</em><br>de technologie</h2>
+        <p>In drie dagen leer je op een interactieve manier — toegespitst op jouw praktijk — hoe je jouw toegevoegde waarde als salesprofessional inzet én hoe AI en AI Agents je dagelijkse werkzaamheden herinrichten. Zodat je nog meer tijd hebt voor wat écht telt: je klanten.</p>
+      </div>
+      <div class="intro-cards">
+        <div class="intro-card reveal reveal-d1">
+          <h3>Bewezen salesmethodiek</h3>
+          <p>Consultative selling, behoefteanalyse en gespreksstructuur — direct toepasbaar in de praktijk.</p>
+        </div>
+        <div class="intro-card reveal reveal-d2">
+          <h3>AI als sales-versneller</h3>
+          <p>Bouw zelf AI Agents die je voorbereiden, simuleren en opvolgen — hands-on en praktijkgericht.</p>
+        </div>
+        <div class="intro-card reveal reveal-d3">
+          <h3>Interactief & intensief</h3>
+          <p>Bomvol oefeningen, workshops en praktijksimulaties. Maximaal 9 deelnemers voor persoonlijke aandacht.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="program" id="programma">
+  <div class="container">
+    <div class="program-header reveal">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text on-dark">Het programma</span>
+      </div>
+      <h2 class="sh on-dark">Drie dagen die je<br>salesaanpak <em>transformeren</em></h2>
+      <p>Van salesfundamenten tot AI-gedreven workflows — een unieke combinatie van mensenwerk en technologie.</p>
+    </div>
+    <div class="training-tabs">
+      <button class="training-tab active" onclick="switchTraining(1)">Training 4 — September / Oktober</button>
+      <button class="training-tab" onclick="switchTraining(2)">Training 5 — Oktober / November</button>
+    </div>
+
+    <div class="training-round active" id="training1">
+    <div class="timeline">
+      <div class="day sales reveal">
+        <div class="day-left">
+          <div class="day-num">01</div>
+          <div class="day-tag">Sales</div>
+          <div class="day-date">14 september</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Sales Foundation</div>
+          <ul class="day-items">
+            <li>Voorbereiding</li>
+            <li>Gespreksstructuur van professionele verkoopgesprekken</li>
+            <li>Effectief communiceren — hoe dan?</li>
+            <li>Omgaan met weerstanden in het gesprek</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day sales reveal">
+        <div class="day-left">
+          <div class="day-num">02</div>
+          <div class="day-tag">Sales</div>
+          <div class="day-date">15 september</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Van analyse naar deal</div>
+          <ul class="day-items">
+            <li>Behoefte- en probleemanalyse: de basis voor succes</li>
+            <li>Vanuit de behoefteanalyse toegevoegde waarde bepalen</li>
+            <li>Toegevoegde waarde presenteren</li>
+            <li>Overeenstemming bereiken — de juiste acties op het juiste moment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day ai reveal">
+        <div class="day-left">
+          <div class="day-num">03</div>
+          <div class="day-tag">AI</div>
+          <div class="day-date">29 september</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">AI Agents & automation voor Sales</div>
+          <ul class="day-items">
+            <li>AI Fundamentals voor Sales — wat kun je er écht mee?</li>
+            <li>Preparation Agent — voorbereiding & klantresearch automatiseren</li>
+            <li>Objection Simulator — weerstanden oefenen met AI-roleplay</li>
+            <li>Conversation intelligence — scherpere behoefteanalyse & opvolging</li>
+            <li>Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="training-round" id="training2">
+    <div class="timeline">
+      <div class="day sales reveal visible">
+        <div class="day-left">
+          <div class="day-num">01</div>
+          <div class="day-tag">Sales</div>
+          <div class="day-date">13 oktober</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Sales Foundation</div>
+          <ul class="day-items">
+            <li>Voorbereiding</li>
+            <li>Gespreksstructuur van professionele verkoopgesprekken</li>
+            <li>Effectief communiceren — hoe dan?</li>
+            <li>Omgaan met weerstanden in het gesprek</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day sales reveal visible">
+        <div class="day-left">
+          <div class="day-num">02</div>
+          <div class="day-tag">Sales</div>
+          <div class="day-date">14 oktober</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Van analyse naar deal</div>
+          <ul class="day-items">
+            <li>Behoefte- en probleemanalyse: de basis voor succes</li>
+            <li>Vanuit de behoefteanalyse toegevoegde waarde bepalen</li>
+            <li>Toegevoegde waarde presenteren</li>
+            <li>Overeenstemming bereiken — de juiste acties op het juiste moment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="day ai reveal visible">
+        <div class="day-left">
+          <div class="day-num">03</div>
+          <div class="day-tag">AI</div>
+          <div class="day-date">29 oktober</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">AI Agents & automation voor Sales</div>
+          <ul class="day-items">
+            <li>AI Fundamentals voor Sales — wat kun je er écht mee?</li>
+            <li>Preparation Agent — voorbereiding & klantresearch automatiseren</li>
+            <li>Objection Simulator — weerstanden oefenen met AI-roleplay</li>
+            <li>Conversation intelligence — scherpere behoefteanalyse & opvolging</li>
+            <li>Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="trainers-section" id="trainers">
+  <div class="container">
+    <div class="trainers-header reveal">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Je trainers</span>
+      </div>
+      <h2 class="sh">De verkoper <em>&</em> de bouwer</h2>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer-card reveal reveal-d1">
+        <img src="trainer-gregor.jpg" alt="Gregor Gersen" class="trainer-photo">
+        <span class="trainer-tag">Sales Expert</span>
+        <div class="trainer-name">Gregor Gersen</div>
+        <div class="trainer-role">Trainer & Coach — Fidecon</div>
+        <p class="trainer-bio">Jarenlange ervaring als vaardigheidstrainer en coach in B2B sales. Gregor helpt verkopers om hun product of dienstverlening professioneel onder de aandacht te brengen, met focus op communicatie, gedragsverandering en resultaat.</p>
+        <div class="trainer-skills">
+          <span class="trainer-skill">Consultative Selling</span>
+          <span class="trainer-skill">Communicatie</span>
+          <span class="trainer-skill">Strategic Selling</span>
+          <span class="trainer-skill">Coaching</span>
+        </div>
+      </div>
+      <div class="trainer-card reveal reveal-d2">
+        <img src="trainer-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
+        <span class="trainer-tag">AI & Automation</span>
+        <div class="trainer-name">Sedat Ayar</div>
+        <div class="trainer-role">AI Specialist — Forgexe</div>
+        <p class="trainer-bio">Expert in AI-automatisering voor het MKB. Sedat bouwt slimme AI-systemen voor leadgeneratie, sales automation en bedrijfsprocessen. Hands-on, praktijkgericht en altijd gefocust op direct toepasbare resultaten.</p>
+        <div class="trainer-skills">
+          <span class="trainer-skill">AI Agents</span>
+          <span class="trainer-skill">Leadgeneratie</span>
+          <span class="trainer-skill">Automation</span>
+          <span class="trainer-skill">Workflows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="container">
+    <div class="details-grid">
+      <div class="detail-item reveal">
+        <div class="detail-icon">📅</div>
+        <div class="detail-value">3 dagen</div>
+        <div class="detail-desc">2 dagen Sales<br>1 dag AI</div>
+      </div>
+      <div class="detail-item reveal reveal-d1">
+        <div class="detail-icon">👥</div>
+        <div class="detail-value">Max 9</div>
+        <div class="detail-desc">Deelnemers voor<br>maximale aandacht</div>
+      </div>
+      <div class="detail-item reveal reveal-d2">
+        <div class="detail-icon">🏆</div>
+        <div class="detail-value">Certificaat</div>
+        <div class="detail-desc">Certificaat van<br>deelname</div>
+      </div>
+      <div class="detail-item reveal reveal-d3">
+        <div class="detail-icon">💻</div>
+        <div class="detail-value">6 maanden</div>
+        <div class="detail-desc">Toegang Fidecon<br>Learning Platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="includes">
+  <div class="container">
+    <div class="includes-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Wat je meekrijgt</span>
+      </div>
+      <h2 class="sh" style="text-align:center;">Meer dan <em>alleen</em> een training</h2>
+    </div>
+    <div class="includes-grid">
+      <div class="include-card reveal">
+        <div class="include-icon">🤖</div>
+        <div class="include-title">Eigen AI Agents</div>
+        <div class="include-desc">Je bouwt tijdens de training je eigen Preparation Agent, Objection Simulator en Admin Bot — direct inzetbaar.</div>
+      </div>
+      <div class="include-card reveal reveal-d1">
+        <div class="include-icon">📋</div>
+        <div class="include-title">Persoonlijk Actieplan</div>
+        <div class="include-desc">Reflectie en een concreet actieplan maken deel uit van de training. Je gaat weg met een roadmap op maat.</div>
+      </div>
+      <div class="include-card reveal reveal-d2">
+        <div class="include-icon">🌐</div>
+        <div class="include-title">Community & Platform</div>
+        <div class="include-desc">Tot zes maanden na afronding toegang tot het Fidecon Community & Learning Platform voor nazorg en verdieping.</div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon">🎯</div>
+        <div class="include-title">Praktijksimulaties</div>
+        <div class="include-desc">Oefeningen, workshops en simulaties op jouw dagelijkse praktijk toegespitst. Geen theorie zonder actie.</div>
+      </div>
+      <div class="include-card reveal reveal-d1">
+        <div class="include-icon">⚡</div>
+        <div class="include-title">Leadgeneratie Automation</div>
+        <div class="include-desc">Leer hoe je AI-gedreven leadgeneratie opzet en je salesprocessen automatiseert voor structureel meer resultaat.</div>
+      </div>
+      <div class="include-card reveal reveal-d2">
+        <div class="include-icon">🍽️</div>
+        <div class="include-title">Catering inbegrepen</div>
+        <div class="include-desc">Lunch en verzorging overdag zijn inbegrepen, zodat je je volledig kunt focussen op leren en ontwikkelen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-content">
+    <div class="section-label" style="justify-content:center;margin-bottom:20px;">
+      <span class="section-label-dot"></span>
+      <span class="section-label-text on-dark">Investering</span>
+    </div>
+    <h2>Klaar om slimmer<br>te <em>verkopen</em>?</h2>
+    <div class="cta-price-box">
+      <span class="cta-price-amount">€575</span>
+      <span class="cta-price-info"><strong>per deelnemer, per dag</strong><br>Exclusief BTW</span>
+    </div>
+    <p class="cta-sub">Inclusief catering, certificaat, 6 maanden platform-toegang en alle trainingsmaterialen.</p>
+    <a href="#inschrijven" class="cta-btn">Schrijf je in →</a>
+    <div class="cta-divider"></div>
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-contact-name">Gregor Gersen</div>
+        <div class="cta-contact-role">Sales Trainer — Fidecon</div>
+        <div class="cta-contact-info">
+          <a href="tel:+31611436822">+31 6 114 368 22</a><br>
+          <a href="mailto:gregor@fidecon.nl">gregor@fidecon.nl</a>
+        </div>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-contact-name">Sedat Ayar</div>
+        <div class="cta-contact-role">AI Specialist — Forgexe</div>
+        <div class="cta-contact-info">
+          <a href="tel:+31618031022">+31 6 180 310 22</a><br>
+          <a href="mailto:sedat@forgexe.nl">sedat@forgexe.nl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION FORM -->
+<section class="form-section" id="inschrijven">
+  <div class="form-inner">
+    <div class="form-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Inschrijven</span>
+      </div>
+      <h2 class="sh" style="text-align:center;">Schrijf je in voor<br><em>Sales & AI</em></h2>
+      <p>Vul onderstaand formulier in en wij nemen binnen 2 werkdagen contact met je op om de inschrijving te bevestigen.</p>
+    </div>
+    <div class="form-grid reveal">
+      <div class="form-group">
+        <label class="form-label">Voornaam *</label>
+        <input type="text" class="form-input" placeholder="Je voornaam" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Achternaam *</label>
+        <input type="text" class="form-input" placeholder="Je achternaam" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-mailadres *</label>
+        <input type="email" class="form-input" placeholder="naam@bedrijf.nl" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefoonnummer</label>
+        <input type="tel" class="form-input" placeholder="+31 6 ..." >
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Bedrijfsnaam</label>
+        <input type="text" class="form-input" placeholder="Naam van je organisatie">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Welke training? *</label>
+        <select class="form-select" required>
+          <option value="" disabled selected>Kies je voorkeur</option>
+          <option value="training4">Training 4 — Start 14 september</option>
+          <option value="training5">Training 5 — Start 13 oktober</option>
+          <option value="later">Ik hoor graag over volgende data</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Opmerkingen of vragen</label>
+        <textarea class="form-textarea" placeholder="Bijv. dieetwensen, facturatiegegevens of vragen over de training..."></textarea>
+      </div>
+      <div class="form-group full">
+        <button type="button" class="form-submit" onclick="submitForm(this)">Verstuur inschrijving →</button>
+      </div>
+    </div>
+    <p class="form-note">Na inschrijving ontvang je een bevestiging per e-mail. Betaling vindt plaats na bevestiging.</p>
+  </div>
+</section>
+
+<section class="partners">
+  <span class="partners-eyebrow">Een samenwerking van</span>
+  <div class="partners-row">
+    <div class="partner partner-fidecon">
+      <svg viewBox="0 0 120 96" width="64" height="51" role="img" aria-label="Fidecon">
+        <path d="M16 66 Q60 96 104 66" stroke="#5AB130" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="32" cy="34" r="12" fill="#5AB130"/>
+        <path d="M16 70 Q16 48 32 48 Q48 48 48 70 Z" fill="#5AB130"/>
+        <circle cx="88" cy="34" r="12" fill="#5AB130"/>
+        <path d="M72 70 Q72 48 88 48 Q104 48 104 70 Z" fill="#5AB130"/>
+        <circle cx="60" cy="26" r="13" fill="#1C3E72"/>
+        <path d="M42 68 Q42 44 60 44 Q78 44 78 68 Z" fill="#1C3E72"/>
+      </svg>
+      <div class="partner-text">
+        <span class="partner-name">Fidecon</span>
+        <span class="partner-tag">training en opleiding</span>
+      </div>
+    </div>
+    <span class="partners-x">×</span>
+    <div class="partner partner-forgexe">
+      <svg viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Forgexe">
+        <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+        <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+        <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+        <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+      </svg>
+      <span class="partner-name">Forgexe</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Fidecon × Forgexe</span>
+  <div>
+    <a href="https://fidecon.nl" target="_blank" style="margin-right:16px;">fidecon.nl</a>
+    <a href="https://forgexe.nl" target="_blank">forgexe.nl</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveals
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Training tab switching
+  function switchTraining(num) {
+    document.querySelectorAll('.training-tab').forEach(function(tab, i) {
+      tab.classList.toggle('active', i === num - 1);
+    });
+    document.querySelectorAll('.training-round').forEach(function(round, i) {
+      round.classList.toggle('active', i === num - 1);
+    });
+  }
+
+  // Form submit
+  async function submitForm(btn) {
+    const form = btn.closest('.form-grid');
+    const inputs = form.querySelectorAll('[required]');
+    let valid = true;
+    inputs.forEach(function(input) {
+      if (!input.value.trim()) { input.style.borderColor = '#e53e3e'; valid = false; }
+      else { input.style.borderColor = ''; }
+    });
+    if (!valid) return;
+    btn.textContent = 'Verzenden...';
+    btn.disabled = true;
+    const data = {
+      voornaam: form.querySelector('input[placeholder="Je voornaam"]').value.trim(),
+      achternaam: form.querySelector('input[placeholder="Je achternaam"]').value.trim(),
+      email: form.querySelector('input[type="email"]').value.trim(),
+      telefoon: form.querySelector('input[type="tel"]').value.trim(),
+      bedrijf: form.querySelector('input[placeholder="Naam van je organisatie"]').value.trim(),
+      training: form.querySelector('select').value,
+      opmerkingen: form.querySelector('textarea').value.trim(),
+      bron: 'fidecon-forgexe-website',
+      datum: new Date().toISOString()
+    };
+    try {
+      const resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (resp.ok || resp.type === 'opaque') {
+        btn.textContent = '✓ Verstuurd! We nemen contact op.';
+        btn.style.background = 'var(--navy)';
+        btn.style.cursor = 'default';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Er ging iets mis — probeer opnieuw';
+      btn.style.background = '#e53e3e';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'Verstuur inschrijving →'; btn.style.background = 'var(--green)'; }, 3000);
+    }
+  }
+</script>
+</body>
+</html>
