@@ -1295,6 +1295,7 @@
         btn.textContent = '✓ Verstuurd! We nemen contact op.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
+        if (window.fxTrack) fxTrack('CompleteRegistration');
       } else {
         throw new Error('Server error');
       }
@@ -1335,6 +1336,7 @@
         btn.textContent = '✓ Onderweg! Check je mailbox.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
+        if (window.fxTrack) fxTrack('Lead');
       } else {
         throw new Error('Server error');
       }
@@ -1355,5 +1357,6 @@
   <a href="#inschrijven" class="s-insch">Inschrijven →</a>
 </div>
 
+<script src="/tracking.js"></script>
 </body>
 </html>
