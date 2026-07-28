@@ -72,7 +72,7 @@ Hoe complexer de oplossing, hoe hoger de prijs. Maar veel processen hebben helem
 > C:\faq
 Veelgestelde vragen over kosten.
 Wat kost een AI-agent laten bouwen?
-In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van EUR 2.500 tot EUR 9.000 plus maandelijkse kosten voor tools en onderhoud. Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles aan je over. Meer daarover op de pagina AI-agent laten bouwen .
+In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van EUR 2.500 tot EUR 9.000 plus maandelijkse kosten voor tools en onderhoud. Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles aan je over. Meer daarover op de pagina AI-agent laten bouwen AI-automatisering laten bouwen .
 Wat kost een AI-chatbot voor mijn website?
 Marktprijzen voor een zakelijke AI-chatbot liggen tussen de EUR 2.000 en EUR 10.000 eenmalig, plus EUR 50 tot EUR 300 per maand voor hosting en AI-verbruik. De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen.
 Hoe snel verdient AI-automatisering zich terug?

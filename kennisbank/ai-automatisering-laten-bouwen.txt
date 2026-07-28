@@ -1,0 +1,90 @@
+PAGINA: /ai-automatisering-laten-bouwen
+TITEL: AI-automatisering laten bouwen voor het MKB
+OMSCHRIJVING: AI-automatisering laten bouwen die terugkerend werk overneemt in je eigen tools. Workflow, AI-agent of AI-medewerker: wij bouwen wat past. Vanaf EUR 500 per maand.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\wat-is-het
+Wat is AI-automatisering?
+AI-automatisering is software die werk overneemt dat nu tijd van je team kost. Een deel daarvan is klassieke automatisering met vaste regels. Zodra er taal, beeld of een beoordeling bij komt kijken, voegen we AI toe: dan leest het systeem een mail, begrijpt een aanvraag of haalt gegevens uit een document, en handelt op basis daarvan.
+Eerlijk vooraf: niet elk proces heeft AI nodig. Heeft je taak duidelijke regels en geen interpretatie? Dan bouwen we een gewone workflow, sneller en goedkoper. Je krijgt in de scan het eerlijke antwoord voor jouw situatie.
+> C:\welke-vorm
+Workflow, AI-agent of AI-medewerker?
+Drie niveaus, van simpel naar zelfstandig. We kiezen het lichtste dat de klus klaart.
+> NIVEAU_01
+Workflow
+Vaste stappen, voorspelbare input. Denk aan data van A naar B verplaatsen of een terugkerende handeling automatiseren. Snel gebouwd en het goedkoopst.
+MEER OVER N8N
+> NIVEAU_02
+AI-agent
+Leest taal en beeld, neemt beslissingen en gaat om met uitzonderingen. Nodig zodra elke aanvraag net even anders is en er geoordeeld moet worden.
+AI-AGENT LATEN BOUWEN
+> NIVEAU_03
+AI-medewerker
+Een rol in plaats van een taak. Meerdere workflows en agents samen die een heel takenpakket overnemen, zoals een digitale collega voor je sales of administratie.
+AI-MEDEWERKER INHUREN
+> C:\use-cases
+Wat laten MKB-bedrijven automatiseren?
+Elke automatisering wordt op maat gebouwd. Dit zijn de processen die het vaakst tijd opslokken.
+> PROCES_01
+Leadopvolging
+Nieuwe aanvragen worden meteen opgepakt, gekwalificeerd en opgevolgd, zodat er geen warme lead blijft liggen.
+MEER OVER LEADGEN
+> PROCES_02
+E-mail en inbox
+Inkomende mail wordt gelezen, gesorteerd en van een conceptantwoord voorzien. Je team opent een voorgesorteerde inbox.
+MEER OVER E-MAIL
+> PROCES_03
+Factuurverwerking
+Inkomende facturen worden uitgelezen, gecontroleerd en klaargezet in je boekhoudpakket. Van minuten handwerk naar seconden.
+MEER OVER FACTUREN
+> PROCES_04
+Offertes en calculaties
+Een aanvraag of tekening wordt omgezet in een conceptofferte op basis van jouw prijzen en voorwaarden.
+HOE WE DAT BOUWEN
+> PROCES_05
+Rapportages
+Cijfers uit je systemen komen samen in een rapport dat zichzelf bijwerkt. Voor management, klanten of beide.
+MEER OVER RAPPORTAGE
+> PROCES_06
+Planning
+Realtime data uit je systemen wordt vertaald naar slimme planningssuggesties die stilstand voorkomen.
+MEER OVER PLANNING
+> C:\proces
+Van idee naar draaiende automatisering in 4 stappen.
+> STAP_01
+Bedrijfsscan
+Kort gesprek over je proces. Binnen 48 uur weet je wat het meeste oplevert, met jouw drie grootste quick wins op een rij.
+> STAP_02
+Bouwen
+We bouwen op n8n, gekoppeld aan jouw tools. Eerste werkende versie binnen 4 tot 6 weken, met controlemomenten waar dat moet.
+> STAP_03
+Live en bijsturen
+De automatisering draait op echte data terwijl wij meekijken. We sturen bij tot de output klopt en je team erop vertrouwt.
+> STAP_04
+Bewaken en uitbouwen
+We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet in heldere rapportages wat het oplevert.
+> INVESTERING
+Vanaf EUR 500 / maand
+Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af. Liever geen abonnement? Forge.Project: eenmalig bouwen vanaf EUR 7.500, alles wordt overgedragen.
+Bekijk alle prijzen
+> C:\faq
+Veelgestelde vragen over AI-automatisering laten bouwen.
+Wat kost het om AI-automatisering te laten bouwen?
+Je stapt in vanaf EUR 500 per maand zonder setup-kosten (Forge.Start). Bij groter maatwerk (Forge.Pro) leggen we de eenmalige ontwikkelinvestering vooraf vast en zit de rest in het maandbedrag. Wil je geen abonnement, dan bouwen we eenmalig vanaf EUR 7.500 (Forge.Project). Alles staat op de prijzenpagina en in onze kostengids .
+Wat is het verschil tussen een workflow, een AI-agent en een AI-medewerker?
+Een workflow volgt vaste regels en is ideaal voor voorspelbaar werk. Een AI-agent leest taal en beeld en neemt beslissingen. Een AI-medewerker combineert meerdere workflows en agents tot een collega die een heel takenpakket overneemt.
+Hoe lang duurt het bouwen?
+De eerste werkende versie draait binnen 4 tot 6 weken in je eigen omgeving. Daarna sturen we bij op echte data en bouwen we stap voor stap uit.
+Op welke tools bouwen jullie?
+Vendor-vrij, vooral op n8n, gekoppeld aan de tools die je al gebruikt: CRM, mailbox, agenda, Excel of boekhoudpakket. Alles blijft jouw eigendom en je zit nergens aan vast.
+Heb ik AI nodig of kan het met een gewone automatisering?
+Niet elk proces heeft AI nodig. Vaste taken met duidelijke regels zijn sneller en goedkoper af met een workflow. AI is pas nodig als er taal, beeld of interpretatie in het spel zit. In de bedrijfsscan krijg je het eerlijke antwoord.
+> C:\forgexe\klaar
+Klaar om jouw werk te laten automatiseren ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Plan een kennismaking

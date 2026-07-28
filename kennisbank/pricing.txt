@@ -1,6 +1,6 @@
 PAGINA: /pricing
 TITEL: Prijzen
-OMSCHRIJVING: Doorlopende pakketten (Forge.Start vanaf €500/mnd, Forge.Pro €1.250/mnd, Forge.Scale op maat) of eenmalig eigenaar met Forge.Project vanaf €7.500. Nooit setup bovenop je abonnement.
+OMSCHRIJVING: Doorlopende pakketten (Forge.Start €500/mnd, Pro €1.250/mnd, Scale op maat) of eenmalig eigenaar met Forge.Project vanaf €7.500. Nooit setup bovenop je abonnement.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
@@ -9,6 +9,8 @@ Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
 > C:\pakketten
 Kies jouw pakket.
+Twee manieren om met ons te werken: wij draaien het voor je met een doorlopend pakket, of jij wordt eigenaar met een eenmalig project. Nooit setup-kosten bovenop een abonnement.
+> DOORLOPEND , WIJ DRAAIEN HET VOOR JE
 Forge.Start
 Voor wie wil starten met AI
 EUR 500 /maand
@@ -41,11 +43,11 @@ Maandelijkse rapportage en custom dashboards
 Maandelijkse strategie-sessie
 24/7 monitoring en optimalisatie
 Plan een gesprek
-> EENMALIG — JIJ WORDT EIGENAAR
+> EENMALIG , JIJ WORDT EIGENAAR
 Forge.Project
 vanaf EUR 7.500 eenmalig
-Geen abonnement · geen lock-in
-Wij bouwen 3 tot 4 AI-medewerkers, leveren op en dragen alles volledig over — van jou, voor altijd. Support na oplevering kan altijd nog, op uurbasis.
+GEEN ABONNEMENT · GEEN LOCK-IN
+Wij bouwen 3 tot 4 AI-medewerkers, leveren op en dragen alles volledig over , van jou, voor altijd. Support na oplevering kan altijd nog, op uurbasis.
 Gratis bedrijfsscan
 > C:\vergelijk
 Wat krijg je per pakket.
