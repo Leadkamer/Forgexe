@@ -3,6 +3,7 @@ OVERZICHT VAN ALLE PAGINAS OP FORGEXE.NL
 ai-act — Hoe Forgexe omgaat met de EU AI Act voor onze klanten en onze eigen werkwijze.
 ai-ads — AI-gestuurde advertenties op Google, Meta en LinkedIn. Automatische bid- en budget-optimalisatie, dagelijkse iteratie.
 ai-agent-laten-bouwen — Laat een AI-agent bouwen die echt in productie draait: leads opvolgen, e-mail verwerken, offertes maken. Op jouw tools, vendor-vrij, eerste versie in 4 tot 6 weken.
+ai-automatisering-eindhoven — AI-automatisering laten bouwen voor high-tech en maakbedrijven rond Eindhoven en Brainport. Offerteflows, productieplanning en ERP-koppelingen op maat. We komen langs in Noord-Brabant.
 ai-automatisering-laten-bouwen — AI-automatisering laten bouwen die terugkerend werk overneemt in je eigen tools. Workflow, AI-agent of AI-medewerker: wij bouwen wat past. Vanaf EUR 500 per maand.
 ai-automatisering-limburg — AI-automatisering laten bouwen in Limburg door een partner uit de regio. Gevestigd in Panningen, we komen langs op locatie. Van Venlo tot Weert en Roermond.
 ai-blogger — AI Blogger systeem dat SEO-content schrijft in jouw tone of voice. Markt-onderzoek, on-page SEO en directe CMS-publicatie.
@@ -40,6 +41,7 @@ factuurverwerking-automatiseren — Inkomende facturen automatisch uitlezen, con
 fidecon-forgexe-sales-ai — Sales & AI Training — Fidecon × Forgexe
 index — Forgexe smeedt AI-medewerkers voor het Nederlandse MKB. Leads, processen en rapportages op de automatische piloot, zonder extra personeel.
 leadgeneratie-automatiseren — Leadgeneratie automatiseren voor B2B: van prospect vinden tot afspraak in de agenda. Ontdek hoe een geautomatiseerd leadgen-systeem werkt en wat het kost.
+leaflet — Sales & AI Training — Fidecon × Forgexe · Brochure
 n8n-specialist — Nederlandse n8n-specialist voor het MKB: wij bouwen, hosten en beheren n8n-workflows en AI-agents die in productie draaien. Ook redding van vastgelopen DIY-flows.
 n8n-vs-make-vs-zapier — n8n, Make of Zapier? Eerlijke vergelijking op kosten, AVG, AI-mogelijkheden en schaalbaarheid, speciaal voor het Nederlandse MKB. Inclusief keuzehulp.
 over-ons — Forgexe is een compact team van specialisten dat AI-systemen bouwt die jouw bedrijf autonoom laten draaien. Voor het Nederlandse MKB.
