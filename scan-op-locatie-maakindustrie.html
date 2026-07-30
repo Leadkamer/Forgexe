@@ -1285,11 +1285,11 @@
       body: JSON.stringify(data)
     }).catch(function(){});
 
-    /* Meta Pixel: activeer zodra de pixel op de pagina staat
-    if (typeof fbq === 'function') fbq('track', 'Lead'); */
+    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'scan-op-locatie-maakindustrie' });
 
     wizShow(5);
   }
 </script>
+<script src="/tracking.js" defer></script>
 </body>
 </html>
