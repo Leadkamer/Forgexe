@@ -87,8 +87,8 @@
     letter-spacing: 1px; transition: color 0.4s;
   }
   .brand-forgexe .brand-word { color: #34d399; }
-  .brand-fesma .brand-word { color: var(--white); letter-spacing: 2px; }
-  nav.scrolled .brand-fesma .brand-word { color: var(--ink); }
+  .brand-fesma img { height: 17px; width: auto; display: block; }
+  nav:not(.scrolled) .brand-fesma img { filter: brightness(0) invert(1); }
   .nav-x { color: rgba(255,255,255,0.45); font-size: 15px; font-weight: 300; transition: color 0.4s; }
   nav.scrolled .nav-x { color: var(--slate-light); }
   .nav-links { display: flex; align-items: center; gap: 32px; }
@@ -233,9 +233,10 @@
   .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
   .intro-text p { font-size: 17px; line-height: 1.8; color: var(--slate); font-weight: 300; }
   .intro-text p strong { color: var(--ink); font-weight: 600; }
-  .intro-lockup { font-family: var(--head); font-weight: 800; font-size: 20px; letter-spacing: 1px; margin: 22px 0 0; color: var(--ink); }
-  .intro-lockup .fx { color: var(--green-deep); }
-  .intro-lockup .x { color: var(--slate-light); font-weight: 300; padding: 0 8px; }
+  .intro-lockup { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; }
+  .intro-lockup .il-word { font-family: var(--head); font-weight: 700; font-size: 19px; letter-spacing: 1px; color: #34d399; }
+  .intro-lockup .x { color: var(--slate-light); font-weight: 300; font-size: 15px; }
+  .intro-lockup .fesma-logo { height: 19px; width: auto; display: block; }
   .intro-cards { display: flex; flex-direction: column; gap: 14px; }
   .intro-card {
     padding: 24px 28px; border-radius: 12px; background: var(--cloud);
@@ -563,8 +564,8 @@
   .partner { display: flex; align-items: center; gap: 16px; }
   .partner svg { display: block; }
   .partner-forgexe .partner-name { font-family: var(--head); font-size: 38px; font-weight: 700; color: #34d399; letter-spacing: 2px; }
-  .partner-fesma .partner-name { font-family: var(--head); font-size: 38px; font-weight: 800; color: var(--ink); letter-spacing: 3px; }
-  .partner-fesma .partner-tag { display: block; font-size: 13px; font-weight: 500; color: var(--slate-light); letter-spacing: 1px; margin-top: 4px; }
+  .partner-fesma img { height: 38px; width: auto; display: block; }
+  .partner-fesma .partner-tag { display: block; font-size: 13px; font-weight: 500; color: var(--slate-light); letter-spacing: 1px; margin-top: 8px; }
   .partner-text { text-align: left; line-height: 1; }
   .partners-x { font-size: 30px; font-weight: 200; color: var(--slate-light); }
 
@@ -652,7 +653,7 @@
     </span>
     <span class="nav-x">×</span>
     <span class="brand-lockup brand-fesma" aria-label="Fesma">
-      <span class="brand-word">FESMA</span>
+      <img src="logo-fesma.webp" alt="Fesma">
     </span>
   </div>
   <div class="nav-links">
@@ -717,7 +718,17 @@
         </div>
         <h2 class="sh">Eén scan,<br><em>twee</em> specialisten</h2>
         <p><strong>Fesma kent de processen van maakbedrijven</strong> — van orderflow tot ERP. <strong>Forgexe smeedt de AI-medewerkers</strong> die dat werk overnemen. Samen zien we in één ochtend wat je alleen zou missen: waar tijd, marge en overzicht weglekken, en welke automatisering dat oplost.</p>
-        <div class="intro-lockup">FORGE<span class="fx">XE</span><span class="x">×</span>FESMA</div>
+        <div class="intro-lockup">
+          <svg viewBox="0 0 120 120" width="22" height="22" role="img" aria-hidden="true">
+            <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+            <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+            <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+            <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+          </svg>
+          <span class="il-word">FORGEXE</span>
+          <span class="x">&times;</span>
+          <img src="logo-fesma.webp" alt="Fesma" class="fesma-logo">
+        </div>
       </div>
       <div class="intro-cards">
         <div class="intro-card reveal reveal-d1">
@@ -1105,7 +1116,7 @@
     <span class="partners-x">×</span>
     <div class="partner partner-fesma">
       <div class="partner-text">
-        <span class="partner-name">FESMA</span>
+        <img src="logo-fesma.webp" alt="Fesma">
         <span class="partner-tag">proces- en IT-consultancy</span>
       </div>
     </div>
