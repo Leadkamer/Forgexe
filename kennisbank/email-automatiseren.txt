@@ -55,7 +55,7 @@ Bouwen en trainen op jouw toon
 We bouwen de flows en trainen de AI op voorbeelden uit je eigen verzonden mail, zodat concepten klinken zoals jullie. Eerste werkende versie binnen 4 tot 6 weken.
 > STAP_04
 Live met controlemomenten, daarna beheer
-We gaan live terwijl een mens meekijkt, en breiden pas uit als de resultaten kloppen. Daarna bewaken en verbeteren we doorlopend. Vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+We gaan live terwijl een mens meekijkt, en breiden pas uit als de resultaten kloppen. Daarna bewaken en verbeteren we doorlopend, alles inbegrepen in een vast maandbedrag. Zie prijzen .
 > C:\faq
 Veelgestelde vragen over e-mail automatiseren.
 Leest de AI al mijn mail, is dat veilig?
@@ -65,7 +65,7 @@ Alleen als jij dat instelt. Standaard zet de AI conceptantwoorden klaar en klikt
 Werkt dit met Outlook en Gmail?
 Ja, met beide. Ook gedeelde mailboxen zoals info@ of support@ koppelen we aan de automatisering, en dat is meestal precies waar de meeste winst zit.
 Wat kost e-mail automatisering?
-Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Bij Forgexe werk je met een vast maandabonnement, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. Alle abonnementen staan op de prijzenpagina , en in onze kostengids lees je hoe het kostenplaatje in elkaar zit.
 Hoe leert de AI onze tone of voice?
 We trainen op voorbeelden uit je eigen verzonden mail, aangevuld met richtlijnen over hoe jullie klanten aanspreken. Elke keer dat iemand een concept aanpast voordat het de deur uitgaat, is dat feedback waarmee de antwoorden beter worden.
 Kan dit samen met leadopvolging?

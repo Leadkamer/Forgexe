@@ -1,6 +1,6 @@
 PAGINA: /ai-automatisering-laten-bouwen
 TITEL: AI-automatisering laten bouwen voor het MKB
-OMSCHRIJVING: AI-automatisering laten bouwen die terugkerend werk overneemt in je eigen tools. Workflow, AI-agent of AI-medewerker: wij bouwen wat past. Vanaf EUR 500 per maand.
+OMSCHRIJVING: AI-automatisering laten bouwen die terugkerend werk overneemt in je eigen tools. Workflow, AI-agent of AI-medewerker: wij bouwen wat past.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
@@ -68,13 +68,13 @@ De automatisering draait op echte data terwijl wij meekijken. We sturen bij tot 
 Bewaken en uitbouwen
 We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet in heldere rapportages wat het oplevert.
 > INVESTERING
-Vanaf EUR 500 / maand
-Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af. Liever geen abonnement? Forge.Project: eenmalig bouwen vanaf EUR 7.500, alles wordt overgedragen.
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.
 Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen over AI-automatisering laten bouwen.
 Wat kost het om AI-automatisering te laten bouwen?
-Je stapt in vanaf EUR 500 per maand zonder setup-kosten (Forge.Start). Bij groter maatwerk (Forge.Pro) leggen we de eenmalige ontwikkelinvestering vooraf vast en zit de rest in het maandbedrag. Wil je geen abonnement, dan bouwen we eenmalig vanaf EUR 7.500 (Forge.Project). Alles staat op de prijzenpagina en in onze kostengids .
+Je stapt in met een vast maandabonnement zonder setup-kosten (Forge.Start). Bij groter maatwerk (Forge.Pro) leggen we de eenmalige ontwikkelinvestering vooraf vast en zit de rest in het maandbedrag. Wil je geen abonnement, dan bouwen we eenmalig (Forge.Project). Alles staat op de prijzenpagina en in onze kostengids .
 Wat is het verschil tussen een workflow, een AI-agent en een AI-medewerker?
 Een workflow volgt vaste regels en is ideaal voor voorspelbaar werk. Een AI-agent leest taal en beeld en neemt beslissingen. Een AI-medewerker combineert meerdere workflows en agents tot een collega die een heel takenpakket overneemt.
 Hoe lang duurt het bouwen?

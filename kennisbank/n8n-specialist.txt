@@ -56,11 +56,11 @@ Live op echte data
 We draaien in productie terwijl we meekijken, en sturen bij tot elke flow betrouwbaar loopt.
 > STAP_04
 Beheer en doorbouwen
-We bewaken je workflows doorlopend, vangen fouten af en bouwen maandelijks verder. Vanaf EUR 500 per maand. Zie prijzen .
+We bewaken je workflows doorlopend, vangen fouten af en bouwen maandelijks verder, voor een vast maandbedrag. Zie prijzen .
 > C:\faq
 Veelgestelde vragen aan een n8n-specialist.
 Wat kost een n8n-specialist?
-Bij Forgexe werk je niet op uurtarief maar met een abonnement vanaf EUR 500 per maand, inclusief hosting, bewaking en doorontwikkeling. Bij groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van als setup-kosten vooraf, met minimaal 6 maanden looptijd, dus je weet altijd waar je aan toe bent. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Bij Forgexe werk je niet op uurtarief maar met een vast maandabonnement, inclusief hosting, bewaking en doorontwikkeling. Bij groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van als setup-kosten vooraf, met minimaal 6 maanden looptijd, dus je weet altijd waar je aan toe bent. Alle abonnementen staan op de prijzenpagina , en in onze kostengids lees je hoe het kostenplaatje in elkaar zit.
 Kunnen jullie onze bestaande n8n-workflows overnemen of verbeteren?
 Ja. We doen eerst een audit van je huidige workflows: wat draait er, wat breekt er en waarom. Daarna repareren we, bouwen we opnieuw waar nodig en nemen we het beheer over. Zelf gebouwde flows die zijn vastgelopen zien we vaak, daar is niets geks aan.
 Hosten jullie n8n zelf of in de cloud?

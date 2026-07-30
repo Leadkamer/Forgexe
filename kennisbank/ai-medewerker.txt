@@ -1,6 +1,6 @@
 PAGINA: /ai-medewerker
 TITEL: AI-medewerker inhuren voor het Nederlandse MKB
-OMSCHRIJVING: Een AI-medewerker neemt terugkerend werk volledig over: leads, e-mail, rapportages en planning. Op maat gesmeed, draait in jouw eigen tools. Vanaf EUR 500 per maand.
+OMSCHRIJVING: Een AI-medewerker neemt terugkerend werk volledig over: leads, e-mail, rapportages en planning. Op maat gesmeed, draait in jouw eigen tools.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
@@ -46,7 +46,7 @@ MEER OVER AI-CONTENT
 AI-medewerker inhuren of iemand aannemen?
 Soms heb je gewoon een mens nodig. Maar voor terugkerend uitvoerend werk is de rekensom snel gemaakt.
 | AI-medewerker | Nieuwe medewerker |
-Kosten per maand | Vanaf EUR 500, beheer en hosting inbegrepen | EUR 3.500+ bruto, plus werkgeverslasten |
+Kosten per maand | Vast maandbedrag, beheer en hosting inbegrepen | EUR 3.500+ bruto, plus werkgeverslasten |
 Inzetbaar binnen | 4 tot 6 weken | 2 tot 4 maanden werving, daarna inwerken |
 Beschikbaarheid | 24/7, ook in vakanties | 32 tot 40 uur per week |
 Verzuim en verloop | Nooit ziek, vertrekt niet | Gemiddeld 5% verzuim, wervingsrisico |
@@ -70,7 +70,7 @@ Elke maand wordt hij slimmer: nieuwe taken erbij, processen verfijnen, resultate
 > C:\faq
 Veelgestelde vragen over AI-medewerkers.
 Wat kost een AI-medewerker?
-Een AI-medewerker huur je vanaf EUR 500 per maand, afhankelijk van het aantal taken en de complexiteit. Je betaalt geen wervingskosten, geen verzuim en geen werkgeverslasten. Op onze prijzenpagina zie je alle abonnementen. Benieuwd wat de markt rekent? Lees wat AI-automatisering kost .
+Een AI-medewerker huur je voor een vast maandbedrag, afhankelijk van het aantal taken en de complexiteit. Je betaalt geen wervingskosten, geen verzuim en geen werkgeverslasten. Op onze prijzenpagina zie je alle abonnementen. Benieuwd hoe het kostenplaatje in elkaar zit? Lees wat AI-automatisering kost .
 Hoe snel is een AI-medewerker inzetbaar?
 De eerste werkende versie draait binnen 4 tot 6 weken. Daarna sturen we bij op basis van de praktijk en breiden we de taken stap voor stap uit.
 Werkt een AI-medewerker met onze bestaande tools?

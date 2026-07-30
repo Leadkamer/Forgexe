@@ -58,19 +58,19 @@ Live met goedkeurflow
 We draaien op echte facturen terwijl we meekijken. De goedkeurflow staat vanaf dag één aan, zodat er nooit iets ongezien wordt geboekt.
 > STAP_04
 Beheer en doorontwikkeling
-We bewaken de flow, vangen fouten af en breiden uit naar andere documentstromen. Abonnement vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+We bewaken de flow, vangen fouten af en breiden uit naar andere documentstromen. Alles inbegrepen in een vast maandabonnement. Zie prijzen .
 > C:\faq
 Veelgestelde vragen over factuurverwerking automatiseren.
 Werkt dit met mijn boekhoudpakket?
 Vrijwel altijd. We koppelen met de gangbare Nederlandse pakketten zoals Exact, Moneybird, e-Boekhouden en Twinfield, en met veel andere systemen via hun API. We zijn vendor-vrij: we bouwen op jouw pakket, niet andersom.
 Wat kost factuurverwerking automatiseren?
-In de markt betaal je vaak eenmalig EUR 2.500 tot EUR 7.500 voor de implementatie, plus maandelijkse kosten per factuur of per gebruiker. Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. In onze kostengids zie je wat de markt rekent.
+In de markt betaal je vaak een eenmalige implementatie plus maandelijkse kosten per factuur of per gebruiker. Bij Forgexe werk je met een vast maandabonnement, inclusief bouwen, hosten, bewaken en doorontwikkelen. Zo weet je vooraf waar je aan toe bent. Alle abonnementen staan op de prijzenpagina .
 Hoe gaat het systeem om met verkeerde of frauduleuze facturen?
 Elke factuur gaat door validatieregels: klopt het btw-nummer, wijkt het rekeningnummer af van eerdere facturen van deze leverancier, is de factuur al eerder binnengekomen, wijkt het bedrag af van de inkooporder. Alles wat afwijkt gaat naar een mens ter goedkeuring. Er wordt dus nooit blind geboekt.
 Is dit AVG-proof?
 Ja. Je facturen blijven in je eigen systemen en we kunnen alles op Europese servers hosten, inclusief de AI-verwerking. Je data wordt niet gebruikt om modellen van derden te trainen.
 Hoeveel facturen per maand moet ik hebben wil dit uitkunnen?
-Vanaf enkele tientallen facturen per maand is automatiseren al zinvol. Rekenvoorbeeld: 100 facturen per maand tegen 12 minuten per stuk is 20 uur handwerk. Tegen EUR 40 per uur is dat EUR 800 per maand aan verwerkingstijd, nog los van fouten en herstelwerk. Een abonnement vanaf EUR 500 per maand verdient zich dan direct terug.
+Vanaf enkele tientallen facturen per maand is automatiseren al zinvol. Rekenvoorbeeld: 100 facturen per maand tegen 12 minuten per stuk is 20 uur handwerk. Tegen EUR 40 per uur is dat EUR 800 per maand aan verwerkingstijd, nog los van fouten en herstelwerk. Een automatisering verdient zich dan al snel terug.
 Kunnen jullie ook offertes en andere documenten verwerken?
 Ja. Dezelfde aanpak werkt voor offertes, pakbonnen, contracten, orderbevestigingen en inkomende mail. We bouwen AI-agents die elk type document uitlezen, interpreteren en in je systemen zetten.
 > C:\forgexe\klaar

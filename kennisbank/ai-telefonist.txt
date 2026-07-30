@@ -9,7 +9,7 @@ Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
 > C:\wat-is-het
 Wat is een AI-telefonist?
-Een AI-telefonist is software die inkomende telefoontjes aanneemt, vragen beantwoordt, afspraken inplant en gesprekken doorverbindt of samenvat naar je team. Hij werkt 24/7 : ook tijdens de lunch, in de vakantie en op momenten van piekdrukte wanneer je team de telefoon niet kan opnemen.
+Een AI-telefonist (ook wel AI-telefoniste genoemd) is software die inkomende telefoontjes aanneemt, vragen beantwoordt, afspraken inplant en gesprekken doorverbindt of samenvat naar je team. Hij werkt 24/7 : ook tijdens de lunch, in de vakantie en op momenten van piekdrukte wanneer je team de telefoon niet kan opnemen.
 Geen keuzemenu dus ("toets 1 voor..."), maar een echt gesprek. De beller stelt een vraag zoals hij die aan een collega zou stellen, en de AI begrijpt de vraag, antwoordt of handelt hem af. Het verschil met de robotstemmen van een paar jaar geleden is groter dan je denkt.
 C:\forgexe\telefonist
 ● GESPREK
@@ -44,7 +44,7 @@ Wat kost een AI-telefonist?
 De Nederlandse markt in 2026, in drie prijsklassen. Let op: sommige aanbieders rekenen daarnaast gesprekskosten per minuut.
 Prijsklasse | Prijs per maand | Wat je krijgt | Past bij |
 Instapoplossing | Vanaf enkele tientjes | Standaard telefonist die aanneemt en een bericht doorstuurt. Weinig tot geen maatwerk, geen koppelingen. | Simpel opvangen van gemiste telefoontjes |
-Zakelijke oplossing | EUR 100 tot EUR 500 | Koppeling met je agenda en CRM, eigen kennisbank, slim doorverbinden en gespreksverslagen. | MKB dat de telefoon echt wil laten meewerken |
+Zakelijke oplossing | Vast maandbedrag, middenklasse | Koppeling met je agenda en CRM, eigen kennisbank, slim doorverbinden en gespreksverslagen. | MKB dat de telefoon echt wil laten meewerken |
 Volledig maatwerk | Daarboven | Diepe integraties met je eigen systemen, meerdere nummers en afdelingen, eigen voice en flows. | Hoog belvolume en complexe processen |
 Vraag bij elke aanbieder door naar de gesprekskosten per minuut . Bij sommige platformen betaal je naast het abonnement per belminuut, en dan maakt je belvolume ineens veel uit voor het totaalplaatje. Reken het door op basis van je huidige aantal telefoontjes, niet op basis van het instaptarief.
 > C:\wel-of-niet

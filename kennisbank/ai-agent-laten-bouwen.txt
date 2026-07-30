@@ -45,8 +45,8 @@ Gekoppeld aan | Je CRM, mail, agenda en administratie | Niets, je kopieert alles
 Consistentie | Elke keer hetzelfde proces | Afhankelijk van wie de prompt schrijft |
 Data | Blijft in jouw systemen, AVG-proof | Gaat naar een extern chatvenster |
 > INVESTERING
-Vanaf EUR 500 / maand
-Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af, en liever helemaal geen abonnement? Forge.Project: eenmalig bouwen vanaf EUR 7.500, alles wordt overgedragen.
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af, en liever helemaal geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.
 Bekijk alle prijzen
 > C:\proces
 Van idee naar draaiende agent in 4 stappen.
@@ -65,7 +65,7 @@ We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet 
 > C:\faq
 Veelgestelde vragen over AI-agents laten bouwen.
 Wat kost het om een AI-agent te laten bouwen?
-Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start). Voor groter maatwerk (Forge.Pro) reken je geen setup-kosten vooraf: de ontwikkeling, hosting, bewaking en doorontwikkeling zitten allemaal in het maandbedrag, waarvoor we minimaal 6 maanden aanhouden. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
+Bij Forgexe stap je in met een vast maandabonnement zonder eenmalige kosten (Forge.Start). Voor groter maatwerk (Forge.Pro) reken je geen setup-kosten vooraf: de ontwikkeling, hosting, bewaking en doorontwikkeling zitten allemaal in het maandbedrag, waarvoor we minimaal 6 maanden aanhouden. Alle abonnementen staan op de prijzenpagina , en in onze kostengids zie je wat de markt rekent.
 Hoe lang duurt het bouwen van een AI-agent?
 De eerste werkende versie draait binnen 4 tot 6 weken in je eigen omgeving. Daarna sturen we bij op basis van echte data en breiden we stap voor stap uit.
 Waarom geen ChatGPT gebruiken in plaats van een eigen AI-agent?

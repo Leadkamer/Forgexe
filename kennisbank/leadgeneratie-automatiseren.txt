@@ -55,7 +55,7 @@ Systeem bouwen en live
 We bouwen het complete systeem, vendor-vrij en meestal op n8n, zodat alles jouw eigendom blijft. Eerste werkende versie binnen 4 tot 6 weken.
 > STAP_04
 Optimaliseren op cijfers
-We meten wat werkt en stellen doelgroep, boodschap en timing maandelijks bij. Abonnement vanaf EUR 500 per maand, alles inbegrepen. Zie prijzen .
+We meten wat werkt en stellen doelgroep, boodschap en timing maandelijks bij. Alles inbegrepen in een vast maandabonnement. Zie prijzen .
 > C:\faq
 Veelgestelde vragen over leadgeneratie automatiseren.
 Is geautomatiseerde outreach niet gewoon spam?
@@ -63,7 +63,7 @@ Nee, mits je het goed doet: een scherpe doelgroep, een boodschap die relevant is
 Werkt dit op LinkedIn zonder geblokkeerd te raken?
 Ja, als je de spelregels respecteert. We blijven ruim binnen de limieten van LinkedIn, bouwen menselijk gedrag in zoals variatie en pauzes, en sturen geen massale volumes. Accounts komen in de problemen door agressieve tooling op hoog volume; precies dat doen wij niet.
 Wat kost leadgeneratie automatiseren?
-In de markt betaal je voor een leadgen-systeem al snel EUR 3.000 tot EUR 9.000 eenmalig, plus maandelijkse kosten voor tooling en beheer. Bij Forgexe werk je met een abonnement vanaf EUR 500 per maand, inclusief bouwen, hosten, bewaken en doorontwikkelen. In onze kostengids zetten we de markttarieven op een rij.
+In de markt betaal je voor een leadgen-systeem vaak een fors eenmalig bouwtraject, plus maandelijkse kosten voor tooling en beheer. Bij Forgexe werk je met een vast maandabonnement, inclusief bouwen, hosten, bewaken en doorontwikkelen. Alle abonnementen staan op de prijzenpagina .
 Hoe snel zie ik resultaat?
 De eerste werkende versie staat binnen 4 tot 6 weken live. De eerste gesprekken volgen meestal binnen enkele weken na livegang, afhankelijk van je doelgroep en propositie. Daarna wordt het systeem elke maand beter, omdat we optimaliseren op wat de cijfers laten zien.
 Werkt dit ook voor nichemarkten?

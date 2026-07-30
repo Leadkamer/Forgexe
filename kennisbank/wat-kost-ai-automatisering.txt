@@ -1,6 +1,6 @@
 PAGINA: /wat-kost-ai-automatisering
-TITEL: Wat kost AI-automatisering voor het MKB? Eerlijke cijfers (2026)
-OMSCHRIJVING: AI-automatisering kost het MKB meestal 500 tot 2.500 euro per maand. In deze gids: alle prijsmodellen, concrete voorbeelden, verborgen kosten en terugverdientijd.
+TITEL: Wat kost AI-automatisering voor het MKB? Zo zit het (2026)
+OMSCHRIJVING: Wat kost AI-automatisering voor het MKB? Alle prijsmodellen, kostencomponenten, verborgen kosten en terugverdientijd op een rij. Actuele prijzen vind je op onze prijzenpagina.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
@@ -9,8 +9,8 @@ Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
 > C:\het-korte-antwoord
 Het korte antwoord.
-Voor een MKB-bedrijf kost AI-automatisering in 2026 meestal tussen de EUR 500 en EUR 2.500 per maand , afhankelijk van het aantal processen en de complexiteit. Wie liever eenmalig afrekent, betaalt in de markt EUR 2.500 tot EUR 9.000 per project. Bij een abonnement zit bouwen, hosting en onderhoud in een vast maandbedrag; bij een project betaal je eenmalig en ben je daarna zelf eigenaar. Beide routes bestaan, ook bij ons.
-Dat is de samenvatting. Maar "het hangt ervan af" is een irritant antwoord als je een budget moet maken, dus hieronder maken we het concreet: waar de prijs uit bestaat, wat verschillende prijsmodellen betekenen voor jouw risico, en welke bedragen er in de Nederlandse markt worden gerekend.
+De prijs van AI-automatisering hangt af van het aantal processen en de complexiteit — en van hoe je afrekent. Bij een abonnement zit bouwen, hosting en onderhoud in een vast maandbedrag; bij een eenmalig project betaal je vooraf en ben je daarna zelf eigenaar. Beide routes bestaan, ook bij ons. De actuele bedragen per tier staan op onze prijzenpagina .
+Dat is de samenvatting. Maar "het hangt ervan af" is een irritant antwoord als je een budget moet maken, dus hieronder maken we het concreet: waar de prijs uit bestaat, wat verschillende prijsmodellen betekenen voor jouw risico, en hoe je aanbieders eerlijk met elkaar vergelijkt.
 > C:\prijsopbouw
 Waar betaal je eigenlijk voor?
 Elke AI-automatisering heeft vier kostencomponenten. Wie er maar twee offreert, komt later met de andere twee.
@@ -19,10 +19,10 @@ Bouwen
 Het ontwerpen en bouwen van de automatisering zelf: het proces doorgronden, de flow bouwen, testen en live brengen. Bij bureaus het eenmalige traject, bij abonnementen verwerkt in het maandbedrag.
 > KOSTEN_02
 AI-verbruik
-Elk AI-model rekent per gebruik. Voor de meeste MKB-automatiseringen is dit EUR 10 tot EUR 150 per maand, maar het groeit mee met je volume. Vraag altijd wie dit betaalt en wie het bewaakt.
+Elk AI-model rekent per gebruik. Voor de meeste MKB-automatiseringen is dit een bescheiden post, maar hij groeit mee met je volume. Vraag altijd wie dit betaalt en wie het bewaakt.
 > KOSTEN_03
 Tools en hosting
-Het platform waarop je automatisering draait. Van EUR 20 per maand voor een n8n-omgeving tot honderden euro's bij per-taak-tools zoals Zapier als je volume groeit.
+Het platform waarop je automatisering draait. Een eigen n8n-omgeving is goedkoop in gebruik; per-taak-tools zoals Zapier worden juist duur zodra je volume groeit.
 > KOSTEN_04
 Beheer en doorontwikkeling
 De vergeten post. API's veranderen, systemen krijgen updates, processen schuiven. Zonder onderhoud valt elke automatisering vroeg of laat om. Reken op 10 tot 20% van de bouwkosten per jaar, of een abonnement waar het in zit.
@@ -30,22 +30,22 @@ De vergeten post. API's veranderen, systemen krijgen updates, processen schuiven
 De drie prijsmodellen in de markt.
 Hetzelfde werk, drie manieren van afrekenen. Het verschil zit in wie het risico draagt.
 | Uurtarief | Eenmalig traject | Abonnement |
-Typische prijs | EUR 90 tot EUR 150 per uur | EUR 2.500 tot EUR 9.000 vooraf | EUR 500 tot EUR 2.500 per maand |
+Afrekenen | Per gewerkt uur, achteraf | Vast bedrag, vooraf | Vast maandbedrag |
 Voorspelbaarheid | Laag, uren lopen op | Hoog voor de bouw, daarna onbekend | Hoog, vast bedrag |
 Onderhoud | Losse facturen achteraf | Apart contract of niet geregeld | Inbegrepen |
 Risico ligt bij | Jou | Jou, na oplevering | De leverancier |
 Past bij | Los advies of klein klusje | Eén afgebakend project | Doorlopend automatiseren |
-Wij werken zelf met het abonnementsmodel (vanaf EUR 500 per maand met Forge.Start ), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Voor groter maatwerk (Forge.Pro) zit de ontwikkeling in het maandbedrag in plaats van in setup-kosten vooraf, met minimaal 6 maanden looptijd. En wil je helemaal geen abonnement? Dat kan bij ons ook: met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles volledig aan je over, met beheer als optie in plaats van verplichting.
+Wij werken zelf met het abonnementsmodel ( Forge.Start ), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Voor groter maatwerk (Forge.Pro) zit de ontwikkeling in het maandbedrag in plaats van in setup-kosten vooraf, met minimaal 6 maanden looptijd. En wil je helemaal geen abonnement? Dat kan bij ons ook: met Forge.Project bouwen we eenmalig en dragen we alles volledig aan je over, met beheer als optie in plaats van verplichting. De actuele bedragen per tier staan op de prijzenpagina .
 > C:\voorbeelden
-Concrete voorbeelden uit de markt.
-Wat Nederlandse partijen in 2026 rekenen voor veelgevraagde automatiseringen.
-Automatisering | Marktprijs eenmalig | Plus per maand |
-AI-chatbot voor je website | EUR 2.000 tot EUR 10.000 | EUR 50 tot EUR 300 |
-Leadgen-systeem (outreach + opvolging) | EUR 3.000 tot EUR 9.000 | EUR 150 tot EUR 500 |
-Factuur- en documentverwerking | EUR 2.500 tot EUR 7.500 | EUR 100 tot EUR 400 |
-Rapportage-automatisering | EUR 1.500 tot EUR 5.000 | EUR 50 tot EUR 250 |
-AI-agent op maat | EUR 2.500 tot EUR 9.000+ | EUR 100 tot EUR 500 |
-Ter vergelijking: bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten, en voor groter maatwerk spreken we de eenmalige investering vooraf vast af. Wat je precies krijgt per tier staat op de prijzenpagina , en in onze cases zie je wat er in de praktijk gebouwd wordt.
+Wat bepaalt de prijs per automatisering?
+Dezelfde soort automatisering kan simpel of complex zijn. Dit zijn de knoppen waar de prijs aan hangt.
+Automatisering | Wat de prijs vooral bepaalt |
+AI-chatbot voor je website | Hoeveel systemen de bot moet raadplegen en hoeveel hij zelfstandig mag afhandelen |
+Leadgen-systeem (outreach + opvolging) | Aantal kanalen (e-mail, LinkedIn), mate van personalisatie en opvolgflows |
+Factuur- en documentverwerking | Factuurvolume, variatie in formaten en de koppeling met je boekhoudpakket |
+Rapportage-automatisering | Aantal databronnen en hoe vaak de rapportages moeten draaien |
+AI-agent op maat | Complexiteit van de beslissingen en het aantal systemen waarin de agent werkt |
+Wat je precies krijgt per tier staat op de prijzenpagina , en in onze cases zie je wat er in de praktijk gebouwd wordt.
 > C:\terugverdientijd
 Wanneer verdient het zich terug?
 De meeste MKB-automatiseringen verdienen zichzelf in 2 tot 6 maanden terug. De rekensom is simpeler dan hij lijkt: tel de uren die een proces nu kost, vermenigvuldig met de loonkosten, en zet dat naast het maandbedrag.
@@ -53,9 +53,7 @@ De meeste MKB-automatiseringen verdienen zichzelf in 2 tot 6 maanden terug. De r
 Tijd per week aan offertes opstellen 6 uur
 Loonkosten per uur (incl. werkgeverslasten) EUR 45
 Kosten van het handwerk per maand EUR 1.170
-Abonnement AI-automatisering EUR 500
-Besparing per maand + EUR 670
-En dit rekent alleen de uren. De snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.
+Zet daar het maandbedrag van de automatisering naast (zie de prijzenpagina ) en je hebt je businesscase. En dit rekent alleen de uren: de snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.
 > C:\verborgen-kosten
 Verborgen kosten waar je op moet letten.
 De vragen die je elke aanbieder (ook ons) zou moeten stellen voordat je tekent.
@@ -72,11 +70,11 @@ Hoe complexer de oplossing, hoe hoger de prijs. Maar veel processen hebben helem
 > C:\faq
 Veelgestelde vragen over kosten.
 Wat kost een AI-agent laten bouwen?
-In de Nederlandse markt betaal je voor een op maat gebouwde AI-agent meestal een eenmalig traject van EUR 2.500 tot EUR 9.000 plus maandelijkse kosten voor tools en onderhoud. Bij Forgexe stap je in vanaf EUR 500 per maand zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig vanaf EUR 7.500 en dragen we alles aan je over. Meer daarover op de pagina AI-agent laten bouwen AI-automatisering laten bouwen .
+De prijs hangt af van de complexiteit en het aantal systemen waarin de agent werkt. Bij Forgexe stap je in met een vast maandabonnement zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig en dragen we alles aan je over. De actuele bedragen staan op de prijzenpagina . Meer daarover op de pagina AI-agent laten bouwen AI-automatisering laten bouwen AI-automatisering Limburg AI-automatisering Eindhoven .
 Wat kost een AI-chatbot voor mijn website?
-Marktprijzen voor een zakelijke AI-chatbot liggen tussen de EUR 2.000 en EUR 10.000 eenmalig, plus EUR 50 tot EUR 300 per maand voor hosting en AI-verbruik. De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen.
+De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen en hoeveel hij zelfstandig mag afhandelen. Reken naast de bouw ook op maandelijkse kosten voor hosting en AI-verbruik.
 Hoe snel verdient AI-automatisering zich terug?
-In de praktijk ligt de terugverdientijd voor MKB-automatiseringen meestal tussen de 2 en 6 maanden. Een automatisering die 6 uur per week bespaart, levert bij gemiddelde loonkosten al snel meer dan EUR 1.000 per maand op.
+In de praktijk ligt de terugverdientijd voor MKB-automatiseringen meestal tussen de 2 en 6 maanden. Een automatisering die meerdere uren per week bespaart, verdient bij gemiddelde loonkosten het maandbedrag al snel terug.
 Is zelf bouwen goedkoper dan uitbesteden?
 Op papier wel, in de praktijk vaak niet. Zelf bouwen kost intern veel uren, en zelfgebouwde flows vallen zonder onderhoud regelmatig om. De verborgen kosten zitten in de tijd van je duurste mensen en in processen die stilvallen zonder dat iemand het merkt. Vastgelopen? Onze n8n-specialisten nemen zelfgebouwde workflows over.
 Betaal ik per gebruiker of per proces?
