@@ -542,6 +542,35 @@
   }
   .form-submit:disabled { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
   .form-note { text-align: center; margin-top: 16px; font-size: 12px; color: var(--slate-light); }
+  /* WIZARD */
+  @keyframes wizIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .wizard { background: var(--cloud); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .wiz-progress { height: 4px; background: var(--border); }
+  .wiz-bar { height: 100%; width: 25%; background: var(--green); transition: width .4s cubic-bezier(.16,1,.3,1); }
+  .wiz-body { padding: 36px 32px; }
+  .wiz-count { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--slate-light); display: block; margin-bottom: 10px; }
+  .wiz-step { display: none; }
+  .wiz-step.active { display: block; animation: wizIn .35s ease-out both; }
+  .wiz-step h3 { font-family: var(--head); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 20px; }
+  .wiz-opts { display: grid; gap: 10px; }
+  .wiz-opt {
+    padding: 15px 18px; background: var(--white); border: 1.5px solid var(--border); border-radius: 9px;
+    text-align: left; font-family: var(--head); font-size: 15px; color: var(--ink); cursor: pointer; transition: all .25s ease;
+  }
+  .wiz-opt:hover { border-color: var(--green); transform: translateY(-1px); }
+  .wiz-opt.selected { border-color: var(--green); background: var(--green-pale); }
+  .wiz-back { background: none; border: none; color: var(--slate-light); font-family: var(--head); font-size: 14px; cursor: pointer; padding: 10px 0 0; margin-top: 14px; }
+  .wiz-back:hover { color: var(--ink); }
+  .wiz-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .wiz-form-grid .full { grid-column: 1 / -1; }
+  .wizard .form-input, .wizard .form-select { background: var(--white); }
+  .wizard .form-input:focus, .wizard .form-select:focus { background: var(--white); }
+  .wizard .form-done { padding: 12px 0 4px; }
+  @media (max-width: 600px) {
+    .wiz-body { padding: 26px 18px; }
+    .wiz-form-grid { grid-template-columns: 1fr; }
+    .wiz-form-grid .full { grid-column: 1; }
+  }
   .form-done { display: none; text-align: center; padding: 24px 0 8px; }
   .form-done.show { display: block; }
   .form-done .check {
@@ -1021,82 +1050,98 @@
         <span class="section-label-text">Plan de scan</span>
       </div>
       <h2 class="sh" style="text-align:center;">Plan de <em>gratis scan</em><br>op locatie</h2>
-      <p>Vul het formulier in en we nemen binnen 2 uur (op werkdagen) contact op om de scan in te plannen.</p>
+      <p>Drie korte vragen, dan je gegevens — en we nemen binnen 2 uur (op werkdagen) contact op om de scan in te plannen.</p>
     </div>
-    <div class="form-grid reveal" id="planForm">
-      <div class="form-group">
-        <label class="form-label" for="p-naam">Naam *</label>
-        <input type="text" class="form-input" id="p-naam" placeholder="Je naam" autocomplete="name" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="p-bedrijf">Bedrijf *</label>
-        <input type="text" class="form-input" id="p-bedrijf" placeholder="Naam van je bedrijf" autocomplete="organization" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="p-email">Zakelijk e-mailadres *</label>
-        <input type="email" class="form-input" id="p-email" placeholder="naam@bedrijf.nl" autocomplete="email" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="p-tel">Telefoon</label>
-        <input type="tel" class="form-input" id="p-tel" placeholder="+31 6 ..." autocomplete="tel">
-      </div>
-      <div class="form-group full">
-        <label class="form-label" for="p-plaats">Plaats (locatie van de vloer) *</label>
-        <input type="text" class="form-input" id="p-plaats" placeholder="Bijv. Venlo" autocomplete="address-level2" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="p-medewerkers">Aantal medewerkers *</label>
-        <select class="form-select" id="p-medewerkers" required>
-          <option value="" disabled selected>Maak een keuze</option>
-          <option value="1-15">1 tot 15</option>
-          <option value="15-50">15 tot 50</option>
-          <option value="50-200">50 tot 200</option>
-          <option value="200+">200+</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="p-erp">ERP-systeem</label>
-        <select class="form-select" id="p-erp">
-          <option value="" disabled selected>Maak een keuze</option>
-          <option value="SAP">SAP</option>
-          <option value="Exact">Exact</option>
-          <option value="Ridder iQ">Ridder iQ</option>
-          <option value="Isah">Isah</option>
-          <option value="AFAS">AFAS</option>
-          <option value="Anders / weet ik niet">Anders / weet ik niet</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label class="form-label" for="p-uitdaging">Grootste uitdaging *</label>
-        <select class="form-select" id="p-uitdaging" required>
-          <option value="" disabled selected>Maak een keuze</option>
-          <option value="Offertes en verkoop">Offertes die te traag de deur uit gaan</option>
-          <option value="Planning en productie">Planning en productie op spreadsheets</option>
-          <option value="Systemen koppelen">ERP, CRM en e-mail als losse eilanden</option>
-          <option value="Meer orders">Te weinig nieuwe orders binnenhalen</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label class="form-label" for="p-opmerking">Opmerkingen of vragen</label>
-        <textarea class="form-textarea" id="p-opmerking" placeholder="Bijv. voorkeur voor een dag of dagdeel, of wat je alvast kwijt wilt..."></textarea>
-      </div>
-      <div class="form-hp" aria-hidden="true"><input type="text" id="p-website" tabindex="-1" autocomplete="off" placeholder="Website"></div>
-      <div class="form-group full">
-        <label class="form-consent"><input type="checkbox" id="p-consent" required><span>Ik ga akkoord met het <a href="/privacy" target="_blank" rel="noopener">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
-      </div>
-      <div class="form-group full">
-        <p class="form-error" id="p-error">Vul alle verplichte velden in (met een geldig e-mailadres) en ga akkoord met het privacybeleid.</p>
-        <button type="button" class="form-submit" id="p-submit" onclick="submitPlan()">Plan de gratis scan →</button>
-      </div>
-    </div>
-    <div class="form-done" id="planDone">
-      <div class="check">&#10003;</div>
-      <h3>Bedankt! Je aanvraag is ontvangen.</h3>
-      <p>We nemen binnen 2 uur (op werkdagen) contact op om de scan op locatie in te plannen. Geen verplichtingen.</p>
-      <div class="checks">
-        <span><b>&#10003;</b> 100% gratis</span>
-        <span><b>&#10003;</b> &plusmn;2 uur op locatie</span>
-        <span><b>&#10003;</b> Quick wins binnen 48 uur</span>
+    <div class="wizard reveal" id="planWizard">
+      <div class="wiz-progress"><div class="wiz-bar" id="wizBar"></div></div>
+      <div class="wiz-body">
+
+        <div class="wiz-step active" data-step="1">
+          <span class="wiz-count">STAP 1 / 4</span>
+          <h3>Hoeveel medewerkers heeft je bedrijf?</h3>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'medewerkers','1-15')">1 tot 15</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'medewerkers','15-50')">15 tot 50</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'medewerkers','50-200')">50 tot 200</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'medewerkers','200+')">200+</button>
+          </div>
+        </div>
+
+        <div class="wiz-step" data-step="2">
+          <span class="wiz-count">STAP 2 / 4</span>
+          <h3>Waar ligt je grootste uitdaging?</h3>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'uitdaging','Offertes en verkoop')">Offertes die te traag de deur uit gaan</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'uitdaging','Planning en productie')">Planning en productie op spreadsheets</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'uitdaging','Systemen koppelen')">ERP, CRM en e-mail als losse eilanden</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'uitdaging','Meer orders')">Te weinig nieuwe orders binnenhalen</button>
+          </div>
+          <button type="button" class="wiz-back" onclick="wizShow(1)">&larr; Terug</button>
+        </div>
+
+        <div class="wiz-step" data-step="3">
+          <span class="wiz-count">STAP 3 / 4</span>
+          <h3>Welk ERP-systeem gebruik je nu?</h3>
+          <div class="wiz-opts">
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','SAP')">SAP</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','Exact')">Exact</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','Ridder iQ')">Ridder iQ</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','Isah')">Isah</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','AFAS')">AFAS</button>
+            <button type="button" class="wiz-opt" onclick="wizNext(this,'tools','Anders / weet ik niet')">Anders / weet ik niet</button>
+          </div>
+          <button type="button" class="wiz-back" onclick="wizShow(2)">&larr; Terug</button>
+        </div>
+
+        <div class="wiz-step" data-step="4">
+          <span class="wiz-count">STAP 4 / 4</span>
+          <h3>Waar kunnen we terecht voor de scan?</h3>
+          <div class="wiz-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="p-naam">Naam *</label>
+              <input type="text" class="form-input" id="p-naam" placeholder="Je naam" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="p-bedrijf">Bedrijf *</label>
+              <input type="text" class="form-input" id="p-bedrijf" placeholder="Naam van je bedrijf" autocomplete="organization" required>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="p-plaats">Plaats (locatie van de vloer) *</label>
+              <input type="text" class="form-input" id="p-plaats" placeholder="Bijv. Venlo" autocomplete="address-level2" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="p-email">Zakelijk e-mailadres *</label>
+              <input type="email" class="form-input" id="p-email" placeholder="naam@bedrijf.nl" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="p-tel">Telefoon</label>
+              <input type="tel" class="form-input" id="p-tel" placeholder="+31 6 ..." autocomplete="tel">
+            </div>
+            <div class="form-hp" aria-hidden="true"><input type="text" id="p-website" tabindex="-1" autocomplete="off" placeholder="Website"></div>
+            <div class="form-group full">
+              <label class="form-consent"><input type="checkbox" id="p-consent" required><span>Ik ga akkoord met het <a href="/privacy" target="_blank" rel="noopener">privacybeleid</a> en geef toestemming voor het verwerken van mijn gegevens.</span></label>
+            </div>
+            <div class="form-group full">
+              <p class="form-error" id="p-error">Vul alle verplichte velden in (met een geldig e-mailadres) en ga akkoord met het privacybeleid.</p>
+              <button type="button" class="form-submit" id="p-submit" onclick="submitPlan()">Plan de gratis scan →</button>
+            </div>
+          </div>
+          <button type="button" class="wiz-back" onclick="wizShow(3)">&larr; Terug</button>
+        </div>
+
+        <div class="wiz-step" data-step="5">
+          <div class="form-done show">
+            <div class="check">&#10003;</div>
+            <h3>Bedankt! Je aanvraag is ontvangen.</h3>
+            <p>We nemen binnen 2 uur (op werkdagen) contact op om de scan op locatie in te plannen. Geen verplichtingen.</p>
+            <div class="checks">
+              <span><b>&#10003;</b> 100% gratis</span>
+              <span><b>&#10003;</b> &plusmn;2 uur op locatie</span>
+              <span><b>&#10003;</b> Quick wins binnen 48 uur</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
     <p class="form-note" id="planNote">Na je aanvraag plannen we samen een ochtend die past. De scan zelf kost jou verder geen voorbereiding.</p>
@@ -1164,23 +1209,42 @@
   });
 
   var planSent = false;
+  var wizData = {};
   function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+  function wizShow(n){
+    var steps = document.querySelectorAll('#planWizard .wiz-step');
+    for (var i = 0; i < steps.length; i++){
+      steps[i].classList.toggle('active', parseInt(steps[i].getAttribute('data-step'), 10) === n);
+    }
+    document.getElementById('wizBar').style.width = Math.min(n, 4) / 4 * 100 + '%';
+    if (n === 5) document.getElementById('planNote').style.display = 'none';
+  }
+  function wizNext(btn, field, value){
+    wizData[field] = value;
+    var siblings = btn.parentElement.querySelectorAll('.wiz-opt');
+    for (var i = 0; i < siblings.length; i++){ siblings[i].classList.remove('selected'); }
+    btn.classList.add('selected');
+    var current = parseInt(btn.closest('.wiz-step').getAttribute('data-step'), 10);
+    setTimeout(function(){
+      wizShow(current + 1);
+      document.getElementById('planWizard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 180);
+  }
 
   function submitPlan(){
     if (planSent) return;
     var naam = document.getElementById('p-naam');
     var bedrijf = document.getElementById('p-bedrijf');
-    var email = document.getElementById('p-email');
     var plaats = document.getElementById('p-plaats');
-    var medewerkers = document.getElementById('p-medewerkers');
-    var uitdaging = document.getElementById('p-uitdaging');
+    var email = document.getElementById('p-email');
     var consent = document.getElementById('p-consent');
     var error = document.getElementById('p-error');
 
     var ok = true;
-    var required = [naam, bedrijf, email, plaats, medewerkers, uitdaging];
+    var required = [naam, bedrijf, plaats, email];
     for (var i = 0; i < required.length; i++){
-      var bad = !required[i].value || !required[i].value.trim();
+      var bad = !required[i].value.trim();
       required[i].classList.toggle('invalid', bad);
       if (bad) ok = false;
     }
@@ -1192,15 +1256,8 @@
     if (!ok){ error.classList.add('show'); return; }
     error.classList.remove('show');
 
-    function showDone(){
-      document.getElementById('planForm').style.display = 'none';
-      document.getElementById('planNote').style.display = 'none';
-      document.getElementById('planDone').classList.add('show');
-    }
+    if (document.getElementById('p-website').value){ wizShow(5); return; }
 
-    if (document.getElementById('p-website').value){ showDone(); return; }
-
-    var opmerking = document.getElementById('p-opmerking').value.trim();
     var data = {
       pagina: 'scan-op-locatie-maakindustrie',
       partner: 'fesma',
@@ -1211,9 +1268,9 @@
       email: email.value.trim(),
       telefoon: document.getElementById('p-tel').value.trim(),
       plaats: plaats.value.trim(),
-      medewerkers: medewerkers.value,
-      tools: document.getElementById('p-erp').value || 'Niet opgegeven',
-      uitdaging: uitdaging.value + ' · Locatie: ' + plaats.value.trim() + (opmerking ? ' · Opmerking: ' + opmerking : ''),
+      medewerkers: wizData.medewerkers || '',
+      tools: wizData.tools || 'Niet opgegeven',
+      uitdaging: (wizData.uitdaging || '') + ' · Locatie: ' + plaats.value.trim(),
       bron: window.location.pathname
     };
 
@@ -1231,7 +1288,7 @@
     /* Meta Pixel: activeer zodra de pixel op de pagina staat
     if (typeof fbq === 'function') fbq('track', 'Lead'); */
 
-    showDone();
+    wizShow(5);
   }
 </script>
 </body>
