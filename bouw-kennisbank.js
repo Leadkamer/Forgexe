@@ -75,7 +75,7 @@ var index = [];
 var totaal = 0;
 
 fs.readdirSync(ROOT)
-  .filter(function(f){ return f.endsWith('.html') && OVERSLAAN.indexOf(f) === -1; })
+  .filter(function(f){ return f.endsWith('.html') && OVERSLAAN.indexOf(f) === -1 && f.indexOf('newsletter') !== 0; })
   .sort()
   .forEach(function(f){
     var html = fs.readFileSync(path.join(ROOT, f), 'utf8');

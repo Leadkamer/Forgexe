@@ -57,8 +57,6 @@ AI
 AI Agents & automation voor Sales
 AI Fundamentals voor Sales — wat kun je er écht mee?
 Preparation Agent — voorbereiding & klantresearch automatiseren
-Objection Simulator — weerstanden oefenen met AI-roleplay
-Conversation intelligence — scherpere behoefteanalyse & opvolging
 Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap
 01
 Sales
@@ -82,8 +80,6 @@ AI
 AI Agents & automation voor Sales
 AI Fundamentals voor Sales — wat kun je er écht mee?
 Preparation Agent — voorbereiding & klantresearch automatiseren
-Objection Simulator — weerstanden oefenen met AI-roleplay
-Conversation intelligence — scherpere behoefteanalyse & opvolging
 Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap
 Je trainers
 De verkoper & de bouwer
@@ -123,7 +119,7 @@ Wat je meekrijgt
 Meer dan alleen een training
 🤖
 Eigen AI Agents
-Je bouwt tijdens de training je eigen Preparation Agent, Objection Simulator en Admin Bot — direct inzetbaar.
+Je bouwt tijdens de training je eigen Preparation Agent en leadgeneratie-automatisering — direct inzetbaar.
 📋
 Persoonlijk Actieplan
 Reflectie en een concreet actieplan maken deel uit van de training. Je gaat weg met een roadmap op maat.

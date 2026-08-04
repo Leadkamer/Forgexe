@@ -51,6 +51,7 @@ pilot — Forge.Pilot brengt al je data samen in één wekelijks overzicht. Mark
 planning-optimalisatie — AI-gestuurde productieplanning en capaciteitsoptimalisatie. Realtime data uit ERP/MES, slimme suggesties die stilstand voorkomen.
 pricing — Doorlopende pakketten (Forge.Start €500/mnd, Pro €1.250/mnd, Scale op maat) of eenmalig eigenaar met Forge.Project vanaf €7.500. Nooit setup bovenop je abonnement.
 privacy — Privacybeleid van Forgexe. Hoe wij omgaan met persoonlijke gegevens.
+sales-ai-brochure — Ontvang de gratis brochure van de 3-daagse Sales & AI training: programma, data en prijzen direct in je mailbox.
 sales-ai-training — Sales & AI Training — Fidecon × Forgexe
 scan-op-locatie-maakindustrie — Gratis AI- & processcan op locatie voor maakbedrijven. Forgexe en Fesma lopen een ochtend mee op jouw vloer en leveren binnen 48 uur jouw drie grootste quick wins.
 voorwaarden — Algemene voorwaarden van Forgexe voor dienstverlening en levering.
