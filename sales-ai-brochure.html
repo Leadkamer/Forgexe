@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gratis brochure — Sales & AI Training · Fidecon × Forgexe</title>
+<meta name="description" content="Ontvang de gratis brochure van de 3-daagse Sales & AI training: programma, data en prijzen direct in je mailbox.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --navy:#1B2A55; --navy-deep:#111D3E; --navy-light:#2A3E6E;
+    --green:#4AAD3F; --green-bright:#55C44A; --green-dark:#3A8E32; --mint:#34d399;
+    --sky:#EEF2F9; --cloud:#F6F8FC; --white:#fff; --slate:#4A5568; --slate-light:#718096;
+    --ink:#1A1F2E; --border:#DEE5F0;
+  }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Outfit',sans-serif; color:var(--ink); background:var(--navy-deep); -webkit-font-smoothing:antialiased; }
+
+  /* HERO */
+  .hero { position:relative; min-height:100vh; overflow:hidden;
+    background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-light) 100%); }
+  .hero-grid { position:absolute; inset:0;
+    background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+    background-size:56px 56px; }
+  .hero-glow { position:absolute; width:520px; height:520px; right:-160px; top:-140px; border-radius:50%;
+    background:radial-gradient(circle,rgba(74,173,63,0.14),transparent 65%); }
+  .wrap { position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:26px 32px 60px; }
+
+  .brand { display:inline-flex; align-items:center; gap:10px; margin-bottom:44px; }
+  .brand svg { display:block; }
+  .brand .nm { font-size:18px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+  .brand .nm.fx { color:var(--mint); }
+  .brand .x { color:rgba(255,255,255,0.45); font-size:15px; font-weight:300; }
+
+  .grid { display:grid; grid-template-columns:1.05fr 0.95fr; gap:52px; align-items:center; }
+
+  .eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--green-bright); margin-bottom:20px; }
+  .eyebrow .dot { width:8px; height:8px; border-radius:50%; background:var(--green-bright); }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,4.6vw,52px); font-weight:700; color:#fff; line-height:1.08; letter-spacing:-0.5px; margin-bottom:20px; }
+  h1 em { font-style:italic; color:var(--mint); font-weight:600; }
+  .sub { font-size:17px; line-height:1.6; color:rgba(255,255,255,0.76); font-weight:300; max-width:520px; margin-bottom:28px; }
+
+  .bul { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
+  .bul li { display:flex; align-items:center; gap:13px; font-size:15.5px; color:rgba(255,255,255,0.9); font-weight:400; }
+  .bul .ic { width:26px; height:26px; border-radius:8px; background:rgba(74,173,63,0.16); border:1px solid rgba(85,196,74,0.45); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .bul .ic svg { width:14px; height:14px; }
+
+  .trust { display:flex; align-items:center; gap:16px; }
+  .trust-ph { display:flex; }
+  .trust-ph img { width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid var(--navy-light); }
+  .trust-ph img:nth-child(2) { margin-left:-14px; }
+  .trust-txt { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.45; }
+  .trust-txt b { color:#fff; font-weight:600; }
+
+  /* FORM CARD */
+  .card { background:#fff; border-radius:18px; padding:34px 32px; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
+  .card-h { font-family:'Playfair Display',serif; font-size:25px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:6px; }
+  .card-s { font-size:14px; color:var(--slate); font-weight:300; margin-bottom:22px; }
+  .fld { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .fld label { font-size:12.5px; font-weight:600; color:var(--navy); }
+  .fld input { padding:14px 16px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:15px; color:var(--ink); background:var(--cloud); outline:none; transition:all .25s; }
+  .fld input:focus { border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(74,173,63,0.12); }
+  .submit { width:100%; padding:16px; margin-top:4px; background:var(--green); color:#fff; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; border:none; border-radius:9px; cursor:pointer; transition:all .25s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+  .submit:hover { background:var(--green-bright); transform:translateY(-2px); box-shadow:0 12px 30px rgba(74,173,63,0.3); }
+  .note { text-align:center; font-size:12px; color:var(--slate-light); margin-top:12px; }
+  .card-badge { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--green-dark); background:var(--cloud); border:1px solid var(--border); padding:6px 12px; border-radius:999px; margin-bottom:16px; }
+
+  /* IN DE BROCHURE */
+  .inbroch { background:#fff; padding:64px 32px; }
+  .inbroch-in { max-width:1120px; margin:0 auto; }
+  .ib-eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--green-dark); margin-bottom:12px; }
+  .ib-eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green); }
+  .ib-h2 { font-family:'Playfair Display',serif; font-size:30px; font-weight:600; color:var(--navy); margin-bottom:32px; }
+  .ib-h2 em { font-style:italic; color:var(--green-dark); }
+  .ib-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .ib-card { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:22px 20px; }
+  .ib-num { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--green-dark); margin-bottom:8px; }
+  .ib-card h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:5px; }
+  .ib-card p { font-size:13px; color:var(--slate); font-weight:300; line-height:1.55; }
+  .ib-cta { text-align:center; margin-top:36px; }
+  .ib-btn { display:inline-flex; align-items:center; gap:9px; padding:15px 34px; background:var(--navy); color:#fff; font-family:'Outfit',sans-serif; font-size:15px; font-weight:600; border-radius:9px; text-decoration:none; transition:all .25s; }
+  .ib-btn:hover { background:var(--navy-light); transform:translateY(-2px); }
+
+  footer { background:var(--navy-deep); padding:22px 32px; text-align:center; }
+  footer a { color:rgba(255,255,255,0.5); font-size:12px; text-decoration:none; margin:0 8px; }
+  footer a:hover { color:#fff; }
+  footer .cp { display:block; font-size:11px; color:rgba(255,255,255,0.28); margin-top:6px; }
+
+  @media (max-width:860px) {
+    .wrap { padding:22px 20px 40px; }
+    .brand { margin-bottom:26px; }
+    .grid { grid-template-columns:1fr; gap:30px; }
+    h1 { font-size:32px; }
+    .sub { font-size:15.5px; }
+    .card { padding:26px 22px; order:-1; } /* form eerst op mobiel? nee: laat pitch kort boven */
+    .inbroch { padding:48px 20px; }
+    .ib-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:520px) {
+    .ib-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 120 96" width="40" height="32" aria-hidden="true"><path d="M16 66 Q60 96 104 66" stroke="#5AB130" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="32" cy="34" r="12" fill="#5AB130"/><path d="M16 70 Q16 48 32 48 Q48 48 48 70 Z" fill="#5AB130"/><circle cx="88" cy="34" r="12" fill="#5AB130"/><path d="M72 70 Q72 48 88 48 Q104 48 104 70 Z" fill="#5AB130"/><circle cx="60" cy="26" r="13" fill="#fff"/><path d="M42 68 Q42 44 60 44 Q78 44 78 68 Z" fill="#fff"/></svg>
+      <span class="nm">Fidecon</span><span class="x">×</span>
+      <svg viewBox="0 0 120 120" width="26" height="26" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
+      <span class="nm fx">Forgexe</span>
+    </div>
+
+    <div class="grid">
+      <div class="pitch">
+        <span class="eyebrow"><span class="dot"></span> Gratis brochure · 3-daagse training</span>
+        <h1>Haal meer rendement uit <em>elk gesprek</em>.</h1>
+        <p class="sub">Je verkopers verliezen uren aan voorbereiding en opvolging. In 3 dagen leren ze bewezen salesmethodiek én bouwen ze hun eigen AI-agents die dat werk overnemen.</p>
+        <ul class="bul">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> 3-daagse training: 2 dagen sales, 1 dag AI</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Bouw je eigen AI-agents — direct inzetbaar</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Kleine groepen: max. 9 deelnemers</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Van een sales-expert én een AI-specialist</li>
+        </ul>
+        <div class="trust">
+          <div class="trust-ph">
+            <img src="trainer-gregor.jpg" alt="Gregor Gersen">
+            <img src="trainer-sedat.webp" alt="Sedat Ayar">
+          </div>
+          <div class="trust-txt"><b>Gregor Gersen</b> · Sales, Fidecon<br><b>Sedat Ayar</b> · AI, Forgexe</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-badge">✓ Vrijblijvend &amp; gratis</span>
+        <div class="card-h">Ontvang de brochure</div>
+        <div class="card-s">Het volledige programma, de data en de prijzen — direct in je mailbox.</div>
+        <div class="fld">
+          <label for="naam">Je naam</label>
+          <input type="text" id="naam" placeholder="Voor- en achternaam" required>
+        </div>
+        <div class="fld">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" placeholder="naam@bedrijf.nl" required>
+        </div>
+        <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
+        <p class="note">Geen verplichtingen. Uitschrijven kan altijd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inbroch">
+  <div class="inbroch-in">
+    <span class="ib-eyebrow"><span class="dot"></span> Wat zit erin</span>
+    <h2 class="ib-h2">In de brochure vind je <em>alles</em></h2>
+    <div class="ib-grid">
+      <div class="ib-card"><div class="ib-num">01</div><h4>Het programma</h4><p>Dag voor dag: van salesfundament tot je eigen AI-agents.</p></div>
+      <div class="ib-card"><div class="ib-num">02</div><h4>De trainers</h4><p>Wie Gregor en Sedat zijn en wat ze je leren.</p></div>
+      <div class="ib-card"><div class="ib-num">03</div><h4>Wat je meekrijgt</h4><p>Certificaat, leerplatform, AI-agents en een actieplan.</p></div>
+      <div class="ib-card"><div class="ib-num">04</div><h4>Data &amp; prijzen</h4><p>De trainingsrondes en de investering, transparant op een rij.</p></div>
+    </div>
+    <div class="ib-cta">
+      <a href="#" class="ib-btn" onclick="document.querySelector('.card').scrollIntoView({behavior:'smooth'});return false;">Vraag de brochure aan →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="https://www.forgexe.nl/sales-ai-training">Volledige trainingspagina</a>·
+    <a href="https://fidecon.nl" target="_blank">fidecon.nl</a>·
+    <a href="https://forgexe.nl" target="_blank">forgexe.nl</a>·
+    <a href="/privacy">Privacy</a>
+  </div>
+  <span class="cp">© 2026 Fidecon × Forgexe</span>
+</footer>
+
+<script>
+  async function submitBrochure(btn) {
+    var naam = document.getElementById('naam');
+    var email = document.getElementById('email');
+    var valid = true;
+    [naam, email].forEach(function(i){ if(!i.value.trim()){ i.style.borderColor='#e53e3e'; valid=false; } else { i.style.borderColor=''; } });
+    if (!valid) return;
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    var data = { naam: naam.value.trim(), email: email.value.trim(), type: 'brochure-aanvraag', bron: 'sales-ai-brochure-lp', datum: new Date().toISOString() };
+    try {
+      var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+      });
+      if (resp.ok || resp.type === 'opaque') {
+        if (window.fxTrack) fxTrack('Lead');
+        btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.style.background = 'var(--navy)'; btn.style.cursor = 'default';
+        naam.disabled = true; email.disabled = true;
+      } else { throw new Error('err'); }
+    } catch (e) {
+      btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.style.background = '#e53e3e'; btn.disabled = false;
+      setTimeout(function(){ btn.textContent = 'Stuur mij de brochure →'; btn.style.background = 'var(--green)'; }, 3000);
+    }
+  }
+</script>
+<script src="/tracking.js"></script>
+</body>
+</html>
