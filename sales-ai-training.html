@@ -1277,7 +1277,7 @@
       bedrijf: form.querySelector('input[placeholder="Naam van je organisatie"]').value.trim(),
       training: form.querySelector('select').value,
       opmerkingen: form.querySelector('textarea').value.trim(),
-      bron: 'fidecon-forgexe-website',
+      bron: new URLSearchParams(location.search).get('bron') || 'fidecon-forgexe-website',
       datum: new Date().toISOString()
     };
     try {
@@ -1318,7 +1318,7 @@
       naam: naam.value.trim(),
       email: email.value.trim(),
       type: 'brochure-aanvraag',
-      bron: 'fidecon-forgexe-website',
+      bron: new URLSearchParams(location.search).get('bron') || 'fidecon-forgexe-website',
       datum: new Date().toISOString()
     };
     try {
