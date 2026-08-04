@@ -726,6 +726,19 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   .scan-question{font-size:1.2rem!important;line-height:1.2}
 }
 /* ==/FORGEXE-MOBILE-FIX== */
+/* ==FESMA-DUO== */
+.fx-duo{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center}
+.fx-duo-badge{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink-dim);background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.45rem 1rem;margin-bottom:1.2rem}
+.fx-duo-badge b{color:var(--green-deep);font-weight:600}
+.fx-checks{list-style:none;display:grid;gap:.7rem;margin:1.4rem 0 1.8rem}
+.fx-checks li{font-family:var(--head);font-size:.95rem;color:var(--ink-dim);padding-left:1.6rem;position:relative}
+.fx-checks li::before{content:"\2713";position:absolute;left:0;font-family:var(--mono);color:var(--green-deep);font-weight:700}
+.fx-checks li b{color:var(--ink);font-weight:600}
+.fx-duo-img{border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 44px -26px rgba(10,11,14,.3)}
+.fx-duo-img img{width:100%;height:auto;display:block}
+.fx-duo-caption{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);margin-top:.8rem;text-align:center}
+@media(max-width:900px){.fx-duo{grid-template-columns:1fr;gap:1.8rem}}
+/* ==/FESMA-DUO== */
 .case-shot{border-radius:12px 12px 0 0;overflow:hidden;border:1px solid rgba(10,11,14,.14);border-bottom:0;background:#0a0b0e;box-shadow:0 14px 34px rgba(10,11,14,.14)}
 .case-shot-bar{display:flex;align-items:center;gap:5px;padding:9px 12px;background:#0a0b0e}
 .case-shot-bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
@@ -1299,6 +1312,29 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </a>
   </div>
   <p class="dark-card-foot">Jouw sector hier niet bij? Grote kans dat we er al eens voor hebben gebouwd. Laten we het gewoon even bespreken.</p>
+</section>
+
+<!-- ════════════ FESMA × FORGEXE ════════════ -->
+<section class="section-card reveal" id="scan-op-locatie">
+  <div class="fx-duo">
+    <div>
+      <span class="fx-duo-badge">FORGEXE <span style="color:var(--ink-mut)">&times;</span> FESMA &middot; <b>nu voor de maakindustrie</b></span>
+      <span class="eyebrow" style="display:flex">&gt; C:\scan-op-locatie</span>
+      <h2 class="section-h2">Gratis scan op locatie.</h2>
+      <p class="section-sub">Run je een maakbedrijf? Samen met procesbureau Fesma lopen we een ochtend mee op jouw vloer: we spreken je mensen en kijken live in je systemen.</p>
+      <ul class="fx-checks">
+        <li><b>Twee specialisten</b> &mdash; Fesma leest je proces, Forgexe ziet de AI-kansen</li>
+        <li><b>&plusmn;2 uur op locatie</b> &mdash; wij doen de analyse, jij hebt er geen omkijken naar</li>
+        <li><b>Binnen 48 uur</b> jouw drie grootste quick wins, doorgerekend in uren per week</li>
+        <li><b>100% gratis en vrijblijvend</b> &mdash; het rapport is en blijft van jou</li>
+      </ul>
+      <a href="/scan-op-locatie-maakindustrie" class="btn-pill primary">Plan de gratis scan op locatie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
+    <div>
+      <div class="fx-duo-img"><img src="fesma-forgexe-vloer.jpg" alt="Samu&euml;l (Fesma) en Sedat (Forgexe) op de werkvloer van een maakbedrijf" width="1200" height="900" loading="lazy"></div>
+      <div class="fx-duo-caption">Samu&euml;l (Fesma) &amp; Sedat (Forgexe) &middot; jouw vloer, jouw systemen</div>
+    </div>
+  </div>
 </section>
 
 <!-- ════════════ BIG CTA ════════════ -->
