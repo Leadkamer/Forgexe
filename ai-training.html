@@ -315,6 +315,36 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
+<style>
+  .sa-block{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;border:1px solid var(--line);overflow:hidden}
+  .sa-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+  .sa-media{position:relative;min-height:100%}
+  .sa-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .sa-badge{position:absolute;top:1.2rem;left:1.2rem;background:rgba(5,46,22,.82);color:#fff;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.08em;padding:.45rem .85rem;border-radius:7px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .sa-content{padding:3.2rem 3rem}
+  .sa-content h2{font-family:var(--head);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.05;letter-spacing:-.025em;color:var(--ink);margin-bottom:1rem}
+  .sa-content h2 em{font-style:italic;color:var(--green)}
+  .sa-content p{font-family:var(--head);font-size:.98rem;color:var(--ink-dim);line-height:1.6;margin-bottom:1.5rem;max-width:46ch}
+  .sa-facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem}
+  .sa-facts span{font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);background:#f4f6f8;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.4rem .85rem}
+  @media(max-width:900px){.sa-grid{grid-template-columns:1fr}.sa-media{min-height:260px}.sa-content{padding:2.2rem 1.4rem}}
+</style>
+<section class="sa-block reveal">
+  <div class="sa-grid">
+    <div class="sa-media">
+      <span class="sa-badge">FIDECON &times; FORGEXE</span>
+      <img src="trainers-presentatie.jpg" alt="Gregor Gersen en Sedat Ayar geven samen de Sales &amp; AI training" loading="lazy">
+    </div>
+    <div class="sa-content">
+      <span class="eyebrow">&gt; C:\training\sales-ai</span>
+      <h2>Sales &amp; AI <em>Training</em></h2>
+      <p>Een 3-daags programma samen met sales-experts van Fidecon. Je verkopers leren bewezen salesmethodiek &eacute;n bouwen hun eigen AI-agents die voorbereiding en opvolging overnemen &mdash; de verkoper &eacute;n de bouwer, in &eacute;&eacute;n training.</p>
+      <div class="sa-facts"><span>3 dagen</span><span>max. 9 deelnemers</span><span>2&times; sales &middot; 1&times; AI</span></div>
+      <a href="/sales-ai-training" class="btn-pill primary">Bekijk de Sales &amp; AI training <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <section class="cta-card reveal">
   <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
   <h2>Klaar om je <em>ai training</em> te smeden?</h2>
