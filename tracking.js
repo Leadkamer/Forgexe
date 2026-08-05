@@ -54,11 +54,37 @@
   }
 
   /* Conversie-events: veilig aanroepbaar, doet niets zonder toestemming.
-     Stuurt naar zowel Meta (fbq) als Google Analytics (gtag). */
-  window.fxTrack = function(event, data){
+     Stuurt naar zowel Meta (fbq) als Google Analytics (gtag).
+     eventId moet gelijk zijn aan het event_id dat naar de server (n8n/CAPI) gaat,
+     anders kan Meta browser- en serverevent niet ontdubbelen. */
+  window.fxTrack = function(event, data, eventId){
     if (lees() !== 'ja') return;
-    try { if (window.fbq) window.fbq('track', event, data || {}); } catch (e) {}
+    try { if (window.fbq) window.fbq('track', event, data || {}, eventId ? { eventID: eventId } : undefined); } catch (e) {}
     try { if (window.gtag) window.gtag('event', event, data || {}); } catch (e) {}
+  };
+
+  /* Velden voor de serverside Conversions API (n8n): klik-cookies + gedeeld event_id.
+     Werkt onafhankelijk van consent; zonder consent zijn fbc/fbp leeg en matcht
+     de server op IP en user-agent. _fbc wordt uit de fbclid opgebouwd als de
+     cookie ontbreekt, want de URL-parameter is niet afhankelijk van toestemming. */
+  window.fxLeadMeta = function(){
+    function cookie(naam){
+      var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+      return m ? m.pop() : '';
+    }
+    var fbc = cookie('_fbc');
+    if (!fbc) {
+      try {
+        var fbclid = new URLSearchParams(location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      } catch (e) {}
+    }
+    return {
+      fbc: fbc,
+      fbp: cookie('_fbp'),
+      event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
+      event_source_url: location.href
+    };
   };
 
   /* Eigen events (voor inzicht, niet voor optimalisatie) */

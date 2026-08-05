@@ -1258,9 +1258,14 @@
 
     if (document.getElementById('p-website').value){ wizShow(5); return; }
 
+    var meta = window.fxLeadMeta ? window.fxLeadMeta() : { fbc: '', fbp: '', event_id: '', event_source_url: location.href };
     var data = {
       pagina: 'scan-op-locatie-maakindustrie',
       partner: 'fesma',
+      fbc: meta.fbc,
+      fbp: meta.fbp,
+      event_id: meta.event_id,
+      event_source_url: meta.event_source_url,
       branche: 'Maakindustrie',
       urgentie: 'Scan op locatie (Fesma)',
       naam: naam.value.trim(),
@@ -1285,7 +1290,7 @@
       body: JSON.stringify(data)
     }).catch(function(){});
 
-    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'scan-op-locatie-maakindustrie' });
+    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'scan-op-locatie-maakindustrie' }, meta.event_id);
 
     wizShow(5);
   }

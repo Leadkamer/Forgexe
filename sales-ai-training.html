@@ -1269,6 +1269,7 @@
     if (!valid) return;
     btn.textContent = 'Verzenden...';
     btn.disabled = true;
+    const meta = window.fxLeadMeta ? window.fxLeadMeta() : { fbc: '', fbp: '', event_id: '', event_source_url: location.href };
     const data = {
       voornaam: form.querySelector('input[placeholder="Je voornaam"]').value.trim(),
       achternaam: form.querySelector('input[placeholder="Je achternaam"]').value.trim(),
@@ -1278,7 +1279,8 @@
       training: form.querySelector('select').value,
       opmerkingen: form.querySelector('textarea').value.trim(),
       bron: new URLSearchParams(location.search).get('bron') || 'fidecon-forgexe-website',
-      datum: new Date().toISOString()
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
     };
     try {
       const resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {
@@ -1290,7 +1292,7 @@
         btn.textContent = '✓ Verstuurd! We nemen contact op.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
-        if (window.fxTrack) fxTrack('CompleteRegistration');
+        if (window.fxTrack) fxTrack('CompleteRegistration', {}, meta.event_id);
       } else {
         throw new Error('Server error');
       }
@@ -1314,12 +1316,14 @@
     if (!valid) return;
     btn.textContent = 'Versturen...';
     btn.disabled = true;
+    const meta = window.fxLeadMeta ? window.fxLeadMeta() : { fbc: '', fbp: '', event_id: '', event_source_url: location.href };
     const data = {
       naam: naam.value.trim(),
       email: email.value.trim(),
       type: 'brochure-aanvraag',
       bron: new URLSearchParams(location.search).get('bron') || 'fidecon-forgexe-website',
-      datum: new Date().toISOString()
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
     };
     try {
       const resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {
@@ -1331,7 +1335,7 @@
         btn.textContent = '✓ Onderweg! Check je mailbox.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
-        if (window.fxTrack) fxTrack('Lead');
+        if (window.fxTrack) fxTrack('Lead', {}, meta.event_id);
       } else {
         throw new Error('Server error');
       }
