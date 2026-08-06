@@ -1292,6 +1292,9 @@
         btn.textContent = '✓ Verstuurd! We nemen contact op.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
+        if (!btn.parentNode.querySelector('.spam-hint')) {
+          btn.insertAdjacentHTML('afterend', '<p class="spam-hint" style="margin:.75rem 0 0;font-size:.8rem;line-height:1.5;color:var(--navy);opacity:.8;">📩 <strong>Geen bevestigingsmail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap — daar belandt hij soms.</p>');
+        }
         if (window.fxTrack) fxTrack('CompleteRegistration', {}, meta.event_id);
       } else {
         throw new Error('Server error');
@@ -1335,6 +1338,9 @@
         btn.textContent = '✓ Onderweg! Check je mailbox.';
         btn.style.background = 'var(--navy)';
         btn.style.cursor = 'default';
+        if (!btn.parentNode.querySelector('.spam-hint')) {
+          btn.insertAdjacentHTML('afterend', '<p class="spam-hint" style="margin:.75rem 0 0;font-size:.8rem;line-height:1.5;color:var(--navy);opacity:.8;">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap — de brochure belandt daar soms.</p>');
+        }
         if (window.fxTrack) fxTrack('Lead', {}, meta.event_id);
       } else {
         throw new Error('Server error');

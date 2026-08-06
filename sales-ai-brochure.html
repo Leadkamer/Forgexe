@@ -202,6 +202,9 @@
         if (window.fxTrack) fxTrack('Lead', {}, meta.event_id);
         btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.style.background = 'var(--navy)'; btn.style.cursor = 'default';
         naam.disabled = true; email.disabled = true;
+        if (!btn.parentNode.querySelector('.spam-hint')) {
+          btn.insertAdjacentHTML('afterend', '<p class="spam-hint" style="margin:.75rem 0 0;font-size:.8rem;line-height:1.5;color:var(--navy);opacity:.8;">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap — de brochure belandt daar soms.</p>');
+        }
       } else { throw new Error('err'); }
     } catch (e) {
       btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.style.background = '#e53e3e'; btn.disabled = false;
