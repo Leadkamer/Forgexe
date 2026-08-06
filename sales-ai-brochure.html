@@ -149,6 +149,14 @@
           <label for="email">E-mailadres</label>
           <input type="email" id="email" placeholder="naam@bedrijf.nl" required>
         </div>
+        <div class="fld">
+          <label for="bedrijf">Bedrijf <span style="opacity:.55;font-weight:400;">(optioneel)</span></label>
+          <input type="text" id="bedrijf" placeholder="Naam van je organisatie">
+        </div>
+        <div class="fld">
+          <label for="telefoon">Telefoon <span style="opacity:.55;font-weight:400;">(optioneel)</span></label>
+          <input type="tel" id="telefoon" placeholder="06 12 34 56 78">
+        </div>
         <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
         <p class="note">Geen verplichtingen. Uitschrijven kan altijd.</p>
         <a class="card-alt" href="https://www.forgexe.nl/sales-ai-training">Liever eerst alles lezen? Bekijk de volledige training →</a>
@@ -187,12 +195,14 @@
   async function submitBrochure(btn) {
     var naam = document.getElementById('naam');
     var email = document.getElementById('email');
+    var bedrijf = document.getElementById('bedrijf');
+    var telefoon = document.getElementById('telefoon');
     var valid = true;
     [naam, email].forEach(function(i){ if(!i.value.trim()){ i.style.borderColor='#e53e3e'; valid=false; } else { i.style.borderColor=''; } });
     if (!valid) return;
     btn.textContent = 'Versturen...'; btn.disabled = true;
     var meta = window.fxLeadMeta ? window.fxLeadMeta() : { fbc: '', fbp: '', event_id: '', event_source_url: location.href };
-    var data = { naam: naam.value.trim(), email: email.value.trim(), type: 'brochure-aanvraag', bron: 'sales-ai-brochure-lp', datum: new Date().toISOString(),
+    var data = { naam: naam.value.trim(), email: email.value.trim(), bedrijf: bedrijf.value.trim(), telefoon: telefoon.value.trim(), type: 'brochure-aanvraag', bron: 'sales-ai-brochure-lp', datum: new Date().toISOString(),
       fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url };
     try {
       var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {

@@ -1128,6 +1128,8 @@
     <div class="brochure-form reveal reveal-d1">
       <input type="text" class="form-input" id="broch-naam" placeholder="Je naam" required>
       <input type="email" class="form-input" id="broch-email" placeholder="naam@bedrijf.nl" required>
+      <input type="text" class="form-input" id="broch-bedrijf" placeholder="Bedrijf (optioneel)">
+      <input type="tel" class="form-input" id="broch-telefoon" placeholder="Telefoon (optioneel)">
       <button type="button" class="form-submit" style="margin-top:0;" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
       <span class="brochure-note">We sturen je de brochure en af en toe relevante info. Uitschrijven kan altijd.</span>
     </div>
@@ -1311,6 +1313,8 @@
   async function submitBrochure(btn) {
     const naam = document.getElementById('broch-naam');
     const email = document.getElementById('broch-email');
+    const bedrijf = document.getElementById('broch-bedrijf');
+    const telefoon = document.getElementById('broch-telefoon');
     let valid = true;
     [naam, email].forEach(function(i) {
       if (!i.value.trim()) { i.style.borderColor = '#e53e3e'; valid = false; }
@@ -1323,6 +1327,8 @@
     const data = {
       naam: naam.value.trim(),
       email: email.value.trim(),
+      bedrijf: bedrijf.value.trim(),
+      telefoon: telefoon.value.trim(),
       type: 'brochure-aanvraag',
       bron: new URLSearchParams(location.search).get('bron') || 'fidecon-forgexe-website',
       datum: new Date().toISOString(),
