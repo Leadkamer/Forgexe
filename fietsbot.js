@@ -19,7 +19,7 @@
   var config = null;
   var open = false;
   var busy = false;
-  var storeKey = 'fietsbot-' + WINKEL;
+  var storeKey = 'fietsbot-' + WINKEL + '-v2';
   var CHIPS = ['Wat zijn jullie openingstijden?', 'Doen jullie ook reparaties?'];
 
   function sessieId() {
