@@ -84,7 +84,8 @@
     '.fb-panel{position:absolute;right:0;bottom:74px;width:380px;max-width:calc(100vw - 40px);height:560px;max-height:calc(100vh - 120px);background:#FFFFFF;border:1px solid #E6E6E0;border-radius:20px;box-shadow:0 30px 70px rgba(12,13,16,.16);display:none;flex-direction:column;overflow:hidden}' +
     '.fb-root.fb-open .fb-panel{display:flex}' +
     '.fb-head{padding:14px 16px;display:flex;align-items:center;gap:10px;flex:0 0 auto;background:#FFFFFF;border-bottom:1px solid #E6E6E0}' +
-    '.fb-avatar{width:34px;height:34px;border-radius:999px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}' +
+    '.fb-avatar{width:34px;height:34px;border-radius:999px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;overflow:hidden}' +
+    '.fb-avatar img{width:100%;height:100%;object-fit:cover;border-radius:999px;display:block}' +
     '.fb-head-txt{flex:1;min-width:0}' +
     '.fb-head-naam{font-weight:600;font-size:13px;color:#0C0D10;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.fb-head-sub{font-size:12px;color:#22A06B}' +
@@ -154,8 +155,10 @@
     var tekst = licht ? '#0C0D10' : '#fff';
     btn.style.background = kleur;
     btn.style.color = tekst;
-    avatarEl.style.background = kleur;
-    avatarEl.style.color = tekst;
+    if (!avatarEl.querySelector('img')) {
+      avatarEl.style.background = kleur;
+      avatarEl.style.color = tekst;
+    }
     var linkKleur = licht ? '#22252C' : kleur;
     dynStyle.textContent =
       '.fb-msg-user{background:' + kleur + ';color:' + tekst + '}' +
@@ -241,7 +244,21 @@
     return post({ winkel: WINKEL, actie: 'config' }).then(function (data) {
       config = data;
       naamEl.textContent = data.naam || 'Chat';
-      avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
+      if (data.avatar_url && /^https:\/\//.test(data.avatar_url)) {
+        var img = document.createElement('img');
+        img.src = data.avatar_url;
+        img.alt = '';
+        img.onerror = function () {
+          avatarEl.innerHTML = '';
+          avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
+        };
+        avatarEl.innerHTML = '';
+        avatarEl.appendChild(img);
+        avatarEl.style.background = '#fff';
+        avatarEl.style.border = '1px solid #E6E6E0';
+      } else {
+        avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
+      }
       if (data.kleur) applyKleur(data.kleur);
       var h = loadHistory();
       if (h.length) {
