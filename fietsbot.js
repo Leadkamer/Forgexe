@@ -110,6 +110,10 @@
     '.fb-send.fb-armed:active{transform:scale(.94)}' +
     '.fb-foot{flex:0 0 auto;text-align:center;font-size:10px;color:#8A909D;padding:0 0 8px;background:#F2F2EE}' +
     '.fb-foot a{color:inherit;text-decoration:none}' +
+    '.fb-teaser{position:absolute;right:0;bottom:72px;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px 16px 4px 16px;box-shadow:0 14px 34px rgba(12,13,16,.18);padding:12px 34px 12px 16px;font-size:14px;font-weight:600;color:#0C0D10;white-space:nowrap;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1);pointer-events:none}' +
+    '.fb-teaser.fb-show{opacity:1;transform:translateY(0);pointer-events:auto}' +
+    '.fb-teaser-x{position:absolute;top:4px;right:6px;background:none;border:none;color:#8A909D;font-size:15px;cursor:pointer;padding:2px 4px;line-height:1;font-family:inherit}' +
+    '.fb-teaser-x:hover{color:#0C0D10}' +
     '@media (max-width:520px){.fb-root{right:12px;bottom:12px}.fb-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}}';
 
   var style = document.createElement('style');
@@ -136,6 +140,7 @@
       '</div></div>' +
       '<div class="fb-foot"><a href="https://www.forgexe.nl" target="_blank" rel="noopener">AI-assistent door Forgexe</a></div>' +
     '</div>' +
+    '<div class="fb-teaser" role="button" aria-label="Open chat">Kan ik je helpen? &#128075;<button class="fb-teaser-x" aria-label="Sluiten">&times;</button></div>' +
     '<button class="fb-btn" aria-label="Open chat">' +
       '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.58 3 11c0 2.1.92 4 2.43 5.43-.14 1.1-.6 2.42-1.43 3.32 1.64-.06 3.2-.66 4.33-1.42.86.24 1.76.37 2.67.37 4.97 0 9-3.58 9-8s-4.03-8-9-8Z" fill="currentColor"/></svg>' +
     '</button>';
@@ -160,11 +165,14 @@
       avatarEl.style.color = tekst;
     }
     var linkKleur = licht ? '#22252C' : kleur;
+    var pulsKleur = /^#[0-9a-fA-F]{6}$/.test(kleur) ? kleur : '#2F5CFF';
     dynStyle.textContent =
       '.fb-msg-user{background:' + kleur + ';color:' + tekst + '}' +
       '.fb-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '.fb-typing span.fb-on{background:' + kleur + '}' +
-      '.fb-msg-bot a{color:' + linkKleur + '}';
+      '.fb-msg-bot a{color:' + linkKleur + '}' +
+      '@keyframes fb-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
+      '.fb-btn.fb-pulsing{animation:fb-pulse 1.7s ease-out 3}';
   }
   applyKleur('#2F5CFF');
 
@@ -316,7 +324,43 @@
       });
   }
 
+  /* Gecachte huisstijl direct toepassen bij laden (kleur/logo zonder extra call) */
+  try {
+    var bootCfg = JSON.parse(sessionStorage.getItem(storeKey + '-config'));
+    if (bootCfg && bootCfg.t && (Date.now() - bootCfg.t) < CONFIG_TTL && bootCfg.d && bootCfg.d.naam) applyConfig(bootCfg.d);
+  } catch (e) { /* geen cache */ }
+
+  /* Teaser: na 4s "Kan ik je helpen?" + zachte pulse; 1x per sessie, wegklikbaar */
+  var teaserEl = root.querySelector('.fb-teaser');
+  var teaserX = root.querySelector('.fb-teaser-x');
+  var TEASER_KEY = storeKey + '-teaser';
+  function verbergTeaser() {
+    teaserEl.classList.remove('fb-show');
+    btn.classList.remove('fb-pulsing');
+    try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
+  }
+  setTimeout(function () {
+    if (open) return;
+    try { if (sessionStorage.getItem(TEASER_KEY)) return; } catch (e) { /* geen opslag */ }
+    teaserEl.classList.add('fb-show');
+    btn.classList.add('fb-pulsing');
+    try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
+    setTimeout(function () {
+      if (!open) { teaserEl.classList.remove('fb-show'); btn.classList.remove('fb-pulsing'); }
+    }, 15000);
+  }, 4000);
+  teaserEl.addEventListener('click', function (e) {
+    if (e.target === teaserX) return;
+    verbergTeaser();
+    btn.click();
+  });
+  teaserX.addEventListener('click', function (e) {
+    e.stopPropagation();
+    verbergTeaser();
+  });
+
   btn.addEventListener('click', function () {
+    verbergTeaser();
     open = !open;
     root.classList.toggle('fb-open', open);
     if (open) {
