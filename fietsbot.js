@@ -239,35 +239,51 @@
     addMsg('bot', 'Sorry, er ging iets mis. Probeer het zo nog eens.' + tel, true);
   }
 
+  function applyConfig(data) {
+    config = data;
+    naamEl.textContent = data.naam || 'Chat';
+    if (data.avatar_url && /^https:\/\//.test(data.avatar_url)) {
+      var img = document.createElement('img');
+      img.src = data.avatar_url;
+      img.alt = '';
+      img.onerror = function () {
+        avatarEl.innerHTML = '';
+        avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
+      };
+      avatarEl.innerHTML = '';
+      avatarEl.appendChild(img);
+      avatarEl.style.background = '#fff';
+      avatarEl.style.border = '1px solid #E6E6E0';
+    } else {
+      avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
+    }
+    if (data.kleur) applyKleur(data.kleur);
+    var h = loadHistory();
+    if (h.length) {
+      h.forEach(function (m) { addMsg(m.rol, m.tekst, true); });
+    } else if (data.welkomst) {
+      addMsg('bot', data.welkomst);
+    }
+    renderChips();
+    return data;
+  }
+
+  /* Config max 6 uur per sessie cachen: 1 webhook-call per bezoekersessie i.p.v. per pagina */
+  var CONFIG_TTL = 6 * 60 * 60 * 1000;
+
   function initConfig() {
     if (config) return Promise.resolve(config);
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(storeKey + '-config'));
+      if (cached && cached.t && (Date.now() - cached.t) < CONFIG_TTL && cached.d && cached.d.naam) {
+        return Promise.resolve(applyConfig(cached.d));
+      }
+    } catch (e) { /* geen of ongeldige cache — gewoon ophalen */ }
     return post({ winkel: WINKEL, actie: 'config' }).then(function (data) {
-      config = data;
-      naamEl.textContent = data.naam || 'Chat';
-      if (data.avatar_url && /^https:\/\//.test(data.avatar_url)) {
-        var img = document.createElement('img');
-        img.src = data.avatar_url;
-        img.alt = '';
-        img.onerror = function () {
-          avatarEl.innerHTML = '';
-          avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
-        };
-        avatarEl.innerHTML = '';
-        avatarEl.appendChild(img);
-        avatarEl.style.background = '#fff';
-        avatarEl.style.border = '1px solid #E6E6E0';
-      } else {
-        avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
-      }
-      if (data.kleur) applyKleur(data.kleur);
-      var h = loadHistory();
-      if (h.length) {
-        h.forEach(function (m) { addMsg(m.rol, m.tekst, true); });
-      } else if (data.welkomst) {
-        addMsg('bot', data.welkomst);
-      }
-      renderChips();
-      return data;
+      try {
+        sessionStorage.setItem(storeKey + '-config', JSON.stringify({ t: Date.now(), d: data }));
+      } catch (e) { /* opslag niet beschikbaar */ }
+      return applyConfig(data);
     });
   }
 
