@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juridische AI-training — Peters Advocatuur × Forgexe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1B2A55;
+    --navy-deep: #111D3E;
+    --navy-light: #2A3E6E;
+    --green: #34d399;
+    --green-bright: #4ade80;
+    --green-dark: #34d399;
+    --green-pale: #E6F9F1;
+    --sky: #EEF2F9;
+    --cloud: #F6F8FC;
+    --white: #FFFFFF;
+    --slate: #4A5568;
+    --slate-light: #718096;
+    --ink: #1A1F2E;
+    --border: #DEE5F0;
+    --gold: #B08D4F;
+  }
+
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px; display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+    padding: 14px 48px; box-shadow: 0 2px 24px rgba(27,42,85,0.08);
+  }
+  .nav-brands { display: flex; align-items: center; gap: 14px; }
+  .brand-lockup { display: inline-flex; align-items: center; gap: 9px; }
+  .brand-lockup svg { display: block; }
+  .brand-word {
+    font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 600;
+    letter-spacing: -0.2px; transition: color 0.4s;
+  }
+  .brand-peters { color: var(--white); }
+  nav.scrolled .brand-peters { color: var(--navy); }
+  .brand-peters svg { color: var(--white); transition: color 0.4s; }
+  nav.scrolled .brand-peters svg { color: var(--navy); }
+  .brand-forgexe .brand-word { font-family: 'Outfit', sans-serif; font-weight: 700; color: #34d399; }
+  nav.scrolled .brand-forgexe .brand-word { color: #34d399; }
+  .nav-x { color: rgba(255,255,255,0.45); font-size: 15px; font-weight: 300; transition: color 0.4s; }
+  nav.scrolled .nav-x { color: var(--slate-light); }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-link { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; }
+  .nav-link:hover { color: var(--white); }
+  nav.scrolled .nav-link { color: var(--slate); }
+  nav.scrolled .nav-link:hover { color: var(--navy); }
+  .nav-cta {
+    padding: 10px 24px; background: var(--green); color: var(--navy-deep);
+    font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+    border: none; border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
+  }
+  .nav-cta:hover { background: var(--green-bright); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(5,150,105,0.3); }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center;
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 40%, var(--navy-light) 100%);
+    overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(5,150,105,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(52,211,153,0.06) 0%, transparent 40%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-deco {
+    position: absolute; right: 7%; top: 50%; transform: translateY(-50%);
+    width: 300px; height: 300px; opacity: 0.06; animation: float 10s ease-in-out infinite;
+    color: #fff;
+  }
+  .hero-deco svg { width: 100%; height: 100%; }
+  .hero-content { position: relative; z-index: 2; padding: 140px 48px 100px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+  .hero-eyebrow-dot { width: 8px; height: 8px; background: var(--green-bright); border-radius: 50%; }
+  .hero-eyebrow-text { font-size: 13px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green-bright); }
+  .hero-heading {
+    font-family: 'Playfair Display', serif; font-size: clamp(42px, 6vw, 74px); font-weight: 700;
+    color: var(--white); line-height: 1.08; margin-bottom: 28px; max-width: 760px;
+    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.35s both;
+  }
+  .hero-heading em { font-style: italic; color: var(--green-bright); font-weight: 500; }
+  .hero-desc {
+    font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.75); max-width: 560px;
+    font-weight: 300; margin-bottom: 44px; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+  }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.65s both; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;
+    background: var(--green); color: var(--navy-deep); font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 700; border: none; border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
+  }
+  .btn-primary:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(5,150,105,0.3); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px;
+    background: transparent; color: rgba(255,255,255,0.9); font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 500; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.3s ease;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); color: var(--white); background: rgba(255,255,255,0.05); }
+  .hero-stats { position: absolute; right: 48px; bottom: 100px; display: flex; flex-direction: column; gap: 28px; z-index: 2; animation: fadeIn 1s ease 1s both; }
+  .hero-stat { text-align: right; }
+  .hero-stat-val { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--white); }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; animation: fadeIn 1s ease 1.2s both; }
+  .scroll-hint span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .scroll-dot { width: 2px; height: 32px; background: linear-gradient(to bottom, var(--green-bright), transparent); border-radius: 2px; animation: float 2s ease-in-out infinite; }
+  .hero-scarcity {
+    display: inline-flex; align-items: center; gap: 9px; margin-top: 24px;
+    font-size: 13.5px; color: rgba(255,255,255,0.72); animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.8s both;
+  }
+  .hero-scarcity b { color: var(--green-bright); font-weight: 600; }
+  .hero-scarcity .dotpulse { width: 7px; height: 7px; border-radius: 50%; background: var(--green-bright); box-shadow: 0 0 0 3px rgba(52,211,153,0.18); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  .hero-accred { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 10px 18px; border-radius: 999px; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.4); font-size: 13.5px; color: rgba(255,255,255,0.94); line-height: 1.35; animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.55s both; }
+  .hero-accred b { color: var(--green-bright); font-weight: 700; }
+  .hero-accred svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* SHARED */
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-label-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+  .section-label-text { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green-dark); }
+  .section-label-text.on-dark { color: var(--green-bright); }
+  h2.sh { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 44px); font-weight: 600; line-height: 1.2; color: var(--navy); margin-bottom: 16px; }
+  h2.sh em { font-style: italic; color: var(--green-dark); }
+  h2.sh.on-dark { color: var(--white); }
+  h2.sh.on-dark em { color: var(--green-bright); }
+
+  /* INTRO */
+  .intro { padding: 120px 48px; background: var(--white); }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .intro-text p { font-size: 17px; line-height: 1.8; color: var(--slate); font-weight: 300; }
+  .intro-text p + p { margin-top: 18px; }
+  .intro-cards { display: flex; flex-direction: column; gap: 14px; }
+  .intro-card { padding: 24px 28px; border-radius: 12px; background: var(--cloud); border: 1px solid var(--border); position: relative; overflow: hidden; transition: all 0.35s ease; }
+  .intro-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+  .intro-card:nth-child(1)::before { background: var(--navy); }
+  .intro-card:nth-child(2)::before { background: var(--green); }
+  .intro-card:nth-child(3)::before { background: var(--green-bright); }
+  .intro-card:hover { transform: translateX(6px); box-shadow: 0 6px 24px rgba(27,42,85,0.07); border-color: transparent; }
+  .intro-card h3 { font-weight: 600; font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .intro-card p { font-size: 14px; color: var(--slate); line-height: 1.6; font-weight: 300; }
+
+  /* ACCREDITATIE */
+  .accreditatie { padding: 0 48px 116px; background: var(--white); }
+  .accr-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: center; padding: 44px 48px; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--green) 34%, var(--border)); background: radial-gradient(130% 150% at 0% 0%, var(--green-pale), transparent 62%), var(--cloud); box-shadow: 0 16px 44px rgba(5,150,105,0.10); }
+  .accr-seal svg { width: 132px; height: auto; display: block; filter: drop-shadow(0 12px 22px rgba(27,42,85,0.18)); }
+  .accr-body h2.sh { margin-bottom: 12px; }
+  .accr-body p { font-size: 16px; line-height: 1.7; color: var(--slate); font-weight: 300; max-width: 64ch; }
+  .accr-body p strong { color: var(--ink); font-weight: 600; }
+  .accr-kicker { margin-top: 14px !important; font-weight: 500 !important; color: var(--navy) !important; }
+  .accr-badge { display: inline-flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .accr-badge .num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1; }
+  .accr-badge .u { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--green-dark); }
+
+  /* PROGRAM */
+  .program { padding: 120px 48px; background: var(--navy-deep); position: relative; overflow: hidden; }
+  .program::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 10% 90%, rgba(5,150,105,0.07) 0%, transparent 50%), radial-gradient(ellipse at 90% 10%, rgba(52,211,153,0.05) 0%, transparent 40%);
+  }
+  .program-header { margin-bottom: 56px; position: relative; z-index: 2; }
+  .program-header p { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.7; font-weight: 300; }
+  .timeline { position: relative; z-index: 2; }
+  .timeline::before {
+    content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--navy-light), var(--green-dark) 30%, var(--navy-light) 60%, var(--green-dark) 90%, var(--navy-light)); opacity: 0.4;
+  }
+  .day { display: grid; grid-template-columns: 100px 1fr; gap: 48px; padding: 34px 0; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .day:last-child { border-bottom: none; }
+  .day-left { text-align: right; padding-top: 4px; position: relative; }
+  .day-left::after { content: ''; position: absolute; right: -35px; top: 10px; width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid; }
+  .day.deel1 .day-left::after { border-color: rgba(255,255,255,0.5); background: rgba(27,42,85,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.1); }
+  .day.deel2 .day-left::after { border-color: var(--green-bright); background: rgba(5,150,105,0.2); box-shadow: 0 0 16px rgba(52,211,153,0.2); }
+  .day-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; }
+  .day.deel1 .day-num { color: rgba(255,255,255,0.9); }
+  .day.deel2 .day-num { color: var(--green-bright); }
+  .day-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  .day.deel1 .day-tag { color: rgba(255,255,255,0.4); }
+  .day.deel2 .day-tag { color: var(--green-bright); opacity: 0.8; }
+  .day-right { padding-left: 24px; }
+  .day-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
+  .day-lede { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 18px; max-width: 560px; line-height: 1.6; }
+  .day-items { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; list-style: none; }
+  .day-items li { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 300; padding: 6px 0 6px 18px; position: relative; line-height: 1.5; }
+  .day-items li b { color: rgba(255,255,255,0.95); font-weight: 500; }
+  .day.deel1 .day-items li::before { content: ''; position: absolute; left: 0; top: 13px; width: 8px; height: 2px; background: rgba(255,255,255,0.3); border-radius: 1px; }
+  .day.deel2 .day-items li::before { content: ''; position: absolute; left: 0; top: 13px; width: 8px; height: 2px; background: var(--green-bright); opacity: 0.6; border-radius: 1px; }
+  .day-badge { display: inline-block; margin-top: 3px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-bright); border: 1px solid rgba(52,211,153,0.4); border-radius: 5px; padding: 2px 8px; }
+
+  /* TRAINERS */
+  .trainers-section { padding: 120px 48px; background: var(--cloud); }
+  .trainers-header { margin-bottom: 48px; }
+  .trainers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .trainer-card { padding: 44px 36px; border-radius: 16px; background: var(--white); border: 1px solid var(--border); position: relative; overflow: hidden; transition: all 0.35s ease; }
+  .trainer-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,42,85,0.08); border-color: transparent; }
+  .trainer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .trainer-card:nth-child(1)::before { background: linear-gradient(to right, var(--navy), var(--navy-light)); }
+  .trainer-card:nth-child(2)::before { background: linear-gradient(to right, var(--green-dark), var(--green-bright)); }
+  .trainer-avatar { width: 88px; height: 88px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 30px; color: var(--white); font-weight: 700; margin-bottom: 22px; letter-spacing: 1px; }
+  .trainer-card:nth-child(1) .trainer-avatar { background: linear-gradient(135deg, var(--navy), var(--navy-light)); }
+  .trainer-card:nth-child(2) .trainer-avatar { background: linear-gradient(135deg, var(--green-dark), var(--green-bright)); }
+  .trainer-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; margin-bottom: 22px; display: block; border: 3px solid var(--white); box-shadow: 0 6px 20px rgba(27,42,85,0.12); }
+  .trainer-contact { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .trainer-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .25s ease; }
+  .trainer-btn svg { width: 16px; height: 16px; }
+  .trainer-btn.call { color: #fff; }
+  .trainer-card:nth-child(1) .trainer-btn.call { background: var(--navy); }
+  .trainer-card:nth-child(2) .trainer-btn.call { background: var(--green-dark); }
+  .trainer-btn.call:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27,42,85,0.18); }
+  .trainer-btn.mail { background: var(--cloud); color: var(--navy); border: 1px solid var(--border); }
+  .trainer-btn.mail:hover { border-color: var(--slate-light); transform: translateY(-2px); }
+  .trainer-card:nth-child(2) .trainer-btn.call { color: var(--navy-deep); }
+  .trainer-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border-radius: 6px; margin-bottom: 16px; }
+  .trainer-card:nth-child(1) .trainer-tag { background: var(--sky); color: var(--navy); }
+  .trainer-card:nth-child(2) .trainer-tag { background: var(--green-pale); color: var(--green-dark); }
+  .trainer-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .trainer-role { font-size: 14px; color: var(--slate-light); margin-bottom: 16px; }
+  .trainer-bio { font-size: 15px; line-height: 1.7; color: var(--slate); font-weight: 300; }
+  .trainer-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .trainer-skill { font-size: 12px; padding: 5px 12px; border-radius: 6px; font-weight: 500; background: var(--cloud); color: var(--slate); border: 1px solid var(--border); }
+
+  /* DETAILS */
+  .details { padding: 100px 48px; background: var(--white); border-top: 1px solid var(--border); }
+  .details-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .detail-item { padding: 36px 28px; text-align: center; position: relative; }
+  .detail-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: var(--border); }
+  .detail-icon { width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .detail-item:nth-child(odd) .detail-icon { background: var(--sky); }
+  .detail-item:nth-child(even) .detail-icon { background: var(--green-pale); }
+  .detail-value { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .detail-desc { font-size: 13px; color: var(--slate-light); line-height: 1.5; }
+
+  /* INCLUDES */
+  .includes { padding: 100px 48px; background: var(--cloud); }
+  .includes-header { text-align: center; margin-bottom: 48px; }
+  .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .include-card { padding: 28px 24px; border-radius: 12px; background: var(--white); border: 1px solid var(--border); transition: all 0.3s ease; }
+  .include-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(5,150,105,0.08); }
+  .include-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 14px; }
+  .include-title { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 6px; }
+  .include-desc { font-size: 13px; color: var(--slate); line-height: 1.6; font-weight: 300; }
+
+  /* CTA */
+  .cta { position: relative; padding: 120px 48px; background: linear-gradient(160deg, var(--navy-deep), var(--navy)); overflow: hidden; text-align: center; }
+  .cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(5,150,105,0.07) 0%, transparent 60%); }
+  .cta-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+  .cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 48px); font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+  .cta h2 em { font-style: italic; color: var(--green-bright); }
+  .cta-sub { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; font-weight: 300; }
+  .cta-price-box { display: inline-flex; align-items: baseline; gap: 12px; margin-bottom: 36px; padding: 20px 40px; border: 1px solid rgba(5,150,105,0.28); border-radius: 14px; background: rgba(5,150,105,0.07); }
+  .cta-price-amount { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: var(--white); }
+  .cta-price-info { font-size: 14px; color: rgba(255,255,255,0.6); text-align: left; line-height: 1.5; }
+  .cta-price-info strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 48px; background: var(--green); color: var(--navy-deep); font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; border: none; border-radius: 10px; text-decoration: none; cursor: pointer; transition: all 0.3s ease; margin-bottom: 56px; }
+  .cta-btn:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(5,150,105,0.3); }
+  .cta-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.1); margin: 0 auto 48px; }
+  .cta-contacts { display: flex; justify-content: center; gap: 56px; }
+  .cta-contact { text-align: center; }
+  .cta-contact-name { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--white); margin-bottom: 2px; }
+  .cta-contact-role { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+  .cta-contact-info { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.9; }
+  .cta-contact-info a { color: var(--green-bright); text-decoration: none; transition: color 0.2s; }
+  .cta-contact-info a:hover { color: var(--white); }
+
+  /* FORM */
+  .form-section { padding: 100px 48px; background: var(--white); border-top: 1px solid var(--border); }
+  .form-inner { max-width: 640px; margin: 0 auto; }
+  .form-header { text-align: center; margin-bottom: 40px; }
+  .form-header p { font-size: 16px; color: var(--slate); line-height: 1.7; font-weight: 300; margin-top: 8px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-size: 13px; font-weight: 600; color: var(--navy); letter-spacing: 0.2px; }
+  .form-input, .form-select, .form-textarea { padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--ink); background: var(--cloud); transition: all 0.3s ease; outline: none; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--slate-light); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+  .form-submit { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 36px; margin-top: 8px; background: var(--green); color: var(--navy-deep); font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+  .form-submit:hover { background: var(--green-bright); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(5,150,105,0.25); }
+  .form-note { text-align: center; margin-top: 16px; font-size: 12px; color: var(--slate-light); }
+
+  /* PARTNERS */
+  .partners { padding: 64px 48px; background: var(--white); border-top: 1px solid var(--border); text-align: center; }
+  .partners-eyebrow { display: block; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--slate-light); margin-bottom: 30px; }
+  .partners-row { display: flex; align-items: center; justify-content: center; gap: 44px; flex-wrap: wrap; }
+  .partner { display: flex; align-items: center; gap: 16px; }
+  .partner svg { display: block; }
+  .partner-text { text-align: left; line-height: 1; }
+  .partner-peters .partner-name { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
+  .partner-peters .partner-tag { display: block; font-size: 12px; font-weight: 500; color: var(--green-dark); letter-spacing: 2px; margin-top: 6px; text-transform: uppercase; }
+  .partner-forgexe .partner-name { font-family: 'Outfit', sans-serif; font-size: 38px; font-weight: 700; color: #34d399; letter-spacing: 2px; }
+  .partners-x { font-size: 30px; font-weight: 200; color: var(--slate-light); }
+
+  /* FAQ */
+  .faq { padding: 104px 48px; background: var(--cloud); border-top: 1px solid var(--border); }
+  .faq-inner { max-width: 760px; margin: 0 auto; }
+  .faq-head { text-align: center; margin-bottom: 44px; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-item summary { cursor: pointer; padding: 22px 44px 22px 2px; font-size: 16px; font-weight: 600; color: var(--navy); position: relative; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: 300; color: var(--green-dark); transition: transform .2s ease; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p { padding: 0 44px 24px 2px; font-size: 15px; line-height: 1.75; color: var(--slate); font-weight: 300; }
+
+  /* BROCHURE */
+  .brochure { padding: 96px 48px; background: var(--white); border-top: 1px solid var(--border); }
+  .brochure-inner { max-width: 940px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+  .brochure-text p { font-size: 16px; line-height: 1.75; color: var(--slate); font-weight: 300; margin-top: 6px; }
+  .brochure-list { list-style: none; margin: 20px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .brochure-list li { display: flex; align-items: center; gap: 11px; font-size: 14.5px; color: var(--slate); font-weight: 400; }
+  .brochure-list .tick { width: 22px; height: 22px; border-radius: 7px; background: var(--green-pale); border: 1px solid rgba(52,211,153,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green-dark); font-size: 12px; font-weight: 700; }
+  .brochure-card { background: var(--cloud); border: 1px solid var(--border); border-radius: 16px; padding: 28px 26px; box-shadow: 0 12px 40px rgba(27,42,85,0.06); }
+  .brochure-card .badge { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: var(--green-dark); background: var(--green-pale); border: 1px solid rgba(52,211,153,0.4); padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; }
+  .brochure-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .brochure-card p.card-sub { font-size: 13.5px; color: var(--slate); font-weight: 300; margin-bottom: 18px; }
+  .brochure-form { display: flex; flex-direction: column; gap: 12px; }
+  .brochure-form .form-input { width: 100%; }
+  .brochure-note { font-size: 12px; color: var(--slate-light); text-align: center; }
+
+  /* FOOTER */
+  footer { padding: 20px 48px; background: #080D1A; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-size: 12px; color: rgba(255,255,255,0.2); }
+  footer a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.6); }
+
+  /* WHATSAPP + STICKY */
+  .wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 95; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px rgba(37,211,102,0.42); transition: transform .2s ease; }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+  .sticky-cta { display: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    nav.scrolled { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .brand-word { font-size: 16px; }
+    .hero-content { padding: 120px 24px 90px; }
+    .hero-stats, .hero-deco { display: none; }
+    .intro { padding: 80px 24px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+    .program { padding: 80px 24px; }
+    .timeline::before { display: none; }
+    .day { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
+    .day-left { text-align: left; }
+    .day-left::after { display: none; }
+    .day-right { padding-left: 0; }
+    .day-items { grid-template-columns: 1fr; }
+    .trainers-section { padding: 80px 24px; }
+    .trainers-grid { grid-template-columns: 1fr; }
+    .details { padding: 60px 24px; }
+    .details-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .detail-item::after { display: none; }
+    .includes { padding: 80px 24px; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .cta { padding: 80px 24px; }
+    .cta-contacts { flex-direction: column; gap: 28px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions a { justify-content: center; }
+    .form-section { padding: 80px 24px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .faq { padding: 72px 24px; }
+    .accreditatie { padding: 0 24px 80px; }
+    .accr-inner { grid-template-columns: 1fr; gap: 24px; padding: 30px 26px; text-align: left; }
+    .accr-seal svg { width: 100px; }
+    .brochure { padding: 64px 24px; }
+    .brochure-inner { grid-template-columns: 1fr; gap: 28px; }
+    .partners { padding: 48px 24px; }
+    .partners-row { gap: 24px; }
+    .partner-peters .partner-name, .partner-forgexe .partner-name { font-size: 28px; }
+    .sticky-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; gap: 10px; padding: 12px 14px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-top: 1px solid var(--border); box-shadow: 0 -4px 24px rgba(27,42,85,0.12); }
+    .sticky-cta a { flex: 1; text-align: center; padding: 14px 8px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .sticky-cta .s-prog { background: var(--sky); color: var(--navy); }
+    .sticky-cta .s-plan { background: var(--green); color: #fff; }
+    .wa-float { bottom: 88px; right: 16px; width: 52px; height: 52px; }
+    body { padding-bottom: 76px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brands">
+    <span class="brand-lockup brand-peters" aria-label="Peters Advocatuur">
+      <svg viewBox="0 0 64 64" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true">
+        <path d="M32 10 V52"/>
+        <path d="M22 52 H42"/>
+        <circle cx="32" cy="10" r="2.2" fill="currentColor" stroke="none"/>
+        <path d="M12 18 H52"/>
+        <path d="M12 18 L6 30"/><path d="M12 18 L18 30"/>
+        <path d="M4 30 a8 5 0 0 0 16 0"/>
+        <path d="M52 18 L46 30"/><path d="M52 18 L58 30"/>
+        <path d="M44 30 a8 5 0 0 0 16 0"/>
+      </svg>
+      <span class="brand-word">Peters Advocatuur</span>
+    </span>
+    <span class="nav-x">×</span>
+    <span class="brand-lockup brand-forgexe" aria-label="Forgexe">
+      <svg viewBox="0 0 120 120" width="24" height="24" role="img" aria-hidden="true">
+        <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+        <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+        <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+        <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+      </svg>
+      <span class="brand-word">Forgexe</span>
+    </span>
+  </div>
+  <div class="nav-links">
+    <a href="#over" class="nav-link">Over de training</a>
+    <a href="#programma" class="nav-link">Programma</a>
+    <a href="#trainers" class="nav-link">Trainers</a>
+    <a href="#brochure" class="nav-link">Brochure</a>
+    <a href="#plannen" class="nav-cta">Inschrijven →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-deco">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 10 V52"/><path d="M22 52 H42"/>
+      <path d="M12 18 H52"/>
+      <path d="M12 18 L6 30"/><path d="M12 18 L18 30"/><path d="M4 30 a8 5 0 0 0 16 0"/>
+      <path d="M52 18 L46 30"/><path d="M52 18 L58 30"/><path d="M44 30 a8 5 0 0 0 16 0"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      <span class="hero-eyebrow-text">2 dagdelen · Juridische praktijk</span>
+    </div>
+    <h1 class="hero-heading">Slimmer werken met AI,<br>binnen het <em>beroepsgeheim</em></h1>
+    <p class="hero-desc">Een praktijkgericht programma van twee dagdelen voor advocaten en juridisch support. Concreet tijd besparen op contracten, dossiers en correspondentie — met Claude als hoofdtool, en altijd binnen de grenzen van vertrouwelijkheid en verificatie.</p>
+    <div class="hero-accred">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 1.8 3-.2 1 2.8 2.6 1.5-1 2.9 1 2.9-2.6 1.5-1 2.8-3-.2L12 22l-2.4-1.8-3 .2-1-2.8L3 16.3l1-2.9-1-2.9 2.6-1.5 1-2.8 3 .2z" fill="#34d399"/><path d="M8.4 12l2.4 2.4 4.8-5.2" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>8 PO-punten</b> voor advocaten — erkende cursus onder de VODA</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#plannen" class="btn-primary">Schrijf je in →</a>
+      <a href="#programma" class="btn-outline">Bekijk het programma</a>
+    </div>
+    <div class="hero-scarcity"><span class="dotpulse"></span><span>In-house bij Peters Advocatuur — <b>volledig toegespitst</b> op jullie rechtsgebieden.</span></div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">2</div>
+      <div class="hero-stat-label">Dagdelen</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">8</div>
+      <div class="hero-stat-label">PO-punten · advocaten</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">Claude</div>
+      <div class="hero-stat-label">Hoofdtool</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Ontdek meer</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<section class="intro" id="over">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          <span class="section-label-text">Waarom deze training</span>
+        </div>
+        <h2 class="sh">De jurist <em>én</em><br>de technologie</h2>
+        <p>De meeste juristen zien dat AI hun werk raakt, maar durven het niet te gebruiken — terecht, want vertrouwelijkheid en verificatie zijn geen bijzaak in dit vak. Deze training neemt die drempel weg: eerst een helder verhaal over wat je wél en niet mag met cliëntdata, daarna hands-on aan de slag met echte, geanonimiseerde vraagstukken uit jullie eigen praktijk.</p>
+        <p>We werken met een gemengde groep — advocaten én secretariaat. De basis is gezamenlijk; bij het oefenen splitsen we naar rol, zodat iedereen met zijn eigen werk aan de slag gaat.</p>
+      </div>
+      <div class="intro-cards">
+        <div class="intro-card reveal reveal-d1">
+          <h3>Echte juridische casuïstiek</h3>
+          <p>Arbeids-, huur-, familie-, straf- en bestuursrecht — geen generieke voorbeelden, maar vraagstukken uit de praktijk van het kantoor.</p>
+        </div>
+        <div class="intro-card reveal reveal-d2">
+          <h3>Claude als werktuig</h3>
+          <p>Van lange contracten en dossiers tot een eigen kennisbank in Claude Projects — leren wat de tool écht voor je doet.</p>
+        </div>
+        <div class="intro-card reveal reveal-d3">
+          <h3>Veilig binnen de beroepsregels</h3>
+          <p>Beroepsgeheim, AVG en de AI Act vertaald naar concrete spelregels: wat mag wél, wat nooit, en met welke versie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="accreditatie">
+  <div class="accr-inner reveal">
+    <div class="accr-seal">
+      <svg viewBox="0 0 120 132" fill="none" aria-hidden="true">
+        <path d="M44 90 L36 124 L52 113 L60 128 L68 113 L84 124 L76 90 Z" fill="#1B2A55"/>
+        <circle cx="60" cy="56" r="44" fill="#34d399"/>
+        <circle cx="60" cy="56" r="44" fill="none" stroke="#1B2A55" stroke-opacity="0.12" stroke-width="2"/>
+        <circle cx="60" cy="56" r="34" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="2.5"/>
+        <text x="60" y="61" text-anchor="middle" font-family="'Playfair Display', serif" font-size="40" font-weight="700" fill="#0b1220">8</text>
+        <text x="60" y="77" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#0b1220">PO-PUNTEN</text>
+      </svg>
+    </div>
+    <div class="accr-body">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Erkend voor de advocatuur</span>
+      </div>
+      <h2 class="sh">Meteen je <em>opleidingsverplichting</em> afgetikt</h2>
+      <p>Deelnemende advocaten ontvangen een <strong>deelnamecertificaat</strong> waarmee <strong>8 opleidingspunten (PO)</strong> worden toegekend. De cursus voldoet aan de voorwaarden van <strong>artikel 4.4 lid 5, onderdeel a van de Verordening op de advocatuur (VODA)</strong>.</p>
+      <p class="accr-kicker">Zo investeer je in AI-vaardigheid voor het hele kantoor én voldoe je in één keer aan een fors deel van je jaarlijkse opleidingsverplichting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="program" id="programma">
+  <div class="container">
+    <div class="program-header reveal">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text on-dark">Het programma</span>
+      </div>
+      <h2 class="sh on-dark">Twee dagdelen —<br>van <em>fundament</em> naar toepassing</h2>
+      <p>Dagdeel 1 legt de basis en het veilig werken. Dagdeel 2 is volledig hands-on: jullie eigen casuïstiek, Claude in de diepte, en samen kijken wat rijp is om te automatiseren.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="day deel1 reveal">
+        <div class="day-left">
+          <div class="day-num">01</div>
+          <div class="day-tag">Fundament</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Fundament &amp; veilig werken</div>
+          <p class="day-lede">Begrijpen wat AI is, waar het misgaat, en wat je ermee mag als advocaat — afgesloten met de eerste hands-on.</p>
+          <ul class="day-items">
+            <li><b>Hallucinaties in de rechtspraktijk</b> — verzonnen jurisprudentie, foute ECLI's en gewijzigde wetteksten; zelf zien hoe dezelfde vraag, anders gesteld, andere antwoorden geeft</li>
+            <li><b>Vertrouwelijkheid, beroepsgeheim &amp; AVG</b> — waarom de geheimhoudingsplicht breder is dan de AVG, sancties, en waarom je een zakelijke versie nodig hebt <span class="day-badge">Kernblok</span></li>
+            <li><b>De AI Act op hoofdlijnen</b> — risicogericht, verboden toepassingen en wat het betekent voor jullie werk</li>
+            <li><b>Prompten in Claude</b> — rol, context en taak leren geven, en waarom je een prompt stap voor stap opbouwt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day deel2 reveal">
+        <div class="day-left">
+          <div class="day-num">02</div>
+          <div class="day-tag">Toepassen</div>
+        </div>
+        <div class="day-right">
+          <div class="day-title">Toepassen &amp; automatiseren</div>
+          <p class="day-lede">Eigen casuïstiek zelf opbouwen, Claude Projects inzetten, en de brug slaan naar echte automatisering. AI levert het concept — de advocaat blijft verantwoordelijk.</p>
+          <ul class="day-items">
+            <li><b>Arbeidsrecht</b> — arbeidsovereenkomst opbouwen, mét de juiste CAO en AVG-verplichtingen</li>
+            <li><b>Huurrecht</b> — huurovereenkomst bedrijfsruimte: milieubepalingen, opzegtermijnen, vloerbelastingclausule</li>
+            <li><b>Familierecht</b> — vaststellings­overeenkomst bij echtscheiding met onderneming en fiscale vraagstukken</li>
+            <li><b>Correspondentie &amp; dossier</b> — brieven concipiëren, jargon vertalen, dossier naar tijdlijn en kernvragen</li>
+            <li><b>Claude Projects</b> — een dossier of kennisbank waar Claude steeds op teruggrijpt</li>
+            <li><b>Van handwerk naar automatisering</b> — welke terugkerende processen zijn rijp om te automatiseren? <span class="day-badge">Vervolg</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="trainers-section" id="trainers">
+  <div class="container">
+    <div class="trainers-header reveal">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Je trainers</span>
+      </div>
+      <h2 class="sh">De advocaat <em>&</em> de bouwer</h2>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer-card reveal reveal-d1">
+        <img src="testimonial-john-peters.jpg" alt="John Peters" class="trainer-photo">
+        <span class="trainer-tag">Juridische expertise</span>
+        <div class="trainer-name">John Peters</div>
+        <div class="trainer-role">Advocaat — Peters Advocatuur</div>
+        <p class="trainer-bio">Brengt de juridische diepgang: per rechtsgebied de praktijkcasuïstiek, de valkuilen en de tuchtrechtelijke kaders. John bewaakt dat elk voorbeeld klopt en toepasbaar is in het echte werk van het kantoor.</p>
+        <div class="trainer-skills">
+          <span class="trainer-skill">Arbeidsrecht</span>
+          <span class="trainer-skill">Huurrecht</span>
+          <span class="trainer-skill">Familierecht</span>
+          <span class="trainer-skill">Beroepsregels</span>
+        </div>
+        <div class="trainer-contact">
+          <a href="tel:+31628428360" class="trainer-btn call"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Bel John</a>
+          <a href="mailto:info@petersadvocatuur.nl" class="trainer-btn mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Mail</a>
+        </div>
+      </div>
+      <div class="trainer-card reveal reveal-d2">
+        <img src="trainer-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
+        <span class="trainer-tag">AI &amp; Automation</span>
+        <div class="trainer-name">Sedat Ayar</div>
+        <div class="trainer-role">AI Specialist — Forgexe</div>
+        <p class="trainer-bio">Expert in AI-automatisering voor het MKB. Sedat vertaalt de techniek naar de dagelijkse praktijk: hands-on met Claude, veilig werken met vertrouwelijke data en de brug naar het automatiseren van terugkerende processen.</p>
+        <div class="trainer-skills">
+          <span class="trainer-skill">Claude</span>
+          <span class="trainer-skill">Prompting</span>
+          <span class="trainer-skill">Automation</span>
+          <span class="trainer-skill">Workflows</span>
+        </div>
+        <div class="trainer-contact">
+          <a href="tel:+31618031022" class="trainer-btn call"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg>Bel Sedat</a>
+          <a href="mailto:sedat@forgexe.nl" class="trainer-btn mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="container">
+    <div class="details-grid">
+      <div class="detail-item reveal">
+        <div class="detail-icon">📅</div>
+        <div class="detail-value">2 dagdelen</div>
+        <div class="detail-desc">± 3 uur per<br>dagdeel</div>
+      </div>
+      <div class="detail-item reveal reveal-d1">
+        <div class="detail-icon">👥</div>
+        <div class="detail-value">Kleine groep</div>
+        <div class="detail-desc">Advocaten +<br>secretariaat</div>
+      </div>
+      <div class="detail-item reveal reveal-d2">
+        <div class="detail-icon">🤖</div>
+        <div class="detail-value">Claude</div>
+        <div class="detail-desc">Zakelijke versie<br>als hoofdtool</div>
+      </div>
+      <div class="detail-item reveal reveal-d3">
+        <div class="detail-icon">🏛️</div>
+        <div class="detail-value">In-house</div>
+        <div class="detail-desc">Op kantoor, op<br>maat van jullie praktijk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="includes">
+  <div class="container">
+    <div class="includes-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Wat het kantoor overhoudt</span>
+      </div>
+      <h2 class="sh" style="text-align:center;">Meer dan <em>alleen</em> een training</h2>
+    </div>
+    <div class="includes-grid">
+      <div class="include-card reveal">
+        <div class="include-icon">🎓</div>
+        <div class="include-title">Deelnamecertificaat · 8 PO-punten</div>
+        <div class="include-desc">Advocaten krijgen 8 opleidingspunten toegekend — de cursus voldoet aan artikel 4.4 lid 5, onderdeel a van de VODA.</div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon">🛡️</div>
+        <div class="include-title">Spelregelkaart</div>
+        <div class="include-desc">Eén pagina met heldere afspraken over vertrouwelijkheid — een blijvend hulpmiddel voor het hele kantoor.</div>
+      </div>
+      <div class="include-card reveal reveal-d1">
+        <div class="include-icon">🎯</div>
+        <div class="include-title">Persoonlijke top 3</div>
+        <div class="include-desc">Elke deelnemer gaat weg met drie taken die hij vanaf morgen anders — en sneller — doet.</div>
+      </div>
+      <div class="include-card reveal reveal-d2">
+        <div class="include-icon">📁</div>
+        <div class="include-title">Eigen Claude Project</div>
+        <div class="include-desc">Een ingericht dossier of kennisbank in Claude, klaar om direct in de praktijk mee verder te werken.</div>
+      </div>
+      <div class="include-card reveal">
+        <div class="include-icon">⚖️</div>
+        <div class="include-title">Prompt-bibliotheek</div>
+        <div class="include-desc">Uitgewerkte prompts per rechtsgebied, opgebouwd tijdens de hands-on, om later opnieuw te gebruiken.</div>
+      </div>
+      <div class="include-card reveal reveal-d1">
+        <div class="include-icon">🔍</div>
+        <div class="include-title">Verificatie-reflex</div>
+        <div class="include-desc">Concrete checklist tegen hallucinaties: nooit blind vertrouwen, altijd de bron natrekken.</div>
+      </div>
+      <div class="include-card reveal reveal-d2">
+        <div class="include-icon">⚡</div>
+        <div class="include-title">Automatiseringskansen</div>
+        <div class="include-desc">Een gedeelde inventarisatie van processen die rijp zijn om te automatiseren, als basis voor een vervolg.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-head reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Veelgestelde vragen</span>
+      </div>
+      <h2 class="sh" style="text-align:center;">Goed om te <em>weten</em></h2>
+    </div>
+    <details class="faq-item"><summary>Krijgen advocaten PO-punten voor deze training?</summary><p>Ja. Deelnemende advocaten ontvangen een deelnamecertificaat waarmee <strong>8 opleidingspunten (PO)</strong> worden toegekend. De cursus voldoet aan de voorwaarden van artikel 4.4 lid 5, onderdeel a van de Verordening op de advocatuur (VODA). Zo telt de training direct mee voor je jaarlijkse opleidingsverplichting.</p></details>
+    <details class="faq-item"><summary>Heb ik voorkennis van AI nodig?</summary><p>Nee. We starten bij de fundamenten en bouwen stap voor stap op. Je hoeft geen techneut te zijn — na afloop werk je zelfstandig met Claude aan je eigen taken.</p></details>
+    <details class="faq-item"><summary>Mogen we cliëntgegevens gebruiken tijdens de oefeningen?</summary><p>Tijdens de training werken we bewust met fictieve of geanonimiseerde casus. In het vertrouwelijkheidsblok leggen we precies uit wat wél en niet mag met cliëntdata, en met welke versie van de tool.</p></details>
+    <details class="faq-item"><summary>Voor wie is de training bedoeld?</summary><p>Voor het hele kantoor: advocaten én secretariaat/paralegals. De basis doen we gezamenlijk; bij de hands-on splitsen we naar rol, zodat iedereen met zijn eigen werk oefent.</p></details>
+    <details class="faq-item"><summary>Neemt AI het werk van de advocaat over?</summary><p>Nee. AI levert een concept; de advocaat blijft inhoudelijk verantwoordelijk. De training leert juist waar de grenzen liggen en hoe je output kritisch verifieert.</p></details>
+    <details class="faq-item"><summary>Kan de invulling op maat?</summary><p>Ja — de training wordt volledig toegespitst op de rechtsgebieden en werkprocessen van het kantoor. Vooraf leveren jullie een paar geanonimiseerde vraagstukken aan die we tijdens de hands-on behandelen.</p></details>
+  </div>
+</section>
+
+<section class="brochure" id="brochure">
+  <div class="brochure-inner">
+    <div class="brochure-text reveal">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Vrijblijvend</span>
+      </div>
+      <h2 class="sh">Liever eerst <em>rustig lezen</em>?</h2>
+      <p>Ontvang de volledige brochure in je mailbox — het complete programma, de aanpak rond vertrouwelijkheid, wat het kantoor overhoudt en de praktische kaders. Geen verplichtingen.</p>
+      <ul class="brochure-list">
+        <li><span class="tick">✓</span> Beide dagdelen, blok voor blok uitgewerkt</li>
+        <li><span class="tick">✓</span> De juridische casuïstiek per rechtsgebied</li>
+        <li><span class="tick">✓</span> Hoe we vertrouwelijkheid en beroepsgeheim borgen</li>
+        <li><span class="tick">✓</span> Wat je meekrijgt en de praktische opzet</li>
+      </ul>
+    </div>
+    <div class="brochure-card reveal reveal-d1">
+      <span class="badge">✓ Gratis &amp; vrijblijvend</span>
+      <h3>Ontvang de brochure</h3>
+      <p class="card-sub">Direct in je mailbox — je leest alles rustig na wanneer het jou uitkomt.</p>
+      <div class="brochure-form">
+        <input type="text" class="form-input" id="broch-naam" placeholder="Je naam" required>
+        <input type="email" class="form-input" id="broch-email" placeholder="naam@bedrijf.nl" required>
+        <input type="text" class="form-input" id="broch-bedrijf" placeholder="Bedrijf (optioneel)">
+        <input type="tel" class="form-input" id="broch-telefoon" placeholder="Telefoon (optioneel)">
+        <button type="button" class="form-submit" style="margin-top:0;" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
+        <span class="brochure-note">Geen verplichtingen. Uitschrijven kan altijd.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="plannen">
+  <div class="cta-content">
+    <div class="section-label" style="justify-content:center;margin-bottom:20px;">
+      <span class="section-label-dot"></span>
+      <span class="section-label-text on-dark">Volgende stap</span>
+    </div>
+    <h2>Klaar om jullie praktijk<br>te <em>versnellen</em>?</h2>
+    <div class="cta-price-box">
+      <span class="cta-price-amount">Op maat</span>
+      <span class="cta-price-info"><strong>Prijs &amp; planning in overleg</strong><br>Volledig toegespitst op jullie kantoor</span>
+    </div>
+    <p class="cta-sub">Schrijf je in en we stemmen samen de invulling, de casuïstiek en de planning af.</p>
+    <a href="#aanmelden" class="cta-btn">Schrijf je in →</a>
+    <div class="cta-divider"></div>
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-contact-name">John Peters</div>
+        <div class="cta-contact-role">Advocaat — Peters Advocatuur</div>
+        <div class="cta-contact-info">
+          <a href="mailto:info@petersadvocatuur.nl">info@petersadvocatuur.nl</a><br>
+          <a href="tel:+31628428360">+31 6 28 42 83 60</a>
+        </div>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-contact-name">Sedat Ayar</div>
+        <div class="cta-contact-role">AI Specialist — Forgexe</div>
+        <div class="cta-contact-info">
+          <a href="tel:+31618031022">+31 6 180 310 22</a><br>
+          <a href="mailto:sedat@forgexe.nl">sedat@forgexe.nl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="aanmelden">
+  <div class="form-inner">
+    <div class="form-header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-dot"></span>
+        <span class="section-label-text">Inschrijven</span>
+      </div>
+      <h2 class="sh" style="text-align:center;">Schrijf je in voor de <em>training</em></h2>
+      <p>Vul het formulier in en we nemen binnen 2 werkdagen contact op om je inschrijving te bevestigen en de planning af te stemmen.</p>
+    </div>
+    <div class="form-grid reveal">
+      <div class="form-group">
+        <label class="form-label">Voornaam *</label>
+        <input type="text" class="form-input" placeholder="Je voornaam" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Achternaam *</label>
+        <input type="text" class="form-input" placeholder="Je achternaam" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-mailadres *</label>
+        <input type="email" class="form-input" placeholder="naam@kantoor.nl" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefoonnummer</label>
+        <input type="tel" class="form-input" placeholder="+31 6 ...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kantoor</label>
+        <input type="text" class="form-input" placeholder="Naam van je kantoor">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Specialisatie</label>
+        <input type="text" class="form-input" placeholder="Bijv. arbeidsrecht, familierecht...">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Opmerkingen of vragen</label>
+        <textarea class="form-textarea" placeholder="Bijv. met hoeveel mensen, welke rechtsgebieden, of specifieke vragen over de training..."></textarea>
+      </div>
+      <div class="form-group full">
+        <button type="button" class="form-submit" onclick="submitForm(this)">Verstuur inschrijving →</button>
+      </div>
+    </div>
+    <p class="form-note">Na je inschrijving ontvang je een bevestiging per e-mail.</p>
+  </div>
+</section>
+
+<section class="partners">
+  <span class="partners-eyebrow">Een samenwerking van</span>
+  <div class="partners-row">
+    <div class="partner partner-peters">
+      <svg viewBox="0 0 64 64" width="52" height="52" fill="none" stroke="#1B2A55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Peters Advocatuur">
+        <path d="M32 10 V52"/><path d="M22 52 H42"/>
+        <circle cx="32" cy="10" r="2.2" fill="#1B2A55" stroke="none"/>
+        <path d="M12 18 H52"/>
+        <path d="M12 18 L6 30"/><path d="M12 18 L18 30"/><path d="M4 30 a8 5 0 0 0 16 0"/>
+        <path d="M52 18 L46 30"/><path d="M52 18 L58 30"/><path d="M44 30 a8 5 0 0 0 16 0"/>
+      </svg>
+      <div class="partner-text">
+        <span class="partner-name">Peters Advocatuur</span>
+        <span class="partner-tag">Advocatenkantoor</span>
+      </div>
+    </div>
+    <span class="partners-x">×</span>
+    <div class="partner partner-forgexe">
+      <svg viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Forgexe">
+        <rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/>
+        <rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/>
+        <rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/>
+        <polygon points="76,52 100,68 76,84" fill="#34d399"/>
+      </svg>
+      <span class="partner-name">Forgexe</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Peters Advocatuur × Forgexe</span>
+  <div>
+    <a href="https://forgexe.nl" target="_blank" rel="noopener">forgexe.nl</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/31618031022" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.9 5 17 5 15 5 9.5 9.5 5 16 5s11 4.5 11 10-4.9 9.8-11 9.8zm5.6-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.3 5.3 4.6 2 .8 2.7.9 3.7.8.6-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+<div class="sticky-cta">
+  <a href="#brochure" class="s-prog">Brochure</a>
+  <a href="#aanmelden" class="s-plan">Inschrijven →</a>
+</div>
+
+<script>
+  // Scroll reveals
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', function() {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Form submit
+  async function submitForm(btn) {
+    var form = btn.closest('.form-grid');
+    var inputs = form.querySelectorAll('[required]');
+    var valid = true;
+    inputs.forEach(function(input) {
+      if (!input.value.trim()) { input.style.borderColor = '#e53e3e'; valid = false; }
+      else { input.style.borderColor = ''; }
+    });
+    if (!valid) return;
+    btn.textContent = 'Verzenden...';
+    btn.disabled = true;
+    var data = {
+      voornaam: form.querySelector('input[placeholder="Je voornaam"]').value.trim(),
+      achternaam: form.querySelector('input[placeholder="Je achternaam"]').value.trim(),
+      email: form.querySelector('input[type="email"]').value.trim(),
+      telefoon: form.querySelector('input[type="tel"]').value.trim(),
+      kantoor: form.querySelector('input[placeholder="Naam van je kantoor"]').value.trim(),
+      specialisatie: form.querySelector('input[placeholder="Bijv. arbeidsrecht, familierecht..."]').value.trim(),
+      bericht: form.querySelector('textarea').value.trim(),
+      type: 'inschrijving',
+      bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
+      datum: new Date().toISOString()
+    };
+    try {
+      var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/peters-forgexe-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (resp.ok || resp.type === 'opaque') {
+        btn.textContent = '✓ Verstuurd! We nemen contact op.';
+        btn.style.background = 'var(--navy)';
+        btn.style.color = '#fff';
+        btn.style.cursor = 'default';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Er ging iets mis — probeer opnieuw';
+      btn.style.background = '#e53e3e';
+      btn.style.color = '#fff';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'Verstuur inschrijving →'; btn.style.background = 'var(--green)'; btn.style.color = 'var(--navy-deep)'; }, 3000);
+    }
+  }
+
+  // Brochure-aanvraag (lage drempel)
+  async function submitBrochure(btn) {
+    var naam = document.getElementById('broch-naam');
+    var email = document.getElementById('broch-email');
+    var valid = true;
+    [naam, email].forEach(function(i) {
+      if (!i.value.trim()) { i.style.borderColor = '#e53e3e'; valid = false; }
+      else { i.style.borderColor = ''; }
+    });
+    if (!valid) return;
+    btn.textContent = 'Versturen...';
+    btn.disabled = true;
+    var bedrijf = document.getElementById('broch-bedrijf');
+    var telefoon = document.getElementById('broch-telefoon');
+    var data = {
+      naam: naam.value.trim(),
+      email: email.value.trim(),
+      bedrijf: bedrijf ? bedrijf.value.trim() : '',
+      telefoon: telefoon ? telefoon.value.trim() : '',
+      type: 'brochure-aanvraag',
+      bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
+      datum: new Date().toISOString()
+    };
+    try {
+      var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/peters-forgexe-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (resp.ok || resp.type === 'opaque') {
+        btn.textContent = '✓ Onderweg! Check je mailbox.';
+        btn.style.background = 'var(--navy)';
+        btn.style.color = '#fff';
+        btn.style.cursor = 'default';
+        naam.disabled = true; email.disabled = true;
+        if (!btn.parentNode.querySelector('.spam-hint')) {
+          btn.insertAdjacentHTML('afterend', '<p class="spam-hint" style="margin:.6rem 0 0;font-size:.78rem;line-height:1.5;color:var(--navy);opacity:.85;">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap.</p>');
+        }
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      btn.textContent = 'Er ging iets mis — probeer opnieuw';
+      btn.style.background = '#e53e3e';
+      btn.style.color = '#fff';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'Stuur mij de brochure →'; btn.style.background = 'var(--green)'; btn.style.color = 'var(--navy-deep)'; }, 3000);
+    }
+  }
+</script>
+
+</body>
+</html>

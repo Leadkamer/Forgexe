@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brochure — Juridische AI-training · Peters Advocatuur × Forgexe</title>
+<meta name="description" content="De volledige brochure van de juridische AI-training: programma, aanpak rond vertrouwelijkheid, trainers en praktische opzet.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --navy:#1B2A55; --navy-deep:#111D3E; --navy-light:#2A3E6E;
+    --green:#34d399; --green-bright:#4ade80; --green-dark:#34d399; --green-pale:#E6F9F1;
+    --sky:#EEF2F9; --cloud:#F6F8FC; --white:#fff; --slate:#4A5568; --slate-light:#718096;
+    --ink:#1A1F2E; --border:#DEE5F0;
+  }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Outfit',sans-serif; color:var(--ink); background:#e9edf4; -webkit-font-smoothing:antialiased; line-height:1.6; }
+
+  .doc { max-width: 860px; margin: 0 auto; }
+  .sheet { background:#fff; padding: clamp(32px,5vw,64px); }
+  .sheet + .sheet { margin-top: 2px; }
+
+  /* COVER */
+  .cover {
+    position:relative; overflow:hidden; color:#fff;
+    background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 45%, var(--navy-light) 100%);
+    padding: clamp(48px,7vw,84px) clamp(32px,5vw,64px);
+  }
+  .cover-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px); background-size:54px 54px; }
+  .cover-glow { position:absolute; width:460px; height:460px; right:-150px; top:-140px; border-radius:50%; background:radial-gradient(circle,rgba(52,211,153,0.16),transparent 65%); }
+  .cover-inner { position:relative; z-index:2; }
+  .brand { display:flex; align-items:center; gap:12px; margin-bottom: clamp(48px,8vw,90px); }
+  .brand svg { display:block; }
+  .brand .nm { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:#fff; }
+  .brand .nm.fx { font-family:'Outfit',sans-serif; font-weight:700; color:var(--green); letter-spacing:1px; }
+  .brand .x { color:rgba(255,255,255,0.4); font-size:15px; font-weight:300; }
+  .cover-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--green); margin-bottom:22px; }
+  .cover-eyebrow .dot { width:8px; height:8px; border-radius:50%; background:var(--green); }
+  .cover h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,6vw,60px); font-weight:700; line-height:1.08; letter-spacing:-0.5px; margin-bottom:22px; max-width:15ch; }
+  .cover h1 em { font-style:italic; color:var(--green); font-weight:600; }
+  .cover .lead { font-size:17px; line-height:1.7; color:rgba(255,255,255,0.78); font-weight:300; max-width:56ch; }
+  .cover-meta { display:flex; flex-wrap:wrap; gap:14px; margin-top:40px; }
+  .cover-chip { display:flex; flex-direction:column; gap:2px; padding:14px 20px; border:1px solid rgba(255,255,255,0.14); border-radius:12px; background:rgba(255,255,255,0.03); }
+  .cover-chip .v { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:#fff; }
+  .cover-chip .l { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+
+  /* SECTIONS */
+  .eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:11px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--green-dark); margin-bottom:14px; }
+  .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green); }
+  h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,3.4vw,34px); font-weight:600; color:var(--navy); line-height:1.18; margin-bottom:18px; letter-spacing:-0.3px; }
+  h2 em { font-style:italic; color:var(--green-dark); }
+  .sheet > p { font-size:16px; line-height:1.8; color:var(--slate); font-weight:300; max-width:66ch; }
+  .sheet > p + p { margin-top:14px; }
+  .sheet > p strong { color:var(--ink); font-weight:600; }
+
+  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
+  .pillar { border:1px solid var(--border); border-radius:14px; padding:22px 20px; background:var(--cloud); }
+  .pillar .pi { width:38px; height:38px; border-radius:10px; background:var(--green-pale); border:1px solid rgba(52,211,153,0.4); display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px; }
+  .pillar h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+  .pillar p { font-size:13.5px; color:var(--slate); font-weight:300; line-height:1.6; }
+
+  /* PROGRAM */
+  .prog-day { border:1px solid var(--border); border-radius:16px; overflow:hidden; margin-top:22px; }
+  .prog-day + .prog-day { margin-top:18px; }
+  .prog-head { display:flex; align-items:center; gap:16px; padding:20px 24px; color:#fff; }
+  .prog-day.d1 .prog-head { background:linear-gradient(135deg, var(--navy), var(--navy-light)); }
+  .prog-day.d2 .prog-head { background:linear-gradient(135deg, var(--green-dark), var(--green)); color:var(--navy-deep); }
+  .prog-day.d2 .prog-head .pt { color:var(--navy-deep); opacity:0.85; }
+  .prog-head .pn { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; line-height:1; }
+  .prog-head .pt { font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:0.8; }
+  .prog-head h3 { font-family:'Playfair Display',serif; font-size:21px; font-weight:600; line-height:1.2; }
+  .prog-body { padding:8px 24px 20px; }
+  .blk { padding:16px 0; border-top:1px solid var(--border); }
+  .blk:first-child { border-top:none; }
+  .blk h4 { font-size:15.5px; font-weight:600; color:var(--navy); margin-bottom:5px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .blk .tag { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-dark); border:1px solid rgba(52,211,153,0.5); border-radius:5px; padding:2px 8px; }
+  .blk p { font-size:14px; color:var(--slate); font-weight:300; line-height:1.65; }
+
+  /* SAFETY CALLOUT */
+  .callout { margin-top:28px; border-left:3px solid var(--green); background:var(--green-pale); border-radius:0 12px 12px 0; padding:22px 26px; }
+  .callout h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:8px; }
+  .callout p { font-size:14px; color:var(--slate); font-weight:300; line-height:1.7; }
+  .callout p + p { margin-top:8px; }
+
+  /* TAKEAWAYS */
+  .takeaways { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:28px; }
+  .take { display:flex; gap:13px; padding:18px 20px; border:1px solid var(--border); border-radius:12px; background:var(--cloud); }
+  .take .tk { width:30px; height:30px; border-radius:8px; background:var(--green-pale); border:1px solid rgba(52,211,153,0.4); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:16px; }
+  .take h4 { font-size:14.5px; font-weight:600; color:var(--navy); margin-bottom:3px; }
+  .take p { font-size:13px; color:var(--slate); font-weight:300; line-height:1.55; }
+
+  /* TRAINERS */
+  .trainers { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px; }
+  .tr { border:1px solid var(--border); border-radius:16px; padding:26px 24px; background:var(--cloud); }
+  .tr img { width:72px; height:72px; border-radius:50%; object-fit:cover; margin-bottom:16px; border:3px solid #fff; box-shadow:0 6px 18px rgba(27,42,85,0.12); display:block; }
+  .tr .role { font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--green-dark); margin-bottom:4px; }
+  .tr h4 { font-family:'Playfair Display',serif; font-size:21px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .tr .sub { font-size:13px; color:var(--slate-light); margin-bottom:12px; }
+  .tr p { font-size:13.5px; color:var(--slate); font-weight:300; line-height:1.65; }
+
+  /* PRACTICAL */
+  .practical { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:26px; }
+  .practical div { background:#fff; padding:20px 18px; text-align:center; }
+  .practical .v { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .practical .l { font-size:12px; color:var(--slate-light); line-height:1.4; }
+
+  /* CTA / CONTACT */
+  .contact { color:#fff; background:linear-gradient(160deg, var(--navy-deep), var(--navy)); position:relative; overflow:hidden; }
+  .contact-glow { position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(52,211,153,0.10), transparent 55%); }
+  .contact-inner { position:relative; z-index:2; }
+  .contact h2 { color:#fff; }
+  .contact h2 em { color:var(--green); }
+  .contact > p, .contact-inner > p { color:rgba(255,255,255,0.7); font-weight:300; font-size:16px; max-width:60ch; }
+  .contact-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; }
+  .cc { border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:22px; background:rgba(255,255,255,0.03); }
+  .cc .n { font-family:'Playfair Display',serif; font-size:19px; color:#fff; margin-bottom:2px; }
+  .cc .r { font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:12px; }
+  .cc a { display:block; font-size:14px; color:var(--green); text-decoration:none; line-height:1.9; }
+  .cc a:hover { color:#fff; }
+  .qr-block { display:flex; align-items:center; gap:22px; margin-top:34px; padding-top:30px; border-top:1px solid rgba(255,255,255,0.12); flex-wrap:wrap; }
+  .qr-card { background:#fff; border-radius:14px; padding:12px; width:128px; height:128px; flex-shrink:0; box-shadow:0 12px 34px rgba(0,0,0,0.28); }
+  .qr-card svg { width:100%; height:100%; display:block; }
+  .qr-text { display:flex; flex-direction:column; gap:4px; }
+  .qr-text strong { color:#fff; font-size:16px; font-weight:600; }
+  .qr-text span { color:rgba(255,255,255,0.6); font-size:14px; font-weight:300; max-width:34ch; line-height:1.5; }
+  .contact-note { margin-top:26px; font-size:13px; color:rgba(255,255,255,0.5); }
+
+  footer { background:#080D1A; padding:22px 32px; text-align:center; }
+  footer span { font-size:12px; color:rgba(255,255,255,0.28); }
+
+  @media (max-width:760px) {
+    .pillars { grid-template-columns:1fr; }
+    .takeaways, .trainers, .contact-cards { grid-template-columns:1fr; }
+    .practical { grid-template-columns:1fr 1fr; }
+    .prog-head { flex-wrap:wrap; gap:10px; }
+  }
+
+  @media print {
+    body { background:#fff; }
+    .doc { max-width:none; }
+    .sheet, .cover { padding:28px 32px; }
+    .sheet + .sheet, .cover { page-break-inside:auto; }
+    .cover, .contact { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .prog-day, .pillar, .take, .tr, .callout { break-inside:avoid; }
+    h2 { break-after:avoid; }
+    footer { display:none; }
+    .sheet { border-top:1px solid #e5e9f0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="cover-grid"></div>
+    <div class="cover-glow"></div>
+    <div class="cover-inner">
+      <div class="brand">
+        <svg viewBox="0 0 64 64" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M32 10 V52"/><path d="M22 52 H42"/><circle cx="32" cy="10" r="2.2" fill="#fff" stroke="none"/>
+          <path d="M12 18 H52"/><path d="M12 18 L6 30"/><path d="M12 18 L18 30"/><path d="M4 30 a8 5 0 0 0 16 0"/>
+          <path d="M52 18 L46 30"/><path d="M52 18 L58 30"/><path d="M44 30 a8 5 0 0 0 16 0"/>
+        </svg>
+        <span class="nm">Peters Advocatuur</span>
+        <span class="x">×</span>
+        <svg viewBox="0 0 120 120" width="22" height="22" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
+        <span class="nm fx">Forgexe</span>
+      </div>
+      <div class="cover-eyebrow"><span class="dot"></span> Brochure · Juridische AI-training</div>
+      <h1>Slimmer werken met AI, binnen het <em>beroepsgeheim</em></h1>
+      <p class="lead">Een praktijkgericht programma van twee dagdelen voor advocaten en juridisch support — met Claude als hoofdtool. Concreet tijd besparen op contracten, dossiers en correspondentie, en altijd binnen de grenzen van vertrouwelijkheid en verificatie.</p>
+      <div class="cover-meta">
+        <div class="cover-chip"><span class="v">2</span><span class="l">Dagdelen</span></div>
+        <div class="cover-chip"><span class="v">In-house</span><span class="l">Op kantoor</span></div>
+        <div class="cover-chip"><span class="v">Claude</span><span class="l">Hoofdtool</span></div>
+        <div class="cover-chip"><span class="v">Op maat</span><span class="l">Jullie rechtsgebieden</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="sheet">
+    <div class="eyebrow"><span class="dot"></span> Waarom deze training</div>
+    <h2>De jurist <em>én</em> de technologie</h2>
+    <p>De meeste juristen zien dat AI hun werk raakt, maar durven het niet te gebruiken — terecht, want <strong>vertrouwelijkheid en verificatie</strong> zijn geen bijzaak in dit vak. Deze training neemt die drempel weg: eerst een helder verhaal over wat je wél en niet mag met cliëntdata, daarna hands-on aan de slag met echte, geanonimiseerde vraagstukken uit jullie eigen praktijk.</p>
+    <p>We werken met een <strong>gemengde groep</strong> — advocaten én secretariaat/paralegals. De basis is gezamenlijk; bij het oefenen splitsen we naar rol, zodat iedereen met zijn eigen werk aan de slag gaat. De tweede dag bouwt bewust toe naar één vraag: <strong>welke terugkerende taken lenen zich voor echte automatisering?</strong></p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pi">⚖️</div>
+        <h4>Echte juridische casuïstiek</h4>
+        <p>Arbeids-, huur-, familie-, straf- en bestuursrecht — vraagstukken uit de praktijk van het kantoor, niet generieke voorbeelden.</p>
+      </div>
+      <div class="pillar">
+        <div class="pi">🤖</div>
+        <h4>Claude als werktuig</h4>
+        <p>Van lange contracten en dossiers tot een eigen kennisbank in Claude Projects — leren wat de tool écht voor je doet.</p>
+      </div>
+      <div class="pillar">
+        <div class="pi">🛡️</div>
+        <h4>Veilig binnen de beroepsregels</h4>
+        <p>Beroepsgeheim, AVG en de AI Act vertaald naar concrete spelregels: wat mag wél, wat nooit, en met welke versie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section class="sheet">
+    <div class="eyebrow"><span class="dot"></span> Het programma</div>
+    <h2>Twee dagdelen — van <em>fundament</em> naar toepassing</h2>
+    <p>Dagdeel 1 legt de basis en het veilig werken. Dagdeel 2 is volledig hands-on: jullie eigen casuïstiek, Claude in de diepte, en samen kijken wat rijp is om te automatiseren.</p>
+
+    <div class="prog-day d1">
+      <div class="prog-head">
+        <div><div class="pn">01</div><div class="pt">Fundament</div></div>
+        <h3>Fundament &amp; veilig werken</h3>
+      </div>
+      <div class="prog-body">
+        <div class="blk">
+          <h4>Hallucinaties in de rechtspraktijk</h4>
+          <p>We laten zien hoe AI verzonnen jurisprudentie, foute ECLI-nummers en zelfs gewijzigde wetteksten produceert — waardoor de betekenis verschuift. Deelnemers zien zelf hoe dezelfde vraag, anders geformuleerd, andere antwoorden geeft. Dat zet meteen de juiste reflex: nooit blind vertrouwen, altijd verifiëren.</p>
+        </div>
+        <div class="blk">
+          <h4>Vertrouwelijkheid, beroepsgeheim &amp; AVG <span class="tag">Kernblok</span></h4>
+          <p>Wat zijn persoonsgegevens, en waarom is de geheimhoudingsplicht van de advocaat breder en strenger dan de AVG? We behandelen de verschillen in sancties (van AVG-boete tot tuchtrecht), de verwerkersovereenkomst, en waarom je een zakelijke versie van de tool nodig hebt: geen training op je data, EU-datalocatie, verwerkersafspraken.</p>
+        </div>
+        <div class="blk">
+          <h4>De AI Act op hoofdlijnen</h4>
+          <p>Risicogericht toezicht, verboden toepassingen en wat de verordening in de praktijk betekent voor een advocatenkantoor dat AI als werktuig inzet.</p>
+        </div>
+        <div class="blk">
+          <h4>Prompten in Claude</h4>
+          <p>Rol, context en taak leren geven. En het belangrijkste inzicht: je bouwt een prompt stap voor stap op, omdat dat informatie blootlegt die je met één opdracht zou missen. We sluiten af met de eerste hands-on op een onschuldige eigen tekst.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prog-day d2">
+      <div class="prog-head">
+        <div><div class="pn">02</div><div class="pt">Toepassen</div></div>
+        <h3>Toepassen &amp; automatiseren</h3>
+      </div>
+      <div class="prog-body">
+        <div class="blk">
+          <h4>Juridische use-cases — eigen casuïstiek</h4>
+          <p>Aan de hand van geanonimiseerde vraagstukken bouwen we samen documenten op. Voor advocaten: een arbeidsovereenkomst met de juiste CAO en AVG-verplichtingen, een huurovereenkomst bedrijfsruimte (milieubepalingen, opzegtermijnen, vloerbelastingclausule), en een vaststellingsovereenkomst bij echtscheiding met onderneming en fiscale vraagstukken.</p>
+        </div>
+        <div class="blk">
+          <h4>Correspondentie &amp; dossier — voor het secretariaat</h4>
+          <p>Brieven concipiëren, juridisch jargon vertalen naar begrijpelijke cliënttaal, lange stukken samenvatten en een dossier omzetten naar een tijdlijn met kernvragen.</p>
+        </div>
+        <div class="blk">
+          <h4>Claude Projects in de diepte</h4>
+          <p>Een dossier of kennisbank inrichten waar Claude steeds op teruggrijpt, documenten uploaden en er gericht op doorvragen — dé eyeopener voor wie met lange stukken werkt.</p>
+        </div>
+        <div class="blk">
+          <h4>Van handwerk naar automatisering <span class="tag">Vervolg</span></h4>
+          <p>Iedereen brengt zijn top 3 taken in kaart. Samen inventariseren we welke terugkerende processen — intake, dossieropbouw, standaarddocumenten, opvolging — rijp zijn om echt te automatiseren, met een concrete blik op wat een oplossing op maat kan zijn.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>De rode draad: AI levert het concept, de advocaat blijft verantwoordelijk</h4>
+      <p>We oefenen bewust met fictieve of geanonimiseerde casus — nooit met echte cliëntdata. Elk voorbeeld wordt inhoudelijk bewaakt, zodat het klopt en toepasbaar is in het echte werk van het kantoor.</p>
+      <p>Blok 1 en het prompt-blok versterken elkaar: het eerste toont wat er misgaat, het tweede hoe je het goed doet. Samen bouwen ze de kritische, verifiërende houding op die dit vak vraagt.</p>
+    </div>
+  </section>
+
+  <!-- TAKEAWAYS -->
+  <section class="sheet">
+    <div class="eyebrow"><span class="dot"></span> Wat het kantoor overhoudt</div>
+    <h2>Meer dan <em>alleen</em> een training</h2>
+    <div class="takeaways">
+      <div class="take"><div class="tk">🛡️</div><div><h4>Spelregelkaart</h4><p>Eén pagina met heldere afspraken over vertrouwelijkheid — een blijvend hulpmiddel voor het hele kantoor.</p></div></div>
+      <div class="take"><div class="tk">🎯</div><div><h4>Persoonlijke top 3</h4><p>Elke deelnemer gaat weg met drie taken die hij vanaf morgen anders — en sneller — doet.</p></div></div>
+      <div class="take"><div class="tk">📁</div><div><h4>Eigen Claude Project</h4><p>Een ingericht dossier of kennisbank, klaar om direct in de praktijk mee verder te werken.</p></div></div>
+      <div class="take"><div class="tk">📚</div><div><h4>Prompt-bibliotheek</h4><p>Uitgewerkte prompts per rechtsgebied, opgebouwd tijdens de hands-on, om later opnieuw te gebruiken.</p></div></div>
+      <div class="take"><div class="tk">🔍</div><div><h4>Verificatie-reflex</h4><p>Een concrete checklist tegen hallucinaties: nooit blind vertrouwen, altijd de bron natrekken.</p></div></div>
+      <div class="take"><div class="tk">⚡</div><div><h4>Automatiseringskansen</h4><p>Een gedeelde inventarisatie van processen die rijp zijn om te automatiseren, als basis voor een vervolg.</p></div></div>
+    </div>
+  </section>
+
+  <!-- TRAINERS + PRACTICAL -->
+  <section class="sheet">
+    <div class="eyebrow"><span class="dot"></span> Je trainers</div>
+    <h2>De advocaat <em>&</em> de bouwer</h2>
+    <div class="trainers">
+      <div class="tr">
+        <img src="testimonial-john-peters.jpg" alt="John Peters">
+        <div class="role">Juridische expertise</div>
+        <h4>John Peters</h4>
+        <div class="sub">Advocaat — Peters Advocatuur</div>
+        <p>Brengt de juridische diepgang: per rechtsgebied de praktijkcasuïstiek, de valkuilen en de tuchtrechtelijke kaders. John bewaakt dat elk voorbeeld klopt en toepasbaar is in het echte werk van het kantoor.</p>
+      </div>
+      <div class="tr">
+        <img src="trainer-sedat.webp" alt="Sedat Ayar">
+        <div class="role">AI &amp; Automation</div>
+        <h4>Sedat Ayar</h4>
+        <div class="sub">AI Specialist — Forgexe</div>
+        <p>Vertaalt de techniek naar de dagelijkse praktijk: hands-on met Claude, veilig werken met vertrouwelijke data en de brug naar het automatiseren van terugkerende processen.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:40px;"><span class="dot"></span> Praktisch</div>
+    <div class="practical">
+      <div><div class="v">2 dagdelen</div><div class="l">± 3 uur per dagdeel</div></div>
+      <div><div class="v">Kleine groep</div><div class="l">Advocaten + secretariaat</div></div>
+      <div><div class="v">In-house</div><div class="l">Op kantoor, op maat</div></div>
+      <div><div class="v">Op maat</div><div class="l">Prijs &amp; planning in overleg</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sheet contact">
+    <div class="contact-glow"></div>
+    <div class="contact-inner">
+      <div class="eyebrow" style="color:var(--green);"><span class="dot"></span> Volgende stap</div>
+      <h2>Klaar om jullie praktijk te <em>versnellen</em>?</h2>
+      <p>Schrijf je in en we stemmen samen de invulling, de casuïstiek en de planning af. Neem gerust rechtstreeks contact op of scan de QR-code voor de inschrijving.</p>
+      <div class="contact-cards">
+        <div class="cc">
+          <div class="n">John Peters</div>
+          <div class="r">Advocaat — Peters Advocatuur</div>
+          <a href="mailto:info@petersadvocatuur.nl">info@petersadvocatuur.nl</a>
+          <a href="tel:+31628428360">+31 6 28 42 83 60</a>
+        </div>
+        <div class="cc">
+          <div class="n">Sedat Ayar</div>
+          <div class="r">AI Specialist — Forgexe</div>
+          <a href="mailto:sedat@forgexe.nl">sedat@forgexe.nl</a>
+          <a href="tel:+31618031022">+31 6 180 310 22</a>
+        </div>
+      </div>
+      <div class="qr-block">
+        <div class="qr-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" shape-rendering="crispEdges" role="img" aria-label="QR-code naar de volledige trainingspagina"><path fill="#ffffff" d="M0 0h41v41H0z"/><path stroke="#000000" d="M4 4.5h7m1 0h1m3 0h3m1 0h3m2 0h2m3 0h7M4 5.5h1m5 0h1m9 0h1m4 0h1m4 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m3 0h1m2 0h2m3 0h1m4 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m9 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m4 0h1m3 0h1m3 0h1m2 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h4m2 0h2m2 0h2m1 0h2m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 11.5h3m1 0h3m2 0h2m1 0h1M4 12.5h1m1 0h1m3 0h2m1 0h1m1 0h1m6 0h1m1 0h1m3 0h1m2 0h1m2 0h1m1 0h1M4 13.5h3m1 0h2m2 0h2m2 0h2m1 0h3m1 0h2m1 0h3m1 0h1m2 0h1m2 0h1M4 14.5h1m2 0h1m2 0h1m1 0h3m1 0h1m2 0h2m2 0h2m1 0h4m3 0h2m1 0h1M5 15.5h2m1 0h1m3 0h1m4 0h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h4m2 0h1M6 16.5h2m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h2m3 0h2M9 17.5h1m1 0h4m6 0h1m5 0h5m1 0h1m1 0h2M4 18.5h1m2 0h1m1 0h2m3 0h1m1 0h1m1 0h2m3 0h1m2 0h3m3 0h1m3 0h1M4 19.5h1m2 0h1m4 0h1m1 0h3m1 0h1m3 0h1m5 0h6M5 20.5h1m4 0h1m2 0h7m4 0h1m2 0h2m1 0h2m1 0h1m1 0h1M5 21.5h1m3 0h1m2 0h3m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m1 0h2m2 0h1m1 0h2M5 22.5h1m3 0h3m1 0h1m1 0h2m2 0h1m1 0h3m1 0h3m2 0h2m1 0h2m1 0h1M6 23.5h4m3 0h1m3 0h1m2 0h1m1 0h1m1 0h1m2 0h3m2 0h2m1 0h2M4 24.5h1m2 0h2m1 0h1m1 0h2m1 0h2m1 0h7m2 0h2m1 0h2M5 25.5h1m3 0h1m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m2 0h4m2 0h1m2 0h1M4 26.5h2m1 0h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h4m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1M6 27.5h1m2 0h1m1 0h10m5 0h1m2 0h3m1 0h1m1 0h2M4 28.5h4m2 0h3m1 0h1m1 0h2m2 0h1m2 0h2m3 0h5m2 0h2M12 29.5h2m1 0h7m1 0h2m2 0h2m3 0h1m3 0h1M4 30.5h7m1 0h2m1 0h1m1 0h1m1 0h2m2 0h3m2 0h1m1 0h1m1 0h3m1 0h1M4 31.5h1m5 0h1m4 0h1m4 0h2m4 0h3m3 0h2m2 0h1M4 32.5h1m1 0h3m1 0h1m3 0h1m2 0h3m1 0h1m2 0h1m1 0h7m3 0h1M4 33.5h1m1 0h3m1 0h1m2 0h1m9 0h2m2 0h3m1 0h2m1 0h3M4 34.5h1m1 0h3m1 0h1m1 0h3m1 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h6M4 35.5h1m5 0h1m3 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h1m2 0h3M4 36.5h7m1 0h1m1 0h1m2 0h1m1 0h1m8 0h2m1 0h3m2 0h1"/></svg>
+        </div>
+        <div class="qr-text">
+          <strong>Scan voor de volledige pagina</strong>
+          <span>Bekijk het programma, de trainers en schrijf je direct in.</span>
+        </div>
+      </div>
+      <p class="contact-note">Peters Advocatuur × Forgexe — juridische AI-training op maat.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>© 2026 Peters Advocatuur × Forgexe</span>
+</footer>
+
+</body>
+</html>
