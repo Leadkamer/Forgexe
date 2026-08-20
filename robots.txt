@@ -4,5 +4,6 @@ Allow: /
 # Kennisbank voor de chatbot: platte-tekstkopie van de paginas hierboven.
 # Niet indexeren, dat zou duplicate content opleveren.
 Disallow: /kennisbank/
+Disallow: /blog-template
 
 Sitemap: https://www.forgexe.nl/sitemap.xml
