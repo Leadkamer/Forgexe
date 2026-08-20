@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>HQ Zelftest (wordt verwijderd) | Forgexe Blog</title>
+<meta name="description" content="Tijdelijke zelftest van de publicatieflow. Dit bestand wordt direct verwijderd.">
+<meta property="og:title" content="HQ Zelftest (wordt verwijderd)">
+<meta property="og:description" content="Tijdelijke zelftest van de publicatieflow. Dit bestand wordt direct verwijderd.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-08-20">
+<meta property="article:author" content="Forgexe">
+<link rel="canonical" href="https://www.forgexe.nl/blog-hq-zelftest-verwijderd">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<style>:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;--amber:#f5a623;--page-bg:#f4f6f8;--card-bg:#ffffff;--ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;--line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);--radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;--tr:.32s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:#052e16}
+img{max-width:100%;height:auto;display:block}
+.shell{max-width:1480px;margin:0 auto;padding:18px}
+nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.8rem;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:0 6px 24px rgba(10,11,14,.04)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.nav-center{display:flex;align-items:center;gap:.25rem}
+.nav-center a{position:relative;color:var(--ink-dim);text-decoration:none;font-family:var(--head);font-size:.88rem;font-weight:500;padding:.5rem 1rem;transition:color var(--tr)}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;height:2px;background:var(--green);border-radius:1px}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.75rem 1.2rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);border:none;cursor:pointer}
+.nav-cta:hover{background:#000;transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.hamburger span{width:14px;height:1.5px;background:var(--ink)}
+.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line)}
+@media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--green)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+.page-hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:24ch}
+.page-hero h1 em{font-style:italic;font-weight:600;color:var(--green)}
+.page-hero p.lead{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.15rem);color:var(--ink-dim);max-width:60ch;line-height:1.55;margin-bottom:0;font-weight:400}
+.section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;border:1px solid var(--line)}
+@media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.section-h2{font-family:var(--head);font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
+@media(max-width:1100px){.posts-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.posts-grid{grid-template-columns:1fr}}
+.post-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem 1.6rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all var(--tr);position:relative}
+.post-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,11,14,.08);border-color:var(--line-strong)}
+.post-card:hover .post-arrow{background:var(--green);color:#052e16;transform:rotate(-12deg)}
+.post-tag{display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--green);font-weight:600;letter-spacing:.08em;margin-bottom:.8rem}
+.post-title{font-family:var(--head);font-size:1.15rem;font-weight:600;letter-spacing:-.015em;line-height:1.25;color:var(--ink);margin-bottom:.8rem}
+.post-excerpt{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55;flex:1;margin-bottom:1.2rem}
+.post-meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);padding-top:1rem;border-top:1px solid var(--line)}
+.post-arrow{position:absolute;top:1.4rem;right:1.4rem;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;transition:all var(--tr)}
+.post-arrow svg{width:12px;height:12px}
+.article-shell{max-width:780px;margin:0 auto}
+.article-back{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.78rem;color:var(--ink-mut);text-decoration:none;margin-bottom:2rem;transition:color var(--tr)}
+.article-back:hover{color:var(--green)}
+.article-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.6rem;font-family:var(--mono);font-size:.74rem;color:var(--ink-mut)}
+.article-tag{padding:.4rem .85rem;background:var(--green-soft);color:var(--green);border-radius:9px;font-weight:600;letter-spacing:.04em}
+.article-title{font-family:var(--head);font-weight:800;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;letter-spacing:-.035em;color:var(--ink);margin-bottom:2.5rem}
+.article-body{font-family:var(--head);font-size:1.05rem;color:var(--ink);line-height:1.75}
+.article-body p{margin-bottom:1.4rem;color:var(--ink-dim)}
+.article-body h2{font-family:var(--head);font-size:1.7rem;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin:2.5rem 0 1rem}
+.article-body h3{font-family:var(--head);font-size:1.3rem;font-weight:600;letter-spacing:-.015em;color:var(--ink);margin:1.8rem 0 .8rem}
+.article-body ul,.article-body ol{margin:1.2rem 0 1.4rem;padding-left:1.5rem;color:var(--ink-dim)}
+.article-body li{margin-bottom:.6rem;line-height:1.65}
+.article-body strong{color:var(--ink);font-weight:700}
+.article-body a{color:var(--green);text-decoration:underline;text-underline-offset:3px;font-weight:500}
+.article-body code{font-family:var(--mono);font-size:.92em;background:#fafbfc;padding:.15em .4em;border-radius:4px;color:var(--green-deep)}
+.article-body blockquote{border-left:3px solid var(--green);padding-left:1.4rem;margin:1.6rem 0;font-style:italic;color:var(--ink-dim)}
+.cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
+.cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
+.cta-card h2 em{font-style:italic;font-weight:800}
+.cta-card p{font-family:var(--head);font-size:.96rem;color:#052e16;opacity:.85;margin-bottom:2rem;max-width:480px;line-height:1.55}
+.cta-card .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:900px){.cta-card{padding:2.5rem 1.6rem}}
+.btn-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head);font-weight:600;font-size:.88rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all var(--tr)}
+.btn-pill svg{width:14px;height:14px}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
+.btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:1.4fr 1.1fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
+.foot-brand{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.foot-brand-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.foot-desc{font-family:var(--head);font-size:.85rem;color:var(--ink-dim);line-height:1.55;max-width:280px;margin-bottom:1rem}
+.foot-col-title{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.foot-col a{display:block;font-family:var(--head);font-size:.86rem;color:var(--ink);text-decoration:none;margin-bottom:.5rem;transition:color var(--tr)}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
+.foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
+@media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+/* ==FORGEXE-MOBILE-FIX== */
+html,body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+@media(max-width:760px){
+  .shell{padding:10px}
+  nav{padding:.7rem 1rem!important;gap:.5rem}
+  .brand{flex-shrink:0;min-width:0}
+  .brand-text{font-size:.92rem;letter-spacing:.04em;white-space:nowrap}
+  .nav-cta{padding:.55rem .85rem!important;font-size:.72rem!important;gap:.35rem;white-space:nowrap;flex-shrink:0}
+  .nav-cta svg{width:11px;height:11px;flex-shrink:0}
+  .hamburger{display:flex!important;flex-shrink:0}
+  .nav-center,.nav-right .lang-pill{display:none!important}
+  .page-hero,.hero-main,.hero{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important;min-height:auto!important}
+  .section-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .cta-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .page-hero h1,.hero-main h1,.case-title-big{font-size:clamp(1.9rem,8vw,2.6rem)!important;line-height:1.05;max-width:100%}
+  .section-h2{font-size:clamp(1.55rem,7vw,2.2rem)!important;line-height:1.1}
+  .page-hero p.lead,.hero-main p.lead,.case-subtitle{font-size:.96rem!important;max-width:100%}
+  .section-sub{font-size:.92rem!important}
+  .btn-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .btn-row .btn-pill,.btn-row a.btn-pill{width:100%;justify-content:center}
+  .breadcrumb{font-size:.66rem;flex-wrap:wrap}
+  .eyebrow{font-size:.66rem}
+  footer{padding:2rem 1.2rem 1rem!important;border-radius:14px!important}
+  .footer-top{grid-template-columns:1fr 1fr!important;gap:1.5rem!important;padding-bottom:1.5rem!important}
+  .foot-bottom{flex-direction:column!important;align-items:flex-start!important;gap:.6rem;text-align:left;padding-top:1.2rem!important}
+  .hero-laptop{padding:.9rem!important;margin-top:1.5rem!important}
+  .case-stats{grid-template-columns:1fr 1fr!important;gap:12px!important;padding-top:1.5rem!important}
+  .case-stat-num{font-size:1.4rem!important}
+  .sidebar-card{position:static!important;padding:1.4rem!important;margin-top:1rem}
+  .detail-grid{gap:1.5rem!important}
+  .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .compare-table{min-width:600px}
+  .filter-row{overflow-x:auto;flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;margin-bottom:1.4rem!important;scrollbar-width:none}
+  .filter-row::-webkit-scrollbar{display:none}
+  .filter-pill{flex-shrink:0;white-space:nowrap}
+  .tile.span-6,.tile.span-4,.tile.span-3,.tile.span-2{grid-column:span 1!important}
+  .tile{min-height:240px!important;padding:1.4rem 1.2rem!important}
+  .tile-title{font-size:1.2rem!important;line-height:1.2}
+  .tile-desc{font-size:.86rem!important}
+  .train-grid{gap:12px!important}
+  .train-card{padding:1.8rem 1.4rem!important}
+  .train-price-num{font-size:1.9rem!important}
+  .tier-card{padding:1.8rem 1.4rem!important}
+  .tier-price-num{font-size:2rem!important}
+  .form-row{grid-template-columns:1fr!important}
+  .form-card{padding:1.6rem 1.2rem!important}
+  .form-actions{flex-direction:column!important;align-items:stretch!important}
+  .form-submit{width:100%;justify-content:center}
+  .info-card{padding:1.6rem 1.2rem!important;min-height:auto!important}
+  .info-item{grid-template-columns:6rem 1fr!important;gap:.7rem!important}
+  .location-card{padding:2rem 1.2rem!important;min-height:240px!important;border-radius:14px!important}
+  .loc-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .location-card .right-btn{position:static!important;margin-top:1rem;width:fit-content}
+  .steps-grid,.aanpak-grid,.result-grid,.principles-grid,.trust-row,.values-grid,.team-grid,.tiers-grid,.channels-grid,.builds-grid,.test-grid,.cases-grid,.next-grid,.pain-grid,.bottlenecks-grid,.tiles-grid{grid-template-columns:1fr!important;gap:12px!important}
+  .build-card[style*="grid-column:span 2"]{grid-column:span 1!important}
+  .hero h1{font-size:clamp(2rem,9vw,3.2rem)!important;line-height:1.02}
+  .hero p.lead{font-size:.98rem!important}
+  .hero-cta-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .hero-cta-row .btn-pill{width:100%;justify-content:center}
+  .hero-wave{opacity:.5}
+  .proof-bar{flex-direction:column!important;align-items:stretch!important;text-align:center;padding:1.4rem 1.2rem!important;gap:1rem!important;margin:10px 0!important;border-radius:14px!important}
+  .proof-logos{justify-content:center;gap:1.2rem}
+  .proof-cta{align-self:center;width:fit-content}
+  .dark-card{padding:2.4rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .dark-card .section-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .compare-foot{flex-direction:column!important;align-items:stretch!important;gap:.8rem;padding:1.2rem 1rem!important}
+  .compare-foot .btn-pill{width:100%;justify-content:center}
+  .trust-foot{flex-direction:column!important;align-items:stretch!important}
+  .trust-foot a{width:100%;justify-content:center}
+  .hero-meta{gap:.55rem!important;margin-bottom:1.4rem!important}
+  .hero-meta-item{font-size:.66rem!important}
+  .testimonial-inline{padding:1.4rem 1.2rem!important}
+  .testimonial-quote{font-size:1.05rem!important}
+  .approach-list{gap:.5rem!important}
+  .approach-item{padding:.8rem .9rem!important}
+  .approach-text{font-size:.86rem!important}
+  .train-note{flex-direction:column!important;gap:.6rem;padding:1rem 1.1rem!important}
+  .compare-wrap{margin-top:2rem!important}
+  .workspace-strip{display:none}
+  .ws-frame{display:none}
+}
+@media(max-width:380px){
+  .brand-text{font-size:.8rem;letter-spacing:.02em}
+  .nav-cta{padding:.5rem .65rem!important;font-size:.68rem!important}
+  .nav-cta svg{display:none}
+  .case-stats{grid-template-columns:1fr 1fr!important}
+  .info-item{grid-template-columns:5.2rem 1fr!important;gap:.5rem!important}
+  .info-label{font-size:.6rem!important}
+  .info-value{font-size:.85rem!important}
+}
+@media(max-width:600px){
+  .scan-modal{padding:.7rem!important}
+  .scan-card{padding:1.5rem 1.1rem!important;border-radius:14px}
+  .scan-question{font-size:1.2rem!important;line-height:1.2}
+}
+/* ==/FORGEXE-MOBILE-FIX== */
+</style>
+<!-- ==FORGEXE-SEO== -->
+<meta property="og:url" content="https://www.forgexe.nl/blog-hq-zelftest-verwijderd">
+<meta property="og:image" content="https://www.forgexe.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forgexe — AI-medewerkers voor het Nederlandse MKB">
+<meta property="og:site_name" content="Forgexe">
+<meta property="og:locale" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HQ Zelftest (wordt verwijderd)">
+<meta name="twitter:description" content="Tijdelijke zelftest van de publicatieflow. Dit bestand wordt direct verwijderd.">
+<meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
+<meta name="theme-color" content="#0a0b0e">
+<meta name="author" content="Forgexe">
+<link rel="apple-touch-icon" href="favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
+<!-- ==/FORGEXE-SEO== -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"HQ Zelftest (wordt verwijderd)","description":"Tijdelijke zelftest van de publicatieflow. Dit bestand wordt direct verwijderd.","image":"https://www.forgexe.nl/og-image.png","url":"https://www.forgexe.nl/blog-hq-zelftest-verwijderd","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.forgexe.nl/blog-hq-zelftest-verwijderd"},"datePublished":"2026-08-20","dateModified":"2026-08-20","inLanguage":"nl-NL","author":{"@type":"Organization","name":"Forgexe","url":"https://www.forgexe.nl/"},"publisher":{"@type":"Organization","name":"Forgexe","url":"https://www.forgexe.nl/","logo":{"@type":"ImageObject","url":"https://www.forgexe.nl/forgexe-mark-green.svg"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.forgexe.nl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.forgexe.nl/blog"},{"@type":"ListItem","position":3,"name":"HQ Zelftest (wordt verwijderd)","item":"https://www.forgexe.nl/blog-hq-zelftest-verwijderd"}]}</script>
+</head>
+<body>
+<div class="shell">
+<nav>
+  <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
+  <div class="nav-center"><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
+    <a href="/contact">Contact</a></div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <button class="nav-cta" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
+
+<article class="section-card">
+  <div class="article-shell">
+    <a href="/blog" class="article-back">&larr; Terug naar blog</a>
+    <div class="article-meta">
+      <span class="article-tag">Test</span>
+      <time datetime="2026-08-20">20 aug 2026</time>
+      <span>1 min leestijd</span>
+    </div>
+    <h1 class="article-title">HQ Zelftest (wordt verwijderd)</h1>
+    <div class="article-body">
+<p>Dit is een tijdelijke zelftest van de blog-publicatieflow en wordt meteen verwijderd.</p>
+    <div class="neon-line"></div>
+    </div>
+</article>
+
+<section class="cta-card">
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
+  <h2>Klaar om dit toe te passen op je <em>bedrijf</em>?</h2>
+  <p>Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.</p>
+  <div class="btn-row">
+    <button class="btn-pill dark" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    <a href="/blog" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Meer artikelen</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand"><svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="foot-brand-text">FORGEXE</span></div>
+      <p class="foot-desc">AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.</p>
+    </div>
+    <div class="foot-col"><div class="foot-col-title">Diensten</div><a href="/ai-medewerker">AI-medewerker inhuren</a><a href="/ai-agent-laten-bouwen">AI-agent laten bouwen</a><a href="/ai-automatisering-laten-bouwen">AI-automatisering laten bouwen</a><a href="/ai-automatisering-limburg">AI-automatisering Limburg</a><a href="/ai-automatisering-eindhoven">AI-automatisering Eindhoven</a><a href="/n8n-specialist">n8n-specialist</a><a href="/leadgeneratie-automatiseren">Leadgeneratie</a><a href="/email-automatiseren">E-mail automatiseren</a><a href="/factuurverwerking-automatiseren">Factuurverwerking</a><a href="/expertises">Alle diensten</a></div><div class="foot-col"><div class="foot-col-title">Bedrijf</div><a href="/over-ons">Over ons</a><a href="/cases">Cases</a><a href="/blog">Blog</a><a href="/pricing">Prijzen</a><a href="/wat-kost-ai-automatisering">Wat kost AI?</a><a href="/ai-training">Trainingen</a><a href="/ai-act">AI Act</a><a href="/contact">Contact</a></div>
+    <div class="foot-col"><div class="foot-col-title">Branches</div><a href="/branche-maakindustrie">Maakindustrie</a><a href="/branche-technische-groothandel">Technische Groothandel</a><a href="/branche-zakelijke-dienstverlening">Zakelijke Dienstverlening</a><a href="/branche-marketing-bureaus">Marketing &amp; Bureaus</a></div>
+    <div class="foot-col"><div class="foot-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.growth">Instagram</a></div>
+  </div>
+  <div class="foot-bottom"><div>&copy; 2026 Forgexe</div><div class="foot-tagline">C:\&gt; execute growth</div><div style="display:flex;gap:1.2rem"><a href="/privacy" style="color:var(--ink-mut);text-decoration:none">Privacy</a><a href="/voorwaarden" style="color:var(--ink-mut);text-decoration:none">Voorwaarden</a><a href="/disclaimer" style="color:var(--ink-mut);text-decoration:none">Disclaimer</a></div></div>
+</footer>
+
+</div>
+<script src="scan-modal.js" defer></script>
+<script src="/chat-widget.js" defer></script>
+<script src="/tracking.js" defer></script>
+</body>
+</html>
