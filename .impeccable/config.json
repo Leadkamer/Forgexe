@@ -1,0 +1,51 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "hub/index.html"
+        ],
+        "createdAt": "2026-08-20T13:10:31.764Z",
+        "reason": "sanctioned: forgexe.nl-hero gebruikt dezelfde subtiele grid-textuur; user vroeg om de site-stijl te matchen. Grid staat op .035 opacity als merk-textuur, geen data-surface."
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-08-20T14:56:54.530Z"
+      },
+      {
+        "rule": "side-tab",
+        "value": "border-left:3px solid var(--green)",
+        "createdAt": "2026-08-20T14:56:54.693Z"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "hub/index.html"
+        ],
+        "createdAt": "2026-08-21T12:59:56.798Z",
+        "reason": "blog-voorbeeld blockquote (border-left:3px var(--green)) is exacte kopie van de live forgexe.nl blog-CSS (.article-body blockquote), geen card side-tab; preview moet 1-op-1 met de site matchen"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "blog-*.html"
+        ],
+        "createdAt": "2026-08-23T12:27:55.702Z",
+        "reason": "standaard blockquote-accent (border-left:3px var(--green)) uit het vaste Forgexe blog-template; aanwezig in alle blog-*.html, conventionele quote-stijl, geen card side-tab"
+      },
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-08-24T14:08:04.134Z",
+        "reason": "Vaste huisstijl van het Spaak AI Design System voor de FietsBot-widget; stond al in fietsbot.js voor deze wijziging en draait live bij winkelklanten"
+      }
+    ]
+  }
+}

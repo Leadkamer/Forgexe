@@ -7,6 +7,7 @@
   'use strict';
 
   var ENDPOINT = 'https://leadkamer.app.n8n.cloud/webhook/fietsbot';
+  var EVENTS_ENDPOINT = 'https://leadkamer.app.n8n.cloud/webhook/fietsbot-events';
 
   var scriptTag = document.currentScript;
   if (!scriptTag) {
@@ -19,8 +20,67 @@
   var config = null;
   var open = false;
   var busy = false;
-  var storeKey = 'fietsbot-' + WINKEL + '-v2';
-  var CHIPS = ['Help me een fiets kiezen', 'Wat zijn jullie openingstijden?', 'Doen jullie ook reparaties?'];
+  var storeKey = 'fietsbot-' + WINKEL + '-v3';
+
+  /* Standaardteksten per soort pagina; een winkel kan ze overschrijven via de
+     kolommen teaser en chips in de data table (chips gescheiden door |). */
+  var CONTEXTEN = {
+    service: {
+      teaser: 'Vraag over reparatie of onderhoud?',
+      chips: ['Wat kost een beurt?', 'Kan ik langskomen?', 'Hoe lang duurt een reparatie?']
+    },
+    contact: {
+      teaser: 'Iets weten voor je belt?',
+      chips: ['Wat zijn jullie openingstijden?', 'Waar kan ik jullie vinden?', 'Doen jullie reparaties?']
+    },
+    product: {
+      teaser: 'Twijfel je over deze fiets?',
+      chips: ['Help me kiezen', 'Is deze op voorraad?', 'Kan ik een proefrit maken?']
+    },
+    algemeen: {
+      teaser: 'Kan ik je helpen? 👋',
+      chips: ['Help me een fiets kiezen', 'Doen jullie reparaties?', 'Wat zijn jullie openingstijden?']
+    },
+    demo: {
+      teaser: 'Wil je zien wat ik kan? 👋',
+      chips: ['Wat kost FietsBot?', 'Wat zijn jullie openingstijden?', 'Hoe snel kan ik live?']
+    }
+  };
+
+  function paginaPad() {
+    try {
+      return (location.pathname || '/').slice(0, 200);
+    } catch (e) {
+      return '/';
+    }
+  }
+
+  function paginaContext() {
+    if (config && String(config.soort || '') === 'product') return CONTEXTEN.demo;
+    var tekst = (paginaPad() + ' ' + (document.title || '')).toLowerCase();
+    if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(tekst)) return CONTEXTEN.service;
+    if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(tekst)) return CONTEXTEN.contact;
+    if (/fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(tekst)) return CONTEXTEN.product;
+    return CONTEXTEN.algemeen;
+  }
+
+  function teaserTekst() {
+    if (config && config.teaser) return config.teaser;
+    return paginaContext().teaser;
+  }
+
+  function startChips() {
+    if (config && config.chips) {
+      var eigen = String(config.chips).split('|');
+      var schoon = [];
+      for (var i = 0; i < eigen.length && schoon.length < 3; i++) {
+        var c = eigen[i].trim();
+        if (c) schoon.push(c);
+      }
+      if (schoon.length) return schoon;
+    }
+    return paginaContext().chips;
+  }
 
   function sessieId() {
     try {
@@ -35,6 +95,53 @@
     }
   }
 
+  /* Events worden in de browser gebufferd en in één batch verstuurd bij het
+     verlaten van de pagina. Zo blijft het bij ongeveer één n8n-executie per
+     bezoekersessie in plaats van één per klik. */
+  var eventBuffer = [];
+
+  function flushEvents() {
+    if (!eventBuffer.length) return;
+    var payload = JSON.stringify({ winkel: WINKEL, sessie: sessieId(), events: eventBuffer });
+    eventBuffer = [];
+    try {
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(EVENTS_ENDPOINT, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+        return;
+      }
+    } catch (e) { /* beacon geweigerd, val terug op fetch */ }
+    try {
+      fetch(EVENTS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: payload,
+        keepalive: true
+      });
+    } catch (e) { /* meten mag de chat nooit breken */ }
+  }
+
+  function track(naam, detail) {
+    eventBuffer.push({
+      e: naam,
+      p: paginaPad(),
+      d: detail ? String(detail).slice(0, 200) : ''
+    });
+    if (eventBuffer.length >= 25) flushEvents();
+  }
+
+  function trackEenmalig(naam) {
+    try {
+      if (sessionStorage.getItem(storeKey + '-ev-' + naam)) return;
+      sessionStorage.setItem(storeKey + '-ev-' + naam, '1');
+    } catch (e) { /* zonder opslag meten we hem per pagina */ }
+    track(naam);
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flushEvents();
+  });
+  window.addEventListener('pagehide', flushEvents);
+
   function loadHistory() {
     try {
       return JSON.parse(sessionStorage.getItem(storeKey + '-chat')) || [];
@@ -47,6 +154,20 @@
     try {
       sessionStorage.setItem(storeKey + '-chat', JSON.stringify(list.slice(-30)));
     } catch (e) { /* opslag niet beschikbaar, chat werkt gewoon door */ }
+  }
+
+  function saveVervolg(lijst) {
+    try {
+      sessionStorage.setItem(storeKey + '-vervolg', JSON.stringify(lijst || []));
+    } catch (e) { /* opslag niet beschikbaar */ }
+  }
+
+  function loadVervolg() {
+    try {
+      return JSON.parse(sessionStorage.getItem(storeKey + '-vervolg')) || [];
+    } catch (e) {
+      return [];
+    }
   }
 
   function isLight(hex) {
@@ -98,8 +219,9 @@
     '.fb-msg-user{border-radius:18px 18px 6px 18px;align-self:flex-end;border:1px solid transparent}' +
     '.fb-typing{display:inline-flex;gap:5px;align-items:center;padding:13px 16px;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:18px 18px 18px 6px;align-self:flex-start}' +
     '.fb-typing span{width:6px;height:6px;border-radius:999px;background:#B6BBC5;transition:background-color .15s cubic-bezier(.16,1,.3,1)}' +
-    '.fb-chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 10px;background:#F2F2EE}' +
-    '.fb-chip{height:34px;padding:0 16px;border-radius:999px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap;transition:background-color .15s ease}' +
+    '.fb-chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 10px;background:#F2F2EE;max-height:104px;overflow-y:auto}' +
+    '.fb-chips:empty{padding:0}' +
+    '.fb-chip{min-height:34px;padding:7px 14px;border-radius:17px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:13px;line-height:1.3;text-align:left;cursor:pointer;max-width:100%;transition:background-color .15s ease}' +
     '.fb-chip:hover{background:#FFFFFF}' +
     '.fb-inputbar{flex:0 0 auto;padding:10px 12px;background:#F2F2EE}' +
     '.fb-input-wrap{display:flex;align-items:center;gap:10px;padding:4px 4px 4px 18px;background:#FFFFFF;border-radius:999px;border:1px solid #D3D4CE;box-shadow:0 2px 6px rgba(12,13,16,.06);transition:border-color .15s ease,box-shadow .15s ease}' +
@@ -110,11 +232,15 @@
     '.fb-send.fb-armed:active{transform:scale(.94)}' +
     '.fb-foot{flex:0 0 auto;text-align:center;font-size:10px;color:#8A909D;padding:0 0 8px;background:#F2F2EE}' +
     '.fb-foot a{color:inherit;text-decoration:none}' +
-    '.fb-teaser{position:absolute;right:0;bottom:72px;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px 16px 4px 16px;box-shadow:0 14px 34px rgba(12,13,16,.18);padding:12px 34px 12px 16px;font-size:14px;font-weight:600;color:#0C0D10;white-space:nowrap;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1);pointer-events:none}' +
+    '.fb-teaser{position:absolute;right:0;bottom:72px;width:266px;max-width:calc(100vw - 40px);background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px 16px 4px 16px;box-shadow:0 14px 34px rgba(12,13,16,.18);padding:14px 30px 12px 16px;opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1);pointer-events:none}' +
     '.fb-teaser.fb-show{opacity:1;transform:translateY(0);pointer-events:auto}' +
+    '.fb-teaser-txt{font-size:14px;font-weight:600;color:#0C0D10;line-height:1.4;cursor:pointer}' +
+    '.fb-teaser-acties{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}' +
+    '.fb-teaser-chip{padding:6px 12px;border-radius:15px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:12px;line-height:1.3;text-align:left;cursor:pointer;max-width:100%;transition:background-color .15s ease,border-color .15s ease}' +
+    '.fb-teaser-chip:hover{background:#F2F2EE}' +
     '.fb-teaser-x{position:absolute;top:4px;right:6px;background:none;border:none;color:#8A909D;font-size:15px;cursor:pointer;padding:2px 4px;line-height:1;font-family:inherit}' +
     '.fb-teaser-x:hover{color:#0C0D10}' +
-    '@media (max-width:520px){.fb-root{right:12px;bottom:12px}.fb-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}}';
+    '@media (max-width:520px){.fb-root{right:12px;bottom:12px}.fb-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fb-teaser{max-width:calc(100vw - 24px)}}';
 
   var style = document.createElement('style');
   style.textContent = css;
@@ -140,7 +266,11 @@
       '</div></div>' +
       '<div class="fb-foot"><a href="https://www.forgexe.nl" target="_blank" rel="noopener">AI-assistent door Forgexe</a></div>' +
     '</div>' +
-    '<div class="fb-teaser" role="button" aria-label="Open chat">Kan ik je helpen? &#128075;<button class="fb-teaser-x" aria-label="Sluiten">&times;</button></div>' +
+    '<div class="fb-teaser">' +
+      '<button class="fb-teaser-x" aria-label="Sluiten">&times;</button>' +
+      '<div class="fb-teaser-txt" role="button" tabindex="0"></div>' +
+      '<div class="fb-teaser-acties"></div>' +
+    '</div>' +
     '<button class="fb-btn" aria-label="Open chat">' +
       '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.58 3 11c0 2.1.92 4 2.43 5.43-.14 1.1-.6 2.42-1.43 3.32 1.64-.06 3.2-.66 4.33-1.42.86.24 1.76.37 2.67.37 4.97 0 9-3.58 9-8s-4.03-8-9-8Z" fill="currentColor"/></svg>' +
     '</button>';
@@ -154,6 +284,10 @@
   var chipsEl = root.querySelector('.fb-chips');
   var inputEl = root.querySelector('input');
   var sendBtn = root.querySelector('.fb-send');
+  var teaserEl = root.querySelector('.fb-teaser');
+  var teaserTxtEl = root.querySelector('.fb-teaser-txt');
+  var teaserActiesEl = root.querySelector('.fb-teaser-acties');
+  var teaserX = root.querySelector('.fb-teaser-x');
 
   function applyKleur(kleur) {
     var licht = isLight(kleur);
@@ -171,6 +305,7 @@
       '.fb-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '.fb-typing span.fb-on{background:' + kleur + '}' +
       '.fb-msg-bot a{color:' + linkKleur + '}' +
+      '.fb-teaser-chip:hover{border-color:' + kleur + '}' +
       '@keyframes fb-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
       '.fb-btn.fb-pulsing{animation:fb-pulse 1.7s ease-out 3}';
   }
@@ -180,20 +315,27 @@
     msgsEl.scrollTop = msgsEl.scrollHeight;
   }
 
-  function renderChips() {
+  /* Chips onder het gesprek: bij de start de introvragen, daarna de
+     vervolgvragen die de bot zelf bij elk antwoord meestuurt. */
+  function renderChips(lijst, bron) {
     chipsEl.innerHTML = '';
-    if (loadHistory().length > 1) return;
-    CHIPS.forEach(function (q) {
-      var b = document.createElement('button');
-      b.className = 'fb-chip';
-      b.type = 'button';
-      b.textContent = q;
-      b.addEventListener('click', function () {
-        inputEl.value = q;
-        send();
-      });
-      chipsEl.appendChild(b);
+    if (!lijst || !lijst.length) return;
+    for (var i = 0; i < lijst.length; i++) {
+      chipsEl.appendChild(maakChip(lijst[i], bron));
+    }
+  }
+
+  function maakChip(vraag, bron) {
+    var b = document.createElement('button');
+    b.className = 'fb-chip';
+    b.type = 'button';
+    b.textContent = vraag;
+    b.addEventListener('click', function () {
+      track(bron === 'vervolg' ? 'vervolg_geklikt' : 'chip_geklikt', vraag);
+      inputEl.value = vraag;
+      send(bron);
     });
+    return b;
   }
 
   function addMsg(rol, tekst, skipSave) {
@@ -208,6 +350,11 @@
       saveHistory(h);
     }
   }
+
+  msgsEl.addEventListener('click', function (e) {
+    var el = e.target;
+    if (el && el.tagName === 'A') track('link_geklikt', el.getAttribute('href'));
+  });
 
   var typingEl = null;
   var typingIv = null;
@@ -268,11 +415,13 @@
     if (data.kleur) applyKleur(data.kleur);
     var h = loadHistory();
     if (h.length) {
-      h.forEach(function (m) { addMsg(m.rol, m.tekst, true); });
-    } else if (data.welkomst) {
-      addMsg('bot', data.welkomst);
+      for (var i = 0; i < h.length; i++) addMsg(h[i].rol, h[i].tekst, true);
+      renderChips(loadVervolg(), 'vervolg');
+    } else {
+      if (data.welkomst) addMsg('bot', data.welkomst);
+      renderChips(startChips(), 'start');
     }
-    renderChips();
+    vulTeaser();
     return data;
   }
 
@@ -299,23 +448,29 @@
     sendBtn.className = 'fb-send' + (inputEl.value.trim() && !busy ? ' fb-armed' : '');
   }
 
-  function send() {
+  function send(bron) {
     var vraag = inputEl.value.trim();
     if (!vraag || busy) return;
     inputEl.value = '';
     addMsg('user', vraag);
     chipsEl.innerHTML = '';
+    saveVervolg([]);
     busy = true;
     armSend();
     showTyping();
-    post({ winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId() })
+    track('bericht', bron || 'getypt');
+    post({ winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad() })
       .then(function (data) {
         hideTyping();
         addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
+        var vervolg = Array.isArray(data.vervolg) ? data.vervolg.slice(0, 3) : [];
+        saveVervolg(vervolg);
+        renderChips(vervolg, 'vervolg');
       })
       .catch(function () {
         hideTyping();
         foutmelding();
+        track('fout', 'chat');
       })
       .then(function () {
         busy = false;
@@ -330,60 +485,120 @@
     if (bootCfg && bootCfg.t && (Date.now() - bootCfg.t) < CONFIG_TTL && bootCfg.d && bootCfg.d.naam) applyConfig(bootCfg.d);
   } catch (e) { /* geen cache */ }
 
-  /* Teaser: na 4s "Kan ik je helpen?" + zachte pulse; 1x per sessie, wegklikbaar */
-  var teaserEl = root.querySelector('.fb-teaser');
-  var teaserX = root.querySelector('.fb-teaser-x');
+  /* Teaser: ballon met twee klikbare vragen, zodat openen geen typwerk kost.
+     Verschijnt na 4s, 1x per sessie, wegklikbaar. */
   var TEASER_KEY = storeKey + '-teaser';
+
+  function vulTeaser() {
+    teaserTxtEl.textContent = teaserTekst();
+    teaserActiesEl.innerHTML = '';
+    var lijst = startChips().slice(0, 2);
+    for (var i = 0; i < lijst.length; i++) {
+      teaserActiesEl.appendChild(maakTeaserChip(lijst[i]));
+    }
+  }
+
+  function maakTeaserChip(vraag) {
+    var b = document.createElement('button');
+    b.className = 'fb-teaser-chip';
+    b.type = 'button';
+    b.textContent = vraag;
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      track('teaser_geklikt', vraag);
+      verbergTeaser();
+      openChat('teaser-chip', vraag);
+    });
+    return b;
+  }
+
   function verbergTeaser() {
     teaserEl.classList.remove('fb-show');
     btn.classList.remove('fb-pulsing');
     try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
   }
+
+  vulTeaser();
+
   setTimeout(function () {
     if (open) return;
     try { if (sessionStorage.getItem(TEASER_KEY)) return; } catch (e) { /* geen opslag */ }
+    if (loadHistory().length) return;
+    vulTeaser();
     teaserEl.classList.add('fb-show');
     btn.classList.add('fb-pulsing');
+    track('teaser_getoond', teaserTxtEl.textContent);
     try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
     setTimeout(function () {
       if (!open) { teaserEl.classList.remove('fb-show'); btn.classList.remove('fb-pulsing'); }
     }, 15000);
   }, 4000);
-  teaserEl.addEventListener('click', function (e) {
-    if (e.target === teaserX) return;
+
+  teaserTxtEl.addEventListener('click', function () {
+    track('teaser_geklikt', '');
     verbergTeaser();
-    btn.click();
+    openChat('teaser');
   });
+
+  teaserTxtEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      teaserTxtEl.click();
+    }
+  });
+
   teaserX.addEventListener('click', function (e) {
     e.stopPropagation();
+    track('teaser_weggeklikt', '');
     verbergTeaser();
   });
 
-  btn.addEventListener('click', function () {
-    verbergTeaser();
-    open = !open;
-    root.classList.toggle('fb-open', open);
-    if (open) {
-      initConfig().catch(function () {
+  function openChat(bron, vraag) {
+    if (!open) {
+      open = true;
+      root.classList.add('fb-open');
+      track('chat_geopend', bron);
+    }
+    initConfig()
+      .then(function () {
+        if (vraag) {
+          inputEl.value = vraag;
+          send('teaser-chip');
+        }
+      })
+      .catch(function () {
         naamEl.textContent = 'Chat';
         avatarEl.textContent = '!';
         addMsg('bot', 'Sorry, de chat is nu even niet beschikbaar. Probeer het later opnieuw.', true);
+        track('fout', 'config');
       });
-      setTimeout(function () { inputEl.focus(); }, 100);
+    setTimeout(function () { inputEl.focus(); }, 100);
+  }
+
+  btn.addEventListener('click', function () {
+    verbergTeaser();
+    if (open) {
+      open = false;
+      root.classList.remove('fb-open');
+      return;
     }
+    openChat('knop');
   });
 
   closeBtn.addEventListener('click', function () {
     open = false;
     root.classList.remove('fb-open');
+    flushEvents();
   });
 
-  sendBtn.addEventListener('click', send);
+  sendBtn.addEventListener('click', function () { send('getypt'); });
   inputEl.addEventListener('input', armSend);
   inputEl.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      send();
+      send('getypt');
     }
   });
+
+  trackEenmalig('geladen');
 })();
