@@ -310,7 +310,8 @@
       '.fb-msg-bot a{color:' + linkKleur + '}' +
       '.fb-teaser-chip:hover{border-color:' + kleur + '}' +
       '@keyframes fb-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
-      '.fb-btn.fb-pulsing{animation:fb-pulse 1.7s ease-out 3}';
+      '.fb-btn.fb-pulsing{animation:fb-pulse 1.9s cubic-bezier(.16,1,.3,1) 2}' +
+      '@media (prefers-reduced-motion:reduce){.fb-btn.fb-pulsing{animation:none}}';
   }
   applyKleur('#2F5CFF');
 
@@ -517,24 +518,68 @@
 
   function verbergTeaser() {
     teaserEl.classList.remove('fb-show');
-    btn.classList.remove('fb-pulsing');
     try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
   }
+
+  /* Zachte herinnering: een korte dubbele pulse op de knop, hooguit een paar
+     keer per sessie. Stopt zodra iemand de chat opent of het ballonnetje
+     wegklikt, slaat een beurt over als het tabblad niet zichtbaar is, en
+     staat helemaal uit bij prefers-reduced-motion. */
+  var PULS_INTERVAL = 45000;
+  var PULS_MAX = 4;
+  var pulsAantal = 0;
+  var pulsTimer = null;
+  var pulsGestopt = false;
+
+  function magPulsen() {
+    if (open || pulsGestopt || pulsAantal >= PULS_MAX) return false;
+    if (loadHistory().length) return false;
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return false;
+    } catch (e) { /* matchMedia niet beschikbaar, gewoon pulsen */ }
+    return true;
+  }
+
+  function puls() {
+    if (!magPulsen()) return;
+    if (document.visibilityState === 'hidden') return;
+    pulsAantal++;
+    btn.classList.remove('fb-pulsing');
+    void btn.offsetWidth;
+    btn.classList.add('fb-pulsing');
+  }
+
+  function stopPulsen() {
+    pulsGestopt = true;
+    btn.classList.remove('fb-pulsing');
+    if (pulsTimer) { clearInterval(pulsTimer); pulsTimer = null; }
+  }
+
+  btn.addEventListener('animationend', function () {
+    btn.classList.remove('fb-pulsing');
+  });
+
+  pulsTimer = setInterval(function () {
+    if (pulsGestopt || pulsAantal >= PULS_MAX) { stopPulsen(); return; }
+    puls();
+  }, PULS_INTERVAL);
 
   vulTeaser();
 
   setTimeout(function () {
-    if (open) return;
-    try { if (sessionStorage.getItem(TEASER_KEY)) return; } catch (e) { /* geen opslag */ }
-    if (loadHistory().length) return;
-    vulTeaser();
-    teaserEl.classList.add('fb-show');
-    btn.classList.add('fb-pulsing');
-    track('teaser_getoond', teaserTxtEl.textContent);
-    try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
-    setTimeout(function () {
-      if (!open) { teaserEl.classList.remove('fb-show'); btn.classList.remove('fb-pulsing'); }
-    }, 15000);
+    if (open || loadHistory().length) return;
+    var toonTeaser = true;
+    try { if (sessionStorage.getItem(TEASER_KEY)) toonTeaser = false; } catch (e) { /* geen opslag */ }
+    if (toonTeaser) {
+      vulTeaser();
+      teaserEl.classList.add('fb-show');
+      track('teaser_getoond', teaserTxtEl.textContent);
+      try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
+      setTimeout(function () {
+        if (!open) teaserEl.classList.remove('fb-show');
+      }, 15000);
+    }
+    puls();
   }, 4000);
 
   teaserTxtEl.addEventListener('click', function () {
@@ -554,12 +599,14 @@
     e.stopPropagation();
     track('teaser_weggeklikt', '');
     verbergTeaser();
+    stopPulsen();
   });
 
   function openChat(bron, vraag) {
     if (!open) {
       open = true;
       root.classList.add('fb-open');
+      stopPulsen();
       track('chat_geopend', bron);
     }
     initConfig()
