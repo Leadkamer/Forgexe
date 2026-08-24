@@ -55,12 +55,15 @@
     }
   }
 
+  /* Alleen op het URL-pad kijken, niet op document.title: veel winkelsites
+     voeren op elke pagina dezelfde site-brede titel ("... fietsen, onderhoud
+     en advies") waardoor elke pagina als reparatiepagina zou tellen. */
   function paginaContext() {
     if (config && String(config.soort || '') === 'product') return CONTEXTEN.demo;
-    var tekst = (paginaPad() + ' ' + (document.title || '')).toLowerCase();
-    if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(tekst)) return CONTEXTEN.service;
-    if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(tekst)) return CONTEXTEN.contact;
-    if (/fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(tekst)) return CONTEXTEN.product;
+    var pad = paginaPad().toLowerCase();
+    if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(pad)) return CONTEXTEN.service;
+    if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(pad)) return CONTEXTEN.contact;
+    if (/-\d{3,}\.html?$|\/p\/|fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(pad)) return CONTEXTEN.product;
     return CONTEXTEN.algemeen;
   }
 
