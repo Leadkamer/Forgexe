@@ -58,13 +58,17 @@
   /* Alleen op het URL-pad kijken, niet op document.title: veel winkelsites
      voeren op elke pagina dezelfde site-brede titel ("... fietsen, onderhoud
      en advies") waardoor elke pagina als reparatiepagina zou tellen. */
-  function paginaContext() {
-    if (config && String(config.soort || '') === 'product') return CONTEXTEN.demo;
+  function contextNaam() {
+    if (config && String(config.soort || '') === 'product') return 'demo';
     var pad = paginaPad().toLowerCase();
-    if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(pad)) return CONTEXTEN.service;
-    if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(pad)) return CONTEXTEN.contact;
-    if (/-\d{3,}\.html?$|\/p\/|fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(pad)) return CONTEXTEN.product;
-    return CONTEXTEN.algemeen;
+    if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(pad)) return 'service';
+    if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(pad)) return 'contact';
+    if (/-\d{3,}\.html?$|\/p\/|fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(pad)) return 'product';
+    return 'algemeen';
+  }
+
+  function paginaContext() {
+    return CONTEXTEN[contextNaam()];
   }
 
   function teaserTekst() {
@@ -490,8 +494,24 @@
   } catch (e) { /* geen cache */ }
 
   /* Teaser: ballon met twee klikbare vragen, zodat openen geen typwerk kost.
-     Verschijnt na 4s, 1x per sessie, wegklikbaar. */
+     Verschijnt na 4s, 1x per pagina-type (service/contact/product/algemeen)
+     per sessie; wegklikken met het kruisje dempt hem voor de hele sessie. */
   var TEASER_KEY = storeKey + '-teaser';
+  var TEASER_X_KEY = storeKey + '-teaser-x';
+
+  function teaserContextenGetoond() {
+    try {
+      var lijst = JSON.parse(sessionStorage.getItem(TEASER_KEY));
+      if (lijst && lijst.join) return lijst;
+    } catch (e) { /* geen opslag of oud formaat */ }
+    return [];
+  }
+
+  function markeerTeaserGetoond(naam) {
+    var lijst = teaserContextenGetoond();
+    if (lijst.indexOf(naam) === -1) lijst.push(naam);
+    try { sessionStorage.setItem(TEASER_KEY, JSON.stringify(lijst)); } catch (e) { /* geen opslag */ }
+  }
 
   function vulTeaser() {
     teaserTxtEl.textContent = teaserTekst();
@@ -518,7 +538,6 @@
 
   function verbergTeaser() {
     teaserEl.classList.remove('fb-show');
-    try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
   }
 
   /* Zachte herinnering: een korte dubbele pulse op de knop, hooguit een paar
@@ -568,13 +587,15 @@
 
   setTimeout(function () {
     if (open || loadHistory().length) return;
+    var naam = contextNaam();
     var toonTeaser = true;
-    try { if (sessionStorage.getItem(TEASER_KEY)) toonTeaser = false; } catch (e) { /* geen opslag */ }
+    try { if (sessionStorage.getItem(TEASER_X_KEY)) toonTeaser = false; } catch (e) { /* geen opslag */ }
+    if (toonTeaser && teaserContextenGetoond().indexOf(naam) !== -1) toonTeaser = false;
     if (toonTeaser) {
       vulTeaser();
       teaserEl.classList.add('fb-show');
       track('teaser_getoond', teaserTxtEl.textContent);
-      try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
+      markeerTeaserGetoond(naam);
       setTimeout(function () {
         if (!open) teaserEl.classList.remove('fb-show');
       }, 15000);
@@ -598,6 +619,7 @@
   teaserX.addEventListener('click', function (e) {
     e.stopPropagation();
     track('teaser_weggeklikt', '');
+    try { sessionStorage.setItem(TEASER_X_KEY, '1'); } catch (e2) { /* geen opslag */ }
     verbergTeaser();
     stopPulsen();
   });
