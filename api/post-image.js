@@ -117,8 +117,8 @@ function tplStat(title, sub, eyebrow) {
 /* ── template: quote ── */
 function tplQuote(title, sub) {
   return darkRoot(
-    h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 120, lineHeight: 0.7, color: GREEN, marginTop: 20 } }, '“'),
     h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' } },
+      h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 120, lineHeight: 0.9, color: GREEN, marginBottom: 8 } }, '“'),
       h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 600, fontSize: fitSize(title, 52, 44, 36), lineHeight: 1.3, color: LIGHT_TXT, maxWidth: 1020 } }, title),
       h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 23, color: GREEN, marginTop: 30 } }, '— ' + (sub || 'Sedat, Forgexe'))
     ),
