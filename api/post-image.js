@@ -3,6 +3,7 @@
  *
  * Query-parameters:
  *   t       template: terminal | statement | stat | quote  (default: terminal)
+ *   f       formaat: landscape 1200x627 | square 1080x1080 | portrait 1080x1350 | story 1080x1920  (default: landscape)
  *   title   hoofdtekst (terminal/statement/quote) of het grote getal (stat)
  *   sub     subregel: commando (terminal), subtekst (statement), label (stat), naam (quote)
  *   eyebrow optioneel label bovenin (statement/stat)
@@ -62,21 +63,21 @@ function footer(dark) {
   );
 }
 
-function darkRoot() {
-  var children = Array.prototype.slice.call(arguments);
+function darkRoot(pad) {
+  var children = Array.prototype.slice.call(arguments, 1);
   return h.apply(null, ['div', { style: {
     width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
     backgroundColor: INK,
     backgroundImage: 'linear-gradient(rgba(52,211,153,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.07) 1px, transparent 1px)',
     backgroundSize: '46px 46px',
-    padding: 52
+    padding: pad
   } }].concat(children));
 }
 
 /* ── template: terminal ── */
-function tplTerminal(title, sub) {
+function tplTerminal(title, sub, pad) {
   var cmd = sub || './nieuwe-post.sh';
-  return darkRoot(
+  return darkRoot(pad,
     h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, backgroundColor: '#0d1014', border: '1px solid rgba(52,211,153,0.28)', borderRadius: 18, marginBottom: 30 } },
       h('div', { style: { display: 'flex', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.07)' } },
         h('div', { style: { width: 13, height: 13, borderRadius: 999, backgroundColor: '#ff5f57', marginRight: 9 } }),
@@ -103,8 +104,8 @@ function tplTerminal(title, sub) {
 }
 
 /* ── template: stat (groot getal) ── */
-function tplStat(title, sub, eyebrow) {
-  return darkRoot(
+function tplStat(title, sub, eyebrow, pad) {
+  return darkRoot(pad,
     h('div', { style: { display: 'flex', alignItems: 'center', fontFamily: 'JetBrains Mono', fontSize: 21, letterSpacing: 3 } },
       h('div', { style: { color: CYAN, marginRight: 14 } }, '//'),
       h('div', { style: { color: GREEN, textTransform: 'uppercase' } }, eyebrow || 'AI-automatisering voor het MKB')
@@ -118,8 +119,8 @@ function tplStat(title, sub, eyebrow) {
 }
 
 /* ── template: quote ── */
-function tplQuote(title, sub) {
-  return darkRoot(
+function tplQuote(title, sub, pad) {
+  return darkRoot(pad,
     h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' } },
       h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 120, lineHeight: 0.9, color: GREEN, marginBottom: 8 } }, '“'),
       h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 600, fontSize: fitSize(title, 52, 44, 36), lineHeight: 1.3, color: LIGHT_TXT, maxWidth: 1020 } }, title),
@@ -130,13 +131,13 @@ function tplQuote(title, sub) {
 }
 
 /* ── template: statement (licht) ── */
-function tplStatement(title, sub, eyebrow) {
+function tplStatement(title, sub, eyebrow, pad) {
   return h('div', { style: {
     width: '100%', height: '100%', display: 'flex',
     backgroundColor: '#f4f6f8',
     backgroundImage: 'linear-gradient(rgba(10,11,14,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,11,14,0.05) 1px, transparent 1px)',
     backgroundSize: '46px 46px',
-    padding: 44
+    padding: pad - 8
   } },
     h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between', backgroundColor: '#ffffff', border: '1px solid rgba(10,11,14,0.08)', borderRadius: 24, boxShadow: '0 20px 60px rgba(10,11,14,0.06)', padding: '48px 60px' } },
       h('div', { style: { display: 'flex' } },
@@ -160,6 +161,16 @@ export default async function handler(req) {
     var title = (q.get('title') || '').trim().slice(0, 160);
     var sub = (q.get('sub') || '').trim().slice(0, 120);
     var eyebrow = (q.get('eyebrow') || '').trim().slice(0, 60);
+    var FORMATS = {
+      landscape: [1200, 627],
+      square: [1080, 1080],
+      portrait: [1080, 1350],
+      story: [1080, 1920]
+    };
+    var f = (q.get('f') || 'landscape').toLowerCase();
+    if (!FORMATS[f]) f = 'landscape';
+    var dims = FORMATS[f];
+    var pad = f === 'story' ? 68 : 52;
 
     if (!title) {
       title = t === 'stat' ? '24/7' : 'AI-systemen die je bedrijf dag en nacht vooruit duwen';
@@ -167,10 +178,10 @@ export default async function handler(req) {
     }
 
     var tree;
-    if (t === 'stat') tree = tplStat(title, sub, eyebrow);
-    else if (t === 'quote') tree = tplQuote(title, sub);
-    else if (t === 'statement') tree = tplStatement(title, sub, eyebrow);
-    else tree = tplTerminal(title, sub);
+    if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
+    else if (t === 'quote') tree = tplQuote(title, sub, pad);
+    else if (t === 'statement') tree = tplStatement(title, sub, eyebrow, pad);
+    else tree = tplTerminal(title, sub, pad);
 
     var fonts = await Promise.all([
       loadFont('Outfit', 600),
@@ -180,8 +191,8 @@ export default async function handler(req) {
     ]);
 
     return new ImageResponse(tree, {
-      width: 1200,
-      height: 627,
+      width: dims[0],
+      height: dims[1],
       fonts: [
         { name: 'Outfit', data: fonts[0], weight: 600, style: 'normal' },
         { name: 'Outfit', data: fonts[1], weight: 800, style: 'normal' },
