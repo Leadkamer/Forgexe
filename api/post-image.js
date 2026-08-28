@@ -153,14 +153,41 @@ function tplStatement(title, sub, eyebrow, pad) {
   );
 }
 
+/* ── template: slide (carousel-pagina) ── */
+function tplSlide(title, sub, eyebrow, n, count, pad) {
+  var isLast = n >= count;
+  return darkRoot(pad,
+    h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+      h('div', { style: { display: 'flex', alignItems: 'center', fontFamily: 'JetBrains Mono', fontSize: 20, letterSpacing: 3 } },
+        h('div', { style: { color: CYAN, marginRight: 13 } }, '//'),
+        h('div', { style: { color: GREEN, textTransform: 'uppercase' } }, eyebrow || 'Forgexe // AI-automatisering')
+      ),
+      count > 1 ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, n + ' / ' + count) : h('div', { style: { display: 'flex' } })
+    ),
+    h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' } },
+      h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: n === 1 ? fitSize(title, 76, 62, 50) : fitSize(title, 62, 52, 44), lineHeight: 1.12, color: LIGHT_TXT } }, title),
+      sub ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 25, lineHeight: 1.55, color: '#9fb0c0', marginTop: 30 } }, sub) : h('div', { style: { display: 'flex' } }),
+      isLast ? h('div', { style: { display: 'flex', alignSelf: 'flex-start', backgroundColor: GREEN, color: NAVY, fontFamily: 'Outfit', fontWeight: 700, fontSize: 27, padding: '16px 30px', borderRadius: 999, marginTop: 44 } }, 'www.forgexe.nl') : h('div', { style: { display: 'flex' } })
+    ),
+    h('div', { style: { display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' } },
+      wordmark(true),
+      isLast
+        ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, 'www.forgexe.nl')
+        : h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 42, color: GREEN } }, '→')
+    )
+  );
+}
+
 export default async function handler(req) {
   try {
     var url = new URL(req.url);
     var q = url.searchParams;
     var t = (q.get('t') || 'terminal').toLowerCase();
     var title = (q.get('title') || '').trim().slice(0, 160);
-    var sub = (q.get('sub') || '').trim().slice(0, 120);
+    var sub = (q.get('sub') || '').trim().slice(0, 200);
     var eyebrow = (q.get('eyebrow') || '').trim().slice(0, 60);
+    var n = parseInt(q.get('n'), 10) || 1;
+    var count = parseInt(q.get('count'), 10) || 1;
     var FORMATS = {
       landscape: [1200, 627],
       square: [1080, 1080],
@@ -179,7 +206,8 @@ export default async function handler(req) {
 
     var tree;
     var tall = dims[1] >= dims[0];
-    if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
+    if (t === 'slide') tree = tplSlide(title, sub, eyebrow, n, count, pad);
+    else if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
     else if (t === 'quote') tree = tplQuote(title, sub, pad);
     else if (t === 'statement') tree = tplStatement(title, sub, eyebrow, pad);
     else tree = tplTerminal(title, sub, pad, tall);
