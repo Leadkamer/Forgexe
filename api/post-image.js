@@ -45,10 +45,13 @@ function fitSize(text, big, mid, small) {
   return len <= 60 ? big : len <= 110 ? mid : small;
 }
 
+var MARK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>';
+var MARK_URI = 'data:image/svg+xml;utf8,' + encodeURIComponent(MARK_SVG);
+
 function wordmark(dark) {
-  return h('div', { style: { display: 'flex', alignItems: 'flex-end' } },
-    h('div', { style: { fontFamily: 'Outfit', fontWeight: 800, fontSize: 30, color: dark ? '#ffffff' : INK, letterSpacing: 1 } }, 'forgexe'),
-    h('div', { style: { fontFamily: 'JetBrains Mono', fontWeight: 700, fontSize: 30, color: GREEN } }, '_')
+  return h('div', { style: { display: 'flex', alignItems: 'center' } },
+    h('img', { src: MARK_URI, width: 46, height: 46 }),
+    h('div', { style: { fontFamily: 'JetBrains Mono', fontWeight: 700, fontSize: 23, letterSpacing: 5, color: dark ? '#ffffff' : INK, marginLeft: 4 } }, 'FORGEXE')
   );
 }
 
