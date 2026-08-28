@@ -153,29 +153,37 @@ function tplStatement(title, sub, eyebrow, pad) {
   );
 }
 
-/* ── template: slide (carousel-pagina) ── */
-function tplSlide(title, sub, eyebrow, n, count, pad) {
+/* ── template: slide (carousel-pagina, donker of licht) ── */
+function tplSlide(title, sub, eyebrow, n, count, pad, light) {
   var isLast = n >= count;
-  return darkRoot(pad,
-    h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
-      h('div', { style: { display: 'flex', alignItems: 'center', fontFamily: 'JetBrains Mono', fontSize: 20, letterSpacing: 3 } },
-        h('div', { style: { color: CYAN, marginRight: 13 } }, '//'),
-        h('div', { style: { color: GREEN, textTransform: 'uppercase' } }, eyebrow || 'Forgexe // AI-automatisering')
-      ),
-      count > 1 ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, n + ' / ' + count) : h('div', { style: { display: 'flex' } })
-    ),
-    h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' } },
-      h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: n === 1 ? fitSize(title, 76, 62, 50) : fitSize(title, 62, 52, 44), lineHeight: 1.12, color: LIGHT_TXT } }, title),
-      sub ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 25, lineHeight: 1.55, color: '#9fb0c0', marginTop: 30 } }, sub) : h('div', { style: { display: 'flex' } }),
-      isLast ? h('div', { style: { display: 'flex', alignSelf: 'flex-start', backgroundColor: GREEN, color: NAVY, fontFamily: 'Outfit', fontWeight: 700, fontSize: 27, padding: '16px 30px', borderRadius: 999, marginTop: 44 } }, 'www.forgexe.nl') : h('div', { style: { display: 'flex' } })
-    ),
-    h('div', { style: { display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' } },
-      wordmark(true),
-      isLast
-        ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, 'www.forgexe.nl')
-        : h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 42, color: GREEN } }, '→')
-    )
+  var header = h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+    light
+      ? h('div', { style: { display: 'flex', backgroundColor: '#d1fae5', color: NAVY, fontFamily: 'JetBrains Mono', fontSize: 18, letterSpacing: 2, textTransform: 'uppercase', padding: '9px 17px', borderRadius: 999 } }, eyebrow || 'Forgexe // AI-automatisering')
+      : h('div', { style: { display: 'flex', alignItems: 'center', fontFamily: 'JetBrains Mono', fontSize: 20, letterSpacing: 3 } },
+          h('div', { style: { color: CYAN, marginRight: 13 } }, '//'),
+          h('div', { style: { color: GREEN, textTransform: 'uppercase' } }, eyebrow || 'Forgexe // AI-automatisering')
+        ),
+    count > 1 ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, n + ' / ' + count) : h('div', { style: { display: 'flex' } })
   );
+  var body = h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' } },
+    h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: n === 1 ? fitSize(title, 76, 62, 50) : fitSize(title, 62, 52, 44), lineHeight: 1.12, color: light ? INK : LIGHT_TXT } }, title),
+    sub ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 25, lineHeight: 1.55, color: light ? '#475569' : '#9fb0c0', marginTop: 30 } }, sub) : h('div', { style: { display: 'flex' } }),
+    isLast ? h('div', { style: { display: 'flex', alignSelf: 'flex-start', backgroundColor: GREEN, color: NAVY, fontFamily: 'Outfit', fontWeight: 700, fontSize: 27, padding: '16px 30px', borderRadius: 999, marginTop: 44 } }, 'www.forgexe.nl') : h('div', { style: { display: 'flex' } })
+  );
+  var foot = h('div', { style: { display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' } },
+    wordmark(!light),
+    isLast
+      ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 20, color: MUT } }, 'www.forgexe.nl')
+      : h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: 42, color: GREEN } }, '→')
+  );
+  if (!light) return darkRoot(pad, header, body, foot);
+  return h('div', { style: {
+    width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
+    backgroundColor: '#f4f6f8',
+    backgroundImage: 'linear-gradient(rgba(10,11,14,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,11,14,0.05) 1px, transparent 1px)',
+    backgroundSize: '46px 46px',
+    padding: pad
+  } }, header, body, foot);
 }
 
 export default async function handler(req) {
@@ -188,6 +196,7 @@ export default async function handler(req) {
     var eyebrow = (q.get('eyebrow') || '').trim().slice(0, 60);
     var n = parseInt(q.get('n'), 10) || 1;
     var count = parseInt(q.get('count'), 10) || 1;
+    var light = (q.get('theme') || '').toLowerCase() === 'light';
     var FORMATS = {
       landscape: [1200, 627],
       square: [1080, 1080],
@@ -206,7 +215,7 @@ export default async function handler(req) {
 
     var tree;
     var tall = dims[1] >= dims[0];
-    if (t === 'slide') tree = tplSlide(title, sub, eyebrow, n, count, pad);
+    if (t === 'slide') tree = tplSlide(title, sub, eyebrow, n, count, pad, light);
     else if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
     else if (t === 'quote') tree = tplQuote(title, sub, pad);
     else if (t === 'statement') tree = tplStatement(title, sub, eyebrow, pad);

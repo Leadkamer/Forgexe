@@ -16,17 +16,21 @@ export default async function handler(req) {
     var slides = null;
     var f = 'square';
     var label = '';
+    var theme = '';
     if (req.method === 'POST') {
       var body = await req.json();
       slides = body.slides;
       f = body.f || f;
       label = body.label || '';
+      theme = body.theme || '';
     } else {
       var raw = url.searchParams.get('slides');
       if (raw) slides = JSON.parse(raw);
       f = url.searchParams.get('f') || f;
       label = url.searchParams.get('label') || '';
+      theme = url.searchParams.get('theme') || '';
     }
+    theme = String(theme).toLowerCase() === 'light' ? 'light' : '';
     if (!Array.isArray(slides) || !slides.length) {
       return new Response('Geen slides meegegeven', { status: 400 });
     }
@@ -41,7 +45,8 @@ export default async function handler(req) {
       var u = url.origin + '/api/post-image?t=slide&f=' + f + '&n=' + (i + 1) + '&count=' + count +
         '&title=' + encodeURIComponent(String(s.title || '').trim().slice(0, 160)) +
         '&sub=' + encodeURIComponent(String(s.sub || '').trim().slice(0, 200)) +
-        (label ? '&eyebrow=' + encodeURIComponent(String(label).trim().slice(0, 60)) : '');
+        (label ? '&eyebrow=' + encodeURIComponent(String(label).trim().slice(0, 60)) : '') +
+        (theme ? '&theme=' + theme : '');
       fetches.push(fetch(u).then(function (r) {
         if (!r.ok) throw new Error('slide-render mislukt (HTTP ' + r.status + ')');
         return r.arrayBuffer();
