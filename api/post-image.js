@@ -75,7 +75,7 @@ function darkRoot(pad) {
 }
 
 /* ── template: terminal ── */
-function tplTerminal(title, sub, pad) {
+function tplTerminal(title, sub, pad, tall) {
   var cmd = sub || './nieuwe-post.sh';
   return darkRoot(pad,
     h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, backgroundColor: '#0d1014', border: '1px solid rgba(52,211,153,0.28)', borderRadius: 18, marginBottom: 30 } },
@@ -83,9 +83,9 @@ function tplTerminal(title, sub, pad) {
         h('div', { style: { width: 13, height: 13, borderRadius: 999, backgroundColor: '#ff5f57', marginRight: 9 } }),
         h('div', { style: { width: 13, height: 13, borderRadius: 999, backgroundColor: '#febc2e', marginRight: 9 } }),
         h('div', { style: { width: 13, height: 13, borderRadius: 999, backgroundColor: '#28c840' } }),
-        h('div', { style: { display: 'flex', marginLeft: 'auto', fontFamily: 'JetBrains Mono', fontSize: 17, color: '#5b6672' } }, 'forgexe — linkedin')
+        h('div', { style: { display: 'flex', marginLeft: 'auto', fontFamily: 'JetBrains Mono', fontSize: 17, color: '#5b6672' } }, 'forgexe — social')
       ),
-      h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, padding: '36px 44px', justifyContent: 'space-between' } },
+      h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, padding: '36px 44px', justifyContent: tall ? 'center' : 'space-between', gap: tall ? 52 : 0 } },
         h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 22 } },
           h('div', { style: { color: GREEN } }, 'sedat@forgexe'),
           h('div', { style: { color: MUT } }, ':~$'),
@@ -178,10 +178,11 @@ export default async function handler(req) {
     }
 
     var tree;
+    var tall = dims[1] >= dims[0];
     if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
     else if (t === 'quote') tree = tplQuote(title, sub, pad);
     else if (t === 'statement') tree = tplStatement(title, sub, eyebrow, pad);
-    else tree = tplTerminal(title, sub, pad);
+    else tree = tplTerminal(title, sub, pad, tall);
 
     var fonts = await Promise.all([
       loadFont('Outfit', 600),
