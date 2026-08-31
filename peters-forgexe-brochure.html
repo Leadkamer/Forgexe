@@ -69,10 +69,11 @@
   .prog-head .pn { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; line-height:1; }
   .prog-head .pt { font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:0.8; }
   .prog-head h3 { font-family:'Playfair Display',serif; font-size:21px; font-weight:600; line-height:1.2; }
-  .prog-body { padding:8px 24px 20px; }
-  .blk { padding:16px 0; border-top:1px solid var(--border); }
+  .prog-body { padding:8px 24px 20px; counter-reset:blok; }
+  .blk { padding:16px 0; border-top:1px solid var(--border); counter-increment:blok; }
   .blk:first-child { border-top:none; }
   .blk h4 { font-size:15.5px; font-weight:600; color:var(--navy); margin-bottom:5px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .blk h4::before { content:counter(blok); width:22px; height:22px; border-radius:7px; background:var(--green-pale); border:1px solid rgba(52,211,153,0.5); color:var(--navy); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .blk .tag { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-dark); border:1px solid rgba(52,211,153,0.5); border-radius:5px; padding:2px 8px; }
   .blk p { font-size:14px; color:var(--slate); font-weight:300; line-height:1.65; }
 
