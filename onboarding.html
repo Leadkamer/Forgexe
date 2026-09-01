@@ -172,7 +172,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
   <div id="klaar" class="melding succes" style="display:none">
     <div class="vink">✓</div>
     <h1>Welkom aan boord!</h1>
-    <p id="klaarTekst">Je gegevens zijn ontvangen en de verwerkersovereenkomst is digitaal ondertekend. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.</p>
+    <p id="klaarTekst">Je gegevens zijn ontvangen, de verwerkersovereenkomst is digitaal ondertekend en je akkoord op de algemene voorwaarden is vastgelegd. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.</p>
     <p style="margin-top:16px"><button class="btn btn-ghost" type="button" id="printBtn">Overeenkomst printen of opslaan als PDF</button></p>
   </div>
 
@@ -229,6 +229,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
         </div>
         <label class="check-rij"><input type="checkbox" id="c_gegevens"><span>De ingevulde bedrijfsgegevens zijn juist en ik ben bevoegd om namens dit bedrijf te tekenen.</span></label>
         <label class="check-rij"><input type="checkbox" id="c_vo"><span>Ik ga akkoord met de bovenstaande verwerkersovereenkomst tussen <strong id="voAkkoordBedrijf">ons bedrijf</strong> en Forgexe.</span></label>
+        <label class="check-rij"><input type="checkbox" id="c_av"><span>Ik heb de <a href="/voorwaarden" target="_blank" rel="noopener">algemene voorwaarden van Forgexe</a> gelezen en ga ermee akkoord.</span></label>
         <div class="fout-lijn" id="foutLijn"></div>
         <div style="margin-top:22px">
           <button class="btn btn-groen" type="submit" id="verstuurBtn">Onboarding afronden en ondertekenen</button>
@@ -424,8 +425,8 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       fout.style.display = 'block';
       return;
     }
-    if (!$id('c_gegevens').checked || !$id('c_vo').checked) {
-      fout.textContent = 'Vink beide akkoordverklaringen aan om te kunnen ondertekenen.';
+    if (!$id('c_gegevens').checked || !$id('c_vo').checked || !$id('c_av').checked) {
+      fout.textContent = 'Vink alle drie de akkoordverklaringen aan om te kunnen ondertekenen.';
       fout.style.display = 'block';
       return;
     }
@@ -450,7 +451,8 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       akkoord: {
         naam: $id('f_teken_naam').value.trim(),
         functie: $id('f_teken_functie').value.trim(),
-        akkoord: true
+        akkoord: true,
+        algemene_voorwaarden: true
       }
     };
     fetch(SUBMIT_URL, {
