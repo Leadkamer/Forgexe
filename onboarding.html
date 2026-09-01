@@ -142,6 +142,9 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
 
 #laden{padding:80px 0;text-align:center;color:var(--ink-mut);font-family:var(--mono);font-size:.85rem}
 #print-gebied{display:none}
+#print-gebied.zichtbaar{display:block}
+#print-gebied.zichtbaar::before{content:"Ondertekende documenten";display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mut);margin:36px 0 4px}
+#print-gebied.zichtbaar .doc-box{margin-top:14px}
 
 @media print{
   body{background:#fff}
@@ -538,14 +541,37 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     $id('ongeldig').style.display = 'block';
   }
 
+  function vulOndertekening(){
+    var g = CFG.gegevens || {};
+    var ond = '<strong>Digitaal ondertekend</strong> door ' + esc(CFG.akkoord_naam || '') +
+      (CFG.akkoord_functie ? ' (' + esc(CFG.akkoord_functie) + ')' : '') +
+      ' namens ' + esc(g.bedrijfsnaam || CFG.bedrijf || '') +
+      (CFG.akkoord_op ? ' op ' + datumNL(CFG.akkoord_op) : '') + '.';
+    var ids = ['swOndertekening','voOndertekening','swOndertekeningPrint','voOndertekeningPrint'];
+    for (var i = 0; i < ids.length; i++) {
+      var el = document.getElementById(ids[i]);
+      if (el) { el.innerHTML = ond; }
+    }
+  }
+
   function toonAlGetekend(){
     $id('laden').style.display = 'none';
     $id('klaar').style.display = 'block';
-    $id('printBtn').style.display = 'none';
-    $id('klaarTekst').textContent = 'Deze onboarding is al afgerond' +
+    heeftContract = !!(CFG.contract && CFG.contract.maandbedrag);
+    var g = CFG.gegevens || {};
+    $id('f_bedrijfsnaam').value = g.bedrijfsnaam || CFG.bedrijf || '';
+    $id('f_kvk').value = g.kvk || '';
+    $id('f_adres').value = g.adres || '';
+    $id('f_postcode').value = g.postcode_plaats || '';
+    $id('f_contact').value = g.contactpersoon || CFG.contactpersoon || '';
+    $id('f_email').value = g.email || '';
+    renderDocs();
+    vulOndertekening();
+    $id('print-gebied').classList.add('zichtbaar');
+    $id('klaarTekst').textContent = 'Deze onboarding is afgerond' +
       (CFG.akkoord_naam ? ': ondertekend door ' + CFG.akkoord_naam : '') +
       (CFG.akkoord_op ? ' op ' + datumNL(CFG.akkoord_op) : '') +
-      '. De bevestiging met alle details staat in je mailbox. Vragen? Mail ' + FORGEXE.email + '.';
+      '. Hieronder kun je de ondertekende documenten teruglezen en printen. Vragen? Mail ' + FORGEXE.email + '.';
   }
 
   function toonFlow(){
@@ -648,6 +674,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
         }
         $id('flow').style.display = 'none';
         $id('klaar').style.display = 'block';
+        $id('print-gebied').classList.add('zichtbaar');
         $id('klaarTekst').textContent = 'Je gegevens zijn ontvangen en ' +
           (heeftContract ? 'de samenwerkingsovereenkomst, ' : '') +
           'de verwerkersovereenkomst en de algemene voorwaarden zijn digitaal geaccordeerd. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.';
