@@ -13,7 +13,6 @@
 :root{
   --green:#34d399;
   --green-lt:#4ade80;
-  --cyan:#00f0ff;
   --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
   --head:'Outfit',system-ui,sans-serif;
 }
@@ -59,23 +58,35 @@ header{border-bottom:1px solid var(--line);background:var(--bg2);position:sticky
 .theme-toggle:hover{color:var(--ink)}
 
 .wrap{max-width:880px;margin:0 auto;padding:0 22px 70px}
+
+/* voortgangsbalk */
+.voortgang{display:flex;align-items:flex-start;gap:0;margin:36px 0 8px;overflow-x:auto;padding-bottom:6px}
+.vg-stap{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:86px;flex:1;position:relative}
+.vg-stap::before{content:"";position:absolute;top:15px;left:-50%;width:100%;height:2px;background:var(--line)}
+.vg-stap:first-child::before{display:none}
+.vg-stap .bol{width:30px;height:30px;border-radius:50%;border:2px solid var(--line-strong);background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--ink-mut);position:relative;z-index:1;transition:all .25s ease}
+.vg-stap .lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-mut);white-space:nowrap;transition:color .25s ease}
+.vg-stap.actief .bol{border-color:var(--green);color:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.12)}
+.vg-stap.actief .lbl{color:var(--ink)}
+.vg-stap.klaar .bol{background:var(--green);border-color:var(--green);color:var(--navy)}
+.vg-stap.klaar::before,.vg-stap.actief::before{background:var(--green)}
+
+/* stap-panelen */
+.stap-paneel{display:none;padding-top:26px}
+.stap-paneel.actief{display:block;animation:stapIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes stapIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
 .stap-badge{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--green);border-radius:5px;padding:3px 9px;display:inline-block;margin-bottom:12px}
-h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;letter-spacing:-.015em;line-height:1.15;margin-bottom:10px}
+h1{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;letter-spacing:-.015em;line-height:1.15;margin-bottom:10px}
 .lead{color:var(--ink-dim);max-width:62ch}
 .pakket-lijn{margin-top:16px;font-family:var(--mono);font-size:.8rem;color:var(--ink-dim);border:1px solid var(--line-strong);border-radius:8px;padding:10px 14px;display:inline-block}
 
-section.blok{margin-top:44px}
-h2{font-size:1.2rem;font-weight:700;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
-h2 .nr{font-family:var(--mono);font-size:.7rem;color:var(--green)}
-.blok > p{color:var(--ink-dim);max-width:64ch;margin-bottom:16px}
-
-.scope-lijst{list-style:none;margin-top:8px}
+.scope-lijst{list-style:none;margin-top:18px}
 .scope-lijst li{padding:9px 0 9px 26px;position:relative;border-bottom:1px solid var(--line)}
 .scope-lijst li:last-child{border-bottom:none}
 .scope-lijst li::before{content:"";position:absolute;left:4px;top:17px;width:9px;height:9px;border-radius:2px;background:var(--green)}
 
-form .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
-@media(max-width:640px){form .grid{grid-template-columns:1fr}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
 .veld{display:flex;flex-direction:column;gap:5px}
 .veld.breed{grid-column:1/-1}
 .veld label{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mut)}
@@ -88,20 +99,18 @@ form .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
 .veld input:focus,.veld textarea:focus{outline:none;border-color:var(--green)}
 .veld input.fout{border-color:var(--red)}
 
-.vo-box{
+.doc-box{
   border:1px solid var(--line-strong);border-radius:12px;background:var(--panel);
-  max-height:440px;overflow-y:auto;padding:26px 28px;font-size:.9rem;line-height:1.65;
+  max-height:460px;overflow-y:auto;padding:26px 28px;font-size:.9rem;line-height:1.65;margin-top:14px;
 }
-.vo-box h3{font-size:1.05rem;margin:22px 0 6px;font-weight:700}
-.vo-box h3:first-child{margin-top:0}
-.vo-box h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mut);margin:18px 0 6px}
-.vo-box p{margin-bottom:10px;color:var(--ink-dim)}
-.vo-box strong{color:var(--ink)}
-.vo-box ol{padding-left:20px;color:var(--ink-dim);margin-bottom:10px}
-.vo-box ul{padding-left:20px;color:var(--ink-dim);margin-bottom:10px}
-.vo-box li{margin-bottom:4px}
-.vo-acties{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center}
-.vo-acties .hint{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut)}
+.doc-box h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+.doc-box h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mut);margin:18px 0 6px}
+.doc-box p{margin-bottom:10px;color:var(--ink-dim)}
+.doc-box strong{color:var(--ink)}
+.doc-box ul,.doc-box ol{padding-left:20px;color:var(--ink-dim);margin-bottom:10px}
+.doc-box li{margin-bottom:4px}
+.doc-acties{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.doc-acties .hint{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut)}
 
 .check-rij{display:flex;gap:12px;align-items:flex-start;margin-top:14px;cursor:pointer}
 .check-rij input{width:19px;height:19px;margin-top:3px;accent-color:var(--green);flex:none;cursor:pointer}
@@ -118,34 +127,30 @@ form .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
 .btn-ghost{background:none;color:var(--ink-dim);border:1px solid var(--line-strong)}
 .btn-ghost:hover{color:var(--ink)}
 .btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
+.nav-rij{display:flex;justify-content:space-between;gap:12px;margin-top:30px;flex-wrap:wrap}
+.nav-rij .rechts{margin-left:auto}
 
-.melding{
-  margin-top:60px;text-align:center;padding:50px 20px;border:1px solid var(--line-strong);
-  border-radius:14px;background:var(--panel);
-}
+.melding{margin-top:60px;text-align:center;padding:50px 20px;border:1px solid var(--line-strong);border-radius:14px;background:var(--panel)}
 .melding h1{font-size:1.5rem}
 .melding p{color:var(--ink-dim);max-width:48ch;margin:10px auto 0}
-
-.succes{border-color:var(--green);background:var(--panel)}
-.succes .vink{
-  width:58px;height:58px;border-radius:50%;background:var(--green);color:var(--navy);
-  display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;margin:0 auto 18px;
-}
+.succes{border-color:var(--green)}
+.succes .vink{width:58px;height:58px;border-radius:50%;background:var(--green);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;margin:0 auto 18px}
 .fout-lijn{color:var(--red);font-size:.9rem;margin-top:12px;display:none}
 
 footer{border-top:1px solid var(--line);padding:20px 0 40px;margin-top:20px}
 footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut)}
 
 #laden{padding:80px 0;text-align:center;color:var(--ink-mut);font-family:var(--mono);font-size:.85rem}
+#print-gebied{display:none}
 
 @media print{
   body{background:#fff}
   body *{visibility:hidden}
-  #vo-print-gebied,#vo-print-gebied *{visibility:visible}
-  #vo-print-gebied{position:absolute;left:0;top:0;width:100%}
-  .vo-box{max-height:none;overflow:visible;border:none;padding:0;background:#fff;color:#111}
-  .vo-box p,.vo-box ol,.vo-box ul{color:#333}
-  .vo-box strong,.vo-box h3{color:#111}
+  #print-gebied,#print-gebied *{visibility:visible}
+  #print-gebied{position:absolute;left:0;top:0;width:100%;display:block!important}
+  #print-gebied .doc-box{max-height:none;overflow:visible;border:none;padding:0 0 30px;background:#fff;color:#111;display:block!important;page-break-after:always}
+  #print-gebied .doc-box p,#print-gebied .doc-box ul,#print-gebied .doc-box ol{color:#333}
+  #print-gebied .doc-box strong,#print-gebied .doc-box h3{color:#111}
 }
 </style>
 </head>
@@ -172,72 +177,103 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
   <div id="klaar" class="melding succes" style="display:none">
     <div class="vink">✓</div>
     <h1>Welkom aan boord!</h1>
-    <p id="klaarTekst">Je gegevens zijn ontvangen, de verwerkersovereenkomst is digitaal ondertekend en je akkoord op de algemene voorwaarden is vastgelegd. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.</p>
-    <p style="margin-top:16px"><button class="btn btn-ghost" type="button" id="printBtn">Overeenkomst printen of opslaan als PDF</button></p>
+    <p id="klaarTekst"></p>
+    <p style="margin-top:16px"><button class="btn btn-ghost" type="button" id="printBtn">Overeenkomsten printen of opslaan als PDF</button></p>
   </div>
 
-  <div id="inhoud" style="display:none">
+  <div id="flow" style="display:none">
 
-    <section style="padding-top:46px">
+    <div class="voortgang" id="voortgang"></div>
+
+    <!-- STAP: welkom -->
+    <section class="stap-paneel" data-stap="welkom">
       <span class="stap-badge">Welkom aan boord</span>
       <h1 id="welkomKop">Welkom!</h1>
-      <p class="lead">Leuk dat we gaan samenwerken. Op deze pagina regelen we in één keer alles wat nodig is om te starten: je bedrijfsgegevens, de verwerkersovereenkomst en de digitale ondertekening. Het kost je een minuut of vijf.</p>
+      <p class="lead">Leuk dat we gaan samenwerken. In een paar korte stappen regelen we alles om te kunnen starten: je bedrijfsgegevens, de samenwerkingsovereenkomst, de verwerkersovereenkomst en de digitale ondertekening. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.</p>
       <div class="pakket-lijn" id="pakketLijn"></div>
-    </section>
-
-    <section class="blok" id="scopeBlok">
-      <h2><span class="nr">&gt;_</span>Wat we voor je gaan bouwen</h2>
-      <p>Zoals besproken. Klopt er iets niet? Laat het weten in het opmerkingenveld hieronder.</p>
       <ul class="scope-lijst" id="scopeLijst"></ul>
+      <div class="nav-rij"><button class="btn btn-groen rechts" type="button" onclick="volgendeStap()">Start de onboarding →</button></div>
     </section>
 
-    <form id="onbForm" novalidate>
+    <!-- STAP: gegevens -->
+    <section class="stap-paneel" data-stap="gegevens">
+      <span class="stap-badge">Stap: gegevens</span>
+      <h1>Je bedrijfsgegevens</h1>
+      <p class="lead">Deze gegevens gebruiken we voor de overeenkomsten en de facturatie. Ze worden automatisch in de documenten van de volgende stappen verwerkt.</p>
+      <div class="grid" style="margin-top:22px">
+        <div class="veld"><label for="f_bedrijfsnaam">Officiële bedrijfsnaam <span class="req">*</span></label><input id="f_bedrijfsnaam" autocomplete="organization"></div>
+        <div class="veld"><label for="f_kvk">KvK-nummer <span class="req">*</span></label><input id="f_kvk" inputmode="numeric"></div>
+        <div class="veld"><label for="f_adres">Straat en huisnummer <span class="req">*</span></label><input id="f_adres" autocomplete="street-address"></div>
+        <div class="veld"><label for="f_postcode">Postcode en plaats <span class="req">*</span></label><input id="f_postcode"></div>
+        <div class="veld"><label for="f_contact">Contactpersoon <span class="req">*</span></label><input id="f_contact" autocomplete="name"></div>
+        <div class="veld"><label for="f_email">E-mailadres <span class="req">*</span></label><input id="f_email" type="email" autocomplete="email"></div>
+        <div class="veld"><label for="f_telefoon">Telefoonnummer</label><input id="f_telefoon" type="tel" autocomplete="tel"></div>
+        <div class="veld"><label for="f_factuur">Factuur-e-mailadres</label><input id="f_factuur" type="email"></div>
+        <div class="veld"><label for="f_btw">BTW-nummer</label><input id="f_btw"></div>
+        <div class="veld"><label for="f_tech">Technisch aanspreekpunt (voor toegangen)</label><input id="f_tech"></div>
+        <div class="veld breed"><label for="f_opm">Opmerkingen</label><textarea id="f_opm" placeholder="Bijvoorbeeld: aanvullingen op de scope, voorkeuren, planning…"></textarea></div>
+      </div>
+      <div class="fout-lijn" id="foutGegevens"></div>
+      <div class="nav-rij">
+        <button class="btn btn-ghost" type="button" onclick="vorigeStap()">← Terug</button>
+        <button class="btn btn-groen rechts" type="button" onclick="volgendeStap()">Volgende →</button>
+      </div>
+    </section>
 
-      <section class="blok">
-        <h2><span class="nr">01</span>Bedrijfsgegevens</h2>
-        <p>Deze gegevens gebruiken we voor de overeenkomsten en de facturatie.</p>
-        <div class="grid">
-          <div class="veld"><label for="f_bedrijfsnaam">Officiële bedrijfsnaam <span class="req">*</span></label><input id="f_bedrijfsnaam" autocomplete="organization"></div>
-          <div class="veld"><label for="f_kvk">KvK-nummer <span class="req">*</span></label><input id="f_kvk" inputmode="numeric"></div>
-          <div class="veld"><label for="f_adres">Straat en huisnummer <span class="req">*</span></label><input id="f_adres" autocomplete="street-address"></div>
-          <div class="veld"><label for="f_postcode">Postcode en plaats <span class="req">*</span></label><input id="f_postcode"></div>
-          <div class="veld"><label for="f_contact">Contactpersoon <span class="req">*</span></label><input id="f_contact" autocomplete="name"></div>
-          <div class="veld"><label for="f_email">E-mailadres <span class="req">*</span></label><input id="f_email" type="email" autocomplete="email"></div>
-          <div class="veld"><label for="f_telefoon">Telefoonnummer</label><input id="f_telefoon" type="tel" autocomplete="tel"></div>
-          <div class="veld"><label for="f_factuur">Factuur-e-mailadres</label><input id="f_factuur" type="email"></div>
-          <div class="veld"><label for="f_btw">BTW-nummer</label><input id="f_btw"></div>
-          <div class="veld"><label for="f_tech">Technisch aanspreekpunt (voor toegangen)</label><input id="f_tech"></div>
-          <div class="veld breed"><label for="f_opm">Opmerkingen</label><textarea id="f_opm" placeholder="Bijvoorbeeld: aanvullingen op de scope, voorkeuren, planning…"></textarea></div>
-        </div>
-      </section>
+    <!-- STAP: samenwerkingsovereenkomst -->
+    <section class="stap-paneel" data-stap="samenwerking">
+      <span class="stap-badge">Stap: samenwerking</span>
+      <h1>De samenwerkingsovereenkomst</h1>
+      <p class="lead">Hierin staan de afspraken die we samen hebben gemaakt: wat we bouwen, wat het kost, hoe lang, en hoe we uit elkaar kunnen als het ooit nodig is. Je gegevens uit de vorige stap zijn al verwerkt. Ondertekenen doe je in de laatste stap.</p>
+      <div class="doc-box" id="swTekst"></div>
+      <div class="doc-acties">
+        <button class="btn btn-ghost" type="button" onclick="printDocs()">Printen / opslaan als PDF</button>
+        <span class="hint">Na ondertekening ontvang je alles per mail.</span>
+      </div>
+      <div class="nav-rij">
+        <button class="btn btn-ghost" type="button" onclick="vorigeStap()">← Terug</button>
+        <button class="btn btn-groen rechts" type="button" onclick="volgendeStap()">Volgende →</button>
+      </div>
+    </section>
 
-      <section class="blok">
-        <h2><span class="nr">02</span>Verwerkersovereenkomst</h2>
-        <p>Omdat wij bij het bouwen en beheren van de AI-medewerkers persoonsgegevens verwerken (zoals klant- en ordergegevens), leggen we de afspraken daarover vast in deze verwerkersovereenkomst. Je gegevens uit stap 1 worden er automatisch in verwerkt.</p>
-        <div id="vo-print-gebied"><div class="vo-box" id="voTekst"></div></div>
-        <div class="vo-acties">
-          <button class="btn btn-ghost" type="button" onclick="window.print()">Printen / opslaan als PDF</button>
-          <span class="hint">De overeenkomst wordt na ondertekening ook per mail bevestigd.</span>
-        </div>
-      </section>
+    <!-- STAP: verwerkersovereenkomst -->
+    <section class="stap-paneel" data-stap="verwerker">
+      <span class="stap-badge">Stap: privacy</span>
+      <h1>De verwerkersovereenkomst</h1>
+      <p class="lead">Omdat wij bij het bouwen en beheren van de AI-medewerkers persoonsgegevens verwerken (zoals klant- en ordergegevens), leggen we de afspraken daarover vast in deze verwerkersovereenkomst.</p>
+      <div class="doc-box" id="voTekst"></div>
+      <div class="doc-acties">
+        <button class="btn btn-ghost" type="button" onclick="printDocs()">Printen / opslaan als PDF</button>
+      </div>
+      <div class="nav-rij">
+        <button class="btn btn-ghost" type="button" onclick="vorigeStap()">← Terug</button>
+        <button class="btn btn-groen rechts" type="button" onclick="volgendeStap()">Volgende →</button>
+      </div>
+    </section>
 
-      <section class="blok">
-        <h2><span class="nr">03</span>Digitaal ondertekenen</h2>
-        <div class="grid">
-          <div class="veld"><label for="f_teken_naam">Naam ondertekenaar <span class="req">*</span></label><input id="f_teken_naam" autocomplete="name"></div>
-          <div class="veld"><label for="f_teken_functie">Functie</label><input id="f_teken_functie" placeholder="Bijv. directeur, eigenaar"></div>
-        </div>
-        <label class="check-rij"><input type="checkbox" id="c_gegevens"><span>De ingevulde bedrijfsgegevens zijn juist en ik ben bevoegd om namens dit bedrijf te tekenen.</span></label>
-        <label class="check-rij"><input type="checkbox" id="c_vo"><span>Ik ga akkoord met de bovenstaande verwerkersovereenkomst tussen <strong id="voAkkoordBedrijf">ons bedrijf</strong> en Forgexe.</span></label>
-        <label class="check-rij"><input type="checkbox" id="c_av"><span>Ik heb de <a href="/voorwaarden" target="_blank" rel="noopener">algemene voorwaarden van Forgexe</a> gelezen en ga ermee akkoord.</span></label>
-        <div class="fout-lijn" id="foutLijn"></div>
-        <div style="margin-top:22px">
-          <button class="btn btn-groen" type="submit" id="verstuurBtn">Onboarding afronden en ondertekenen</button>
-        </div>
-      </section>
+    <!-- STAP: ondertekenen -->
+    <section class="stap-paneel" data-stap="tekenen">
+      <span class="stap-badge">Laatste stap</span>
+      <h1>Digitaal ondertekenen</h1>
+      <p class="lead">Eén handtekening voor het hele pakket. Vul je naam in, vink de akkoordverklaringen aan en rond af.</p>
+      <div class="grid" style="margin-top:22px">
+        <div class="veld"><label for="f_teken_naam">Naam ondertekenaar <span class="req">*</span></label><input id="f_teken_naam" autocomplete="name"></div>
+        <div class="veld"><label for="f_teken_functie">Functie</label><input id="f_teken_functie" placeholder="Bijv. directeur, eigenaar"></div>
+      </div>
+      <label class="check-rij"><input type="checkbox" id="c_gegevens"><span>De ingevulde bedrijfsgegevens zijn juist en ik ben bevoegd om namens dit bedrijf te tekenen.</span></label>
+      <label class="check-rij" id="rij_sw"><input type="checkbox" id="c_sw"><span>Ik ga akkoord met de <strong>samenwerkingsovereenkomst</strong> zoals getoond in deze onboarding.</span></label>
+      <label class="check-rij"><input type="checkbox" id="c_vo"><span>Ik ga akkoord met de <strong>verwerkersovereenkomst</strong> tussen <strong id="voAkkoordBedrijf">ons bedrijf</strong> en Forgexe.</span></label>
+      <label class="check-rij"><input type="checkbox" id="c_av"><span>Ik heb de <a href="/voorwaarden" target="_blank" rel="noopener">algemene voorwaarden van Forgexe</a> gelezen en ga ermee akkoord.</span></label>
+      <div class="fout-lijn" id="foutLijn"></div>
+      <div class="nav-rij">
+        <button class="btn btn-ghost" type="button" onclick="vorigeStap()">← Terug</button>
+        <button class="btn btn-groen rechts" type="button" id="verstuurBtn" onclick="verstuur()">Ondertekenen en afronden ✓</button>
+      </div>
+    </section>
 
-    </form>
   </div>
+
+  <div id="print-gebied" aria-hidden="true"></div>
 </div>
 
 <footer>
@@ -257,6 +293,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     naam: 'Forgexe',
     kvk: '83002677',
     adres: 'Prins Mauritsstraat 2, 5981 BX Panningen',
+    vertegenwoordiger: 'Sedat Ayar',
     email: 'sedat' + '@' + 'forgexe.nl'
   };
 
@@ -280,33 +317,104 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
   function $id(x){ return document.getElementById(x); }
+  function datumVandaag(){
+    return new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  function datumNL(iso){
+    try { return new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }); }
+    catch (e) { return iso; }
+  }
 
   var token = '';
   try { token = new URLSearchParams(window.location.search).get('t') || ''; } catch (e) {}
 
   var CFG = null;
+  var heeftContract = false;
+  var STAPPEN = [];
+  var stapIndex = 0;
 
-  function toonOngeldig(){
-    $id('laden').style.display = 'none';
-    $id('ongeldig').style.display = 'block';
+  /* ---------- klantwaarden uit het formulier ---------- */
+  function klantWaarden(){
+    return {
+      bedrijf: $id('f_bedrijfsnaam').value.trim() || (CFG && CFG.bedrijf) || '[bedrijfsnaam]',
+      kvk: $id('f_kvk').value.trim() || '[KvK-nummer]',
+      adres: ($id('f_adres').value.trim() + ', ' + $id('f_postcode').value.trim()).replace(/^, |, $/g,'') || '[adres]',
+      contact: $id('f_contact').value.trim() || (CFG && CFG.contactpersoon) || ''
+    };
   }
 
-  function datumNL(iso){
-    try {
-      return new Date(iso).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
-    } catch (e) { return iso; }
+  /* ---------- samenwerkingsovereenkomst ---------- */
+  function bouwSamenwerking(){
+    var c = (CFG && CFG.contract) || {};
+    var k = klantWaarden();
+    var dienst = c.dienst || (CFG && CFG.pakket) || 'AI-automatiseringsdiensten';
+    var scopeHtml = '';
+    var scopeRegels = ((CFG && CFG.scope) || '').split('\n');
+    for (var j = 0; j < scopeRegels.length; j++) {
+      if (scopeRegels[j].trim()) { scopeHtml += '<li>' + esc(scopeRegels[j].trim()) + '</li>'; }
+    }
+    var artNr = 0;
+    function art(titel){ artNr++; return '<h4>Artikel ' + artNr + ' · ' + titel + '</h4>'; }
+
+    var html = '<h3>Samenwerkingsovereenkomst</h3>' +
+    '<p><strong>Partijen:</strong></p>' +
+    '<p>' + esc(FORGEXE.naam) + ', gevestigd te ' + esc(FORGEXE.adres) + ', ingeschreven bij de Kamer van Koophandel onder nummer ' + esc(FORGEXE.kvk) + ', rechtsgeldig vertegenwoordigd door ' + esc(FORGEXE.vertegenwoordiger) + ', hierna: <strong>Dienstverlener</strong>,</p>' +
+    '<p>en</p>' +
+    '<p>' + esc(k.bedrijf) + ', gevestigd te ' + esc(k.adres) + ', ingeschreven bij de Kamer van Koophandel onder nummer ' + esc(k.kvk) + ', hierna: <strong>Klant</strong>.</p>';
+
+    html += art('Doel van de overeenkomst') +
+    '<p>Klant neemt bij Dienstverlener de dienst <strong>' + esc(dienst) + '</strong> af. Deze dienst omvat het inrichten, beheren en onderhouden van de volgende AI-automatiseringen ("AI-medewerkers"):</p>' +
+    (scopeHtml ? '<ul>' + scopeHtml + '</ul>' : '') +
+    '<p>De exacte inrichting, werkwijze en gewenste output worden tussen Partijen afgestemd en per e-mail of in een bijlage vastgelegd.</p>';
+
+    html += art('Duur en opzegging') +
+    '<p>Deze overeenkomst gaat in op ' + esc(c.ingangsdatum || 'de datum van digitale ondertekening') + ' en wordt aangegaan voor een minimale looptijd van <strong>' + esc(c.looptijd || '6 maanden') + '</strong>. Daarna loopt de overeenkomst door voor onbepaalde tijd.</p>' +
+    '<p>Na de minimale looptijd geldt voor beide Partijen een opzegtermijn van <strong>' + esc(c.opzegtermijn || '1 maand') + '</strong>. Opzeggen gebeurt schriftelijk; e-mail volstaat. Tot het einde van de opzegtermijn blijft de betalingsverplichting van kracht.</p>' +
+    (c.exit ? '<p><strong>Tussentijds stoppen binnen de minimale looptijd:</strong> ' + esc(c.exit) + '</p>' : '');
+
+    html += art('Vergoeding en betaling') +
+    '<p>Klant betaalt aan Dienstverlener een vergoeding van <strong>' + esc(c.maandbedrag || '') + ' per maand, exclusief btw</strong>. De abonnementskosten worden maandelijks vooraf gefactureerd.</p>' +
+    (c.vooruit ? '<p>' + esc(c.vooruit) + '</p>' : '') +
+    '<p>De betalingstermijn bedraagt ' + esc(c.betalingstermijn || '14 dagen') + ' na factuurdatum, tenzij Partijen schriftelijk anders overeenkomen. Bij uitblijven van tijdige betaling mag Dienstverlener de uitvoering van de dienst tijdelijk opschorten totdat betaling heeft plaatsgevonden.</p>';
+
+    html += art('Verantwoordelijkheden van Klant') +
+    '<p>Klant levert tijdig de benodigde input, informatie, toegang en materialen aan (zoals templates, toegangen tot systemen, API-sleutels en werkinstructies), voor zover noodzakelijk voor een goede werking van de AI-medewerkers.</p>' +
+    '<p>Klant blijft zelf verantwoordelijk voor de uiteindelijke goedkeuring en het gebruik van de output, en voor de controle op juistheid, volledigheid en (juridische) toelaatbaarheid daarvan. De ingebouwde menselijke controle-stappen ondersteunen dit.</p>';
+
+    html += art('Intellectuele eigendom') +
+    '<p>Alle rechten op de door de AI-medewerkers gegenereerde output komen, na volledige betaling van de verschuldigde bedragen, toe aan Klant.</p>' +
+    '<p>De onderliggende workflows, automations, scripts, prompts en overige door Dienstverlener ontwikkelde technische inrichting blijven eigendom van Dienstverlener, tenzij Partijen hierover schriftelijk andere afspraken maken (zoals een eenmalig eigendomstraject).</p>';
+
+    html += art('Aansprakelijkheid') +
+    '<p>Dienstverlener spant zich in om de dienst zorgvuldig in te richten en te onderhouden, maar kan niet garanderen dat de dienst te allen tijde foutloos of ononderbroken functioneert.</p>' +
+    '<p>Dienstverlener is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst of schade voortvloeiend uit onjuiste of onvolledige informatie die door Klant is aangeleverd.</p>' +
+    '<p>Voor zover Dienstverlener toch aansprakelijk is, is deze aansprakelijkheid beperkt tot maximaal het bedrag gelijk aan ' + esc(c.aansprakelijkheid || 'drie (3) maanden abonnementskosten') + '.</p>';
+
+    html += art('Verwerking van persoonsgegevens') +
+    '<p>Voor de verwerking van persoonsgegevens in het kader van deze dienst sluiten Partijen een verwerkersovereenkomst. Deze maakt integraal onderdeel uit van deze samenwerkingsovereenkomst en wordt in deze onboarding gelijktijdig ondertekend.</p>';
+
+    html += art('Algemene voorwaarden') +
+    '<p>Op deze overeenkomst zijn de algemene voorwaarden van Dienstverlener van toepassing, te vinden op <a href="https://www.forgexe.nl/voorwaarden" target="_blank" rel="noopener">www.forgexe.nl/voorwaarden</a>. In geval van strijdigheid tussen deze overeenkomst en de algemene voorwaarden prevaleren de bepalingen uit deze overeenkomst.</p>';
+
+    if (c.extra) {
+      html += art('Bijzondere afspraken') + '<p>' + esc(c.extra).replace(/\n/g, '<br>') + '</p>';
+    }
+
+    html += art('Slotbepalingen') +
+    '<p>Wijzigingen of aanvullingen op deze overeenkomst zijn alleen geldig als ze schriftelijk zijn vastgelegd en door beide Partijen zijn bevestigd. Op deze overeenkomst is Nederlands recht van toepassing. Geschillen worden bij uitsluiting voorgelegd aan de bevoegde rechter in het arrondissement waar Dienstverlener is gevestigd.</p>' +
+    '<p id="swOndertekening"></p>';
+
+    return html;
   }
 
-  function bouwOvereenkomst(){
-    var bedrijf = $id('f_bedrijfsnaam').value.trim() || CFG.bedrijf || '[bedrijfsnaam]';
-    var kvk = $id('f_kvk').value.trim() || '[KvK-nummer]';
-    var adres = ($id('f_adres').value.trim() + ' ' + $id('f_postcode').value.trim()).trim() || '[adres]';
-    var vandaag = new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+  /* ---------- verwerkersovereenkomst ---------- */
+  function bouwVerwerker(){
+    var k = klantWaarden();
     var subverwerkers = '';
-    var tools = (CFG.tools && CFG.tools.length) ? CFG.tools : ['n8n (workflow-automatisering)', 'Anthropic Claude (AI-model)'];
+    var tools = (CFG && CFG.tools && CFG.tools.length) ? CFG.tools : ['n8n (workflow-automatisering)', 'Anthropic Claude (AI-model)'];
     for (var i = 0; i < tools.length; i++) { subverwerkers += '<li>' + esc(tools[i]) + '</li>'; }
     var scopeHtml = '';
-    var scopeRegels = (CFG.scope || '').split('\n');
+    var scopeRegels = ((CFG && CFG.scope) || '').split('\n');
     for (var j = 0; j < scopeRegels.length; j++) {
       if (scopeRegels[j].trim()) { scopeHtml += '<li>' + esc(scopeRegels[j].trim()) + '</li>'; }
     }
@@ -314,9 +422,9 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
 
     return '' +
     '<h3>Verwerkersovereenkomst</h3>' +
-    '<p>Deze verwerkersovereenkomst maakt onderdeel uit van de samenwerkingsovereenkomst tussen partijen en is opgesteld op ' + vandaag + '.</p>' +
+    '<p>Deze verwerkersovereenkomst maakt onderdeel uit van de samenwerkingsovereenkomst tussen partijen.</p>' +
     '<h4>Partijen</h4>' +
-    '<p><strong>Verwerkingsverantwoordelijke:</strong> ' + esc(bedrijf) + ', KvK ' + esc(kvk) + ', gevestigd te ' + esc(adres) + ' (hierna: Opdrachtgever).</p>' +
+    '<p><strong>Verwerkingsverantwoordelijke:</strong> ' + esc(k.bedrijf) + ', KvK ' + esc(k.kvk) + ', gevestigd te ' + esc(k.adres) + ' (hierna: Opdrachtgever).</p>' +
     '<p><strong>Verwerker:</strong> ' + esc(FORGEXE.naam) + ', KvK ' + esc(FORGEXE.kvk) + ', gevestigd te ' + esc(FORGEXE.adres) + ', bereikbaar via ' + esc(FORGEXE.email) + ' (hierna: Forgexe).</p>' +
     '<h4>Artikel 1 · Onderwerp en duur</h4>' +
     '<p>Forgexe verwerkt in opdracht van Opdrachtgever persoonsgegevens bij het bouwen en beheren van AI-automatiseringen ("AI-medewerkers"). Deze overeenkomst geldt zolang de samenwerkingsovereenkomst loopt en eindigt automatisch bij beëindiging daarvan.</p>' +
@@ -348,40 +456,87 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     '<p id="voOndertekening"></p>';
   }
 
-  function renderOvereenkomst(){
-    $id('voTekst').innerHTML = bouwOvereenkomst();
-    var b = $id('f_bedrijfsnaam').value.trim() || CFG.bedrijf || 'ons bedrijf';
-    $id('voAkkoordBedrijf').textContent = b;
+  function renderDocs(){
+    if (heeftContract) { $id('swTekst').innerHTML = bouwSamenwerking(); }
+    $id('voTekst').innerHTML = bouwVerwerker();
+    $id('voAkkoordBedrijf').textContent = klantWaarden().bedrijf;
+    var pg = $id('print-gebied');
+    pg.innerHTML = '';
+    if (heeftContract) {
+      var d1 = document.createElement('div'); d1.className = 'doc-box'; d1.innerHTML = $id('swTekst').innerHTML.replace('id="swOndertekening"','id="swOndertekeningPrint"');
+      pg.appendChild(d1);
+    }
+    var d2 = document.createElement('div'); d2.className = 'doc-box'; d2.innerHTML = $id('voTekst').innerHTML.replace('id="voOndertekening"','id="voOndertekeningPrint"');
+    pg.appendChild(d2);
   }
 
-  function toonPagina(){
-    $id('laden').style.display = 'none';
-    $id('inhoud').style.display = 'block';
-    $id('welkomKop').textContent = 'Welkom aan boord, ' + CFG.bedrijf + '!';
-    $id('pakketLijn').textContent = CFG.pakket || 'Forgexe-pakket';
-    var lijst = $id('scopeLijst');
-    var regels = (CFG.scope || '').split('\n');
-    var html = '';
-    for (var i = 0; i < regels.length; i++) {
-      if (regels[i].trim()) { html += '<li>' + esc(regels[i].trim()) + '</li>'; }
-    }
-    if (html) { lijst.innerHTML = html; } else { $id('scopeBlok').style.display = 'none'; }
-    $id('f_bedrijfsnaam').value = CFG.bedrijf || '';
-    $id('f_contact').value = CFG.contactpersoon || '';
-    renderOvereenkomst();
-    var herbouw = ['f_bedrijfsnaam','f_kvk','f_adres','f_postcode'];
-    for (var h = 0; h < herbouw.length; h++) {
-      $id(herbouw[h]).addEventListener('input', renderOvereenkomst);
-    }
-  }
+  window.printDocs = function(){
+    renderDocs();
+    window.print();
+  };
 
   $id('printBtn').addEventListener('click', function(){
-    var inh = $id('inhoud');
-    var was = inh.style.display;
-    if (was === 'none') { inh.style.display = 'block'; }
     window.print();
-    inh.style.display = was;
   });
+
+  /* ---------- stappen ---------- */
+  var STAP_LABELS = { welkom: 'Welkom', gegevens: 'Gegevens', samenwerking: 'Samenwerking', verwerker: 'Privacy', tekenen: 'Tekenen' };
+
+  function renderVoortgang(){
+    var h = '';
+    for (var i = 0; i < STAPPEN.length; i++) {
+      var cls = i === stapIndex ? ' actief' : (i < stapIndex ? ' klaar' : '');
+      var inhoud = i < stapIndex ? '✓' : (i + 1);
+      h += '<div class="vg-stap' + cls + '"><div class="bol">' + inhoud + '</div><div class="lbl">' + STAP_LABELS[STAPPEN[i]] + '</div></div>';
+    }
+    $id('voortgang').innerHTML = h;
+  }
+
+  function toonStap(){
+    var panelen = document.querySelectorAll('.stap-paneel');
+    for (var i = 0; i < panelen.length; i++) {
+      panelen[i].classList.toggle('actief', panelen[i].getAttribute('data-stap') === STAPPEN[stapIndex]);
+    }
+    renderVoortgang();
+    window.scrollTo(0, 0);
+  }
+
+  function valideerGegevens(){
+    var fout = $id('foutGegevens');
+    fout.style.display = 'none';
+    var verplicht = ['f_bedrijfsnaam','f_kvk','f_adres','f_postcode','f_contact','f_email'];
+    var mist = false;
+    for (var i = 0; i < verplicht.length; i++) {
+      var el = $id(verplicht[i]);
+      var leeg = !el.value.trim();
+      el.classList.toggle('fout', leeg);
+      if (leeg) { mist = true; }
+    }
+    if (mist) {
+      fout.textContent = 'Vul alle verplichte velden (*) in om verder te gaan.';
+      fout.style.display = 'block';
+      return false;
+    }
+    return true;
+  }
+
+  window.volgendeStap = function(){
+    if (STAPPEN[stapIndex] === 'gegevens' && !valideerGegevens()) { return; }
+    if (stapIndex < STAPPEN.length - 1) {
+      stapIndex++;
+      if (STAPPEN[stapIndex] === 'samenwerking' || STAPPEN[stapIndex] === 'verwerker' || STAPPEN[stapIndex] === 'tekenen') { renderDocs(); }
+      toonStap();
+    }
+  };
+  window.vorigeStap = function(){
+    if (stapIndex > 0) { stapIndex--; toonStap(); }
+  };
+
+  /* ---------- laden ---------- */
+  function toonOngeldig(){
+    $id('laden').style.display = 'none';
+    $id('ongeldig').style.display = 'block';
+  }
 
   function toonAlGetekend(){
     $id('laden').style.display = 'none';
@@ -393,42 +548,63 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       '. De bevestiging met alle details staat in je mailbox. Vragen? Mail ' + FORGEXE.email + '.';
   }
 
-  if (!token) { toonOngeldig(); return; }
+  function toonFlow(){
+    $id('laden').style.display = 'none';
+    $id('flow').style.display = 'block';
+    heeftContract = !!(CFG.contract && CFG.contract.maandbedrag);
+    STAPPEN = heeftContract
+      ? ['welkom','gegevens','samenwerking','verwerker','tekenen']
+      : ['welkom','gegevens','verwerker','tekenen'];
+    if (!heeftContract) { $id('rij_sw').style.display = 'none'; }
+    $id('welkomKop').textContent = 'Welkom aan boord, ' + CFG.bedrijf + '!';
+    $id('pakketLijn').textContent = CFG.pakket || 'Forgexe-pakket';
+    var lijst = $id('scopeLijst');
+    var regels = (CFG.scope || '').split('\n');
+    var html = '';
+    for (var i = 0; i < regels.length; i++) {
+      if (regels[i].trim()) { html += '<li>' + esc(regels[i].trim()) + '</li>'; }
+    }
+    lijst.innerHTML = html;
+    $id('f_bedrijfsnaam').value = CFG.bedrijf || '';
+    $id('f_contact').value = CFG.contactpersoon || '';
+    stapIndex = 0;
+    toonStap();
+  }
 
-  fetch(CONFIG_URL + '?t=' + encodeURIComponent(token)).then(function(r){
-    if (!r.ok) { throw new Error('status ' + r.status); }
-    return r.json();
-  }).then(function(data){
-    if (!data || !data.ok) { toonOngeldig(); return; }
-    CFG = data;
-    if (data.status === 'getekend') { toonAlGetekend(); return; }
-    toonPagina();
-  }).catch(function(){
-    toonOngeldig();
-  });
+  if (!token) { toonOngeldig(); }
+  else {
+    fetch(CONFIG_URL + '?t=' + encodeURIComponent(token)).then(function(r){
+      if (!r.ok) { throw new Error('status ' + r.status); }
+      return r.json();
+    }).then(function(data){
+      if (!data || !data.ok) { toonOngeldig(); return; }
+      CFG = data;
+      if (data.status === 'getekend') { toonAlGetekend(); return; }
+      toonFlow();
+    }).catch(function(){
+      toonOngeldig();
+    });
+  }
 
-  /* versturen */
-  document.getElementById('onbForm').addEventListener('submit', function(ev){
-    ev.preventDefault();
+  /* ---------- versturen ---------- */
+  window.verstuur = function(){
     var fout = $id('foutLijn');
     fout.style.display = 'none';
-    var verplicht = ['f_bedrijfsnaam','f_kvk','f_adres','f_postcode','f_contact','f_email','f_teken_naam'];
-    var mist = false;
-    for (var i = 0; i < verplicht.length; i++) {
-      var el = $id(verplicht[i]);
-      var leeg = !el.value.trim();
-      el.classList.toggle('fout', leeg);
-      if (leeg) { mist = true; }
-    }
-    if (mist) {
-      fout.textContent = 'Vul alle verplichte velden (*) in.';
+    if (!$id('f_teken_naam').value.trim()) {
+      $id('f_teken_naam').classList.add('fout');
+      fout.textContent = 'Vul de naam van de ondertekenaar in.';
       fout.style.display = 'block';
       return;
     }
-    if (!$id('c_gegevens').checked || !$id('c_vo').checked || !$id('c_av').checked) {
-      fout.textContent = 'Vink alle drie de akkoordverklaringen aan om te kunnen ondertekenen.';
-      fout.style.display = 'block';
-      return;
+    $id('f_teken_naam').classList.remove('fout');
+    var checks = ['c_gegevens','c_vo','c_av'];
+    if (heeftContract) { checks.push('c_sw'); }
+    for (var i = 0; i < checks.length; i++) {
+      if (!$id(checks[i]).checked) {
+        fout.textContent = 'Vink alle akkoordverklaringen aan om te kunnen ondertekenen.';
+        fout.style.display = 'block';
+        return;
+      }
     }
     var knop = $id('verstuurBtn');
     knop.disabled = true;
@@ -452,7 +628,8 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
         naam: $id('f_teken_naam').value.trim(),
         functie: $id('f_teken_functie').value.trim(),
         akkoord: true,
-        algemene_voorwaarden: true
+        algemene_voorwaarden: true,
+        samenwerking: heeftContract
       }
     };
     fetch(SUBMIT_URL, {
@@ -461,29 +638,33 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       body: JSON.stringify(payload)
     }).then(function(r){ return r.json(); }).then(function(data){
       if (data && data.ok) {
-        var ond = document.getElementById('voOndertekening');
-        if (ond) {
-          ond.innerHTML = '<strong>Digitaal ondertekend</strong> door ' + esc(payload.akkoord.naam) +
-            (payload.akkoord.functie ? ' (' + esc(payload.akkoord.functie) + ')' : '') +
-            ' namens ' + esc(payload.gegevens.bedrijfsnaam) + ' op ' +
-            new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }) + '.';
+        var ondTekst = '<strong>Digitaal ondertekend</strong> door ' + esc(payload.akkoord.naam) +
+          (payload.akkoord.functie ? ' (' + esc(payload.akkoord.functie) + ')' : '') +
+          ' namens ' + esc(payload.gegevens.bedrijfsnaam) + ' op ' + datumVandaag() + '.';
+        var ids = ['swOndertekening','voOndertekening','swOndertekeningPrint','voOndertekeningPrint'];
+        for (var i = 0; i < ids.length; i++) {
+          var el = document.getElementById(ids[i]);
+          if (el) { el.innerHTML = ondTekst; }
         }
-        $id('inhoud').style.display = 'none';
+        $id('flow').style.display = 'none';
         $id('klaar').style.display = 'block';
+        $id('klaarTekst').textContent = 'Je gegevens zijn ontvangen en ' +
+          (heeftContract ? 'de samenwerkingsovereenkomst, ' : '') +
+          'de verwerkersovereenkomst en de algemene voorwaarden zijn digitaal geaccordeerd. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.';
         window.scrollTo(0, 0);
       } else {
         knop.disabled = false;
-        knop.textContent = 'Onboarding afronden en ondertekenen';
+        knop.textContent = 'Ondertekenen en afronden ✓';
         fout.textContent = (data && data.fout) ? data.fout : 'Er ging iets mis bij het versturen. Probeer het opnieuw.';
         fout.style.display = 'block';
       }
     }).catch(function(){
       knop.disabled = false;
-      knop.textContent = 'Onboarding afronden en ondertekenen';
+      knop.textContent = 'Ondertekenen en afronden ✓';
       fout.textContent = 'Geen verbinding. Controleer je internet en probeer het opnieuw.';
       fout.style.display = 'block';
     });
-  });
+  };
 
 })();
 </script>
