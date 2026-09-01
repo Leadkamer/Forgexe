@@ -276,7 +276,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <div class="pay-toggle" role="group" aria-label="Kies je betaalperiode">
     <button type="button" class="active" data-periode="maand">Per maand</button>
     <button type="button" data-periode="halfjaar">6 mnd vooruit <span class="korting">&minus;5%</span></button>
-    <button type="button" data-periode="jaar">Jaar vooruit <span class="korting">&minus;5%</span></button>
+    <button type="button" data-periode="jaar">Jaar vooruit <span class="korting">&minus;10%</span></button>
   </div>
   <div class="tiers-grid" style="margin-top:2rem">
     <div class="tier-card">
@@ -433,8 +433,8 @@ document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
       pro:{prijs:'€1.140',meta:'€6.840 in één keer voor 6 maanden · 5% korting'}
     },
     jaar:{
-      start:{prijs:'€475',meta:'€5.700 in één keer voor 12 maanden · 5% korting'},
-      pro:{prijs:'€1.140',meta:'€13.680 in één keer voor 12 maanden · 5% korting'}
+      start:{prijs:'€450',meta:'€5.400 in één keer voor 12 maanden · 10% korting'},
+      pro:{prijs:'€1.080',meta:'€12.960 in één keer voor 12 maanden · 10% korting'}
     }
   };
   var knoppen=document.querySelectorAll('.pay-toggle button');
