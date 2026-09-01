@@ -64,6 +64,12 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 .tier-price-num{font-family:var(--head);font-size:2.4rem;font-weight:800;color:var(--ink);letter-spacing:-.025em}
 .tier-price-unit{font-family:var(--mono);font-size:.85rem;color:var(--ink-dim)}
 .tier-meta{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.8rem}
+.pay-toggle{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;margin:1.6rem auto 0;padding:4px;background:#fff;border:1px solid var(--line-strong);border-radius:var(--radius-pill);width:fit-content}
+.pay-toggle button{appearance:none;border:none;background:transparent;cursor:pointer;font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.03em;color:var(--ink-dim);padding:.55rem 1.05rem;border-radius:var(--radius-pill);transition:all var(--tr);display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap}
+.pay-toggle button:hover{color:var(--ink)}
+.pay-toggle button.active{background:var(--ink);color:#fff}
+.pay-toggle .korting{font-family:var(--mono);font-size:.6rem;font-weight:700;background:var(--green);color:#052e16;border-radius:var(--radius-pill);padding:.14rem .45rem}
+@media(max-width:560px){.pay-toggle{width:100%;justify-content:stretch}.pay-toggle button{flex:1;justify-content:center;padding:.55rem .4rem;font-size:.66rem}}
 .tier-features{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;flex:1}
 .tier-features li{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.5;padding-left:1.6rem;position:relative}
 .tier-features li::before{content:'\2713';position:absolute;left:0;top:.1rem;width:18px;height:18px;border-radius:50%;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
@@ -267,12 +273,17 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <p class="section-sub" style="margin:1rem auto 0">Twee manieren om met ons te werken: <strong>wij draaien het voor je</strong> met een doorlopend pakket, of <strong>jij wordt eigenaar</strong> met een eenmalig project. Nooit setup-kosten bovenop een abonnement. Elke AI-medewerker dekt &eacute;&eacute;n rol met een afgebakend takenpakket &mdash; zoals leadopvolging, factuurverwerking of rapportage.</p>
   </div>
   <div style="font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin:2rem 0 1rem">&gt; DOORLOPEND &mdash; WIJ DRAAIEN HET VOOR JE</div>
-  <div class="tiers-grid">
+  <div class="pay-toggle" role="group" aria-label="Kies je betaalperiode">
+    <button type="button" class="active" data-periode="maand">Per maand</button>
+    <button type="button" data-periode="halfjaar">6 mnd vooruit <span class="korting">&minus;5%</span></button>
+    <button type="button" data-periode="jaar">Jaar vooruit <span class="korting">&minus;5%</span></button>
+  </div>
+  <div class="tiers-grid" style="margin-top:2rem">
     <div class="tier-card">
       <div class="tier-name">Forge.Start</div>
       <div class="tier-tagline">Voor wie wil starten met AI</div>
-      <div class="tier-price"><span class="tier-price-num">&euro;500</span><span class="tier-price-unit">/maand</span></div>
-      <div class="tier-meta">Geen setup-kosten &middot; maandelijks opzegbaar</div>
+      <div class="tier-price"><span class="tier-price-num" id="prijs-start">&euro;500</span><span class="tier-price-unit">/maand</span></div>
+      <div class="tier-meta" id="meta-start">Geen setup-kosten &middot; maandelijks opzegbaar</div>
       <ul class="tier-features">
         <li>2 kant-en-klare AI-medewerkers</li>
         <li>Kies uit o.a. <a href="/email-automatiseren" style="color:inherit;text-decoration:underline;text-underline-offset:2px">inbox-triage</a>, <a href="/leadgeneratie-automatiseren" style="color:inherit;text-decoration:underline;text-underline-offset:2px">leadopvolging</a>, <a href="/ai-rapportage" style="color:inherit;text-decoration:underline;text-underline-offset:2px">rapportages</a> en <a href="/factuurverwerking-automatiseren" style="color:inherit;text-decoration:underline;text-underline-offset:2px">factuurverwerking</a></li>
@@ -286,8 +297,8 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       <span class="tier-badge">MEEST GEKOZEN</span>
       <div class="tier-name">Forge.Pro</div>
       <div class="tier-tagline">Op maat voor bedrijven die schalen</div>
-      <div class="tier-price"><span class="tier-price-num">&euro;1.200</span><span class="tier-price-unit">/maand</span></div>
-      <div class="tier-meta">Geen setup-kosten &middot; minimaal 6 maanden, tussentijds afkoopbaar</div>
+      <div class="tier-price"><span class="tier-price-num" id="prijs-pro">&euro;1.200</span><span class="tier-price-unit">/maand</span></div>
+      <div class="tier-meta" id="meta-pro">Geen setup-kosten &middot; minimaal 6 maanden, tussentijds afkoopbaar</div>
       <ul class="tier-features">
         <li>3-4 AI-medewerkers (mix bestaand en nieuw)</li>
         <li>Maatwerk voor jouw specifieke situatie</li>
@@ -320,9 +331,9 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div style="min-width:220px">
       <div style="font-family:var(--head);font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-.02em">Forge.Project</div>
       <div style="font-family:var(--head);font-size:.95rem;font-weight:600;color:var(--green);margin-top:.2rem">vanaf &euro;9.500 eenmalig</div>
-      <div style="font-family:var(--mono);font-size:.7rem;color:#8d9bb5;margin-top:.4rem;letter-spacing:.05em">GEEN ABONNEMENT &middot; GEEN LOCK-IN</div>
+      <div style="font-family:var(--mono);font-size:.7rem;color:#8d9bb5;margin-top:.4rem;letter-spacing:.05em">GEEN ABONNEMENT &middot; JIJ BEZIT HET SYSTEEM</div>
     </div>
-    <p style="font-family:var(--head);font-size:.9rem;color:#8d9bb5;max-width:440px;line-height:1.55;margin:0">Wij bouwen 3 tot 4 AI-medewerkers, leveren op en dragen alles volledig over &mdash; van jou, voor altijd. Support na oplevering kan altijd nog, op uurbasis.</p>
+    <p style="font-family:var(--head);font-size:.9rem;color:#8d9bb5;max-width:440px;line-height:1.55;margin:0">Wij bouwen 3 tot 4 AI-medewerkers, leveren op en dragen alles volledig over &mdash; van jou, voor altijd. Waar je bij een pakket (ook vooruitbetaald) een dienst voor bepaalde tijd afneemt, koop je hier het systeem zelf. Support na oplevering kan altijd nog, op uurbasis.</p>
     <button class="btn-pill" type="button" onclick="openScan()" style="background:var(--green);color:#052e16;flex-shrink:0">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
   </div>
 </section>
@@ -411,6 +422,35 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <script>
 var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+(function(){
+  var periodes={
+    maand:{
+      start:{prijs:'€500',meta:'Geen setup-kosten · maandelijks opzegbaar'},
+      pro:{prijs:'€1.200',meta:'Geen setup-kosten · minimaal 6 maanden, tussentijds afkoopbaar'}
+    },
+    halfjaar:{
+      start:{prijs:'€475',meta:'€2.850 in één keer voor 6 maanden · 5% korting'},
+      pro:{prijs:'€1.140',meta:'€6.840 in één keer voor 6 maanden · 5% korting'}
+    },
+    jaar:{
+      start:{prijs:'€475',meta:'€5.700 in één keer voor 12 maanden · 5% korting'},
+      pro:{prijs:'€1.140',meta:'€13.680 in één keer voor 12 maanden · 5% korting'}
+    }
+  };
+  var knoppen=document.querySelectorAll('.pay-toggle button');
+  function zetPeriode(naam){
+    var p=periodes[naam];
+    if(!p)return;
+    knoppen.forEach(function(k){k.classList.toggle('active',k.getAttribute('data-periode')===naam)});
+    document.getElementById('prijs-start').textContent=p.start.prijs;
+    document.getElementById('meta-start').textContent=p.start.meta;
+    document.getElementById('prijs-pro').textContent=p.pro.prijs;
+    document.getElementById('meta-pro').textContent=p.pro.meta;
+  }
+  knoppen.forEach(function(k){
+    k.addEventListener('click',function(){zetPeriode(this.getAttribute('data-periode'))});
+  });
+})();
 </script>
 <script src="scan-modal.js" defer></script>
 <script src="/chat-widget.js" defer></script>
