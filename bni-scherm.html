@@ -268,8 +268,9 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
   grid-column:span 2;
 }
 .key:active{background:var(--red);border-color:var(--red);color:#fff}
-.key.wide3{grid-column:span 3}
-.key.wide8{grid-column:span 8}
+.key.w2{grid-column:span 2}
+.key.w4{grid-column:span 4}
+.key.w8{grid-column:span 8}
 .key.pad1{grid-column-start:2}
 .key.fn{background:#d9d9de;border-color:#cdcdd3;color:var(--muted);font-size:28px}
 .key.go{background:var(--red);border-color:var(--red);color:#fff;font-size:30px;font-weight:800}
@@ -600,16 +601,52 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
   /* ============================================================
      TOETSENBORD - 20-koloms grid, elke toets minimaal 100px breed
      ============================================================ */
-  var ROWS_ABC = [
-    ['q','w','e','r','t','y','u','i','o','p'],
-    ['a','s','d','f','g','h','j','k','l'],
-    ['z','x','c','v','b','n','m']
-  ];
-  var ROWS_123 = [
-    ['1','2','3','4','5','6','7','8','9','0'],
-    ['-','+','(',')','/','&','_',':',';'],
-    ['@','.',',','?','!','%','#']
-  ];
+  /* Toetsindeling per laag.
+     Een string is een gewone tekentoets (2 kolommen breed).
+     Een object is een functietoets of een toets met een eigen breedte.
+     Elke rij telt precies 20 kolommen; 2 kolommen = 100px, ruim de
+     minimale aanraakmaat. */
+  var SPATIE = { ch:' ', label:'spatie', span:8 };
+  var KLAAR  = { act:'done', label:'Klaar', span:4, go:true };
+  var WIS    = { act:'bs', label:'&#9003;', span:2, fn:true };
+
+  var LAYOUTS = {
+    abc: {
+      inspringen: true,
+      rijen: [
+        ['q','w','e','r','t','y','u','i','o','p'],
+        ['a','s','d','f','g','h','j','k','l'],
+        [{ act:'shift', label:'&#8679;', span:2, fn:true }, 'z','x','c','v','b','n','m', '-', WIS],
+        [{ act:'laag:123', label:'123', span:2, fn:true }, '@', SPATIE, '.', "'", KLAAR]
+      ]
+    },
+    '123': {
+      inspringen: false,
+      rijen: [
+        ['1','2','3','4','5','6','7','8','9','0'],
+        ['-','_','+','=','(',')','/','&',':',';'],
+        ['@','.',',','?','!',"'",'"','#','%', WIS],
+        [{ act:'laag:abc', label:'ABC', span:2, fn:true }, { act:'laag:acc', label:'\u00e0\u00e9', span:2, fn:true }, SPATIE, '.', '\u20ac', KLAAR]
+      ]
+    },
+    acc: {
+      inspringen: false,
+      rijen: [
+        ['\u00e1','\u00e9','\u00ed','\u00f3','\u00fa','\u00e0','\u00e8','\u00ec','\u00f2','\u00f9'],
+        ['\u00e4','\u00eb','\u00ef','\u00f6','\u00fc','\u00e2','\u00ea','\u00ee','\u00f4','\u00fb'],
+        ['\u00e7','\u00f1','\u00f8','\u00e5','\u00e6','\u00df','-',"'",'.', WIS],
+        [{ act:'laag:abc', label:'ABC', span:2, fn:true }, { act:'laag:123', label:'123', span:2, fn:true }, SPATIE, '@', ',', KLAAR]
+      ]
+    }
+  };
+
+  function esc(s){
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
 
   function disp(ch){
     if(layer === 'abc' && shift){ return ch.toUpperCase(); }
@@ -618,44 +655,34 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
 
   function buildKeyboard(){
     var kb = $('kb');
-    var rows = (layer === 'abc') ? ROWS_ABC : ROWS_123;
+    var indeling = LAYOUTS[layer] || LAYOUTS.abc;
     var html = '';
-    var c, ch;
+    var r, c, rij, t, ch, klas;
 
-    html += '<div class="kb-row">';
-    for(c = 0; c < rows[0].length; c++){
-      ch = disp(rows[0][c]);
-      html += '<button class="key" data-ch="' + ch + '">' + ch + '</button>';
+    for(r = 0; r < indeling.rijen.length; r++){
+      rij = indeling.rijen[r];
+      html += '<div class="kb-row">';
+      for(c = 0; c < rij.length; c++){
+        t = rij[c];
+        if(typeof t === 'string'){
+          ch = disp(t);
+          klas = 'key';
+          if(r === 1 && c === 0 && indeling.inspringen){ klas += ' pad1'; }
+          html += '<button class="' + klas + '" data-ch="' + esc(ch) + '">' + esc(ch) + '</button>';
+          continue;
+        }
+        klas = 'key w' + (t.span || 2);
+        if(t.fn){ klas += ' fn'; }
+        if(t.go){ klas += ' go'; }
+        if(t.act === 'shift' && shift){ klas += ' on'; }
+        if(t.ch !== undefined){
+          html += '<button class="' + klas + '" data-ch="' + esc(t.ch) + '">' + t.label + '</button>';
+        } else {
+          html += '<button class="' + klas + '" data-act="' + t.act + '">' + t.label + '</button>';
+        }
+      }
+      html += '</div>';
     }
-    html += '</div>';
-
-    html += '<div class="kb-row">';
-    for(c = 0; c < rows[1].length; c++){
-      ch = disp(rows[1][c]);
-      html += '<button class="key' + (c === 0 ? ' pad1' : '') + '" data-ch="' + ch + '">' + ch + '</button>';
-    }
-    html += '</div>';
-
-    html += '<div class="kb-row">';
-    if(layer === 'abc'){
-      html += '<button class="key fn wide3' + (shift ? ' on' : '') + '" data-act="shift">&#8679;</button>';
-    } else {
-      html += '<button class="key fn wide3" data-act="layer">ABC</button>';
-    }
-    for(c = 0; c < rows[2].length; c++){
-      ch = disp(rows[2][c]);
-      html += '<button class="key" data-ch="' + ch + '">' + ch + '</button>';
-    }
-    html += '<button class="key fn wide3" data-act="bs">&#9003;</button>';
-    html += '</div>';
-
-    html += '<div class="kb-row">';
-    html += '<button class="key fn wide3" data-act="layer">' + (layer === 'abc' ? '123' : 'ABC') + '</button>';
-    html += '<button class="key wide3" data-ch="@">@</button>';
-    html += '<button class="key wide8" data-ch=" ">spatie</button>';
-    html += '<button class="key wide3" data-ch=".">.</button>';
-    html += '<button class="key go wide3" data-act="done">Klaar</button>';
-    html += '</div>';
 
     kb.innerHTML = html;
 
@@ -666,7 +693,7 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
         on(btn, function(){
           var act = btn.getAttribute('data-act');
           if(act === 'shift'){ shift = !shift; buildKeyboard(); return; }
-          if(act === 'layer'){ layer = (layer === 'abc') ? '123' : 'abc'; buildKeyboard(); return; }
+          if(act && act.indexOf('laag:') === 0){ layer = act.slice(5); buildKeyboard(); return; }
           if(act === 'bs'){ backspace(); return; }
           if(act === 'done'){ nextField(); return; }
           type(btn.getAttribute('data-ch'));
