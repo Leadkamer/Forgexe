@@ -221,7 +221,7 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
 .ftxt.ph{color:var(--muted-lt)}
 .caret{
   display:none;width:3px;height:36px;background:var(--red);
-  margin-left:3px;vertical-align:-6px;
+  margin:0 3px;vertical-align:-6px;
   animation:blink 1.05s step-end infinite;
 }
 .field.on .caret{display:inline-block}
@@ -684,13 +684,20 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
   }
 
   function render(k){
-    var span = fieldEl(k).querySelector('.ftxt');
+    var el = fieldEl(k);
+    var span = el.querySelector('.ftxt');
+    var caret = el.querySelector('.caret');
+    var houder = span.parentNode;
     if(data[k] === ''){
       span.className = 'ftxt ph';
       span.textContent = PLACEHOLDER[k];
+      /* leeg veld: cursor voor de placeholder, zoals bij een echt invoerveld */
+      houder.insertBefore(caret, span);
     } else {
       span.className = 'ftxt';
       span.textContent = data[k];
+      /* gevuld veld: cursor achter de getypte tekst */
+      houder.appendChild(caret);
     }
     updateSend();
   }
