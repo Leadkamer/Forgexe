@@ -281,7 +281,9 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
 .key.w2{grid-column:span 2}
 .key.w4{grid-column:span 4}
 .key.w8{grid-column:span 8}
-.key.pad1{grid-column-start:2}
+/* start EN breedte zetten: alleen grid-column-start laat het einde
+   op auto staan, waardoor de toets terugvalt naar een halve kolom */
+.key.pad1{grid-column:2 / span 2}
 .key.fn{background:#d9d9de;border-color:#cdcdd3;color:var(--muted);font-size:28px}
 .key.go{background:var(--red);border-color:var(--red);color:#fff;font-size:30px;font-weight:800}
 .key.on{background:var(--red);border-color:var(--red);color:#fff}
