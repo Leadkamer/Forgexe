@@ -1047,7 +1047,11 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
   });
 
   document.addEventListener('contextmenu', function(e){ e.preventDefault(); }, false);
-  document.addEventListener('gesturestart', function(e){ e.preventDefault(); }, false);
+  /* Geen gesturestart-blokkade meer. Dat event bestaat alleen in WebKit,
+     dus het deed niets op de totem (Chromium/Android-WebView) en hinderde
+     alleen wie de pagina op een iPhone bekijkt. Zoomen op de totem wordt
+     al tegengehouden door user-scalable=no in de viewport-meta, wat
+     Android wel respecteert. */
 
   /* ============================================================
      PASSEND MAKEN
