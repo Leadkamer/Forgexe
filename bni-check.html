@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1080, initial-scale=1, user-scalable=no">
+<meta name="viewport" content="width=1080, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
 <title>BNI-scherm | meetpagina</title>
 <style>
@@ -53,8 +53,9 @@ h1{font-size:64px;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
   <h1>Meetpagina totem</h1>
   <div class="sub">Zie je alle vier de witte hoeken en de rode rand rondom? Dan past 1080&times;1920 precies. Zo niet, dan vertellen de cijfers hieronder wat er afwijkt.</div>
 
-  <div class="rij"><b>Viewport breedte</b><span id="vw">&hellip;</span></div>
-  <div class="rij"><b>Viewport hoogte</b><span id="vh">&hellip;</span></div>
+  <div class="rij"><b>Zichtbaar breed</b><span id="vw">&hellip;</span></div>
+  <div class="rij"><b>Zichtbaar hoog</b><span id="vh">&hellip;</span></div>
+  <div class="rij"><b>Layout breed &times; hoog</b><span id="lay">&hellip;</span></div>
   <div class="rij"><b>Pixelverhouding (DPR)</b><span id="dpr">&hellip;</span></div>
   <div class="rij"><b>Schermresolutie</b><span id="scr">&hellip;</span></div>
   <div class="rij"><b>Beschikbaar scherm</b><span id="avail">&hellip;</span></div>
@@ -63,8 +64,8 @@ h1{font-size:64px;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
   <div id="oordeel" class="oordeel"></div>
 
   <div class="uitleg">
-    <b>Breedte en hoogte</b> moeten 1080 en 1920 zijn. Is de hoogte lager, dan snoept een balk (adresbalk of Android-navigatie) ruimte af en wordt het echte scherm iets verkleind om te passen.
-    <b>DPR</b> hoort 1 te zijn; bij 2 tekent de browser alles dubbel zo groot.
+    <b>Zichtbaar</b> is wat er echt op het paneel staat en moet 1080 &times; 1920 zijn. <b>Layout</b> is de maat waarop de pagina rekent. Verschillen die twee, dan wordt de pagina groter of kleiner getekend dan het scherm.
+    <b>DPR</b> is informatie: een waarde ongelijk aan 1 is prima zolang zichtbaar en layout gelijk zijn.
   </div>
 </div>
 
@@ -80,36 +81,40 @@ h1{font-size:64px;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
     if(goed === false){ el.className = 'fout'; }
   }
 
-  var w = document.documentElement.clientWidth;
-  var h = document.documentElement.clientHeight;
+  var lw = document.documentElement.clientWidth;
+  var lh = document.documentElement.clientHeight;
+  var vv = window.visualViewport;
+  /* Zichtbaar = wat er op het paneel staat. Zonder visualViewport-API
+     valt hij terug op de layout, wat op oude browsers hetzelfde is. */
+  var w = vv ? Math.round(vv.width) : lw;
+  var h = vv ? Math.round(vv.height) : lh;
+  var zoom = vv ? vv.scale : 1;
   var dpr = window.devicePixelRatio || 1;
   var sw = window.screen ? window.screen.width : 0;
   var sh = window.screen ? window.screen.height : 0;
   var aw = window.screen ? window.screen.availWidth : 0;
   var ah = window.screen ? window.screen.availHeight : 0;
-  var zoom = (window.visualViewport && window.visualViewport.scale) ? window.visualViewport.scale : 1;
 
-  zet('vw', w + ' px', w === 1080);
-  zet('vh', h + ' px', h === 1920);
-  zet('dpr', String(Math.round(dpr * 100) / 100), Math.abs(dpr - 1) < 0.01);
-  zet('scr', sw + ' × ' + sh);
+  zet('vw', w + ' px', Math.abs(w - 1080) <= 2);
+  zet('vh', h + ' px', Math.abs(h - 1920) <= 4);
+  zet('lay', lw + ' × ' + lh, Math.abs(lw - 1080) <= 2 && Math.abs(lh - 1920) <= 4);
+  zet('dpr', String(Math.round(dpr * 1000) / 1000));
+  zet('scr', sw + ' × ' + sh + '  (' + Math.round(sw * dpr) + ' × ' + Math.round(sh * dpr) + ' fysiek)');
   zet('avail', aw + ' × ' + ah);
-  zet('zoom', String(Math.round(zoom * 100) / 100), Math.abs(zoom - 1) < 0.01);
+  zet('zoom', String(Math.round(zoom * 1000) / 1000));
 
-  /* Zelfde rekensom als de shim in bni-scherm.html */
-  var k = Math.min(w / 1080, h / 1920, 1);
   var o = $('oordeel');
-  if(w === 1080 && h === 1920 && Math.abs(dpr - 1) < 0.01){
+  if(Math.abs(w - 1080) <= 2 && Math.abs(h - 1920) <= 4){
     o.className = 'oordeel goed';
-    o.textContent = 'Past precies. Het echte scherm wordt hier op ware grootte getoond, zonder schaling.';
-  } else if(k < 1){
+    o.textContent = 'Past precies: het paneel toont 1080 × 1920 CSS-pixels, dus het echte scherm wordt op ware grootte getoond.';
+  } else if(w < lw - 2 || h < lh - 4){
     o.className = 'oordeel fout';
-    o.textContent = 'Past niet helemaal: het echte scherm zou hier op ' + Math.round(k * 100) + '% worden getoond, met lege randen. Er is ' + (1080 - Math.round(1080 * k)) + ' px breedte en ' + (1920 - Math.round(1920 * k)) + ' px hoogte tekort.';
+    o.textContent = 'Te groot getekend: de layout is ' + lw + ' × ' + lh + ' maar het paneel laat er maar ' + w + ' × ' + h + ' van zien. De rechter- en onderkant vallen weg.';
   } else {
+    var k = Math.min(w / 1080, h / 1920, 1);
     o.className = 'oordeel fout';
-    o.textContent = 'Viewport is groter dan 1080×1920 (' + w + '×' + h + '). Het scherm wordt gecentreerd met ruimte eromheen.';
+    o.textContent = 'Past niet helemaal: zichtbaar is ' + w + ' × ' + h + '. Het echte scherm zou op ' + Math.round(k * 100) + '% worden getoond.';
   }
-
   $('ua').textContent = navigator.userAgent;
 })();
 </script>

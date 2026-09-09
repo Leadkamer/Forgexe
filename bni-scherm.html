@@ -2,7 +2,12 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1080, initial-scale=1, user-scalable=no">
+<!-- Bewust GEEN initial-scale=1: de totem heeft een pixelverhouding van 1,375
+     (786 CSS-px breed). Met initial-scale=1 wordt de 1080-layout dan op 1485
+     fysieke pixels getekend en valt rechts en onder alles weg. Zonder die
+     regel past de WebView de layout op de schermbreedte: schaal 0,728, en
+     0,728 x 1,375 = precies 1 fysieke pixel per CSS-pixel. -->
+<meta name="viewport" content="width=1080, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
 <title>BNI Holst Eindhoven | Reunie</title>
 <style>
@@ -1065,6 +1070,9 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
     var h = document.documentElement.clientHeight;
     /* nooit vergroten: k is hoogstens 1 */
     var k = Math.min(w / 1080, h / 1920, 1);
+    /* Een paar pixels speling (systeembalk, afronding) is geen reden om de
+       hele pagina te transformeren; dat kost alleen scherpte. */
+    if(k > 0.99){ k = 1; }
     var dx = Math.round((w - 1080 * k) / 2);
     var dy = Math.round((h - 1920 * k) / 2);
     if(k === 1 && dx === 0 && dy === 0){
@@ -1085,6 +1093,10 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
 
   fitPreview();
   window.addEventListener('resize', fitPreview, false);
+  /* Een Android-WebView meldt zijn definitieve hoogte soms pas na een paar
+     honderd ms (systeembalk die wegschuift). Daarom nog twee keer nalopen. */
+  setTimeout(fitPreview, 300);
+  setTimeout(fitPreview, 1000);
   buildKeyboard();
   diaInit();
   diaStart();
