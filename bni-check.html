@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>BNI-scherm | meetpagina</title>
+<style>
+/* Zelfde viewport-meta als het echte scherm, zodat de cijfers hier
+   overeenkomen met wat bni-scherm.html te zien krijgt. */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#111;color:#fff;font-family:Roboto,Arial,sans-serif}
+
+/* het exacte 1080x1920-vlak, met een rand en vier hoekmarkeringen */
+.vlak{position:absolute;left:0;top:0;width:1080px;height:1920px;border:6px solid #D80019}
+.hoek{position:absolute;width:120px;height:120px;border:6px solid #fff}
+.hoek.lb{left:0;top:0;border-right:0;border-bottom:0}
+.hoek.rb{right:0;top:0;border-left:0;border-bottom:0}
+.hoek.lo{left:0;bottom:0;border-right:0;border-top:0}
+.hoek.ro{right:0;bottom:0;border-left:0;border-top:0}
+.hoek span{position:absolute;font-size:26px;font-weight:700;color:#fff;white-space:nowrap}
+.hoek.lb span{left:18px;top:18px}
+.hoek.rb span{right:18px;top:18px}
+.hoek.lo span{left:18px;bottom:18px}
+.hoek.ro span{right:18px;bottom:18px}
+
+.inhoud{position:absolute;left:80px;top:220px;width:920px}
+h1{font-size:64px;font-weight:900;letter-spacing:-1px;margin-bottom:14px}
+.sub{font-size:30px;color:#bbb;line-height:1.4;margin-bottom:50px}
+.rij{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #333}
+.rij b{font-size:30px;color:#bbb;font-weight:500}
+.rij span{font-size:52px;font-weight:900;font-family:Consolas,"Roboto Mono",monospace}
+.rij span.goed{color:#3ddc84}
+.rij span.fout{color:#ff4a5c}
+.uitleg{margin-top:44px;font-size:28px;line-height:1.5;color:#ddd}
+.uitleg b{color:#fff}
+.oordeel{margin-top:40px;padding:30px 34px;border-radius:16px;font-size:34px;font-weight:800;line-height:1.35}
+.oordeel.goed{background:#0f3d24;color:#3ddc84}
+.oordeel.fout{background:#4a1016;color:#ff9aa5}
+.klein{position:absolute;left:80px;bottom:160px;width:920px;font-size:22px;color:#777;line-height:1.5;word-break:break-all}
+</style>
+</head>
+<body>
+
+<div class="vlak">
+  <div class="hoek lb"><span>hoek 1</span></div>
+  <div class="hoek rb"><span>hoek 2</span></div>
+  <div class="hoek lo"><span>hoek 3</span></div>
+  <div class="hoek ro"><span>hoek 4</span></div>
+</div>
+
+<div class="inhoud">
+  <h1>Meetpagina totem</h1>
+  <div class="sub">Zie je alle vier de witte hoeken en de rode rand rondom? Dan past 1080&times;1920 precies. Zo niet, dan vertellen de cijfers hieronder wat er afwijkt.</div>
+
+  <div class="rij"><b>Viewport breedte</b><span id="vw">&hellip;</span></div>
+  <div class="rij"><b>Viewport hoogte</b><span id="vh">&hellip;</span></div>
+  <div class="rij"><b>Pixelverhouding (DPR)</b><span id="dpr">&hellip;</span></div>
+  <div class="rij"><b>Schermresolutie</b><span id="scr">&hellip;</span></div>
+  <div class="rij"><b>Beschikbaar scherm</b><span id="avail">&hellip;</span></div>
+  <div class="rij"><b>Zoomfactor</b><span id="zoom">&hellip;</span></div>
+
+  <div id="oordeel" class="oordeel"></div>
+
+  <div class="uitleg">
+    <b>Breedte en hoogte</b> moeten 1080 en 1920 zijn. Is de hoogte lager, dan snoept een balk (adresbalk of Android-navigatie) ruimte af en wordt het echte scherm iets verkleind om te passen.
+    <b>DPR</b> hoort 1 te zijn; bij 2 tekent de browser alles dubbel zo groot.
+  </div>
+</div>
+
+<div class="klein" id="ua"></div>
+
+<script>
+(function(){
+  function $(id){ return document.getElementById(id); }
+  function zet(id, tekst, goed){
+    var el = $(id);
+    el.textContent = tekst;
+    if(goed === true){ el.className = 'goed'; }
+    if(goed === false){ el.className = 'fout'; }
+  }
+
+  var w = document.documentElement.clientWidth;
+  var h = document.documentElement.clientHeight;
+  var dpr = window.devicePixelRatio || 1;
+  var sw = window.screen ? window.screen.width : 0;
+  var sh = window.screen ? window.screen.height : 0;
+  var aw = window.screen ? window.screen.availWidth : 0;
+  var ah = window.screen ? window.screen.availHeight : 0;
+  var zoom = (window.visualViewport && window.visualViewport.scale) ? window.visualViewport.scale : 1;
+
+  zet('vw', w + ' px', w === 1080);
+  zet('vh', h + ' px', h === 1920);
+  zet('dpr', String(Math.round(dpr * 100) / 100), Math.abs(dpr - 1) < 0.01);
+  zet('scr', sw + ' × ' + sh);
+  zet('avail', aw + ' × ' + ah);
+  zet('zoom', String(Math.round(zoom * 100) / 100), Math.abs(zoom - 1) < 0.01);
+
+  /* Zelfde rekensom als de shim in bni-scherm.html */
+  var k = Math.min(w / 1080, h / 1920, 1);
+  var o = $('oordeel');
+  if(w === 1080 && h === 1920 && Math.abs(dpr - 1) < 0.01){
+    o.className = 'oordeel goed';
+    o.textContent = 'Past precies. Het echte scherm wordt hier op ware grootte getoond, zonder schaling.';
+  } else if(k < 1){
+    o.className = 'oordeel fout';
+    o.textContent = 'Past niet helemaal: het echte scherm zou hier op ' + Math.round(k * 100) + '% worden getoond, met lege randen. Er is ' + (1080 - Math.round(1080 * k)) + ' px breedte en ' + (1920 - Math.round(1920 * k)) + ' px hoogte tekort.';
+  } else {
+    o.className = 'oordeel fout';
+    o.textContent = 'Viewport is groter dan 1080×1920 (' + w + '×' + h + '). Het scherm wordt gecentreerd met ruimte eromheen.';
+  }
+
+  $('ua').textContent = navigator.userAgent;
+})();
+</script>
+</body>
+</html>
