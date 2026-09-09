@@ -578,6 +578,7 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
   var diaWacht = laagB;
   var diaNr = 0;
   var diaTimer = null;
+  var diaPre = null;
 
   function diaZet(el, n){
     if(!el || !DIAS[n]){ return; }
@@ -602,14 +603,27 @@ html.has-mouse body button,html.has-mouse body .field{cursor:pointer}
     diaActief = diaWacht;
     diaWacht = t;
     diaNr = (diaNr + 1) % DIAS.length;
-    diaZet(diaWacht, (diaNr + 1) % DIAS.length);
+    /* De uitgaande laag vloeit nog 0,8s uit. Zou hij nu al de volgende
+       foto krijgen, dan zie je die tijdens het overvloeien wegvagen in
+       plaats van de foto die je net zag. Dus pas laden als hij weg is. */
+    if(diaPre){ clearTimeout(diaPre); }
+    var straks = (diaNr + 1) % DIAS.length;
+    diaPre = setTimeout(function(){
+      diaPre = null;
+      diaZet(diaWacht, straks);
+    }, 900);
   }
   function diaStart(){
     diaStop();
-    if(DIAS.length > 1){ diaTimer = setInterval(diaVolgende, 5000); }
+    if(DIAS.length < 2){ return; }
+    /* De wachtende laag kan achterlopen als de slideshow eerder is
+       gestopt terwijl er nog een laadbeurt openstond. Gelijkzetten. */
+    diaZet(diaWacht, (diaNr + 1) % DIAS.length);
+    diaTimer = setInterval(diaVolgende, 5000);
   }
   function diaStop(){
     if(diaTimer){ clearInterval(diaTimer); diaTimer = null; }
+    if(diaPre){ clearTimeout(diaPre); diaPre = null; }
   }
 
   /* ============================================================
