@@ -9,3 +9,7 @@ ads/
 realcob/
 .claude/handoffs/
 demo-topscore/
+
+# Bronfoto's voor het BNI-scherm: zitten verwerkt in bni-scherm.html.
+# Blijven lokaal, zodat portretten van leden niet publiek op de site staan.
+bni-fotos/
