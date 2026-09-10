@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gratis brochure — Sales & AI Training · Fidecon × Forgexe</title>
-<meta name="description" content="Ontvang de gratis brochure van de 3-daagse Sales & AI training: programma, data en prijzen direct in je mailbox.">
+<meta name="description" content="Ontvang de gratis brochure van de 3-daagse Sales & AI training: programma, data en prijzen direct in je mailbox. Max. 9 deelnemers per training.">
+<link rel="canonical" href="https://www.forgexe.nl/sales-ai-brochure">
+<meta property="og:title" content="Gratis brochure — Sales & AI Training · Fidecon × Forgexe">
+<meta property="og:description" content="2 dagen bewezen salesmethodiek, 1 dag je eigen AI-agents bouwen. Programma, data en prijzen in de gratis brochure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.forgexe.nl/sales-ai-brochure">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -12,95 +19,190 @@
     --navy:#1B2A55; --navy-deep:#111D3E; --navy-light:#2A3E6E;
     --green:#4AAD3F; --green-bright:#55C44A; --green-dark:#3A8E32; --mint:#34d399;
     --sky:#EEF2F9; --cloud:#F6F8FC; --white:#fff; --slate:#4A5568; --slate-light:#718096;
-    --ink:#1A1F2E; --border:#DEE5F0;
+    --ink:#1A1F2E; --border:#DEE5F0; --red:#e53e3e;
   }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
   body { font-family:'Outfit',sans-serif; color:var(--ink); background:var(--navy-deep); -webkit-font-smoothing:antialiased; }
+  img { max-width:100%; display:block; }
 
-  /* HERO */
-  .hero { position:relative; min-height:100vh; overflow:hidden;
+  /* ---------- HERO (mobile-first) ---------- */
+  .hero { position:relative; overflow:hidden;
     background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-light) 100%); }
-  .hero-grid { position:absolute; inset:0;
+  .hero-grid { position:absolute; inset:0; pointer-events:none;
     background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
     background-size:56px 56px; }
-  .hero-glow { position:absolute; width:520px; height:520px; right:-160px; top:-140px; border-radius:50%;
-    background:radial-gradient(circle,rgba(74,173,63,0.14),transparent 65%); }
-  .wrap { position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:26px 32px 60px; }
+  .hero-glow { position:absolute; width:520px; height:520px; right:-200px; top:-180px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle,rgba(74,173,63,0.16),transparent 65%); }
+  .wrap { position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:18px 18px 44px; }
 
-  .brand { display:inline-flex; align-items:center; gap:10px; margin-bottom:44px; }
+  .brand { display:inline-flex; align-items:center; gap:9px; margin-bottom:22px; }
   .brand svg { display:block; }
-  .brand .nm { font-size:18px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+  .brand .nm { font-size:16px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
   .brand .nm.fx { color:var(--mint); }
-  .brand .x { color:rgba(255,255,255,0.45); font-size:15px; font-weight:300; }
+  .brand .x { color:rgba(255,255,255,0.45); font-size:14px; font-weight:300; }
 
-  .grid { display:grid; grid-template-columns:1.05fr 0.95fr; gap:52px; align-items:center; }
+  /* mobiel: kop → formulier → bewijs. desktop: pitch links, kaart rechts */
+  .grid { display:grid; grid-template-areas:"top" "card" "bottom"; gap:20px; }
+  .pitch-top { grid-area:top; }
+  .card { grid-area:card; }
+  .pitch-bottom { grid-area:bottom; }
 
-  .eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--green-bright); margin-bottom:20px; }
-  .eyebrow .dot { width:8px; height:8px; border-radius:50%; background:var(--green-bright); }
-  h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,4.6vw,52px); font-weight:700; color:#fff; line-height:1.08; letter-spacing:-0.5px; margin-bottom:20px; }
+  .eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--green-bright); margin-bottom:14px; }
+  .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green-bright); flex-shrink:0; }
+  h1 { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; color:#fff; line-height:1.12; letter-spacing:-0.4px; margin-bottom:12px; }
   h1 em { font-style:italic; color:var(--mint); font-weight:600; }
-  .sub { font-size:17px; line-height:1.6; color:rgba(255,255,255,0.76); font-weight:300; max-width:520px; margin-bottom:28px; }
+  .sub { font-size:15.5px; line-height:1.6; color:rgba(255,255,255,0.8); font-weight:300; max-width:540px; }
+  .sub b { color:#fff; font-weight:500; }
 
-  .bul { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
-  .bul li { display:flex; align-items:center; gap:13px; font-size:15.5px; color:rgba(255,255,255,0.9); font-weight:400; }
+  .bul { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:22px; }
+  .bul li { display:flex; align-items:center; gap:12px; font-size:15px; color:rgba(255,255,255,0.9); }
   .bul .ic { width:26px; height:26px; border-radius:8px; background:rgba(74,173,63,0.16); border:1px solid rgba(85,196,74,0.45); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   .bul .ic svg { width:14px; height:14px; }
 
-  .trust { display:flex; align-items:center; gap:16px; }
-  .trust-ph { display:flex; }
-  .trust-ph img { width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid var(--navy-light); }
-  .trust-ph img:nth-child(2) { margin-left:-14px; }
-  .trust-txt { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.45; }
+  .trust { display:flex; align-items:center; gap:14px; }
+  .trust-ph { display:flex; flex-shrink:0; }
+  .trust-ph img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--navy-light); }
+  .trust-ph img:nth-child(2) { margin-left:-12px; }
+  .trust-txt { font-size:13px; color:rgba(255,255,255,0.62); line-height:1.45; }
   .trust-txt b { color:#fff; font-weight:600; }
 
-  /* FORM CARD */
-  .card { background:#fff; border-radius:18px; padding:34px 32px; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
-  .card-h { font-family:'Playfair Display',serif; font-size:25px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:6px; }
-  .card-s { font-size:14px; color:var(--slate); font-weight:300; margin-bottom:22px; }
-  .fld { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  /* ---------- FORMULIER ---------- */
+  .card { background:#fff; border-radius:16px; padding:24px 20px; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
+  .card-badge { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--green-dark); background:var(--cloud); border:1px solid var(--border); padding:6px 12px; border-radius:999px; margin-bottom:14px; }
+  .card-h { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:6px; }
+  .card-s { font-size:14px; color:var(--slate); font-weight:300; margin-bottom:18px; }
+  .fld { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
   .fld label { font-size:12.5px; font-weight:600; color:var(--navy); }
-  .fld input { padding:14px 16px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:15px; color:var(--ink); background:var(--cloud); outline:none; transition:all .25s; }
+  .fld input { width:100%; padding:14px 15px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:16px; color:var(--ink); background:var(--cloud); outline:none; transition:border-color .2s, box-shadow .2s, background .2s; -webkit-appearance:none; appearance:none; }
   .fld input:focus { border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(74,173,63,0.12); }
-  .submit { width:100%; padding:16px; margin-top:4px; background:var(--green); color:#fff; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; border:none; border-radius:9px; cursor:pointer; transition:all .25s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
-  .submit:hover { background:var(--green-bright); transform:translateY(-2px); box-shadow:0 12px 30px rgba(74,173,63,0.3); }
-  .note { text-align:center; font-size:12px; color:var(--slate-light); margin-top:12px; }
-  .card-alt { display:block; text-align:center; margin-top:16px; padding-top:14px; border-top:1px solid var(--border); font-size:13px; color:var(--slate-light); text-decoration:none; font-weight:500; transition:color .2s; }
-  .card-alt:hover { color:var(--green-dark); }
-  .card-badge { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--green-dark); background:var(--cloud); border:1px solid var(--border); padding:6px 12px; border-radius:999px; margin-bottom:16px; }
+  .fld input.err { border-color:var(--red); }
+  .fld input:disabled { color:var(--slate-light); }
 
-  /* IN DE BROCHURE */
-  .inbroch { background:#fff; padding:64px 32px; }
+  .more-toggle { background:none; border:none; padding:6px 0 10px; font-family:'Outfit',sans-serif; font-size:13.5px; font-weight:500; color:var(--slate-light); cursor:pointer; display:inline-flex; align-items:center; gap:6px; }
+  .more-toggle:hover { color:var(--navy); }
+  .more-toggle .pl { display:inline-flex; width:18px; height:18px; border-radius:50%; border:1.5px solid var(--border); align-items:center; justify-content:center; font-size:13px; line-height:1; }
+  .more { display:none; }
+  .more.open { display:block; }
+
+  .submit { width:100%; min-height:52px; padding:15px 16px; margin-top:4px; background:var(--green); color:#fff; font-family:'Outfit',sans-serif; font-size:16px; font-weight:600; border:none; border-radius:9px; cursor:pointer; transition:background .2s, transform .2s, box-shadow .2s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+  .submit:hover { background:var(--green-bright); transform:translateY(-1px); box-shadow:0 10px 24px rgba(17,29,62,0.22); }
+  .submit:disabled { cursor:default; transform:none; box-shadow:none; }
+  .submit.is-done { background:var(--navy); }
+  .submit.is-err { background:var(--red); }
+  .note { text-align:center; font-size:12.5px; color:var(--slate-light); margin-top:11px; line-height:1.5; }
+  .note b { color:var(--navy); font-weight:600; }
+  .scarce { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:9px 12px; border-radius:8px; background:var(--cloud); border:1px solid var(--border); font-size:12.5px; color:var(--slate); }
+  .scarce .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; box-shadow:0 0 0 0 rgba(74,173,63,.6); animation:pulse 1.8s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(74,173,63,.55)} 70%{box-shadow:0 0 0 8px rgba(74,173,63,0)} 100%{box-shadow:0 0 0 0 rgba(74,173,63,0)} }
+  .scarce b { color:var(--navy); font-weight:600; }
+
+  .after { margin-top:12px; }
+  .pdf-link { display:flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:12px 14px; border-radius:9px; background:var(--cloud); border:1.5px solid var(--border); color:var(--navy); font-weight:600; font-size:14.5px; text-decoration:none; transition:border-color .2s, background .2s; }
+  .pdf-link:hover { border-color:var(--green); background:#fff; }
+  .spam-hint { margin:10px 0 0; font-size:12.5px; line-height:1.5; color:var(--slate); }
+  .spam-hint strong { color:var(--navy); }
+
+  /* ---------- BEWIJS ---------- */
+  .proof { background:#fff; padding:36px 18px; border-bottom:1px solid var(--border); }
+  .proof-in { max-width:1120px; margin:0 auto; }
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
+  .stat { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:16px 14px; }
+  .stat-n { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1.1; margin-bottom:4px; }
+  .stat-n em { font-style:normal; color:var(--green-dark); }
+  .stat-l { font-size:12.5px; color:var(--slate); line-height:1.4; }
+  .stat.wide { grid-column:1 / -1; }
+
+  .trainers { display:grid; grid-template-columns:1fr; gap:14px; }
+  .trainer { display:flex; gap:14px; align-items:flex-start; padding:16px; border:1px solid var(--border); border-radius:12px; background:#fff; }
+  .trainer img { width:56px; height:56px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--sky); }
+  .trainer b { display:block; font-size:15.5px; color:var(--navy); font-weight:700; }
+  .trainer span { display:block; font-size:12.5px; color:var(--green-dark); font-weight:600; margin:2px 0 6px; }
+  .trainer p { font-size:14px; line-height:1.55; color:var(--slate); font-weight:300; }
+  .incl { margin-top:18px; font-size:13.5px; color:var(--slate); line-height:1.6; text-align:center; }
+  .incl b { color:var(--navy); font-weight:600; }
+
+  /* ---------- IN DE BROCHURE ---------- */
+  .inbroch { background:#fff; padding:44px 18px 52px; }
   .inbroch-in { max-width:1120px; margin:0 auto; }
-  .ib-eyebrow { display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--green-dark); margin-bottom:12px; }
+  .ib-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--green-dark); margin-bottom:10px; }
   .ib-eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green); }
-  .ib-h2 { font-family:'Playfair Display',serif; font-size:30px; font-weight:600; color:var(--navy); margin-bottom:32px; }
+  .ib-h2 { font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:var(--navy); margin-bottom:22px; line-height:1.2; }
   .ib-h2 em { font-style:italic; color:var(--green-dark); }
-  .ib-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-  .ib-card { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:22px 20px; }
-  .ib-num { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--green-dark); margin-bottom:8px; }
-  .ib-card h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:5px; }
-  .ib-card p { font-size:13px; color:var(--slate); font-weight:300; line-height:1.55; }
-  .ib-cta { text-align:center; margin-top:36px; }
-  .ib-btn { display:inline-flex; align-items:center; gap:9px; padding:15px 34px; background:var(--navy); color:#fff; font-family:'Outfit',sans-serif; font-size:15px; font-weight:600; border-radius:9px; text-decoration:none; transition:all .25s; }
-  .ib-btn:hover { background:var(--navy-light); transform:translateY(-2px); }
+  .ib-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+  .ib-card { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:18px 18px; }
+  .ib-num { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--green-dark); margin-bottom:6px; }
+  .ib-card h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .ib-card p { font-size:13.5px; color:var(--slate); font-weight:300; line-height:1.55; }
 
-  footer { background:var(--navy-deep); padding:22px 32px; text-align:center; }
-  footer a { color:rgba(255,255,255,0.5); font-size:12px; text-decoration:none; margin:0 8px; }
+  /* tweede formulier */
+  .cta2 { margin-top:28px; background:linear-gradient(160deg, var(--navy-deep), var(--navy)); border-radius:16px; padding:26px 20px; color:#fff; position:relative; overflow:hidden; }
+  .cta2::after { content:""; position:absolute; width:320px; height:320px; right:-140px; bottom:-160px; border-radius:50%; background:radial-gradient(circle,rgba(74,173,63,0.22),transparent 65%); pointer-events:none; }
+  .cta2 > * { position:relative; z-index:1; }
+  .cta2-h { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; line-height:1.2; margin-bottom:6px; }
+  .cta2-h em { font-style:italic; color:var(--mint); font-weight:600; }
+  .cta2-s { font-size:14px; color:rgba(255,255,255,0.75); font-weight:300; margin-bottom:18px; }
+  .cta2 .fld label { color:rgba(255,255,255,0.85); }
+  .cta2 .fld input { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); color:#fff; }
+  .cta2 .fld input::placeholder { color:rgba(255,255,255,0.4); }
+  .cta2 .fld input:focus { background:rgba(255,255,255,0.1); border-color:var(--green-bright); box-shadow:0 0 0 3px rgba(85,196,74,0.18); }
+  .cta2 .note { color:rgba(255,255,255,0.55); }
+  .cta2 .note b { color:#fff; }
+  .cta2 .pdf-link { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#fff; }
+  .cta2 .pdf-link:hover { background:rgba(255,255,255,0.14); border-color:var(--green-bright); }
+  .cta2 .spam-hint { color:rgba(255,255,255,0.7); }
+  .cta2 .spam-hint strong { color:#fff; }
+  .cta2 .submit.is-done { background:var(--green-dark); }
+  .cta2-row { display:grid; grid-template-columns:1fr; gap:0; }
+
+  footer { background:var(--navy-deep); padding:22px 18px; text-align:center; }
+  footer a { color:rgba(255,255,255,0.5); font-size:12px; text-decoration:none; margin:0 7px; }
   footer a:hover { color:#fff; }
   footer .cp { display:block; font-size:11px; color:rgba(255,255,255,0.28); margin-top:6px; }
 
-  @media (max-width:860px) {
-    .wrap { padding:22px 20px 40px; }
-    .brand { margin-bottom:26px; }
-    .grid { grid-template-columns:1fr; gap:30px; }
-    h1 { font-size:32px; }
-    .sub { font-size:15.5px; }
-    .card { padding:26px 22px; order:-1; } /* form eerst op mobiel? nee: laat pitch kort boven */
-    .inbroch { padding:48px 20px; }
-    .ib-grid { grid-template-columns:1fr 1fr; }
+  /* scroll-reveal */
+  .reveal { opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .scarce .pulse { animation:none; }
+    html { scroll-behavior:auto; }
   }
-  @media (max-width:520px) {
-    .ib-grid { grid-template-columns:1fr; }
+
+  /* ---------- TABLET ---------- */
+  @media (min-width:600px) {
+    .wrap { padding:24px 28px 56px; }
+    h1 { font-size:38px; }
+    .card { padding:30px 28px; }
+    .stats { grid-template-columns:repeat(3,1fr); }
+    .stat.wide { grid-column:auto; }
+    .trainers { grid-template-columns:1fr 1fr; }
+    .ib-grid { grid-template-columns:1fr 1fr; }
+    .cta2 { padding:34px 32px; }
+    .cta2-row { grid-template-columns:1fr 1fr; column-gap:14px; }
+    .cta2-row .submit-wrap { grid-column:1 / -1; }
+    .proof, .inbroch { padding-left:28px; padding-right:28px; }
+    footer { padding-left:28px; padding-right:28px; }
+  }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width:900px) {
+    .hero { min-height:100vh; display:flex; align-items:center; }
+    .wrap { width:100%; padding:28px 32px 64px; }
+    .brand { margin-bottom:40px; }
+    .brand .nm { font-size:18px; }
+    .grid { grid-template-columns:1.05fr 0.95fr; grid-template-areas:"top card" "bottom card"; column-gap:56px; row-gap:26px; align-items:start; }
+    .card { align-self:center; }
+    h1 { font-size:clamp(40px,4.4vw,52px); margin-bottom:18px; }
+    .sub { font-size:17px; }
+    .card-h { font-size:25px; }
+    .ib-grid { grid-template-columns:repeat(4,1fr); gap:18px; }
+    .ib-h2 { font-size:30px; margin-bottom:30px; }
+    .proof { padding:44px 32px; }
+    .inbroch { padding:64px 32px 72px; }
+    .cta2-row { grid-template-columns:1fr 1fr auto; align-items:end; }
+    .cta2-row .submit-wrap { grid-column:auto; }
+    .cta2-row .submit { width:auto; min-width:230px; margin-top:0; margin-bottom:12px; padding-left:24px; padding-right:24px; }
+    .cta2 .after { max-width:520px; }
   }
 </style>
 </head>
@@ -111,57 +213,84 @@
   <div class="hero-glow"></div>
   <div class="wrap">
     <div class="brand">
-      <svg viewBox="0 0 120 96" width="40" height="32" aria-hidden="true"><path d="M16 66 Q60 96 104 66" stroke="#5AB130" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="32" cy="34" r="12" fill="#5AB130"/><path d="M16 70 Q16 48 32 48 Q48 48 48 70 Z" fill="#5AB130"/><circle cx="88" cy="34" r="12" fill="#5AB130"/><path d="M72 70 Q72 48 88 48 Q104 48 104 70 Z" fill="#5AB130"/><circle cx="60" cy="26" r="13" fill="#fff"/><path d="M42 68 Q42 44 60 44 Q78 44 78 68 Z" fill="#fff"/></svg>
+      <svg viewBox="0 0 120 96" width="38" height="30" aria-hidden="true"><path d="M16 66 Q60 96 104 66" stroke="#5AB130" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="32" cy="34" r="12" fill="#5AB130"/><path d="M16 70 Q16 48 32 48 Q48 48 48 70 Z" fill="#5AB130"/><circle cx="88" cy="34" r="12" fill="#5AB130"/><path d="M72 70 Q72 48 88 48 Q104 48 104 70 Z" fill="#5AB130"/><circle cx="60" cy="26" r="13" fill="#fff"/><path d="M42 68 Q42 44 60 44 Q78 44 78 68 Z" fill="#fff"/></svg>
       <span class="nm">Fidecon</span><span class="x">×</span>
-      <svg viewBox="0 0 120 120" width="26" height="26" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
+      <svg viewBox="0 0 120 120" width="24" height="24" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
       <span class="nm fx">Forgexe</span>
     </div>
 
     <div class="grid">
-      <div class="pitch">
-        <span class="eyebrow"><span class="dot"></span> Gratis brochure · 3-daagse training</span>
-        <h1>Haal meer rendement uit <em>elk gesprek</em>.</h1>
-        <p class="sub">Je verkopers verliezen uren aan voorbereiding en opvolging. In 3 dagen leren ze bewezen salesmethodiek én bouwen ze hun eigen AI-agents die dat werk overnemen.</p>
-        <ul class="bul">
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> 3-daagse training: 2 dagen sales, 1 dag AI</li>
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Bouw je eigen AI-agents — direct inzetbaar</li>
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Kleine groepen: max. 9 deelnemers</li>
-          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Van een sales-expert én een AI-specialist</li>
-        </ul>
-        <div class="trust">
-          <div class="trust-ph">
-            <img src="trainer-gregor.jpg" alt="Gregor Gersen">
-            <img src="trainer-sedat.webp" alt="Sedat Ayar">
-          </div>
-          <div class="trust-txt"><b>Gregor Gersen</b> · Sales, Fidecon<br><b>Sedat Ayar</b> · AI, Forgexe</div>
-        </div>
+      <div class="pitch-top">
+        <span class="eyebrow"><span class="dot"></span> Gratis brochure · 3-daagse Sales &amp; AI training</span>
+        <h1>Je beste verkoper is de halve dag <em>géén verkoper</em>.</h1>
+        <p class="sub">Research vooraf, notities achteraf, offertes, CRM bijwerken, opvolgmails die blijven liggen. In 3 dagen draai je dat om: <b>dag 1 &amp; 2</b> scherp je het verkoopgesprek aan met bewezen methodiek, <b>dag 3</b> bouw je AI-agents die dat werk overnemen. Het volledige programma, de data en de prijzen staan in de brochure.</p>
       </div>
 
-      <div class="card">
-        <span class="card-badge">✓ Vrijblijvend &amp; gratis</span>
-        <div class="card-h">Ontvang de brochure</div>
-        <div class="card-s">Het volledige programma, de data en de prijzen — direct in je mailbox.</div>
+      <div class="card" data-form="hero">
+        <span class="card-badge">✓ Gratis &amp; vrijblijvend</span>
+        <div class="card-h">Stuur mij de brochure</div>
+        <div class="card-s">Programma, data en prijzen — binnen een minuut in je mailbox.</div>
         <div class="fld">
-          <label for="naam">Je naam</label>
-          <input type="text" id="naam" placeholder="Voor- en achternaam" required>
+          <label for="naam1">Je naam</label>
+          <input type="text" id="naam1" data-field="naam" placeholder="Voor- en achternaam" autocomplete="name" required>
         </div>
         <div class="fld">
-          <label for="email">E-mailadres</label>
-          <input type="email" id="email" placeholder="naam@bedrijf.nl" required>
+          <label for="email1">Zakelijk e-mailadres</label>
+          <input type="email" id="email1" data-field="email" placeholder="naam@bedrijf.nl" autocomplete="email" inputmode="email" required>
         </div>
-        <div class="fld">
-          <label for="bedrijf">Bedrijf <span style="opacity:.55;font-weight:400;">(optioneel)</span></label>
-          <input type="text" id="bedrijf" placeholder="Naam van je organisatie">
-        </div>
-        <div class="fld">
-          <label for="telefoon">Telefoon <span style="opacity:.55;font-weight:400;">(optioneel)</span></label>
-          <input type="tel" id="telefoon" placeholder="06 12 34 56 78">
+        <button type="button" class="more-toggle" onclick="toggleMore(this)" aria-expanded="false"><span class="pl">+</span> Bedrijf &amp; telefoon toevoegen <span style="opacity:.7;font-weight:400;">(optioneel)</span></button>
+        <div class="more">
+          <div class="fld">
+            <label for="bedrijf1">Bedrijf</label>
+            <input type="text" id="bedrijf1" data-field="bedrijf" placeholder="Naam van je organisatie" autocomplete="organization">
+          </div>
+          <div class="fld">
+            <label for="telefoon1">Telefoon</label>
+            <input type="tel" id="telefoon1" data-field="telefoon" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel">
+          </div>
         </div>
         <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
         <p class="note">Geen verplichtingen. Uitschrijven kan altijd.</p>
-        <a class="card-alt" href="https://www.forgexe.nl/sales-ai-training">Liever eerst alles lezen? Bekijk de volledige training →</a>
+        <div class="scarce"><span class="pulse"></span><span>Max. <b>9 deelnemers</b> per training · eerstvolgende start <b>13 oktober</b></span></div>
+      </div>
+
+      <div class="pitch-bottom">
+        <ul class="bul">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> 3 dagen: 2 dagen sales, 1 dag AI</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Je bouwt je eigen AI-agents — direct inzetbaar</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Kleine groepen: max. 9 deelnemers</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#55C44A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Van een sales-trainer én een AI-specialist</li>
+        </ul>
+        <div class="trust">
+          <div class="trust-ph">
+            <img src="/trainer-gregor.jpg" alt="Gregor Gersen" width="44" height="44">
+            <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="44" height="44">
+          </div>
+          <div class="trust-txt"><b>Gregor Gersen</b> · Trainer &amp; Coach, Fidecon<br><b>Sedat Ayar</b> · AI Specialist, Forgexe</div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="proof-in">
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-n"><em>9</em></div><div class="stat-l">max. deelnemers per training</div></div>
+      <div class="stat"><div class="stat-n">3 dagen</div><div class="stat-l">2 dagen sales · 1 dag AI</div></div>
+      <div class="stat wide"><div class="stat-n">13 okt · 16 nov</div><div class="stat-l">eerstvolgende startdata</div></div>
+    </div>
+    <div class="trainers reveal">
+      <div class="trainer">
+        <img src="/trainer-gregor.jpg" alt="Gregor Gersen" width="56" height="56" loading="lazy">
+        <div><b>Gregor Gersen</b><span>Trainer &amp; Coach — Fidecon</span><p>Jarenlange ervaring als vaardigheidstrainer en coach in B2B sales. Helpt verkopers hun aanbod professioneel onder de aandacht te brengen, met focus op communicatie, gedrag en resultaat.</p></div>
+      </div>
+      <div class="trainer">
+        <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="56" height="56" loading="lazy">
+        <div><b>Sedat Ayar</b><span>AI Specialist — Forgexe</span><p>Expert in AI-automatisering voor het MKB. Bouwt AI-systemen voor leadgeneratie, sales automation en bedrijfsprocessen. Hands-on en gericht op direct toepasbaar resultaat.</p></div>
+      </div>
+    </div>
+    <p class="incl reveal">Inclusief <b>certificaat</b>, <b>6 maanden community-toegang</b>, catering en alle trainingsmaterialen.</p>
   </div>
 </section>
 
@@ -169,58 +298,158 @@
   <div class="inbroch-in">
     <span class="ib-eyebrow"><span class="dot"></span> Wat zit erin</span>
     <h2 class="ib-h2">In de brochure vind je <em>alles</em></h2>
-    <div class="ib-grid">
+    <div class="ib-grid reveal">
       <div class="ib-card"><div class="ib-num">01</div><h4>Het programma</h4><p>Dag voor dag: van salesfundament tot je eigen AI-agents.</p></div>
       <div class="ib-card"><div class="ib-num">02</div><h4>De trainers</h4><p>Wie Gregor en Sedat zijn en wat ze je leren.</p></div>
       <div class="ib-card"><div class="ib-num">03</div><h4>Wat je meekrijgt</h4><p>Certificaat, community, AI-agents en een actieplan.</p></div>
       <div class="ib-card"><div class="ib-num">04</div><h4>Data &amp; prijzen</h4><p>De trainingsrondes en de investering, transparant op een rij.</p></div>
     </div>
-    <div class="ib-cta">
-      <a href="#" class="ib-btn" onclick="document.querySelector('.card').scrollIntoView({behavior:'smooth'});return false;">Vraag de brochure aan →</a>
+
+    <div class="cta2 reveal" data-form="onder">
+      <div class="cta2-h">Klaar om 'm te <em>lezen</em>?</div>
+      <div class="cta2-s">Vul je naam en e-mailadres in — de brochure staat binnen een minuut in je mailbox.</div>
+      <div class="cta2-row">
+        <div class="fld">
+          <label for="naam2">Je naam</label>
+          <input type="text" id="naam2" data-field="naam" placeholder="Voor- en achternaam" autocomplete="name" required>
+        </div>
+        <div class="fld">
+          <label for="email2">Zakelijk e-mailadres</label>
+          <input type="email" id="email2" data-field="email" placeholder="naam@bedrijf.nl" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="submit-wrap">
+          <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
+        </div>
+      </div>
+      <p class="note">Gratis en vrijblijvend · Max. <b>9 deelnemers</b> per training</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div>
-    <a href="https://www.forgexe.nl/sales-ai-training">Volledige trainingspagina</a>·
-    <a href="https://fidecon.nl" target="_blank">fidecon.nl</a>·
-    <a href="https://forgexe.nl" target="_blank">forgexe.nl</a>·
+    <a href="/sales-ai-training">Volledige trainingspagina</a>·
+    <a href="https://fidecon.nl" target="_blank" rel="noopener">fidecon.nl</a>·
+    <a href="/">forgexe.nl</a>·
     <a href="/privacy">Privacy</a>
   </div>
   <span class="cp">© 2026 Fidecon × Forgexe</span>
 </footer>
 
 <script>
-  async function submitBrochure(btn) {
-    var naam = document.getElementById('naam');
-    var email = document.getElementById('email');
-    var bedrijf = document.getElementById('bedrijf');
-    var telefoon = document.getElementById('telefoon');
+  var WEBHOOK = 'https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191';
+  var BROCHURE_PDF = '/sales-ai-training-brochure.pdf';
+
+  function toggleMore(btn) {
+    var more = btn.parentNode.querySelector('.more');
+    var open = !more.classList.contains('open');
+    more.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.querySelector('.pl').textContent = open ? '–' : '+';
+    if (open) { var first = more.querySelector('input'); if (first) first.focus(); }
+  }
+
+  /* Meta-velden voor de Conversions API. Gebruikt fxLeadMeta() uit tracking.js
+     als die er al is; anders dezelfde logica inline, zodat fbc/fbp/event_id ook
+     meegaan als tracking.js nog niet geladen of geblokkeerd is. */
+  function leesCookie(naam) {
+    var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+  function leadMeta() {
+    if (window.fxLeadMeta) { try { return window.fxLeadMeta(); } catch (e) {} }
+    var fbc = leesCookie('_fbc');
+    if (!fbc) {
+      try {
+        var fbclid = new URLSearchParams(location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      } catch (e) {}
+    }
+    return {
+      fbc: fbc,
+      fbp: leesCookie('_fbp'),
+      event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
+      event_source_url: location.href
+    };
+  }
+
+  function geldigEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+  function veld(wrap, naam) { return wrap.querySelector('[data-field="' + naam + '"]'); }
+  function waarde(el) { return el ? el.value.trim() : ''; }
+
+  function submitBrochure(btn) {
+    var wrap = btn.closest('[data-form]');
+    var naam = veld(wrap, 'naam');
+    var email = veld(wrap, 'email');
     var valid = true;
-    [naam, email].forEach(function(i){ if(!i.value.trim()){ i.style.borderColor='#e53e3e'; valid=false; } else { i.style.borderColor=''; } });
+    naam.classList.toggle('err', !waarde(naam));
+    email.classList.toggle('err', !geldigEmail(waarde(email)));
+    if (!waarde(naam)) { valid = false; naam.focus(); }
+    else if (!geldigEmail(waarde(email))) { valid = false; email.focus(); }
     if (!valid) return;
+
     btn.textContent = 'Versturen...'; btn.disabled = true;
-    var meta = window.fxLeadMeta ? window.fxLeadMeta() : { fbc: '', fbp: '', event_id: '', event_source_url: location.href };
-    var data = { naam: naam.value.trim(), email: email.value.trim(), bedrijf: bedrijf.value.trim(), telefoon: telefoon.value.trim(), type: 'brochure-aanvraag', bron: 'sales-ai-brochure-lp', datum: new Date().toISOString(),
-      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url };
-    try {
-      var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/b23abb60-c5d3-44d7-a570-ca74e7de5191', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    var meta = leadMeta();
+    var data = {
+      naam: waarde(naam), email: waarde(email),
+      bedrijf: waarde(veld(wrap, 'bedrijf')), telefoon: waarde(veld(wrap, 'telefoon')),
+      type: 'brochure-aanvraag', bron: 'sales-ai-brochure-lp',
+      formulier: wrap.getAttribute('data-form'),
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
+    };
+
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(resp) {
+        if (resp.ok || resp.type === 'opaque') { toonSucces(wrap, btn, meta.event_id); }
+        else { throw new Error('http ' + resp.status); }
+      })
+      .catch(function() {
+        btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+        setTimeout(function() { btn.textContent = 'Stuur mij de brochure →'; btn.classList.remove('is-err'); }, 3000);
       });
-      if (resp.ok || resp.type === 'opaque') {
-        if (window.fxTrack) fxTrack('Lead', {}, meta.event_id);
-        btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.style.background = 'var(--navy)'; btn.style.cursor = 'default';
-        naam.disabled = true; email.disabled = true;
-        if (!btn.parentNode.querySelector('.spam-hint')) {
-          btn.insertAdjacentHTML('afterend', '<p class="spam-hint" style="margin:.75rem 0 0;font-size:.8rem;line-height:1.5;color:var(--navy);opacity:.8;">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap — de brochure belandt daar soms.</p>');
-        }
-      } else { throw new Error('err'); }
-    } catch (e) {
-      btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.style.background = '#e53e3e'; btn.disabled = false;
-      setTimeout(function(){ btn.textContent = 'Stuur mij de brochure →'; btn.style.background = 'var(--green)'; }, 3000);
+  }
+
+  function toonSucces(wrap, btn, eventId) {
+    if (window.fxTrack) fxTrack('Lead', {}, eventId);
+    btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.classList.add('is-done');
+    var inputs = wrap.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) inputs[i].disabled = true;
+    var toggle = wrap.querySelector('.more-toggle'); if (toggle) toggle.style.display = 'none';
+    var scarce = wrap.querySelector('.scarce'); if (scarce) scarce.style.display = 'none';
+    if (!wrap.querySelector('.after')) {
+      var anchor = wrap.querySelector('.note') || btn;
+      anchor.insertAdjacentHTML('afterend',
+        '<div class="after">' +
+          '<a class="pdf-link" href="' + BROCHURE_PDF + '" target="_blank" rel="noopener">Of open de brochure meteen (PDF) →</a>' +
+          '<p class="spam-hint">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap.</p>' +
+        '</div>');
     }
   }
+
+  /* Enter in een veld = verzenden */
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    var el = e.target;
+    if (!el || el.tagName !== 'INPUT') return;
+    var wrap = el.closest('[data-form]');
+    if (!wrap) return;
+    var btn = wrap.querySelector('.submit');
+    if (btn && !btn.disabled) { e.preventDefault(); submitBrochure(btn); }
+  });
+
+  /* scroll-reveal */
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { for (var i = 0; i < els.length; i++) els[i].classList.add('in'); return; }
+    var io = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) { entries[i].target.classList.add('in'); io.unobserve(entries[i].target); }
+      }
+    }, { threshold: 0.12 });
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  })();
 </script>
 <script src="/tracking.js"></script>
 </body>

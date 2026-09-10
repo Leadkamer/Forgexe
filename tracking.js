@@ -135,7 +135,9 @@
       '#fxConsent .fx-ja:hover{background:#4ade80}' +
       '#fxConsent .fx-nee{background:transparent;color:#c4cbd8;border-color:rgba(255,255,255,.22)}' +
       '#fxConsent .fx-nee:hover{background:rgba(255,255,255,.07);color:#fff}' +
-      '@media(max-width:640px){#fxConsent{left:10px;right:10px;bottom:10px;padding:1rem;gap:.9rem}#fxConsent .fx-btns{width:100%}#fxConsent button{flex:1}}' +
+      '@media(max-width:640px){#fxConsent{left:10px;right:10px;bottom:10px;padding:.75rem .85rem;gap:.6rem;border-radius:12px}' +
+      '#fxConsent .fx-txt{font-size:.78rem;line-height:1.4;min-width:0}' +
+      '#fxConsent .fx-btns{width:100%;gap:.45rem}#fxConsent button{flex:1;padding:.6rem .7rem;font-size:.8rem}}' +
       '</style>' +
       '<div class="fx-txt"><b>Cookies?</b> We gebruiken alleen cookies om te meten hoe de site gebruikt wordt en om onze advertenties relevanter te maken. ' +
       'Zonder toestemming plaatsen we ze niet. Meer in onze <a href="/privacy">privacyverklaring</a>.</div>' +
@@ -150,7 +152,9 @@
     var keuze = lees();
     if (keuze === 'ja') { laadTracking(); return; }
     if (keuze === 'nee') return;
-    toonBanner();
+    /* Eerste bezoek: banner pas na 2,5 s, zodat de pagina en het formulier eerst
+       ongestoord in beeld komen. Tracking laadt sowieso pas na toestemming. */
+    setTimeout(toonBanner, 2500);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
