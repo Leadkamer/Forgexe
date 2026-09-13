@@ -114,6 +114,12 @@ Is mijn data veilig bij Forgexe? +
 Ja. Wij gebruiken alleen Europese servers, alle data wordt versleuteld, en we zijn AVG-compliant. Jouw data wordt nooit gebruikt om externe modellen te trainen.
 Wat als mijn AI-toepassing onder hoog-risico valt? +
 Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan , geen verrassingen achteraf.
+> C:\verder-lezen
+Verder lezen.
+BLOG EU AI Act verplichtingen voor het MKB
+DIENST AI-training voor je team
+DIENST n8n-specialist inhuren
+DIENST AI-automatisering laten bouwen
 Klaar om compliant te starten?
 Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen , volledig binnen de EU AI Act.
 Plan een gratis bedrijfsscan

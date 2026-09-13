@@ -13,7 +13,7 @@ en 22 anderen
 Bekijk cases
 > C:\wat-is-het
 Wat is een AI-medewerker?
-Een AI-medewerker is een digitale collega die zelfstandig terugkerende taken uitvoert binnen je bestaande tools en systemen. Anders dan een chatbot wacht hij niet op vragen: hij voert werk uit. Leads opvolgen, e-mail verwerken, rapportages bouwen, planningen bijhouden. Jij bepaalt wat hij doet, hij draait dag en nacht door.
+Een AI-medewerker is een digitale collega die zelfstandig terugkerende taken uitvoert binnen je bestaande tools en systemen. Anders dan een chatbot wacht hij niet op vragen: hij voert werk uit. Leads opvolgen, e-mail verwerken, rapportages bouwen, planningen bijhouden. Jij bepaalt wat hij doet, hij draait dag en nacht door. Elke AI-medewerker dekt één rol met een afgebakend takenpakket , zoals leadopvolging, factuurverwerking of rapportage. Meer werk overnemen? Dan zet je er een tweede naast, net als bij mensen.
 Eerlijk is eerlijk: niet elke taak heeft een AI-medewerker nodig. Soms is een simpele workflow slimmer en goedkoper. In de bedrijfsscan vertellen we je welke van de twee bij jouw situatie past, ook als dat het goedkopere antwoord is. Benieuwd naar de techniek erachter? Lees hoe we een AI-agent bouwen .
 > C:\taken
 Wat doet een AI-medewerker voor je?
@@ -21,27 +21,27 @@ Elke AI-medewerker wordt op maat gesmeed. Dit zijn de taken waar MKB-bedrijven z
 > TAAK_01
 Leads binnenhalen en opvolgen
 Vindt je ideale klanten, benadert ze persoonlijk via LinkedIn en e-mail, en volgt automatisch op. Warme leads landen direct in je CRM.
-MEER OVER AI-OUTREACH
+Leadgeneratie automatiseren
 > TAAK_02
 Inbox en e-mail verwerken
 Sorteert inkomende mail, herkent wat urgent is, zet conceptantwoorden klaar en routeert vragen naar de juiste collega. Jij houdt de regie, hij doet het sorteerwerk.
-MEER OVER E-MAIL AUTOMATISEREN
+E-mail automatiseren met AI
 > TAAK_03
 Rapportages bouwen
 Haalt data uit je systemen en zet die om in wekelijkse of maandelijkse rapportages. Geen Excel-avondjes meer voor jou of je team.
-MEER OVER AI-RAPPORTAGE
+AI-rapportage automatiseren
 > TAAK_04
 Offertes en documenten
 Zet aanvragen om in kant-en-klare conceptoffertes, verwerkt inkomende documenten en houdt je administratie bij. Van uren naar minuten.
-MEER OVER FACTUURVERWERKING
+Factuurverwerking automatiseren
 > TAAK_05
 Planning en capaciteit
 Houdt je planning actueel, signaleert knelpunten en stemt agenda's af. Vooral waardevol bij projecten, service-afspraken en teams in de buitendienst.
-MEER OVER PLANNING
+Planning optimaliseren met AI
 > TAAK_06
 Content en campagnes
 Schrijft blogs en socialmedia-posts in jouw tone of voice en optimaliseert advertentiecampagnes. Consistent zichtbaar zonder er wekelijks tijd in te stoppen.
-MEER OVER AI-CONTENT
+AI-content en blogs
 > C:\vergelijking
 AI-medewerker inhuren of iemand aannemen?
 Soms heb je gewoon een mens nodig. Maar voor terugkerend uitvoerend werk is de rekensom snel gemaakt.
@@ -81,6 +81,8 @@ Wat is het verschil tussen een AI-medewerker en een chatbot?
 Een chatbot wacht op vragen en geeft antwoorden. Een AI-medewerker voert zelfstandig werk uit: hij volgt leads op, verwerkt e-mail, bouwt rapportages en houdt planningen bij, zonder dat iemand erom hoeft te vragen.
 Vervangt een AI-medewerker mijn team?
 Nee. Een AI-medewerker neemt het terugkerende werk over waar je mensen eigenlijk te goed voor zijn. Je team houdt tijd over voor klanten, verkoop en de dingen waar een mens het verschil maakt. Bekijk onze cases om te zien hoe dat er in de praktijk uitziet.
+Waarom bouwen jullie niet al onze taken in één AI-medewerker?
+Om dezelfde reden dat je niet één persoon je verkoop, boekhouding én planning laat doen. Elke AI-medewerker dekt één rol , zoals leadopvolging, factuurverwerking of rapportage , met eigen systemen, rechten en KPI's. Alles in één blok maakt hem traag, fragiel en onmogelijk bij te sturen: gaat er iets mis in je facturatie, dan wil je niet dat je leadopvolging meevalt. Losse medewerkers zijn los te testen, te meten en uit te breiden. En eerlijk is eerlijk: de prijs volgt het werk dat verzet wordt, niet het aantal stukjes software , vijf taken zijn vijf keer bouwen, testen en bewaken, hoe je ze ook verpakt. Uitbreiden kan altijd: vanaf +EUR 250 per maand per extra medewerker, zie de prijzenpagina .
 Wie je aan de lijn krijgt
 Geen bureau met 50 man. Een compact team dat jouw AI-medewerker zelf bouwt.
 Meer over ons
@@ -92,6 +94,14 @@ Jesse
 AI ENGINEER
 Samuël
 PROCESS ANALYST
+> C:\verder-lezen
+Verder lezen.
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+BLOG Stille zomer: tijd voor je processen
+GIDS AI-telefonist: wat kan het en wat kost het?
+DIENST AI-agent laten bouwen
+CASE Fietsencatalogus: portaal en AI-contentpipeline
+GIDS Wat kost AI-automatisering?
 > C:\forgexe\klaar
 Klaar om je eerste AI-medewerker te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

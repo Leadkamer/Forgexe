@@ -1,0 +1,190 @@
+PAGINA: /peters-forgexe-juridische-ai
+TITEL: Juridische AI-training — Peters Advocatuur × Forgexe
+OMSCHRIJVING: 
+
+Peters Advocatuur
+Forgexe
+Over de training
+Programma
+Trainers
+Brochure
+Inschrijven →
+Eén trainingsdag · Juridische praktijk
+Slimmer werken met AI, binnen het beroepsgeheim
+Een praktijkgerichte trainingsdag voor advocaten en juristen. Concreet tijd besparen op contracten, dossiers en correspondentie — hands-on met algemene AI-modellen én helder zicht op wanneer je juridische AI nodig hebt. Altijd binnen de grenzen van vertrouwelijkheid en verificatie.
+7 PO-punten in één dag voor advocaten — programma opgezet volgens artikel 4.4 lid 5 VODA
+Schrijf je in →
+Bekijk het programma
+Trainingslocatie: Peters Advocatuur — maximaal 12 deelnemers, inclusief lunch.
+Trainingsdag · 7 contacturen
+PO-punten · advocaten
+12
+Max. deelnemers
+Ontdek meer
+Waarom deze training
+De jurist én | de technologie
+De meeste juristen zien dat AI hun werk raakt, maar durven het niet te gebruiken — terecht, want vertrouwelijkheid en verificatie zijn geen bijzaak in dit vak. Deze training neemt die drempel weg: eerst een helder verhaal over wat je wél en niet mag met cliëntdata, daarna hands-on aan de slag met echte, geanonimiseerde vraagstukken uit jullie eigen praktijk.
+We werken met een gemengde groep — advocaten én juristen, ook in overheidsdienst. De kaders doen we gezamenlijk; bij de twee groepsoefeningen ga je zelf aan de slag, zodat je aan het eind van de dag met werkende dingen naar huis gaat, niet alleen met kennis.
+Echte juridische casuïstiek
+Geen generieke voorbeelden, maar door een advocaat gevalideerde casussen — én in de middag je eigen (geanonimiseerde) casus uit je eigen praktijk.
+Tool-onafhankelijk leren
+Je leert welk werk je veilig in een algemeen AI-model doet — van kennisbank tot correspondentie — en voor welk werk je juridische AI met gevalideerde bronnen nodig hebt.
+Veilig binnen de beroepsregels
+Beroepsgeheim, AVG en de AI Act vertaald naar concrete spelregels: wat mag wél, wat nooit, en met welke versie.
+Telt mee voor je PO-verplichting
+7 PO-punten in één dag
+Deelnemende advocaten ontvangen een deelnamebewijs met het volledige programma en een urenspecificatie , waarmee je de opleidingspunten zelf registreert. Het programma is opgezet om te voldoen aan de voorwaarden van artikel 4.4 lid 5 van de Verordening op de advocatuur (VODA) ; bij zeven netto contacturen op één trainingsdag komt dat neer op 7 opleidingspunten (PO) .
+Op grond van artikel 4.4 lid 5 VODA registreer je de punten zelf bij de Orde — het deelnamebewijs met programma en urenspecificatie is daarvoor je onderbouwing. Geen gespreide dagdelen, geen terugkomverplichting: één dag investeren, een fors deel van je jaarlijkse opleidingsverplichting binnen — en maandag werk je er al mee.
+Het programma
+Eén dag — | zeven netto contacturen
+Twee dagdelen op één trainingsdag (± 9:00 – 17:30, inclusief lunch). De ochtend legt het fundament en de grenzen, de middag is volledig hands-on met je eigen casuïstiek. Twee edities: donderdag 24 september en donderdag 22 oktober 2026.
+01
+Ochtend
+± 3,5 uur netto
+Fundament & grenzen
+Waarom dit vak anders is, waar AI breekt, en wat je ermee mag binnen het beroepsgeheim — afgesloten met de eerste groepsoefening.
+Opening: wat AI kan — en waar het misleidt — korte geschiedenis, en met eigen ogen zien hoe overtuigend AI kan manipuleren en hallucineren
+Waarom dit vak anders is — de vijf kernwaarden uit de NOvA-aanbevelingen als kapstok; wat die aanbevelingen wél en niet zeggen; de eindverantwoordelijkheid blijft bij de advocaat of jurist
+Groepsoefening 1: blanco casusonderzoek — in groepjes aan de slag met een casus búiten je eigen rechtsgebied; onderzoek langs meerdere modellen, vindplaatsen zelf natrekken op rechtspraak.nl, en daarna de onthulling: wat klopte er wel en niet? Hands-on
+Hoe het werkt en waar het breekt — de nabespreking van de oefening: op de wet en de definitie zijn de modellen betrouwbaar, maar bij arresten en vindplaatsen lopen ze uiteen — soms met verzonnen arresten en foute ECLI's. Waarom een taalmodel geen databank is
+Vertrouwelijkheid, beroepsgeheim, AVG & AI Act — waarom de geheimhoudingsplicht breder is dan de AVG; consument versus zakelijk, verwerkersovereenkomst, doorgifte en bewaartermijnen eerlijk verteld; de beslisboom voor toolkeuze, en wat de AI Act hiervan vraagt Kernblok
+De cliënt en transparantie — het toestemmingsadvies van de NOvA en een conceptclausule voor de opdrachtbevestiging
+02
+Middag
+± 3,5 uur netto
+Toepassen
+Je eigen casus, een eigen kennisbank, en helder zicht op welk werk waar thuishoort. AI levert het concept — de advocaat blijft verantwoordelijk.
+Prompten als vakvaardigheid — rol, context, taak en format, met de verificatiestap als vast onderdeel; stap voor stap opbouwen in plaats van één lange opdracht
+Eigen kennisbank bouwen — een omgeving waar het model steeds op teruggrijpt: modellen, huisstijl en standaardclausules. Zo leer je precies welk werk je veilig in een algemeen model doet — en welk werk juridische AI met gevalideerde bronnen vraagt Kernblok
+Groepsoefening 2: je eigen casus — aan de slag met de geanonimiseerde casus die je zelf hebt meegenomen, gecombineerd met je kennisbank; de trainers lopen mee en sturen bij Hands-on
+Het landschap: algemeen versus juridisch — wanneer heb je een juridisch platform nodig, wat koop je er precies, en welke vijf vragen stel je een leverancier voordat je tekent
+Van handwerk naar structuur — welk knelpunt los je op met een betere prompt, en welk knelpunt is een terugkerend proces dat om een andere oplossing vraagt
+Plenaire bespreking & afronding — de resultaten van de groepen langs: waar liep je vast, en had een andere vraag of een ander gereedschap je verder gebracht? Spelregelkaart invullen en je persoonlijke top drie vastleggen
+Je trainers
+De advocaat & de bouwer
+Juridische expertise
+John Peters
+Advocaat — Peters Advocatuur
+Brengt de juridische diepgang: per rechtsgebied de praktijkcasuïstiek, de valkuilen en de tuchtrechtelijke kaders. John bewaakt dat elk voorbeeld klopt en toepasbaar is in het echte werk van het kantoor.
+Arbeidsrecht
+Huurrecht
+Familierecht
+Beroepsregels
+Bel John
+Mail
+AI & Automation
+Sedat Ayar
+AI Specialist — Forgexe
+Expert in AI-automatisering voor het MKB. Sedat vertaalt de techniek naar de dagelijkse praktijk: hands-on met de grote AI-modellen, veilig werken met vertrouwelijke data en de brug naar het automatiseren van terugkerende processen.
+AI-modellen
+Prompting
+Automation
+Workflows
+Bel Sedat
+Mail
+📅
+7 contacturen
+Op één | trainingsdag
+👥
+Max. 12
+Advocaten + | juristen
+🤖
+Tool-neutraal
+Algemene modellen + | juridische AI
+🏛️
+Op locatie
+Bij Peters | Advocatuur
+Wat het kantoor overhoudt
+Meer dan alleen een training
+🎓
+Deelnamebewijs · 7 PO-punten
+Deelnamebewijs met programma en urenspecificatie (7 contacturen op één dag) waarmee advocaten de punten zelf registreren — opgezet volgens artikel 4.4 lid 5 VODA.
+🛡️
+Spelregelkaart
+Eén pagina met heldere afspraken over vertrouwelijkheid — een blijvend hulpmiddel voor het hele kantoor.
+🎯
+Persoonlijke top 3
+Elke deelnemer gaat weg met drie taken die hij vanaf morgen anders — en sneller — doet.
+📁
+Eigen kennisbank
+Een ingerichte kennisbank in een algemeen AI-model, plus de keuzekaart: welk werk doe je hier, en welk werk vraagt juridische AI.
+⚖️
+Prompt-bibliotheek
+Uitgewerkte prompts per rechtsgebied, opgebouwd tijdens de hands-on, om later opnieuw te gebruiken.
+🔍
+Verificatie-reflex
+Concrete checklist tegen hallucinaties: nooit blind vertrouwen, altijd de bron natrekken.
+Automatiseringskansen
+Een gedeelde inventarisatie van processen die rijp zijn om te automatiseren, als basis voor een vervolg.
+Veelgestelde vragen
+Goed om te weten
+Krijgen advocaten PO-punten voor deze training?
+Ja. Op grond van artikel 4.4 lid 5 VODA geldt: één netto contactuur staat gelijk aan één opleidingspunt, en je registreert de punten zelf bij de Orde. Je ontvangt daarvoor een deelnamebewijs met het volledige programma en een urenspecificatie als onderbouwing. Het programma is opgezet om aan de voorwaarden te voldoen; bij 7 netto contacturen op één trainingsdag komt dat neer op 7 opleidingspunten .
+Heb ik voorkennis van AI nodig?
+Nee. We starten bij de fundamenten en bouwen stap voor stap op. Je hoeft geen techneut te zijn — na afloop werk je zelfstandig met AI aan je eigen taken, en je weet precies welk gereedschap bij welk werk hoort.
+Wat moet ik voorbereiden of meenemen?
+Een laptop en toegang tot een AI-tool waar je al mee werkt (dat vragen we uit bij de aanmelding — heb je niets, dan regelen wij een trainingsaccount). Voor de middag neem je één geanonimiseerde casus uit je eigen praktijk mee: geen herleidbare cliëntgegevens. Vooraf vul je een korte nulmeting in: drie terugkerende taken en de uren die ze nu kosten.
+Mogen we cliëntgegevens gebruiken tijdens de oefeningen?
+Nee — en dat is bewust onderdeel van de les. In de ochtend werk je met fictieve casussen van de trainers, in de middag met je eigen geanonimiseerde casus. In het vertrouwelijkheidsblok leggen we precies uit wat wél en niet mag met cliëntdata, en met welke versie van welke tool.
+Voor wie is de training bedoeld?
+Voor advocaten én juristen — ook bedrijfsjuristen en juristen in overheidsdienst. De kernwaarden en kaders gelden voor het hele juridische vak; bij het vertrouwelijkheidsblok behandelen we zowel het beroepsgeheim van de advocaat als de geheimhoudingsplicht van de jurist in dienstverband. PO-punten gelden voor advocaten.
+Neemt AI het werk van de advocaat over?
+Nee. AI levert een concept; de advocaat blijft inhoudelijk verantwoordelijk. De training leert juist waar de grenzen liggen en hoe je output kritisch verifieert.
+Kan de invulling op maat?
+Ja — bij de aanmelding vragen we naar je rechtsgebied en je huidige AI-gebruik, en in de middag werk je met je eigen geanonimiseerde casus. Zo sluit de dag aan op jouw praktijk, ook in een gemengde groep.
+Kan de training ook incompany?
+Ja. Wil je het hele kantoor in één keer meenemen, dan verzorgen we de training ook incompany — op jullie eigen locatie en volledig toegespitst op jullie rechtsgebieden, dossiers en processen. Neem contact op, dan stellen we een voorstel op maat samen.
+Vrijblijvend
+Liever eerst rustig lezen ?
+Ontvang de volledige brochure in je mailbox — het complete programma, de aanpak rond vertrouwelijkheid, wat het kantoor overhoudt en de praktische kaders. Geen verplichtingen.
+✓ De volledige trainingsdag, blok voor blok uitgewerkt
+✓ De juridische casuïstiek per rechtsgebied
+✓ Hoe we vertrouwelijkheid en beroepsgeheim borgen
+✓ Wat je meekrijgt en de praktische opzet
+✓ Gratis & vrijblijvend
+Ontvang de brochure
+Direct in je mailbox — je leest alles rustig na wanneer het jou uitkomt.
+Stuur mij de brochure →
+Geen verplichtingen. Uitschrijven kan altijd.
+Volgende stap
+Klaar om jullie praktijk | te versnellen ?
+€690
+per deelnemer | Incl. lunch, deelnamebewijs & 7 PO-punten · excl. btw
+Editie 1 do 24 september 2026
+Editie 2 do 22 oktober 2026
+± 9:00 – 17:30 · incl. lunch
+Schrijf je in en we stemmen samen de invulling, de casuïstiek en de planning af.
+Schrijf je in →
+Met het hele kantoor tegelijk? Een incompany-training op jullie eigen locatie is ook mogelijk — volledig toegespitst op jullie rechtsgebieden en processen. Vraag naar de mogelijkheden.
+John Peters
+Advocaat — Peters Advocatuur
+info@petersadvocatuur.nl |
++31 6 28 42 83 60
+Sedat Ayar
+AI Specialist — Forgexe
++31 6 180 310 22 |
+sedat@forgexe.nl
+Inschrijven
+Schrijf je in voor de training
+Vul het formulier in en we nemen binnen 2 werkdagen contact op om je inschrijving te bevestigen en de planning af te stemmen.
+Voornaam *
+Achternaam *
+E-mailadres *
+Telefoonnummer
+Kantoor
+Specialisatie
+Voorkeursdatum *
+Kies een editie...
+Donderdag 24 september 2026
+Donderdag 22 oktober 2026
+Geen voorkeur
+Werk je al met een AI-tool?
+Opmerkingen of vragen
+Verstuur inschrijving →
+Na je inschrijving ontvang je een bevestiging per e-mail.
+Een samenwerking van
+Peters Advocatuur
+Advocatenkantoor
+Forgexe
+Brochure
+Inschrijven →

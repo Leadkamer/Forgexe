@@ -73,6 +73,14 @@ Hoeveel facturen per maand moet ik hebben wil dit uitkunnen?
 Vanaf enkele tientallen facturen per maand is automatiseren al zinvol. Rekenvoorbeeld: 100 facturen per maand tegen 12 minuten per stuk is 20 uur handwerk. Tegen EUR 40 per uur is dat EUR 800 per maand aan verwerkingstijd, nog los van fouten en herstelwerk. Een automatisering verdient zich dan al snel terug.
 Kunnen jullie ook offertes en andere documenten verwerken?
 Ja. Dezelfde aanpak werkt voor offertes, pakbonnen, contracten, orderbevestigingen en inkomende mail. We bouwen AI-agents die elk type document uitlezen, interpreteren en in je systemen zetten.
+> C:\verder-lezen
+Verder lezen.
+BLOG De ROI van procesautomatisering
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+BLOG CRM-integraties die uren per week besparen
+DIENST E-mail automatiseren met AI
+BRANCHE AI voor de technische groothandel
+BRANCHE AI voor de maakindustrie
 > C:\forgexe\klaar
 Klaar om je factuurverwerking te automatiseren?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

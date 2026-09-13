@@ -26,7 +26,7 @@ Wat het doet: Afspraken die je inplant verschijnen automatisch in het CRM. Herin
 Tijdsbesparing: 2-3 uur per week. Geen dubbele agendabeheer, geen vergeten opvolgmomenten.
 Voorbeeldscenario: Na een demogesprek wordt automatisch een follow-up ingepland voor drie dagen later. Als de prospect niet reageert, gaat er na een week een geautomatiseerde herinneringsmail uit , zonder dat je team er aan hoeft te denken.
 3. CRM ↔ Facturatie
-Wat het doet: Zodra een deal in het CRM op "gewonnen" wordt gezet, wordt automatisch een factuur aangemaakt in je boekhoudsoftware. Klantgegevens, bedragen en voorwaarden worden overgenomen. Geen handmatig overtypen.
+Wat het doet: Zodra een deal in het CRM op "gewonnen" wordt gezet, wordt automatisch een factuur aangemaakt in je boekhoudsoftware . Klantgegevens, bedragen en voorwaarden worden overgenomen. Geen handmatig overtypen.
 Tijdsbesparing: 1-2 uur per week, plus minder fouten in facturen. Geen verkeerde bedragen of ontbrekende BTW-nummers meer.
 Voorbeeldscenario: Je salesteam sluit een deal van €5.000. De status verandert naar "gewonnen" en binnen 30 seconden staat de factuur klaar in Exact Online of Moneybird , compleet met de juiste contactgegevens en betaalcondities.
 4. CRM ↔ LinkedIn
@@ -49,6 +49,15 @@ Het mooie is: je hoeft hier geen developer voor in te huren. Met de juiste aanpa
 Wil je weten welke CRM-integraties bij jouw bedrijf het meeste opleveren?
 We analyseren je huidige toolstack en laten zien waar de grootste tijdswinst zit. Gratis en vrijblijvend.
 Plan je gratis scan
+SA
+Sedat Ayar
+Oprichter van Forgexe. Bouwt AI-medewerkers en n8n-automatiseringen voor MKB-bedrijven in Limburg, Brabant en de rest van Nederland. LinkedIn · Over Forgexe
+> C:\verder-lezen
+Verder lezen.
+BLOG Waarom je AI-strategie begint bij je bestaande tools
+GIDS n8n vs Make vs Zapier
+DIENST n8n-specialist inhuren
+DIENST Leadgeneratie automatiseren
 > C:\forgexe\klaar
 Klaar om dit toe te passen op je bedrijf ?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

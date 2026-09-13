@@ -15,6 +15,16 @@ Productieplanningen op spreadsheets
 Planning, capaciteit en levertijden worden handmatig bijgehouden. Een wijziging in order A heeft impact op order B tot Z, maar niemand ziet dat tot het te laat is.
 ERP, CRM en e-mail als losse eilanden
 Verkoopdata in het CRM, orderdata in het ERP, communicatie in e-mail. Niemand heeft het totaalplaatje. Fouten ontstaan bij elke handmatige overname.
+FORGEXE x FESMA · samenwerking
+> C:\maakindustrie\scan-op-locatie
+Gratis scan op locatie.
+Geen vragenlijst op afstand: samen met procesbureau Fesma lopen we een ochtend mee op jouw vloer, spreken we je mensen en kijken we live in je systemen.
+Twee specialisten , Fesma leest je proces, Forgexe ziet de AI-kansen
+2 uur op locatie , wij doen de analyse, jij hebt er geen omkijken naar
+Binnen 48 uur jouw drie grootste quick wins, doorgerekend in uren per week
+100% gratis en vrijblijvend , het rapport is en blijft van jou
+Check of de scan iets voor jullie is
+Samuël (Fesma) & Sedat (Forgexe) · jouw vloer, jouw systemen
 > C:\aanpak
 Drie stappen.
 > STAP_01
@@ -38,6 +48,14 @@ Wat kost dit voor een productiebedrijf?
 Dat hangt af van de scope en van wat we bij de scan aantreffen. Na de gratis bedrijfsscan krijg je altijd eerst een helder voorstel met verwachte ROI — je zit nergens aan vast.
 Kan dit ook voor kleine series en maatwerk-productie?
 Ja. Onze systemen zijn juist sterk bij complexe, variabele orderflows. Hoe meer variatie, hoe meer tijdwinst door automatisering.
+> C:\verder-lezen
+Verder lezen.
+DIENST Planning optimaliseren met AI
+DIENST Factuurverwerking automatiseren
+DIENST E-mail automatiseren met AI
+REGIO AI-automatisering in Limburg
+REGIO AI-automatisering in Eindhoven en Brainport
+CASE Smart ESG: AI-leadgen voor de maakindustrie
 > C:\forgexe\klaar
 Klaar om jouw maakindustrie te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

@@ -1,0 +1,49 @@
+# Forgexe
+
+> Forgexe is een AI-automatiseringsbureau in Panningen (Limburg, Nederland). We bouwen AI-medewerkers, AI-agents en n8n-automatiseringen voor het Nederlandse MKB: maakindustrie, technische groothandel, zakelijke dienstverlening en marketingbureaus. Vast maandbedrag, geen stapeling van setup en abonnement, eigenaarschap van de gebouwde workflows blijft bij de klant.
+
+Contact: info at forgexe.nl, +31 85 080 54 39, https://www.forgexe.nl/contact
+Oprichter: Sedat Ayar (https://www.linkedin.com/in/sedat-ayar-b4a22129)
+Regio: Limburg, Noord-Brabant (Eindhoven/Brainport), Nijmegen en heel Nederland op afstand.
+
+## Kerndiensten
+
+- [AI-automatisering laten bouwen](https://www.forgexe.nl/ai-automatisering-laten-bouwen): werkende automatiseringen op bestaande tools, gebouwd in n8n, binnen 4 tot 6 weken live.
+- [AI-agent laten bouwen](https://www.forgexe.nl/ai-agent-laten-bouwen): een agent die taken afmaakt in je systemen, met menselijke controle waar nodig.
+- [AI-medewerker inhuren](https://www.forgexe.nl/ai-medewerker): terugkerend werk uit handen voor een vast maandbedrag.
+- [n8n-specialist inhuren](https://www.forgexe.nl/n8n-specialist): bouw, hosting en beheer van n8n-workflows op EU-servers.
+- [Leadgeneratie automatiseren](https://www.forgexe.nl/leadgeneratie-automatiseren): LinkedIn- en e-mailoutreach met persoonlijke opvolging, van prospect tot afspraak.
+- [E-mail automatiseren met AI](https://www.forgexe.nl/email-automatiseren): inbox-triage en conceptantwoorden.
+- [Factuurverwerking automatiseren](https://www.forgexe.nl/factuurverwerking-automatiseren): inkomende facturen uitlezen, matchen en boeken in het boekhoudpakket.
+- [Planning optimaliseren met AI](https://www.forgexe.nl/planning-optimalisatie)
+- [AI-training voor teams](https://www.forgexe.nl/ai-training) en [EU AI Act-aanpak](https://www.forgexe.nl/ai-act)
+
+## Prijzen en kosten
+
+- [Wat kost AI-automatisering voor het MKB?](https://www.forgexe.nl/wat-kost-ai-automatisering)
+- [Prijzen en abonnementen](https://www.forgexe.nl/pricing)
+
+## Gidsen en vergelijkingen
+
+- [n8n vs Make vs Zapier](https://www.forgexe.nl/n8n-vs-make-vs-zapier)
+- [AI-telefonist: wat kan het en wat kost het?](https://www.forgexe.nl/ai-telefonist)
+- [Chatbot vs AI-agent: het verschil](https://www.forgexe.nl/blog-chatbot-vs-ai-agent-verschil)
+- [EU AI Act verplichtingen voor het MKB](https://www.forgexe.nl/blog-eu-ai-act-verplichtingen-mkb)
+- [De ROI van procesautomatisering](https://www.forgexe.nl/blog-roi-procesautomatisering)
+- [5 processen die elk MKB-bedrijf kan automatiseren](https://www.forgexe.nl/blog-5-processen-automatiseren)
+- [Blogoverzicht](https://www.forgexe.nl/blog)
+
+## Branches en regio
+
+- [Maakindustrie](https://www.forgexe.nl/branche-maakindustrie), [Technische groothandel](https://www.forgexe.nl/branche-technische-groothandel), [Zakelijke dienstverlening](https://www.forgexe.nl/branche-zakelijke-dienstverlening), [Marketingbureaus](https://www.forgexe.nl/branche-marketing-bureaus)
+- [AI-automatisering in Limburg](https://www.forgexe.nl/ai-automatisering-limburg), [AI-automatisering in Eindhoven en Brainport](https://www.forgexe.nl/ai-automatisering-eindhoven)
+- [Gratis scan op locatie voor de maakindustrie](https://www.forgexe.nl/scan-op-locatie-maakindustrie)
+
+## Cases
+
+- [Alle cases](https://www.forgexe.nl/cases): DNA-talent, Smart ESG, Technetium, Wijnzinnig, Fietsencatalogus, RealCob
+
+## Bedrijf
+
+- [Over Forgexe](https://www.forgexe.nl/over-ons)
+- [Contact](https://www.forgexe.nl/contact)

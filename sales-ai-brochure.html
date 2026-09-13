@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gratis brochure — Sales & AI Training · Fidecon × Forgexe</title>
+<meta name="robots" content="noindex,follow">
 <meta name="description" content="Ontvang de gratis brochure van de 3-daagse Sales & AI training: programma, data en prijzen direct in je mailbox. Max. 9 deelnemers per training.">
 <link rel="canonical" href="https://www.forgexe.nl/sales-ai-brochure">
 <meta property="og:title" content="Gratis brochure — Sales & AI Training · Fidecon × Forgexe">
@@ -102,6 +103,17 @@
   .spam-hint { margin:10px 0 0; font-size:12.5px; line-height:1.5; color:var(--slate); }
   .spam-hint strong { color:var(--navy); }
 
+  /* stap 2: telefoonnummer na de aanvraag */
+  .step2 { margin-top:14px; padding:16px 16px 14px; border:1.5px solid var(--border); border-radius:12px; background:var(--cloud); }
+  .step2-h { font-size:15.5px; font-weight:700; color:var(--navy); line-height:1.3; margin-bottom:4px; }
+  .step2-s { font-size:13px; color:var(--slate); line-height:1.5; margin-bottom:12px; }
+  .step2 .fld input { background:#fff; }
+  .step2-btns { display:flex; gap:10px; align-items:center; margin-top:2px; }
+  .step2 .submit { margin-top:0; min-height:46px; font-size:15px; flex:1; }
+  .skip { background:none; border:none; font-family:'Outfit',sans-serif; font-size:13.5px; font-weight:600; color:var(--slate-light); cursor:pointer; padding:10px 8px; min-height:44px; white-space:nowrap; }
+  .skip:hover { color:var(--navy); }
+  .done-line { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:14px; font-weight:600; color:var(--green-dark); line-height:1.4; }
+
   /* ---------- BEWIJS ---------- */
   .proof { background:#fff; padding:36px 18px; border-bottom:1px solid var(--border); }
   .proof-in { max-width:1120px; margin:0 auto; }
@@ -152,6 +164,13 @@
   .cta2 .spam-hint { color:rgba(255,255,255,0.7); }
   .cta2 .spam-hint strong { color:#fff; }
   .cta2 .submit.is-done { background:var(--green-dark); }
+  .cta2 .step2 { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); }
+  .cta2 .step2-h { color:#fff; }
+  .cta2 .step2-s { color:rgba(255,255,255,0.7); }
+  .cta2 .step2 .fld input { background:rgba(255,255,255,0.08); }
+  .cta2 .skip { color:rgba(255,255,255,0.6); }
+  .cta2 .skip:hover { color:#fff; }
+  .cta2 .done-line { color:var(--mint); }
   .cta2-row { display:grid; grid-template-columns:1fr; gap:0; }
 
   footer { background:var(--navy-deep); padding:22px 18px; text-align:center; }
@@ -400,9 +419,10 @@
       fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
     };
 
+    wrap._lead = data;
     fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function(resp) {
-        if (resp.ok || resp.type === 'opaque') { toonSucces(wrap, btn, meta.event_id); }
+        if (resp.ok || resp.type === 'opaque') { toonSucces(wrap, btn, meta.event_id, data); }
         else { throw new Error('http ' + resp.status); }
       })
       .catch(function() {
@@ -411,20 +431,73 @@
       });
   }
 
-  function toonSucces(wrap, btn, eventId) {
+  function toonSucces(wrap, btn, eventId, lead) {
     if (window.fxTrack) fxTrack('Lead', {}, eventId);
     btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.classList.add('is-done');
     var inputs = wrap.querySelectorAll('input');
     for (var i = 0; i < inputs.length; i++) inputs[i].disabled = true;
     var toggle = wrap.querySelector('.more-toggle'); if (toggle) toggle.style.display = 'none';
     var scarce = wrap.querySelector('.scarce'); if (scarce) scarce.style.display = 'none';
-    if (!wrap.querySelector('.after')) {
-      var anchor = wrap.querySelector('.note') || btn;
-      anchor.insertAdjacentHTML('afterend',
-        '<div class="after">' +
-          '<a class="pdf-link" href="' + BROCHURE_PDF + '" target="_blank" rel="noopener">Of open de brochure meteen (PDF) →</a>' +
-          '<p class="spam-hint">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap.</p>' +
-        '</div>');
+    /* Telefoon al meegegeven in stap 1? Dan geen stap 2. */
+    if (lead && lead.telefoon) { afronding(wrap, null, false); return; }
+    var anchor = wrap.querySelector('.note') || btn;
+    anchor.insertAdjacentHTML('afterend', stap2HTML(wrap.getAttribute('data-form')));
+  }
+
+  /* Stap 2: telefoonnummer (+ bedrijf) ná de aanvraag. De lead is dan al binnen;
+     dit gaat als aparte 'brochure-aanvulling' naar dezelfde webhook en wordt in
+     n8n aan de bestaande aanvraag gekoppeld (geen nieuwe mail of lead). */
+  function stap2HTML(id) {
+    return '<div class="step2">' +
+      '<div class="step2-h">Op welk nummer kan Gregor je bereiken?</div>' +
+      '<div class="step2-s">Hij belt je kort om je vragen over het programma te beantwoorden — alleen als jij dat wilt.</div>' +
+      '<div class="fld"><label for="tel-' + id + '">Telefoon</label><input type="tel" id="tel-' + id + '" data-s2="telefoon" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel"></div>' +
+      '<div class="fld"><label for="bedr-' + id + '">Bedrijf <span style="opacity:.55;font-weight:400;">(optioneel)</span></label><input type="text" id="bedr-' + id + '" data-s2="bedrijf" placeholder="Naam van je organisatie" autocomplete="organization"></div>' +
+      '<div class="step2-btns"><button type="button" class="submit" onclick="submitAanvulling(this)">Doorgeven →</button><button type="button" class="skip" onclick="slaOver(this)">Overslaan</button></div>' +
+    '</div>';
+  }
+
+  function submitAanvulling(btn) {
+    var s2 = btn.closest('.step2');
+    var wrap = btn.closest('[data-form]');
+    var tel = s2.querySelector('[data-s2="telefoon"]');
+    var bedr = s2.querySelector('[data-s2="bedrijf"]');
+    if (waarde(tel).replace(/[^\d+]/g, '').length < 8) { tel.classList.add('err'); tel.focus(); return; }
+    tel.classList.remove('err');
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    var lead = wrap._lead || {};
+    var data = {
+      type: 'brochure-aanvulling', naam: lead.naam || '', email: lead.email || '',
+      telefoon: waarde(tel), bedrijf: waarde(bedr) || lead.bedrijf || '',
+      bron: 'sales-ai-brochure-lp', formulier: wrap.getAttribute('data-form'),
+      datum: new Date().toISOString()
+    };
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(resp) {
+        if (resp.ok || resp.type === 'opaque') { afronding(wrap, s2, true); }
+        else { throw new Error('http ' + resp.status); }
+      })
+      .catch(function() {
+        btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+        setTimeout(function() { btn.textContent = 'Doorgeven →'; btn.classList.remove('is-err'); }, 3000);
+      });
+  }
+
+  function slaOver(btn) {
+    afronding(btn.closest('[data-form]'), btn.closest('.step2'), false);
+  }
+
+  function afronding(wrap, s2, bedankt) {
+    var html =
+      (bedankt ? '<div class="done-line">✓ Dank je — Gregor neemt binnenkort contact met je op.</div>' : '') +
+      '<div class="after">' +
+        '<a class="pdf-link" href="' + BROCHURE_PDF + '" target="_blank" rel="noopener">Of open de brochure meteen (PDF) →</a>' +
+        '<p class="spam-hint">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap.</p>' +
+      '</div>';
+    if (s2) { s2.insertAdjacentHTML('afterend', html); s2.parentNode.removeChild(s2); }
+    else if (!wrap.querySelector('.after')) {
+      var anchor = wrap.querySelector('.note') || wrap.querySelector('.submit');
+      anchor.insertAdjacentHTML('afterend', html);
     }
   }
 
@@ -433,6 +506,8 @@
     if (e.key !== 'Enter') return;
     var el = e.target;
     if (!el || el.tagName !== 'INPUT') return;
+    var s2 = el.closest('.step2');
+    if (s2) { var b2 = s2.querySelector('.submit'); if (b2 && !b2.disabled) { e.preventDefault(); submitAanvulling(b2); } return; }
     var wrap = el.closest('[data-form]');
     if (!wrap) return;
     var btn = wrap.querySelector('.submit');

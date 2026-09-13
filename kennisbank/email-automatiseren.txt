@@ -29,7 +29,7 @@ Standaardvragen zoals openingstijden, leverstatus of een factuurkopie worden aut
 > MAIL_05
 Data eruit halen
 Bestellingen, aanvragen en facturen worden automatisch uitgelezen en in je systemen gezet. Geen overtypen meer van bijlage naar boekhouding of CRM.
-MEER OVER FACTUURVERWERKING
+Factuurverwerking automatiseren
 > MAIL_06
 Signaleren
 Urgente zaken en boze klanten liggen meteen bovenop de stapel, met een melding naar de juiste persoon. Precies de mails die je niet wilt missen, mis je niet meer.
@@ -70,6 +70,14 @@ Hoe leert de AI onze tone of voice?
 We trainen op voorbeelden uit je eigen verzonden mail, aangevuld met richtlijnen over hoe jullie klanten aanspreken. Elke keer dat iemand een concept aanpast voordat het de deur uitgaat, is dat feedback waarmee de antwoorden beter worden.
 Kan dit samen met leadopvolging?
 Ja. Een offerte-aanvraag die binnenkomt kan direct een opvolgflow starten: kwalificeren, in je CRM zetten en een eerste reactie klaarzetten. E-mail automatisering en leadgeneratie versterken elkaar, en samen vormen ze de basis van een AI-medewerker .
+> C:\verder-lezen
+Verder lezen.
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+BLOG Waarom je AI-strategie begint bij je bestaande tools
+BLOG Stille zomer: tijd voor je processen
+GIDS AI-telefonist: wat kan het en wat kost het?
+DIENST Factuurverwerking automatiseren
+DIENST AI-medewerker inhuren
 > C:\forgexe\klaar
 Klaar voor een inbox die zichzelf sorteert ?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

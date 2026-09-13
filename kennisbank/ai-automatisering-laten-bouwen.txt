@@ -17,7 +17,7 @@ Drie niveaus, van simpel naar zelfstandig. We kiezen het lichtste dat de klus kl
 > NIVEAU_01
 Workflow
 Vaste stappen, voorspelbare input. Denk aan data van A naar B verplaatsen of een terugkerende handeling automatiseren. Snel gebouwd en het goedkoopst.
-MEER OVER N8N
+n8n-specialist inhuren
 > NIVEAU_02
 AI-agent
 Leest taal en beeld, neemt beslissingen en gaat om met uitzonderingen. Nodig zodra elke aanvraag net even anders is en er geoordeeld moet worden.
@@ -32,15 +32,15 @@ Elke automatisering wordt op maat gebouwd. Dit zijn de processen die het vaakst 
 > PROCES_01
 Leadopvolging
 Nieuwe aanvragen worden meteen opgepakt, gekwalificeerd en opgevolgd, zodat er geen warme lead blijft liggen.
-MEER OVER LEADGEN
+Leadgeneratie automatiseren
 > PROCES_02
 E-mail en inbox
 Inkomende mail wordt gelezen, gesorteerd en van een conceptantwoord voorzien. Je team opent een voorgesorteerde inbox.
-MEER OVER E-MAIL
+E-mail automatiseren met AI
 > PROCES_03
 Factuurverwerking
 Inkomende facturen worden uitgelezen, gecontroleerd en klaargezet in je boekhoudpakket. Van minuten handwerk naar seconden.
-MEER OVER FACTUREN
+Factuurverwerking automatiseren
 > PROCES_04
 Offertes en calculaties
 Een aanvraag of tekening wordt omgezet in een conceptofferte op basis van jouw prijzen en voorwaarden.
@@ -48,11 +48,11 @@ HOE WE DAT BOUWEN
 > PROCES_05
 Rapportages
 Cijfers uit je systemen komen samen in een rapport dat zichzelf bijwerkt. Voor management, klanten of beide.
-MEER OVER RAPPORTAGE
+AI-rapportage automatiseren
 > PROCES_06
 Planning
 Realtime data uit je systemen wordt vertaald naar slimme planningssuggesties die stilstand voorkomen.
-MEER OVER PLANNING
+Planning optimaliseren met AI
 > C:\proces
 Van idee naar draaiende automatisering in 4 stappen.
 > STAP_01
@@ -83,6 +83,14 @@ Op welke tools bouwen jullie?
 Vendor-vrij, vooral op n8n, gekoppeld aan de tools die je al gebruikt: CRM, mailbox, agenda, Excel of boekhoudpakket. Alles blijft jouw eigendom en je zit nergens aan vast.
 Heb ik AI nodig of kan het met een gewone automatisering?
 Niet elk proces heeft AI nodig. Vaste taken met duidelijke regels zijn sneller en goedkoper af met een workflow. AI is pas nodig als er taal, beeld of interpretatie in het spel zit. In de bedrijfsscan krijg je het eerlijke antwoord.
+> C:\verder-lezen
+Verder lezen.
+BLOG De ROI van procesautomatisering
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+GIDS Wat kost AI-automatisering?
+DIENST n8n-specialist inhuren
+CASE Technetium: AI-vacatureplatform
+BRANCHE AI voor de maakindustrie
 > C:\forgexe\klaar
 Klaar om jouw werk te laten automatiseren ?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

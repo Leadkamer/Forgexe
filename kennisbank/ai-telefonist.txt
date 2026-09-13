@@ -35,7 +35,7 @@ Slim doorverbinden
 Urgente of gevoelige gesprekken gaan direct naar een mens, de rest handelt de AI zelf af. Jij bepaalt de regels: welk type vraag mag de AI oplossen en wat moet altijd naar het team?
 > SKILL_05
 Gespreksverslagen naar je CRM of mailbox
-Van elk gesprek maakt de AI een samenvatting: wie belde, waarover, wat is afgesproken. Die landt automatisch in je CRM of mailbox, zodat niets tussen wal en schip valt.
+Van elk gesprek maakt de AI een samenvatting: wie belde, waarover, wat is afgesproken. Die landt automatisch in je CRM of mailbox , zodat niets tussen wal en schip valt.
 > SKILL_06
 Terugbelverzoeken en opvolging klaarzetten
 Kan de AI een vraag niet afhandelen, dan zet hij automatisch een terugbelverzoek of opvolgtaak klaar, inclusief context. Je team belt terug met het hele verhaal al paraat.
@@ -78,6 +78,12 @@ Is een AI-telefonist AVG-proof?
 Dat kan, mits je het goed inricht. Opnames en transcripties kunnen in een eigen (Europese) omgeving worden opgeslagen en je bepaalt zelf hoe lang data bewaard blijft. Meld het gebruik van een AI-telefonist wel in je privacyverklaring en wees transparant naar bellers.
 Bouwt Forgexe zelf AI-telefonisten?
 Wij bouwen de automatisering eromheen: de koppeling met je agenda, CRM en mailbox, de kennisbank waar de AI uit put en de opvolging na elk gesprek. Voor de stem zelf integreren we met gespecialiseerde voice-platformen. In de gratis bedrijfsscan bekijken we of een AI-telefonist bij jouw bedrijf past, of dat er een grotere quick win ligt. Neem contact op voor een kort gesprek.
+> C:\verder-lezen
+Verder lezen.
+BLOG Chatbot vs AI-agent: het verschil
+GIDS Wat kost AI-automatisering?
+DIENST AI-agent laten bouwen
+DIENST E-mail automatiseren met AI
 > C:\forgexe\klaar
 Benieuwd of een AI-telefonist bij jouw bedrijf past?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend, ook als de telefoon niet de beste plek blijkt om te beginnen.

@@ -19,7 +19,7 @@ Wat je in de praktijk ziet: de eerste 2-4 weken zijn een investering. Je brengt 
 Waar de echte ROI zit
 De directe ROI van procesautomatisering komt uit drie bronnen:
 1. Tijdsbesparing
-De meest meetbare winst. Repetitieve taken die voorheen uren kostten, worden in seconden afgehandeld. Denk aan factuurverwerking, data-invoer, rapportages genereren of e-mails versturen. Gemiddeld besparen bedrijven 15-25 uur per week op administratieve taken na een goede implementatie.
+De meest meetbare winst. Repetitieve taken die voorheen uren kostten, worden in seconden afgehandeld. Denk aan factuurverwerking , data-invoer, rapportages genereren of e-mails versturen . Gemiddeld besparen bedrijven 15-25 uur per week op administratieve taken na een goede implementatie.
 2. Foutreductie
 Mensen maken fouten , zeker bij repetitief werk. Een verkeerd overgetikt ordernummer, een gemiste deadline, een fout in een berekening. Automatisering elimineert deze fouten. In sectoren als finance en logistiek kan dit duizenden euro's per maand schelen aan correctiekosten en gemiste kansen.
 3. Schaalbaarheid
@@ -27,8 +27,8 @@ Dit is de meest onderschatte factor. Zonder automatisering groeit je operationel
 Concrete cijfers per procestype
 Gebaseerd op onze projecten bij MKB-bedrijven, zien we de volgende gemiddelde besparingen:
 Factuurverwerking: van 12 minuten naar 45 seconden per factuur. Bij 200 facturen per maand bespaar je ~37 uur per maand.
-Lead kwalificatie: van 8 minuten handmatige beoordeling naar instant scoring. Bij 100 leads per week bespaar je ~13 uur per week.
-Rapportages: van 4 uur handmatig samenvoegen naar real-time dashboards. Wekelijks ~4 uur bespaard plus betere data.
+Lead kwalificatie : van 8 minuten handmatige beoordeling naar instant scoring. Bij 100 leads per week bespaar je ~13 uur per week.
+Rapportages: van 4 uur handmatig samenvoegen naar real-time dashboards . Wekelijks ~4 uur bespaard plus betere data.
 E-mail opvolging: van handmatig bijhouden naar geautomatiseerde sequences. ~6 uur per week bespaard met hogere conversie.
 Onboarding nieuwe klanten: van 2 uur handmatig doorlopen naar 15 minuten geautomatiseerd. Bij 10 nieuwe klanten per maand bespaar je ~17 uur.
 De verborgen ROI
@@ -55,6 +55,15 @@ Conclusie
 De ROI van procesautomatisering is reëel, meetbaar en structureel. Maar het vereist een realistische verwachting: geen instant magic, wel compound effect . Begin met de processen die het meeste volume en de meeste pijn veroorzaken. Meet alles. En bouw van daaruit verder.
 Het verschil tussen bedrijven die groeien en bedrijven die vastlopen zit niet in harder werken. Het zit in de systemen die ze bouwen.
 Gratis automatiseringsscan aanvragen
+SA
+Sedat Ayar
+Oprichter van Forgexe. Bouwt AI-medewerkers en n8n-automatiseringen voor MKB-bedrijven in Limburg, Brabant en de rest van Nederland. LinkedIn · Over Forgexe
+> C:\verder-lezen
+Verder lezen.
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+GIDS Wat kost AI-automatisering?
+DIENST AI-automatisering laten bouwen
+DIENST Factuurverwerking automatiseren
 > C:\forgexe\klaar
 Klaar om dit toe te passen op je bedrijf ?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

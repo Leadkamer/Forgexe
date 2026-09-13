@@ -7,11 +7,22 @@ Home Over ons Diensten Branches Cases Prijzen Blog
 Contact
 Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+> C:\diensten\kern
+Waar bedrijven ons voor inhuren .
+Dit zijn de acht vragen waarmee MKB-bedrijven bij Forgexe binnenkomen. Elke pagina legt uit wat het is, wat het kost en hoe we het bouwen.
+DIENST AI-automatisering laten bouwen Werkende automatiseringen op je bestaande tools, gebouwd in n8n, binnen 4 tot 6 weken live.
+DIENST AI-agent laten bouwen Een agent die taken afmaakt in je systemen, van inbox tot order, met menselijke controle waar nodig.
+DIENST AI-medewerker inhuren Terugkerend werk uit handen: klantvragen, opvolging, rapportages. Voor een vast maandbedrag.
+DIENST n8n-specialist inhuren Bouw, hosting en beheer van n8n-workflows op EU-servers. Vendor-vrij, jij blijft eigenaar.
+DIENST Leadgeneratie automatiseren Van prospect tot afspraak: LinkedIn- en e-mailoutreach met persoonlijke opvolging.
+DIENST E-mail automatiseren met AI Inbox-triage en conceptantwoorden, zodat info@ geen zwart gat meer is.
+DIENST Factuurverwerking automatiseren Inkomende facturen uitlezen, matchen en boeken in je boekhoudpakket.
+GIDS Wat kost AI-automatisering? De eerlijke cijfers voor het MKB, inclusief onze vaste maandtarieven.
 > C:\overzicht
 Zeven diensten, één missie .
 Geen losse trucjes. Een werkbank waar AI-medewerkers samenwerken aan je groei en je operatie.
 LEADGEN
-AI Outreach & Leadgen
+Leadgeneratie automatiseren
 AI-medewerkers vinden je ideale klanten, schrijven persoonlijke openers en volgen op. Multi-channel: LinkedIn, e-mail, signal-triggers. Jij krijgt warme gesprekken in je agenda.
 > scan doelgroep: MKB maakindustrie |
 > gevonden: 1.224 matches |

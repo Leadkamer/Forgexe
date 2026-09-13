@@ -20,7 +20,7 @@ Wij vertalen je proces naar een robuuste n8n-workflow: foutafhandeling, logging 
 > N8N_02
 AI-agents in n8n
 De combinatie waar wij in uitblinken: n8n als motor, AI als brein. Agents die mail interpreteren, content schrijven en leads opvolgen.
-MEER OVER AI-AGENTS
+AI-agent laten bouwen
 > N8N_03
 Vastgelopen flows redden
 Zelf begonnen in n8n en loopt het vast? We auditen wat er staat, repareren wat kan en herbouwen wat moet. Zonder oordeel, dit zien we wekelijks.
@@ -33,7 +33,7 @@ n8n cloud of een eigen installatie op een Europese server: wij richten het in, b
 > N8N_06
 Team-training
 Wil je zelf kunnen bijsturen? We leren je team hoe n8n werkt, hoe je flows leest en hoe je zelf kleine aanpassingen doet.
-MEER OVER TRAININGEN
+AI-training voor je team
 > C:\waarom-n8n
 Waarom wij op n8n bouwen.
 We zijn vendor-vrij en kiezen per klant het beste gereedschap. Dat is verrassend vaak n8n, en dit is waarom.
@@ -71,6 +71,14 @@ Bouwen jullie ook AI-agents in n8n?
 Ja, dat is onze kern. We combineren n8n-workflows met AI-modellen tot agents die zelfstandig mail verwerken, leads opvolgen en content maken. Vrijwel al onze klantcases draaien op deze combinatie.
 Kunnen jullie ons team leren werken met n8n?
 Ja. Naast bouwen en beheren geven we praktijkgerichte trainingen waarin je team leert om zelf workflows te begrijpen, aan te passen en uit te breiden.
+> C:\verder-lezen
+Verder lezen.
+GIDS n8n vs Make vs Zapier
+BLOG CRM-integraties die uren per week besparen
+BLOG Waarom je AI-strategie begint bij je bestaande tools
+DIENST AI-automatisering laten bouwen
+DIENST AI-agent laten bouwen
+GIDS Wat kost AI-automatisering?
 > C:\forgexe\klaar
 Klaar om je n8n-automatisering te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

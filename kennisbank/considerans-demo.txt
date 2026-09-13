@@ -1,0 +1,35 @@
+PAGINA: /considerans-demo
+TITEL: Considerans
+OMSCHRIJVING: 
+
+Considerans
+Considerans .
+Peters Advocatuur x Forgexe
+Rechtsgebied
+Arbeidsrecht 10.953 uitspraken
+Bestuursrecht binnenkort
+Strafrecht binnenkort
+Werkstromen
+Contractanalyse Beding-check met jurisprudentie
+Dossieroverzicht Samenvatting plus risicopunten
+Correspondentie Concept in kantoorstijl
+Gebouwd op de NOvA-aanbevelingen AI in de advocatuur (2025). De advocaat blijft inhoudelijk verantwoordelijk.
+onafhankelijkheid partijdigheid deskundigheid integriteit vertrouwelijkheid
+Nieuw onderzoek
+arbeidsrecht · bronnen: rechtspraak.nl + wetten.overheid.nl
+concept-demo
+mr. J. Peters
+Cliënt (werkgever) heeft een werknemer die ruim twee jaar arbeidsongeschikt is. De werknemer stelt voor het dienstverband te beëindigen met toekenning van de transitievergoeding. Is cliënt verplicht daaraan mee te werken?
+Considerans
+In beginsel ja. Sinds de Xella-beschikking van de Hoge Raad geldt dat de eis van goed werkgeverschap (art. 7:611 BW) meebrengt dat een werkgever een voorstel van een langdurig arbeidsongeschikte werknemer tot beëindiging met wederzijds goedvinden behoort te aanvaarden, onder toekenning van een vergoeding ter hoogte van de wettelijke transitievergoeding HR 2019:1734, r.o. 2.7.2 .
+Dit ligt anders wanneer de werkgever een gerechtvaardigd belang heeft bij instandhouding van de arbeidsovereenkomst, bijvoorbeeld bij reële re-integratiemogelijkheden. Het naderen van de pensioengerechtigde leeftijd is volgens de Hoge Raad geen zodanig belang r.o. 2.7.3 .
+Voor cliënt relevant: de vergoeding hoeft niet hoger te zijn dan het bedrag berekend tot de dag waarop de loondoorbetalingsplicht eindigde, en cliënt kan compensatie aanvragen bij het UWV op grond van art. 7:673e BW.
+Bronnen (3)
+ECLI:NL:HR:2019:1734 Hoge Raad 8 november 2019 (Xella), rechtsoverwegingen 2.7.2 en 2.7.3
+art. 7:611 BW Goed werkgeverschap en goed werknemerschap
+art. 7:673e BW Compensatieregeling transitievergoeding bij langdurige arbeidsongeschiktheid
+ja Elke stelling herleidbaar tot uitspraak of wetsartikel. Controleer de bronnen voordat je adviseert; jij blijft verantwoordelijk.
+Vraag
+● anonimiseer-check actief
+zero data retention
+demo: antwoorden zijn voorgeprogrammeerd

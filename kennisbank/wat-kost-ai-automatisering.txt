@@ -9,7 +9,7 @@ Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
 > C:\het-korte-antwoord
 Het korte antwoord.
-De prijs van AI-automatisering hangt af van het aantal processen en de complexiteit — en van hoe je afrekent. Bij een abonnement zit bouwen, hosting en onderhoud in een vast maandbedrag; bij een eenmalig project betaal je vooraf en ben je daarna zelf eigenaar. Beide routes bestaan, ook bij ons. De actuele bedragen per tier staan op onze prijzenpagina .
+De prijs van AI-automatisering hangt af van het aantal processen en de complexiteit — en van hoe je afrekent. Bij een abonnement zit bouwen, hosting en onderhoud in een vast maandbedrag; bij een eenmalig project betaal je vooraf en ben je daarna zelf eigenaar. Beide routes bestaan, ook bij ons. De actuele bedragen per tier staan op onze prijsoverzicht .
 Dat is de samenvatting. Maar "het hangt ervan af" is een irritant antwoord als je een budget moet maken, dus hieronder maken we het concreet: waar de prijs uit bestaat, wat verschillende prijsmodellen betekenen voor jouw risico, en hoe je aanbieders eerlijk met elkaar vergelijkt.
 > C:\prijsopbouw
 Waar betaal je eigenlijk voor?
@@ -35,7 +35,7 @@ Voorspelbaarheid | Laag, uren lopen op | Hoog voor de bouw, daarna onbekend | Ho
 Onderhoud | Losse facturen achteraf | Apart contract of niet geregeld | Inbegrepen |
 Risico ligt bij | Jou | Jou, na oplevering | De leverancier |
 Past bij | Los advies of klein klusje | Eén afgebakend project | Doorlopend automatiseren |
-Wij werken zelf met het abonnementsmodel ( Forge.Start ), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Voor groter maatwerk (Forge.Pro) zit de ontwikkeling in het maandbedrag in plaats van in setup-kosten vooraf, met minimaal 6 maanden looptijd. En wil je helemaal geen abonnement? Dat kan bij ons ook: met Forge.Project bouwen we eenmalig en dragen we alles volledig aan je over, met beheer als optie in plaats van verplichting. De actuele bedragen per tier staan op de prijzenpagina .
+Wij werken zelf met het abonnementsmodel ( Forge.Start ), precies omdat de rekening van een omgevallen automatisering anders altijd bij jou landt. Voor groter maatwerk (Forge.Pro) zit de ontwikkeling in het maandbedrag in plaats van in setup-kosten vooraf, met minimaal 6 maanden looptijd. En wil je helemaal geen abonnement? Dat kan bij ons ook: met Forge.Project bouwen we eenmalig en dragen we alles volledig aan je over, met beheer als optie in plaats van verplichting. De actuele bedragen per tier staan op de onze abonnementen .
 > C:\voorbeelden
 Wat bepaalt de prijs per automatisering?
 Dezelfde soort automatisering kan simpel of complex zijn. Dit zijn de knoppen waar de prijs aan hangt.
@@ -53,7 +53,7 @@ De meeste MKB-automatiseringen verdienen zichzelf in 2 tot 6 maanden terug. De r
 Tijd per week aan offertes opstellen 6 uur
 Loonkosten per uur (incl. werkgeverslasten) EUR 45
 Kosten van het handwerk per maand EUR 1.170
-Zet daar het maandbedrag van de automatisering naast (zie de prijzenpagina ) en je hebt je businesscase. En dit rekent alleen de uren: de snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.
+Zet daar het maandbedrag van de automatisering naast (zie de prijsoverzicht ) en je hebt je businesscase. En dit rekent alleen de uren: de snellere reactietijd naar klanten, minder fouten en het feit dat je team weer aan echt werk toekomt, zitten er nog niet eens in.
 > C:\verborgen-kosten
 Verborgen kosten waar je op moet letten.
 De vragen die je elke aanbieder (ook ons) zou moeten stellen voordat je tekent.
@@ -70,7 +70,7 @@ Hoe complexer de oplossing, hoe hoger de prijs. Maar veel processen hebben helem
 > C:\faq
 Veelgestelde vragen over kosten.
 Wat kost een AI-agent laten bouwen?
-De prijs hangt af van de complexiteit en het aantal systemen waarin de agent werkt. Bij Forgexe stap je in met een vast maandabonnement zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig en dragen we alles aan je over. De actuele bedragen staan op de prijzenpagina . Meer daarover op de pagina AI-agent laten bouwen AI-automatisering laten bouwen AI-automatisering Limburg AI-automatisering Eindhoven .
+De prijs hangt af van de complexiteit en het aantal systemen waarin de agent werkt. Bij Forgexe stap je in met een vast maandabonnement zonder eenmalige kosten (Forge.Start); voor groter maatwerk (Forge.Pro) verwerken we de ontwikkeling in het maandbedrag in plaats van setup-kosten vooraf, dus geen verrassingen. Liever helemaal geen abonnement? Met Forge.Project bouwen we eenmalig en dragen we alles aan je over. De actuele bedragen staan op de onze abonnementen . Meer daarover op de pagina AI-agent laten bouwen AI-automatisering laten bouwen AI-automatisering Limburg AI-automatisering Eindhoven .
 Wat kost een AI-chatbot voor mijn website?
 De prijs hangt vooral af van hoeveel systemen de chatbot moet kunnen raadplegen en hoeveel hij zelfstandig mag afhandelen. Reken naast de bouw ook op maandelijkse kosten voor hosting en AI-verbruik.
 Hoe snel verdient AI-automatisering zich terug?
@@ -81,6 +81,14 @@ Betaal ik per gebruiker of per proces?
 Bij de meeste automatiseringspartijen betaal je per proces of per abonnement, niet per gebruiker. Dat is een belangrijk verschil met softwarelicenties: een automatisering die eenmaal draait, werkt voor je hele team zonder extra kosten per persoon. Zo werkt een AI-medewerker voor iedereen tegelijk.
 Zijn er verborgen kosten bij AI-automatisering?
 Die kunnen er zijn: AI-verbruikskosten die meegroeien met volume, per-taak-tarieven bij tools als Zapier, en onderhoud dat niet in de offerte zat. Vraag altijd wat er gebeurt na oplevering en wie betaalt als er iets stukgaat. Bij Forgexe zit alles in het maandbedrag, zie de prijzenpagina .
+> C:\verder-lezen
+Verder lezen.
+BLOG De ROI van procesautomatisering
+GIDS AI-telefonist: wat kan het en wat kost het?
+GIDS n8n vs Make vs Zapier
+PRIJZEN Prijzen en abonnementen
+DIENST AI-automatisering laten bouwen
+BLOG EU AI Act verplichtingen voor het MKB
 > C:\forgexe\klaar
 Weten wat het voor jouw bedrijf kost?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij, met een concreet prijsplaatje. Vrijblijvend.

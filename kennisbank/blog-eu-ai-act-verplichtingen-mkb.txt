@@ -1,0 +1,52 @@
+PAGINA: /blog-eu-ai-act-verplichtingen-mkb
+TITEL: EU AI Act verplichtingen: wat MKB nu al moet regelen
+OMSCHRIJVING: Denk je dat de EU AI Act is uitgesteld? Alleen hoog-risico schuift op. Ontdek welke EU AI Act verplichtingen voor jouw MKB nu al gelden en wat je moet vastleggen.
+
+FORGEXE
+Home Over ons Diensten Branches Cases Prijzen Blog
+Contact
+Gratis bedrijfsscan
+x Home Over ons Diensten Branches Cases Prijzen Blog Contact
+Terug naar blog
+AI
+23 aug 2026
+4 min leestijd
+EU AI Act verplichtingen: wat MKB nu al moet regelen
+Even opgelucht ademhalen: de deadline voor hoog-risico AI-systemen is opgeschoven . Maar wie denkt dat de EU AI Act verplichtingen daarmee even geparkeerd zijn, heeft het mis. Sinds de Digital Omnibus op 27 juli 2026 van kracht ging, is alleen het hoog-risicodeel uitgesteld naar 2 december 2027. De rest van de wet loopt gewoon door. En juist dat deel raakt bijna elk MKB-bedrijf dat ChatGPT, Copilot of een chatbot gebruikt.
+In dit artikel zetten we op een rij wat er wél en niet is uitgesteld, en wat je nu concreet moet regelen om aan de eisen te voldoen.
+Wat is er precies uitgesteld (en wat niet)?
+De Digital Omnibus geeft bedrijven meer tijd voor de zwaarste categorie: hoog-risico AI-systemen, denk aan AI in sollicitatieprocedures, kredietbeoordeling of medische toepassingen. Voor die systemen geldt nu een nieuwe deadline van 2 december 2027 in plaats van augustus 2026.
+Wat níét is uitgesteld:
+Het verbod op bepaalde AI-praktijken, zoals manipulatieve systemen of ongerichte gezichtsherkenning uit camerabeelden
+De transparantieverplichtingen, bijvoorbeeld de plicht om mensen te laten weten dat ze met een chatbot praten of dat content AI-gegenereerd is
+De AI-geletterdheidsplicht (AI literacy) voor bedrijven die AI-systemen inzetten of laten inzetten door personeel
+Met andere woorden: het uitstel geldt voor de zwaarste categorie AI, niet voor de basisregels die voor bijna iedereen gelden.
+Deze EU AI Act verplichtingen gelden al vanaf nu
+Voor een gemiddeld MKB-bedrijf komen de actuele verplichtingen neer op drie dingen. Eén: je mag geen AI inzetten die op de verboden lijst staat, zoals systemen die kwetsbaarheden van mensen uitbuiten of subliminale technieken gebruiken om gedrag te sturen. Twee: als klanten of medewerkers met AI communiceren, chatbot, AI-telefonie, gegenereerde content, moet dat duidelijk kenbaar worden gemaakt. Drie: iedereen die binnen jouw organisatie met AI werkt of AI-systemen beheert, moet over voldoende kennis beschikken om de risico's en beperkingen te begrijpen. Dat laatste heet AI-geletterdheid, en het is niet vrijblijvend.
+AI-geletterdheid aantoonbaar maken: wat betekent dat in de praktijk?
+Dit is het punt waar veel ondernemers vastlopen, want de wet zegt wel dát het moet, maar niet precies hóe. In de praktijk komt het neer op drie stappen die je kunt vastleggen en aantonen:
+Inventariseer welke AI-tools binnen je bedrijf worden gebruikt, van ChatGPT op de marketingafdeling tot Copilot in Office en een chatbot op je website
+Documenteer wie welke tool gebruikt, waarvoor, en welke risico's daarbij horen, denk aan foutieve output, datalekken of vooroordelen in gegenereerde tekst
+Train medewerkers minimaal op basisniveau: wat kan de tool wel en niet, wanneer moet je output controleren, en wat mag je niet zomaar aan AI overlaten
+Bewaar deze documentatie. Bij een controle of klacht moet je kunnen laten zien dat je hier serieus mee bezig bent geweest, een mondelinge toezegging is niet genoeg.
+Wat dit betekent als je ChatGPT, Copilot of een chatbot gebruikt
+Veel MKB-bedrijven denken dat de AI Act alleen relevant is voor bedrijven die zelf AI-systemen ontwikkelen. Dat klopt niet. Ook als afnemer van AI-tools ben je verantwoordelijk voor hoe je ze inzet. Gebruik je bijvoorbeeld een chatbot voor klantenservice, dan moet die zich kenbaar maken als AI. Gebruik je Copilot om conceptteksten of rapportages te genereren, dan is het slim om vast te leggen dat output altijd door een mens wordt gecontroleerd voordat het naar buiten gaat.
+De praktische impact is vaak kleiner dan de wet doet vermoeden, maar het vraagt wel dat je het ordentelijk vastlegt. Geen beleid hebben is het grootste risico, niet het gebruik van AI zelf.
+Hoe je dit slim aanpakt zonder dat het je weken kost
+Je hoeft dit niet vanaf nul zelf uit te zoeken. Bij het bouwen van AI-automatiseringen voor klanten nemen we compliance standaard mee: van transparantie in klantcommunicatie tot heldere afspraken over menselijke controle op AI-output. Werk je al met een AI-medewerker voor klantcontact of interne processen, dan bouwen we de transparantieplicht en documentatie direct in het proces in, in plaats van dat je dit achteraf moet repareren.
+Benieuwd hoe dat er voor jouw bedrijf uitziet? Bekijk onze expertises voor een overzicht van hoe we AI-automatisering en compliance combineren.
+Twijfel je of jouw huidige AI-gebruik voldoet aan de basisverplichtingen, of wil je weten waar je precies staat? Vraag een gratis bedrijfsscan aan via contact en we lopen samen door wat er voor jouw situatie al geregeld moet zijn.
+SA
+Sedat Ayar
+Oprichter van Forgexe. Bouwt AI-medewerkers en n8n-automatiseringen voor MKB-bedrijven in Limburg, Brabant en de rest van Nederland. LinkedIn · Over Forgexe
+> C:\verder-lezen
+Verder lezen.
+BLOG Waarom je AI-strategie begint bij je bestaande tools
+BLOG De ROI van procesautomatisering
+DIENST EU AI Act-aanpak
+DIENST AI-training voor je team
+> C:\forgexe\klaar
+Klaar om dit toe te passen op je bedrijf ?
+Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.
+Gratis bedrijfsscan
+Meer artikelen

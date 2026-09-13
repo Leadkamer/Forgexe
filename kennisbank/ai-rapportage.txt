@@ -21,6 +21,12 @@ Rapportages worden op schema gegenereerd. Dagelijks, wekelijks, maandelijks of o
 > STAP_04
 Distributie en alerts
 Per e-mail, Slack, Teams of in een live dashboard. Elke stakeholder krijgt de juiste informatie op het juiste moment.
+> C:\verder-lezen
+Verder lezen.
+BLOG 5 processen die elk MKB-bedrijf vandaag kan automatiseren
+DIENST Dashboarding en AI-platform
+CASE Fietsencatalogus: portaal en AI-contentpipeline
+DIENST AI-medewerker inhuren
 > C:\forgexe\klaar
 Klaar om je ai rapportage te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

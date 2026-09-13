@@ -23,7 +23,7 @@ Het systeem zoekt bedrijven en mensen die aan je profiel voldoen en vult de gege
 > LEADGEN_03
 Persoonlijke benadering
 Berichten via LinkedIn en e-mail, geschreven op de situatie van de prospect in plaats van een template met een voornaam erin. Dit is de dienst die wij uitvoeren als AI Outreach.
-MEER OVER AI OUTREACH
+LinkedIn outreach met AI
 > LEADGEN_04
 Automatische opvolging
 De meeste deals ontstaan pas na meerdere contactmomenten, en precies daar verslapt het handmatig. Het systeem volgt op op het juiste moment en stopt direct zodra iemand reageert.
@@ -70,6 +70,14 @@ Werkt dit ook voor nichemarkten?
 Juist daar. Een kleinere doelgroep betekent dat elk bericht raak moet zijn, en dat is precies waar personalisatie op basis van bedrijfsdata het verschil maakt. In een niche kun je je geen wegwerp-outreach veroorloven; een doordacht systeem dat elke prospect serieus neemt wel.
 Wat hebben jullie hier zelf mee gebouwd?
 Meerdere leadgen-systemen die in productie draaien bij klanten, van signal monitoring tot complete outreach-machines met automatische opvolging. Bekijk onze cases voor de details, bijvoorbeeld de case van Technetium .
+> C:\verder-lezen
+Verder lezen.
+BLOG LinkedIn outreach: handmatig vs AI-gestuurd
+BLOG Hoe AI-agents je salesteam versterken
+CASE DNA-talent: AI-outreach voor coaches en HR
+CASE Smart ESG: AI-leadgen voor de maakindustrie
+CASE RealCob: AI-growth voor AVG-software
+DIENST E-mail automatiseren met AI
 > C:\forgexe\klaar
 Klaar om je leadgeneratie te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

@@ -21,6 +21,12 @@ Het platform wordt gebouwd en gekoppeld aan je bestaande tools. Real-time data, 
 > STAP_04
 Oplevering en support
 Training voor je team, documentatie, en ondersteuning in de eerste maanden. Het platform is van jullie.
+> C:\verder-lezen
+Verder lezen.
+CASE Technetium: AI-vacatureplatform
+CASE Fietsencatalogus: portaal en AI-contentpipeline
+DIENST AI-rapportage
+DIENST AI-agent laten bouwen
 > C:\forgexe\klaar
 Klaar om je custom platform te smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

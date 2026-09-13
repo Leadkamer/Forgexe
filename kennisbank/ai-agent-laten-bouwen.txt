@@ -31,7 +31,7 @@ BEKIJK DE CASE
 > AGENT_05
 Rapportage-agent
 Verzamelt cijfers uit je systemen en levert elke week een kant-en-klaar rapport af. Voor management, klanten of beide.
-MEER OVER RAPPORTAGE
+AI-rapportage automatiseren
 > AGENT_06
 Signaal-agent
 Bewaakt bronnen die voor jou belangrijk zijn: vacatures, nieuws, socials of marktplaatsen. Zodra er een koopsignaal verschijnt, ligt het bij je sales op tafel.
@@ -76,6 +76,14 @@ Heb ik een AI-agent nodig of een gewone workflow?
 Niet elk proces heeft een AI-agent nodig. Een vaste taak met duidelijke regels is vaak beter en goedkoper af met een workflow. Een agent is pas nodig als er beslissingen of taal in het spel zijn, zoals mail interpreteren of berichten schrijven. In de bedrijfsscan krijg je het eerlijke antwoord voor jouw situatie.
 Wat gebeurt er als de AI-agent een fout maakt?
 We bouwen controlemomenten in: bij belangrijke acties kijkt eerst een mens mee voordat er iets de deur uitgaat. Daarnaast bewaken we elke agent doorlopend en zien we afwijkingen voordat jij er last van hebt. Hoe dat in de praktijk werkt zie je in onze cases .
+> C:\verder-lezen
+Verder lezen.
+BLOG Chatbot vs AI-agent: het verschil
+BLOG Hoe AI-agents je salesteam versterken
+GIDS AI-telefonist: wat kan het en wat kost het?
+DIENST AI-medewerker inhuren
+CASE Technetium: AI-vacatureplatform
+DIENST n8n-specialist inhuren
 > C:\forgexe\klaar
 Klaar om jouw AI-agent te laten smeden?
 Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.

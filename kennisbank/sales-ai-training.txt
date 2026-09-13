@@ -17,7 +17,7 @@ Beperkt tot 9 deelnemers per training — vol = vol.
 Trainingsdagen
 Max. deelnemers
 6 mnd
-Platform toegang
+Community-toegang
 Ontdek meer
 Waarom deze training
 De verkoper én | de technologie
@@ -25,39 +25,16 @@ In drie dagen leer je op een interactieve manier — toegespitst op jouw praktij
 Bewezen salesmethodiek
 Consultative selling, behoefteanalyse en gespreksstructuur — direct toepasbaar in de praktijk.
 AI als sales-versneller
-Bouw zelf AI Agents die je voorbereiden, simuleren en opvolgen — hands-on en praktijkgericht.
+Bouw zelf AI Agents die je voorbereiden en opvolgen — hands-on en praktijkgericht.
 Interactief & intensief
-Bomvol oefeningen, workshops en praktijksimulaties. Maximaal 9 deelnemers voor persoonlijke aandacht.
+Bomvol oefeningen en workshops. Maximaal 9 deelnemers voor persoonlijke aandacht.
 Leren door te doen
 Interactief en in kleine groepen — maximaal 9 deelnemers, volledig toegespitst op jouw eigen praktijk.
 Het programma
 Drie dagen die je | salesaanpak transformeren
 Van salesfundamenten tot AI-gedreven workflows — een unieke combinatie van mensenwerk en technologie.
-Training 4 — September / Oktober
-Training 5 — Oktober / November
-01
-Sales
-14 september
-Sales Foundation
-Voorbereiding
-Gespreksstructuur van professionele verkoopgesprekken
-Effectief communiceren — hoe dan?
-Omgaan met weerstanden in het gesprek
-02
-Sales
-15 september
-Van analyse naar deal
-Behoefte- en probleemanalyse: de basis voor succes
-Vanuit de behoefteanalyse toegevoegde waarde bepalen
-Toegevoegde waarde presenteren
-Overeenstemming bereiken — de juiste acties op het juiste moment
-03
-AI
-29 september
-AI Agents & automation voor Sales
-AI Fundamentals voor Sales — wat kun je er écht mee?
-Preparation Agent — voorbereiding & klantresearch automatiseren
-Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap
+Training 5 — Oktober
+Training 6 — November
 01
 Sales
 13 oktober
@@ -77,6 +54,29 @@ Overeenstemming bereiken — de juiste acties op het juiste moment
 03
 AI
 29 oktober
+AI Agents & automation voor Sales
+AI Fundamentals voor Sales — wat kun je er écht mee?
+Preparation Agent — voorbereiding & klantresearch automatiseren
+Leadgeneratie automation (AI-SDR) & je persoonlijke AI-roadmap
+01
+Sales
+16 november
+Sales Foundation
+Voorbereiding
+Gespreksstructuur van professionele verkoopgesprekken
+Effectief communiceren — hoe dan?
+Omgaan met weerstanden in het gesprek
+02
+Sales
+17 november
+Van analyse naar deal
+Behoefte- en probleemanalyse: de basis voor succes
+Vanuit de behoefteanalyse toegevoegde waarde bepalen
+Toegevoegde waarde presenteren
+Overeenstemming bereiken — de juiste acties op het juiste moment
+03
+AI
+30 november
 AI Agents & automation voor Sales
 AI Fundamentals voor Sales — wat kun je er écht mee?
 Preparation Agent — voorbereiding & klantresearch automatiseren
@@ -114,7 +114,7 @@ Certificaat
 Certificaat van | deelname
 💻
 6 maanden
-Toegang Fidecon | Learning Platform
+Toegang Fidecon | Community
 Wat je meekrijgt
 Meer dan alleen een training
 🤖
@@ -124,11 +124,11 @@ Je bouwt tijdens de training je eigen Preparation Agent en leadgeneratie-automat
 Persoonlijk Actieplan
 Reflectie en een concreet actieplan maken deel uit van de training. Je gaat weg met een roadmap op maat.
 🌐
-Community & Platform
-Tot zes maanden na afronding toegang tot het Fidecon Community & Learning Platform voor nazorg en verdieping.
+Fidecon Community
+Tot zes maanden na afronding toegang tot de Fidecon Community voor nazorg en verdieping.
 🎯
-Praktijksimulaties
-Oefeningen, workshops en simulaties op jouw dagelijkse praktijk toegespitst. Geen theorie zonder actie.
+Oefeningen & workshops
+Oefeningen en workshops op jouw dagelijkse praktijk toegespitst. Geen theorie zonder actie.
 Leadgeneratie Automation
 Leer hoe je AI-gedreven leadgeneratie opzet en je salesprocessen automatiseert voor structureel meer resultaat.
 🍽️
@@ -143,14 +143,14 @@ Voor salesprofessionals, accountmanagers, ondernemers en salesteams die meer uit
 Waar vindt de training plaats?
 Op een centraal gelegen, goed bereikbare locatie in Nederland. De exacte locatie ontvang je bij je bevestiging. Incompany bij jullie op kantoor kan ook.
 Is de prijs inclusief BTW?
-De prijs is €575 per deelnemer, per dag, exclusief 21% BTW. Facturatie gaat op bedrijfsnaam; catering, certificaat en 6 maanden platformtoegang zitten erbij.
+De prijs is €575 per deelnemer, per dag, exclusief 21% BTW. Facturatie gaat op bedrijfsnaam; catering, certificaat en 6 maanden community-toegang zitten erbij.
 Kan de training incompany of op maat?
 Ja. Vanaf 4 deelnemers verzorgen we de training incompany, volledig toegespitst op jullie markt, aanbod en salesproces. Vraag naar de mogelijkheden.
 Investering
 Klaar om slimmer | te verkopen ?
 €575
 per deelnemer, per dag | Exclusief BTW
-Inclusief catering, certificaat, 6 maanden platform-toegang en alle trainingsmaterialen.
+Inclusief catering, certificaat, 6 maanden community-toegang en alle trainingsmaterialen.
 Schrijf je in →
 Gregor Gersen
 Sales Trainer — Fidecon
@@ -175,8 +175,8 @@ Telefoonnummer
 Bedrijfsnaam
 Welke training? *
 Kies je voorkeur
-Training 4 — Start 14 september
 Training 5 — Start 13 oktober
+Training 6 — Start 16 november
 Ik hoor graag over volgende data
 Opmerkingen of vragen
 Verstuur inschrijving →
