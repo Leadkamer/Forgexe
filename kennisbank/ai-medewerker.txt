@@ -67,6 +67,68 @@ We testen samen, sturen bij op de praktijk en nemen je team mee. Pas als het klo
 > STAP_04
 Doorontwikkeling
 Elke maand wordt hij slimmer: nieuwe taken erbij, processen verfijnen, resultaten meten. Jij ziet precies wat hij oplevert.
+> C:\in-de-praktijk
+Maandagochtend, 60 mails in de inbox.
+Zo ziet een week eruit met een AI-medewerker die de inbox en de opvolging doet.
+MA 07:30
+Inbox gesorteerd
+De AI-medewerker leest alles wat in het weekend binnenkwam en sorteert op soort: vraag, aanvraag, factuur, klacht, overig.
+MA 07:45
+Conceptantwoorden klaar
+Voor 25 standaardvragen staat een conceptantwoord klaar in jouw toon. 8 aanvragen staan in je CRM met een score en een korte samenvatting.
+MA 09:15
+Jij leest 12 mails
+Je opent een inbox met de mails die echt aandacht vragen. De concepten keur je goed of past je aan; dat kost een kwartier.
+DO 10:00
+Opvolging loopt
+Aanvragen zonder reactie krijgen automatisch een tweede bericht. Drie terugbeltaken staan in de agenda van de juiste collega.
+> RESULTAAT Een inbox van 60 naar 12 mails die je zelf leest, en geen aanvraag meer die in het weekend blijft liggen. De AI-medewerker doet het sorteren en voorbereiden; jij het beslissen.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+Een AI-medewerker neemt een rol, geen losse taak. Welke rol, hangt af van waar bij jou de tijd weglekt.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Intake van nieuwe cliënten, dossiers bijwerken, herinneringen versturen en afspraken plannen. Voor kantoren en adviseurs die per uur werken.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Orderbevestigingen, levertijdvragen en retouren afhandelen, en de orderdesk ontlasten als de telefoon roodgloeiend staat.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Aanvragen sorteren en voorbereiden, planningsupdates naar klanten sturen en de mailbox van de werkvoorbereiding schoonhouden.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Content schrijven in de toon van het bureau, rapportages voor klanten samenstellen en eigen leads opvolgen.
+Voor bureaus
+> C:\bewijs
+Gebouwd en in gebruik.
+Geen verzonnen cijfers. Dit is wat er bij klanten draait.
+FIETSENCATALOGUS
+15u per week
+Een nieuwsbriefproces dat één persoon zo'n 15 uur per week kostte, draait nu via een portaal: AI selecteert branche-artikelen, de winkelier kiest er drie tot vijf, het systeem schrijft de nieuwsbrief in de huisstijl en verstuurt via Brevo.
+Bekijk de case
+Wat dit voor jou betekent
+Een rol, geen losse taak. Selecteren, samenstellen, schrijven, versturen: het hele nieuwsbriefproces zit bij één AI-medewerker.
+De mens houdt de keuze. De winkelier kiest de artikelen. Alles eromheen gebeurt vanzelf.
+Uitbreidbaar. Later kwam er een fotomodule en een marketingdashboard bij, op dezelfde basis.
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Vervangt dit mijn medewerker?
+Nee. Het neemt het werk over dat elke week terugkomt en niemand leuk vindt. Je team houdt de klantgesprekken, de uitzonderingen en de beslissingen.
+Hoe leert het onze manier van werken?
+We leggen jouw regels, voorbeelden en toon vast in een kennisbank. De eerste weken werkt de AI-medewerker in conceptmodus, zodat jij bijstuurt voordat er iets de deur uitgaat.
+Wat als een antwoord niet klopt?
+Dan zie je dat in de conceptfase en pas je het aan. Elke correctie wordt meegenomen. Per taak bepaal jij wanneer de AI-medewerker zelfstandig mag versturen.
+Hoeveel tijd kost het ons?
+Een scan van 30 minuten en twee werksessies. Daarna kost het je een kwartier per dag om concepten goed te keuren, in plaats van uren om alles zelf te doen.
+> INVESTERING
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten: Forge.Start vanaf EUR 500 per maand, na 3 maanden maandelijks opzegbaar. Meer maatwerk of meerdere AI-medewerkers? Forge.Pro. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen. Wat je precies kunt verwachten staat in wat kost AI-automatisering .
+Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen over AI-medewerkers.
 Wat kost een AI-medewerker?

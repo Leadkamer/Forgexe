@@ -297,6 +297,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
+<style id="deep-css">
+.dp-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.4rem;border:1px solid var(--line);border-radius:var(--radius-md,16px);overflow:hidden;background:#fafbfc}
+.dp-step{padding:1.5rem 1.4rem 1.6rem;border-right:1px solid var(--line);position:relative;min-width:0}
+.dp-step:last-child{border-right:0}
+.dp-time{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green-deep,#059669);letter-spacing:.08em;margin-bottom:.6rem}
+.dp-step h3{font-family:var(--head);font-size:1.02rem;font-weight:700;color:var(--ink);margin:0 0 .45rem;letter-spacing:-.01em}
+.dp-step p{font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.55;margin:0}
+.dp-step.dp-human{background:#fff}
+.dp-step.dp-human .dp-time{color:var(--ink)}
+.dp-step.dp-human .dp-time::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-right:.45rem;vertical-align:1px}
+.dp-outcome{display:flex;gap:1rem;align-items:flex-start;margin-top:1.4rem;padding:1.2rem 1.4rem;background:var(--green-soft,#d1fae5);border-radius:12px;font-family:var(--head);font-size:.95rem;color:#052e16;line-height:1.55}
+.dp-outcome strong{font-weight:700}
+.dp-outcome .dp-k{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;flex-shrink:0;padding-top:.2rem}
+.dp-sectors{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2.4rem}
+.dp-sector{border:1px solid var(--line);border-radius:var(--radius-md,16px);padding:1.5rem 1.4rem;background:#fff;display:flex;flex-direction:column}
+.dp-sector .dp-k{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--green-deep,#059669);margin-bottom:.7rem}
+.dp-sector h3{font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--ink);margin:0 0 .5rem;letter-spacing:-.01em}
+.dp-sector p{font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.55;margin:0 0 1rem;flex:1}
+.dp-sector a{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.06em;color:var(--ink);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+.dp-proof{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;margin-top:2.4rem}
+.dp-case{background:#0a0b0e;color:#fff;border-radius:var(--radius-md,16px);padding:2rem 2rem 1.8rem;display:flex;flex-direction:column}
+.dp-case .dp-k{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;color:var(--green);margin-bottom:1rem}
+.dp-case .dp-num{font-family:var(--head);font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.025em;line-height:1;margin-bottom:.8rem}
+.dp-case p{font-family:var(--head);font-size:.95rem;color:rgba(255,255,255,.78);line-height:1.6;margin:0 0 1.2rem;flex:1}
+.dp-case a{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--green);text-decoration:none}
+.dp-case a:hover{text-decoration:underline}
+.dp-why{border:1px solid var(--line);border-radius:var(--radius-md,16px);padding:1.8rem 1.8rem;background:#fafbfc}
+.dp-why h3{font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--ink);margin:0 0 .8rem}
+.dp-why ul{margin:0;padding-left:1.1rem;font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.6}
+.dp-why li{margin-bottom:.5rem}
+.dp-why li strong{color:var(--ink);font-weight:600}
+.dp-obj{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:2.4rem}
+.dp-ob{border:1px solid var(--line);border-radius:var(--radius-md,16px);padding:1.5rem 1.6rem;background:#fff}
+.dp-ob .dp-q{font-family:var(--head);font-size:1.02rem;font-weight:700;color:var(--ink);margin:0 0 .5rem;letter-spacing:-.01em}
+.dp-ob .dp-q::before{content:'\201C';color:var(--green);margin-right:.15rem}
+.dp-ob .dp-q::after{content:'\201D';color:var(--green);margin-left:.15rem}
+.dp-ob p{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.6;margin:0}
+.dp-note{margin-top:1.4rem;font-family:var(--head);font-size:.88rem;color:var(--ink-mut);max-width:70ch;line-height:1.55}
+.price-band{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:2.6rem;padding:2rem 2.2rem;background:#0a0b0e;border-radius:var(--radius-md,16px)}
+.price-band .pb-label{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:.5rem}
+.price-band .pb-num{font-family:var(--head);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.price-band .pb-num span{font-size:.9rem;font-weight:500;color:#8d9bb5}
+.price-band p{font-family:var(--head);font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.6;max-width:52ch;margin:0}
+@media(max-width:1100px){.dp-flow{grid-template-columns:1fr 1fr}.dp-step:nth-child(2){border-right:0}.dp-step:nth-child(-n+2){border-bottom:1px solid var(--line)}.dp-sectors{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.dp-flow{grid-template-columns:1fr}.dp-step{border-right:0;border-bottom:1px solid var(--line)}.dp-step:last-child{border-bottom:0}.dp-sectors,.dp-proof,.dp-obj{grid-template-columns:1fr}.dp-case{padding:1.6rem 1.4rem}.price-band{padding:1.5rem 1.3rem}}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -365,6 +411,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div><div class="pb-label">&gt; INVESTERING</div><div class="pb-num">Vast bedrag <span>/ maand</span></div></div>
     <p>Instappen kan zonder eenmalige kosten (Forge.Start, na 3 maanden maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.</p>
     <a href="/pricing" class="btn-pill primary">Bekijk alle prijzen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\in-de-praktijk</span>
+  <h2 class="section-h2">Een offerteaanvraag op vrijdagmiddag.</h2>
+  <p class="section-sub" style="margin:0 auto">Zo ziet een gebouwde automatisering eruit als hij draait. Geen demo, gewoon een gemiddelde vrijdag.</p></div>
+  <div class="dp-flow">
+    <div class="dp-step"><div class="dp-time">VR 16:40</div><h3>Aanvraag komt binnen</h3><p>Een klant vult het formulier in op je site. De automatisering leest de aanvraag, zoekt de klant op in je CRM en haalt eerdere offertes erbij.</p></div>
+    <div class="dp-step"><div class="dp-time">VR 16:52</div><h3>Concept staat klaar</h3><p>Op basis van jouw prijslijst en eerdere offertes staat er een conceptofferte in je mailbox, met een korte samenvatting van wat de klant vraagt.</p></div>
+    <div class="dp-step dp-human"><div class="dp-time">MA 08:50</div><h3>Jij keurt goed</h3><p>Je leest het concept, past een regel aan en klikt op akkoord. Dat is het enige moment waarop een mens nodig is.</p></div>
+    <div class="dp-step"><div class="dp-time">MA 09:05</div><h3>Verstuurd en gepland</h3><p>De offerte gaat naar de klant, de deal staat in je CRM en over vier dagen staat er automatisch een opvolgtaak klaar.</p></div>
+  </div>
+  <div class="dp-outcome"><span class="dp-k">&gt; RESULTAAT</span><span><strong>Van twee werkdagen naar twaalf minuten</strong> voorbereiding per offerte, en niemand hoeft op vrijdag over te werken. De beslissing blijft bij jou; het uitzoekwerk niet.</span></div>
+  <p class="dp-note">De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.</p>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\voor-wie</span>
+  <h2 class="section-h2">Voor wie dit werkt.</h2>
+  <p class="section-sub" style="margin:0 auto">AI-automatisering is geen maakindustrie-ding. Elk bedrijf met terugkerend werk tussen inbox, CRM en boekhouding heeft er iets aan.</p></div>
+  <div class="dp-sectors">
+    <div class="dp-sector"><div class="dp-k">DIENSTVERLENING</div><h3>Zakelijke dienstverlening</h3><p>Intake van nieuwe cli&euml;nten, dossiers aanvullen, urenregistratie omzetten in facturen en herinneringen die zichzelf versturen. Voor accountants, adviseurs en advocaten.</p><a href="/branche-zakelijke-dienstverlening">Voor dienstverleners &rarr;</a></div>
+    <div class="dp-sector"><div class="dp-k">HANDEL</div><h3>Handel en groothandel</h3><p>Orderdesk, voorraad- en levertijdvragen, orderbevestigingen en koppelingen tussen webshop, ERP en vervoerder.</p><a href="/branche-technische-groothandel">Voor groothandels &rarr;</a></div>
+    <div class="dp-sector"><div class="dp-k">MAAK EN TECHNIEK</div><h3>Maak en techniek</h3><p>Offertes op basis van tekeningen en stuklijsten, productieplanning uit je ERP en aanvragen die bij de juiste engineer landen.</p><a href="/branche-maakindustrie">Voor de maakindustrie &rarr;</a></div>
+    <div class="dp-sector"><div class="dp-k">BUREAUS EN ONLINE</div><h3>Bureaus en online</h3><p>Briefings die vanzelf in de planning komen, rapportages naar klanten en eigen acquisitie die doorloopt als het druk is.</p><a href="/branche-marketing-bureaus">Voor bureaus &rarr;</a></div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\bewijs</span>
+  <h2 class="section-h2">Gebouwd en in gebruik.</h2>
+  <p class="section-sub" style="margin:0 auto">Geen verzonnen cijfers. Dit is wat er bij klanten draait.</p></div>
+  <div class="dp-proof">
+    <div class="dp-case"><div class="dp-k">FIETSENCATALOGUS</div><div class="dp-num">15u <span style="font-size:.5em;font-weight:600;color:#8d9bb5">per week</span></div><p>Een nieuwsbriefproces dat &eacute;&eacute;n persoon zo'n 15 uur per week kostte, draait nu via een portaal: AI selecteert branche-artikelen, de winkelier kiest er drie tot vijf, het systeem schrijft de nieuwsbrief in de huisstijl en verstuurt via Brevo.</p><a href="/case-fietsencatalogus">Bekijk de case &rarr;</a></div>
+    <div class="dp-why"><h3>Wat dit voor jou betekent</h3><ul><li><strong>Zelfde bouwstenen.</strong> Uitlezen, kiezen, schrijven, versturen: de blokken waaruit dit portaal bestaat, gebruiken we voor bijna elke automatisering.</li><li><strong>Mens op de juiste plek.</strong> De winkelier kiest, het systeem doet de rest. Dat is de verdeling die we overal aanhouden.</li><li><strong>Op bestaande tools.</strong> Brevo, het eigen CMS en de fotobibliotheek zijn niet vervangen, alleen aan elkaar geknoopt.</li></ul></div>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div style="text-align:center"><span class="eyebrow">&gt; C:\bezwaren</span>
+  <h2 class="section-h2">Wat bedrijven ons eerst vragen.</h2>
+  <p class="section-sub" style="margin:0 auto">De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.</p></div>
+  <div class="dp-obj">
+    <div class="dp-ob"><div class="dp-q">Onze software heeft geen koppeling.</div><p>Bijna elk pakket heeft een export, een mailbox of een importfunctie. Daar koppelen we op. In de scan checken we dit als eerste, zodat je vooraf weet of het kan.</p></div>
+    <div class="dp-ob"><div class="dp-q">Wat als het fout gaat?</div><p>Elke automatisering krijgt een goedkeurstap waar het spannend wordt en logt alles wat hij doet. Fouten zijn zichtbaar en terug te draaien. Pas als het maanden goed gaat, mag hij meer zelf.</p></div>
+    <div class="dp-ob"><div class="dp-q">We hebben al eens iets geprobeerd met Zapier.</div><p>Een losse koppeling is snel gemaakt en snel kapot. Wij bouwen het hele proces, inclusief uitzonderingen, foutafhandeling en beheer. En we blijven erbij na de oplevering.</p></div>
+    <div class="dp-ob"><div class="dp-q">Is dit AVG-proof?</div><p>Je data blijft in je eigen systemen. De automatisering draait op EU-servers, gebruikt jouw data niet om modellen te trainen en we tekenen een verwerkersovereenkomst.</p></div>
   </div>
 </section>
 

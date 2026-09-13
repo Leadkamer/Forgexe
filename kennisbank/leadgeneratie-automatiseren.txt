@@ -56,6 +56,69 @@ We bouwen het complete systeem, vendor-vrij en meestal op n8n, zodat alles jouw 
 > STAP_04
 Optimaliseren op cijfers
 We meten wat werkt en stellen doelgroep, boodschap en timing maandelijks bij. Alles inbegrepen in een vast maandabonnement. Zie prijzen .
+> C:\in-de-praktijk
+Een week outreach, zonder dat jij erachteraan zit.
+Zo loopt geautomatiseerde leadgeneratie in de praktijk. De cijfers verschillen per doelgroep; het ritme niet.
+DI 08:10
+Nieuwe profielen gevonden
+Het systeem vindt 40 profielen die passen bij je ideale klant en schrijft per persoon een korte, persoonlijke opener op basis van functie en bedrijf.
+DI 08:30
+Jij keurt de lijst
+In tien minuten loop je de lijst door, schrapt wat niet past en past een paar zinnen aan. Daarna gaat het de deur uit in een menselijk tempo.
+VR / DI
+Opvolging loopt vanzelf
+Wie niet reageert, krijgt op dag 3 en dag 7 een vervolgbericht met iets nuttigs: een inzicht, een voorbeeld, een vraag. Geen druk.
+DO 11:20
+Afspraak in de agenda
+Reacties landen in je CRM met de hele gespreksgeschiedenis. Een positief antwoord wordt een agendavoorstel; jij voert het gesprek.
+> RESULTAAT Elke week nieuwe gesprekken , ook in drukke weken en tijdens vakantie. Jij besteedt een kwartier aan goedkeuren en de rest aan de gesprekken zelf.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+Geautomatiseerde leadgeneratie werkt zodra je doelgroep afgebakend is en je iets te vertellen hebt. Dat geldt ver buiten de techniek.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Adviseurs, coaches en kantoren die kennis-eerst willen benaderen: een inzicht delen, daarna pas een vraag stellen.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Nieuwe dealers, installateurs of afnemers vinden en warm houden, met signalen als een vacature of nieuwbouw als aanleiding.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Toeleveranciers die bij OEM's en inkopers aan tafel willen, met een scan op locatie als concrete haak.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Bureaus waarvan de eigen acquisitie stilvalt zodra het druk is. Het systeem houdt de pipeline gevuld.
+Voor bureaus
+> C:\bewijs
+Gebouwd en in gebruik.
+Geen verzonnen cijfers. Dit is wat er bij klanten draait.
+DNA-TALENT
+293 berichten
+Persoonlijke LinkedIn-berichten in de eigen schrijfstijl van de coach, verstuurd en opgevolgd zonder handwerk. Daarnaast een AI-blogger die wekelijks content in haar toon schrijft.
+Bekijk de case
+Wat dit voor jou betekent
+Eigen toon. De berichten klinken als de coach zelf. Dat is de eerste voorwaarde voor reacties.
+Klein beginnen. Vanuit Brabant, daarna landelijk. Doelgroep en boodschap eerst scherp, dan pas volume.
+Meer dan LinkedIn. Dezelfde basis voedt ook de wekelijkse blogs.
+Ook Smart ESG (maakindustrie, drie-staps opvolging) en RealCob (AVG-software, drie campagnes op drie segmenten) draaien op dit systeem. Bekijk ze op de casespagina .
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+LinkedIn-spam, daar doen wij niet aan.
+Wij ook niet. Eén persoonlijke opener zonder verkooppraatje, geen gescrapete data in het eerste bericht en opvolging die iets brengt. Een sales-savvy doelgroep prikt door alles anders heen.
+Wat als mijn account geblokkeerd wordt?
+We houden ons aan de daglimieten, versturen in een menselijk tempo en bouwen nieuwe accounts rustig op. Bij twijfel gaan we langzamer.
+Onze doelgroep zit niet op LinkedIn.
+Dan werken we met e-mail en signalen: een vacature, een verhuizing, een vergunning. Het systeem is niet aan één kanaal gebonden.
+Wie schrijft de berichten?
+Wij schrijven de eerste versies op basis van jouw toon en voorbeelden. Jij keurt. Na een paar rondes staat de stijl en hoef je alleen nog uitzonderingen te lezen.
+> INVESTERING
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten: Forge.Start vanaf EUR 500 per maand, na 3 maanden maandelijks opzegbaar. Meer maatwerk of meerdere AI-medewerkers? Forge.Pro. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen. Wat je precies kunt verwachten staat in wat kost AI-automatisering .
+Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen over leadgeneratie automatiseren.
 Is geautomatiseerde outreach niet gewoon spam?

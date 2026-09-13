@@ -1,6 +1,6 @@
 PAGINA: /ai-automatisering-eindhoven
 TITEL: AI-automatisering in Eindhoven en Brainport
-OMSCHRIJVING: AI-automatisering laten bouwen voor high-tech en maakbedrijven rond Eindhoven en Brainport. Offerteflows, productieplanning en ERP-koppelingen op maat. We komen langs in Noord-Brabant.
+OMSCHRIJVING: AI-automatisering laten bouwen voor MKB-bedrijven in alle sectoren rond Eindhoven en Brainport. Offerteflows, productieplanning en ERP-koppelingen op maat. We komen langs in Noord-Brabant.
 
 FORGEXE
 Home Over ons Diensten Branches Cases Prijzen Blog
@@ -8,23 +8,27 @@ Contact
 Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
 > C:\voor-wie
-Gebouwd voor high-tech en maakbedrijven.
-De Brainport-regio zit vol toeleveranciers, machinebouwers en technische groothandels. Precies het soort processen waar wij grip op krijgen.
-> VOOR_01
-Toeleveranciers en machinebouw
-Elke aanvraag is anders en de calculatie luistert nauw. We zetten tekeningen en aanvragen om in een conceptofferte op basis van jouw stuklijsten en uurtarieven.
-MAAKINDUSTRIE
-> VOOR_02
-Technische groothandel
-Orderdesk, ERP-koppelingen en voorraad- en levertijdvragen die in minuten worden afgehandeld in plaats van uren aan de telefoon.
-GROOTHANDEL
-> VOOR_03
-Productie en planning
-Realtime data uit je ERP of MES wordt vertaald naar planningssuggesties die stilstand voorkomen en levertijden bewaken.
-PLANNING
+Voor elk bedrijf met terugkerend werk.
+Brainport staat bekend om high-tech, maar de regio zit net zo vol met kantoren, groothandels, bureaus en webshops. Het werk dat elke week terugkomt, is overal hetzelfde.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Accountants, adviseurs en advocaten: intake, dossiers, urenregistratie naar factuur en herinneringen die zichzelf versturen.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Orderdesk, voorraad- en levertijdvragen en koppelingen tussen webshop, ERP en vervoerder.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Offertes op basis van tekeningen, productieplanning uit je ERP en aanvragen die bij de juiste engineer landen. Met een gratis scan op locatie.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Briefings die vanzelf in de planning komen, rapportages naar klanten en eigen acquisitie die doorloopt als het druk is.
+Voor bureaus
 > C:\dichtbij
 Uit Limburg, op een half uurtje.
-We zitten in Panningen, ongeveer 40 minuten van Eindhoven. Dichtbij genoeg om regelmatig langs te komen, en we kennen de maakindustrie en toelevering van deze regio goed. Voor de scan en de werksessies staan we gewoon bij je op de vloer.
+We zitten in Panningen, ongeveer 40 minuten van Eindhoven. Dichtbij genoeg om regelmatig langs te komen, voor een scan op locatie of een werksessie aan de keukentafel. We werken voor kantoren, handelsbedrijven, bureaus en maakbedrijven in de regio.
 We werken door heel Noord-Brabant, onder andere in Eindhoven, Helmond, Veldhoven, Best, Nuenen en Geldrop. Zit je net in Limburg ? Daar zijn we sowieso thuis.
 Gratis bedrijfsscan
 Forgexe | Panningen (Limburg) | ~40 min van Eindhoven en Brainport
@@ -47,24 +51,63 @@ We monitoren doorlopend en bouwen elke maand verder. Jij ziet in heldere rapport
 Vast bedrag / maand
 Instappen kan zonder eenmalige kosten (Forge.Start, na 3 maanden maandelijks opzegbaar). Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.
 Bekijk alle prijzen
+> C:\in-de-praktijk
+Een offerteaanvraag op vrijdagmiddag.
+Zo ziet een gebouwde automatisering eruit als hij draait. Geen demo, gewoon een gemiddelde vrijdag.
+VR 16:40
+Aanvraag komt binnen
+Een klant vult het formulier in op je site. De automatisering leest de aanvraag, zoekt de klant op in je CRM en haalt eerdere offertes erbij.
+VR 16:52
+Concept staat klaar
+Op basis van jouw prijslijst en eerdere offertes staat er een conceptofferte in je mailbox, met een korte samenvatting van wat de klant vraagt.
+MA 08:50
+Jij keurt goed
+Je leest het concept, past een regel aan en klikt op akkoord. Dat is het enige moment waarop een mens nodig is.
+MA 09:05
+Verstuurd en gepland
+De offerte gaat naar de klant, de deal staat in je CRM en over vier dagen staat er automatisch een opvolgtaak klaar.
+> RESULTAAT Van twee werkdagen naar twaalf minuten voorbereiding per offerte, en niemand hoeft op vrijdag over te werken. De beslissing blijft bij jou; het uitzoekwerk niet.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\bewijs
+Gebouwd voor Brabantse bedrijven.
+Geen verzonnen cijfers. Dit draait bij klanten uit de regio.
+DNA-TALENT
+293 berichten
+Persoonlijke LinkedIn-berichten in de eigen schrijfstijl van de coach, verstuurd en opgevolgd zonder handwerk. Daarnaast een AI-blogger die wekelijks content in haar toon schrijft.
+Bekijk de case
+Wat dit voor jou betekent
+Begonnen in Brabant. De pipeline richt zich eerst op coaches en HR-professionals in Brabant en breidt van daaruit landelijk uit.
+Geen technisch bedrijf. Een coach met een eigen schrijfstijl. Precies het soort MKB dat vaak denkt dat AI-automatisering niets voor hen is.
+Dezelfde aanpak als bij Smart ESG in de maakindustrie: eerst de toon en de doelgroep, dan pas volume.
+> C:\bezwaren
+Wat bedrijven uit de regio ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Jullie zitten niet bij ons om de hoek.
+Klopt, en dat merk je niet. Voor de scan en de werksessies komen we langs; de rest gaat via korte lijnen: bellen, appen of een videocall.
+Wij zijn geen technisch bedrijf.
+Hoeft ook niet. Het werk dat we automatiseren zit in de inbox, het CRM en de boekhouding. Dat heeft een advocatenkantoor net zo goed als een machinebouwer.
+Onze software is te oud of te klein.
+Bijna elk pakket heeft een export, een mailbox of een import. Daar koppelen we op. In de scan checken we dit als eerste, zodat je vooraf weet waar je aan toe bent.
+Wat kost het ons aan tijd?
+Een scan van 30 minuten of een ochtend op locatie, daarna twee werksessies. Na de oplevering kost het je een kwartier per dag om goed te keuren wat het systeem voorlegt.
 > C:\faq
 Veelgestelde vragen.
 Zit Forgexe in Eindhoven?
 We zijn gevestigd in Panningen, ongeveer 40 minuten van Eindhoven. Voor de Brainport-regio komen we gewoon op locatie langs voor een scan of werksessie.
 Waarom een partner van net over de grens voor een Brabants bedrijf?
-Omdat de inhoud zwaarder weegt dan de postcode. We kennen de high-tech maakindustrie en toeleveranciers goed: complexe offertes, productieplanning en ERP-koppelingen. En we zijn dichtbij genoeg om regelmatig langs te komen.
+Omdat de inhoud zwaarder weegt dan de postcode. We bouwen voor kantoren, handelsbedrijven, bureaus en maakbedrijven, op de tools die je al gebruikt. En we zijn dichtbij genoeg om regelmatig langs te komen.
 Voor wat voor bedrijven in de regio bouwen jullie?
-Vooral maakbedrijven, high-tech toeleveranciers en technische groothandels rond Eindhoven, Helmond en Veldhoven. Denk aan offerteflows op basis van tekeningen, productieplanning en koppelingen met ERP-systemen.
+Voor MKB-bedrijven in alle sectoren rond Eindhoven, Helmond, Veldhoven en Best: accountants en adviseurs, groothandels, marketingbureaus, webshops en maakbedrijven. Wat ze delen: een inbox, een CRM, een boekhouding en werk dat elke week terugkomt.
 Wat kost AI-automatisering?
 Dat hangt af van de omvang. Je werkt met een vast maandabonnement zonder setup-kosten. Bekijk de prijzen of hoor het in een gratis scan.
 > C:\verder-lezen
 Verder lezen.
-BRANCHE AI voor de maakindustrie
-DIENST Gratis scan op locatie (maakindustrie)
-REGIO AI-automatisering in Limburg
-BEDRIJF Over Forgexe
 DIENST AI-automatisering laten bouwen
-DIENST Planning optimaliseren met AI
+BRANCHE AI voor zakelijke dienstverleners
+BRANCHE AI voor de maakindustrie
+DIENST E-mail automatiseren met AI
+DIENST Factuurverwerking automatiseren
+REGIO AI-automatisering in Limburg
 > C:\forgexe\brainport
 Benieuwd wat er bij jou te automatiseren valt?
 We komen langs voor een gratis scan en leveren binnen 48 uur jouw drie grootste quick wins. Vrijblijvend.

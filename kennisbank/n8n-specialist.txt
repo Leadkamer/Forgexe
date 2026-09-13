@@ -57,6 +57,68 @@ We draaien in productie terwijl we meekijken, en sturen bij tot elke flow betrou
 > STAP_04
 Beheer en doorbouwen
 We bewaken je workflows doorlopend, vangen fouten af en bouwen maandelijks verder, voor een vast maandbedrag. Zie prijzen .
+> C:\in-de-praktijk
+Van Zapier naar n8n in drie weken.
+Een typische overstap, stap voor stap, bij een bedrijf met een stapel losse koppelingen die steeds duurder werden.
+WEEK 1
+Inventarisatie
+We brengen alle bestaande koppelingen in kaart: wat doen ze, wat kosten ze per maand, waar gaan ze stuk. Vaak blijkt de helft overbodig of dubbel.
+WEEK 2
+Herbouw in n8n
+De workflows worden opnieuw gebouwd in een eigen n8n-omgeving op een EU-server, nu mét foutafhandeling, logging en meldingen als iets misgaat.
+WEEK 3
+Parallel draaien
+Oud en nieuw draaien naast elkaar. Jij vergelijkt de uitkomsten en geeft akkoord per workflow. Pas dan gaat de oude uit.
+DAARNA
+Beheer en uitbouw
+Wij bewaken de omgeving, doen de updates en bouwen nieuwe workflows op dezelfde basis. Alles blijft van jou, inclusief de export.
+> RESULTAAT Vaste maandkosten in plaats van betalen per taak , alle workflows in één omgeving die van jou is, en meldingen v rdat een klant iets merkt.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+n8n koppelt alles wat een API, een mailbox of een export heeft. Welke systemen dat zijn, verschilt per sector.
+DIENSTVERLENING
+Zakelijke dienstverlening
+CRM, boekhouding, agenda en documentbeheer aan elkaar knopen, zodat een nieuwe cliënt overal tegelijk bestaat.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Webshop, ERP, vervoerder en voorraadsysteem synchroniseren, inclusief orderstatus terug naar de klant.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+ERP, planning en mailbox koppelen, zodat aanvragen, orders en leverdata zonder overtypen door je bedrijf stromen.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Formulieren, CRM en rapportages voor klanten automatiseren, desnoods white-label onder je eigen naam.
+Voor bureaus
+> C:\bewijs
+Gebouwd en in gebruik.
+Geen verzonnen cijfers. Dit is wat er bij klanten draait.
+WIJNZINNIG
+3 kanalen
+Content Machine plus drie leadgen-pipelines, volledig in n8n: een LinkedIn-flow voor bedrijven, een horeca-mailflow met afspraakknop en een wijnkaart-automation die websiteaanvragen direct afhandelt.
+Bekijk de case
+Wat dit voor jou betekent
+Alles in één omgeving. Content, outreach en aanvragen draaien in dezelfde n8n-instantie, met één plek voor beheer.
+Om een lastig CMS heen gebouwd. De webshop had geen API. Dat losten we op met een mailflow, zonder het systeem te vervangen.
+Uitbreidbaar gebleken. Van één contentflow naar drie leadgen-pipelines op dezelfde basis.
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Zitten we dan aan jullie vast?
+Nee. n8n is open source, de omgeving staat op jouw naam en elke workflow is exporteerbaar. Stop je met ons, dan neem je alles mee.
+Wie beheert het als jullie er niet zijn?
+Elke workflow is gedocumenteerd en heeft monitoring. Bij overdracht leiden we een collega op. Tot die tijd zijn wij het aanspreekpunt, met een vaste reactietijd.
+Kan ik n8n niet gewoon zelf leren?
+Zeker, en voor simpele koppelingen raden we dat aan. Wij komen in beeld bij foutafhandeling, beveiliging, uitzonderingen en AI-stappen: het deel dat het verschil maakt tussen een demo en iets dat jaren draait.
+Hoe zit het met updates en storingen?
+Beheer zit in het maandbedrag: updates, back-ups en meldingen als een workflow faalt. Jij hoort het van ons, niet van een klant.
+> INVESTERING
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten: Forge.Start vanaf EUR 500 per maand, na 3 maanden maandelijks opzegbaar. Meer maatwerk of meerdere AI-medewerkers? Forge.Pro. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen. Wat je precies kunt verwachten staat in wat kost AI-automatisering .
+Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen aan een n8n-specialist.
 Wat kost een n8n-specialist?

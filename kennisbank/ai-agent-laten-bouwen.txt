@@ -62,6 +62,64 @@ De agent draait op echte data terwijl wij meekijken. We sturen bij tot de output
 > STAP_04
 Bewaken en uitbouwen
 We monitoren doorlopend, vangen fouten af en bouwen elke maand verder. Jij ziet in heldere rapportages wat de agent oplevert.
+> C:\in-de-praktijk
+Een klacht, van inbox tot oplossing.
+Het verschil met een chatbot zit in wat er n het gesprek gebeurt. Dit is een AI-agent op een doordeweekse ochtend.
+09:14
+Mail komt binnen
+Een klant mailt over een beschadigde levering met een foto. De agent herkent het als klacht en zoekt de order op in je webshop of ERP.
+09:15
+Agent zoekt uit
+Hij checkt de garantievoorwaarden, ziet dat het artikel op voorraad is en stelt een vervangende levering voor, inclusief conceptmail aan de klant.
+09:18
+Mens beslist bij twijfel
+Het bedrag ligt boven de grens die jij hebt ingesteld. Een collega krijgt de samenvatting en keurt met één klik goed.
+09:23
+Afgehandeld
+De klant heeft antwoord, de vervanging staat klaar voor verzending en de klacht is gelogd in je CRM met alle context.
+> RESULTAAT Negen minuten in plaats van een halve dag heen-en-weer. Onder de grens handelt de agent zelf af, erboven beslist een mens. Jij bepaalt waar die grens ligt.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+Een AI-agent is interessant zodra achter een vraag een proces zit: iets opzoeken, controleren, doorzetten. Dat komt in elke sector voor.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Cliëntvragen over de status van een dossier beantwoorden uit je eigen systemen, documenten opvragen en afspraken inplannen.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Orderstatus, retouren en voorraadvragen afhandelen in je webshop en ERP, met de klant als afzender van de vraag.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Aanvragen omzetten in een conceptofferte op basis van eerdere offertes, en inkooporders klaarzetten als de voorraad onder een grens zakt.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Briefings uitvragen tot ze compleet zijn, taken aanmaken in je projecttool en de klant op de hoogte houden.
+Voor bureaus
+> C:\bewijs
+Gebouwd en in gebruik.
+Geen verzonnen cijfers. Dit is wat er bij klanten draait.
+TECHNETIUM
+Match tot hire
+Een vacatureplatform waarin AI kandidaten en vacatures matcht en elke stap bijhoudt: benaderd, reactie, gesprek, hire. Werkgevers betalen alleen bij resultaat, dus de agent-logica moet kloppen.
+Bekijk de case
+Wat dit voor jou betekent
+Agent-logica in productie. Matchen, benaderen, status bijhouden: dezelfde bouwblokken als een agent voor jouw klantenservice of orderdesk.
+Grenzen ingebouwd. Elke stap is zichtbaar en aanpasbaar. Dat is de voorwaarde om een agent iets te laten doen.
+Resultaat telt. Werkgevers betalen alleen bij een hire, dus het systeem moet betrouwbaar zijn.
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Een agent die zelf dingen doet, dat vertrouw ik niet.
+Terecht. Daarom krijgt elke agent een mandaat: wat mag hij zelf, waar moet een mens akkoord geven. Alles wordt gelogd. Je begint krap en verruimt als het goed gaat.
+Wat als hij dingen verzint?
+De agent werkt met jouw data en bronnen, niet met vrije fantasie. Kan hij iets niet vinden, dan zegt hij dat en zet hij de vraag door naar een collega.
+Onze processen zijn elke keer anders.
+Dat is precies waar een agent beter is dan een vaste workflow. Hij redeneert per geval. De echte uitzonderingen gaan naar een mens, met alle context erbij.
+Hoeveel werk is het voor ons?
+Een scan van 30 minuten en twee werksessies waarin we je regels en voorbeelden vastleggen. Daarna kijk je alleen nog naar wat de agent ter goedkeuring voorlegt.
 > C:\faq
 Veelgestelde vragen over AI-agents laten bouwen.
 Wat kost het om een AI-agent te laten bouwen?

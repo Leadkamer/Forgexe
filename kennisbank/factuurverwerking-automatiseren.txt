@@ -59,6 +59,68 @@ We draaien op echte facturen terwijl we meekijken. De goedkeurflow staat vanaf d
 > STAP_04
 Beheer en doorontwikkeling
 We bewaken de flow, vangen fouten af en breiden uit naar andere documentstromen. Alles inbegrepen in een vast maandabonnement. Zie prijzen .
+> C:\in-de-praktijk
+Eén inkoopfactuur, van mail tot boeking.
+Zo verloopt het als een leverancier een factuur mailt. De meeste facturen halen stap drie nooit.
+10:02
+Factuur binnen
+De leverancier mailt een pdf naar facturen@. De automatisering leest leverancier, factuurnummer, bedragen, btw en vervaldatum uit.
+10:03
+Gematcht en gecontroleerd
+Hij zoekt de bijbehorende bestelling of het contract op, controleert IBAN en KvK tegen wat bekend is en ziet een afwijking van 3 procent.
+10:20
+Inkoper keurt goed
+Alleen omdat het bedrag afwijkt, krijgt de inkoper een melding met de factuur, de order en het verschil naast elkaar. Eén klik.
+10:21
+Geboekt
+De factuur staat in Exact, Moneybird of jouw pakket, de betaling staat klaar voor de vervaldatum en de leverancier krijgt een bevestiging.
+> RESULTAAT Van zo'n twaalf minuten handwerk naar minder dan één minuut per factuur , en alleen de afwijkingen komen nog bij een mens langs. Bij 200 facturen per maand scheelt dat dagen.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+Inkoopfacturen komen overal binnen. Het verschil zit in waar je ze tegen controleert.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Kantoren met veel leveranciers en doorbelasting per cliënt of project, waar elke factuur op de juiste kostenplaats moet landen.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Honderden inkoopfacturen per maand die tegen bestelling en pakbon gematcht moeten worden, inclusief deelleveringen.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Materiaal- en onderdelenfacturen tegen inkooporders, met controle op prijsafspraken en levertermijnen.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Leveranciers en freelancers per klant en per project, met automatische doorbelasting naar de klantfactuur.
+Voor bureaus
+> C:\bewijs
+Uit de praktijk.
+We hebben nog geen publieke case over factuurverwerking. De bouwstenen zijn wel dezelfde als in dit portaal.
+FIETSENCATALOGUS
+15u per week
+Een nieuwsbriefproces dat één persoon zo'n 15 uur per week kostte, draait nu via een portaal: AI selecteert branche-artikelen, de winkelier kiest er drie tot vijf, het systeem schrijft de nieuwsbrief in de huisstijl en verstuurt via Brevo.
+Bekijk de case
+Wat dit voor jou betekent
+Documenten lezen en verwerken. Artikelen, foto's en teksten stromen hier automatisch tussen systemen. Voor facturen zijn dat pdf's en boekingen.
+Mens waar het telt. De winkelier kiest; bij facturen keurt de inkoper alleen de afwijkingen.
+Koppelen via API. Het CMS en Brevo praten via de API met het portaal. Boekhoudpakketten werken hetzelfde.
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Ons boekhoudpakket is oud en heeft geen koppeling.
+Dan werken we met de importfunctie of een UBL-bestand dat je pakket wel begrijpt. Bij de scan checken we dit als eerste.
+Hoe voorkom je dat een valse factuur wordt betaald?
+Elke factuur gaat langs vaste regels: klopt de IBAN met eerdere betalingen, is het KvK-nummer bekend, is er een bestelling, is dit factuurnummer al eens gezien. Bij twijfel stopt de flow.
+We hebben maar vijftig facturen per maand.
+Vanaf enkele tientallen per maand loont het al, zeker als het nu tussen andere taken door gebeurt. Bij minder is een goede mailregel soms genoeg; dat zeggen we dan ook.
+Onze accountant moet kunnen meekijken.
+Kan. Elke stap wordt gelogd: wat is uitgelezen, waarmee gematcht, wie heeft goedgekeurd. Die audit trail is voor de accountant vaak juist een verbetering.
+> INVESTERING
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten: Forge.Start vanaf EUR 500 per maand, na 3 maanden maandelijks opzegbaar. Meer maatwerk of meerdere AI-medewerkers? Forge.Pro. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen. Wat je precies kunt verwachten staat in wat kost AI-automatisering .
+Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen over factuurverwerking automatiseren.
 Werkt dit met mijn boekhoudpakket?

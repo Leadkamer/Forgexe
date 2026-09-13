@@ -56,6 +56,68 @@ We bouwen de flows en trainen de AI op voorbeelden uit je eigen verzonden mail, 
 > STAP_04
 Live met controlemomenten, daarna beheer
 We gaan live terwijl een mens meekijkt, en breiden pas uit als de resultaten kloppen. Daarna bewaken en verbeteren we doorlopend, alles inbegrepen in een vast maandbedrag. Zie prijzen .
+> C:\in-de-praktijk
+Info@ op een maandag: 84 mails.
+Zo ziet inbox-triage eruit op de drukste ochtend van de week.
+07:00
+Alles gelezen en gelabeld
+De automatisering leest 84 nieuwe mails en herkent wat het is: vraag, offerteaanvraag, factuur, klacht, nieuwsbrief, spam.
+07:10
+Werk verdeeld
+12 facturen gaan naar de boekhouding, 9 aanvragen staan in het CRM met een concept, 6 klachten liggen bij de juiste collega met een samenvatting.
+08:30
+Team leest 26 mails
+Voor 31 standaardvragen staat een conceptantwoord klaar. Je collega's openen een inbox met alleen de mails die een mens nodig hebben.
+DOORLOPEND
+Niets blijft liggen
+Een vraag zonder antwoord na 24 uur komt bovenaan terug. Aanvragen zonder reactie krijgen automatisch een herinnering.
+> RESULTAAT Van 84 naar 26 mails die iemand echt moet lezen, en een gedeelde inbox die geen zwart gat meer is. Antwoorden gaan pas de deur uit als jij dat wilt.
+De aantallen en tijden in dit voorbeeld zijn illustratief. De rolverdeling is hoe we het bouwen: het systeem doet het uitzoekwerk, een mens neemt de beslissing.
+> C:\voor-wie
+Voor wie dit werkt.
+Elke gedeelde mailbox heeft hetzelfde probleem: alles komt op één hoop. Wat erop ligt, verschilt.
+DIENSTVERLENING
+Zakelijke dienstverlening
+Cliëntvragen, documenten die opgevraagd moeten worden en herinneringen voor stukken die nog niet binnen zijn.
+Voor dienstverleners
+HANDEL
+Handel en groothandel
+Orderstatus, retouren, levertijden en orderbevestigingen, direct gekoppeld aan je webshop of ERP.
+Voor groothandels
+MAAK EN TECHNIEK
+Maak en techniek
+Aanvragen met tekeningen naar de juiste engineer, planningsvragen beantwoord uit je ERP.
+Voor de maakindustrie
+BUREAUS EN ONLINE
+Bureaus en online
+Briefings, feedbackrondes en klantvragen gesorteerd per project, met taken in je projecttool.
+Voor bureaus
+> C:\bewijs
+Mailflows die al draaien.
+Geen verzonnen cijfers. Dit is wat er bij klanten draait.
+WIJNZINNIG
+3 kanalen
+Content Machine plus drie leadgen-pipelines, volledig in n8n: een LinkedIn-flow voor bedrijven, een horeca-mailflow met afspraakknop en een wijnkaart-automation die websiteaanvragen direct afhandelt.
+Bekijk de case
+Wat dit voor jou betekent
+Van formulier tot antwoord. De wijnkaart-automation vangt websiteaanvragen op uit de mailbox en handelt ze af met een persoonlijke mail en de juiste bijlage.
+Actie in de mail. De horeca-flow heeft een afspraakknop in het bericht zelf. Eén klik en het gesprek staat.
+Zonder API gebouwd. Het CMS kon niets. De mailbox werd de koppeling.
+> C:\bezwaren
+Wat bedrijven ons eerst vragen.
+De vier twijfels die bijna elk gesprek opent. Met ons eerlijke antwoord.
+Onze mails zijn te divers om te automatiseren.
+Triage gaat op intentie. De 20 procent die echt anders is, gaat naar een mens, met een samenvatting. De 80 procent die terugkomt, is precies waar de winst zit.
+Ik wil geen automatische antwoorden naar klanten.
+Hoeft ook niet. We starten in conceptmodus: alles staat klaar, niets gaat weg zonder jouw klik. Per soort vraag bepaal jij later of het vanzelf mag.
+Werkt het met Outlook en Google Workspace?
+Ja, allebei. Ook met een gedeelde mailbox, een ticketsysteem of een info-adres dat naar meerdere mensen doorstuurt.
+Wat gebeurt er met de inhoud van onze mail?
+Die wordt verwerkt op EU-servers, wordt niet gebruikt om modellen te trainen en blijft in jouw mailbox en systemen staan. Verwerkersovereenkomst inbegrepen.
+> INVESTERING
+Vast bedrag / maand
+Instappen kan zonder eenmalige kosten: Forge.Start vanaf EUR 500 per maand, na 3 maanden maandelijks opzegbaar. Meer maatwerk of meerdere AI-medewerkers? Forge.Pro. Liever geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen. Wat je precies kunt verwachten staat in wat kost AI-automatisering .
+Bekijk alle prijzen
 > C:\faq
 Veelgestelde vragen over e-mail automatiseren.
 Leest de AI al mijn mail, is dat veilig?
