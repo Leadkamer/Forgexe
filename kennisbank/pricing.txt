@@ -17,12 +17,12 @@ Jaar vooruit nee10%
 Forge.Start
 Voor wie wil starten met AI
 EUR 500 /maand
-Geen setup-kosten · maandelijks opzegbaar
-2 kant-en-klare AI-medewerkers
+Geen setup-kosten · minimaal 3 maanden, daarna maandelijks opzegbaar
+1 kant-en-klare AI-medewerker, incl. 1 koppeling met je tools
 Kies uit o.a. inbox-triage , leadopvolging , rapportages en factuurverwerking
 Binnen 1 week operationeel
 Maandelijkse rapportage
-Uitbreiden: +EUR 250/mnd per extra kant-en-klare medewerker (tot 4 totaal)
+Uitbreiden: +EUR 250/mnd per extra kant-en-klare medewerker, incl. koppeling (tot 3 totaal)
 Gratis bedrijfsscan
 MEEST GEKOZEN
 Forge.Pro
@@ -61,18 +61,18 @@ Wat zit erin |
 Forge.Start |
 Forge.Pro |
 Forge.Scale |
-AI-medewerkers | 2 stuks kant-en-klaar | 3 tot 4 mix bestaand + nieuw | 5 of meer volledig op maat |
+AI-medewerkers | 1 kant-en-klaar, uitbreidbaar tot 3 | 3 tot 4 mix bestaand + nieuw | 5 of meer volledig op maat |
 Mate van maatwerk | Geen uit ons aanbod | ja Gericht maatwerk jouw situatie | jaja 100% maatwerk eigen brand & UI |
 Tijd tot live | 1 week | 4 weken | 6 weken |
-Koppelingen met je tools | Basis tot 2 systemen | Uitgebreid tot 5 systemen | Volledig onbeperkt |
-Extra AI-medewerker | +EUR 250/mnd kant-en-klaar, tot 4 totaal | +EUR 300/mnd op maat | In overleg |
+Koppelingen met je tools | Basis 1 systeem per medewerker | Uitgebreid tot 5 systemen | Volledig onbeperkt |
+Extra AI-medewerker | +EUR 250/mnd kant-en-klaar, tot 3 totaal | +EUR 300/mnd op maat | In overleg |
 Proces-optimalisatie | nee | ja | ja |
 Rapportage | Maandelijks standaard template | Maandelijks aangepast op jouw KPIs | Maandelijks + custom dashboards in jouw tools |
 Strategie & check-ins | nee | Tweewekelijkse check-in | Maandelijkse strategie-sessie |
 24/7 monitoring & optimalisatie | nee | Werkdagen | ja Inclusief |
 Dedicated Forgexe-team | nee | Shared | ja |
 Onboarding & training | Self-service handleiding | Live onboarding (2u) | In-company workshop (halve dag) |
-Looptijd | Maandelijks opzegbaar | 6 maanden tussentijds afkoopbaar | 12 maanden tussentijds afkoopbaar |
+Looptijd | 3 maanden daarna maandelijks opzegbaar | 6 maanden tussentijds afkoopbaar | 12 maanden tussentijds afkoopbaar |
 EU AI Act compliance | ja Standaard incl. AI-geletterdheidstraining | ja Standaard incl. audit-documentatie | ja Standaard incl. risico-impact-assessment |
 Setup-investering | ja Geen | ja Geen verwerkt in maandbedrag | Op maat |
 Niet zeker welk pakket?
@@ -80,15 +80,15 @@ Doe de gratis bedrijfsscan
 > C:\faq
 Veelgestelde vragen.
 Zijn er verborgen kosten?
-Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup en is maandelijks opzegbaar. Forge.Pro heeft ook geen aparte setup-kosten: de maatwerk-investering verwerken we in het maandbedrag, daarom werken we met minimaal 6 maanden. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 9.500, inclusief volledige overdracht.
+Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup-kosten: we bouwen je AI-medewerker in week 1 en vragen daarvoor drie maanden looptijd, daarna is het maandelijks opzegbaar. Forge.Pro heeft ook geen aparte setup-kosten: de maatwerk-investering verwerken we in het maandbedrag, daarom werken we met minimaal 6 maanden. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 9.500, inclusief volledige overdracht.
 Is er een minimum contractduur?
-Forge.Start is maandelijks opzegbaar. Forge.Pro werkt met minimaal 6 maanden en Forge.Scale met 12 maanden. Dat is geen lock-in maar financiering: omdat we geen setup-kosten rekenen, verdienen we de bouwinvestering terug via het maandbedrag. Eerder stoppen kan altijd via de afkoopregeling: je betaalt de resterende maanden van de minimumperiode dan in één keer af. Wil je helemaal geen looptijd? Kies dan Forge.Project: eenmalig, zonder abonnement.
+Forge.Start werkt met minimaal 3 maanden en is daarna maandelijks opzegbaar. Forge.Pro werkt met minimaal 6 maanden en Forge.Scale met 12 maanden. Dat is geen lock-in maar financiering: omdat we geen setup-kosten rekenen, verdienen we de bouwinvestering terug via het maandbedrag. Eerder stoppen kan altijd via de afkoopregeling: je betaalt de resterende maanden van de minimumperiode dan in één keer af. Wil je helemaal geen looptijd? Kies dan Forge.Project: eenmalig, zonder abonnement.
 Wat als ik binnen de minimumlooptijd wil stoppen?
 Dat kan, via de afkoopregeling. Je betaalt de resterende maanden van de minimumperiode dan in één keer af en we ronden netjes af. Zo weet je vooraf precies wat je maximale investering is en zit je nooit vast aan iets dat niet werkt. De gebouwde AI-medewerkers blijven onderdeel van het abonnement; wil je ze in eigendom, dan kan dat via Forge.Project.
 Waarom bouwen jullie niet al onze taken in één AI-medewerker?
 Om dezelfde reden dat je niet één persoon je verkoop, boekhouding én planning laat doen. Elke AI-medewerker dekt één rol , zoals leadopvolging, factuurverwerking of rapportage , met eigen systemen, rechten en KPI's. Alles in één blok maakt hem traag, fragiel en onmogelijk bij te sturen: gaat er iets mis in je facturatie, dan wil je niet dat je leadopvolging meevalt. Losse medewerkers zijn los te testen, te meten en uit te breiden. En eerlijk is eerlijk: de prijs volgt het werk dat verzet wordt, niet het aantal stukjes software , vijf taken zijn vijf keer bouwen, testen en bewaken, hoe je ze ook verpakt.
 Wat als ik wil opschalen van Start naar Pro?
-Geen probleem. Veel klanten starten met Forge.Start en stappen na 2-3 maanden over naar Forge.Pro zodra ze resultaat zien. We rekenen geen overstap-kosten. Je kunt ook eerst binnen Start uitbreiden met extra kant-en-klare medewerkers (+EUR 250/mnd, tot 4 totaal); wil je daarna maatwerk, dan is Forge.Pro de logische volgende stap.
+Geen probleem. Veel klanten starten met Forge.Start en stappen na 2-3 maanden over naar Forge.Pro zodra ze resultaat zien. We rekenen geen overstap-kosten. Je kunt ook eerst binnen Start uitbreiden met extra kant-en-klare medewerkers (+EUR 250/mnd, tot 3 totaal); wil je daarna maatwerk, dan is Forge.Pro de logische volgende stap.
 Wat zit er bij maandelijkse rapportage?
 Aantal acties per AI-medewerker, conversies, ROI per kanaal, en aanbevelingen voor optimalisatie. Voor Forge.Scale klanten leveren we daarnaast custom dashboards in jouw eigen tools.
 Wat als het niet werkt?

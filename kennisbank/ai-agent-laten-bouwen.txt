@@ -46,7 +46,7 @@ Consistentie | Elke keer hetzelfde proces | Afhankelijk van wie de prompt schrij
 Data | Blijft in jouw systemen, AVG-proof | Gaat naar een extern chatvenster |
 > INVESTERING
 Vast bedrag / maand
-Instappen kan zonder eenmalige kosten (Forge.Start, maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af, en liever helemaal geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.
+Instappen kan zonder eenmalige kosten (Forge.Start, na 3 maanden maandelijks opzegbaar). Bij groter maatwerk spreken we de eenmalige investering vooraf af, en liever helemaal geen abonnement? Forge.Project: eenmalig bouwen, alles wordt overgedragen.
 Bekijk alle prijzen
 > C:\proces
 Van idee naar draaiende agent in 4 stappen.
