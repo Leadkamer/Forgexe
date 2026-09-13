@@ -7,96 +7,82 @@ Home Over ons Diensten Branches Cases Prijzen Blog
 Contact
 Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
-> C:\diensten\kern
+> C:\diensten
 Waar bedrijven ons voor inhuren .
-Dit zijn de acht vragen waarmee MKB-bedrijven bij Forgexe binnenkomen. Elke pagina legt uit wat het is, wat het kost en hoe we het bouwen.
-DIENST AI-automatisering laten bouwen Werkende automatiseringen op je bestaande tools, gebouwd in n8n, binnen 4 tot 6 weken live.
-DIENST AI-agent laten bouwen Een agent die taken afmaakt in je systemen, van inbox tot order, met menselijke controle waar nodig.
-DIENST AI-medewerker inhuren Terugkerend werk uit handen: klantvragen, opvolging, rapportages. Voor een vast maandbedrag.
-DIENST n8n-specialist inhuren Bouw, hosting en beheer van n8n-workflows op EU-servers. Vendor-vrij, jij blijft eigenaar.
-DIENST Leadgeneratie automatiseren Van prospect tot afspraak: LinkedIn- en e-mailoutreach met persoonlijke opvolging.
-DIENST E-mail automatiseren met AI Inbox-triage en conceptantwoorden, zodat info@ geen zwart gat meer is.
-DIENST Factuurverwerking automatiseren Inkomende facturen uitlezen, matchen en boeken in je boekhoudpakket.
-GIDS Wat kost AI-automatisering? De eerlijke cijfers voor het MKB, inclusief onze vaste maandtarieven.
-> C:\overzicht
-Zeven diensten, één missie .
-Geen losse trucjes. Een werkbank waar AI-medewerkers samenwerken aan je groei en je operatie.
+Elke dienst heeft een eigen pagina met wat het is, wat het kost en hoe we het bouwen. Twijfel je waar te beginnen? Lees eerst wat AI-automatisering kost .
+> C:\operatie
+Operatie
+Het werk dat elke week terugkomt.
+AUTOMATISERING
+AI-automatisering laten bouwen
+Werkende automatiseringen op je bestaande tools, gebouwd in n8n. Eerste versie in 4 tot 6 weken.
+AI-AGENT
+AI-agent laten bouwen
+Een agent die taken afmaakt in je systemen, van inbox tot order, met menselijke controle waar het telt.
+AI-MEDEWERKER
+AI-medewerker inhuren
+Terugkerend werk uit handen: klantvragen, opvolging, rapportages. Voor een vast maandbedrag.
+INBOX
+E-mail automatiseren
+Inbox-triage en conceptantwoorden, zodat info@ geen zwart gat meer is.
+FINANCE
+Factuurverwerking automatiseren
+Inkomende facturen uitlezen, matchen en boeken in je boekhoudpakket.
+OPS
+Planning optimaliseren
+AI leest je productie- of leveringsplanning, signaleert knelpunten en stelt bijsturing voor.
+> C:\groei
+Groei
+Meer gesprekken, zonder extra handen.
 LEADGEN
 Leadgeneratie automatiseren
-AI-medewerkers vinden je ideale klanten, schrijven persoonlijke openers en volgen op. Multi-channel: LinkedIn, e-mail, signal-triggers. Jij krijgt warme gesprekken in je agenda.
-> scan doelgroep: MKB maakindustrie |
-> gevonden: 1.224 matches |
-> opener .draft x312 |
-> afspraken ingepland: 17
-24/7 actief · 5 kanalen
+Van prospect tot afspraak: LinkedIn- en e-mailoutreach met persoonlijke opvolging.
 CONTENT
-AI Blogger & Content
-Wekelijks ranking-waardige artikelen in jouw tone of voice. Van keyword-research tot live publicatie.
+AI-content en blogs
+Wekelijks artikelen in jouw tone of voice, van keyword-onderzoek tot publicatie.
 CAMPAIGNS
 AI Ads Manager
-Campagnes 24/7 gemonitord, geoptimaliseerd en bijgestuurd. Lagere CPA, hogere ROAS.
-DATA & KPI
-AI Rapportage
-Een AI-medewerker die data verbindt, KPIs presenteert en rapportages oplevert waar je iets aan hebt.
-HubSpot Looker SAP GA4 Stripe +12
+Campagnes 24/7 gemonitord en bijgestuurd op kosten per aanvraag.
+> C:\team-en-platform
+Team en platform
+De basis waar alles op draait.
+N8N
+n8n-specialist
+Bouw, hosting en beheer van n8n-workflows op EU-servers. Jij blijft eigenaar.
 UPSKILL
-AI Training & Workshops
-In-company sessies met jullie eigen tools. Prompt engineering, AI in dagelijks werk, no-fluff.
-JK MD TR SH +9
-OPS
-Planning Optimalisatie
-AI leest je productie- of leveringsplanning, signaleert knelpunten en stelt optimalisaties voor.
-AI PLATFORM OP MAAT
-Custom platform onder jouw merknaam, gebouwd met onze AI-first workflow.
-Van klantenportaal tot intern dashboard. Dashboards, integraties en automatiseringen op maat. Pixel-perfect, razendsnel, jouw merk.
-Klantenportaal CRM-integratie Custom AI agents Live dashboards White-label SSO
+AI-training voor je team
+In-company sessies met jullie eigen tools. Ook de AI-geletterdheid die de EU AI Act vraagt.
+PLATFORM
+Custom AI-platform en dashboards
+Klantportaal of intern dashboard onder jouw merk, met live rapportages en integraties.
+> C:\bewijs
+Gebouwd en in gebruik .
+Drie systemen die vandaag draaien bij klanten. Alle cijfers komen uit de cases zelf.
+FIETSENCATALOGUS
+15u
+Per week minder repetitief werk sinds het AI-portaal de nieuwsbrieven van aangesloten fietsenwinkels samenstelt.
+Bekijk de case
+DNA-TALENT
+293
+Persoonlijke LinkedIn-berichten in de eigen schrijfstijl van de coach, verstuurd en opgevolgd zonder handwerk.
+Bekijk de case
+SMART ESG
+3 stappen
+Van connect tot ESG-gesprek: een pipeline die dagelijks MKB-maakbedrijven scoort, benadert en opvolgt.
+Bekijk de case
+Alle cases
 > C:\aanpak
-Vijf stappen van scan tot smeden .
-Geen maanden vooronderzoek. Binnen vier weken draait stap 1 in productie.
+Zo werken we.
 STAP_01
 Bedrijfsscan
-30 min online. Wij scannen je groei-kanalen en processen. Quick wins binnen 48 uur.
+30 minuten online. Binnen 48 uur heb je je drie grootste quick wins op een rij.
 STAP_02
-Discovery
-Een dag langs de processen. Drie grootste hefbomen analyseren en valideren.
+Bouwen op jouw stack
+Geen nieuwe tools. Eerste werkende versie in 4 tot 6 weken, met tussentijdse demo's.
 STAP_03
-Scope & roadmap
-Helder voorstel met scope, planning en realistische ROI. Vaste prijs, geen verrassingen.
-STAP_04
-Smeden & testen
-We bouwen op jouw bestaande stack. Tussentijdse demo's, geen big-bang oplevering.
-STAP_05
-Compound
-Handover, training en doorlopende SLA. Wij monitoren, optimaliseren en schalen mee.
-> C:\resultaten
-Meetbaar verschil, vanaf dag één .
-Cijfers uit echte Forgexe-projecten in het Nederlandse MKB. Niet representatief voor iedereen, wel realistisch.
-SALES
-+312%
-Meer gekwalificeerde aanvragen na 6 maanden AI Outreach bij een SaaS-klant.
-OPS
-17u
-Per week minder handwerk bij een technische groothandel na 2 AI-medewerkers.
-MARKETING
-3,4x
-Hogere ROAS bij een DTC-merk binnen 90 dagen na overstap naar AI Ads management.
-> C:\ai-act-ready
-EU AI Act compliant, vanaf dag één .
-Elk Forgexe-systeem is gebouwd volgens de EU AI Act, met AVG/GDPR als ondergrens. Vier pijlers waar wij jouw compliance op draaien.
-AI Act art. 13 + 14
-Transparantie & menselijk toezicht.
-AI-medewerkers identificeren zich altijd als AI. Bij twijfel of impactvolle keuzes escaleren ze naar een mens. Jij houdt de regie, AI doet het werk eronder.
-AVG / GDPR
-EU-data, end-to-end versleuteld.
-Data blijft binnen de EU, AES-256 in transit en at rest. Jouw data wordt nooit gebruikt om externe modellen te trainen. Privacy by design, geen uitzonderingen.
-AI Act art. 12
-Documentatie & audit-trail.
-Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen, welke data, welke beslissingen. Logging staat standaard aan, klaar voor toezicht of interne audit.
-AI Act art. 4
-AI-geletterdheid voor je team.
-Sinds februari 2025 verplicht. Korte training inbegrepen bij elk pakket. Jouw team weet hoe AI werkt en welke risico's eraan zitten, zonder dat je een advocaat hoeft te bellen.
-Wij regelen jouw EU AI Act compliance, einde verhaal. | Modelkeuze, documentatie, toezicht en training: standaard bij elk Forgexe-project.
-Volledige AI Act-aanpak
+Beheer en doorontwikkeling
+Wij monitoren, vangen fouten af en breiden uit. Vast maandbedrag, geen verrassingen.
+Elk systeem is gebouwd volgens de EU AI Act: AI meldt zich als AI, data blijft in de EU, documentatie en training zijn inbegrepen. Lees de volledige AI Act-aanpak
 > C:\forgexe\klaar
 Niet zeker welke dienst past ?
 Doe de gratis bedrijfsscan, dan komen we samen achter waar jouw grootste quick wins zitten. Binnen 48 uur.

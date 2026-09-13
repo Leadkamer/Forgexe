@@ -331,6 +331,31 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="expertises-v2">
+.group-head{margin-top:2.6rem;display:flex;flex-direction:column;gap:.15rem}
+.group-head:first-of-type{margin-top:2rem}
+.group-title{font-family:var(--head);font-size:1.25rem;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin:.35rem 0 0}
+.group-sub{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);margin:0}
+.tiles-grid.tiles-compact{margin-top:1.1rem}
+.tile.compact{min-height:0;padding:1.5rem 1.5rem 1.6rem}
+.tile.compact .tile-title{font-size:1.25rem}
+.tile.compact .tile-desc{font-size:.9rem}
+.section-sub a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green)}
+.section-sub a:hover{text-decoration:underline}
+.result-link{display:inline-block;margin-top:1rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green)}
+.result-card.dark .result-link{color:var(--green)}
+.result-card.green .result-link{color:#052e16}
+.result-link:hover{text-decoration:underline}
+.result-more{margin:1.4rem 0 0;text-align:center;font-family:var(--mono);font-size:.78rem}
+.result-more a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green)}
+.result-more a:hover{text-decoration:underline}
+.aanpak-grid.three{grid-template-columns:repeat(3,1fr)}
+.aanpak-note{margin:1.8rem auto 0;max-width:70ch;text-align:center;font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.6}
+.aanpak-note a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green)}
+.aanpak-note a:hover{text-decoration:underline}
+@media(max-width:1100px){.aanpak-grid.three{grid-template-columns:1fr 1fr}.tiles-compact .tile.span-2{grid-column:span 1}}
+@media(max-width:640px){.aanpak-grid.three{grid-template-columns:1fr}.tile.compact{min-height:0!important}}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -349,233 +374,165 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Diensten</span></div>
   <span class="eyebrow">&gt; C:\diensten</span>
   <h1>De AI-werkbank achter <em>jouw</em> groei.</h1>
-  <p class="lead">Acht kerndiensten, zeven AI-medewerkers en een custom platform. Pak er &eacute;&eacute;n, pak ze allemaal, of laat ons ze samen smeden in jouw stack.</p>
+  <p class="lead">AI-medewerkers en automatiseringen die het werk doen dat elke week terugkomt. Gebouwd op de tools die je al hebt.</p>
 </header>
 
-
-<section class="section-card rel-block" id="diensten">
-  <span class="rel-eyebrow">&gt; C:\diensten\kern</span>
-  <h2 class="rel-h2">Waar bedrijven ons voor <em>inhuren</em>.</h2>
-  <p class="rel-sub">Dit zijn de acht vragen waarmee MKB-bedrijven bij Forgexe binnenkomen. Elke pagina legt uit wat het is, wat het kost en hoe we het bouwen.</p>
-  <div class="rel-grid">
-    <a href="/ai-automatisering-laten-bouwen" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-automatisering laten bouwen</span><span class="rel-desc">Werkende automatiseringen op je bestaande tools, gebouwd in n8n, binnen 4 tot 6 weken live.</span></a>
-    <a href="/ai-agent-laten-bouwen" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-agent laten bouwen</span><span class="rel-desc">Een agent die taken afmaakt in je systemen, van inbox tot order, met menselijke controle waar nodig.</span></a>
-    <a href="/ai-medewerker" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-medewerker inhuren</span><span class="rel-desc">Terugkerend werk uit handen: klantvragen, opvolging, rapportages. Voor een vast maandbedrag.</span></a>
-    <a href="/n8n-specialist" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">n8n-specialist inhuren</span><span class="rel-desc">Bouw, hosting en beheer van n8n-workflows op EU-servers. Vendor-vrij, jij blijft eigenaar.</span></a>
-    <a href="/leadgeneratie-automatiseren" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">Leadgeneratie automatiseren</span><span class="rel-desc">Van prospect tot afspraak: LinkedIn- en e-mailoutreach met persoonlijke opvolging.</span></a>
-    <a href="/email-automatiseren" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">E-mail automatiseren met AI</span><span class="rel-desc">Inbox-triage en conceptantwoorden, zodat info@ geen zwart gat meer is.</span></a>
-    <a href="/factuurverwerking-automatiseren" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">Factuurverwerking automatiseren</span><span class="rel-desc">Inkomende facturen uitlezen, matchen en boeken in je boekhoudpakket.</span></a>
-    <a href="/wat-kost-ai-automatisering" class="rel-item"><span class="rel-kind">GIDS</span><span class="rel-title">Wat kost AI-automatisering?</span><span class="rel-desc">De eerlijke cijfers voor het MKB, inclusief onze vaste maandtarieven.</span></a>
-  </div>
-</section>
-<section class="section-card reveal">
+<section class="section-card reveal" id="diensten">
   <div class="section-eyebrow-center">
-    <span class="eyebrow">&gt; C:\overzicht</span>
-    <h2 class="section-h2">Zeven diensten, &eacute;&eacute;n <em>missie</em>.</h2>
-    <p class="section-sub">Geen losse trucjes. Een werkbank waar AI-medewerkers samenwerken aan je groei en je operatie.</p>
+    <span class="eyebrow">&gt; C:\diensten</span>
+    <h2 class="section-h2">Waar bedrijven ons voor <em>inhuren</em>.</h2>
+    <p class="section-sub">Elke dienst heeft een eigen pagina met wat het is, wat het kost en hoe we het bouwen. Twijfel je waar te beginnen? Lees eerst <a href="/wat-kost-ai-automatisering">wat AI-automatisering kost</a>.</p>
   </div>
 
-  <div class="tiles-grid">
-
-    <a href="/leadgeneratie-automatiseren" class="tile tile-dark span-4">
+  <div class="group-head">
+    <span class="eyebrow">&gt; C:\operatie</span>
+    <h3 class="group-title">Operatie</h3>
+    <p class="group-sub">Het werk dat elke week terugkomt.</p>
+  </div>
+  <div class="tiles-grid tiles-compact">
+    <a href="/ai-automatisering-laten-bouwen" class="tile compact span-2 tile-dark">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> LEADGEN</div>
+      <div class="tile-tag">AUTOMATISERING</div>
+      <div class="tile-title">AI-automatisering laten bouwen</div>
+      <p class="tile-desc">Werkende automatiseringen op je bestaande tools, gebouwd in n8n. Eerste versie in 4 tot 6 weken.</p>
+    </a>
+    <a href="/ai-agent-laten-bouwen" class="tile compact span-2 tile-light">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">AI-AGENT</div>
+      <div class="tile-title">AI-agent laten bouwen</div>
+      <p class="tile-desc">Een agent die taken afmaakt in je systemen, van inbox tot order, met menselijke controle waar het telt.</p>
+    </a>
+    <a href="/ai-medewerker" class="tile compact span-2 tile-mid">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">AI-MEDEWERKER</div>
+      <div class="tile-title">AI-medewerker inhuren</div>
+      <p class="tile-desc">Terugkerend werk uit handen: klantvragen, opvolging, rapportages. Voor een vast maandbedrag.</p>
+    </a>
+    <a href="/email-automatiseren" class="tile compact span-2 tile-light">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">INBOX</div>
+      <div class="tile-title">E-mail automatiseren</div>
+      <p class="tile-desc">Inbox-triage en conceptantwoorden, zodat info@ geen zwart gat meer is.</p>
+    </a>
+    <a href="/factuurverwerking-automatiseren" class="tile compact span-2 tile-mid">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">FINANCE</div>
+      <div class="tile-title">Factuurverwerking automatiseren</div>
+      <p class="tile-desc">Inkomende facturen uitlezen, matchen en boeken in je boekhoudpakket.</p>
+    </a>
+    <a href="/planning-optimalisatie" class="tile compact span-2 tile-light">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">OPS</div>
+      <div class="tile-title">Planning optimaliseren</div>
+      <p class="tile-desc">AI leest je productie- of leveringsplanning, signaleert knelpunten en stelt bijsturing voor.</p>
+    </a>
+  </div>
+
+  <div class="group-head">
+    <span class="eyebrow">&gt; C:\groei</span>
+    <h3 class="group-title">Groei</h3>
+    <p class="group-sub">Meer gesprekken, zonder extra handen.</p>
+  </div>
+  <div class="tiles-grid tiles-compact">
+    <a href="/leadgeneratie-automatiseren" class="tile compact span-2 tile-green">
+      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="tile-tag">LEADGEN</div>
       <div class="tile-title">Leadgeneratie automatiseren</div>
-      <p class="tile-desc">AI-medewerkers vinden je ideale klanten, schrijven persoonlijke openers en volgen op. Multi-channel: LinkedIn, e-mail, signal-triggers. Jij krijgt warme gesprekken in je agenda.</p>
-      <div class="tile-visual">
-        <div class="terminal-mini">
-          &gt; <b>scan</b> doelgroep: MKB maakindustrie<br>
-          &gt; gevonden: 1.224 matches<br>
-          &gt; <b>opener</b>.draft x312<br>
-          &gt; afspraken ingepland: <span style="color:#fff">17</span>
-        </div>
-      </div>
-      <div class="tile-meta-row">24/7 actief &middot; 5 kanalen</div>
+      <p class="tile-desc">Van prospect tot afspraak: LinkedIn- en e-mailoutreach met persoonlijke opvolging.</p>
     </a>
-
-    <a href="/ai-blogger" class="tile tile-light span-2">
+    <a href="/ai-blogger" class="tile compact span-2 tile-light">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"/></svg> CONTENT</div>
-      <div class="tile-title">AI Blogger &amp; Content</div>
-      <p class="tile-desc">Wekelijks ranking-waardige artikelen in jouw tone of voice. Van keyword-research tot live publicatie.</p>
-      <div class="tile-visual">
-        <div style="width:100%">
-          <div class="line-meter"><span style="width:88%"></span></div>
-          <div class="line-meter"><span style="width:74%"></span></div>
-          <div class="line-meter"><span style="width:92%"></span></div>
-          <div class="line-meter" style="margin-bottom:0"><span style="width:60%"></span></div>
-        </div>
-      </div>
+      <div class="tile-tag">CONTENT</div>
+      <div class="tile-title">AI-content en blogs</div>
+      <p class="tile-desc">Wekelijks artikelen in jouw tone of voice, van keyword-onderzoek tot publicatie.</p>
     </a>
-
-    <a href="/ai-ads" class="tile tile-amber span-2">
+    <a href="/ai-ads" class="tile compact span-2 tile-amber">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="tile-tag">CAMPAIGNS</div>
       <div class="tile-title">AI Ads Manager</div>
-      <p class="tile-desc">Campagnes 24/7 gemonitord, geoptimaliseerd en bijgestuurd. Lagere CPA, hogere ROAS.</p>
-      <div class="tile-visual">
-        <div class="bars">
-          <span style="height:30%"></span><span style="height:42%"></span><span class="hi" style="height:60%;background:#f5a623"></span><span style="height:52%"></span><span class="hi" style="height:78%;background:#f5a623"></span><span style="height:46%"></span><span class="hi" style="height:88%;background:#f5a623"></span><span style="height:65%"></span><span class="hi" style="height:95%;background:#f5a623"></span>
-        </div>
-      </div>
+      <p class="tile-desc">Campagnes 24/7 gemonitord en bijgestuurd op kosten per aanvraag.</p>
     </a>
+  </div>
 
-    <a href="/ai-rapportage" class="tile tile-mid span-2">
+  <div class="group-head">
+    <span class="eyebrow">&gt; C:\team-en-platform</span>
+    <h3 class="group-title">Team en platform</h3>
+    <p class="group-sub">De basis waar alles op draait.</p>
+  </div>
+  <div class="tiles-grid tiles-compact">
+    <a href="/n8n-specialist" class="tile compact span-2 tile-dark">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="tile-tag">DATA &amp; KPI</div>
-      <div class="tile-title">AI Rapportage</div>
-      <p class="tile-desc">Een AI-medewerker die data verbindt, KPIs presenteert en rapportages oplevert waar je iets aan hebt.</p>
-      <div class="tile-visual">
-        <div class="pill-set">
-          <span>HubSpot</span><span>Looker</span><span>SAP</span><span>GA4</span><span>Stripe</span><span>+12</span>
-        </div>
-      </div>
+      <div class="tile-tag">N8N</div>
+      <div class="tile-title">n8n-specialist</div>
+      <p class="tile-desc">Bouw, hosting en beheer van n8n-workflows op EU-servers. Jij blijft eigenaar.</p>
     </a>
-
-    <a href="/ai-training" class="tile tile-green span-2">
+    <a href="/ai-training" class="tile compact span-2 tile-light">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="tile-tag">UPSKILL</div>
-      <div class="tile-title">AI Training &amp; Workshops</div>
-      <p class="tile-desc">In-company sessies met jullie eigen tools. Prompt engineering, AI in dagelijks werk, no-fluff.</p>
-      <div class="tile-visual">
-        <div class="dots-row">
-          <span>JK</span><span>MD</span><span>TR</span><span>SH</span><span>+9</span>
-        </div>
-      </div>
+      <div class="tile-title">AI-training voor je team</div>
+      <p class="tile-desc">In-company sessies met jullie eigen tools. Ook de AI-geletterdheid die de EU AI Act vraagt.</p>
     </a>
-
-    <a href="/planning-optimalisatie" class="tile tile-light span-2">
+    <a href="/dashboarding" class="tile compact span-2 tile-mid">
       <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="tile-tag">OPS</div>
-      <div class="tile-title">Planning Optimalisatie</div>
-      <p class="tile-desc">AI leest je productie- of leveringsplanning, signaleert knelpunten en stelt optimalisaties voor.</p>
-      <div class="tile-visual">
-        <div class="bars">
-          <span class="hi" style="height:55%"></span><span style="height:42%"></span><span class="hi" style="height:78%"></span><span style="height:60%"></span><span class="hi" style="height:88%"></span><span style="height:50%"></span><span class="hi" style="height:72%"></span><span style="height:45%"></span><span class="hi" style="height:92%"></span><span style="height:65%"></span>
-        </div>
-      </div>
+      <div class="tile-tag">PLATFORM</div>
+      <div class="tile-title">Custom AI-platform en dashboards</div>
+      <p class="tile-desc">Klantportaal of intern dashboard onder jouw merk, met live rapportages en integraties.</p>
     </a>
-
-    <a href="/dashboarding" class="tile tile-dark span-6">
-      <div class="tile-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="tile-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> AI PLATFORM OP MAAT</div>
-      <div class="tile-title" style="font-size:1.8rem;max-width:24ch">Custom platform onder jouw merknaam, gebouwd met onze AI-first workflow.</div>
-      <p class="tile-desc" style="max-width:54ch">Van klantenportaal tot intern dashboard. Dashboards, integraties en automatiseringen op maat. Pixel-perfect, razendsnel, jouw merk.</p>
-      <div class="tile-visual" style="min-height:60px">
-        <div class="pill-set">
-          <span>Klantenportaal</span><span>CRM-integratie</span><span>Custom AI agents</span><span>Live dashboards</span><span>White-label</span><span>SSO</span>
-        </div>
-      </div>
-    </a>
-
   </div>
+</section>
+
+<section class="section-card reveal">
+  <div class="section-eyebrow-center">
+    <span class="eyebrow">&gt; C:\bewijs</span>
+    <h2 class="section-h2">Gebouwd en in <em>gebruik</em>.</h2>
+    <p class="section-sub">Drie systemen die vandaag draaien bij klanten. Alle cijfers komen uit de cases zelf.</p>
+  </div>
+  <div class="result-grid">
+    <div class="result-card dark">
+      <span class="result-label">FIETSENCATALOGUS</span>
+      <div class="result-num">15u</div>
+      <p>Per week minder repetitief werk sinds het AI-portaal de nieuwsbrieven van aangesloten fietsenwinkels samenstelt.</p>
+      <a href="/case-fietsencatalogus" class="result-link">Bekijk de case &rarr;</a>
+    </div>
+    <div class="result-card green">
+      <span class="result-label">DNA-TALENT</span>
+      <div class="result-num">293</div>
+      <p>Persoonlijke LinkedIn-berichten in de eigen schrijfstijl van de coach, verstuurd en opgevolgd zonder handwerk.</p>
+      <a href="/case-dna-talent" class="result-link">Bekijk de case &rarr;</a>
+    </div>
+    <div class="result-card">
+      <span class="result-label">SMART ESG</span>
+      <div class="result-num">3 stappen</div>
+      <p>Van connect tot ESG-gesprek: een pipeline die dagelijks MKB-maakbedrijven scoort, benadert en opvolgt.</p>
+      <a href="/case-smartesg" class="result-link">Bekijk de case &rarr;</a>
+    </div>
+  </div>
+  <p class="result-more"><a href="/cases">Alle cases &rarr;</a></p>
 </section>
 
 <section class="section-card reveal">
   <div class="section-eyebrow-center">
     <span class="eyebrow">&gt; C:\aanpak</span>
-    <h2 class="section-h2">Vijf stappen van scan tot <em>smeden</em>.</h2>
-    <p class="section-sub">Geen maanden vooronderzoek. Binnen vier weken draait stap 1 in productie.</p>
+    <h2 class="section-h2">Zo <em>werken</em> we.</h2>
   </div>
-
-  <div class="aanpak-grid">
+  <div class="aanpak-grid three">
     <div class="step">
-      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
       <div class="step-num-label">STAP_01</div>
       <div class="step-name">Bedrijfsscan</div>
-      <p>30 min online. Wij scannen je groei-kanalen en processen. Quick wins binnen 48 uur.</p>
+      <p>30 minuten online. Binnen 48 uur heb je je drie grootste quick wins op een rij.</p>
     </div>
     <div class="step dark">
-      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
       <div class="step-num-label">STAP_02</div>
-      <div class="step-name">Discovery</div>
-      <p>Een dag langs de processen. Drie grootste hefbomen analyseren en valideren.</p>
+      <div class="step-name">Bouwen op jouw stack</div>
+      <p>Geen nieuwe tools. Eerste werkende versie in 4 tot 6 weken, met tussentijdse demo's.</p>
     </div>
     <div class="step">
-      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
       <div class="step-num-label">STAP_03</div>
-      <div class="step-name">Scope &amp; roadmap</div>
-      <p>Helder voorstel met scope, planning en realistische ROI. Vaste prijs, geen verrassingen.</p>
-    </div>
-    <div class="step dark">
-      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6"/><path d="M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24"/><path d="M1 12h6m10 0h6"/><path d="M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg></div>
-      <div class="step-num-label">STAP_04</div>
-      <div class="step-name">Smeden &amp; testen</div>
-      <p>We bouwen op jouw bestaande stack. Tussentijdse demo's, geen big-bang oplevering.</p>
-    </div>
-    <div class="step">
-      <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="step-num-label">STAP_05</div>
-      <div class="step-name">Compound</div>
-      <p>Handover, training en doorlopende SLA. Wij monitoren, optimaliseren en schalen mee.</p>
+      <div class="step-name">Beheer en doorontwikkeling</div>
+      <p>Wij monitoren, vangen fouten af en breiden uit. Vast maandbedrag, geen verrassingen.</p>
     </div>
   </div>
-</section>
-
-<section class="section-card reveal">
-  <div class="section-eyebrow-center">
-    <span class="eyebrow">&gt; C:\resultaten</span>
-    <h2 class="section-h2">Meetbaar verschil, vanaf <em>dag &eacute;&eacute;n</em>.</h2>
-    <p class="section-sub">Cijfers uit echte Forgexe-projecten in het Nederlandse MKB. Niet representatief voor iedereen, wel realistisch.</p>
-  </div>
-  <div class="result-grid">
-    <div class="result-card dark">
-      <span class="result-label">SALES</span>
-      <div class="result-num">+312%</div>
-      <p>Meer gekwalificeerde aanvragen na 6 maanden AI Outreach bij een SaaS-klant.</p>
-      <div class="meter"><span style="width:82%"></span></div>
-    </div>
-    <div class="result-card green">
-      <span class="result-label">OPS</span>
-      <div class="result-num">17u</div>
-      <p>Per week minder handwerk bij een technische groothandel na 2 AI-medewerkers.</p>
-      <div class="meter"><span style="width:68%"></span></div>
-    </div>
-    <div class="result-card">
-      <span class="result-label">MARKETING</span>
-      <div class="result-num">3,4x</div>
-      <p>Hogere ROAS bij een DTC-merk binnen 90 dagen na overstap naar AI Ads management.</p>
-      <div class="meter"><span style="width:74%"></span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-card reveal">
-  <div class="section-eyebrow-center">
-    <span class="eyebrow">&gt; C:\ai-act-ready</span>
-    <h2 class="section-h2">EU AI Act compliant, vanaf <em>dag &eacute;&eacute;n</em>.</h2>
-    <p class="section-sub">Elk Forgexe-systeem is gebouwd volgens de EU AI Act, met AVG/GDPR als ondergrens. Vier pijlers waar wij jouw compliance op draaien.</p>
-  </div>
-  <div class="trust-row">
-    <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <span class="trust-mini">AI Act art. 13 + 14</span>
-      <h3>Transparantie &amp; menselijk toezicht.</h3>
-      <p>AI-medewerkers identificeren zich altijd als AI. Bij twijfel of impactvolle keuzes escaleren ze naar een mens. Jij houdt de regie, AI doet het werk eronder.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-      <span class="trust-mini">AVG / GDPR</span>
-      <h3>EU-data, end-to-end versleuteld.</h3>
-      <p>Data blijft binnen de EU, AES-256 in transit en at rest. Jouw data wordt nooit gebruikt om externe modellen te trainen. Privacy by design, geen uitzonderingen.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="trust-mini">AI Act art. 12</span>
-      <h3>Documentatie &amp; audit-trail.</h3>
-      <p>Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen, welke data, welke beslissingen. Logging staat standaard aan, klaar voor toezicht of interne audit.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-      <span class="trust-mini">AI Act art. 4</span>
-      <h3>AI-geletterdheid voor je team.</h3>
-      <p>Sinds februari 2025 verplicht. Korte training inbegrepen bij elk pakket. Jouw team weet hoe AI werkt en welke risico's eraan zitten, zonder dat je een advocaat hoeft te bellen.</p>
-    </div>
-  </div>
-  <div class="trust-foot">
-    <div class="trust-foot-text"><strong>Wij regelen jouw EU AI Act compliance, einde verhaal.</strong><br>Modelkeuze, documentatie, toezicht en training: standaard bij elk Forgexe-project.</div>
-    <a href="/ai-act">Volledige AI Act-aanpak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-  </div>
+  <p class="aanpak-note">Elk systeem is gebouwd volgens de EU AI Act: AI meldt zich als AI, data blijft in de EU, documentatie en training zijn inbegrepen. <a href="/ai-act">Lees de volledige AI Act-aanpak &rarr;</a></p>
 </section>
 
 <section class="cta-card reveal">
