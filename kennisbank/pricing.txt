@@ -52,8 +52,18 @@ Plan een gesprek
 Forge.Project
 vanaf EUR 9.500 eenmalig
 GEEN ABONNEMENT · JIJ BEZIT HET SYSTEEM
-Wij bouwen 3 tot 4 AI-medewerkers, leveren op en dragen alles volledig over , van jou, voor altijd. Waar je bij een pakket (ook vooruitbetaald) een dienst voor bepaalde tijd afneemt, koop je hier het systeem zelf. Support na oplevering kan altijd nog, op uurbasis.
+Wij bouwen 3 tot 4 AI-medewerkers op maat, leveren op en dragen alles volledig over , van jou, voor altijd. Waar je bij een pakket (ook vooruitbetaald) een dienst voor bepaalde tijd afneemt, koop je hier het systeem zelf.
 Gratis bedrijfsscan
+Live in 4 tot 6 weken Bouwen, testen en overdragen, inclusief documentatie en een overdrachtssessie.
+Draait in jouw eigen omgeving Op je eigen n8n-account en API-sleutels. Die hosting- en gebruikskosten betaal je rechtstreeks, niet aan ons.
+Support na oplevering: EUR 95 per uur Alleen als je het nodig hebt. Geen strippenkaart, geen verplicht onderhoudscontract.
+> PRO OF PROJECT?
+. Forge.Pro Forge.Project
+Wie host en beheert Forgexe Jij, in je eigen omgeving
+Wat je betaalt EUR 1.200 per maand, minimaal 6 maanden Vanaf EUR 9.500 eenmalig, plus je eigen hosting en API-gebruik
+Doorontwikkeling en support Inbegrepen, met tweewekelijkse check-in Op aanvraag, EUR 95 per uur
+Van wie is het systeem Onderdeel van het abonnement Van jou, voor altijd
+Vuistregel: draai je langer dan acht maanden en heb je iemand in huis die het beheer oppakt, dan is Project voordeliger. Wil je er geen omkijken naar hebben, dan is Pro de betere keuze.
 > C:\vergelijk
 Wat krijg je per pakket.
 Eerlijk overzicht van wat is inbegrepen. Pakketten schalen mee in complexiteit, aantal medewerkers en mate van maatwerk.
@@ -80,7 +90,7 @@ Doe de gratis bedrijfsscan
 > C:\faq
 Veelgestelde vragen.
 Zijn er verborgen kosten?
-Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup-kosten: we bouwen je AI-medewerker in week 1 en vragen daarvoor drie maanden looptijd, daarna is het maandelijks opzegbaar. Forge.Pro heeft ook geen aparte setup-kosten: de maatwerk-investering verwerken we in het maandbedrag, daarom werken we met minimaal 6 maanden. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 9.500, inclusief volledige overdracht.
+Nee. Alle pakketten hebben transparante prijzen. Forge.Start heeft geen setup-kosten: we bouwen je AI-medewerker in week 1 en vragen daarvoor drie maanden looptijd, daarna is het maandelijks opzegbaar. Forge.Pro heeft ook geen aparte setup-kosten: de maatwerk-investering verwerken we in het maandbedrag, daarom werken we met minimaal 6 maanden. Forge.Scale is altijd op maat. En wil je helemaal geen abonnement? Kies dan Forge.Project: eenmalig bouwen vanaf EUR 9.500, inclusief volledige overdracht. Daarna betaal je alleen je eigen hosting en API-gebruik, en support op aanvraag voor EUR 95 per uur.
 Is er een minimum contractduur?
 Forge.Start werkt met minimaal 3 maanden en is daarna maandelijks opzegbaar. Forge.Pro werkt met minimaal 6 maanden en Forge.Scale met 12 maanden. Dat is geen lock-in maar financiering: omdat we geen setup-kosten rekenen, verdienen we de bouwinvestering terug via het maandbedrag. Eerder stoppen kan altijd via de afkoopregeling: je betaalt de resterende maanden van de minimumperiode dan in één keer af. Wil je helemaal geen looptijd? Kies dan Forge.Project: eenmalig, zonder abonnement.
 Wat als ik binnen de minimumlooptijd wil stoppen?
