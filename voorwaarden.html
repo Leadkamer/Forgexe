@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Algemene Voorwaarden | Forgexe</title>
 <meta name="description" content="Algemene voorwaarden van Forgexe voor dienstverlening en levering.">
@@ -189,11 +191,29 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="Algemene Voorwaarden | Forgexe">
 <meta name="twitter:description" content="Algemene voorwaarden van Forgexe voor dienstverlening en levering.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
 <!-- ==/FORGEXE-SEO== -->
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -206,7 +226,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
 
 <header class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <span>Voorwaarden</span></div>
@@ -218,7 +238,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <section class="section-card">
   <div class="legal-shell">
     <div class="updated">Laatst bijgewerkt: 1 januari 2026</div>
-<h2>Artikel 1 , Definities</h2>
+<h2>Artikel 1 &ndash; Definities</h2>
   <p><strong>De Opdrachtnemer:</strong> Forgexe, AI-automatiseringsbedrijf gevestigd in Maastricht en ingeschreven bij de Kamer van Koophandel onder nummer 83002677.</p>
   <p><strong>De Opdrachtgever:</strong> De natuurlijke- of rechtspersoon welke met Opdrachtnemer (Forgexe) enige schriftelijke en/of mondelinge, al dan niet aanvullende overeenkomst heeft gesloten met Forgexe, gebruik maakt van de diensten welke Forgexe aanbiedt of aan wie Forgexe een offerte heeft uitgebracht waarop deze Algemene Voorwaarden van toepassing zijn.</p>
   <p><strong>Diensten:</strong> De diensten welke Forgexe aanbiedt. Onder andere, maar niet beperkt tot: AI-automations, AI-agents, geautomatiseerde workflows, data-enrichment, lead scoring, social media marketing en optimalisatie, website development en design, online leadgeneratie, zoekmachinemarketing en -optimalisatie, consultancy, Google Ads, e-mailmarketingcampagnes en aanverwante AI-diensten.</p>
@@ -229,44 +249,44 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <p><strong>Derde Partij Platforms:</strong> Externe diensten, API&#8217;s en platformen waarvan Forgexe gebruik maakt bij het uitvoeren van AI-diensten, waaronder maar niet beperkt tot: Apollo, LinkedIn, Phantombuster, Unipile, Anthropic Claude API, OpenAI, Google Maps Platform en n8n Cloud.</p>
   <p><strong>AI-output:</strong> Alle resultaten, berichten, analyses, scores, aanbevelingen of andere uitkomsten gegenereerd door AI-systemen in het kader van de geleverde diensten.</p>
 
-  <h2>Artikel 2 , Toepasselijkheid</h2>
+  <h2>Artikel 2 &ndash; Toepasselijkheid</h2>
   <p>Deze voorwaarden zijn van toepassing op iedere aanbieding, offerte, de daaruit voortvloeiende diensten van welke aard dan ook inbegrepen, en overeenkomst tussen een Opdrachtgever en Opdrachtnemer (Forgexe) waarop Opdrachtnemer deze voorwaarden van toepassing heeft verklaard, voor zover van deze voorwaarden niet door partijen schriftelijk is afgeweken.</p>
   <p>Opdrachtnemer wijst de toepasselijkheid van algemene voorwaarden van de Opdrachtgever uitdrukkelijk van de hand. Indien een bepaling in deze algemene voorwaarden op enig moment deels of volledig nietig is of vernietigd wordt, blijft het overige volledig van toepassing.</p>
 
-  <h2>Artikel 3 , Eigendomsvoorbehoud</h2>
+  <h2>Artikel 3 &ndash; Eigendomsvoorbehoud</h2>
   <p>Alle door Opdrachtnemer geleverde zaken binnen het kader van de overeenkomst blijven eigendom van Opdrachtnemer totdat de Opdrachtgever alle verplichtingen uit de met Opdrachtnemer gesloten overeenkomst(en) deugdelijk is nagekomen. Het onder eigendomsvoorbehoud geleverde mag niet worden doorverkocht en mag nimmer als betaalmiddel worden gebruikt.</p>
 
-  <h2>Artikel 4 , Betalingscondities</h2>
+  <h2>Artikel 4 &ndash; Betalingscondities</h2>
   <p>Alle facturen zullen door de Opdrachtgever worden betaald overeenkomstig op de factuur vermelde betalingscondities. Bij gebrek aan specifieke condities dient de factuur binnen tien (10) dagen na factuurdatum te worden voldaan. Alle prijzen en kostenramingen zijn exclusief BTW, tenzij anders vermeld.</p>
   <p>Indien de Opdrachtgever in gebreke blijft in de tijdige betaling van een factuur, is hij van rechtswege in verzuim en is een rente verschuldigd van 1% per maand, tenzij de wettelijke rente hoger is.</p>
 
-  <h2>Artikel 5 , Incassokosten</h2>
+  <h2>Artikel 5 &ndash; Incassokosten</h2>
   <p>Indien de Opdrachtgever in gebreke of in verzuim is met het nakomen van zijn verplichtingen, komen alle kosten ter verkrijging van voldoening, zowel buiten als in rechte, voor rekening van de Opdrachtgever.</p>
 
-  <h2>Artikel 6 , Contractduur en overeenkomst</h2>
+  <h2>Artikel 6 &ndash; Contractduur en overeenkomst</h2>
   <p>Opdrachtnemer zal de overeengekomen diensten naar beste inzicht, kennis, vermogen en overeenkomstig de eisen van goed vakmanschap uitvoeren. Opdrachtnemer kan echter niet garanderen dat met de uit te voeren werkzaamheden het door Opdrachtgever beoogde rendement of resultaat wordt bereikt.</p>
   <p>Wijzigingen en aanvullingen op een overeenkomst gelden slechts indien Opdrachtnemer ze schriftelijk vastlegt.</p>
 
-  <h2>Artikel 7 , Ontbinding en opzegging</h2>
+  <h2>Artikel 7 &ndash; Ontbinding en opzegging</h2>
   <p>Opdrachtnemer is bevoegd de nakoming op te schorten of de overeenkomst te ontbinden indien de Opdrachtgever zijn verplichtingen niet, onvolledig of niet tijdig nakomt.</p>
   <p>Bij overeenkomsten met een onbepaalde looptijd dient de Opdrachtgever een opzegtermijn van &#233;&#233;n (1) maand in acht te nemen. Een overeenkomst voor bepaalde tijd is niet tussentijds opzegbaar en wordt na afloop automatisch verlengd voor eenzelfde periode, behoudens opzegging met inachtneming van een opzegtermijn van twee (2) servicemaanden.</p>
   <p>Indien de Opdrachtgever een overeenkomst opzegt, dient hij de gemaakte kosten met betrekking tot de tot dan verrichte werkzaamheden integraal te betalen.</p>
 
-  <h2>Artikel 8 , Aard van de AI-dienstverlening</h2>
+  <h2>Artikel 8 &ndash; Aard van de AI-dienstverlening</h2>
   <p>Forgexe levert AI-diensten op basis van een inspanningsverplichting. Forgexe garandeert geen specifieke resultaten, conversieverhoudingen of aantallen gegenereerde leads, tenzij schriftelijk anders overeengekomen.</p>
   <p>AI-systemen en geautomatiseerde workflows zijn inherent afhankelijk van de kwaliteit van inputdata, de werking van Derde Partij Platforms en de accuraatheid van AI-modellen. Forgexe is niet aansprakelijk voor uitkomsten die voortvloeien uit onjuiste, onvolledige of verouderde inputdata van de Opdrachtgever.</p>
   <p>Opdrachtgever is zelf verantwoordelijk voor het controleren van AI-output alvorens deze te gebruiken voor beslissingen met aanzienlijke zakelijke, juridische of financi&#235;le consequenties.</p>
 
-  <h2>Artikel 9 , Afhankelijkheid van Derde Partij Platforms</h2>
+  <h2>Artikel 9 &ndash; Afhankelijkheid van Derde Partij Platforms</h2>
   <p>De uitvoering van AI-diensten is mede afhankelijk van de beschikbaarheid, werking en gebruiksvoorwaarden van Derde Partij Platforms. Forgexe heeft geen invloed op wijzigingen, uitval, blokkades of beleidswijzigingen van deze platforms.</p>
   <p>Wijzigingen in API-limieten, tarieven of beschikbaarheid van Derde Partij Platforms gelden als overmacht en bevrijden Forgexe van aansprakelijkheid. Extra kosten die hieruit voortvloeien worden na voorafgaande kennisgeving doorberekend.</p>
 
-  <h2>Artikel 10 , Aansprakelijkheid voor AI-output</h2>
+  <h2>Artikel 10 &ndash; Aansprakelijkheid voor AI-output</h2>
   <p>AI-output wordt gegenereerd op basis van statistische modellen en kan fouten, onnauwkeurigheden of verouderde informatie bevatten. Forgexe is niet aansprakelijk voor schade die voortvloeit uit het gebruik van AI-output zonder adequate verificatie door de Opdrachtgever.</p>
   <p>De Opdrachtgever is verantwoordelijk voor het instellen van adequate controle- en goedkeuringsprocessen bij het gebruik van AI-agents die namens hem communiceren of handelingen verrichten.</p>
   <p>De totale aansprakelijkheid van Forgexe voor schade voortvloeiend uit AI-diensten is beperkt tot het bedrag dat &#233;&#233;n (1) maand voorafgaand aan de schadeveroorzakende gebeurtenis door de Opdrachtgever is betaald voor de betreffende AI-dienst.</p>
 
-  <h2>Artikel 11 , Acceptabel gebruik en compliance</h2>
+  <h2>Artikel 11 &ndash; Acceptabel gebruik en compliance</h2>
   <p>Opdrachtgever is verantwoordelijk voor het gebruik van de geleverde AI-diensten in overeenstemming met alle toepasselijke wet- en regelgeving, waaronder de AVG, de Telecommunicatiewet en de ePrivacy-verordening.</p>
   <p>Het is Opdrachtgever niet toegestaan de AI-diensten te gebruiken voor:</p>
   <ul>
@@ -277,39 +297,39 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   </ul>
   <p>Bij overtreding is Forgexe gerechtigd de dienstverlening per direct te staken. Opdrachtgever vrijwaart Forgexe volledig voor alle aanspraken van derden die hieruit voortvloeien.</p>
 
-  <h2>Artikel 12 , Continu&#239;teit en onderhoud AI-diensten</h2>
+  <h2>Artikel 12 &ndash; Continu&#239;teit en onderhoud AI-diensten</h2>
   <p>Forgexe spant zich in om overeengekomen AI-workflows en agents operationeel te houden. Bij storingen zal Forgexe zich inspannen om deze binnen een redelijke termijn te verhelpen.</p>
   <p>Forgexe is niet aansprakelijk voor downtime of verminderde functionaliteit als gevolg van gepland of ongepland onderhoud door Derde Partij Platforms.</p>
 
-  <h2>Artikel 13 , Intellectuele eigendommen</h2>
-  <p>Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten , waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen , blijven te allen tijde eigendom van Opdrachtnemer.</p>
+  <h2>Artikel 13 &ndash; Intellectuele eigendommen</h2>
+  <p>Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten, waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen, blijven te allen tijde eigendom van Opdrachtnemer.</p>
   <p>AI-output die specifiek is gegenereerd op basis van data en instructies van de Opdrachtgever is eigendom van de Opdrachtgever, mits alle betalingsverplichtingen zijn nagekomen.</p>
   <p>Forgexe behoudt het recht om generieke methodologie&#235;n en best practices opnieuw te gebruiken voor andere opdrachtgevers, zonder dat daarbij vertrouwelijke informatie wordt gedeeld.</p>
   <p>Bij overtreding van dit artikel is Opdrachtgever een boete verschuldigd van tweeduizend euro (&#8364; 2.000,-) per overtreding, naast eventuele schadevergoeding.</p>
 
-  <h2>Artikel 14 , Privacy en gegevensbescherming</h2>
+  <h2>Artikel 14 &ndash; Privacy en gegevensbescherming</h2>
   <p>Voor zover Forgexe persoonsgegevens verwerkt namens de Opdrachtgever, handelt Forgexe als Verwerker en de Opdrachtgever als Verwerkingsverantwoordelijke in de zin van de AVG. Indien nodig sluiten partijen een afzonderlijke Verwerkersovereenkomst.</p>
   <p>Opdrachtgever garandeert dat aangeleverde data rechtmatig is verkregen. Forgexe verwerkt persoonsgegevens uitsluitend voor de uitvoering van de overeengekomen diensten.</p>
   <p>Na be&#235;indiging van de overeenkomst worden persoonsgegevens op verzoek teruggeleverd. Zonder verzoek worden gegevens binnen zes (6) maanden permanent vernietigd.</p>
 
-  <h2>Artikel 15 , Aansprakelijkheid</h2>
+  <h2>Artikel 15 &ndash; Aansprakelijkheid</h2>
   <p>De aansprakelijkheid van Opdrachtnemer is beperkt tot maximaal de factuurwaarde van de order waarop de aansprakelijkheid betrekking heeft. Niet voor vergoeding in aanmerking komt: indirecte schade, gevolgschade, gederfde winst en omzetderving.</p>
   <p>Iedere vordering tot schadevergoeding vervalt door het verloop van twaalf (12) maanden na het ontstaan van de vordering.</p>
 
-  <h2>Artikel 16 , Overmacht</h2>
+  <h2>Artikel 16 &ndash; Overmacht</h2>
   <p>Opdrachtnemer is niet aansprakelijk voor schade als gevolg van overmacht. Onder overmacht wordt mede verstaan: oorlog, overstroming, brand, bedrijfsstoornissen, storingen in internetverbindingen, uitval van elektriciteit, maatregelen van overheidswege, niet-levering door derden, ziekte van medewerkers, en API-wijzigingen, uitval of beleidswijzigingen van Derde Partij Platforms.</p>
   <p>Indien de overmachtssituatie langer duurt dan &#233;&#233;n (1) maand, zijn partijen gerechtigd de overeenkomst te ontbinden zonder verplichting tot schadevergoeding.</p>
 
-  <h2>Artikel 17 , Offertes en aanbiedingen</h2>
+  <h2>Artikel 17 &ndash; Offertes en aanbiedingen</h2>
   <p>Aanbiedingen en offertes zijn vrijblijvend en geldig gedurende veertien (14) dagen, tenzij anders aangegeven. Prijzen zijn exclusief BTW.</p>
 
-  <h2>Artikel 18 , Vrijwaring</h2>
+  <h2>Artikel 18 &ndash; Vrijwaring</h2>
   <p>Opdrachtgever vrijwaart Opdrachtnemer geheel en onvoorwaardelijk tegen alle aanspraken van derden tot vergoeding van schade, behoudens opzet of grove schuld aan de zijde van Opdrachtnemer.</p>
 
-  <h2>Artikel 19 , Klachten</h2>
+  <h2>Artikel 19 &ndash; Klachten</h2>
   <p>Klachten dienen direct na ontdekking schriftelijk aan Forgexe te worden gemeld. Indien geen expliciete garantietermijn is overeengekomen, geldt een termijn van zes (6) maanden na levering.</p>
 
-  <h2>Artikel 20 , Toepasselijk recht</h2>
+  <h2>Artikel 20 &ndash; Toepasselijk recht</h2>
   <p>Op alle rechtsbetrekkingen waarbij Opdrachtnemer partij is, is uitsluitend Nederlands recht van toepassing. Partijen zullen pas een beroep op de rechter doen nadat zij zich tot het uiterste hebben ingespannen een geschil in onderling overleg te beslechten.</p>
 </div>
 <div class="neon-line">

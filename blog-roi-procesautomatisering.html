@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>De ROI van procesautomatisering: wat je echt kunt verwachten | Forgexe Blog</title>
 <meta name="description" content="Vergeet de beloftes van 10x productiviteit. Dit is wat procesautomatisering realistisch oplevert voor een MKB-bedrijf.">
@@ -215,7 +217,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="De ROI van procesautomatisering: wat je echt kunt verwachten">
 <meta name="twitter:description" content="Vergeet de beloftes van 10x productiviteit. Dit is wat procesautomatisering realistisch oplevert voor een MKB-bedrijf.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -242,6 +244,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -254,7 +274,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
 
 <article class="section-card">
   <div class="article-shell">
@@ -272,7 +292,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <p>Laten we beginnen met een reality check. Automatisering levert <strong>geen 10x productiviteit op dag &#233;&#233;n</strong>. Het is geen magische schakelaar die je omdraait waarna alles vanzelf gaat. De implementatie kost tijd, er zijn aanpassingen nodig in je werkprocessen en je team moet leren werken met nieuwe tools.</p>
 
-  <p>Wat je in de praktijk ziet: de eerste 2-4 weken zijn een investering. Je brengt processen in kaart, configureert de automatisering en test alles. Pas daarna begin je de vruchten te plukken. Maar als het eenmaal draait, is het effect structureel , en dat is precies waar de kracht zit.</p>
+  <p>Wat je in de praktijk ziet: de eerste 2-4 weken zijn een investering. Je brengt processen in kaart, configureert de automatisering en test alles. Pas daarna begin je de vruchten te plukken. Maar als het eenmaal draait, is het effect structureel, en dat is precies waar de kracht zit.</p>
 
   <h2>Waar de echte ROI zit</h2>
 
@@ -286,7 +306,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <p>De meest meetbare winst. Repetitieve taken die voorheen uren kostten, worden in seconden afgehandeld. <a href="/factuurverwerking-automatiseren">Denk aan factuurverwerking</a>, data-invoer, rapportages genereren of <a href="/email-automatiseren">e-mails versturen</a>. <strong>Gemiddeld besparen bedrijven 15-25 uur per week</strong> op administratieve taken na een goede implementatie.</p>
 
   <h3>2. Foutreductie</h3>
-  <p>Mensen maken fouten , zeker bij repetitief werk. Een verkeerd overgetikt ordernummer, een gemiste deadline, een fout in een berekening. Automatisering elimineert deze fouten. In sectoren als finance en logistiek kan dit <strong>duizenden euro's per maand</strong> schelen aan correctiekosten en gemiste kansen.</p>
+  <p>Mensen maken fouten, zeker bij repetitief werk. Een verkeerd overgetikt ordernummer, een gemiste deadline, een fout in een berekening. Automatisering elimineert deze fouten. In sectoren als finance en logistiek kan dit <strong>duizenden euro's per maand</strong> schelen aan correctiekosten en gemiste kansen.</p>
 
   <h3>3. Schaalbaarheid</h3>
   <p>Dit is de meest onderschatte factor. Zonder automatisering groeit je operationele last lineair met je omzet. Meer klanten = meer werk = meer personeel nodig. Met automatisering groeit je omzet terwijl je operationele kosten relatief stabiel blijven. <strong>Dat is het verschil tussen 10% en 30% marge</strong> bij schaalbedrijven.</p>
@@ -309,7 +329,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <ul>
     <li><strong>Medewerkerstevredenheid:</strong> niemand wil de hele dag facturen overtypen. Door repetitief werk te automatiseren, kunnen je medewerkers zich richten op werk dat er echt toe doet. Dat leidt tot hogere tevredenheid, minder verloop en betere prestaties.</li>
-    <li><strong>Snellere groei:</strong> als je operatie niet de bottleneck is, kun je sneller groeien. Nieuwe klanten onboarden, meer orders verwerken, sneller reageren op kansen , zonder dat je eerst extra mensen hoeft aan te nemen.</li>
+    <li><strong>Snellere groei:</strong> als je operatie niet de bottleneck is, kun je sneller groeien. Nieuwe klanten onboarden, meer orders verwerken, sneller reageren op kansen, zonder dat je eerst extra mensen hoeft aan te nemen.</li>
     <li><strong>Betere data:</strong> geautomatiseerde processen genereren consistente, betrouwbare data. Die data gebruik je om betere beslissingen te nemen, patronen te herkennen en je business te optimaliseren.</li>
   </ul>
 
@@ -318,7 +338,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <p>Eerlijkheid is belangrijk: automatisering is niet altijd het antwoord. In deze gevallen moet je twee keer nadenken:</p>
 
   <ul>
-    <li><strong>Het proces is al gebroken:</strong> een slecht proces automatiseren maakt het niet beter , het maakt het sneller slecht. Eerst het proces optimaliseren, dan pas automatiseren.</li>
+    <li><strong>Het proces is al gebroken:</strong> een slecht proces automatiseren maakt het niet beter, het maakt het sneller slecht. Eerst het proces optimaliseren, dan pas automatiseren.</li>
     <li><strong>Het volume is te laag:</strong> als je 5 facturen per maand verwerkt, weegt <a href="/wat-kost-ai-automatisering">de investering in automatisering</a> niet op tegen de besparing. Focus op processen met hoog volume en hoge frequentie.</li>
     <li><strong>Het vereist veel menselijk oordeelsvermogen:</strong> complexe onderhandelingen, creatieve strategiebeslissingen of gevoelige klantgesprekken automatiseer je niet. Daar zit de waarde juist in het menselijke element.</li>
     <li><strong>Je team is er niet klaar voor:</strong> automatisering zonder draagvlak mislukt. Als je team de tools niet begrijpt of niet wil gebruiken, is <a href="/ai-training">training en change management</a> stap &#233;&#233;n.</li>

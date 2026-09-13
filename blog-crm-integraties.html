@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>CRM-integraties die je team uren per week besparen | Forgexe Blog</title>
 <meta name="description" content="Je CRM is pas waardevol als het verbonden is met de rest van je tools. Deze integraties maken het verschil.">
@@ -215,7 +217,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="CRM-integraties die je team uren per week besparen">
 <meta name="twitter:description" content="Je CRM is pas waardevol als het verbonden is met de rest van je tools. Deze integraties maken het verschil.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -242,6 +244,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -254,7 +274,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
 
 <article class="section-card">
   <div class="article-shell">
@@ -266,13 +286,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </div>
     <h1 class="article-title">CRM-integraties die je team uren per week besparen</h1>
     <div class="article-body">
-<p>Je CRM is het kloppend hart van je salesproces. Maar als het losstaat van de rest van je toolstack, is het weinig meer dan een duur adresboek. <strong>De echte kracht van een CRM zit in de verbindingen</strong> , met je e-mail, planning, facturatie en socials. In dit artikel laten we zien welke integraties het meeste impact hebben en hoe je ze slim inzet.</p>
+<p>Je CRM is het kloppend hart van je salesproces. Maar als het losstaat van de rest van je toolstack, is het weinig meer dan een duur adresboek. <strong>De echte kracht van een CRM zit in de verbindingen</strong>, met je e-mail, planning, facturatie en socials. In dit artikel laten we zien welke integraties het meeste impact hebben en hoe je ze slim inzet.</p>
 
   <h2>Het probleem: je CRM als ge&#239;soleerde databak</h2>
 
   <p>Herkenbaar? Je team voert klantgegevens handmatig in. Dezelfde informatie staat op drie plekken. Na een belafspraak vergeet iemand de notitie toe te voegen. En als je wilt weten hoeveel omzet een lead heeft opgeleverd, moet je twee systemen naast elkaar leggen.</p>
 
-  <p><strong>Dubbele invoer, incomplete data en gemiste opvolging</strong> , het zijn symptomen van hetzelfde probleem: je CRM praat niet met de rest. Het gevolg? Je team besteedt uren per week aan administratie die geautomatiseerd had kunnen zijn. En erger: je mist kansen omdat informatie niet op de juiste plek terechtkomt.</p>
+  <p><strong>Dubbele invoer, incomplete data en gemiste opvolging</strong>, het zijn symptomen van hetzelfde probleem: je CRM praat niet met de rest. Het gevolg? Je team besteedt uren per week aan administratie die geautomatiseerd had kunnen zijn. En erger: je mist kansen omdat informatie niet op de juiste plek terechtkomt.</p>
 
   <h2>De 4 integraties met de meeste impact</h2>
 
@@ -282,7 +302,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <p><strong>Tijdsbesparing:</strong> Gemiddeld 3-5 uur per week per salesmedewerker. Geen gezoek meer in inboxen, geen "heb jij die mail nog?" vragen.</p>
 
-  <p><strong>Voorbeeldscenario:</strong> Een prospect stuurt een vraag per mail. De e-mail verschijnt automatisch in het CRM-record. De accountmanager ziet direct de context , eerdere gesprekken, offertes, notities , en kan binnen minuten een relevante reactie sturen.</p>
+  <p><strong>Voorbeeldscenario:</strong> Een prospect stuurt een vraag per mail. De e-mail verschijnt automatisch in het CRM-record. De accountmanager ziet direct de context, eerdere gesprekken, offertes, notities, en kan binnen minuten een relevante reactie sturen.</p>
 
   <h3>2. CRM &#8596; Planning &amp; agenda</h3>
 
@@ -290,7 +310,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <p><strong>Tijdsbesparing:</strong> 2-3 uur per week. Geen dubbele agendabeheer, geen vergeten opvolgmomenten.</p>
 
-  <p><strong>Voorbeeldscenario:</strong> Na een demogesprek wordt automatisch een follow-up ingepland voor drie dagen later. Als de prospect niet reageert, gaat er na een week een geautomatiseerde herinneringsmail uit , zonder dat je team er aan hoeft te denken.</p>
+  <p><strong>Voorbeeldscenario:</strong> Na een demogesprek wordt automatisch een follow-up ingepland voor drie dagen later. Als de prospect niet reageert, gaat er na een week een geautomatiseerde herinneringsmail uit, zonder dat je team er aan hoeft te denken.</p>
 
   <h3>3. CRM &#8596; Facturatie</h3>
 
@@ -298,11 +318,11 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <p><strong>Tijdsbesparing:</strong> 1-2 uur per week, plus minder fouten in facturen. Geen verkeerde bedragen of ontbrekende BTW-nummers meer.</p>
 
-  <p><strong>Voorbeeldscenario:</strong> Je salesteam sluit een deal van &#8364;5.000. De status verandert naar "gewonnen" en binnen 30 seconden staat de factuur klaar in Exact Online of Moneybird , compleet met de juiste contactgegevens en betaalcondities.</p>
+  <p><strong>Voorbeeldscenario:</strong> Je salesteam sluit een deal van &#8364;5.000. De status verandert naar "gewonnen" en binnen 30 seconden staat de factuur klaar in Exact Online of Moneybird, compleet met de juiste contactgegevens en betaalcondities.</p>
 
   <h3>4. CRM &#8596; LinkedIn</h3>
 
-  <p><strong>Wat het doet:</strong> <a href="/leadgeneratie-automatiseren">Nieuwe LinkedIn-connecties</a> en interacties worden automatisch gesynchroniseerd met je CRM. Je ziet wie je content bekijkt, wie reageert, en welke prospects actief zijn , zonder handmatig te checken.</p>
+  <p><strong>Wat het doet:</strong> <a href="/leadgeneratie-automatiseren">Nieuwe LinkedIn-connecties</a> en interacties worden automatisch gesynchroniseerd met je CRM. Je ziet wie je content bekijkt, wie reageert, en welke prospects actief zijn, zonder handmatig te checken.</p>
 
   <p><strong>Tijdsbesparing:</strong> 2-4 uur per week aan handmatig profiel-checken en data invoeren.</p>
 
@@ -320,7 +340,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <ul>
     <li><strong>Alles tegelijk koppelen.</strong> Begin met &#233;&#233;n integratie, meet het resultaat, en breid dan uit. Te veel tegelijk leidt tot chaos en onbetrouwbare data.</li>
-    <li><strong>Geen eigenaar aanwijzen.</strong> Iemand moet verantwoordelijk zijn voor het onderhoud van je integraties. Workflows breken soms , en dan moet iemand het fixen.</li>
+    <li><strong>Geen eigenaar aanwijzen.</strong> Iemand moet verantwoordelijk zijn voor het onderhoud van je integraties. Workflows breken soms, en dan moet iemand het fixen.</li>
     <li><strong>Data niet opschonen voor je koppelt.</strong> Garbage in, garbage out. Als je CRM vol staat met dubbele records en verouderde data, verspreid je die rommel naar al je andere systemen.</li>
     <li><strong>De menselijke stap vergeten.</strong> Automatisering vervangt geen strategie. Je team moet weten wat ze met de ge&#239;ntegreerde data moeten doen.</li>
     <li><strong>Geen monitoring instellen.</strong> Integraties kunnen falen zonder dat je het merkt. Stel alerts in zodat je direct weet als er iets misgaat.</li>
@@ -328,7 +348,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <h2>Conclusie</h2>
 
-  <p>De juiste CRM-integraties besparen je team niet alleen uren per week , ze zorgen ervoor dat je <strong>sneller opvolgt, minder fouten maakt en meer deals sluit</strong>. Begin met de koppeling die het meeste pijn oplost (meestal e-mail of facturatie), meet het resultaat, en bouw van daaruit verder.</p>
+  <p>De juiste CRM-integraties besparen je team niet alleen uren per week, ze zorgen ervoor dat je <strong>sneller opvolgt, minder fouten maakt en meer deals sluit</strong>. Begin met de koppeling die het meeste pijn oplost (meestal e-mail of facturatie), meet het resultaat, en bouw van daaruit verder.</p>
 
   <p>Het mooie is: je hoeft hier geen developer voor in te huren. Met de juiste aanpak en tools kun je binnen een week je eerste integratie live hebben.</p>
 </div>

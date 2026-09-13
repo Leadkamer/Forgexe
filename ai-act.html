@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>EU AI Act Compliance | Forgexe</title>
 <meta name="description" content="Hoe Forgexe omgaat met de EU AI Act voor onze klanten en onze eigen werkwijze.">
@@ -189,7 +191,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="EU AI Act Compliance | Forgexe">
 <meta name="twitter:description" content="Hoe Forgexe omgaat met de EU AI Act voor onze klanten en onze eigen werkwijze.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -214,6 +216,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -226,7 +246,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
 
 <header class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <span>AI Act</span></div>
@@ -343,7 +363,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <section class="reveal">
   <div class="section-label">C:\forgexe\compliance&gt;<span class="section-label-cursor"></span></div>
   <h2 class="section-title">Hoe Forgexe jouw <em>compliance</em> regelt.</h2>
-  <p class="section-desc">Wij zorgen dat elk systeem dat we voor je bouwen voldoet aan de AI Act , op zes manieren.</p>
+  <p class="section-desc">Wij zorgen dat elk systeem dat we voor je bouwen voldoet aan de AI Act, op zes manieren.</p>
   <div class="forgexe-grid">
     <div class="forgexe-card">
       <div class="fx-num">01</div>
@@ -373,7 +393,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div class="forgexe-card">
       <div class="fx-num">06</div>
       <h3>Wij monitoren continu</h3>
-      <p>Wijzigingen in de wet, nieuwe richtlijnen, updates aan modellen , wij volgen het en passen jouw systemen aan. Jij hoeft niks te onthouden.</p>
+      <p>Wijzigingen in de wet, nieuwe richtlijnen, updates aan modellen, wij volgen het en passen jouw systemen aan. Jij hoeft niks te onthouden.</p>
     </div>
   </div>
 </section>
@@ -384,8 +404,8 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <h2 class="section-title">Wat dit betekent <em>voor jou</em>.</h2>
   <div class="callout">
     <h3>Voor het Nederlandse MKB</h3>
-    <p>De meeste Forgexe-systemen vallen in de categorieen <strong>beperkt risico</strong> of <strong>minimaal risico</strong>. Dat betekent dat je geen extra vergunningen nodig hebt en geen complexe audits. Wel moet je voldoen aan de transparantie-eisen en de AI-geletterdheidsverplichting , en daar zorgen wij voor.</p>
-    <p>Werk je in <strong>werving, HR, finance of healthcare</strong>? Dan kan je AI-toepassing in de hoog-risico categorie vallen. Geen probleem , wij begeleiden je door de extra eisen heen en zorgen dat alles compliant is voordat we live gaan.</p>
+    <p>De meeste Forgexe-systemen vallen in de categorieen <strong>beperkt risico</strong> of <strong>minimaal risico</strong>. Dat betekent dat je geen extra vergunningen nodig hebt en geen complexe audits. Wel moet je voldoen aan de transparantie-eisen en de AI-geletterdheidsverplichting, en daar zorgen wij voor.</p>
+    <p>Werk je in <strong>werving, HR, finance of healthcare</strong>? Dan kan je AI-toepassing in de hoog-risico categorie vallen. Geen probleem, wij begeleiden je door de extra eisen heen en zorgen dat alles compliant is voordat we live gaan.</p>
   </div>
 </section>
 <div class="neon-line"></div>
@@ -426,9 +446,9 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div class="faq-item"><div class="faq-question">Moet ik mij als MKB'er zorgen maken om de AI Act? <span class="icon">+</span></div><div class="faq-answer"><p>Niet als je met Forgexe werkt. Wij zorgen dat alle systemen die we voor je bouwen voldoen aan de wet. Je hoeft je niet te verdiepen in juridische details.</p></div></div>
     <div class="faq-item"><div class="faq-question">Wat als de wet verandert? <span class="icon">+</span></div><div class="faq-answer"><p>Wij volgen alle ontwikkelingen rondom de AI Act. Als er iets verandert dat jouw systemen raakt, passen we het aan zonder dat je daar iets voor hoeft te doen.</p></div></div>
     <div class="faq-item"><div class="faq-question">Krijg ik documentatie voor een eventuele audit? <span class="icon">+</span></div><div class="faq-answer"><p>Ja. Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen we gebruiken, welke data, welke beslissingen. Klaar voor toezicht.</p></div></div>
-    <div class="faq-item"><div class="faq-question">Wat is AI-geletterdheid en waarom is het verplicht? <span class="icon">+</span></div><div class="faq-answer"><p>Sinds februari 2025 moeten alle organisaties zorgen dat hun medewerkers begrijpen hoe AI werkt en welke risico's eraan zitten. Wij verzorgen een korte training voor je team , standaard inbegrepen.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Wat is AI-geletterdheid en waarom is het verplicht? <span class="icon">+</span></div><div class="faq-answer"><p>Sinds februari 2025 moeten alle organisaties zorgen dat hun medewerkers begrijpen hoe AI werkt en welke risico's eraan zitten. Wij verzorgen een korte training voor je team, standaard inbegrepen.</p></div></div>
     <div class="faq-item"><div class="faq-question">Is mijn data veilig bij Forgexe? <span class="icon">+</span></div><div class="faq-answer"><p>Ja. Wij gebruiken alleen Europese servers, alle data wordt versleuteld, en we zijn AVG-compliant. Jouw data wordt nooit gebruikt om externe modellen te trainen.</p></div></div>
-    <div class="faq-item"><div class="faq-question">Wat als mijn AI-toepassing onder hoog-risico valt? <span class="icon">+</span></div><div class="faq-answer"><p>Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan , geen verrassingen achteraf.</p></div></div>
+    <div class="faq-item"><div class="faq-question">Wat als mijn AI-toepassing onder hoog-risico valt? <span class="icon">+</span></div><div class="faq-answer"><p>Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan, geen verrassingen achteraf.</p></div></div>
   </div>
 </section>
 
@@ -444,7 +464,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 </section>
 <section class="page-cta reveal">
   <h2>Klaar om <em>compliant</em> te starten?</h2>
-  <p>Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen , volledig binnen de EU AI Act.</p>
+  <p>Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen, volledig binnen de EU AI Act.</p>
   <a href="/contact" class="btn-primary">Plan een gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </section>
   </div>

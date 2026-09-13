@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Forgexe | AI-medewerkers die jouw groei uitvoeren</title>
 <meta name="description" content="Forgexe smeedt AI-medewerkers voor het Nederlandse MKB. Leads, processen en rapportages op de automatische piloot, zonder extra personeel.">
@@ -554,8 +556,8 @@ footer{
 .foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
 
 /* ────────── reveal anim ────────── */
-.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
-.reveal.in{opacity:1;transform:translateY(0)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
 
 /* ────────── responsive nav ────────── */
 @media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
@@ -756,7 +758,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="Forgexe | AI-medewerkers die jouw groei uitvoeren">
 <meta name="twitter:description" content="AI-systemen die jouw groei en operatie 24/7 uitvoeren. Voor het Nederlandse MKB.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -783,6 +785,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .article-author a{color:var(--green,#34d399);text-decoration:underline;text-underline-offset:3px}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
@@ -818,7 +838,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 </nav>
 
 <div class="mobile-menu" id="mob">
-  <button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button>
+  <button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button>
   <a href="/">Home</a>
   <a href="/over-ons">Over ons</a>
   <a href="/expertises">Diensten</a>
@@ -856,13 +876,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <div class="proof-bar-sub">Maakindustrie &middot; Technische groothandel &middot; Zakelijke dienstverlening &middot; Marketing</div>
   </div>
   <div class="proof-logos">
-    <span class="logo-chip"><img src="logo-technetium.svg" alt="Technetium"></span>
-    <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG" width="1500" height="659"></span>
-    <span class="logo-chip"><img src="logo-dnatalent.webp" alt="DNA-talent" width="261" height="126"></span>
-    <span class="logo-chip"><img src="logo-fietsencatalogus.webp" alt="Fietsencatalogus" width="400" height="119"></span>
-    <span class="logo-chip"><img src="logo-mploy.svg" alt="Mploy"></span>
-    <span class="logo-chip"><img src="logo-influid.svg" alt="Influid"></span>
-    <span class="logo-chip"><img src="logo-fesma.webp" alt="FESMA" width="400" height="73"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-technetium.svg" alt="Technetium"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-smartesg.webp" alt="Smart ESG" width="1500" height="659"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-dnatalent.webp" alt="DNA-talent" width="261" height="126"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-fietsencatalogus.webp" alt="Fietsencatalogus" width="400" height="119"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-mploy.svg" alt="Mploy"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-influid.svg" alt="Influid"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-fesma.webp" alt="FESMA" width="400" height="73"></span>
     <span class="proof-more">en 22 anderen</span>
   </div>
   <a href="/cases" class="proof-cta">
@@ -875,7 +895,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <section class="section-card reveal section-center">
   <span class="eyebrow">&gt; C:\herkenbaar</span>
   <h2 class="section-h2">Met welke uitdaging<br>heb jij te maken?</h2>
-  <p class="section-sub">Klik op jouw situatie. We laten direct zien hoe we 'm oplossen , geen verkooppraat, een concreet rapport.</p>
+  <p class="section-sub">Klik op jouw situatie. We laten direct zien hoe we 'm oplossen, geen verkooppraat, een concreet rapport.</p>
 
   <div class="bottlenecks-grid" style="margin-top:3rem;text-align:left">
     <div class="bottle-card" onclick="openScan()">
@@ -888,7 +908,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4" stroke-dasharray="2 2"/></svg></div>
       <div class="bottle-title">Mijn tools praten niet met elkaar</div>
-      <p class="bottle-body">CRM, planning, facturatie, mail , allemaal losse eilandjes. Wij bouwen de bruggen ertussen zodat data automatisch stroomt.</p>
+      <p class="bottle-body">CRM, planning, facturatie, mail, allemaal losse eilandjes. Wij bouwen de bruggen ertussen zodat data automatisch stroomt.</p>
     </div>
     <a href="/branches" class="bottle-card photo" style="background-image:url('bottleneck-pain.jpg');text-decoration:none">
       <div class="bottle-arrow" style="background:rgba(255,255,255,.95);color:var(--ink);z-index:3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
@@ -901,7 +921,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
       <div class="bottle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
       <div class="bottle-title">Mijn team doet te veel handwerk</div>
-      <p class="bottle-body">Intake, opvolging, rapportage, data invoeren , werk dat hun tijd opslokt. Wij automatiseren de repetitieve 80%, jullie focus blijft op de 20% die telt.</p>
+      <p class="bottle-body">Intake, opvolging, rapportage, data invoeren, werk dat hun tijd opslokt. Wij automatiseren de repetitieve 80%, jullie focus blijft op de 20% die telt.</p>
     </div>
     <div class="bottle-card" onclick="openScan()">
       <div class="bottle-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
@@ -918,7 +938,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <a href="#wat-we-bouwen" class="bottle-card highlight" style="grid-column:span 2">
       <div>
         <h3>Dit smeden we voor jou.</h3>
-        <p>Elke uitdaging hierboven is een patroon dat we al meer dan 30 keer hebben opgelost. We weten welke hefboom werkt , en welke niet.</p>
+        <p>Elke uitdaging hierboven is een patroon dat we al meer dan 30 keer hebben opgelost. We weten welke hefboom werkt, en welke niet.</p>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:end">
         <span class="pill-cta">Bekijk onze aanpak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
@@ -1098,7 +1118,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
       <h3>Custom AI-portalen</h3>
       <div class="build-bar"><div class="build-bar-fill" style="width:88%"></div></div>
       <p style="margin-bottom:.4rem"><strong style="color:var(--green);font-weight:700">88% minder handmatige invoer</strong></p>
-      <p>Van klantenportaal tot intern dashboard. Alles in &eacute;&eacute;n omgeving die op jouw werkwijze is gebouwd , niet een SaaS-template waar je je naar moet voegen.</p>
+      <p>Van klantenportaal tot intern dashboard. Alles in &eacute;&eacute;n omgeving die op jouw werkwijze is gebouwd, niet een SaaS-template waar je je naar moet voegen.</p>
     </div>
     <div class="build-card">
       <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -1128,7 +1148,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <div class="cases-grid">
     <a href="/case-realcob" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-realcob-preview.webp" alt="RealCob" width="960" height="475"></div></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img loading="lazy" src="case-realcob-preview.webp" alt="RealCob" width="960" height="475"></div></div>
       <div class="case-body">
         <span class="case-client">RealCob</span>
         <div class="case-title">Multi-segment AI Growth voor GDPR/NIS2</div>
@@ -1137,7 +1157,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </a>
     <a href="/case-technetium" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-technetium-preview.webp" alt="Technetium Talent" width="960" height="476"></div></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img loading="lazy" src="case-technetium-preview.webp" alt="Technetium Talent" width="960" height="476"></div></div>
       <div class="case-body">
         <span class="case-client">Technetium</span>
         <div class="case-title">Actief AI-vacatureplatform voor de techniek</div>
@@ -1294,13 +1314,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </div>
   </div>
   <div class="logos-row">
-    <span class="logo-chip"><img src="logo-technetium.svg" alt="Technetium"></span>
-    <span class="logo-chip"><img src="logo-smartesg.webp" alt="Smart ESG" width="1500" height="659"></span>
-    <span class="logo-chip"><img src="logo-dnatalent.webp" alt="DNA-talent" width="261" height="126"></span>
-    <span class="logo-chip"><img src="logo-mploy.svg" alt="Mploy"></span>
-    <span class="logo-chip"><img src="logo-fietsencatalogus.webp" alt="Fietsencatalogus" width="400" height="119"></span>
-    <span class="logo-chip"><img src="logo-influid.svg" alt="Influid"></span>
-    <span class="logo-chip"><img src="logo-fesma.webp" alt="FESMA" width="400" height="73"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-technetium.svg" alt="Technetium"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-smartesg.webp" alt="Smart ESG" width="1500" height="659"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-dnatalent.webp" alt="DNA-talent" width="261" height="126"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-mploy.svg" alt="Mploy"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-fietsencatalogus.webp" alt="Fietsencatalogus" width="400" height="119"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-influid.svg" alt="Influid"></span>
+    <span class="logo-chip"><img loading="lazy" src="logo-fesma.webp" alt="FESMA" width="400" height="73"></span>
   </div>
 </section>
 

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Waarom je AI-strategie begint bij je bestaande tools | Forgexe Blog</title>
 <meta name="description" content="Je hoeft niet alles om te gooien. De beste AI-implementaties bouwen voort op wat je al hebt. Zo begin je.">
@@ -215,7 +217,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="Waarom je AI-strategie begint bij je bestaande tools">
 <meta name="twitter:description" content="Je hoeft niet alles om te gooien. De beste AI-implementaties bouwen voort op wat je al hebt. Zo begin je.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -242,6 +244,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -254,7 +274,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog" class="active">Blog</a><a href="/contact">Contact</a></div>
 
 <article class="section-card">
   <div class="article-shell">
@@ -266,7 +286,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
     </div>
     <h1 class="article-title">Waarom je AI-strategie begint bij je bestaande tools</h1>
     <div class="article-body">
-<p>AI is overal. Elke week lanceert een nieuwe startup een tool die belooft je bedrijf te transformeren. Het is verleidelijk om alles wat je hebt overboord te gooien en helemaal opnieuw te beginnen. <strong>Maar dat is precies de verkeerde aanpak.</strong> De slimste AI-strategie begint niet bij nieuwe tools , maar bij wat je al hebt.</p>
+<p>AI is overal. Elke week lanceert een nieuwe startup een tool die belooft je bedrijf te transformeren. Het is verleidelijk om alles wat je hebt overboord te gooien en helemaal opnieuw te beginnen. <strong>Maar dat is precies de verkeerde aanpak.</strong> De slimste AI-strategie begint niet bij nieuwe tools, maar bij wat je al hebt.</p>
 
   <h2>De fout die veel bedrijven maken</h2>
 
@@ -276,13 +296,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <h2>Begin bij wat je hebt</h2>
 
-  <p>Elk MKB-bedrijf heeft al een basis: een CRM (of op z'n minst een spreadsheet met klanten), e-mail, een agenda, en facturatiesoftware. <strong>Dat zijn geen beperkingen , dat zijn je fundamenten.</strong> De kunst is om die fundamenten slimmer te laten samenwerken.</p>
+  <p>Elk MKB-bedrijf heeft al een basis: een CRM (of op z'n minst een spreadsheet met klanten), e-mail, een agenda, en facturatiesoftware. <strong>Dat zijn geen beperkingen, dat zijn je fundamenten.</strong> De kunst is om die fundamenten slimmer te laten samenwerken.</p>
 
   <p>Voordat je ook maar &#233;&#233;n euro uitgeeft aan nieuwe AI-tools, stel jezelf deze vraag: <strong>haal ik al het maximale uit wat ik nu heb?</strong> In 9 van de 10 gevallen is het antwoord nee.</p>
 
   <h2>Laag 1: automatiseer wat je al doet</h2>
 
-  <p>De eerste stap is geen AI , het is <strong>automatisering</strong>. <a href="/blog-crm-integraties">Koppel je bestaande tools aan elkaar</a> zodat data automatisch stroomt. Denk aan:</p>
+  <p>De eerste stap is geen AI, het is <strong>automatisering</strong>. <a href="/blog-crm-integraties">Koppel je bestaande tools aan elkaar</a> zodat data automatisch stroomt. Denk aan:</p>
 
 
 
@@ -303,7 +323,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <p><strong><a href="/leadgeneratie-automatiseren">Slimme lead-triage</a>:</strong> AI analyseert binnenkomende leads op basis van je historische data en geeft ze automatisch een score. Hoge scores gaan direct naar sales, lage scores krijgen een geautomatiseerde nurture-flow. Je team besteedt alleen tijd aan leads die het waard zijn.</p>
 
-  <p><strong><a href="/email-automatiseren">E-mail categorisering</a>:</strong> AI leest binnenkomende mails en routeert ze automatisch naar de juiste persoon of afdeling. Klachten naar support, offerteaanvragen naar sales, factuurvragen naar finance , zonder dat iemand handmatig hoeft te sorteren.</p>
+  <p><strong><a href="/email-automatiseren">E-mail categorisering</a>:</strong> AI leest binnenkomende mails en routeert ze automatisch naar de juiste persoon of afdeling. Klachten naar support, offerteaanvragen naar sales, factuurvragen naar finance, zonder dat iemand handmatig hoeft te sorteren.</p>
 
   <p><strong>Vergadersamenvattingen:</strong> Na elk klantgesprek maakt AI automatisch een samenvatting met actie-items en koppelt die aan het juiste CRM-record. Geen notities meer vergeten, geen context verloren.</p>
 
@@ -315,10 +335,10 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <h2>Laag 3: bouw nieuwe mogelijkheden</h2>
 
-  <p>Pas als laag 1 en 2 draaien , en je team gewend is aan AI-ondersteunde workflows , is het tijd voor de echte innovatie. Dit is waar je <strong>nieuwe dingen mogelijk maakt</strong> die zonder AI simpelweg niet konden:</p>
+  <p>Pas als laag 1 en 2 draaien, en je team gewend is aan AI-ondersteunde workflows, is het tijd voor de echte innovatie. Dit is waar je <strong>nieuwe dingen mogelijk maakt</strong> die zonder AI simpelweg niet konden:</p>
 
   <ul>
-    <li><strong><a href="/ai-agent-laten-bouwen">AI-agents</a></strong> die zelfstandig leads opvolgen, vragen beantwoorden en afspraken inplannen , 24/7, zonder menselijke tussenkomst</li>
+    <li><strong><a href="/ai-agent-laten-bouwen">AI-agents</a></strong> die zelfstandig leads opvolgen, vragen beantwoorden en afspraken inplannen, 24/7, zonder menselijke tussenkomst</li>
     <li><strong>Predictive analytics</strong> die voorspellen welke klanten dreigen op te zeggen, zodat je proactief kunt handelen</li>
     <li><strong>Automatische contentcreatie</strong> op basis van je klantdata: gepersonaliseerde aanbiedingen, rapportages en communicatie</li>
     <li><strong>Slimme prijsoptimalisatie</strong> die real-time marktdata combineert met je eigen verkoophistorie</li>
@@ -338,13 +358,13 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 
   <h2>Conclusie</h2>
 
-  <p>De beste AI-strategie is geen big bang , het is een <strong>gefaseerde aanpak</strong> die begint bij je bestaande tools. <a href="/ai-automatisering-laten-bouwen">Automatiseer eerst wat je al doet</a>. Voeg dan AI toe als slimme laag. En bouw pas nieuwe mogelijkheden als de basis staat.</p>
+  <p>De beste AI-strategie is geen big bang, het is een <strong>gefaseerde aanpak</strong> die begint bij je bestaande tools. <a href="/ai-automatisering-laten-bouwen">Automatiseer eerst wat je al doet</a>. Voeg dan AI toe als slimme laag. En bouw pas nieuwe mogelijkheden als de basis staat.</p>
 
 
 
 
 
-  <p>Deze aanpak is niet alleen goedkoper en sneller , het is ook duurzamer. Je team groeit mee, je data wordt beter, en elk nieuw systeem bouwt voort op bewezen fundamenten. <strong>Dat is geen evolutie , dat is compound groei.</strong></p>
+  <p>Deze aanpak is niet alleen goedkoper en sneller, het is ook duurzamer. Je team groeit mee, je data wordt beter, en elk nieuw systeem bouwt voort op bewezen fundamenten. <strong>Dat is geen evolutie, dat is compound groei.</strong></p>
 </div>
 
 <div class="neon-line"></div>

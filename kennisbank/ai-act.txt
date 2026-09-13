@@ -63,7 +63,7 @@ Cybersecurity en robuustheid
 AI-systemen moeten bestand zijn tegen aanvallen en fouten. Geen single points of failure die je hele operatie platleggen.
 C:\forgexe\compliance>
 Hoe Forgexe jouw compliance regelt.
-Wij zorgen dat elk systeem dat we voor je bouwen voldoet aan de AI Act , op zes manieren.
+Wij zorgen dat elk systeem dat we voor je bouwen voldoet aan de AI Act, op zes manieren.
 01
 Wij kiezen de juiste AI-tools
 Wij gebruiken alleen AI-modellen van vertrouwde providers (OpenAI, Anthropic, Google) die zelf AI Act-compliant zijn. Geen onbetrouwbare modellen of datasets.
@@ -81,12 +81,12 @@ Wij trainen jouw team
 Standaard bij elk pakket: een korte AI-geletterdheidstraining voor jouw team. Voldoe direct aan artikel 4 van de AI Act.
 06
 Wij monitoren continu
-Wijzigingen in de wet, nieuwe richtlijnen, updates aan modellen , wij volgen het en passen jouw systemen aan. Jij hoeft niks te onthouden.
+Wijzigingen in de wet, nieuwe richtlijnen, updates aan modellen, wij volgen het en passen jouw systemen aan. Jij hoeft niks te onthouden.
 C:\ai-act\mkb>
 Wat dit betekent voor jou .
 Voor het Nederlandse MKB
-De meeste Forgexe-systemen vallen in de categorieen beperkt risico of minimaal risico . Dat betekent dat je geen extra vergunningen nodig hebt en geen complexe audits. Wel moet je voldoen aan de transparantie-eisen en de AI-geletterdheidsverplichting , en daar zorgen wij voor.
-Werk je in werving, HR, finance of healthcare ? Dan kan je AI-toepassing in de hoog-risico categorie vallen. Geen probleem , wij begeleiden je door de extra eisen heen en zorgen dat alles compliant is voordat we live gaan.
+De meeste Forgexe-systemen vallen in de categorieen beperkt risico of minimaal risico . Dat betekent dat je geen extra vergunningen nodig hebt en geen complexe audits. Wel moet je voldoen aan de transparantie-eisen en de AI-geletterdheidsverplichting, en daar zorgen wij voor.
+Werk je in werving, HR, finance of healthcare ? Dan kan je AI-toepassing in de hoog-risico categorie vallen. Geen probleem, wij begeleiden je door de extra eisen heen en zorgen dat alles compliant is voordat we live gaan.
 C:\ai-act\timeline>
 De tijdlijn .
 De AI Act wordt gefaseerd ingevoerd. Dit zijn de belangrijkste data.
@@ -109,11 +109,11 @@ Wij volgen alle ontwikkelingen rondom de AI Act. Als er iets verandert dat jouw 
 Krijg ik documentatie voor een eventuele audit? +
 Ja. Bij elk Forgexe-systeem hoort een documentatiepakket: welke modellen we gebruiken, welke data, welke beslissingen. Klaar voor toezicht.
 Wat is AI-geletterdheid en waarom is het verplicht? +
-Sinds februari 2025 moeten alle organisaties zorgen dat hun medewerkers begrijpen hoe AI werkt en welke risico's eraan zitten. Wij verzorgen een korte training voor je team , standaard inbegrepen.
+Sinds februari 2025 moeten alle organisaties zorgen dat hun medewerkers begrijpen hoe AI werkt en welke risico's eraan zitten. Wij verzorgen een korte training voor je team, standaard inbegrepen.
 Is mijn data veilig bij Forgexe? +
 Ja. Wij gebruiken alleen Europese servers, alle data wordt versleuteld, en we zijn AVG-compliant. Jouw data wordt nooit gebruikt om externe modellen te trainen.
 Wat als mijn AI-toepassing onder hoog-risico valt? +
-Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan , geen verrassingen achteraf.
+Dan begeleiden we je extra. Denk aan extra documentatie, een risico-impact-assessment, en menselijk toezicht. We zorgen dat alles compliant is voordat we live gaan, geen verrassingen achteraf.
 > C:\verder-lezen
 Verder lezen.
 BLOG EU AI Act verplichtingen voor het MKB
@@ -121,5 +121,5 @@ DIENST AI-training voor je team
 DIENST n8n-specialist inhuren
 DIENST AI-automatisering laten bouwen
 Klaar om compliant te starten?
-Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen , volledig binnen de EU AI Act.
+Vraag een gratis bedrijfsscan aan en ontdek hoe AI je bedrijf kan helpen, volledig binnen de EU AI Act.
 Plan een gratis bedrijfsscan

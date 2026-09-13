@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>DNA-talent | Forgexe Case</title>
 <meta name="description" content="AI-outreach voor coaches en HR-professionals in Dany's eigen warme tone-of-voice. Voor de Me.Scan opleiding.">
@@ -161,8 +163,8 @@ footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;pa
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
 .foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
 
-.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
-.reveal.in{opacity:1;transform:translateY(0)}
+.js .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
 
 @media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
 @media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
@@ -324,7 +326,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 <meta name="twitter:title" content="DNA-talent | Forgexe Case">
 <meta name="twitter:description" content="LinkedIn-outreach en content AI in de warme stijl van DNA-talent.">
 <meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <meta name="author" content="Forgexe">
 <link rel="apple-touch-icon" href="favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.growth"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
@@ -350,6 +352,24 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 
@@ -365,7 +385,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   </div>
 </nav>
 
-<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
 
 <header class="page-hero">
   <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/cases">Cases</a> &middot; <span>DNA-talent</span></div>
@@ -431,7 +451,7 @@ img,svg,video,canvas,iframe{max-width:100%;height:auto}
   <div class="next-grid">
     <a href="/case-technetium" class="case-card">
       <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
-      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-technetium-preview.webp" alt="Technetium Talent" width="960" height="476"></div></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img loading="lazy" src="case-technetium-preview.webp" alt="Technetium Talent" width="960" height="476"></div></div>
       <div class="case-body"><span class="case-client">Technetium Talent</span><div class="case-title-card">Actief AI-vacatureplatform voor de techniek</div><div class="case-tags"><span class="case-tag">Webapp</span><span class="case-tag">AI Matching</span><span class="case-tag">SaaS</span></div></div>
     </a>
     <a href="/case-smartesg" class="case-card">

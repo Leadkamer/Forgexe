@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <title>Sales & AI Training — Fidecon × Forgexe</title>
 <link rel="canonical" href="https://www.forgexe.nl/sales-ai-training">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -702,6 +704,24 @@
     .partner-forgexe .partner-name { font-size: 30px; }
   }
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 
@@ -811,7 +831,7 @@
 </section>
 
 <section class="sfeer">
-  <img src="training-gregor-groep.jpg" alt="Gregor Gersen tijdens een interactieve trainingssessie">
+  <img loading="lazy" src="training-gregor-groep.jpg" alt="Gregor Gersen tijdens een interactieve trainingssessie">
   <div class="sfeer-overlay">
     <div class="sfeer-caption">
       <h3>Leren door te <em>doen</em></h3>
@@ -951,11 +971,11 @@
       <h2 class="sh">De verkoper <em>&</em> de bouwer</h2>
     </div>
     <div class="trainers-banner reveal">
-      <img src="trainers-presentatie.jpg" alt="Gregor Gersen en Sedat Ayar geven samen de Sales & AI training">
+      <img loading="lazy" src="trainers-presentatie.jpg" alt="Gregor Gersen en Sedat Ayar geven samen de Sales & AI training">
     </div>
     <div class="trainers-grid">
       <div class="trainer-card reveal reveal-d1">
-        <img src="trainer-gregor.jpg" alt="Gregor Gersen" class="trainer-photo">
+        <img loading="lazy" src="trainer-gregor.jpg" alt="Gregor Gersen" class="trainer-photo">
         <span class="trainer-tag">Sales Expert</span>
         <div class="trainer-name">Gregor Gersen</div>
         <div class="trainer-role">Trainer & Coach — Fidecon</div>
@@ -972,7 +992,7 @@
         </div>
       </div>
       <div class="trainer-card reveal reveal-d2">
-        <img src="trainer-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
+        <img loading="lazy" src="trainer-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
         <span class="trainer-tag">AI & Automation</span>
         <div class="trainer-name">Sedat Ayar</div>
         <div class="trainer-role">AI Specialist — Forgexe</div>

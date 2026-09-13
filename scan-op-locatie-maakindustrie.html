@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>Gratis scan op locatie — Maakindustrie | Forgexe × Fesma</title>
 <meta name="description" content="Gratis AI- &amp; processcan op locatie voor maakbedrijven. Forgexe en Fesma lopen een ochtend mee op jouw vloer en leveren binnen 48 uur jouw drie grootste quick wins.">
@@ -16,7 +18,7 @@
 <meta property="og:site_name" content="Forgexe">
 <meta property="og:locale" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0a0b0e">
+<meta name="theme-color" content="#f4f6f8">
 <link rel="apple-touch-icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat is het verschil met de gewone bedrijfsscan?","acceptedAnswer":{"@type":"Answer","text":"De gratis bedrijfsscan doen we op afstand. Deze scan doen we op locatie, samen met Fesma: we lopen mee op de vloer, spreken je mensen en kijken live in je systemen."}},{"@type":"Question","name":"Werkt dit met ons ERP-systeem?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wij integreren met SAP, Exact, Ridder iQ, Isah, AFAS en andere gangbare ERP-systemen in de maakindustrie."}},{"@type":"Question","name":"Hoeveel tijd kost de scan ons?","acceptedAnswer":{"@type":"Answer","text":"Eén ochtend van ongeveer twee uur op locatie. Binnen 48 uur volgt een kort gesprek met jouw drie grootste quick wins. Meer tijd nodig? Dan kijken we graag uitgebreider mee."}},{"@type":"Question","name":"Wat kost dit voor een productiebedrijf?","acceptedAnswer":{"@type":"Answer","text":"De scan zelf is 100% gratis en vrijblijvend. Wat een vervolgtraject kost hangt af van wat we aantreffen; na de scan krijg je altijd eerst een helder voorstel met scope en verwachte ROI."}}]}</script>
@@ -686,6 +688,24 @@
 .lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
 @media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
 </style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 
@@ -702,7 +722,7 @@
     </span>
     <span class="nav-x">×</span>
     <span class="brand-lockup brand-fesma" aria-label="Fesma">
-      <img src="logo-fesma.webp" alt="Fesma">
+      <img loading="lazy" src="logo-fesma.webp" alt="Fesma">
     </span>
   </div>
   <div class="nav-links">
@@ -776,7 +796,7 @@
           </svg>
           <span class="il-word">FORGEXE</span>
           <span class="x">&times;</span>
-          <img src="logo-fesma.webp" alt="Fesma" class="fesma-logo">
+          <img loading="lazy" src="logo-fesma.webp" alt="Fesma" class="fesma-logo">
         </div>
       </div>
       <div class="intro-cards">
@@ -880,7 +900,7 @@
     </div>
     <div class="trainers-grid">
       <div class="trainer-card reveal reveal-d1">
-        <img src="team-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
+        <img loading="lazy" src="team-sedat.webp" alt="Sedat Ayar" class="trainer-photo">
         <span class="trainer-tag">AI &amp; Automatisering</span>
         <div class="trainer-name">Sedat Ayar</div>
         <div class="trainer-role">AI Specialist — Forgexe</div>
@@ -897,7 +917,7 @@
         </div>
       </div>
       <div class="trainer-card reveal reveal-d2">
-        <img src="team-samuel.jpg" alt="Samuël" class="trainer-photo">
+        <img loading="lazy" src="team-samuel.jpg" alt="Samuël" class="trainer-photo">
         <span class="trainer-tag">Proces &amp; ERP</span>
         <div class="trainer-name">Samu&euml;l</div>
         <div class="trainer-role">Procesanalist — Fesma</div>
@@ -1183,7 +1203,7 @@
     <span class="partners-x">×</span>
     <div class="partner partner-fesma">
       <div class="partner-text">
-        <img src="logo-fesma.webp" alt="Fesma">
+        <img loading="lazy" src="logo-fesma.webp" alt="Fesma">
         <span class="partner-tag">proces- en IT-consultancy</span>
       </div>
     </div>
