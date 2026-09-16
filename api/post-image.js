@@ -2,11 +2,12 @@
  * GET /api/post-image — LinkedIn post-beeld generator (1200×627 PNG).
  *
  * Query-parameters:
- *   t       template: terminal | statement | stat | quote  (default: terminal)
+ *   t       template: terminal | statement | stat | quote | foto  (default: terminal)
  *   f       formaat: landscape 1200x627 | square 1080x1080 | portrait 1080x1350 | story 1080x1920  (default: landscape)
  *   title   hoofdtekst (terminal/statement/quote) of het grote getal (stat)
  *   sub     subregel: commando (terminal), subtekst (statement), label (stat), naam (quote)
- *   eyebrow optioneel label bovenin (statement/stat)
+ *   eyebrow optioneel label bovenin (statement/stat/foto)
+ *   img     foto (alleen template foto): sleutel uit /post-fotos, bijv. whiteboard  (default: portret)
  */
 import { ImageResponse } from '@vercel/og';
 
@@ -153,6 +154,72 @@ function tplStatement(title, sub, eyebrow, pad) {
   );
 }
 
+/* ── template: foto (tekst links, foto van Sedat rechts) ── */
+/* Alleen eigen beeld: een sleutel uit /post-fotos of een absolute URL op een eigen domein. */
+var PHOTO_HOSTS = ['www.forgexe.nl', 'forgexe.nl', 'rllhhzbsjgludeztawyx.supabase.co'];
+function photoUrl(img) {
+  var v = (img || 'portret').trim();
+  if (/^https?:\/\//i.test(v)) {
+    try {
+      var u = new URL(v);
+      if (PHOTO_HOSTS.indexOf(u.hostname) !== -1) return u.toString();
+    } catch (e) {}
+    return 'https://www.forgexe.nl/post-fotos/portret.png';
+  }
+  var key = v.toLowerCase().replace(/[^a-z0-9-]/g, '');
+  if (!key) key = 'portret';
+  var ext = (v.match(/\.(png|jpg|jpeg)$/i) || ['', 'png'])[1].toLowerCase();
+  return 'https://www.forgexe.nl/post-fotos/' + key + '.' + ext;
+}
+
+function tplFoto(title, sub, eyebrow, img, pad, dims) {
+  var tall = dims[1] > dims[0] * 1.05;
+  var src = photoUrl(img);
+  var CARD_PAD_X = 48, CARD_PAD_Y = 44, GAP = 40, FOOT = 46 + 30;
+  var innerW = dims[0] - (pad - 8) * 2 - 2 - CARD_PAD_X * 2;
+  var innerH = dims[1] - (pad - 8) * 2 - 2 - CARD_PAD_Y * 2 - FOOT;
+  var fotoW = tall ? innerW : Math.round(innerW * 0.44);
+  var fotoH = tall ? Math.round(innerH * 0.46) : innerH;
+  var tekstW = tall ? innerW : innerW - fotoW - GAP;
+
+  var chip = h('div', { style: { display: 'flex' } },
+    h('div', { style: { display: 'flex', backgroundColor: '#d1fae5', color: NAVY, fontFamily: 'JetBrains Mono', fontSize: tall ? 20 : 18, letterSpacing: 2, textTransform: 'uppercase', padding: '10px 18px', borderRadius: 999 } }, eyebrow || 'forgexe // ai-automatisering')
+  );
+  var kop = h('div', { style: { display: 'flex', flexDirection: 'column', width: tekstW } },
+    h('div', { style: { display: 'flex', fontFamily: 'Outfit', fontWeight: 800, fontSize: tall ? fitSize(title, 62, 52, 44) : fitSize(title, 52, 44, 37), lineHeight: 1.1, color: INK, width: tekstW } }, title),
+    h('div', { style: { display: 'flex', width: 96, height: 10, backgroundColor: GREEN, borderRadius: 6, marginTop: 24 } }),
+    sub ? h('div', { style: { display: 'flex', fontFamily: 'JetBrains Mono', fontSize: tall ? 23 : 20, lineHeight: 1.5, color: MUT, marginTop: 20, width: tekstW } }, sub) : h('div', { style: { display: 'flex' } })
+  );
+  var photo = h('div', { style: { display: 'flex', width: fotoW, height: fotoH, overflow: 'hidden', borderRadius: 18, backgroundColor: '#e8edf2' } },
+    h('img', { src: src, width: fotoW, height: fotoH, style: { objectFit: 'cover' } })
+  );
+  var body = tall
+    ? h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' } },
+        photo,
+        h('div', { style: { display: 'flex', flexDirection: 'column', marginTop: 34 } },
+          chip,
+          h('div', { style: { display: 'flex', marginTop: 30 } }, kop)
+        )
+      )
+    : h('div', { style: { display: 'flex', flexGrow: 1, alignItems: 'center' } },
+        h('div', { style: { display: 'flex', flexDirection: 'column', width: tekstW, height: fotoH, justifyContent: 'space-between' } }, chip, kop),
+        h('div', { style: { display: 'flex', width: GAP } }),
+        photo
+      );
+  return h('div', { style: {
+    width: '100%', height: '100%', display: 'flex',
+    backgroundColor: '#f4f6f8',
+    backgroundImage: 'linear-gradient(rgba(10,11,14,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,11,14,0.05) 1px, transparent 1px)',
+    backgroundSize: '46px 46px',
+    padding: pad - 8
+  } },
+    h('div', { style: { display: 'flex', flexDirection: 'column', flexGrow: 1, backgroundColor: '#ffffff', border: '1px solid rgba(10,11,14,0.08)', borderRadius: 24, boxShadow: '0 20px 60px rgba(10,11,14,0.06)', padding: CARD_PAD_Y + 'px ' + CARD_PAD_X + 'px' } },
+      body,
+      h('div', { style: { display: 'flex', marginTop: 30 } }, footer(false))
+    )
+  );
+}
+
 /* ── template: slide (carousel-pagina, donker of licht) ── */
 function tplSlide(title, sub, eyebrow, n, count, pad, light) {
   var isLast = n >= count;
@@ -194,6 +261,7 @@ export default async function handler(req) {
     var title = (q.get('title') || '').trim().slice(0, 160);
     var sub = (q.get('sub') || '').trim().slice(0, 200);
     var eyebrow = (q.get('eyebrow') || '').trim().slice(0, 60);
+    var img = (q.get('img') || '').trim().slice(0, 300);
     var n = parseInt(q.get('n'), 10) || 1;
     var count = parseInt(q.get('count'), 10) || 1;
     var light = (q.get('theme') || '').toLowerCase() === 'light';
@@ -216,6 +284,7 @@ export default async function handler(req) {
     var tree;
     var tall = dims[1] >= dims[0];
     if (t === 'slide') tree = tplSlide(title, sub, eyebrow, n, count, pad, light);
+    else if (t === 'foto') tree = tplFoto(title, sub, eyebrow, img, pad, dims);
     else if (t === 'stat') tree = tplStat(title, sub, eyebrow, pad);
     else if (t === 'quote') tree = tplQuote(title, sub, pad);
     else if (t === 'statement') tree = tplStatement(title, sub, eyebrow, pad);

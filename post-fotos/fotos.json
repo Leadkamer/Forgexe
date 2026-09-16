@@ -1,0 +1,11 @@
+{
+  "_comment": "Fotobank voor de post-beeld-generator (t=foto&img=<key>). Elke foto staat als JPG/PNG in deze map. 'wanneer' stuurt de automatische keuze in het HQ-dashboard.",
+  "fotos": [
+    {
+      "key": "portret",
+      "bestand": "portret.png",
+      "label": "Portret, donkere achtergrond",
+      "wanneer": "algemeen, meningen, persoonlijke observaties, quotes"
+    }
+  ]
+}
