@@ -36,12 +36,6 @@
       "bestand": "overleg.png",
       "label": "Klantgesprek",
       "wanneer": "klantgesprek, luisteren, samenwerking"
-    },
-    {
-      "key": "whiteboard-v2",
-      "bestand": "whiteboard-v2.png",
-      "label": "Whiteboard (image 2)",
-      "wanneer": "test"
     }
   ]
 }
