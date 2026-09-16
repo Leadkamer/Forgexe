@@ -13,3 +13,6 @@ demo-topscore/
 # Bronfoto's voor het BNI-scherm: zitten verwerkt in bni-scherm.html.
 # Blijven lokaal, zodat portretten van leden niet publiek op de site staan.
 bni-fotos/
+
+# lokale npm-install voor het testen van de beeld-API (hoort niet op de site)
+node_modules/
