@@ -30,6 +30,12 @@
       "bestand": "portret.png",
       "label": "Portret",
       "wanneer": "meningen, persoonlijke observaties, quotes"
+    },
+    {
+      "key": "overleg",
+      "bestand": "overleg.png",
+      "label": "Klantgesprek",
+      "wanneer": "klantgesprek, luisteren, samenwerking"
     }
   ]
 }
