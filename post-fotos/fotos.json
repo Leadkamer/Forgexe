@@ -1,11 +1,35 @@
 {
-  "_comment": "Fotobank voor de post-beeld-generator (t=foto&img=<key>). Elke foto staat als JPG/PNG in deze map. 'wanneer' stuurt de automatische keuze in het HQ-dashboard.",
+  "_comment": "Fotobank voor de post-beeld-generator (t=foto&img=<key>). Wordt bijgewerkt door n8n-workflow Forgexe HQ - Postfoto.",
   "fotos": [
+    {
+      "key": "whiteboard",
+      "bestand": "whiteboard.png",
+      "label": "Whiteboard",
+      "wanneer": "processen uitleggen, hoe iets werkt, aanpak"
+    },
+    {
+      "key": "scherm",
+      "bestand": "scherm.png",
+      "label": "Presentatie",
+      "wanneer": "presenteren, uitleg aan een team, demo"
+    },
+    {
+      "key": "laptop",
+      "bestand": "laptop.png",
+      "label": "Achter de laptop",
+      "wanneer": "aan het werk, bouwen, dagelijkse praktijk"
+    },
+    {
+      "key": "werkplaats",
+      "bestand": "werkplaats.png",
+      "label": "Op locatie",
+      "wanneer": "maakindustrie, techniek, op locatie"
+    },
     {
       "key": "portret",
       "bestand": "portret.png",
-      "label": "Portret, donkere achtergrond",
-      "wanneer": "algemeen, meningen, persoonlijke observaties, quotes"
+      "label": "Portret",
+      "wanneer": "meningen, persoonlijke observaties, quotes"
     }
   ]
 }
