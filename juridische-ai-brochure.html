@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gratis brochure — Juridische AI-training · Peters Advocatuur × Forgexe</title>
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="Ontvang de gratis brochure van de juridische AI-training: programma, aanpak rond vertrouwelijkheid en de praktische opzet direct in je mailbox. 7 PO-punten in één dag.">
+<link rel="canonical" href="https://www.forgexe.nl/juridische-ai-brochure">
+<meta property="og:title" content="Gratis brochure — Juridische AI-training · Peters Advocatuur × Forgexe">
+<meta property="og:description" content="Slimmer werken met AI, binnen het beroepsgeheim. 7 PO-punten in één trainingsdag. Programma en praktische opzet in de gratis brochure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.forgexe.nl/juridische-ai-brochure">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --navy:#1B2A55; --navy-deep:#111D3E; --navy-light:#2A3E6E;
+    --green:#34d399; --green-bright:#4ade80; --green-pale:#E6F9F1;
+    --sky:#EEF2F9; --cloud:#F6F8FC; --white:#fff; --slate:#4A5568; --slate-light:#718096;
+    --ink:#1A1F2E; --border:#DEE5F0; --red:#e53e3e;
+  }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:'Outfit',sans-serif; color:var(--ink); background:var(--navy-deep); -webkit-font-smoothing:antialiased; }
+  img { max-width:100%; display:block; }
+
+  /* ---------- HERO (mobile-first) ---------- */
+  .hero { position:relative; overflow:hidden;
+    background:linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-light) 100%); }
+  .hero-grid { position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+    background-size:56px 56px; }
+  .hero-glow { position:absolute; width:520px; height:520px; right:-200px; top:-180px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle,rgba(52,211,153,0.14),transparent 65%); }
+  .wrap { position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:18px 18px 44px; }
+
+  .brand { display:inline-flex; align-items:center; gap:9px; margin-bottom:22px; flex-wrap:wrap; }
+  .brand svg { display:block; }
+  .brand .nm { font-size:16px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+  .brand .nm.fx { color:var(--green); }
+  .brand .x { color:rgba(255,255,255,0.45); font-size:14px; font-weight:300; }
+
+  /* mobiel: kop → formulier → bewijs. desktop: pitch links, kaart rechts */
+  .grid { display:grid; grid-template-areas:"top" "card" "bottom"; gap:20px; }
+  .pitch-top { grid-area:top; }
+  .card { grid-area:card; }
+  .pitch-bottom { grid-area:bottom; }
+
+  .eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--green-bright); margin-bottom:14px; }
+  .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green-bright); flex-shrink:0; }
+  h1 { font-family:'Playfair Display',serif; font-size:30px; font-weight:700; color:#fff; line-height:1.12; letter-spacing:-0.4px; margin-bottom:12px; }
+  h1 em { font-style:italic; color:var(--green); font-weight:600; }
+  .sub { font-size:15.5px; line-height:1.6; color:rgba(255,255,255,0.8); font-weight:300; max-width:540px; }
+  .sub b { color:#fff; font-weight:500; }
+
+  .bul { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:22px; }
+  .bul li { display:flex; align-items:center; gap:12px; font-size:15px; color:rgba(255,255,255,0.9); }
+  .bul .ic { width:26px; height:26px; border-radius:8px; background:rgba(52,211,153,0.14); border:1px solid rgba(74,222,128,0.45); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .bul .ic svg { width:14px; height:14px; }
+
+  .trust { display:flex; align-items:center; gap:14px; }
+  .trust-ph { display:flex; flex-shrink:0; }
+  .trust-ph img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--navy-light); }
+  .trust-ph img:nth-child(2) { margin-left:-12px; }
+  .trust-txt { font-size:13px; color:rgba(255,255,255,0.62); line-height:1.45; }
+  .trust-txt b { color:#fff; font-weight:600; }
+
+  /* ---------- FORMULIER ---------- */
+  .card { background:#fff; border-radius:16px; padding:24px 20px; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
+  .card-badge { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--navy); background:var(--green-pale); border:1px solid rgba(52,211,153,0.5); padding:6px 12px; border-radius:999px; margin-bottom:14px; }
+  .card-h { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--navy); line-height:1.2; margin-bottom:6px; }
+  .card-s { font-size:14px; color:var(--slate); font-weight:300; margin-bottom:18px; }
+  .fld { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; }
+  .fld label { font-size:12.5px; font-weight:600; color:var(--navy); }
+  .fld input { width:100%; padding:14px 15px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:16px; color:var(--ink); background:var(--cloud); outline:none; transition:border-color .2s, box-shadow .2s, background .2s; -webkit-appearance:none; appearance:none; }
+  .fld input:focus { border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(52,211,153,0.15); }
+  .fld input.err { border-color:var(--red); }
+  .fld input:disabled { color:var(--slate-light); }
+
+  .more-toggle { background:none; border:none; padding:6px 0 10px; font-family:'Outfit',sans-serif; font-size:13.5px; font-weight:500; color:var(--slate-light); cursor:pointer; display:inline-flex; align-items:center; gap:6px; }
+  .more-toggle:hover { color:var(--navy); }
+  .more-toggle .pl { display:inline-flex; width:18px; height:18px; border-radius:50%; border:1.5px solid var(--border); align-items:center; justify-content:center; font-size:13px; line-height:1; }
+  .more { display:none; }
+  .more.open { display:block; }
+
+  .submit { width:100%; min-height:52px; padding:15px 16px; margin-top:4px; background:var(--green); color:var(--navy-deep); font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; border:none; border-radius:9px; cursor:pointer; transition:background .2s, transform .2s, box-shadow .2s; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+  .submit:hover { background:var(--green-bright); transform:translateY(-1px); box-shadow:0 10px 24px rgba(0,0,0,0.25); }
+  .submit:disabled { cursor:default; transform:none; box-shadow:none; }
+  .submit.is-done { background:var(--navy); color:#fff; }
+  .submit.is-err { background:var(--red); color:#fff; }
+  .note { text-align:center; font-size:12.5px; color:var(--slate-light); margin-top:11px; line-height:1.5; }
+  .note b { color:var(--navy); font-weight:600; }
+  .scarce { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; padding:9px 12px; border-radius:8px; background:var(--cloud); border:1px solid var(--border); font-size:12.5px; color:var(--slate); }
+  .scarce .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:pulse 1.8s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)} 70%{box-shadow:0 0 0 8px rgba(52,211,153,0)} 100%{box-shadow:0 0 0 0 rgba(52,211,153,0)} }
+  .scarce b { color:var(--navy); font-weight:600; }
+
+  .after { margin-top:12px; }
+  .broch-link { display:flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:12px 14px; border-radius:9px; background:var(--cloud); border:1.5px solid var(--border); color:var(--navy); font-weight:600; font-size:14.5px; text-decoration:none; transition:border-color .2s, background .2s; }
+  .broch-link:hover { border-color:var(--green); background:#fff; }
+  .spam-hint { margin:10px 0 0; font-size:12.5px; line-height:1.5; color:var(--slate); }
+  .spam-hint strong { color:var(--navy); }
+
+  /* stap 2: telefoonnummer na de aanvraag */
+  .step2 { margin-top:14px; padding:16px 16px 14px; border:1.5px solid var(--border); border-radius:12px; background:var(--cloud); }
+  .step2-h { font-size:15.5px; font-weight:700; color:var(--navy); line-height:1.3; margin-bottom:4px; }
+  .step2-s { font-size:13px; color:var(--slate); line-height:1.5; margin-bottom:12px; }
+  .step2 .fld input { background:#fff; }
+  .step2-btns { display:flex; gap:10px; align-items:center; margin-top:2px; }
+  .step2 .submit { margin-top:0; min-height:46px; font-size:15px; flex:1; }
+  .skip { background:none; border:none; font-family:'Outfit',sans-serif; font-size:13.5px; font-weight:600; color:var(--slate-light); cursor:pointer; padding:10px 8px; min-height:44px; white-space:nowrap; }
+  .skip:hover { color:var(--navy); }
+  .done-line { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:14px; font-weight:600; color:var(--navy); line-height:1.4; }
+
+  /* ---------- BEWIJS ---------- */
+  .proof { background:#fff; padding:36px 18px; border-bottom:1px solid var(--border); }
+  .proof-in { max-width:1120px; margin:0 auto; }
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px; }
+  .stat { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:16px 14px; }
+  .stat-n { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--navy); line-height:1.1; margin-bottom:4px; }
+  .stat-n em { font-style:normal; color:var(--green); }
+  .stat-l { font-size:12.5px; color:var(--slate); line-height:1.4; }
+  .stat.wide { grid-column:1 / -1; }
+
+  .trainers { display:grid; grid-template-columns:1fr; gap:14px; }
+  .trainer { display:flex; gap:14px; align-items:flex-start; padding:16px; border:1px solid var(--border); border-radius:12px; background:#fff; }
+  .trainer img { width:56px; height:56px; border-radius:50%; object-fit:cover; flex-shrink:0; border:2px solid var(--sky); }
+  .trainer b { display:block; font-size:15.5px; color:var(--navy); font-weight:700; }
+  .trainer span { display:block; font-size:12.5px; color:var(--navy); font-weight:600; margin:2px 0 6px; }
+  .trainer span i { font-style:normal; color:var(--green); }
+  .trainer p { font-size:14px; line-height:1.55; color:var(--slate); font-weight:300; }
+  .incl { margin-top:18px; font-size:13.5px; color:var(--slate); line-height:1.6; text-align:center; }
+  .incl b { color:var(--navy); font-weight:600; }
+
+  /* ---------- IN DE BROCHURE ---------- */
+  .inbroch { background:#fff; padding:44px 18px 52px; }
+  .inbroch-in { max-width:1120px; margin:0 auto; }
+  .ib-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--navy); margin-bottom:10px; }
+  .ib-eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--green); }
+  .ib-h2 { font-family:'Playfair Display',serif; font-size:26px; font-weight:600; color:var(--navy); margin-bottom:22px; line-height:1.2; }
+  .ib-h2 em { font-style:italic; color:var(--green); }
+  .ib-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+  .ib-card { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:18px 18px; }
+  .ib-num { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--green); margin-bottom:6px; }
+  .ib-card h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+  .ib-card p { font-size:13.5px; color:var(--slate); font-weight:300; line-height:1.55; }
+
+  /* tweede formulier */
+  .cta2 { margin-top:28px; background:linear-gradient(160deg, var(--navy-deep), var(--navy)); border-radius:16px; padding:26px 20px; color:#fff; position:relative; overflow:hidden; }
+  .cta2::after { content:""; position:absolute; width:320px; height:320px; right:-140px; bottom:-160px; border-radius:50%; background:radial-gradient(circle,rgba(52,211,153,0.2),transparent 65%); pointer-events:none; }
+  .cta2 > * { position:relative; z-index:1; }
+  .cta2-h { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; line-height:1.2; margin-bottom:6px; }
+  .cta2-h em { font-style:italic; color:var(--green); font-weight:600; }
+  .cta2-s { font-size:14px; color:rgba(255,255,255,0.75); font-weight:300; margin-bottom:18px; }
+  .cta2 .fld label { color:rgba(255,255,255,0.85); }
+  .cta2 .fld input { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); color:#fff; }
+  .cta2 .fld input::placeholder { color:rgba(255,255,255,0.4); }
+  .cta2 .fld input:focus { background:rgba(255,255,255,0.1); border-color:var(--green-bright); box-shadow:0 0 0 3px rgba(74,222,128,0.18); }
+  .cta2 .note { color:rgba(255,255,255,0.55); }
+  .cta2 .note b { color:#fff; }
+  .cta2 .broch-link { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#fff; }
+  .cta2 .broch-link:hover { background:rgba(255,255,255,0.14); border-color:var(--green-bright); }
+  .cta2 .spam-hint { color:rgba(255,255,255,0.7); }
+  .cta2 .spam-hint strong { color:#fff; }
+  .cta2 .submit.is-done { background:rgba(255,255,255,0.12); color:#fff; }
+  .cta2 .step2 { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); }
+  .cta2 .step2-h { color:#fff; }
+  .cta2 .step2-s { color:rgba(255,255,255,0.7); }
+  .cta2 .step2 .fld input { background:rgba(255,255,255,0.08); }
+  .cta2 .skip { color:rgba(255,255,255,0.6); }
+  .cta2 .skip:hover { color:#fff; }
+  .cta2 .done-line { color:var(--green); }
+  .cta2-row { display:grid; grid-template-columns:1fr; gap:0; }
+
+  footer { background:var(--navy-deep); padding:22px 18px; text-align:center; }
+  footer a { color:rgba(255,255,255,0.5); font-size:12px; text-decoration:none; margin:0 7px; }
+  footer a:hover { color:#fff; }
+  footer .cp { display:block; font-size:11px; color:rgba(255,255,255,0.28); margin-top:6px; }
+
+  /* scroll-reveal */
+  .reveal { opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .scarce .pulse { animation:none; }
+    html { scroll-behavior:auto; }
+  }
+
+  /* ---------- TABLET ---------- */
+  @media (min-width:600px) {
+    .wrap { padding:24px 28px 56px; }
+    h1 { font-size:38px; }
+    .card { padding:30px 28px; }
+    .stats { grid-template-columns:repeat(3,1fr); }
+    .stat.wide { grid-column:auto; }
+    .trainers { grid-template-columns:1fr 1fr; }
+    .ib-grid { grid-template-columns:1fr 1fr; }
+    .cta2 { padding:34px 32px; }
+    .cta2-row { grid-template-columns:1fr 1fr; column-gap:14px; }
+    .cta2-row .submit-wrap { grid-column:1 / -1; }
+    .proof, .inbroch { padding-left:28px; padding-right:28px; }
+    footer { padding-left:28px; padding-right:28px; }
+  }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width:900px) {
+    .hero { min-height:100vh; display:flex; align-items:center; }
+    .wrap { width:100%; padding:28px 32px 64px; }
+    .brand { margin-bottom:40px; }
+    .brand .nm { font-size:18px; }
+    .grid { grid-template-columns:1.05fr 0.95fr; grid-template-areas:"top card" "bottom card"; column-gap:56px; row-gap:26px; align-items:start; }
+    .card { align-self:center; }
+    h1 { font-size:clamp(40px,4.4vw,52px); margin-bottom:18px; }
+    .sub { font-size:17px; }
+    .card-h { font-size:25px; }
+    .ib-grid { grid-template-columns:repeat(4,1fr); gap:18px; }
+    .ib-h2 { font-size:30px; margin-bottom:30px; }
+    .proof { padding:44px 32px; }
+    .inbroch { padding:64px 32px 72px; }
+    .cta2-row { grid-template-columns:1fr 1fr auto; align-items:end; }
+    .cta2-row .submit-wrap { grid-column:auto; }
+    .cta2-row .submit { width:auto; min-width:230px; margin-top:0; margin-bottom:12px; padding-left:24px; padding-right:24px; }
+    .cta2 .after { max-width:520px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M32 10 V52"/><path d="M22 52 H42"/>
+        <circle cx="32" cy="10" r="2.2" fill="#fff" stroke="none"/>
+        <path d="M12 18 H52"/>
+        <path d="M12 18 L6 30"/><path d="M12 18 L18 30"/><path d="M4 30 a8 5 0 0 0 16 0"/>
+        <path d="M52 18 L46 30"/><path d="M52 18 L58 30"/><path d="M44 30 a8 5 0 0 0 16 0"/>
+      </svg>
+      <span class="nm">Peters Advocatuur</span><span class="x">×</span>
+      <svg viewBox="0 0 120 120" width="24" height="24" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
+      <span class="nm fx">Forgexe</span>
+    </div>
+
+    <div class="grid">
+      <div class="pitch-top">
+        <span class="eyebrow"><span class="dot"></span> Gratis brochure · Juridische AI-training</span>
+        <h1>Slimmer werken met AI, binnen het <em>beroepsgeheim</em>.</h1>
+        <p class="sub">Contracten, dossiers, correspondentie: AI kan je er dagelijks uren op besparen — als je weet wat je wél en niet mag met cliëntdata. In <b>één trainingsdag</b> leer je veilig en hands-on werken met AI, op echte geanonimiseerde casuïstiek uit de praktijk. Het volledige programma en de praktische opzet staan in de brochure.</p>
+      </div>
+
+      <div class="card" data-form="hero">
+        <span class="card-badge">✓ Gratis &amp; vrijblijvend</span>
+        <div class="card-h">Stuur mij de brochure</div>
+        <div class="card-s">Programma, data en praktische opzet — binnen een minuut in je mailbox.</div>
+        <div class="fld">
+          <label for="naam1">Je naam</label>
+          <input type="text" id="naam1" data-field="naam" placeholder="Voor- en achternaam" autocomplete="name" required>
+        </div>
+        <div class="fld">
+          <label for="email1">Zakelijk e-mailadres</label>
+          <input type="email" id="email1" data-field="email" placeholder="naam@kantoor.nl" autocomplete="email" inputmode="email" required>
+        </div>
+        <button type="button" class="more-toggle" onclick="toggleMore(this)" aria-expanded="false"><span class="pl">+</span> Kantoor &amp; telefoon toevoegen <span style="opacity:.7;font-weight:400;">(optioneel)</span></button>
+        <div class="more">
+          <div class="fld">
+            <label for="bedrijf1">Kantoor</label>
+            <input type="text" id="bedrijf1" data-field="bedrijf" placeholder="Naam van je kantoor" autocomplete="organization">
+          </div>
+          <div class="fld">
+            <label for="telefoon1">Telefoon</label>
+            <input type="tel" id="telefoon1" data-field="telefoon" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
+        <p class="note">Geen verplichtingen. Uitschrijven kan altijd.</p>
+        <div class="scarce"><span class="pulse"></span><span>Max. <b>12 deelnemers</b> per editie · <b>do 24 sept</b> &amp; <b>do 22 okt</b></span></div>
+      </div>
+
+      <div class="pitch-bottom">
+        <ul class="bul">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> 7 PO-punten in één trainingsdag</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Hands-on met je eigen geanonimiseerde casus</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Veilig binnen beroepsgeheim, AVG en AI Act</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Van een advocaat én een AI-specialist</li>
+        </ul>
+        <div class="trust">
+          <div class="trust-ph">
+            <img src="/testimonial-john-peters.jpg" alt="John Peters" width="44" height="44">
+            <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="44" height="44">
+          </div>
+          <div class="trust-txt"><b>John Peters</b> · Advocaat, Peters Advocatuur<br><b>Sedat Ayar</b> · AI Specialist, Forgexe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="proof-in">
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-n"><em>7</em></div><div class="stat-l">PO-punten in één dag · advocaten</div></div>
+      <div class="stat"><div class="stat-n">Max. 12</div><div class="stat-l">deelnemers · advocaten + juristen</div></div>
+      <div class="stat wide"><div class="stat-n">24 sept · 22 okt</div><div class="stat-l">de twee edities dit najaar</div></div>
+    </div>
+    <div class="trainers reveal">
+      <div class="trainer">
+        <img src="/testimonial-john-peters.jpg" alt="John Peters" width="56" height="56" loading="lazy">
+        <div><b>John Peters</b><span>Advocaat — <i>Peters Advocatuur</i></span><p>Brengt de juridische diepgang: per rechtsgebied de praktijkcasuïstiek, de valkuilen en de tuchtrechtelijke kaders. John bewaakt dat elk voorbeeld klopt en toepasbaar is in het echte werk van het kantoor.</p></div>
+      </div>
+      <div class="trainer">
+        <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="56" height="56" loading="lazy">
+        <div><b>Sedat Ayar</b><span>AI Specialist — <i>Forgexe</i></span><p>Expert in AI-automatisering voor het MKB. Sedat vertaalt de techniek naar de dagelijkse praktijk: hands-on met de grote AI-modellen, veilig werken met vertrouwelijke data en de brug naar het automatiseren van terugkerende processen.</p></div>
+      </div>
+    </div>
+    <p class="incl reveal">Eén dag, 7 netto contacturen, op locatie bij Peters Advocatuur — inclusief <b>lunch</b>, <b>deelnamebewijs</b> en alle trainingsmaterialen.</p>
+  </div>
+</section>
+
+<section class="inbroch">
+  <div class="inbroch-in">
+    <span class="ib-eyebrow"><span class="dot"></span> Wat zit erin</span>
+    <h2 class="ib-h2">In de brochure vind je <em>alles</em></h2>
+    <div class="ib-grid reveal">
+      <div class="ib-card"><div class="ib-num">01</div><h4>Het programma</h4><p>Blok voor blok: de ochtend legt het fundament en de grenzen, de middag is volledig hands-on.</p></div>
+      <div class="ib-card"><div class="ib-num">02</div><h4>Vertrouwelijkheid</h4><p>Beroepsgeheim, AVG en de AI Act vertaald naar concrete spelregels voor je dagelijkse werk.</p></div>
+      <div class="ib-card"><div class="ib-num">03</div><h4>De trainers</h4><p>Wie John en Sedat zijn en hoe de juridische en de technische kant elkaar aanvullen.</p></div>
+      <div class="ib-card"><div class="ib-num">04</div><h4>Data &amp; investering</h4><p>De twee edities, de PO-punten en de investering, transparant op een rij.</p></div>
+    </div>
+
+    <div class="cta2 reveal" data-form="onder">
+      <div class="cta2-h">Klaar om 'm te <em>lezen</em>?</div>
+      <div class="cta2-s">Vul je naam en e-mailadres in — de brochure staat binnen een minuut in je mailbox.</div>
+      <div class="cta2-row">
+        <div class="fld">
+          <label for="naam2">Je naam</label>
+          <input type="text" id="naam2" data-field="naam" placeholder="Voor- en achternaam" autocomplete="name" required>
+        </div>
+        <div class="fld">
+          <label for="email2">Zakelijk e-mailadres</label>
+          <input type="email" id="email2" data-field="email" placeholder="naam@kantoor.nl" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="submit-wrap">
+          <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
+        </div>
+      </div>
+      <p class="note">Gratis en vrijblijvend · Max. <b>12 deelnemers</b> per editie</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="/peters-forgexe-juridische-ai">Volledige trainingspagina</a>·
+    <a href="/">forgexe.nl</a>·
+    <a href="/privacy">Privacy</a>
+  </div>
+  <span class="cp">© 2026 Peters Advocatuur × Forgexe</span>
+</footer>
+
+<script>
+  var WEBHOOK = 'https://leadkamer.app.n8n.cloud/webhook/peters-forgexe-lead';
+  var BROCHURE_URL = '/peters-forgexe-brochure';
+
+  function toggleMore(btn) {
+    var more = btn.parentNode.querySelector('.more');
+    var open = !more.classList.contains('open');
+    more.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.querySelector('.pl').textContent = open ? '–' : '+';
+    if (open) { var first = more.querySelector('input'); if (first) first.focus(); }
+  }
+
+  /* Meta-velden voor de Conversions API. Gebruikt fxLeadMeta() uit tracking.js
+     als die er al is; anders dezelfde logica inline, zodat fbc/fbp/event_id ook
+     meegaan als tracking.js nog niet geladen of geblokkeerd is. */
+  function leesCookie(naam) {
+    var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+  function leadMeta() {
+    if (window.fxLeadMeta) { try { return window.fxLeadMeta(); } catch (e) {} }
+    var fbc = leesCookie('_fbc');
+    if (!fbc) {
+      try {
+        var fbclid = new URLSearchParams(location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      } catch (e) {}
+    }
+    return {
+      fbc: fbc,
+      fbp: leesCookie('_fbp'),
+      event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
+      event_source_url: location.href
+    };
+  }
+
+  function geldigEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+  function veld(wrap, naam) { return wrap.querySelector('[data-field="' + naam + '"]'); }
+  function waarde(el) { return el ? el.value.trim() : ''; }
+
+  function submitBrochure(btn) {
+    var wrap = btn.closest('[data-form]');
+    var naam = veld(wrap, 'naam');
+    var email = veld(wrap, 'email');
+    var valid = true;
+    naam.classList.toggle('err', !waarde(naam));
+    email.classList.toggle('err', !geldigEmail(waarde(email)));
+    if (!waarde(naam)) { valid = false; naam.focus(); }
+    else if (!geldigEmail(waarde(email))) { valid = false; email.focus(); }
+    if (!valid) return;
+
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    var meta = leadMeta();
+    var data = {
+      naam: waarde(naam), email: waarde(email),
+      bedrijf: waarde(veld(wrap, 'bedrijf')), telefoon: waarde(veld(wrap, 'telefoon')),
+      type: 'brochure-aanvraag', bron: 'juridische-ai-brochure-lp',
+      formulier: wrap.getAttribute('data-form'),
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
+    };
+
+    wrap._lead = data;
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(resp) {
+        if (resp.ok || resp.type === 'opaque') { toonSucces(wrap, btn, meta.event_id, data); }
+        else { throw new Error('http ' + resp.status); }
+      })
+      .catch(function() {
+        btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+        setTimeout(function() { btn.textContent = 'Stuur mij de brochure →'; btn.classList.remove('is-err'); }, 3000);
+      });
+  }
+
+  function toonSucces(wrap, btn, eventId, lead) {
+    if (window.fxTrack) fxTrack('Lead', { content_name: 'juridische-ai-brochure' }, eventId);
+    btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.classList.add('is-done');
+    var inputs = wrap.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) inputs[i].disabled = true;
+    var toggle = wrap.querySelector('.more-toggle'); if (toggle) toggle.style.display = 'none';
+    var scarce = wrap.querySelector('.scarce'); if (scarce) scarce.style.display = 'none';
+    /* Telefoon al meegegeven in stap 1? Dan geen stap 2. */
+    if (lead && lead.telefoon) { afronding(wrap, null, false); return; }
+    var anchor = wrap.querySelector('.note') || btn;
+    anchor.insertAdjacentHTML('afterend', stap2HTML(wrap.getAttribute('data-form')));
+  }
+
+  /* Stap 2: telefoonnummer (+ kantoor) ná de aanvraag. De lead is dan al binnen;
+     dit gaat als aparte 'brochure-aanvulling' naar dezelfde webhook en wordt in
+     n8n aan de bestaande aanvraag gekoppeld (geen nieuwe mail of lead). */
+  function stap2HTML(id) {
+    return '<div class="step2">' +
+      '<div class="step2-h">Op welk nummer kunnen we je bereiken?</div>' +
+      '<div class="step2-s">We bellen je kort om je vragen over het programma te beantwoorden — alleen als jij dat wilt.</div>' +
+      '<div class="fld"><label for="tel-' + id + '">Telefoon</label><input type="tel" id="tel-' + id + '" data-s2="telefoon" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel"></div>' +
+      '<div class="fld"><label for="bedr-' + id + '">Kantoor <span style="opacity:.55;font-weight:400;">(optioneel)</span></label><input type="text" id="bedr-' + id + '" data-s2="bedrijf" placeholder="Naam van je kantoor" autocomplete="organization"></div>' +
+      '<div class="step2-btns"><button type="button" class="submit" onclick="submitAanvulling(this)">Doorgeven →</button><button type="button" class="skip" onclick="slaOver(this)">Overslaan</button></div>' +
+    '</div>';
+  }
+
+  function submitAanvulling(btn) {
+    var s2 = btn.closest('.step2');
+    var wrap = btn.closest('[data-form]');
+    var tel = s2.querySelector('[data-s2="telefoon"]');
+    var bedr = s2.querySelector('[data-s2="bedrijf"]');
+    if (waarde(tel).replace(/[^\d+]/g, '').length < 8) { tel.classList.add('err'); tel.focus(); return; }
+    tel.classList.remove('err');
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    var lead = wrap._lead || {};
+    var data = {
+      type: 'brochure-aanvulling', naam: lead.naam || '', email: lead.email || '',
+      telefoon: waarde(tel), bedrijf: waarde(bedr) || lead.bedrijf || '',
+      bron: 'juridische-ai-brochure-lp', formulier: wrap.getAttribute('data-form'),
+      datum: new Date().toISOString()
+    };
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(resp) {
+        if (resp.ok || resp.type === 'opaque') { afronding(wrap, s2, true); }
+        else { throw new Error('http ' + resp.status); }
+      })
+      .catch(function() {
+        btn.textContent = 'Er ging iets mis — probeer opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+        setTimeout(function() { btn.textContent = 'Doorgeven →'; btn.classList.remove('is-err'); }, 3000);
+      });
+  }
+
+  function slaOver(btn) {
+    afronding(btn.closest('[data-form]'), btn.closest('.step2'), false);
+  }
+
+  function afronding(wrap, s2, bedankt) {
+    var html =
+      (bedankt ? '<div class="done-line">✓ Dank je — we nemen binnenkort contact met je op.</div>' : '') +
+      '<div class="after">' +
+        '<a class="broch-link" href="' + BROCHURE_URL + '" target="_blank" rel="noopener">Of lees de brochure meteen online →</a>' +
+        '<p class="spam-hint">📩 <strong>Geen mail binnen een paar minuten?</strong> Kijk even in je spam- of ongewenste-mailmap.</p>' +
+      '</div>';
+    if (s2) { s2.insertAdjacentHTML('afterend', html); s2.parentNode.removeChild(s2); }
+    else if (!wrap.querySelector('.after')) {
+      var anchor = wrap.querySelector('.note') || wrap.querySelector('.submit');
+      anchor.insertAdjacentHTML('afterend', html);
+    }
+  }
+
+  /* Enter in een veld = verzenden */
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    var el = e.target;
+    if (!el || el.tagName !== 'INPUT') return;
+    var s2 = el.closest('.step2');
+    if (s2) { var b2 = s2.querySelector('.submit'); if (b2 && !b2.disabled) { e.preventDefault(); submitAanvulling(b2); } return; }
+    var wrap = el.closest('[data-form]');
+    if (!wrap) return;
+    var btn = wrap.querySelector('.submit');
+    if (btn && !btn.disabled) { e.preventDefault(); submitBrochure(btn); }
+  });
+
+  /* scroll-reveal */
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { for (var i = 0; i < els.length; i++) els[i].classList.add('in'); return; }
+    var io = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) { entries[i].target.classList.add('in'); io.unobserve(entries[i].target); }
+      }
+    }, { threshold: 0.12 });
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  })();
+</script>
+<script src="/tracking.js"></script>
+</body>
+</html>

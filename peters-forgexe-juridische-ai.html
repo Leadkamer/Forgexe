@@ -955,6 +955,29 @@
     });
   });
 
+  /* Meta-velden voor de Conversions API. Gebruikt fxLeadMeta() uit tracking.js
+     als die er al is; anders dezelfde logica inline. */
+  function leesCookie(naam) {
+    var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+  function leadMeta() {
+    if (window.fxLeadMeta) { try { return window.fxLeadMeta(); } catch (e) {} }
+    var fbc = leesCookie('_fbc');
+    if (!fbc) {
+      try {
+        var fbclid = new URLSearchParams(location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      } catch (e) {}
+    }
+    return {
+      fbc: fbc,
+      fbp: leesCookie('_fbp'),
+      event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10),
+      event_source_url: location.href
+    };
+  }
+
   // Form submit
   async function submitForm(btn) {
     var form = btn.closest('.form-grid');
@@ -967,6 +990,7 @@
     if (!valid) return;
     btn.textContent = 'Verzenden...';
     btn.disabled = true;
+    var meta = leadMeta();
     var data = {
       voornaam: form.querySelector('input[placeholder="Je voornaam"]').value.trim(),
       achternaam: form.querySelector('input[placeholder="Je achternaam"]').value.trim(),
@@ -979,7 +1003,8 @@
       bericht: form.querySelector('textarea').value.trim(),
       type: 'inschrijving',
       bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
-      datum: new Date().toISOString()
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
     };
     try {
       var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/peters-forgexe-lead', {
@@ -988,6 +1013,7 @@
         body: JSON.stringify(data)
       });
       if (resp.ok || resp.type === 'opaque') {
+        if (window.fxTrack) fxTrack('CompleteRegistration', { content_name: 'peters-forgexe-juridisch' }, meta.event_id);
         btn.textContent = '✓ Verstuurd! We nemen contact op.';
         btn.style.background = 'var(--navy)';
         btn.style.color = '#fff';
@@ -1018,6 +1044,7 @@
     btn.disabled = true;
     var bedrijf = document.getElementById('broch-bedrijf');
     var telefoon = document.getElementById('broch-telefoon');
+    var meta = leadMeta();
     var data = {
       naam: naam.value.trim(),
       email: email.value.trim(),
@@ -1025,7 +1052,8 @@
       telefoon: telefoon ? telefoon.value.trim() : '',
       type: 'brochure-aanvraag',
       bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
-      datum: new Date().toISOString()
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
     };
     try {
       var resp = await fetch('https://leadkamer.app.n8n.cloud/webhook/peters-forgexe-lead', {
@@ -1034,6 +1062,7 @@
         body: JSON.stringify(data)
       });
       if (resp.ok || resp.type === 'opaque') {
+        if (window.fxTrack) fxTrack('Lead', { content_name: 'peters-forgexe-juridisch' }, meta.event_id);
         btn.textContent = '✓ Onderweg! Check je mailbox.';
         btn.style.background = 'var(--navy)';
         btn.style.color = '#fff';
@@ -1054,6 +1083,7 @@
     }
   }
 </script>
+<script src="/tracking.js"></script>
 
 </body>
 </html>
