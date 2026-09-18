@@ -32,6 +32,8 @@ Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site g
 - **Uitzondering: live pagina's blijven in de repo-root**, want dat zijn URL's (bijv. `peters-forgexe-juridische-ai.html` → /peters-forgexe-juridische-ai). Alleen het marketingmateriaal verhuist
 - Samenwerkingsmappen staan in .gitignore: de hele repo-root gaat live, en dit is intern materiaal
 - Beelden in die mappen verwijzen met `../` naar de gedeelde bestanden in de root (logo's, teamfoto's)
+- Binnen zo'n projectmap: eerst een map per campagne of aanbod, daarbinnen op soort. Bijvoorbeeld `fesma x forgexe/lunchsessie-30-oktober/{carrousel,advertenties}/`. Losse bestanden op één hoop worden onvindbaar
+- Elk niveau dieper betekent één `../` extra in de beeldpaden — nalopen na het verplaatsen
 
 ## Conventies
 - Alle HTML is standalone (inline CSS + JS, geen externe frameworks)
