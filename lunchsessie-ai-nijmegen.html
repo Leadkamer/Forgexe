@@ -1130,7 +1130,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <details class="faq-item"><summary>Voor wie is deze lunchsessie bedoeld?</summary><p>Voor eigenaren, directie en managers uit de maakindustrie en uit finance- en accountancykantoren. Je hoeft niets van AI te weten &mdash; we beginnen bij het werk dat blijft liggen, niet bij de techniek.</p></details>
     <details class="faq-item"><summary>Moet ik verstand hebben van AI?</summary><p>Nee. We leggen alles uit in gewone taal en gaan pas de diepte in als iemand aan tafel daarom vraagt. Kom je juist met technische vragen? Ook goed &mdash; Sedat bouwt dit werk zelf.</p></details>
     <details class="faq-item"><summary>Is dit een verkooppraatje?</summary><p>Nee. We laten werkende systemen zien en gaan daarna met elkaar in gesprek. Wil je erna verder praten, dan kan dat &mdash; maar daar draait de middag niet om, en je wordt er niet toe gepusht.</p></details>
-    <details class="faq-item"><summary>Wat kost deelname en waarom is het niet gratis?</summary><p>&euro;25 per persoon, inclusief lunch. Dat bedrag dekt de lunch en zorgt ervoor dat de mensen die zich aanmelden er ook echt zijn. Na je aanmelding krijg je direct een mail met een betaallink &mdash; betalen kan met iDEAL of creditcard.</p></details>
+    <details class="faq-item"><summary>Wat kost deelname en waarom is het niet gratis?</summary><p>&euro;25 per persoon, inclusief lunch. Dat bedrag dekt de lunch en zorgt ervoor dat de mensen die zich aanmelden er ook echt zijn. Je rekent meteen na het aanmelden af met iDEAL of creditcard. Daarna is je plek definitief en krijg je de bevestiging per mail.</p></details>
     <details class="faq-item"><summary>Kan ik een collega meenemen?</summary><p>Ja, graag zelfs. Geef bij je aanmelding aan met hoeveel personen je komt, dan reserveren we de plekken en stemmen we de lunch daarop af.</p></details>
     <details class="faq-item"><summary>Ik heb een dieetwens of allergie</summary><p>Geef dat door bij je aanmelding of stuur een bericht naar Sedat. Het Sanadome regelt dat zonder gedoe.</p></details>
     <details class="faq-item"><summary>Ik kan op 30 oktober niet &mdash; komt er een volgende?</summary><p>Meld je toch even aan of stuur een bericht. Loopt deze sessie goed, dan plannen we een volgende en weet jij het als eerste. Kun je niet wachten? Dan kijken we ook los met je mee.</p></details>
@@ -1201,7 +1201,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <span class="section-label-text">Aanmelden</span>
       </div>
       <h2 class="sh" style="text-align:center;">Reserveer je plek aan<br>de <em>lunchtafel</em></h2>
-      <p>Drie korte vragen, dan je gegevens. Je krijgt direct een mail met een iDEAL-betaallink en de routebeschrijving &mdash; zodra je betaald hebt, staat je plek vast.</p>
+      <p>Drie korte vragen, dan je gegevens &mdash; daarna ga je meteen door naar de betaalpagina. Na het afrekenen staat je plek vast en krijg je de bevestiging per mail.</p>
     </div>
     <div class="wizard reveal" id="planWizard">
       <div class="wiz-progress"><div class="wiz-bar" id="wizBar"></div></div>
@@ -1281,8 +1281,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="wiz-step" data-step="5">
           <div class="form-done show">
             <div class="check">&#10003;</div>
-            <h3>Je plek staat genoteerd.</h3>
-            <p>Check je mail: daar staat een betaallink voor &euro;25 per persoon, samen met het programma en de route naar het Sanadome. Zodra je betaald hebt is je plek definitief.</p>
+            <h3>Je aanmelding is binnen.</h3>
+            <p>Het openen van de betaalpagina lukte niet meteen. Geen zorgen: we sturen je de betaallink per mail. Wil je het sneller regelen, bel dan even met Sedat via +31 6 180 310 22.</p>
+            <div class="checks">
+              <span><b>&#10003;</b> Vrijdag 30 oktober</span>
+              <span><b>&#10003;</b> 12:00&ndash;14:00 uur</span>
+              <span><b>&#10003;</b> Sanadome Nijmegen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="wiz-step" data-step="6">
+          <div class="form-done show">
+            <div class="check">&#10003;</div>
+            <h3>Betaald &mdash; je plek is definitief.</h3>
+            <p>Bedankt! Je krijgt zo een bevestiging per mail met het programma en de route naar het Sanadome. Tot 30 oktober.</p>
             <div class="checks">
               <span><b>&#10003;</b> Vrijdag 30 oktober</span>
               <span><b>&#10003;</b> 12:00&ndash;14:00 uur</span>
@@ -1293,7 +1306,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
       </div>
     </div>
-    <p class="form-note" id="planNote">Betalen gaat veilig via iDEAL of creditcard. Kun je onverhoopt toch niet? Laat het ons uiterlijk 27 oktober weten.</p>
+    <p class="form-note" id="planNote">Je rekent direct af via iDEAL of creditcard, in de beveiligde omgeving van Mollie. Kun je onverhoopt toch niet? Laat het ons uiterlijk 27 oktober weten.</p>
   </div>
 </section>
 
@@ -1446,17 +1459,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     planSent = true;
     var btn = document.getElementById('p-submit');
     btn.disabled = true;
-    btn.textContent = 'Versturen…';
+    btn.textContent = 'Betaling klaarzetten…';
+
+    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'lunchsessie-ai-nijmegen' }, meta.event_id);
+
+    var afgehandeld = false;
+    function terugval(){
+      if (afgehandeld) return;
+      afgehandeld = true;
+      wizShow(5);
+    }
+    var klok = setTimeout(terugval, 12000);
 
     fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-lunchsessie', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
-    }).catch(function(){});
+    }).then(function(r){
+      return r.json();
+    }).then(function(res){
+      if (afgehandeld) return;
+      clearTimeout(klok);
+      if (res && res.betaallink){
+        afgehandeld = true;
+        btn.textContent = 'Je gaat naar de betaalpagina…';
+        window.location.href = res.betaallink;
+      } else {
+        terugval();
+      }
+    }).catch(function(){
+      clearTimeout(klok);
+      terugval();
+    });
+  }
 
-    if (window.fxTrack) window.fxTrack('Lead', { content_name: 'lunchsessie-ai-nijmegen' }, meta.event_id);
-
-    wizShow(5);
+  // Terug van Mollie na een geslaagde betaling
+  function toonBetaald(){
+    if (!document.getElementById('planWizard')) return;
+    wizShow(6);
+    var balk = document.querySelector('#planWizard .wiz-progress');
+    if (balk) balk.style.display = 'none';
+    var notitie = document.getElementById('planNote');
+    if (notitie) notitie.style.display = 'none';
+    var kop = document.querySelector('#plan .form-header');
+    if (kop) kop.style.display = 'none';
+    document.getElementById('plan').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (window.location.search.indexOf('betaald=1') !== -1){
+    setTimeout(toonBetaald, 400);
   }
 </script>
 <script src="/tracking.js" defer></script>
