@@ -16,3 +16,9 @@ bni-fotos/
 
 # lokale npm-install voor het testen van de beeld-API (hoort niet op de site)
 node_modules/
+
+# Samenwerkingsmappen: al het materiaal per samenwerking (ads, carrousels,
+# documenten) staat hier bij elkaar. Blijft lokaal, want de hele repo-root
+# gaat live op forgexe.nl en dit is intern materiaal.
+fesma x forgexe/
+peters x forgexe/

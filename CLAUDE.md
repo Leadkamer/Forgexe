@@ -25,6 +25,14 @@ Forgexe is een B2B AI-automatiseringsbedrijf. De website is een statische site g
 - `forgexe-lockup-*.svg/png` — logo met tekst
 - `logo-*.png/svg/jpg/webp` — klantlogo's
 
+## Samenwerkingen
+- Elke samenwerking krijgt een eigen map in de Forgexe-map: `<partner> x forgexe/` (bijv. `fesma x forgexe/`, `peters x forgexe/`)
+- **Al het materiaal voor die samenwerking staat daarin**: advertenties, carrousels, PDF-exports, documenten. Niet in de algemene `ads/`-map
+- Vraagt Sedat om ads of een carrousel voor een samenwerking, dan komen die dus in de bijbehorende projectmap
+- **Uitzondering: live pagina's blijven in de repo-root**, want dat zijn URL's (bijv. `peters-forgexe-juridische-ai.html` → /peters-forgexe-juridische-ai). Alleen het marketingmateriaal verhuist
+- Samenwerkingsmappen staan in .gitignore: de hele repo-root gaat live, en dit is intern materiaal
+- Beelden in die mappen verwijzen met `../` naar de gedeelde bestanden in de root (logo's, teamfoto's)
+
 ## Conventies
 - Alle HTML is standalone (inline CSS + JS, geen externe frameworks)
 - SVG illustraties inline in HTML, geen externe afbeeldingen waar mogelijk
