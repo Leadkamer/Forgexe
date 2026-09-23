@@ -63,6 +63,9 @@
     var pad = paginaPad().toLowerCase();
     if (/reparat|onderhoud|werkplaats|service|beurt|storing/.test(pad)) return 'service';
     if (/contact|openingstijd|route|adres|vestiging|winkel-info/.test(pad)) return 'contact';
+    /* Lease- en verzekeringspagina's bevatten vaak het woord "fiets" maar gaan
+       niet over één model; daar past de algemene teaser beter dan "deze fiets". */
+    if (/lease|verzeker/.test(pad)) return 'algemeen';
     if (/-\d{3,}\.html?$|\/p\/|fiets|ebike|e-bike|product|artikel|shop|collectie|assortiment|occasion|model/.test(pad)) return 'product';
     return 'algemeen';
   }
@@ -71,14 +74,44 @@
     return CONTEXTEN[contextNaam()];
   }
 
+  /* Een winkel mag teaser en chips ook PER PAGINASOORT zetten, met de soort
+     als prefix: "algemeen=Welke fiets past bij jou?|product=Twijfel je nog?".
+     Soorten die je niet noemt vallen terug op de standaardteksten hierboven,
+     zodat je de reparatiepagina niet hoeft over te schrijven om de homepage
+     aan te passen. Zonder prefix geldt de waarde op elke pagina (oude gedrag). */
+  var SOORT_PREFIX = /^\s*(algemeen|product|service|contact|demo)\s*=/i;
+
+  function perSoort(waarde) {
+    var delen = String(waarde).split('|');
+    if (!SOORT_PREFIX.test(delen[0])) return null;
+    var map = {};
+    for (var i = 0; i < delen.length; i++) {
+      var gelijk = delen[i].indexOf('=');
+      if (gelijk < 1) continue;
+      var soort = delen[i].slice(0, gelijk).trim().toLowerCase();
+      var rest = delen[i].slice(gelijk + 1).trim();
+      if (soort && rest) map[soort] = rest;
+    }
+    return map;
+  }
+
   function teaserTekst() {
-    if (config && config.teaser) return config.teaser;
+    if (config && config.teaser) {
+      var map = perSoort(config.teaser);
+      if (!map) return config.teaser;
+      var eigen = map[contextNaam()];
+      if (eigen) return eigen;
+    }
     return paginaContext().teaser;
   }
 
   function startChips() {
     if (config && config.chips) {
-      var eigen = String(config.chips).split('|');
+      /* Bij per-soort chips scheidt de puntkomma de chips onderling, omdat de
+         pijp dan al de soorten scheidt. */
+      var map = perSoort(config.chips);
+      var bron = map ? (map[contextNaam()] || '') : String(config.chips);
+      var eigen = bron.split(map ? ';' : '|');
       var schoon = [];
       for (var i = 0; i < eigen.length && schoon.length < 3; i++) {
         var c = eigen[i].trim();
