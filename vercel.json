@@ -3,6 +3,7 @@
   "routes": [
     { "src": "/fidecon-forgexe-sales-ai(\\.html)?", "status": 301, "headers": { "Location": "/sales-ai-training" } },
     { "src": "/ai-outreach(\\.html)?", "status": 301, "headers": { "Location": "/leadgeneratie-automatiseren" } },
+    { "src": "/juridische-ai/?", "status": 302, "headers": { "Location": "/peters-forgexe-juridische-ai?bron=advocatenblad" } },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/404.html", "status": 404 }
   ]
