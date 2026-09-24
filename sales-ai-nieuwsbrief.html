@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nieuwsbrief Sales &amp; AI · Forgexe</title>
+<meta name="description" content="Een nieuwsbrief over de ontwikkelingen binnen Sales &amp; AI. Wat er verandert, wat werkt en wat niet. Van Sedat Ayar, Forgexe.">
+<link rel="canonical" href="https://www.forgexe.nl/sales-ai-nieuwsbrief">
+<meta name="robots" content="noindex,follow">
+<meta property="og:title" content="Nieuwsbrief Sales &amp; AI · Forgexe">
+<meta property="og:description" content="Over de ontwikkelingen binnen Sales &amp; AI. Wat werkt, wat niet, en wat je ermee kunt.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.forgexe.nl/sales-ai-nieuwsbrief">
+<link rel="icon" href="/forgexe-mark-green.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --mono:'JetBrains Mono',monospace;
+    --head:'Outfit',sans-serif;
+    --green:#34d399;
+    --green-lt:#4ade80;
+    --neon-cyan:#00f0ff;
+    --card-bg-dark:#0a0b0e;
+    --ink:#0a0b0e;
+    --ink-mut:#8d9bb5;
+    --radius-md:14px;
+    --radius-pill:999px;
+    --tr:.32s cubic-bezier(.4,0,.2,1);
+  }
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--mono);
+    background:var(--card-bg-dark);
+    color:#e8edf5;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* neon grid + scanlines, zoals de rest van de site */
+  .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(rgba(52,211,153,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(52,211,153,.045) 1px,transparent 1px);
+    background-size:54px 54px;}
+  .glow{position:fixed;width:620px;height:620px;right:-260px;top:-240px;border-radius:50%;
+    pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(52,211,153,.13),transparent 65%);}
+  .scan{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;
+    background:repeating-linear-gradient(to bottom,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);}
+
+  .wrap{position:relative;z-index:2;flex:1;width:100%;max-width:560px;margin:0 auto;
+    padding:40px 20px 56px;display:flex;flex-direction:column;justify-content:center;}
+
+  .brand{display:inline-flex;align-items:center;gap:9px;margin-bottom:34px;text-decoration:none;}
+  .brand img{height:26px;width:auto;display:block;}
+  .brand span{font-family:var(--head);font-size:17px;font-weight:700;color:var(--green);letter-spacing:-.3px;}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;
+    letter-spacing:2.2px;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+  h1{font-family:var(--head);font-size:clamp(28px,7vw,38px);font-weight:700;line-height:1.14;
+    letter-spacing:-.8px;color:#fff;margin-bottom:14px;}
+  h1 em{font-style:normal;color:var(--green);}
+  .lead{font-size:15px;line-height:1.7;color:#b6c2d4;font-weight:400;margin-bottom:26px;}
+
+  .bul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:30px;}
+  .bul li{display:flex;align-items:flex-start;gap:11px;font-size:14px;line-height:1.55;color:#cbd6e6;}
+  .bul .tick{width:20px;height:20px;border-radius:6px;background:rgba(52,211,153,.14);
+    border:1px solid rgba(52,211,153,.4);color:var(--green);flex-shrink:0;margin-top:1px;
+    display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;}
+
+  form{display:flex;flex-direction:column;gap:12px;}
+  .field label{display:block;font-size:11px;font-weight:600;letter-spacing:1.4px;
+    text-transform:uppercase;color:var(--ink-mut);margin-bottom:6px;}
+  .field input{width:100%;font-family:var(--mono);font-size:15px;color:#fff;
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius-md);padding:13px 15px;transition:border-color var(--tr),background var(--tr);}
+  .field input::placeholder{color:#6b7994;}
+  .field input:focus{outline:none;border-color:var(--green);background:rgba(52,211,153,.07);}
+
+  button{width:100%;font-family:var(--head);font-size:16px;font-weight:600;color:#06231a;
+    background:var(--green);border:none;border-radius:var(--radius-md);padding:15px 20px;
+    cursor:pointer;margin-top:6px;transition:background var(--tr),transform var(--tr);}
+  button:hover:not(:disabled){background:var(--green-lt);transform:translateY(-1px);}
+  button:disabled{cursor:default;opacity:.85;transform:none;}
+
+  .fineprint{font-size:12px;line-height:1.6;color:#7b8aa3;text-align:center;margin-top:4px;}
+  .msg{font-size:13.5px;line-height:1.6;border-radius:var(--radius-md);padding:13px 15px;margin-top:4px;}
+  .msg.ok{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.4);color:#a7f3d0;}
+  .msg.err{background:rgba(229,62,62,.1);border:1px solid rgba(229,62,62,.45);color:#feb2b2;}
+
+  footer{position:relative;z-index:2;text-align:center;padding:0 20px 34px;
+    font-size:12px;color:#5d6b83;}
+  footer a{color:#8d9bb5;text-decoration:none;}
+  footer a:hover{color:var(--green);}
+
+  @media (min-width:640px){ .wrap{padding:64px 24px 72px;} }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="glow"></div>
+<div class="scan"></div>
+
+<main class="wrap">
+
+  <a class="brand" href="/">
+    <img src="/forgexe-mark-green.svg" alt="">
+    <span>Forgexe</span>
+  </a>
+
+  <div class="eyebrow"><span class="dot"></span> Nieuwsbrief</div>
+
+  <h1>De ontwikkelingen binnen <em>Sales &amp; AI</em></h1>
+
+  <p class="lead">Er verandert veel, en het meeste ervan is ruis. Ik schrijf op wat er echt toe doet voor mensen die verkopen: wat werkt, wat niet werkt, en wat je er morgen mee kunt. Geen pitch, geen hype.</p>
+
+  <ul class="bul">
+    <li><span class="tick">&#10003;</span> Wat er verandert in sales door AI, in gewone taal</li>
+    <li><span class="tick">&#10003;</span> Werkwijzen die ik bij bedrijven zie slagen, en die ik zie falen</li>
+    <li><span class="tick">&#10003;</span> Hooguit een keer per maand, uitschrijven kan altijd</li>
+  </ul>
+
+  <form id="nbForm" novalidate>
+    <div class="field">
+      <label for="nb-naam">Voornaam</label>
+      <input type="text" id="nb-naam" name="naam" placeholder="Hoe mag ik je aanspreken?" autocomplete="given-name" required>
+    </div>
+    <div class="field">
+      <label for="nb-email">E-mailadres</label>
+      <input type="email" id="nb-email" name="email" placeholder="jij@bedrijf.nl" autocomplete="email" required>
+    </div>
+    <button type="submit" id="nbBtn">Meld me aan</button>
+    <p class="fineprint">Je gegevens gebruik ik alleen voor deze nieuwsbrief. Ik deel ze niet met anderen.</p>
+    <div id="nbMsg"></div>
+  </form>
+
+</main>
+
+<footer>
+  <a href="/">forgexe.nl</a> &middot; Sedat Ayar
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('nbForm');
+  var btn  = document.getElementById('nbBtn');
+  var msg  = document.getElementById('nbMsg');
+
+  function toon(soort, tekst){
+    msg.innerHTML = '<div class="msg ' + soort + '">' + tekst + '</div>';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var naam  = document.getElementById('nb-naam');
+    var email = document.getElementById('nb-email');
+    var goed  = true;
+
+    [naam, email].forEach(function(i){
+      if (!i.value.trim()) { i.style.borderColor = '#e53e3e'; goed = false; }
+      else { i.style.borderColor = ''; }
+    });
+    if (email.value.trim() && email.value.indexOf('@') === -1) {
+      email.style.borderColor = '#e53e3e'; goed = false;
+    }
+    if (!goed) { toon('err', 'Vul je voornaam en een geldig e-mailadres in.'); return; }
+
+    btn.textContent = 'Bezig...';
+    btn.disabled = true;
+    msg.innerHTML = '';
+
+    var data = {
+      naam: naam.value.trim(),
+      email: email.value.trim(),
+      bron: new URLSearchParams(location.search).get('bron') || 'sales-ai-nieuwsbrief',
+      datum: new Date().toISOString()
+    };
+
+    fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-nieuwsbrief', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(resp){
+      if (!resp.ok && resp.type !== 'opaque') { throw new Error('serverfout'); }
+      form.querySelector('.fineprint').style.display = 'none';
+      naam.disabled = true; email.disabled = true;
+      btn.textContent = 'Aangemeld';
+      toon('ok', '<strong>Gelukt.</strong> Je staat op de lijst. Je krijgt zo een bevestiging in je mailbox. Niets gezien? Kijk dan even in je spammap.');
+    }).catch(function(){
+      btn.textContent = 'Meld me aan';
+      btn.disabled = false;
+      toon('err', 'Er ging iets mis. Probeer het nog een keer, of mail me op sedat at forgexe.nl.');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
