@@ -286,6 +286,9 @@
     '.fb-teaser-naam{font-size:13px;font-weight:700;color:#0C0D10;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.fb-teaser-txt{font-size:13px;color:#8A909D;line-height:1.45;margin-top:2px}' +
     '.fb-teaser-x{position:absolute;top:4px;right:6px;background:none;border:none;color:#8A909D;font-size:15px;cursor:pointer;padding:2px 4px;line-height:1;font-family:inherit}' +
+    /* Kaartmodus: de teaserkaart vervangt de ronde knop als eerste staat */
+    '.fb-root.fb-kaart .fb-btn{display:none}' +
+    '.fb-root.fb-kaart .fb-teaser{bottom:0}' +
     '.fb-teaser-x:hover{color:#0C0D10}' +
     '@media (max-width:520px){.fb-root{right:12px;bottom:12px}.fb-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fb-teaser{max-width:calc(100vw - 24px)}}';
 
@@ -534,9 +537,9 @@
   } catch (e) { /* geen cache */ }
 
   /* Teaser: compacte kaart met winkelnaam en een gedempte openingszin
-     (Cartier-stijl); de hele kaart opent de chat. Verschijnt na 4s en
-     hooguit 1x per sessie: wie de kaart al zag of de chat al opende,
-     ziet daarna alleen nog de ronde knop. */
+     (Cartier-stijl). Bij het eerste bezoek in de sessie VERVANGT de kaart
+     de ronde knop; de hele kaart opent de chat. Wie erop klikt of hem
+     wegklikt, ziet daarna alleen nog de ronde knop. */
   var TEASER_KEY = storeKey + '-teaser';
 
   function teaserGezien() {
@@ -618,23 +621,33 @@
 
   vulTeaser();
 
-  setTimeout(function () {
-    if (open || loadHistory().length) return;
-    if (!teaserGezien()) {
+  /* Kaartmodus: nog niet gezien en nog geen gesprek → de kaart is de eerste
+     staat van de widget en de ronde knop blijft verborgen. De klasse gaat er
+     synchroon op, zodat de knop niet eerst even opflitst. */
+  var kaartModus = !teaserGezien() && !loadHistory().length;
+
+  function verlaatKaartModus() {
+    kaartModus = false;
+    root.classList.remove('fb-kaart');
+  }
+
+  if (kaartModus) {
+    root.classList.add('fb-kaart');
+    setTimeout(function () {
+      if (open || !kaartModus) return;
       vulTeaser();
       teaserEl.classList.add('fb-show');
       track('teaser_getoond', teaserTxtEl.textContent);
       markeerTeaserGezien();
-      setTimeout(function () {
-        if (!open) teaserEl.classList.remove('fb-show');
-      }, 15000);
-    }
-    puls();
-  }, 4000);
+    }, 300);
+  } else {
+    setTimeout(puls, 4000);
+  }
 
   teaserEl.addEventListener('click', function () {
     track('teaser_geklikt', '');
     verbergTeaser();
+    verlaatKaartModus();
     openChat('teaser');
   });
 
@@ -650,6 +663,7 @@
     track('teaser_weggeklikt', '');
     markeerTeaserGezien();
     verbergTeaser();
+    verlaatKaartModus();
     stopPulsen();
   });
 
@@ -660,6 +674,7 @@
       stopPulsen();
       /* Wie de chat opent hoeft de teaserkaart deze sessie niet meer te zien */
       markeerTeaserGezien();
+      verlaatKaartModus();
       track('chat_geopend', bron);
     }
     initConfig()
