@@ -1,6 +1,7 @@
 /*
  * Fietsbot – AI-chatwidget voor fietsenwinkels (Forgexe)
- * Gebruik: <script src="https://www.forgexe.nl/fietsbot.js" data-winkel="WINKEL_ID"></script>
+ * Gebruik: <script src="https://www.forgexe.nl/fietsbot.js" data-winkel="WINKEL_ID" data-naam="Winkelnaam"></script>
+ * (data-naam is optioneel: de winkelnaam in de teaserkaart vóór de eerste config-call)
  * Design: Spaak AI Design System (paper/ink-palet, pill-composer, lime verstuurknop)
  */
 (function () {
@@ -16,6 +17,9 @@
   }
   var WINKEL = scriptTag ? scriptTag.getAttribute('data-winkel') : null;
   if (!WINKEL) return;
+  /* Optioneel: data-naam="Fingo" zet de winkelnaam in de teaserkaart al vóór
+     de eerste config-call (die komt pas als iemand de chat opent). */
+  var DATA_NAAM = scriptTag ? scriptTag.getAttribute('data-naam') : null;
 
   var config = null;
   var open = false;
@@ -272,12 +276,15 @@
     '.fb-send.fb-armed:active{transform:scale(.94)}' +
     '.fb-foot{flex:0 0 auto;text-align:center;font-size:10px;color:#8A909D;padding:0 0 8px;background:#F2F2EE}' +
     '.fb-foot a{color:inherit;text-decoration:none}' +
-    '.fb-teaser{position:absolute;right:0;bottom:72px;width:266px;max-width:calc(100vw - 40px);background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px 16px 4px 16px;box-shadow:0 14px 34px rgba(12,13,16,.18);padding:14px 30px 12px 16px;opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1);pointer-events:none}' +
+    '.fb-teaser{position:absolute;right:0;bottom:72px;width:288px;max-width:calc(100vw - 40px);background:#FFFFFF;border:1px solid #E6E6E0;border-radius:14px;box-shadow:0 14px 34px rgba(12,13,16,.14);padding:14px 34px 14px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),border-color .15s ease;pointer-events:none}' +
     '.fb-teaser.fb-show{opacity:1;transform:translateY(0);pointer-events:auto}' +
-    '.fb-teaser-txt{font-size:14px;font-weight:600;color:#0C0D10;line-height:1.4;cursor:pointer}' +
-    '.fb-teaser-acties{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}' +
-    '.fb-teaser-chip{padding:6px 12px;border-radius:15px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:12px;line-height:1.3;text-align:left;cursor:pointer;max-width:100%;transition:background-color .15s ease,border-color .15s ease}' +
-    '.fb-teaser-chip:hover{background:#F2F2EE}' +
+    '.fb-teaser:hover{border-color:#D3D4CE}' +
+    '.fb-teaser-ico{width:40px;height:40px;flex:none;border-radius:999px;border:1px solid #E6E6E0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;color:#22252C;overflow:hidden}' +
+    '.fb-teaser-ico svg{width:19px;height:19px}' +
+    '.fb-teaser-ico img{width:100%;height:100%;object-fit:cover;display:block}' +
+    '.fb-teaser-body{flex:1;min-width:0}' +
+    '.fb-teaser-naam{font-size:13px;font-weight:700;color:#0C0D10;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
+    '.fb-teaser-txt{font-size:13px;color:#8A909D;line-height:1.45;margin-top:2px}' +
     '.fb-teaser-x{position:absolute;top:4px;right:6px;background:none;border:none;color:#8A909D;font-size:15px;cursor:pointer;padding:2px 4px;line-height:1;font-family:inherit}' +
     '.fb-teaser-x:hover{color:#0C0D10}' +
     '@media (max-width:520px){.fb-root{right:12px;bottom:12px}.fb-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fb-teaser{max-width:calc(100vw - 24px)}}';
@@ -306,10 +313,10 @@
       '</div></div>' +
       '<div class="fb-foot"><a href="https://www.forgexe.nl" target="_blank" rel="noopener">AI-assistent door Forgexe</a></div>' +
     '</div>' +
-    '<div class="fb-teaser">' +
+    '<div class="fb-teaser" role="button" tabindex="0" aria-label="Open chat">' +
       '<button class="fb-teaser-x" aria-label="Sluiten">&times;</button>' +
-      '<div class="fb-teaser-txt" role="button" tabindex="0"></div>' +
-      '<div class="fb-teaser-acties"></div>' +
+      '<span class="fb-teaser-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.58 3 11c0 2.1.92 4 2.43 5.43-.14 1.1-.6 2.42-1.43 3.32 1.64-.06 3.2-.66 4.33-1.42.86.24 1.76.37 2.67.37 4.97 0 9-3.58 9-8s-4.03-8-9-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8.6" cy="11" r="1" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="currentColor"/><circle cx="15.4" cy="11" r="1" fill="currentColor"/></svg></span>' +
+      '<div class="fb-teaser-body"><div class="fb-teaser-naam"></div><div class="fb-teaser-txt"></div></div>' +
     '</div>' +
     '<button class="fb-btn" aria-label="Open chat">' +
       '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.58 3 11c0 2.1.92 4 2.43 5.43-.14 1.1-.6 2.42-1.43 3.32 1.64-.06 3.2-.66 4.33-1.42.86.24 1.76.37 2.67.37 4.97 0 9-3.58 9-8s-4.03-8-9-8Z" fill="currentColor"/></svg>' +
@@ -326,7 +333,8 @@
   var sendBtn = root.querySelector('.fb-send');
   var teaserEl = root.querySelector('.fb-teaser');
   var teaserTxtEl = root.querySelector('.fb-teaser-txt');
-  var teaserActiesEl = root.querySelector('.fb-teaser-acties');
+  var teaserNaamEl = root.querySelector('.fb-teaser-naam');
+  var teaserIcoEl = root.querySelector('.fb-teaser-ico');
   var teaserX = root.querySelector('.fb-teaser-x');
 
   function applyKleur(kleur) {
@@ -345,7 +353,6 @@
       '.fb-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '.fb-typing span.fb-on{background:' + kleur + '}' +
       '.fb-msg-bot a{color:' + linkKleur + '}' +
-      '.fb-teaser-chip:hover{border-color:' + kleur + '}' +
       '@keyframes fb-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
       '.fb-btn.fb-pulsing{animation:fb-pulse 1.9s cubic-bezier(.16,1,.3,1) 2}' +
       '@media (prefers-reduced-motion:reduce){.fb-btn.fb-pulsing{animation:none}}';
@@ -526,47 +533,40 @@
     if (bootCfg && bootCfg.t && (Date.now() - bootCfg.t) < CONFIG_TTL && bootCfg.d && bootCfg.d.naam) applyConfig(bootCfg.d);
   } catch (e) { /* geen cache */ }
 
-  /* Teaser: ballon met twee klikbare vragen, zodat openen geen typwerk kost.
-     Verschijnt na 4s, 1x per pagina-type (service/contact/product/algemeen)
-     per sessie; wegklikken met het kruisje dempt hem voor de hele sessie. */
+  /* Teaser: compacte kaart met winkelnaam en een gedempte openingszin
+     (Cartier-stijl); de hele kaart opent de chat. Verschijnt na 4s en
+     hooguit 1x per sessie: wie de kaart al zag of de chat al opende,
+     ziet daarna alleen nog de ronde knop. */
   var TEASER_KEY = storeKey + '-teaser';
-  var TEASER_X_KEY = storeKey + '-teaser-x';
 
-  function teaserContextenGetoond() {
+  function teaserGezien() {
     try {
-      var lijst = JSON.parse(sessionStorage.getItem(TEASER_KEY));
-      if (lijst && lijst.join) return lijst;
-    } catch (e) { /* geen opslag of oud formaat */ }
-    return [];
-  }
-
-  function markeerTeaserGetoond(naam) {
-    var lijst = teaserContextenGetoond();
-    if (lijst.indexOf(naam) === -1) lijst.push(naam);
-    try { sessionStorage.setItem(TEASER_KEY, JSON.stringify(lijst)); } catch (e) { /* geen opslag */ }
-  }
-
-  function vulTeaser() {
-    teaserTxtEl.textContent = teaserTekst();
-    teaserActiesEl.innerHTML = '';
-    var lijst = startChips().slice(0, 2);
-    for (var i = 0; i < lijst.length; i++) {
-      teaserActiesEl.appendChild(maakTeaserChip(lijst[i]));
+      return !!sessionStorage.getItem(TEASER_KEY);
+    } catch (e) {
+      return false;
     }
   }
 
-  function maakTeaserChip(vraag) {
-    var b = document.createElement('button');
-    b.className = 'fb-teaser-chip';
-    b.type = 'button';
-    b.textContent = vraag;
-    b.addEventListener('click', function (e) {
-      e.stopPropagation();
-      track('teaser_geklikt', vraag);
-      verbergTeaser();
-      openChat('teaser-chip', vraag);
-    });
-    return b;
+  function markeerTeaserGezien() {
+    try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
+  }
+
+  function vulTeaser() {
+    teaserNaamEl.textContent = (config && config.naam) || DATA_NAAM || 'Chat met ons';
+    teaserTxtEl.textContent = teaserTekst();
+    /* Winkellogo in het rondje zodra de config (uit cache) bekend is;
+       anders blijft het neutrale chat-icoon staan. */
+    if (config && config.avatar_url && /^https:\/\//.test(config.avatar_url) && !teaserIcoEl.querySelector('img')) {
+      var img = document.createElement('img');
+      img.src = config.avatar_url;
+      img.alt = '';
+      img.onerror = function () {
+        if (img.parentNode) img.parentNode.removeChild(img);
+        teaserIcoEl.querySelector('svg').style.display = '';
+      };
+      teaserIcoEl.querySelector('svg').style.display = 'none';
+      teaserIcoEl.appendChild(img);
+    }
   }
 
   function verbergTeaser() {
@@ -620,15 +620,11 @@
 
   setTimeout(function () {
     if (open || loadHistory().length) return;
-    var naam = contextNaam();
-    var toonTeaser = true;
-    try { if (sessionStorage.getItem(TEASER_X_KEY)) toonTeaser = false; } catch (e) { /* geen opslag */ }
-    if (toonTeaser && teaserContextenGetoond().indexOf(naam) !== -1) toonTeaser = false;
-    if (toonTeaser) {
+    if (!teaserGezien()) {
       vulTeaser();
       teaserEl.classList.add('fb-show');
       track('teaser_getoond', teaserTxtEl.textContent);
-      markeerTeaserGetoond(naam);
+      markeerTeaserGezien();
       setTimeout(function () {
         if (!open) teaserEl.classList.remove('fb-show');
       }, 15000);
@@ -636,41 +632,37 @@
     puls();
   }, 4000);
 
-  teaserTxtEl.addEventListener('click', function () {
+  teaserEl.addEventListener('click', function () {
     track('teaser_geklikt', '');
     verbergTeaser();
     openChat('teaser');
   });
 
-  teaserTxtEl.addEventListener('keydown', function (e) {
+  teaserEl.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      teaserTxtEl.click();
+      teaserEl.click();
     }
   });
 
   teaserX.addEventListener('click', function (e) {
     e.stopPropagation();
     track('teaser_weggeklikt', '');
-    try { sessionStorage.setItem(TEASER_X_KEY, '1'); } catch (e2) { /* geen opslag */ }
+    markeerTeaserGezien();
     verbergTeaser();
     stopPulsen();
   });
 
-  function openChat(bron, vraag) {
+  function openChat(bron) {
     if (!open) {
       open = true;
       root.classList.add('fb-open');
       stopPulsen();
+      /* Wie de chat opent hoeft de teaserkaart deze sessie niet meer te zien */
+      markeerTeaserGezien();
       track('chat_geopend', bron);
     }
     initConfig()
-      .then(function () {
-        if (vraag) {
-          inputEl.value = vraag;
-          send('teaser-chip');
-        }
-      })
       .catch(function () {
         naamEl.textContent = 'Chat';
         avatarEl.textContent = '!';
