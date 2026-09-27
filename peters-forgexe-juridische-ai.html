@@ -310,6 +310,9 @@
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group.full { grid-column: 1 / -1; }
+  .form-subhead { margin-top: 10px; padding-top: 18px; border-top: 1px solid var(--border); gap: 2px; }
+  .form-subhead-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--navy-deep); }
+  .form-subhead-note { font-size: .85rem; color: var(--slate); }
   .form-label { font-size: 13px; font-weight: 600; color: var(--navy); letter-spacing: 0.2px; }
   .form-input, .form-select, .form-textarea { padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--ink); background: var(--cloud); transition: all 0.3s ease; outline: none; }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--green); background: var(--white); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); }
@@ -857,8 +860,8 @@
         <input type="tel" class="form-input" placeholder="+31 6 ...">
       </div>
       <div class="form-group">
-        <label class="form-label">Kantoor</label>
-        <input type="text" class="form-input" placeholder="Naam van je kantoor">
+        <label class="form-label">Kantoor of organisatie *</label>
+        <input type="text" class="form-input" placeholder="Naam van je kantoor" required>
       </div>
       <div class="form-group">
         <label class="form-label">Specialisatie</label>
@@ -874,6 +877,30 @@
         <label class="form-label">Werk je al met een AI-tool?</label>
         <input type="text" class="form-input" id="ins-aitool" placeholder="Bijv. ChatGPT (gratis), Claude Pro, Copilot, nog niet...">
       </div>
+      <div class="form-group full form-subhead">
+        <span class="form-subhead-title">Factuurgegevens</span>
+        <span class="form-subhead-note">De factuur staat op naam van het kantoor of de organisatie hierboven.</span>
+      </div>
+      <div class="form-group full">
+        <label class="form-label" for="ins-adres">Adres *</label>
+        <input type="text" class="form-input" id="ins-adres" placeholder="Straat en huisnummer" autocomplete="street-address" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ins-postcode">Postcode *</label>
+        <input type="text" class="form-input" id="ins-postcode" placeholder="1234 AB" autocomplete="postal-code" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ins-plaats">Plaats *</label>
+        <input type="text" class="form-input" id="ins-plaats" placeholder="Plaats" autocomplete="address-level2" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ins-factuurmail">Factuur naar ander e-mailadres</label>
+        <input type="email" class="form-input" id="ins-factuurmail" placeholder="Bijv. administratie@kantoor.nl">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="ins-kenmerk">Kenmerk of inkoopnummer</label>
+        <input type="text" class="form-input" id="ins-kenmerk" placeholder="Optioneel">
+      </div>
       <div class="form-group full">
         <label class="form-label">Opmerkingen of vragen</label>
         <textarea class="form-textarea" placeholder="Bijv. met hoeveel mensen, welke rechtsgebieden, of specifieke vragen over de training..."></textarea>
@@ -882,7 +909,7 @@
         <button type="button" class="form-submit" onclick="submitForm(this)">Verstuur inschrijving →</button>
       </div>
     </div>
-    <p class="form-note">Na je inschrijving ontvang je een bevestiging per e-mail.</p>
+    <p class="form-note">Na je inschrijving ontvang je een bevestiging per e-mail. De factuur volgt zodra we je plek hebben bevestigd.</p>
   </div>
 </section>
 
@@ -989,6 +1016,7 @@
     var meta = leadMeta();
     var data = {
       voornaam: form.querySelector('input[placeholder="Je voornaam"]').value.trim(),
+      naam: (form.querySelector('input[placeholder="Je voornaam"]').value.trim() + ' ' + form.querySelector('input[placeholder="Je achternaam"]').value.trim()).trim(),
       achternaam: form.querySelector('input[placeholder="Je achternaam"]').value.trim(),
       email: form.querySelector('input[type="email"]').value.trim(),
       telefoon: form.querySelector('input[type="tel"]').value.trim(),
@@ -996,6 +1024,11 @@
       specialisatie: form.querySelector('input[placeholder="Bijv. arbeidsrecht, familierecht..."]').value.trim(),
       voorkeursdatum: document.getElementById('ins-datum').value,
       aitool: document.getElementById('ins-aitool').value.trim(),
+      factuur_adres: document.getElementById('ins-adres').value.trim(),
+      factuur_postcode: document.getElementById('ins-postcode').value.trim(),
+      factuur_plaats: document.getElementById('ins-plaats').value.trim(),
+      factuur_email: document.getElementById('ins-factuurmail').value.trim(),
+      factuur_kenmerk: document.getElementById('ins-kenmerk').value.trim(),
       bericht: form.querySelector('textarea').value.trim(),
       type: 'inschrijving',
       bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
