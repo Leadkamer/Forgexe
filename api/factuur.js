@@ -18,8 +18,8 @@ export const config = { runtime: 'edge' };
 var AFZENDER = {
   naam: 'IAM 333 B.V.',
   handelsnaam: 'Peters Advocatuur',
-  adres: null,          // straat + huisnummer, nog aan te leveren door John
-  postcodePlaats: null, // bijv. '6041 XX Roermond'
+  adres: 'Neerstraat 63',
+  postcodePlaats: '6041 KB Roermond',
   kvk: '77744721',
   btw: 'NL861122082B01',
   iban: 'NL92 RABO 0166 8058 07',
