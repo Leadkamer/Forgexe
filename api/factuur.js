@@ -28,7 +28,7 @@ var AFZENDER = {
 
 var TRAINING = {
   titel: 'Trainingsdag "Verantwoord werken met AI, binnen het beroepsgeheim"',
-  detail: 'Donderdag 22 oktober 2026 · op locatie bij Peters Advocatuur, Roermond · 7 PO-punten',
+  detail: 'Donderdag 22 oktober 2026 · op locatie bij Peters Advocatuur, Roermond · 7\u00a0PO-punten', // harde spatie: '7 PO-punten' breekt nooit af
   datumKort: '22 okt 2026',
   noot: 'De trainingsdag omvat zeven netto contacturen, lunch, de spelregelkaart en een deelnamebewijs met programma en urenspecificatie, waarmee advocaten de 7 PO-punten zelf registreren bij de Orde (art. 4.4 lid 5 VODA).'
 };
@@ -66,7 +66,7 @@ var MAANDEN = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'o
 function datumNL(d) { return d.getUTCDate() + ' ' + MAANDEN[d.getUTCMonth()] + ' ' + d.getUTCFullYear(); }
 
 function wrap(text, font, size, width) {
-  var words = String(text).split(/\s+/);
+  var words = String(text).split(/ +/); // alleen gewone spaties; harde spaties (\u00a0) houden woorden bij elkaar
   var lines = [];
   var line = '';
   words.forEach(function (w) {
@@ -75,7 +75,8 @@ function wrap(text, font, size, width) {
     else line = test;
   });
   if (line) lines.push(line);
-  return lines;
+  // een scheidingsteken aan het eind van een regel is overbodig als daar toch wordt afgebroken
+  return lines.map(function (l) { return l.replace(/ ·$/, ''); });
 }
 
 export default async function handler(req) {
