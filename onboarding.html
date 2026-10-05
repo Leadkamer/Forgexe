@@ -670,7 +670,9 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     var sl = $id('stappenLead');
     sl.parentNode.insertBefore(sl, $id('laterBlok').nextSibling);
     sl.style.marginTop = '34px';
-    $id('stappenLead').textContent = 'Klopt dit? Dan leggen we het vast. In een paar korte stappen vul je je bedrijfsgegevens in, lees je de overeenkomsten en teken je digitaal. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.';
+    $id('stappenLead').textContent = (CFG.contract && CFG.contract.gegevens_bekend)
+      ? 'Klopt dit? Dan leggen we het vast. Je bedrijfsgegevens hebben we al, die staan al in de overeenkomsten. Je hoeft alleen nog de samenwerkingsovereenkomst en de verwerkersovereenkomst door te lezen en digitaal te tekenen. Dat kost je een paar minuten.'
+      : 'Klopt dit? Dan leggen we het vast. In een paar korte stappen vul je je bedrijfsgegevens in, lees je de overeenkomsten en teken je digitaal. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.';
   }
 
   function toonFlow(){
@@ -680,6 +682,11 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     STAPPEN = heeftContract
       ? ['welkom','gegevens','samenwerking','verwerker','tekenen']
       : ['welkom','gegevens','verwerker','tekenen'];
+    var gegevensBekend = !!(CFG.contract && CFG.contract.gegevens_bekend);
+    if (gegevensBekend) {
+      STAPPEN = STAPPEN.filter(function(s){ return s !== 'gegevens'; });
+      $id('c_gegevens').nextElementSibling.textContent = 'De bedrijfsgegevens in de overeenkomsten zijn juist en ik ben bevoegd om namens dit bedrijf te tekenen.';
+    }
     if (!heeftContract) { $id('rij_sw').style.display = 'none'; }
     $id('welkomKop').textContent = 'Welkom aan boord, ' + CFG.bedrijf + '!';
     $id('pakketLijn').textContent = CFG.pakket || 'Forgexe-pakket';
