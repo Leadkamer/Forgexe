@@ -85,6 +85,31 @@ h1{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;letter-spacing:-.015em;lin
 .scope-lijst li:last-child{border-bottom:none}
 .scope-lijst li::before{content:"";position:absolute;left:4px;top:17px;width:9px;height:9px;border-radius:2px;background:var(--green)}
 
+/* klantoverzicht (optioneel, uit contract.overzicht) */
+.ov-blok{margin-top:34px}
+.ov-kop{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.ov-kop::before{content:"> ";opacity:.6}
+.ov-blok h2{font-size:1.25rem;font-weight:700;line-height:1.25;margin-bottom:6px}
+.ov-blok .sub{color:var(--ink-dim);font-size:.93rem;max-width:62ch}
+.kort{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;margin-top:14px;border:1px solid var(--green);border-radius:10px;background:rgba(52,211,153,.07);padding:14px 18px}
+.kort .bedrag{font-size:1.7rem;font-weight:800;color:var(--green);line-height:1}
+.kort .rest{font-family:var(--mono);font-size:.78rem;color:var(--ink-dim)}
+.nodig-lijst{margin-top:14px;border:1px solid var(--line-strong);border-radius:10px;background:var(--panel);overflow:hidden}
+.nodig-lijst label{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-top:1px solid var(--line);cursor:pointer}
+.nodig-lijst label:first-child{border-top:none}
+.nodig-lijst input{width:19px;height:19px;margin-top:3px;accent-color:var(--green);flex:none;cursor:pointer}
+.nodig-lijst .t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.nodig-lijst .t b{font-weight:600}
+.nodig-lijst .t span{color:var(--ink-dim);font-size:.9rem}
+.nodig-lijst input:checked + .t b{text-decoration:line-through;text-decoration-color:var(--green)}
+.nodig-hint{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);margin-top:8px}
+.later-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.later-grid div{border:1px dashed var(--line-strong);border-radius:10px;padding:14px 16px;min-width:0}
+.later-grid b{display:block;margin-bottom:4px}
+.later-grid span{color:var(--ink-dim);font-size:.9rem}
+#klaarNodig{text-align:left;max-width:620px;margin:28px auto 0}
+#klaarNodig:empty{display:none}
+
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
 @media(max-width:640px){.grid{grid-template-columns:1fr}}
 .veld{display:flex;flex-direction:column;gap:5px}
@@ -182,6 +207,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     <h1>Welkom aan boord!</h1>
     <p id="klaarTekst"></p>
     <p style="margin-top:16px"><button class="btn btn-ghost" type="button" id="printBtn">Overeenkomsten printen of opslaan als PDF</button></p>
+    <div id="klaarNodig"></div>
   </div>
 
   <div id="flow" style="display:none">
@@ -192,9 +218,15 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     <section class="stap-paneel" data-stap="welkom">
       <span class="stap-badge">Welkom aan boord</span>
       <h1 id="welkomKop">Welkom!</h1>
-      <p class="lead">Leuk dat we gaan samenwerken. In een paar korte stappen regelen we alles om te kunnen starten: je bedrijfsgegevens, de samenwerkingsovereenkomst, de verwerkersovereenkomst en de digitale ondertekening. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.</p>
+      <p class="lead" id="welkomIntro" style="display:none"></p>
+      <p class="lead" id="stappenLead">Leuk dat we gaan samenwerken. In een paar korte stappen regelen we alles om te kunnen starten: je bedrijfsgegevens, de samenwerkingsovereenkomst, de verwerkersovereenkomst en de digitale ondertekening. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.</p>
+      <div id="besprokenBlok"></div>
+      <div id="bouwKop"></div>
       <div class="pakket-lijn" id="pakketLijn"></div>
       <ul class="scope-lijst" id="scopeLijst"></ul>
+      <div id="kortBlok"></div>
+      <div id="nodigBlok"></div>
+      <div id="laterBlok"></div>
       <div class="nav-rij"><button class="btn btn-groen rechts" type="button" onclick="volgendeStap()">Start de onboarding →</button></div>
     </section>
 
@@ -572,6 +604,73 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       (CFG.akkoord_naam ? ': ondertekend door ' + CFG.akkoord_naam : '') +
       (CFG.akkoord_op ? ' op ' + datumNL(CFG.akkoord_op) : '') +
       '. Hieronder kun je de ondertekende documenten teruglezen en printen. Vragen? Mail ' + FORGEXE.email + '.';
+    $id('klaarNodig').innerHTML = nodigHtml();
+  }
+
+  /* ---------- klantoverzicht (optioneel: contract.overzicht) ---------- */
+  function overzicht(){
+    var o = CFG && CFG.contract && CFG.contract.overzicht;
+    return (o && typeof o === 'object') ? o : null;
+  }
+  function lijstItems(x){
+    return (x || []).filter(function(i){ return i && (typeof i === 'string' ? i.trim() : (i.t || i.u)); });
+  }
+  function blokKop(kop, titel, sub){
+    return '<p class="ov-kop">' + esc(kop) + '</p><h2>' + esc(titel) + '</h2>' + (sub ? '<p class="sub">' + esc(sub) + '</p>' : '');
+  }
+  var VINK_KEY = 'forgexe-onb-nodig-' + token;
+  function nodigHtml(){
+    var o = overzicht();
+    var items = lijstItems(o && o.nodig);
+    if (!items.length) { return ''; }
+    var bewaard = {};
+    try { bewaard = JSON.parse(localStorage.getItem(VINK_KEY) || '{}'); } catch (e) {}
+    var h = '<div class="ov-blok">' + blokKop('Wat we nog nodig hebben', 'Checklist om te kunnen starten') + '<div class="nodig-lijst">';
+    for (var i = 0; i < items.length; i++) {
+      var it = typeof items[i] === 'string' ? { t: items[i] } : items[i];
+      h += '<label><input type="checkbox" data-nodig="' + i + '"' + (bewaard[i] ? ' checked' : '') + '><span class="t"><b>' + esc(it.t || '') + '</b>' + (it.u ? '<span>' + esc(it.u) + '</span>' : '') + '</span></label>';
+    }
+    return h + '</div><p class="nodig-hint">Vinkjes zijn alleen voor jezelf zichtbaar. Stuur de gegevens via WhatsApp of mail naar ' + esc(FORGEXE.email) + '.</p></div>';
+  }
+  document.addEventListener('change', function(ev){
+    var el = ev.target;
+    if (!el || !el.hasAttribute || !el.hasAttribute('data-nodig')) { return; }
+    var bewaard = {};
+    try { bewaard = JSON.parse(localStorage.getItem(VINK_KEY) || '{}'); } catch (e) {}
+    bewaard[el.getAttribute('data-nodig')] = el.checked;
+    try { localStorage.setItem(VINK_KEY, JSON.stringify(bewaard)); } catch (e) {}
+  });
+
+  function renderOverzicht(){
+    var o = overzicht();
+    if (!o) { return; }
+    if (o.intro) { $id('welkomIntro').textContent = o.intro; $id('welkomIntro').style.display = 'block'; }
+    var besproken = lijstItems(o.besproken);
+    if (besproken.length) {
+      var b = '<div class="ov-blok">' + blokKop('Wat we bespraken', 'Waar we het over hadden') + '<ul class="scope-lijst">';
+      for (var i = 0; i < besproken.length; i++) { b += '<li>' + esc(besproken[i]) + '</li>'; }
+      $id('besprokenBlok').innerHTML = b + '</ul></div>';
+    }
+    $id('bouwKop').innerHTML = '<div class="ov-blok" style="margin-bottom:-4px">' + blokKop('Wat we bouwen', 'De afspraak') + '</div>';
+    var c = CFG.contract || {};
+    if (c.maandbedrag) {
+      $id('kortBlok').innerHTML = '<div class="kort"><span class="bedrag">' + esc(c.maandbedrag) + '</span><span class="rest">per maand, excl. btw · looptijd ' + esc(c.looptijd || '6 maanden') + '</span></div>' +
+        (o.kort ? '<p style="margin-top:10px;color:var(--ink-dim);font-size:.9rem">' + esc(o.kort) + '</p>' : '');
+    }
+    $id('nodigBlok').innerHTML = nodigHtml();
+    var later = lijstItems(o.later);
+    if (later.length) {
+      var l = '<div class="ov-blok">' + blokKop('Later, als je wilt', 'Ideeën voor na de start', 'Geen onderdeel van deze afspraak.') + '<div class="later-grid">';
+      for (var j = 0; j < later.length; j++) {
+        var it = typeof later[j] === 'string' ? { t: later[j] } : later[j];
+        l += '<div><b>' + esc(it.t || '') + '</b>' + (it.u ? '<span>' + esc(it.u) + '</span>' : '') + '</div>';
+      }
+      $id('laterBlok').innerHTML = l + '</div></div>';
+    }
+    var sl = $id('stappenLead');
+    sl.parentNode.insertBefore(sl, $id('laterBlok').nextSibling);
+    sl.style.marginTop = '34px';
+    $id('stappenLead').textContent = 'Klopt dit? Dan leggen we het vast. In een paar korte stappen vul je je bedrijfsgegevens in, lees je de overeenkomsten en teken je digitaal. Het kost je een minuut of vijf, en je kunt tussendoor altijd terug.';
   }
 
   function toonFlow(){
@@ -591,6 +690,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       if (regels[i].trim()) { html += '<li>' + esc(regels[i].trim()) + '</li>'; }
     }
     lijst.innerHTML = html;
+    renderOverzicht();
     $id('f_bedrijfsnaam').value = CFG.bedrijf || '';
     $id('f_contact').value = CFG.contactpersoon || '';
     stapIndex = 0;
@@ -675,6 +775,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
         $id('flow').style.display = 'none';
         $id('klaar').style.display = 'block';
         $id('print-gebied').classList.add('zichtbaar');
+        $id('klaarNodig').innerHTML = nodigHtml();
         $id('klaarTekst').textContent = 'Je gegevens zijn ontvangen en ' +
           (heeftContract ? 'de samenwerkingsovereenkomst, ' : '') +
           'de verwerkersovereenkomst en de algemene voorwaarden zijn digitaal geaccordeerd. Je krijgt per e-mail een bevestiging met alle details. We nemen snel contact op over het inregelen van de toegangen.';
