@@ -691,8 +691,12 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     }
     lijst.innerHTML = html;
     renderOverzicht();
-    $id('f_bedrijfsnaam').value = CFG.bedrijf || '';
-    $id('f_contact').value = CFG.contactpersoon || '';
+    var vg = CFG.gegevens || {};
+    var voorinvul = { f_bedrijfsnaam: vg.bedrijfsnaam || CFG.bedrijf, f_kvk: vg.kvk, f_adres: vg.adres, f_postcode: vg.postcode_plaats, f_contact: vg.contactpersoon || CFG.contactpersoon, f_email: vg.email, f_telefoon: vg.telefoon, f_factuur: vg.factuur_email, f_btw: vg.btw, f_tech: vg.technisch_contact };
+    Object.keys(voorinvul).forEach(function(id){ $id(id).value = voorinvul[id] || ''; });
+    if (vg.kvk || vg.adres) {
+      document.querySelector('[data-stap="gegevens"] .lead').textContent = 'Deze gegevens hebben we alvast ingevuld. Kloppen ze? Pas aan wat niet goed is en vul aan wat ontbreekt. Ze worden automatisch in de overeenkomsten verwerkt.';
+    }
     stapIndex = 0;
     toonStap();
   }
