@@ -16,7 +16,10 @@ Regio: Limburg, Noord-Brabant (Eindhoven/Brainport), Nijmegen en heel Nederland 
 - [E-mail automatiseren met AI](https://www.forgexe.nl/email-automatiseren): inbox-triage en conceptantwoorden.
 - [Factuurverwerking automatiseren](https://www.forgexe.nl/factuurverwerking-automatiseren): inkomende facturen uitlezen, matchen en boeken in het boekhoudpakket.
 - [Planning optimaliseren met AI](https://www.forgexe.nl/planning-optimalisatie)
-- [AI-training voor teams](https://www.forgexe.nl/ai-training) en [EU AI Act-aanpak](https://www.forgexe.nl/ai-act)
+- [AI-scan](https://www.forgexe.nl/ai-scan): welke AI medewerkers gebruiken, welke data meegaat, risicosignalen voor AVG, NIS2 en AI Act, en kansen met ROI.
+- [AI-governance](https://www.forgexe.nl/ai-governance): AI-beleid, lijst met toegestane tools en een herscan per kwartaal.
+- [Private AI](https://www.forgexe.nl/private-ai): AI met gevoelige gegevens in een eigen EU-omgeving, model en automatisering binnen Europa, geen training op jouw data. Pilotfase.
+- [AI-training voor teams](https://www.forgexe.nl/ai-training), ook over veilig werken met AI, en [EU AI Act-aanpak](https://www.forgexe.nl/ai-act)
 
 ## Prijzen en kosten
 
