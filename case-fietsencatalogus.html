@@ -155,9 +155,11 @@ nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-
 @media(max-width:900px){.voice-video{margin:0 auto}}
 .voice-video video{width:100%;height:100%;object-fit:cover;display:block}
 .voice-quotes{display:flex;flex-direction:column;gap:1.8rem}
-.voice-quote{border-left:3px solid var(--green);padding-left:1.4rem}
-.voice-quote p{font-family:var(--head);font-size:1.15rem;line-height:1.5;color:var(--ink);margin:0}
-.voice-quote.big p{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;line-height:1.2;letter-spacing:-.015em}
+.voice-quote{margin:0}
+.voice-quote+.voice-quote{border-top:1px solid var(--line);padding-top:1.6rem}
+.voice-quote p{font-family:var(--head);font-size:1.15rem;line-height:1.5;color:var(--ink-dim);margin:0}
+.voice-quote.big p{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
+.voice-quote .q{color:var(--green)}
 .voice-who{font-family:var(--mono);font-size:.78rem;color:var(--ink-mut);letter-spacing:.04em}
 .voice-who strong{color:var(--ink);font-weight:600}
 .btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
@@ -426,7 +428,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       </video>
     </div>
     <div class="voice-quotes">
-      <blockquote class="voice-quote big"><p>&ldquo;Ik had allemaal lijstjes. Dat is nu gewoon weg.&rdquo;</p></blockquote>
+      <blockquote class="voice-quote big"><p><span class="q">&ldquo;</span>Ik had allemaal lijstjes. Dat is nu gewoon weg.&rdquo;</p></blockquote>
       <blockquote class="voice-quote"><p>&ldquo;Het scheelt enorm qua tijd, omdat we niet zelf moeten schrijven. En ik durf ook wel te zeggen dat de kwaliteit beter is.&rdquo;</p></blockquote>
       <blockquote class="voice-quote"><p>&ldquo;Ik zou Sedat zeker aanraden. Niet alleen voor de kwaliteit van de AI-automation, ook voor het contact: korte lijntjes, meedenken en snel reageren.&rdquo;</p></blockquote>
       <div class="voice-who"><strong>Susanne Boers</strong> &middot; Fietsencatalogus</div>
