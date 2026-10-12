@@ -409,6 +409,27 @@ nav{
 .test-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .test-name{font-family:var(--head);font-size:.84rem;font-weight:600;color:var(--ink);line-height:1.1}
 .test-role{font-family:var(--mono);font-size:.66rem;color:var(--ink-mut);margin-top:.15rem}
+/* bento: video links over twee rijen, John breed rechtsboven, Sjoerd + Koos eronder */
+.test-grid.has-video{grid-template-columns:220px 1fr 1fr}
+.test-grid.has-video .test-video-card{grid-row:1 / 3}
+.test-grid.has-video .test-card.first{grid-column:2 / 4}
+@media(max-width:1100px){
+  .test-grid.has-video{grid-template-columns:240px 1fr}
+  .test-grid.has-video .test-card.first{grid-column:auto}
+  .test-grid.has-video .test-card:last-child{grid-column:1 / 3}
+}
+@media(max-width:700px){
+  .test-grid.has-video{grid-template-columns:1fr}
+  .test-grid.has-video .test-video-card{grid-row:auto}
+  .test-grid.has-video .test-card:last-child{grid-column:auto}
+}
+.test-video{position:relative;width:100%;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:var(--ink)}
+@media(max-width:700px){.test-video{max-width:320px;margin:0 auto}}
+.test-video video{width:100%;height:100%;object-fit:cover;display:block}
+.test-link{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--green);align-self:flex-start;padding-bottom:1px;transition:color var(--tr)}
+.test-link:hover{border-bottom-width:2px}
+.test-link svg{width:12px;height:12px;transition:transform var(--tr)}
+.test-link:hover svg{transform:translate(2px,-2px)}
 
 .logos-row{
   display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
@@ -1296,7 +1317,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <h2 class="section-h2">Woorden die voor<br>zich spreken.</h2>
     <p class="section-sub" style="margin-left:auto;margin-right:auto">Echte opdrachtgevers, echte resultaten. Dit zeggen ze over de samenwerking met Forgexe.</p>
   </div>
-  <div class="test-grid">
+  <div class="test-grid has-video">
+    <div class="test-card test-video-card">
+      <div class="test-video">
+        <video controls playsinline preload="none" poster="case-fietsencatalogus-video-poster.webp" aria-label="Susanne Boers van Fietsencatalogus vertelt over de AI-nieuwsbrieven">
+          <source src="case-fietsencatalogus-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="test-meta"><div class="test-avatar"><img src="testimonial-susanne-boers.webp" alt="Susanne Boers" loading="lazy" width="160" height="160"></div><div><div class="test-name">Susanne Boers</div><div class="test-role">Fietsencatalogus</div></div></div>
+      <a class="test-link" href="/case-fietsencatalogus">Bekijk de case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
     <div class="test-card first">
       <div class="stars">&starf;&starf;&starf;&starf;&starf;</div>
       <p class="test-quote">"Van juridische software naar concrete leads. We zochten iemand die kon helpen onze software breder onder de aandacht te brengen. Forgexe wist onze dienst snel te doorgronden en heeft dit vertaald naar heldere campagnes en automatiseringen. Sindsdien zien we een duidelijke stijging in aanvragen zonder dat we daar zelf veel omkijken naar hebben. Forgexe regelt het, denkt mee, en laat het gewoon werken."</p>
