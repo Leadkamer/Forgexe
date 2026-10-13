@@ -7,7 +7,7 @@
 (function(){
   if (document.getElementById('fxWhatsapp')) return;
 
-  var NUMMER = '31618031022';
+  var NUMMER = '31850805439';
 
   /* Openingszin met de pagina erin, zodat je ziet waar iemand vandaan komt. */
   function openingszin(){
