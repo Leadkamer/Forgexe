@@ -76,6 +76,10 @@
   .fld label { font-size:12.5px; font-weight:600; color:var(--navy); }
   .fld input { width:100%; padding:14px 15px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:16px; color:var(--ink); background:var(--cloud); outline:none; transition:border-color .2s, box-shadow .2s, background .2s; -webkit-appearance:none; appearance:none; }
   .fld input:focus { border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(52,211,153,0.15); }
+  .fld select { width:100%; padding:14px 40px 14px 15px; border:1.5px solid var(--border); border-radius:9px; font-family:'Outfit',sans-serif; font-size:16px; color:var(--ink); background:var(--cloud) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23718096' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E") no-repeat right 15px center; outline:none; cursor:pointer; -webkit-appearance:none; appearance:none; transition:border-color .2s, box-shadow .2s; }
+  .fld select:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(52,211,153,0.15); }
+  .fld select:disabled { color:var(--slate-light); cursor:default; }
+  .fld label .opt { font-weight:400; opacity:.65; }
   .fld input.err { border-color:var(--red); }
   .fld input:disabled { color:var(--slate-light); }
 
@@ -157,6 +161,8 @@
   .cta2 .fld label { color:rgba(255,255,255,0.85); }
   .cta2 .fld input { background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); color:#fff; }
   .cta2 .fld input::placeholder { color:rgba(255,255,255,0.4); }
+  .cta2 .fld select { background-color:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.18); color:#fff; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ffffff99' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E"); }
+  .cta2 .fld select option { color:#1A1F2E; }
   .cta2 .fld input:focus { background:rgba(255,255,255,0.1); border-color:var(--green-bright); box-shadow:0 0 0 3px rgba(74,222,128,0.18); }
   .cta2 .note { color:rgba(255,255,255,0.55); }
   .cta2 .note b { color:#fff; }
@@ -199,7 +205,7 @@
     .ib-grid { grid-template-columns:1fr 1fr; }
     .cta2 { padding:34px 32px; }
     .cta2-row { grid-template-columns:1fr 1fr; column-gap:14px; }
-    .cta2-row .submit-wrap { grid-column:1 / -1; }
+    .cta2-row .submit-wrap, .cta2-row .fld-datum { grid-column:1 / -1; }
     .proof, .inbroch { padding-left:28px; padding-right:28px; }
     footer { padding-left:28px; padding-right:28px; }
   }
@@ -219,8 +225,8 @@
     .ib-h2 { font-size:30px; margin-bottom:30px; }
     .proof { padding:44px 32px; }
     .inbroch { padding:64px 32px 72px; }
-    .cta2-row { grid-template-columns:1fr 1fr auto; align-items:end; }
-    .cta2-row .submit-wrap { grid-column:auto; }
+    .cta2-row { grid-template-columns:1fr 1fr 1fr auto; align-items:end; }
+    .cta2-row .submit-wrap, .cta2-row .fld-datum { grid-column:auto; }
     .cta2-row .submit { width:auto; min-width:230px; margin-top:0; margin-bottom:12px; padding-left:24px; padding-right:24px; }
     .cta2 .after { max-width:520px; }
   }
@@ -264,6 +270,15 @@
           <label for="email1">Zakelijk e-mailadres</label>
           <input type="email" id="email1" data-field="email" placeholder="naam@kantoor.nl" autocomplete="email" inputmode="email" required>
         </div>
+        <div class="fld">
+          <label for="datum1">Voorkeursdatum <span class="opt">(optioneel)</span></label>
+          <select id="datum1" data-field="voorkeursdatum">
+            <option value="">Weet ik nog niet</option>
+            <option value="2026-11-05">Do 5 november · Roermond</option>
+            <option value="2026-11-19">Do 19 november · IJmuiden</option>
+            <option value="2026-12-03">Do 3 december · IJmuiden</option>
+          </select>
+        </div>
         <button type="button" class="more-toggle" onclick="toggleMore(this)" aria-expanded="false"><span class="pl">+</span> Kantoor &amp; telefoon toevoegen <span style="opacity:.7;font-weight:400;">(optioneel)</span></button>
         <div class="more">
           <div class="fld">
@@ -277,7 +292,7 @@
         </div>
         <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
         <p class="note">Geen verplichtingen. Uitschrijven kan altijd.</p>
-        <div class="scarce"><span class="pulse"></span><span>Max. <b>12 deelnemers</b> · start <b>donderdag 22 oktober</b></span></div>
+        <div class="scarce"><span class="pulse"></span><span>Max. <b>12 deelnemers</b> · <b>5 nov</b>, <b>19 nov</b> of <b>3 dec</b></span></div>
       </div>
 
       <div class="pitch-bottom">
@@ -304,7 +319,7 @@
     <div class="stats reveal">
       <div class="stat"><div class="stat-n"><em>7</em></div><div class="stat-l">PO-punten in één dag · advocaten</div></div>
       <div class="stat"><div class="stat-n">Max. 12</div><div class="stat-l">deelnemers · advocaten + juristen</div></div>
-      <div class="stat wide"><div class="stat-n">22 okt</div><div class="stat-l">start · donderdag, ± 9:00 – 17:30 incl. lunch</div></div>
+      <div class="stat wide"><div class="stat-n">3 data</div><div class="stat-l">do 5 nov · Roermond<br>do 19 nov · IJmuiden<br>do 3 dec · IJmuiden</div></div>
     </div>
     <div class="trainers reveal">
       <div class="trainer">
@@ -316,7 +331,7 @@
         <div><b>Sedat Ayar</b><span>AI Specialist — <i>Forgexe</i></span><p>Expert in AI-automatisering voor het MKB. Sedat vertaalt de techniek naar de dagelijkse praktijk: hands-on met de grote AI-modellen, veilig werken met vertrouwelijke data en de brug naar het automatiseren van terugkerende processen.</p></div>
       </div>
     </div>
-    <p class="incl reveal">Eén dag, 7 netto contacturen, op locatie bij Peters Advocatuur — inclusief <b>lunch</b>, <b>deelnamebewijs</b> en alle trainingsmaterialen.</p>
+    <p class="incl reveal">Eén dag (± 9:00 – 17:30), 7 netto contacturen, in Roermond of IJmuiden — inclusief <b>lunch</b>, <b>deelnamebewijs</b> en alle trainingsmaterialen.</p>
   </div>
 </section>
 
@@ -328,7 +343,7 @@
       <div class="ib-card"><div class="ib-num">01</div><h4>Het programma</h4><p>Blok voor blok: de ochtend legt het fundament en de grenzen, de middag is volledig hands-on.</p></div>
       <div class="ib-card"><div class="ib-num">02</div><h4>Vertrouwelijkheid</h4><p>Beroepsgeheim, AVG en de AI Act vertaald naar concrete spelregels voor je dagelijkse werk.</p></div>
       <div class="ib-card"><div class="ib-num">03</div><h4>De trainers</h4><p>Wie John en Sedat zijn en hoe de juridische en de technische kant elkaar aanvullen.</p></div>
-      <div class="ib-card"><div class="ib-num">04</div><h4>Data &amp; investering</h4><p>De startdatum, de PO-punten en de investering, transparant op een rij.</p></div>
+      <div class="ib-card"><div class="ib-num">04</div><h4>Data &amp; investering</h4><p>De data en locaties, de PO-punten en de investering, transparant op een rij.</p></div>
     </div>
 
     <div class="cta2 reveal" data-form="onder">
@@ -342,6 +357,15 @@
         <div class="fld">
           <label for="email2">Zakelijk e-mailadres</label>
           <input type="email" id="email2" data-field="email" placeholder="naam@kantoor.nl" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="fld fld-datum">
+          <label for="datum2">Voorkeursdatum <span class="opt">(optioneel)</span></label>
+          <select id="datum2" data-field="voorkeursdatum">
+            <option value="">Weet ik nog niet</option>
+            <option value="2026-11-05">Do 5 november · Roermond</option>
+            <option value="2026-11-19">Do 19 november · IJmuiden</option>
+            <option value="2026-12-03">Do 3 december · IJmuiden</option>
+          </select>
         </div>
         <div class="submit-wrap">
           <button type="button" class="submit" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
@@ -419,6 +443,7 @@
     var data = {
       naam: waarde(naam), email: waarde(email),
       bedrijf: waarde(veld(wrap, 'bedrijf')), telefoon: waarde(veld(wrap, 'telefoon')),
+      voorkeursdatum: waarde(veld(wrap, 'voorkeursdatum')),
       type: 'brochure-aanvraag', bron: 'juridische-ai-brochure-lp',
       formulier: wrap.getAttribute('data-form'),
       datum: new Date().toISOString(),
@@ -440,7 +465,7 @@
   function toonSucces(wrap, btn, eventId, lead) {
     if (window.fxTrack) fxTrack('Lead', { content_name: 'juridische-ai-brochure' }, eventId);
     btn.textContent = '✓ Onderweg! Check je mailbox.'; btn.classList.add('is-done');
-    var inputs = wrap.querySelectorAll('input');
+    var inputs = wrap.querySelectorAll('input, select');
     for (var i = 0; i < inputs.length; i++) inputs[i].disabled = true;
     var toggle = wrap.querySelector('.more-toggle'); if (toggle) toggle.style.display = 'none';
     var scarce = wrap.querySelector('.scarce'); if (scarce) scarce.style.display = 'none';

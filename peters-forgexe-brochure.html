@@ -106,6 +106,11 @@
   .practical .v { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:4px; }
   .practical .l { font-size:12px; color:var(--slate-light); line-height:1.4; }
 
+  .dates { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .date { display:flex; flex-direction:column; gap:3px; padding:16px 18px; border:1px solid var(--border); border-radius:12px; background:var(--cloud); }
+  .date .dd { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--navy); }
+  .date .dp { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--green-dark); }
+
   /* CTA / CONTACT */
   .contact { color:#fff; background:linear-gradient(160deg, var(--navy-deep), var(--navy)); position:relative; overflow:hidden; }
   .contact-glow { position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(52,211,153,0.10), transparent 55%); }
@@ -134,19 +139,47 @@
     .pillars { grid-template-columns:1fr; }
     .takeaways, .trainers, .contact-cards { grid-template-columns:1fr; }
     .practical { grid-template-columns:1fr 1fr; }
+    .dates { grid-template-columns:1fr; }
     .prog-head { flex-wrap:wrap; gap:10px; }
   }
 
   @media print {
+    /* Inhoudspagina's krijgen marge boven/onder, zodat een sectie die doorloopt
+       op de volgende pagina niet tegen de rand begint. Cover en achterpagina
+       zijn full-bleed via de named page 'vol'. */
+    @page { size:A4; margin:16mm 0 14mm; }
+    @page vol { size:A4; margin:0; }
+    * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
     body { background:#fff; }
     .doc { max-width:none; }
-    .sheet, .cover { padding:28px 32px; }
-    .sheet + .sheet, .cover { page-break-inside:auto; }
-    .cover, .contact { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-    .prog-day, .pillar, .take, .tr, .callout { break-inside:avoid; }
-    h2 { break-after:avoid; }
+    .cover, .contact { page:vol; box-sizing:border-box; }
+    .cover { height:297mm; padding:26mm 20mm; overflow:hidden; }
+    .sheet { padding:0 18mm; border-top:none; }
+    .sheet + .sheet { margin-top:0; break-before:page; }
+    .contact { min-height:297mm; padding:26mm 20mm; }
+    /* Bij afdrukken valt Chrome terug op de mobiele media query (max-width:760px):
+       alles in één kolom en veel te lang. Zet de desktop-grids expliciet terug. */
+    .pillars { grid-template-columns:repeat(3,1fr); }
+    .takeaways, .trainers, .contact-cards { grid-template-columns:1fr 1fr; }
+    .practical { grid-template-columns:repeat(4,1fr); }
+    .practical div { padding:16px 10px; }
+    .practical .v { font-size:17px; white-space:nowrap; }
+    .dates { grid-template-columns:repeat(3,1fr); }
+    .cover-meta { gap:10px; }
+    .cover-chip { padding:12px 16px; }
+    /* Programma: ochtend op de ene pagina, middag + callout op de volgende. */
+    .prog-day { break-inside:auto; }
+    .prog-day.d2 { break-before:page; margin-top:0; }
+    .prog-head { break-after:avoid; padding:13px 22px; }
+    .prog-body { padding:2px 22px 10px; }
+    .blk { padding:8px 0; }
+    .blk h4 { font-size:14.5px; margin-bottom:3px; }
+    .blk p { font-size:13px; line-height:1.55; }
+    .callout { margin-top:16px; padding:18px 22px; }
+    .callout p { font-size:13px; line-height:1.6; }
+    .blk, .pillar, .take, .tr, .callout, .practical, .date, .cc, .qr-block { break-inside:avoid; }
+    .eyebrow, h2 { break-after:avoid; }
     footer { display:none; }
-    .sheet { border-top:1px solid #e5e9f0; }
   }
 </style>
 </head>
@@ -174,7 +207,7 @@
       <p class="lead">Een praktijkgerichte trainingsdag voor advocaten en juristen. Concreet tijd besparen op contracten, dossiers en correspondentie — hands-on met algemene AI-modellen én helder zicht op wanneer je juridische AI nodig hebt. Altijd binnen de grenzen van vertrouwelijkheid en verificatie.</p>
       <div class="cover-meta">
         <div class="cover-chip"><span class="v">1 dag</span><span class="l">7 contacturen</span></div>
-        <div class="cover-chip"><span class="v">Op locatie</span><span class="l">Peters Advocatuur</span></div>
+        <div class="cover-chip"><span class="v">3 data</span><span class="l">Roermond · IJmuiden</span></div>
         <div class="cover-chip"><span class="v">Max. 12</span><span class="l">Deelnemers</span></div>
         <div class="cover-chip"><span class="v">7</span><span class="l">PO-punten · advocaten</span></div>
       </div>
@@ -210,7 +243,7 @@
   <section class="sheet">
     <div class="eyebrow"><span class="dot"></span> Het programma</div>
     <h2>Eén dag — zeven netto <em>contacturen</em></h2>
-    <p>Twee dagdelen op één trainingsdag (± 9:00 – 17:30, inclusief lunch). De ochtend legt het fundament en de grenzen, de middag is volledig hands-on met casussen uit je eigen rechtsgebied. Start: <strong>donderdag 22 oktober 2026</strong>.</p>
+    <p>Twee dagdelen op één trainingsdag (± 9:00 – 17:30, inclusief lunch). De ochtend legt het fundament en de grenzen, de middag is volledig hands-on met casussen uit je eigen rechtsgebied. Je kiest uit drie data: <strong>donderdag 5 november</strong> in Roermond, <strong>donderdag 19 november</strong> in IJmuiden of <strong>donderdag 3 december 2026</strong> in IJmuiden.</p>
 
     <div class="prog-day d1">
       <div class="prog-head">
@@ -330,8 +363,15 @@
     <div class="practical">
       <div><div class="v">7 contacturen</div><div class="l">op één trainingsdag · incl. lunch</div></div>
       <div><div class="v">Max. 12</div><div class="l">Advocaten + juristen</div></div>
-      <div><div class="v">Op locatie</div><div class="l">Bij Peters Advocatuur</div></div>
+      <div><div class="v">2 locaties</div><div class="l">Roermond · IJmuiden</div></div>
       <div><div class="v">€690</div><div class="l">per deelnemer · excl. btw</div></div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:34px;"><span class="dot"></span> Data</div>
+    <div class="dates">
+      <div class="date"><span class="dd">Do 5 november 2026</span><span class="dp">Roermond</span></div>
+      <div class="date"><span class="dd">Do 19 november 2026</span><span class="dp">IJmuiden</span></div>
+      <div class="date"><span class="dd">Do 3 december 2026</span><span class="dp">IJmuiden</span></div>
     </div>
   </section>
 

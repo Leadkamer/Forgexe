@@ -484,7 +484,7 @@
       <a href="#plannen" class="btn-primary">Schrijf je in →</a>
       <a href="#programma" class="btn-outline">Bekijk het programma</a>
     </div>
-    <div class="hero-scarcity"><span class="dotpulse"></span><span>Trainingslocatie: <b>Peters Advocatuur</b> — maximaal 12 deelnemers, inclusief lunch.</span></div>
+    <div class="hero-scarcity"><span class="dotpulse"></span><span>Data: <b>5 nov</b> Roermond · <b>19 nov</b> en <b>3 dec</b> IJmuiden — max. 12 deelnemers, incl. lunch.</span></div>
   </div>
   <div class="hero-stats">
     <div class="hero-stat">
@@ -568,7 +568,7 @@
         <span class="section-label-text on-dark">Het programma</span>
       </div>
       <h2 class="sh on-dark">Eén dag —<br>zeven netto <em>contacturen</em></h2>
-      <p>Twee dagdelen op één trainingsdag (± 9:00 – 17:30, inclusief lunch). De ochtend legt het fundament en de grenzen, de middag is volledig hands-on met casussen uit je eigen rechtsgebied. Start: donderdag 22 oktober 2026.</p>
+      <p>Twee dagdelen op één trainingsdag (± 9:00 – 17:30, inclusief lunch). De ochtend legt het fundament en de grenzen, de middag is volledig hands-on met casussen uit je eigen rechtsgebied. Je kiest uit drie data: donderdag 5 november in Roermond, donderdag 19 november in IJmuiden of donderdag 3 december 2026 in IJmuiden.</p>
     </div>
     <div class="timeline">
 
@@ -684,8 +684,8 @@
       </div>
       <div class="detail-item reveal reveal-d3">
         <div class="detail-icon">🏛️</div>
-        <div class="detail-value">Op locatie</div>
-        <div class="detail-desc">Bij Peters<br>Advocatuur</div>
+        <div class="detail-value">2 locaties</div>
+        <div class="detail-desc">Roermond<br>IJmuiden</div>
       </div>
     </div>
   </div>
@@ -785,6 +785,12 @@
         <input type="email" class="form-input" id="broch-email" placeholder="naam@bedrijf.nl" required>
         <input type="text" class="form-input" id="broch-bedrijf" placeholder="Bedrijf (optioneel)">
         <input type="tel" class="form-input" id="broch-telefoon" placeholder="Telefoon (optioneel)">
+        <select class="form-select form-input" id="broch-datum" aria-label="Voorkeursdatum (optioneel)">
+          <option value="">Voorkeursdatum (optioneel)</option>
+          <option value="2026-11-05">Do 5 november · Roermond</option>
+          <option value="2026-11-19">Do 19 november · IJmuiden</option>
+          <option value="2026-12-03">Do 3 december · IJmuiden</option>
+        </select>
         <button type="button" class="form-submit" style="margin-top:0;" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
         <span class="brochure-note">Geen verplichtingen. Uitschrijven kan altijd.</span>
       </div>
@@ -804,7 +810,9 @@
       <span class="cta-price-info"><strong>per deelnemer</strong><br>Incl. lunch, deelnamebewijs &amp; 7 PO-punten · excl. btw</span>
     </div>
     <div class="cta-dates" style="display:inline-flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:4px auto 22px;">
-      <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,0.35);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:#fff;"><span style="color:var(--green-bright);">Start</span> do 22 oktober 2026</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,0.35);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:#fff;"><span style="color:var(--green-bright);">Do 5 nov</span> Roermond</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,0.35);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:#fff;"><span style="color:var(--green-bright);">Do 19 nov</span> IJmuiden</span>
+      <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,0.35);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:#fff;"><span style="color:var(--green-bright);">Do 3 dec</span> IJmuiden</span>
       <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);">± 9:00 – 17:30 · incl. lunch</span>
     </div>
     <p class="cta-sub">Schrijf je in en we stemmen samen de invulling, de casuïstiek en de planning af.</p>
@@ -870,7 +878,10 @@
       <div class="form-group">
         <label class="form-label">Trainingsdatum *</label>
         <select class="form-select form-input" id="ins-datum" required>
-          <option value="do 22 oktober 2026" selected>Donderdag 22 oktober 2026</option>
+          <option value="" disabled selected>Kies een datum</option>
+          <option value="2026-11-05">Donderdag 5 november 2026 — Roermond</option>
+          <option value="2026-11-19">Donderdag 19 november 2026 — IJmuiden</option>
+          <option value="2026-12-03">Donderdag 3 december 2026 — IJmuiden</option>
         </select>
       </div>
       <div class="form-group">
@@ -1073,12 +1084,14 @@
     btn.disabled = true;
     var bedrijf = document.getElementById('broch-bedrijf');
     var telefoon = document.getElementById('broch-telefoon');
+    var bdatum = document.getElementById('broch-datum');
     var meta = leadMeta();
     var data = {
       naam: naam.value.trim(),
       email: email.value.trim(),
       bedrijf: bedrijf ? bedrijf.value.trim() : '',
       telefoon: telefoon ? telefoon.value.trim() : '',
+      voorkeursdatum: bdatum ? bdatum.value : '',
       type: 'brochure-aanvraag',
       bron: new URLSearchParams(location.search).get('bron') || 'peters-forgexe-juridisch',
       datum: new Date().toISOString(),

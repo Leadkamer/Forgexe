@@ -4,7 +4,11 @@
  * Body (JSON):
  *   { nummer: 'TR-2026-001', datum: '2026-09-27', termijn: 14,
  *     klant: { kantoor, tav, adres, postcode, plaats, email, kenmerk },
- *     deelnemers: ['mr. J. de Vries'], prijs: 690, btw: 21 }
+ *     deelnemers: ['mr. J. de Vries'], prijs: 690, btw: 21, editie: '2026-11-05' }
+ *
+ * editie = sleutel uit EDITIES hieronder. Onbekend of leeg: de factuur noemt geen trainingsdatum
+ * (liever geen datum dan een verkeerde). Dezelfde sleutels staan in de formulieren op de site,
+ * in HQ en in de n8n-flows 'Peters x Forgexe - Leads' en '- Facturen (HQ)'.
  *
  * De afzender (IAM 333 B.V.) en het rekeningnummer staan bewust vast in deze functie:
  * een aanroeper kan geen ander IBAN op een factuur in deze huisstijl zetten.
@@ -26,10 +30,14 @@ var AFZENDER = {
   tenaamstelling: 'IAM 333 B.V.'
 };
 
+var EDITIES = {
+  '2026-11-05': { lang: 'Donderdag 5 november 2026', kort: '5 nov 2026', locatie: 'Peters Advocatuur, Roermond' },
+  '2026-11-19': { lang: 'Donderdag 19 november 2026', kort: '19 nov 2026', locatie: 'IJmuiden' },
+  '2026-12-03': { lang: 'Donderdag 3 december 2026', kort: '3 dec 2026', locatie: 'IJmuiden' }
+};
+
 var TRAINING = {
   titel: 'Trainingsdag "Verantwoord werken met AI, binnen het beroepsgeheim"',
-  detail: 'Donderdag 22 oktober 2026 · op locatie bij Peters Advocatuur, Roermond · 7\u00a0PO-punten', // harde spatie: '7 PO-punten' breekt nooit af
-  datumKort: '22 okt 2026',
   noot: 'De trainingsdag omvat zeven netto contacturen, lunch, de spelregelkaart en een deelnamebewijs met programma en urenspecificatie, waarmee advocaten de 7 PO-punten zelf registreren bij de Orde (art. 4.4 lid 5 VODA).'
 };
 
@@ -95,6 +103,9 @@ export default async function handler(req) {
     var termijn = parseInt(b.termijn, 10); if (!(termijn >= 0)) termijn = 14;
     var d = /^\d{4}-\d{2}-\d{2}$/.test(s(b.datum)) ? new Date(s(b.datum) + 'T12:00:00Z') : new Date();
     var verval = new Date(d.getTime() + termijn * 86400000);
+    var ed = EDITIES[s(b.editie, 10)] || null;
+    // harde spatie: '7 PO-punten' breekt nooit af
+    var detail = ed ? ed.lang + ' · ' + ed.locatie + ' · 7\u00a0PO-punten' : 'Eén trainingsdag · 7\u00a0PO-punten';
 
     var incompleet = !AFZENDER.adres || !AFZENDER.postcodePlaats || !AFZENDER.kvk || !AFZENDER.btw;
 
@@ -183,7 +194,7 @@ export default async function handler(req) {
     y = y - 18 - 6 * 15 - 18;
     var metaH = 40, cw = (W - 2 * M) / 4;
     page.drawRectangle({ x: M, y: y - metaH, width: W - 2 * M, height: metaH, color: C.cloud, borderColor: C.border, borderWidth: 0.8 });
-    var meta = [['Factuurdatum', datumNL(d)], ['Vervaldatum', datumNL(verval)], ['Trainingsdatum', TRAINING.datumKort], ['Kenmerk', s(k.kenmerk, 30) || '—']];
+    var meta = [['Factuurdatum', datumNL(d)], ['Vervaldatum', datumNL(verval)], ['Trainingsdatum', ed ? ed.kort : '—'], ['Kenmerk', s(k.kenmerk, 30) || '—']];
     meta.forEach(function (m, i) {
       var mx = M + i * cw;
       if (i) page.drawLine({ start: { x: mx, y: y }, end: { x: mx, y: y - metaH }, thickness: 0.8, color: C.border });
@@ -203,7 +214,7 @@ export default async function handler(req) {
     var descW = xAantal - M - 30;
     namen.forEach(function (n) {
       var titelLines = wrap(TRAINING.titel, F.semi, 9.5, descW);
-      var detailLines = wrap(TRAINING.detail, F.reg, 8.5, descW);
+      var detailLines = wrap(detail, F.reg, 8.5, descW);
       var yy = y - 17;
       titelLines.forEach(function (l, i) { text(l, M, yy - i * 13, F.semi, 9.5, C.navyDeep); });
       yy -= titelLines.length * 13;
