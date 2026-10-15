@@ -290,6 +290,37 @@
     '.fxa-root.fxa-kaart .fxa-btn{display:none}' +
     '.fxa-root.fxa-kaart .fxa-teaser{bottom:0}' +
     '.fxa-teaser-x:hover{color:#0C0D10}' +
+    /* Kaarten in het gesprek: invulkaart (wizard) en prijskaart */
+    '.fxa-card{align-self:stretch;min-width:0;max-width:100%;box-sizing:border-box;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:14px}' +
+    '.fxa-card *{box-sizing:border-box}' +
+    '.fxa-card-kop{font-weight:700;font-size:14px;line-height:1.3;color:#0C0D10}' +
+    '.fxa-card-sub{font-size:12px;color:#8A909D;margin-top:2px}' +
+    '.fxa-lbl{display:block;font-size:12px;font-weight:600;color:#22252C;margin-bottom:6px}' +
+    '.fxa-rij{display:flex;gap:8px;align-items:center}' +
+    '.fxa-num{flex:1 1 0;width:0;min-width:0;height:40px;border:1px solid #D3D4CE;border-radius:10px;padding:0 10px;font-family:inherit;font-size:16px;color:#0C0D10;background:#FFFFFF;outline:none}' +
+    '.fxa-num::placeholder{color:#B6BBC5}' +
+    '.fxa-x{color:#8A909D;font-size:13px;flex:none}' +
+    '.fxa-hint{font-size:12px;color:#8A909D;margin-top:6px;line-height:1.45}' +
+    '.fxa-hint.fxa-warn{color:#B42318}' +
+    '.fxa-seg{display:flex;gap:6px;flex-wrap:wrap}' +
+    '.fxa-seg button{flex:1 1 auto;min-height:36px;padding:6px 10px;border-radius:10px;border:1px solid #D3D4CE;background:#FFFFFF;color:#22252C;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}' +
+    '.fxa-sub{margin-top:8px}' +
+    '.fxa-stepper{display:inline-flex;align-items:center;gap:4px;margin-top:8px}' +
+    '.fxa-stepper button{width:36px;height:36px;border-radius:10px;border:1px solid #D3D4CE;background:#FFFFFF;font-family:inherit;font-size:16px;cursor:pointer;color:#22252C}' +
+    '.fxa-stepper span{min-width:64px;text-align:center;font-size:13px;font-weight:600}' +
+    '.fxa-cta{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:none;border-radius:12px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;text-align:center}' +
+    '.fxa-cta[disabled]{opacity:.45;cursor:default}' +
+    '.fxa-cta2{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid #D3D4CE;border-radius:12px;background:#FFFFFF;color:#22252C;font-family:inherit;font-weight:600;font-size:14px;cursor:pointer}' +
+    '.fxa-card.fxa-klaar input,.fxa-card.fxa-klaar .fxa-seg button,.fxa-card.fxa-klaar .fxa-stepper button{pointer-events:none;opacity:.6}' +
+    '.fxa-regels{display:flex;flex-direction:column}' +
+    '.fxa-regel{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px dashed #E6E6E0;font-size:13px}' +
+    '.fxa-regel-naam{min-width:0}' +
+    '.fxa-regel-det{display:block;font-size:12px;color:#8A909D}' +
+    '.fxa-regel-bedrag{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}' +
+    '.fxa-totaal{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:2px}' +
+    '.fxa-totaal strong{font-size:18px;font-variant-numeric:tabular-nums}' +
+    '.fxa-tip{background:#F2F2EE;border-radius:10px;padding:9px 11px;font-size:12px;line-height:1.45;color:#22252C}' +
+    '.fxa-knoppen{display:flex;flex-direction:column;gap:8px}' +
     '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}}';
 
   var style = document.createElement('style');
@@ -357,6 +388,9 @@
       '.fxa-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '.fxa-typing span.fxa-on{background:' + kleur + '}' +
       '.fxa-msg-bot a{color:' + linkKleur + '}' +
+      '.fxa-seg button.fxa-aan{background:' + kleur + ';border-color:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-cta{background:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-num:focus{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '@keyframes fxa-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
       '.fxa-btn.fxa-pulsing{animation:fxa-pulse 1.9s cubic-bezier(.16,1,.3,1) 2}' +
       '@media (prefers-reduced-motion:reduce){.fxa-btn.fxa-pulsing{animation:none}}';
@@ -407,6 +441,269 @@
     var el = e.target;
     if (el && el.tagName === 'A') track('link_geklikt', el.getAttribute('href'));
   });
+
+  /* ---- Kaarten: invulkaart (zelfde vragen als de webshopwizard) en prijskaart ----
+     De bot zet een invulkaart met [[WIZARD: id | pakket]]; n8n stuurt die mee als
+     data.wizard. Na een berekening stuurt n8n data.berekening mee. Beide komen in
+     de geschiedenis als { rol: 'kaart', soort, data }, zodat ze na een paginawissel
+     terugkomen. */
+  function getal(v) {
+    var n = parseFloat(String(v == null ? '' : v).replace(',', '.'));
+    return isFinite(n) && n > 0 ? n : 0;
+  }
+
+  function maatTekst(n) {
+    return String(Math.round(n * 100) / 100).replace('.', ',');
+  }
+
+  function el(tag, cls, tekst) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (tekst != null) e.textContent = tekst;
+    return e;
+  }
+
+  function kaartId() {
+    return 'k' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+
+  function markeerKaartKlaar(id) {
+    var h = loadHistory();
+    for (var i = 0; i < h.length; i++) {
+      if (h[i].rol === 'kaart' && h[i].id === id) h[i].klaar = true;
+    }
+    saveHistory(h);
+  }
+
+  function segment(opties, waarde, onChange) {
+    var wrap = el('div', 'fxa-seg');
+    var knoppen = [];
+    opties.forEach(function (o) {
+      var b = el('button', o[0] === waarde ? 'fxa-aan' : '', o[1]);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', o[0] === waarde ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        knoppen.forEach(function (k) { k.className = ''; k.setAttribute('aria-pressed', 'false'); });
+        b.className = 'fxa-aan';
+        b.setAttribute('aria-pressed', 'true');
+        onChange(o[0]);
+      });
+      knoppen.push(b);
+      wrap.appendChild(b);
+    });
+    return wrap;
+  }
+
+  function veld(label, inhoud, hint) {
+    var w = el('div');
+    w.appendChild(el('span', 'fxa-lbl', label));
+    w.appendChild(inhoud);
+    if (hint) w.appendChild(el('div', 'fxa-hint', hint));
+    return w;
+  }
+
+  function maatInvoer(waarde, placeholder, label) {
+    var i = document.createElement('input');
+    i.className = 'fxa-num';
+    i.type = 'text';
+    i.inputMode = 'decimal';
+    i.placeholder = placeholder;
+    i.setAttribute('aria-label', label);
+    if (waarde) i.value = maatTekst(waarde);
+    return i;
+  }
+
+  var AFVOER = [['nee', 'Nee'], ['zijuitloop', 'Bladvanger zijuitloop'], ['bolrooster', 'Bolrooster'], ['tegelbladvanger', 'Tegelbladvanger']];
+
+  function wizardKaart(item) {
+    var d = item.data || {};
+    var v = d.invoer || {};
+    var st = {
+      onderbreking: v.onderbreking_lengte > 0 && v.onderbreking_breedte > 0 ? 'ja' : 'nee',
+      grind: v.grind || 'grind',
+      folie: v.folie || 'nee',
+      afvoer: v.afvoer || 'nee',
+      aantal: v.afvoer_aantal > 0 ? v.afvoer_aantal : 1,
+      meststof: v.meststof || 'nee'
+    };
+    var kaart = el('div', 'fxa-card' + (item.klaar ? ' fxa-klaar' : ''));
+    var kop = el('div');
+    kop.appendChild(el('div', 'fxa-card-kop', 'Bereken je groendak'));
+    kop.appendChild(el('div', 'fxa-card-sub', d.pakket || 'Groendakpakket'));
+    kaart.appendChild(kop);
+
+    var lIn = maatInvoer(v.lengte, 'Lengte', 'Lengte in meters');
+    var bIn = maatInvoer(v.breedte, 'Breedte', 'Breedte in meters');
+    var rij = el('div', 'fxa-rij');
+    rij.appendChild(lIn); rij.appendChild(el('span', 'fxa-x', '×')); rij.appendChild(bIn); rij.appendChild(el('span', 'fxa-x', 'm'));
+    var m2Hint = el('div', 'fxa-hint', 'Minimaal 5 m²');
+    var dakVeld = veld('Afmetingen van het dak', rij);
+    dakVeld.appendChild(m2Hint);
+    kaart.appendChild(dakVeld);
+
+    var olIn = maatInvoer(v.onderbreking_lengte, 'Lengte', 'Lengte onderbreking in meters');
+    var obIn = maatInvoer(v.onderbreking_breedte, 'Breedte', 'Breedte onderbreking in meters');
+    var oRij = el('div', 'fxa-rij fxa-sub');
+    oRij.appendChild(olIn); oRij.appendChild(el('span', 'fxa-x', '×')); oRij.appendChild(obIn); oRij.appendChild(el('span', 'fxa-x', 'm'));
+    var ondVeld = veld('Onderbreking, zoals een dakkapel of lichtstraat?', segment([['nee', 'Nee'], ['ja', 'Ja']], st.onderbreking, function (w) {
+      st.onderbreking = w; oRij.style.display = w === 'ja' ? 'flex' : 'none'; check();
+    }));
+    ondVeld.appendChild(oRij);
+    oRij.style.display = st.onderbreking === 'ja' ? 'flex' : 'none';
+    kaart.appendChild(ondVeld);
+
+    kaart.appendChild(veld('Grindstrook langs de rand', segment([['nee', 'Nee'], ['grind', 'Grind'], ['olivijn', 'Olivijn split']], st.grind, function (w) { st.grind = w; }),
+      'Aanbevolen: zo kan het water weg.'));
+    kaart.appendChild(veld('Wortelwerende folie', segment([['nee', 'Nee'], ['ja', 'Ja']], st.folie, function (w) { st.folie = w; }),
+      'EPDM is al wortelwerend. Bij bitumen of twijfel: kies ja.'));
+
+    var stepper = el('div', 'fxa-stepper');
+    var min = el('button', '', '−'); min.type = 'button'; min.setAttribute('aria-label', 'Minder afvoeren');
+    var aantalEl = el('span');
+    var plus = el('button', '', '+'); plus.type = 'button'; plus.setAttribute('aria-label', 'Meer afvoeren');
+    function toonAantal() { aantalEl.textContent = st.aantal + (st.aantal === 1 ? ' afvoer' : ' afvoeren'); }
+    min.addEventListener('click', function () { if (st.aantal > 1) { st.aantal--; toonAantal(); } });
+    plus.addEventListener('click', function () { if (st.aantal < 20) { st.aantal++; toonAantal(); } });
+    toonAantal();
+    stepper.appendChild(min); stepper.appendChild(aantalEl); stepper.appendChild(plus);
+    var afvVeld = veld('Hemelwaterafvoer bedekken', segment(AFVOER, st.afvoer, function (w) {
+      st.afvoer = w; stepper.style.display = w === 'nee' ? 'none' : 'inline-flex';
+    }));
+    afvVeld.appendChild(stepper);
+    stepper.style.display = st.afvoer === 'nee' ? 'none' : 'inline-flex';
+    kaart.appendChild(afvVeld);
+
+    kaart.appendChild(veld('Meststof erbij', segment([['nee', 'Nee'], ['3L', '3 liter'], ['5L', '5 liter']], st.meststof, function (w) { st.meststof = w; })));
+
+    var knop = el('button', 'fxa-cta', item.klaar ? 'Berekend ✓' : 'Bereken prijs');
+    knop.type = 'button';
+    kaart.appendChild(knop);
+
+    function check() {
+      var L = getal(lIn.value), B = getal(bIn.value);
+      var m2 = Math.round(L * B * 100) / 100;
+      var ok = L > 0 && B > 0 && m2 >= 5;
+      if (L > 0 && B > 0) {
+        m2Hint.textContent = m2 >= 5 ? '= ' + maatTekst(m2) + ' m²' : maatTekst(m2) + ' m²: de minimale afname is 5 m²';
+        m2Hint.className = 'fxa-hint' + (m2 >= 5 ? '' : ' fxa-warn');
+      } else {
+        m2Hint.textContent = 'Minimaal 5 m²';
+        m2Hint.className = 'fxa-hint';
+      }
+      if (st.onderbreking === 'ja') {
+        var oL = getal(olIn.value), oB = getal(obIn.value);
+        if (!(oL > 0 && oB > 0) || oL * oB >= L * B) ok = false;
+      }
+      knop.disabled = item.klaar || !ok;
+    }
+    [lIn, bIn, olIn, obIn].forEach(function (i) { i.addEventListener('input', check); });
+    check();
+
+    knop.addEventListener('click', function () {
+      if (knop.disabled || busy) return;
+      var L = getal(lIn.value), B = getal(bIn.value);
+      var ond = st.onderbreking === 'ja';
+      var oL = ond ? getal(olIn.value) : 0, oB = ond ? getal(obIn.value) : 0;
+      var afvNaam = '';
+      AFVOER.forEach(function (a) { if (a[0] === st.afvoer) afvNaam = a[1]; });
+      var opdracht = 'Bereken voor ' + (d.pakket || 'het pakket') + ' (' + d.product_id + '): dak ' + maatTekst(L) + ' x ' + maatTekst(B) + ' m, ' +
+        (ond ? 'onderbreking ' + maatTekst(oL) + ' x ' + maatTekst(oB) + ' m' : 'geen onderbreking') +
+        ', grindstrook: ' + st.grind + ', wortelwerende folie: ' + st.folie +
+        ', afvoer: ' + (st.afvoer === 'nee' ? 'nee' : st.afvoer + ' x ' + st.aantal) + ', meststof: ' + st.meststof + '.';
+      var samenvatting = maatTekst(L) + ' × ' + maatTekst(B) + ' m (' + maatTekst(Math.round(L * B * 100) / 100) + ' m²)' +
+        (ond ? ', onderbreking ' + maatTekst(oL) + ' × ' + maatTekst(oB) + ' m' : '') +
+        (st.grind !== 'nee' ? ', grindstrook ' + (st.grind === 'olivijn' ? 'olivijn' : 'grind') : ', geen grindstrook') +
+        (st.folie === 'ja' ? ', met folie' : '') +
+        (st.afvoer !== 'nee' ? ', ' + st.aantal + '× ' + afvNaam.toLowerCase() : '') +
+        (st.meststof !== 'nee' ? ', meststof ' + st.meststof.replace('L', ' liter') : '');
+      item.klaar = true;
+      kaart.className = 'fxa-card fxa-klaar';
+      knop.textContent = 'Berekend ✓';
+      knop.disabled = true;
+      markeerKaartKlaar(item.id);
+      track('wizard_verstuurd', d.product_id);
+      send('wizard', opdracht, samenvatting);
+    });
+    return kaart;
+  }
+
+  function prijsKaart(item) {
+    var d = item.data || {};
+    var kaart = el('div', 'fxa-card');
+    var kop = el('div');
+    kop.appendChild(el('div', 'fxa-card-kop', d.pakket || 'Je groendak'));
+    kop.appendChild(el('div', 'fxa-card-sub', maatTekst(Number(d.m2) || 0) + ' m² · richtprijs'));
+    kaart.appendChild(kop);
+
+    var lijst = el('div', 'fxa-regels');
+    (Array.isArray(d.regels) ? d.regels : []).forEach(function (r) {
+      var rij = el('div', 'fxa-regel');
+      var naam = el('span', 'fxa-regel-naam');
+      var delen = String(r.omschrijving || '').split(' — ');
+      naam.appendChild(document.createTextNode(delen[0]));
+      if (delen[1]) naam.appendChild(el('span', 'fxa-regel-det', delen.slice(1).join(' — ')));
+      rij.appendChild(naam);
+      rij.appendChild(el('span', 'fxa-regel-bedrag', r.bedrag_tekst || ''));
+      lijst.appendChild(rij);
+    });
+    kaart.appendChild(lijst);
+
+    var tot = el('div', 'fxa-totaal');
+    tot.appendChild(el('span', 'fxa-card-sub', 'Totaal, excl. eventuele verzendkosten'));
+    tot.appendChild(el('strong', '', d.totaal || ''));
+    kaart.appendChild(tot);
+
+    /* Staffeltip alleen als de volgende staffel dichtbij ligt; verder weg is het
+       geen bruikbare tip maar een verkooppraatje. */
+    var vs = d.volgende_staffel;
+    var m2 = Number(d.m2) || 0;
+    if (vs && vs.vanaf_m2 && vs.vanaf_m2 - m2 <= Math.max(3, m2 * 0.2)) {
+      kaart.appendChild(el('div', 'fxa-tip', 'Vanaf ' + vs.vanaf_m2 + ' m² betaal je ' + (vs.prijs_tekst || '') + ' per m². Alleen interessant als je dak die meters ook echt heeft.'));
+    }
+
+    var knoppen = el('div', 'fxa-knoppen');
+    if (d.link && /^https:\/\//.test(d.link)) {
+      var bestel = el('a', 'fxa-cta', 'Bestellen op de pakketpagina');
+      bestel.href = d.link;
+      bestel.target = '_blank';
+      bestel.rel = 'noopener';
+      bestel.addEventListener('click', function () { track('bestel_geklikt', d.product_id || ''); });
+      knoppen.appendChild(bestel);
+    }
+    if (d.product_id) {
+      var aanpassen = el('button', 'fxa-cta2', 'Maten of opties aanpassen');
+      aanpassen.type = 'button';
+      aanpassen.addEventListener('click', function () {
+        if (busy) return;
+        track('wizard_aanpassen', d.product_id);
+        addKaart('wizard', { product_id: d.product_id, pakket: d.pakket, invoer: d.invoer || null });
+      });
+      knoppen.appendChild(aanpassen);
+    }
+    kaart.appendChild(knoppen);
+    return kaart;
+  }
+
+  function addKaart(soort, data, skipSave, bestaand) {
+    var item = bestaand || { rol: 'kaart', soort: soort, data: data, id: kaartId() };
+    var kaart = soort === 'prijs' ? prijsKaart(item) : wizardKaart(item);
+    msgsEl.appendChild(kaart);
+    if (!skipSave) {
+      /* Bij een nieuwe kaart naar Brams tekst erboven scrollen, niet naar de
+         onderkant: anders begint de klant halverwege de kaart. */
+      var vorige = kaart.previousSibling;
+      var boven = vorige && vorige.classList && vorige.classList.contains('fxa-msg-bot') ? vorige : kaart;
+      msgsEl.scrollTop += boven.getBoundingClientRect().top - msgsEl.getBoundingClientRect().top - 12;
+    } else {
+      scrollDown();
+    }
+    if (!skipSave) {
+      var h = loadHistory();
+      h.push(item);
+      saveHistory(h);
+      track(soort === 'prijs' ? 'prijskaart_getoond' : 'wizard_getoond', (data && data.product_id) || '');
+    }
+  }
 
   var typingEl = null;
   var typingIv = null;
@@ -467,7 +764,10 @@
     if (data.kleur) applyKleur(data.kleur);
     var h = loadHistory();
     if (h.length) {
-      for (var i = 0; i < h.length; i++) addMsg(h[i].rol, h[i].tekst, true);
+      for (var i = 0; i < h.length; i++) {
+        if (h[i].rol === 'kaart') addKaart(h[i].soort, h[i].data, true, h[i]);
+        else addMsg(h[i].rol, h[i].tekst, true);
+      }
       renderChips(loadVervolg(), 'vervolg');
     } else {
       if (data.welkomst) addMsg('bot', data.welkomst);
@@ -500,11 +800,13 @@
     sendBtn.className = 'fxa-send' + (inputEl.value.trim() && !busy ? ' fxa-armed' : '');
   }
 
-  function send(bron) {
-    var vraag = inputEl.value.trim();
+  /* opdracht/toon: de invulkaart stuurt een volledige opdracht naar de bot,
+     maar toont de klant een korte samenvatting van wat hij invulde. */
+  function send(bron, opdracht, toon) {
+    var vraag = opdracht ? String(opdracht) : inputEl.value.trim();
     if (!vraag || busy) return;
-    inputEl.value = '';
-    addMsg('user', vraag);
+    if (!opdracht) inputEl.value = '';
+    addMsg('user', toon || vraag);
     chipsEl.innerHTML = '';
     saveVervolg([]);
     busy = true;
@@ -515,6 +817,8 @@
       .then(function (data) {
         hideTyping();
         addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
+        if (data.berekening && Array.isArray(data.berekening.regels)) addKaart('prijs', data.berekening);
+        else if (data.wizard && data.wizard.product_id) addKaart('wizard', data.wizard);
         var vervolg = Array.isArray(data.vervolg) ? data.vervolg.slice(0, 3) : [];
         saveVervolg(vervolg);
         renderChips(vervolg, 'vervolg');
