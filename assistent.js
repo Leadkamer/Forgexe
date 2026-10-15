@@ -290,7 +290,8 @@
     '.fxa-msg-user{border-radius:18px 18px 6px 18px;align-self:flex-end;border:1px solid transparent}' +
     '.fxa-typing{display:inline-flex;gap:5px;align-items:center;padding:13px 16px;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:18px 18px 18px 6px;align-self:flex-start}' +
     '.fxa-typing span{width:6px;height:6px;border-radius:999px;background:#B6BBC5;transition:background-color .15s cubic-bezier(.16,1,.3,1)}' +
-    '.fxa-chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 10px;background:#F2F2EE;max-height:104px;overflow-y:auto}' +
+    /* Geen eigen scrollvak: hooguit drie vragen, die passen altijd volledig */
+    '.fxa-chips{display:flex;gap:6px;flex-wrap:wrap;padding:2px 16px 10px;background:#F2F2EE;flex:0 0 auto}' +
     '.fxa-chips:empty{padding:0}' +
     '.fxa-chip{min-height:34px;padding:7px 14px;border-radius:17px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:13px;line-height:1.3;text-align:left;cursor:pointer;max-width:100%;transition:background-color .15s ease}' +
     '.fxa-chip:hover{background:#FFFFFF}' +
