@@ -265,6 +265,9 @@
   }
 
   var css = '' +
+    /* Basis tegen knop- en invoerstijlen van het thema van de klant */
+    '.fxa-root button,.fxa-root input{text-transform:none;letter-spacing:normal;box-shadow:none;margin:0;text-shadow:none;font-family:inherit}' +
+    '.fxa-root img{max-width:none;opacity:1}' +
     '.fxa-root{position:fixed;right:20px;bottom:20px;z-index:2147483000;font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.55;letter-spacing:-0.005em;color:#0C0D10}' +
     '.fxa-btn{width:58px;height:58px;border-radius:999px;border:none;cursor:pointer;box-shadow:0 14px 30px rgba(12,13,16,.22);display:flex;align-items:center;justify-content:center;transition:transform .15s cubic-bezier(.16,1,.3,1)}' +
     '.fxa-btn:hover{transform:scale(1.06)}' +
@@ -295,7 +298,7 @@
     '.fxa-input-wrap{display:flex;align-items:center;gap:10px;padding:4px 4px 4px 18px;background:#FFFFFF;border-radius:999px;border:1px solid #D3D4CE;box-shadow:0 2px 6px rgba(12,13,16,.06);transition:border-color .15s ease,box-shadow .15s ease}' +
     '.fxa-input-wrap input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:#0C0D10;min-width:0;height:38px}' +
     '.fxa-input-wrap input::placeholder{color:#8A909D}' +
-    '.fxa-send{width:40px;height:40px;flex:none;border-radius:999px;border:none;background:#E8E8E2;color:#0C0D10;cursor:default;font-size:16px;transition:background-color .15s ease,transform .1s ease}' +
+    '.fxa-send{width:40px;height:40px;padding:0;display:flex;align-items:center;justify-content:center;flex:none;border-radius:999px;border:none;background:#E8E8E2;color:#0C0D10;cursor:default;font-size:16px;transition:background-color .15s ease,transform .1s ease}' +
     '.fxa-send.fxa-armed{background:#C4F24C;cursor:pointer}' +
     '.fxa-send.fxa-armed:active{transform:scale(.94)}' +
     '.fxa-foot{flex:0 0 auto;text-align:center;font-size:10px;color:#8A909D;padding:0 0 8px;background:#F2F2EE}' +
@@ -314,6 +317,12 @@
     '.fxa-root.fxa-kaart .fxa-btn{display:none}' +
     '.fxa-root.fxa-kaart .fxa-teaser{bottom:0}' +
     '.fxa-teaser-x:hover{color:#0C0D10}' +
+    /* Afscherming tegen site-brede knopstijlen van het thema van de klant
+       (bijv. oranje ronde knoppen): de sluitknoppen blijven rustig. */
+    '.fxa-root .fxa-teaser-x,.fxa-root .fxa-close{background:none!important;border:none!important;box-shadow:none!important;width:auto!important;height:auto!important;min-width:0!important;min-height:0!important;border-radius:4px!important;text-transform:none!important;letter-spacing:normal!important;line-height:1!important}' +
+    '.fxa-root .fxa-teaser-x{color:#8A909D!important;padding:2px 4px!important;font-size:15px!important}' +
+    '.fxa-root .fxa-close{color:#8A909D!important;padding:4px!important;font-size:22px!important}' +
+    '.fxa-root .fxa-teaser-x:hover,.fxa-root .fxa-close:hover{color:#0C0D10!important}' +
     /* Kaarten in het gesprek: invulkaart (wizard) en prijskaart */
     '.fxa-card{align-self:stretch;min-width:0;max-width:100%;box-sizing:border-box;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:14px}' +
     '.fxa-card *{box-sizing:border-box}' +
@@ -347,8 +356,15 @@
     '.fxa-knoppen{display:flex;flex-direction:column;gap:8px}' +
     '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}}';
 
+  /* Alle widgetregels krijgen ".fxa-root" ervoor. Thema's als Elementor stylen
+     knoppen met bijv. ".elementor-kit-5 button" (specifieker dan één klasse);
+     met twee klassen wint de widget altijd, zonder overal !important. */
+  function scoped(regels) {
+    return String(regels).replace(/(^|[{},])(\s*)\.fxa-(?!root)/g, '$1$2.fxa-root .fxa-');
+  }
+
   var style = document.createElement('style');
-  style.textContent = css;
+  style.textContent = scoped(css);
   document.head.appendChild(style);
 
   var dynStyle = document.createElement('style');
@@ -406,7 +422,7 @@
     }
     var linkKleur = licht ? '#22252C' : kleur;
     var pulsKleur = /^#[0-9a-fA-F]{6}$/.test(kleur) ? kleur : '#2F5CFF';
-    dynStyle.textContent =
+    dynStyle.textContent = scoped(
       '.fxa-msg-user{background:' + kleur + ';color:' + tekst + '}' +
       '.fxa-send.fxa-armed{background:' + kleur + ';color:' + tekst + '}' +
       '.fxa-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
@@ -417,7 +433,7 @@
       '.fxa-num:focus{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '@keyframes fxa-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
       '.fxa-btn.fxa-pulsing{animation:fxa-pulse 1.9s cubic-bezier(.16,1,.3,1) 2}' +
-      '@media (prefers-reduced-motion:reduce){.fxa-btn.fxa-pulsing{animation:none}}';
+      '@media (prefers-reduced-motion:reduce){.fxa-btn.fxa-pulsing{animation:none}}');
   }
   applyKleur('#2F5CFF');
 
