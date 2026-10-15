@@ -25,6 +25,8 @@
   var DATA_AVATAR = scriptTag ? scriptTag.getAttribute('data-avatar') : null;
   if (DATA_AVATAR && !/^https:\/\//.test(DATA_AVATAR)) DATA_AVATAR = null;
 
+  var WA_ICOON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.1-.3Z"/></svg>';
+
   var config = null;
   var open = false;
   var busy = false;
@@ -282,6 +284,12 @@
     '.fxa-head-naam{font-weight:600;font-size:13px;color:#0C0D10;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}' +
     '.fxa-head-sub{font-size:12px;color:#22A06B}' +
     '.fxa-close{background:none;border:none;cursor:pointer;font-size:22px;line-height:1;padding:4px;color:#8A909D}' +
+    '.fxa-wa{width:34px;height:34px;flex:none;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#1DA851;text-decoration:none;transition:background-color .15s ease}' +
+    '.fxa-wa:hover{background:#E9F8EF}' +
+    '.fxa-wa svg{width:20px;height:20px;display:block}' +
+    '.fxa-wa-knop{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;background:#1DA851;color:#FFFFFF;font-family:inherit;font-weight:700;font-size:14px;text-decoration:none}' +
+    '.fxa-wa-knop:hover{background:#178F45}' +
+    '.fxa-wa-knop svg{width:18px;height:18px}' +
     '.fxa-close:hover{color:#0C0D10}' +
     '.fxa-msgs{flex:1;overflow-y:auto;padding:16px;background:#F2F2EE;display:flex;flex-direction:column;gap:10px}' +
     '.fxa-msg{max-width:80%;padding:12px 16px;word-wrap:break-word;overflow-wrap:break-word;font-size:14px}' +
@@ -297,7 +305,8 @@
     '.fxa-chip:hover{background:#FFFFFF}' +
     '.fxa-inputbar{flex:0 0 auto;padding:10px 12px;background:#F2F2EE}' +
     '.fxa-input-wrap{display:flex;align-items:center;gap:10px;padding:4px 4px 4px 18px;background:#FFFFFF;border-radius:999px;border:1px solid #D3D4CE;box-shadow:0 2px 6px rgba(12,13,16,.06);transition:border-color .15s ease,box-shadow .15s ease}' +
-    '.fxa-input-wrap input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:14px;color:#0C0D10;min-width:0;height:38px}' +
+    /* 16px: kleiner laat iPhones bij het tikken inzoomen op het invoerveld */
+    '.fxa-input-wrap input{flex:1;border:none;outline:none;background:transparent;font-family:inherit;font-size:16px;color:#0C0D10;min-width:0;height:38px}' +
     '.fxa-input-wrap input::placeholder{color:#8A909D}' +
     '.fxa-send{width:40px;height:40px;padding:0;display:flex;align-items:center;justify-content:center;flex:none;border-radius:999px;border:none;background:#E8E8E2;color:#0C0D10;cursor:default;font-size:16px;transition:background-color .15s ease,transform .1s ease}' +
     '.fxa-send.fxa-armed{background:#C4F24C;cursor:pointer}' +
@@ -378,6 +387,7 @@
       '<div class="fxa-head">' +
         '<span class="fxa-avatar"></span>' +
         '<div class="fxa-head-txt"><div class="fxa-head-naam"></div><div class="fxa-head-sub">&#9679; Online — antwoordt direct</div></div>' +
+        '<a class="fxa-wa" href="#" target="_blank" rel="noopener" aria-label="App met een collega" title="App met een collega" style="display:none">' + WA_ICOON + '</a>' +
         '<button class="fxa-close" aria-label="Sluiten">&times;</button>' +
       '</div>' +
       '<div class="fxa-msgs"></div>' +
@@ -402,6 +412,7 @@
   var avatarEl = root.querySelector('.fxa-avatar');
   var naamEl = root.querySelector('.fxa-head-naam');
   var closeBtn = root.querySelector('.fxa-close');
+  var waKopEl = root.querySelector('.fxa-wa');
   var msgsEl = root.querySelector('.fxa-msgs');
   var chipsEl = root.querySelector('.fxa-chips');
   var inputEl = root.querySelector('input');
@@ -755,9 +766,83 @@
     return kaart;
   }
 
+  /* ---- Overdracht naar een collega via WhatsApp ----
+     Opent WhatsApp naar het kantoornummer (whatsapp_url in de config) met een
+     samenvatting van dit gesprek al ingevuld, zodat de medewerker niets opnieuw
+     hoeft te vragen. De klant ziet de tekst en kan hem aanpassen voor verzenden. */
+  function waBasis() {
+    var u = config && config.whatsapp_url ? String(config.whatsapp_url) : '';
+    return /^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(u) ? u.split('?')[0] : '';
+  }
+
+  function invoerTekst(v) {
+    if (!v) return '';
+    var delen = [];
+    if (v.onderbreking_lengte > 0 && v.onderbreking_breedte > 0) delen.push('onderbreking ' + maatTekst(v.onderbreking_lengte) + ' x ' + maatTekst(v.onderbreking_breedte) + ' m');
+    delen.push(v.grind && v.grind !== 'nee' ? 'grindstrook ' + v.grind : 'geen grindstrook');
+    if (v.folie === 'ja') delen.push('met wortelwerende folie');
+    if (v.afvoer && v.afvoer !== 'nee') delen.push(v.afvoer_aantal + 'x ' + v.afvoer);
+    if (v.meststof && v.meststof !== 'nee') delen.push('meststof ' + v.meststof);
+    return delen.join(', ');
+  }
+
+  function gespreksSamenvatting() {
+    var h = loadHistory();
+    var vragen = [];
+    var prijs = null;
+    for (var i = 0; i < h.length; i++) {
+      if (h[i].rol === 'user' && h[i].tekst) vragen.push(String(h[i].tekst).replace(/\s+/g, ' ').slice(0, 160));
+      if (h[i].rol === 'kaart' && h[i].soort === 'prijs') prijs = h[i].data;
+    }
+    var bot = (config && config.bot_naam) || 'de AI-assistent';
+    var regels = ['Hoi! Ik had net contact met ' + bot + ' op jullie website.'];
+    if (vragen.length) regels.push('Mijn vragen: ' + vragen.slice(-3).join(' / '));
+    if (prijs) {
+      var opties = invoerTekst(prijs.invoer);
+      regels.push('Berekening: ' + (prijs.pakket || 'pakket') + ', ' + maatTekst(Number(prijs.m2) || 0) + ' m²' + (opties ? ' (' + opties + ')' : '') + ', richtprijs ' + (prijs.totaal || '') + '.');
+    }
+    var pagina = paginaPad();
+    if (pagina && pagina !== '/') regels.push('Pagina: ' + ((config && config.website) || '') + pagina);
+    regels.push('');
+    regels.push('Mijn vraag aan jullie: ');
+    return regels.join('\n').slice(0, 1200);
+  }
+
+  function waLink() {
+    var basis = waBasis();
+    return basis ? basis + '?text=' + encodeURIComponent(gespreksSamenvatting()) : '';
+  }
+
+  function whatsappKaart() {
+    var kaart = el('div', 'fxa-card');
+    var kop = el('div');
+    kop.appendChild(el('div', 'fxa-card-kop', 'App met een collega'));
+    kop.appendChild(el('div', 'fxa-card-sub', 'Je vraag en wat we net bespraken staan er al in. Je kunt het nog aanpassen voor je verstuurt.'));
+    kaart.appendChild(kop);
+    var knop = el('a', 'fxa-wa-knop');
+    knop.innerHTML = WA_ICOON + '<span>Open WhatsApp</span>';
+    knop.href = waLink() || '#';
+    knop.target = '_blank';
+    knop.rel = 'noopener';
+    knop.addEventListener('click', function () {
+      knop.href = waLink() || '#';
+      track('whatsapp_geklikt', 'kaart');
+    });
+    kaart.appendChild(knop);
+    if (config && config.telefoon) kaart.appendChild(el('div', 'fxa-hint', 'Bellen kan ook: ' + config.telefoon + '. We reageren tijdens kantoortijden.'));
+    return kaart;
+  }
+
+  waKopEl.addEventListener('click', function (e) {
+    var l = waLink();
+    if (!l) { e.preventDefault(); return; }
+    waKopEl.href = l;
+    track('whatsapp_geklikt', 'kop');
+  });
+
   function addKaart(soort, data, skipSave, bestaand) {
     var item = bestaand || { rol: 'kaart', soort: soort, data: data, id: kaartId() };
-    var kaart = soort === 'prijs' ? prijsKaart(item) : wizardKaart(item);
+    var kaart = soort === 'prijs' ? prijsKaart(item) : (soort === 'whatsapp' ? whatsappKaart() : wizardKaart(item));
     msgsEl.appendChild(kaart);
     if (!skipSave) {
       /* Bij een nieuwe kaart naar Brams tekst erboven scrollen, niet naar de
@@ -772,7 +857,7 @@
       var h = loadHistory();
       h.push(item);
       saveHistory(h);
-      track(soort === 'prijs' ? 'prijskaart_getoond' : 'wizard_getoond', (data && data.product_id) || '');
+      track({ prijs: 'prijskaart_getoond', wizard: 'wizard_getoond', whatsapp: 'whatsapp_getoond' }[soort] || 'kaart_getoond', (data && data.product_id) || '');
       /* Signaal voor de pagina eromheen (de testomgeving volgt hiermee het pakket) */
       try {
         window.dispatchEvent(new CustomEvent('fxa:kaart', { detail: { soort: soort, product_id: (data && data.product_id) || '', link: (data && data.link) || '' } }));
@@ -838,6 +923,7 @@
       avatarEl.textContent = (data.naam || 'F').charAt(0).toUpperCase();
     }
     if (data.kleur) applyKleur(data.kleur);
+    waKopEl.style.display = waBasis() ? 'flex' : 'none';
     var h = loadHistory();
     if (h.length) {
       for (var i = 0; i < h.length; i++) {
@@ -908,6 +994,7 @@
         addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
         if (data.berekening && Array.isArray(data.berekening.regels)) addKaart('prijs', data.berekening);
         else if (data.wizard && data.wizard.product_id) addKaart('wizard', data.wizard);
+        if (data.whatsapp && waBasis()) addKaart('whatsapp', {});
         var vervolg = Array.isArray(data.vervolg) ? data.vervolg.slice(0, 3) : [];
         saveVervolg(vervolg);
         renderChips(vervolg, 'vervolg');
