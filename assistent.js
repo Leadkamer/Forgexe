@@ -1147,6 +1147,12 @@
   window.addEventListener('fxa:pagina', function () {
     if (open) return;
     verbergTeaser();
+    /* Net als bij een echte nieuwe pagina: de eerste-bezoek-kaart is dan al
+       gezien, dus weer de ronde knop met ballonnen. */
+    if (kaartModus) {
+      markeerTeaserGezien();
+      verlaatKaartModus();
+    }
     planBallon();
   });
   /* Testomgeving: de wizard-ballon kan daar niet vanzelf komen (het formulier
