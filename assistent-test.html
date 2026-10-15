@@ -56,7 +56,7 @@ p.lead{color:var(--dim);max-width:60ch}
   var klant = '';
   try { klant = new URLSearchParams(location.search).get('klant') || ''; } catch (e) {}
   if (!/^[a-z0-9_-]{2,60}$/.test(klant)) { document.getElementById('fout').style.display = 'block'; return; }
-  var namen = { mooigroendak: { naam: 'Bram van MooiGroendak', kop: 'Probeer Bram, de groendak-assistent' } };
+  var namen = { mooigroendak: { naam: 'Bram van MooiGroendak', kop: 'Probeer Bram, de groendak-assistent', avatar: 'https://www.forgexe.nl/assistent-avatars/mooigroendak-bram.png' } };
   var n = namen[klant];
   if (n) { document.getElementById('kop').textContent = n.kop; document.title = n.naam + ' | Testomgeving Forgexe'; }
   else { document.getElementById('tips').parentNode.style.display = 'none'; }
@@ -64,6 +64,7 @@ p.lead{color:var(--dim);max-width:60ch}
   s.src = '/assistent.js';
   s.setAttribute('data-klant', klant);
   if (n) { s.setAttribute('data-naam', n.naam); }
+  if (n && n.avatar) { s.setAttribute('data-avatar', n.avatar); }
   document.body.appendChild(s);
 })();
 </script>

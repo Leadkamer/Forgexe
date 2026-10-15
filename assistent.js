@@ -20,6 +20,10 @@
   /* Optioneel: data-naam="Fingo" zet de winkelnaam in de teaserkaart al vóór
      de eerste config-call (die komt pas als iemand de chat opent). */
   var DATA_NAAM = scriptTag ? scriptTag.getAttribute('data-naam') : null;
+  /* Optioneel: data-avatar="https://..." toont de avatar al in de teaserkaart en
+     de kop, ook bij een eerste bezoek zonder gecachte config. */
+  var DATA_AVATAR = scriptTag ? scriptTag.getAttribute('data-avatar') : null;
+  if (DATA_AVATAR && !/^https:\/\//.test(DATA_AVATAR)) DATA_AVATAR = null;
 
   var config = null;
   var open = false;
@@ -746,9 +750,10 @@
   function applyConfig(data) {
     config = data;
     naamEl.textContent = data.naam || 'Chat';
-    if (data.avatar_url && /^https:\/\//.test(data.avatar_url)) {
+    var avatarUrl = DATA_AVATAR || (data.avatar_url && /^https:\/\//.test(data.avatar_url) ? data.avatar_url : '');
+    if (avatarUrl) {
       var img = document.createElement('img');
-      img.src = data.avatar_url;
+      img.src = avatarUrl;
       img.alt = '';
       img.onerror = function () {
         avatarEl.innerHTML = '';
@@ -864,9 +869,10 @@
     teaserTxtEl.textContent = teaserTekst();
     /* Winkellogo in het rondje zodra de config (uit cache) bekend is;
        anders blijft het neutrale chat-icoon staan. */
-    if (config && config.avatar_url && /^https:\/\//.test(config.avatar_url) && !teaserIcoEl.querySelector('img')) {
+    var teaserAvatar = DATA_AVATAR || (config && config.avatar_url && /^https:\/\//.test(config.avatar_url) ? config.avatar_url : '');
+    if (teaserAvatar && !teaserIcoEl.querySelector('img')) {
       var img = document.createElement('img');
-      img.src = config.avatar_url;
+      img.src = teaserAvatar;
       img.alt = '';
       img.onerror = function () {
         if (img.parentNode) img.parentNode.removeChild(img);
