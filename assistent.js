@@ -322,7 +322,7 @@
     '.fxa-regel-det{display:block;font-size:12px;color:#8A909D}' +
     '.fxa-regel-bedrag{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}' +
     '.fxa-totaal{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:2px}' +
-    '.fxa-totaal strong{font-size:18px;font-variant-numeric:tabular-nums}' +
+    '.fxa-totaal strong{font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}' +
     '.fxa-tip{background:#F2F2EE;border-radius:10px;padding:9px 11px;font-size:12px;line-height:1.45;color:#22252C}' +
     '.fxa-knoppen{display:flex;flex-direction:column;gap:8px}' +
     '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}}';
@@ -666,7 +666,37 @@
     }
 
     var knoppen = el('div', 'fxa-knoppen');
-    if (d.link && /^https:\/\//.test(d.link)) {
+    var ww = d.winkelwagen;
+    if (ww && /^https:\/\//.test(String(ww.actie || '')) && ww.velden) {
+      /* In één klik in de winkelwagen: hetzelfde formulier als de wizard op de
+         pakketpagina, ingevuld met deze keuzes. De webshop rekent zelf en stuurt
+         door naar de winkelwagen. Op de eigen site in hetzelfde tabblad, anders
+         (bijv. de testomgeving) in een nieuw tabblad. */
+      var inWagen = el('button', 'fxa-cta', 'In winkelwagen en bestellen');
+      inWagen.type = 'button';
+      inWagen.addEventListener('click', function () {
+        track('winkelwagen_geklikt', d.product_id || '');
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = ww.actie;
+        form.enctype = 'multipart/form-data';
+        var eigenSite = false;
+        try { eigenSite = new URL(ww.actie).hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''); } catch (e) { /* onbekend: nieuw tabblad */ }
+        form.target = eigenSite ? '_self' : '_blank';
+        form.style.display = 'none';
+        Object.keys(ww.velden).forEach(function (k) {
+          var i = document.createElement('input');
+          i.type = 'hidden';
+          i.name = k;
+          i.value = String(ww.velden[k]);
+          form.appendChild(i);
+        });
+        document.body.appendChild(form);
+        form.submit();
+        setTimeout(function () { if (form.parentNode) form.parentNode.removeChild(form); }, 1000);
+      });
+      knoppen.appendChild(inWagen);
+    } else if (d.link && /^https:\/\//.test(d.link)) {
       var bestel = el('a', 'fxa-cta', 'Bestellen op de pakketpagina');
       bestel.href = d.link;
       bestel.target = '_blank';
