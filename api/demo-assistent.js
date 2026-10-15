@@ -53,6 +53,13 @@ export default async function handler(req) {
   var demoBasis = u.origin + u.pathname + '?klant=' + encodeURIComponent(klant) + '&pad=';
   var hostZonderWww = basis.host.replace(/^www\./, '');
 
+  /* Trackers eruit: testbezoeken mogen niet meetellen in de analytics en
+     advertentiecijfers van de klant (Google Tag Manager/Analytics/Ads, Meta, Hotjar, Clarity). */
+  var TRACKER = /googletagmanager|google-analytics|gtag\(|gtm4wp|dataLayer|googleadservices|googlesyndication|fbq\(|connect\.facebook\.net|hotjar|clarity\.ms|leadinfo|linkedin\.com\/px|snap\.licdn/i;
+  html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, function (blok) { return TRACKER.test(blok) ? '' : blok; });
+  html = html.replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, function (blok) { return TRACKER.test(blok) ? '' : blok; });
+  html = html.replace(/<link\b[^>]*(googletagmanager|google-analytics)[^>]*>/gi, '');
+
   /* Links naar andere pagina's van de klant → via deze demo */
   html = html.replace(/<a\b[^>]*>/gi, function (tag) {
     return tag.replace(/(\shref=)(["'])([^"']*)\2/i, function (m, voor, q, href) {
