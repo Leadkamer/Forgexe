@@ -288,7 +288,7 @@
     '.fxa-wa:hover{background:#E9F8EF}' +
     '.fxa-wa svg{width:20px;height:20px;display:block}' +
     '.fxa-wa-knop{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;background:#1DA851;color:#FFFFFF;font-family:inherit;font-weight:700;font-size:14px;text-decoration:none}' +
-    '.fxa-wa-knop:hover{background:#178F45}' +
+    '.fxa-wa-knop:hover,.fxa-wa-knop:focus{background:#178F45;color:#FFFFFF}' +
     '.fxa-wa-knop svg{width:18px;height:18px}' +
     '.fxa-close:hover{color:#0C0D10}' +
     '.fxa-msgs{flex:1;overflow-y:auto;padding:16px;background:#F2F2EE;display:flex;flex-direction:column;gap:10px}' +
@@ -302,7 +302,13 @@
     '.fxa-chips{display:flex;gap:6px;flex-wrap:wrap;padding:2px 16px 10px;background:#F2F2EE;flex:0 0 auto}' +
     '.fxa-chips:empty{padding:0}' +
     '.fxa-chip{min-height:34px;padding:7px 14px;border-radius:17px;border:1px solid #D3D4CE;background:transparent;color:#22252C;font-family:inherit;font-weight:600;font-size:13px;line-height:1.3;text-align:left;cursor:pointer;max-width:100%;transition:background-color .15s ease}' +
-    '.fxa-chip:hover{background:#FFFFFF}' +
+    /* Eigen hover- en focuskleuren: thema's maken knoptekst bij hover vaak wit */
+    '.fxa-chip:hover,.fxa-chip:focus{background:#FFFFFF;color:#22252C;border-color:#B6BBC5}' +
+    '.fxa-seg button:hover,.fxa-seg button:focus{background:#F2F2EE;color:#22252C;border-color:#B6BBC5}' +
+    '.fxa-stepper button:hover,.fxa-stepper button:focus{background:#F2F2EE;color:#22252C}' +
+    '.fxa-cta2:hover,.fxa-cta2:focus{background:#F2F2EE;color:#22252C;border-color:#B6BBC5}' +
+    '.fxa-send:hover,.fxa-send:focus{color:#0C0D10}' +
+    '.fxa-wa:hover,.fxa-wa:focus{color:#1DA851}' +
     '.fxa-inputbar{flex:0 0 auto;padding:10px 12px;background:#F2F2EE}' +
     '.fxa-input-wrap{display:flex;align-items:center;gap:10px;padding:4px 4px 4px 18px;background:#FFFFFF;border-radius:999px;border:1px solid #D3D4CE;box-shadow:0 2px 6px rgba(12,13,16,.06);transition:border-color .15s ease,box-shadow .15s ease}' +
     /* 16px: kleiner laat iPhones bij het tikken inzoomen op het invoerveld */
@@ -440,8 +446,11 @@
       '.fxa-input-wrap:focus-within{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '.fxa-typing span.fxa-on{background:' + kleur + '}' +
       '.fxa-msg-bot a{color:' + linkKleur + '}' +
-      '.fxa-seg button.fxa-aan{background:' + kleur + ';border-color:' + kleur + ';color:' + tekst + '}' +
-      '.fxa-cta{background:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-seg button.fxa-aan,.fxa-seg button.fxa-aan:hover,.fxa-seg button.fxa-aan:focus{background:' + kleur + ';border-color:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-cta,.fxa-cta:hover,.fxa-cta:focus{background:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-cta:hover{filter:brightness(.94)}' +
+      '.fxa-send.fxa-armed:hover,.fxa-send.fxa-armed:focus{background:' + kleur + ';color:' + tekst + '}' +
+      '.fxa-btn:hover,.fxa-btn:focus{background:' + kleur + ';color:' + tekst + '}' +
       '.fxa-num:focus{border-color:' + kleur + ';box-shadow:0 0 0 3px ' + kleur + '33}' +
       '@keyframes fxa-pulse{0%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '59}80%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 16px ' + pulsKleur + '00}100%{box-shadow:0 14px 30px rgba(12,13,16,.22),0 0 0 0 ' + pulsKleur + '00}}' +
       '.fxa-btn.fxa-pulsing{animation:fxa-pulse 1.9s cubic-bezier(.16,1,.3,1) 2}' +
