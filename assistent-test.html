@@ -66,11 +66,9 @@ body.split #split{display:flex;flex-direction:column}
   <button class="knop" id="naast-knop" type="button">▢▢ Test naast de website</button>
   <div class="kaart" id="echt" style="display:none">
     <h2>Testen op de echte website</h2>
-    <ul>
-      <li>Sleep deze knop naar je bladwijzerbalk: <a class="knop" id="bladwijzer" href="#" style="margin:6px 0;text-decoration:none">Bram testen</a></li>
-      <li>Ga naar de echte website en klik <b>op elke pagina</b> één keer op die bladwijzer. Bram verschijnt dan alsof hij er al op staat: met de ballon van die pagina, de wizard-ballon op pakketpagina's en de winkelwagenknop.</li>
-      <li>Alleen jij ziet hem, en alleen zolang je de bladwijzer gebruikt. Bezoekers van de site merken er niets van.</li>
-    </ul>
+    <p style="color:var(--dim)">Open de website met Bram erop en klik gewoon rond. Op elke pagina komt de ballon die erbij hoort.</p>
+    <a class="knop" id="demo-link" href="#" style="text-decoration:none">Open de website met Bram →</a>
+    <p style="color:var(--dim);font-size:.85rem;margin-top:14px">Voor gevorderden: <a id="bladwijzer" href="#" style="color:var(--dim)">bladwijzer</a> die Bram op de echte site zelf laadt.</p>
   </div>
   <p class="pijl">↘ De chat zit rechtsonder.</p>
   <p id="fout">Geen assistent gekozen. Voeg ?klant=… toe aan de link.</p>
@@ -114,6 +112,7 @@ body.split #split{display:flex;flex-direction:column}
       "document.body.appendChild(s);})();";
     document.getElementById('bladwijzer').setAttribute('href', bw);
     document.getElementById('bladwijzer').addEventListener('click', function (e) { e.preventDefault(); alert('Sleep deze knop naar je bladwijzerbalk en klik er daarna op op de website van de klant.'); });
+    document.getElementById('demo-link').setAttribute('href', '/api/demo-assistent?klant=' + klant);
     document.getElementById('echt').style.display = 'block';
   }
 
