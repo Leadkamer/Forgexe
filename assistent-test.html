@@ -72,6 +72,7 @@ body.split #split{display:flex;flex-direction:column}
     <span class="dim">website:</span>
     <select id="pagina" aria-label="Pagina van de website"></select>
     <label class="dim"><input type="checkbox" id="volg" checked> volg Bram</label>
+    <button type="button" id="wizballon" style="display:none">toon wizard-ballon</button>
     <button type="button" id="terug">← terug</button>
   </div>
   <div class="swrap"><iframe id="site" title="Website van de klant"></iframe><div class="chatruimte"></div></div>
@@ -105,10 +106,59 @@ body.split #split{display:flex;flex-direction:column}
       o.value = p[2]; o.textContent = p[1]; o.setAttribute('data-id', p[0]);
       sel.appendChild(o);
     });
-    sel.addEventListener('change', function () { frame.src = sel.value; });
+    var wizBtn = document.getElementById('wizballon');
+    var DATA = null;
+    function padVan(url) { try { return new URL(url).pathname; } catch (e) { return '/'; } }
+    /* Ballonnen testen: de widget kijkt naar het pad van de pagina in het frame,
+       en bij elke wissel mag er opnieuw een ballon komen (tellers terug op nul). */
+    function meldPagina() {
+      var pad = padVan(sel.value);
+      window.FXA_TEST_PAD = pad;
+      try {
+        ['ballon-n', 'ballon-paden', 'ballon-uit'].forEach(function (k) { sessionStorage.removeItem('fxa-' + klant + '-v1-' + k); });
+      } catch (e) {}
+      var info = DATA && DATA.paginas ? DATA.paginas[pad] : null;
+      wizBtn.style.display = info && info.ballon2 ? 'inline-block' : 'none';
+      try { window.dispatchEvent(new CustomEvent('fxa:pagina')); } catch (e) {}
+    }
+    sel.addEventListener('change', function () { frame.src = sel.value; meldPagina(); });
+    wizBtn.addEventListener('click', function () {
+      var info = DATA && DATA.paginas ? DATA.paginas[padVan(sel.value)] : null;
+      if (info && info.ballon2) window.dispatchEvent(new CustomEvent('fxa:ballon', { detail: { tekst: info.ballon2 } }));
+    });
+    /* Alle pagina's uit de ballondata in de keuzelijst, per soort gegroepeerd */
+    var ds = document.createElement('script');
+    ds.src = '/assistent-data/' + klant + '.js';
+    ds.onload = function () {
+      DATA = window.FXA_PAGINAS && window.FXA_PAGINAS[klant];
+      if (!DATA || !DATA.paginas) return;
+      var groepen = { pakket: 'Pakketten', page: "Pagina's", product_cat: 'Categorieën', product: 'Producten', post: 'Blogs', project: 'Projecten' };
+      var huidig = padVan(sel.value);
+      sel.innerHTML = '';
+      Object.keys(groepen).forEach(function (g) {
+        var og = document.createElement('optgroup');
+        og.label = groepen[g];
+        Object.keys(DATA.paginas).forEach(function (pad) {
+          var p = DATA.paginas[pad];
+          var soort = p.ballon2 ? 'pakket' : p.soort;
+          if (soort !== g) return;
+          var o = document.createElement('option');
+          o.value = 'https://www.mooigroendak.nl' + pad;
+          o.textContent = (p.titel || pad).slice(0, 60);
+          o.setAttribute('data-id', p.product_id || '');
+          if (pad === huidig) o.selected = true;
+          og.appendChild(o);
+        });
+        if (og.children.length) sel.appendChild(og);
+      });
+      if (document.body.classList.contains('split')) meldPagina();
+    };
+    document.head.appendChild(ds);
     function zetSplit(aan) {
       document.body.classList.toggle('split', aan);
       if (aan && !frame.src) frame.src = sel.value;
+      if (aan) meldPagina();
+      else { window.FXA_TEST_PAD = ''; try { window.dispatchEvent(new CustomEvent('fxa:pagina')); } catch (e) {} }
       try { history.replaceState(null, '', aan ? '?klant=' + klant + '&naast=1' : '?klant=' + klant); } catch (e) {}
     }
     var knop = document.getElementById('naast-knop');
@@ -120,7 +170,7 @@ body.split #split{display:flex;flex-direction:column}
       var id = String((e.detail && e.detail.product_id) || '');
       for (var i = 0; i < sel.options.length; i++) {
         if (id && sel.options[i].getAttribute('data-id') === id) {
-          if (sel.selectedIndex !== i) { sel.selectedIndex = i; frame.src = sel.value; }
+          if (sel.selectedIndex !== i) { sel.selectedIndex = i; frame.src = sel.value; window.FXA_TEST_PAD = padVan(sel.value); }
           return;
         }
       }

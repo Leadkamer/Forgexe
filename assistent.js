@@ -56,6 +56,9 @@
   };
 
   function paginaPad() {
+    /* Testomgeving: daar staat de site van de klant in een frame en zet de
+       testpagina hier het pad van de pagina die in dat frame open staat. */
+    if (window.FXA_TEST_PAD) return String(window.FXA_TEST_PAD).slice(0, 200);
     try {
       return (location.pathname || '/').slice(0, 200);
     } catch (e) {
@@ -103,7 +106,22 @@
     return map;
   }
 
+  /* Paginadata (ballon, startvragen, samenvatting voor de bot) per URL-pad,
+     uit forgexe.nl/assistent-data/<klant>.js. Zonder data gelden de teksten
+     per paginasoort hieronder. */
+  var PAGINA_DATA = null;
+  var laatsteBallon = '';
+
+  function paginaInfo() {
+    if (!PAGINA_DATA || !PAGINA_DATA.paginas) return null;
+    var p = PAGINA_DATA.paginas;
+    var pad = paginaPad();
+    return p[pad] || p[pad.replace(/\/?$/, '/')] || p[pad.replace(/\/+$/, '')] || null;
+  }
+
   function teaserTekst() {
+    var info = paginaInfo();
+    if (info && info.ballon && !info.stil) return info.ballon;
     if (config && config.teaser) {
       var map = perSoort(config.teaser);
       if (!map) return config.teaser;
@@ -114,6 +132,8 @@
   }
 
   function startChips() {
+    var info = paginaInfo();
+    if (info && Array.isArray(info.chips) && info.chips.length) return info.chips.slice(0, 3);
     if (config && config.chips) {
       /* Bij per-soort chips scheidt de puntkomma de chips onderling, omdat de
          pijp dan al de soorten scheidt. */
@@ -852,7 +872,20 @@
     armSend();
     showTyping();
     track('bericht', bron || 'getypt');
-    post({ winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad() })
+    /* Paginacontext voor de bot: titel, samenvatting en (bij een product) het id,
+       plus de ballon waar de bezoeker op klikte (eenmalig). */
+    var info = paginaInfo();
+    var geklikt = '';
+    try {
+      geklikt = sessionStorage.getItem(storeKey + '-ballon-geklikt') || '';
+      sessionStorage.removeItem(storeKey + '-ballon-geklikt');
+    } catch (e) { geklikt = ''; }
+    post({
+      winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad(),
+      pagina_titel: String(document.title || '').slice(0, 150),
+      pagina_info: info ? (String(info.samenvatting || '') + (info.product_id ? ' (product-id ' + info.product_id + ')' : '')).slice(0, 400) : '',
+      ballon: geklikt.slice(0, 150)
+    })
       .then(function (data) {
         hideTyping();
         addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
@@ -898,9 +931,9 @@
     try { sessionStorage.setItem(TEASER_KEY, '1'); } catch (e) { /* geen opslag */ }
   }
 
-  function vulTeaser() {
-    teaserNaamEl.textContent = (config && config.naam) || DATA_NAAM || 'Chat met ons';
-    teaserTxtEl.textContent = teaserTekst();
+  function vulTeaser(tekst) {
+    teaserNaamEl.textContent = (config && config.naam) || DATA_NAAM || (PAGINA_DATA && PAGINA_DATA.naam) || 'Chat met ons';
+    teaserTxtEl.textContent = tekst || teaserTekst();
     /* Winkellogo in het rondje zodra de config (uit cache) bekend is;
        anders blijft het neutrale chat-icoon staan. */
     var teaserAvatar = DATA_AVATAR || (config && config.avatar_url && /^https:\/\//.test(config.avatar_url) ? config.avatar_url : '');
@@ -976,24 +1009,168 @@
     root.classList.remove('fxa-kaart');
   }
 
+  /* De eerste kaart wacht kort op de paginadata, zodat hij meteen de tekst van
+     deze pagina toont; hooguit 1,5 seconde, daarna de standaardtekst. */
+  var kaartGetoond = false;
+  function toonKaart() {
+    if (kaartGetoond || open || !kaartModus) return;
+    kaartGetoond = true;
+    vulTeaser();
+    teaserEl.classList.add('fxa-show');
+    laatsteBallon = teaserTxtEl.textContent;
+    track('teaser_getoond', teaserTxtEl.textContent);
+    markeerTeaserGezien();
+  }
+
   if (kaartModus) {
     root.classList.add('fxa-kaart');
-    setTimeout(function () {
-      if (open || !kaartModus) return;
-      vulTeaser();
-      teaserEl.classList.add('fxa-show');
-      track('teaser_getoond', teaserTxtEl.textContent);
-      markeerTeaserGezien();
-    }, 300);
+    setTimeout(toonKaart, 1500);
   } else {
     setTimeout(puls, 4000);
   }
 
+  /* ---- Pagina-ballonnen ----
+     Per pagina een eigen ballontekst en startvragen uit
+     forgexe.nl/assistent-data/<klant>.js (statisch bestand, geen n8n-run per
+     paginaweergave). De ballon komt na een paar seconden of na een stukje
+     scrollen; op een pakketpagina komt een tweede ballon als iemand lang met
+     de wizard bezig is zonder te bestellen. Rustig: één per pagina, hooguit
+     BALLON_MAX per sessie, nooit bij een open chat, en wie er een wegklikt
+     krijgt er deze sessie geen meer. */
+  var BALLON_MAX = 4;
+  var BALLON_WACHT = 6000;
+  var WIZARD_WACHT = 25000;
+
+  function sessieLees(k) {
+    try { return sessionStorage.getItem(storeKey + '-' + k); } catch (e) { return null; }
+  }
+  function sessieZet(k, v) {
+    try { sessionStorage.setItem(storeKey + '-' + k, v); } catch (e) { /* geen opslag */ }
+  }
+
+  function ballonMag() {
+    if (open || kaartModus || sessieLees('ballon-uit')) return false;
+    return (parseInt(sessieLees('ballon-n') || '0', 10) || 0) < BALLON_MAX;
+  }
+
+  function toonBallon(tekst, soort) {
+    if (!tekst) return;
+    vulTeaser(tekst);
+    teaserEl.classList.add('fxa-show');
+    laatsteBallon = tekst;
+    sessieZet('ballon-n', String((parseInt(sessieLees('ballon-n') || '0', 10) || 0) + 1));
+    track('ballon_getoond', soort + ': ' + tekst);
+  }
+
+  function planWizardBallon(tekst) {
+    var form = document.querySelector('form.cart');
+    if (!form) return;
+    var timer = null;
+    var klaar = false;
+    form.addEventListener('submit', function () {
+      klaar = true;
+      if (timer) clearTimeout(timer);
+    });
+    var opnieuw = function () {
+      if (klaar) return;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(function () {
+        if (klaar || !ballonMag()) return;
+        klaar = true;
+        toonBallon(tekst, 'wizard');
+      }, WIZARD_WACHT);
+    };
+    form.addEventListener('input', opnieuw);
+    form.addEventListener('change', opnieuw);
+  }
+
+  function planBallon() {
+    var info = paginaInfo();
+    if (!info || info.stil) return;
+    if (info.ballon2) planWizardBallon(info.ballon2);
+    if (!info.ballon) return;
+    var pad = paginaPad();
+    var gezien = [];
+    try { gezien = JSON.parse(sessieLees('ballon-paden') || '[]') || []; } catch (e) { gezien = []; }
+    if (gezien.indexOf(pad) >= 0) return;
+    var gedaan = false;
+    var opScroll = function () {
+      var h = document.documentElement;
+      var top = h.scrollTop || document.body.scrollTop || 0;
+      if (top / Math.max(1, h.scrollHeight - h.clientHeight) > 0.35) trigger();
+    };
+    var trigger = function () {
+      if (gedaan) return;
+      gedaan = true;
+      window.removeEventListener('scroll', opScroll);
+      if (!ballonMag()) return;
+      gezien.push(pad);
+      sessieZet('ballon-paden', JSON.stringify(gezien.slice(-50)));
+      toonBallon(info.ballon, 'pagina');
+    };
+    setTimeout(trigger, BALLON_WACHT);
+    window.addEventListener('scroll', opScroll, { passive: true });
+  }
+
+  /* Kleur uit de paginadata zolang de config (die pas bij het openen komt) er nog niet is */
+  function dataKleur() {
+    if (!config && PAGINA_DATA && /^#[0-9a-fA-F]{6}$/.test(String(PAGINA_DATA.kleur || ''))) applyKleur(PAGINA_DATA.kleur);
+  }
+
+  function laadPaginaData() {
+    /* Al aanwezig (bijvoorbeeld vooraf ingeladen door de pagina)? Dan niet nog eens ophalen. */
+    if (window.FXA_PAGINAS && window.FXA_PAGINAS[WINKEL]) {
+      PAGINA_DATA = window.FXA_PAGINAS[WINKEL];
+      dataKleur();
+      setTimeout(function () {
+        if (kaartModus) toonKaart();
+        planBallon();
+      }, 0);
+      return;
+    }
+    var s = document.createElement('script');
+    s.src = 'https://www.forgexe.nl/assistent-data/' + encodeURIComponent(WINKEL) + '.js';
+    s.async = true;
+    s.onload = function () {
+      PAGINA_DATA = (window.FXA_PAGINAS && window.FXA_PAGINAS[WINKEL]) || null;
+      if (!PAGINA_DATA) return;
+      dataKleur();
+      if (kaartModus) toonKaart();
+      else if (!teaserEl.classList.contains('fxa-show')) vulTeaser();
+      planBallon();
+    };
+    document.head.appendChild(s);
+  }
+  laadPaginaData();
+
+  /* Testomgeving: na het wisselen van pagina in het frame opnieuw een ballon plannen */
+  window.addEventListener('fxa:pagina', function () {
+    if (open) return;
+    verbergTeaser();
+    planBallon();
+  });
+  /* Testomgeving: de wizard-ballon kan daar niet vanzelf komen (het formulier
+     zit in een frame van een ander domein), dus de testpagina toont hem zo. */
+  window.addEventListener('fxa:ballon', function (e) {
+    if (open || !e.detail || !e.detail.tekst) return;
+    toonBallon(String(e.detail.tekst).slice(0, 150), 'test');
+  });
+
   teaserEl.addEventListener('click', function () {
-    track('teaser_geklikt', '');
+    track('teaser_geklikt', laatsteBallon);
+    var tekst = laatsteBallon;
+    if (tekst) sessieZet('ballon-geklikt', tekst);
     verbergTeaser();
     verlaatKaartModus();
-    openChat('teaser');
+    openChat('teaser').then(function () {
+      /* Loopt er al een gesprek, dan zet Bram de ballontekst als nieuw bericht
+         neer en komen de startvragen van deze pagina eronder. */
+      if (!tekst || !config || !loadHistory().length) return;
+      var h = loadHistory();
+      var laatste = h[h.length - 1];
+      if (!laatste || laatste.tekst !== tekst) addMsg('bot', tekst);
+      renderChips(startChips(), 'start');
+    });
   });
 
   teaserEl.addEventListener('keydown', function (e) {
@@ -1005,7 +1182,8 @@
 
   teaserX.addEventListener('click', function (e) {
     e.stopPropagation();
-    track('teaser_weggeklikt', '');
+    track('teaser_weggeklikt', laatsteBallon);
+    sessieZet('ballon-uit', '1');
     markeerTeaserGezien();
     verbergTeaser();
     verlaatKaartModus();
@@ -1022,14 +1200,15 @@
       verlaatKaartModus();
       track('chat_geopend', bron);
     }
-    initConfig()
+    verbergTeaser();
+    setTimeout(function () { inputEl.focus(); }, 100);
+    return initConfig()
       .catch(function () {
         naamEl.textContent = 'Chat';
         avatarEl.textContent = '!';
         addMsg('bot', 'Sorry, de chat is nu even niet beschikbaar. Probeer het later opnieuw.', true);
         track('fout', 'config');
       });
-    setTimeout(function () { inputEl.focus(); }, 100);
   }
 
   btn.addEventListener('click', function () {
