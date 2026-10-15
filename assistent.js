@@ -706,6 +706,10 @@
       h.push(item);
       saveHistory(h);
       track(soort === 'prijs' ? 'prijskaart_getoond' : 'wizard_getoond', (data && data.product_id) || '');
+      /* Signaal voor de pagina eromheen (de testomgeving volgt hiermee het pakket) */
+      try {
+        window.dispatchEvent(new CustomEvent('fxa:kaart', { detail: { soort: soort, product_id: (data && data.product_id) || '', link: (data && data.link) || '' } }));
+      } catch (e) { /* oude browser: geen signaal, de chat werkt gewoon */ }
     }
   }
 

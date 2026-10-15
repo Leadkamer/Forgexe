@@ -30,6 +30,21 @@ p.lead{color:var(--dim);max-width:60ch}
 .kaart b{color:var(--ink)}
 .pijl{margin-top:26px;font-family:var(--mono);font-size:.8rem;color:var(--dim)}
 #fout{display:none;margin-top:24px;color:#f47c6a}
+.knop{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:11px 18px;border-radius:10px;border:1px solid var(--green);background:transparent;color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:600;cursor:pointer}
+.knop:hover{background:rgba(52,211,153,.1)}
+#naast-knop{display:none}
+/* Naast de website: links de site van de klant, rechts ruimte voor de chat */
+#split{display:none;position:fixed;inset:0;z-index:1;background:var(--bg)}
+body.split header,body.split main{display:none}
+body.split #split{display:flex;flex-direction:column}
+.sbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.78rem;padding-right:434px}
+.sbar select{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:.78rem;max-width:100%}
+.sbar .dim{color:var(--dim)}
+.sbar button{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;font-family:inherit;font-size:.78rem;cursor:pointer}
+.swrap{flex:1;display:flex;min-height:0}
+.swrap iframe{flex:1;border:0;background:#fff;min-width:0}
+.swrap .chatruimte{width:420px;flex:none;border-left:1px solid var(--line)}
+@media (max-width:899px){#naast-knop{display:none!important}}
 </style>
 </head>
 <body>
@@ -48,18 +63,70 @@ p.lead{color:var(--dim);max-width:60ch}
       <li>Zeg dat je het wilt laten aanleggen en laat een terugbelverzoek achter (gebruik een testnaam).</li>
     </ul>
   </div>
+  <button class="knop" id="naast-knop" type="button">▢▢ Test naast de website</button>
   <p class="pijl">↘ De chat zit rechtsonder.</p>
   <p id="fout">Geen assistent gekozen. Voeg ?klant=… toe aan de link.</p>
 </main>
+<div id="split">
+  <div class="sbar">
+    <span class="dim">website:</span>
+    <select id="pagina" aria-label="Pagina van de website"></select>
+    <label class="dim"><input type="checkbox" id="volg" checked> volg Bram</label>
+    <button type="button" id="terug">← terug</button>
+  </div>
+  <div class="swrap"><iframe id="site" title="Website van de klant"></iframe><div class="chatruimte"></div></div>
+</div>
 <script>
 (function(){
   var klant = '';
   try { klant = new URLSearchParams(location.search).get('klant') || ''; } catch (e) {}
   if (!/^[a-z0-9_-]{2,60}$/.test(klant)) { document.getElementById('fout').style.display = 'block'; return; }
-  var namen = { mooigroendak: { naam: 'Bram van MooiGroendak', kop: 'Probeer Bram, de groendak-assistent', avatar: 'https://www.forgexe.nl/assistent-avatars/mooigroendak-bram.png' } };
+  var namen = { mooigroendak: { naam: 'Bram van MooiGroendak', kop: 'Probeer Bram, de groendak-assistent', avatar: 'https://www.forgexe.nl/assistent-avatars/mooigroendak-bram.png',
+    paginas: [
+      ['', 'Homepage', 'https://www.mooigroendak.nl/'],
+      ['229', 'Standaard sedummatten', 'https://www.mooigroendak.nl/product/standaard-sedumdak/'],
+      ['237', 'Sedummatten lichtgewicht', 'https://www.mooigroendak.nl/product/lichtgewicht-sedumdak-extra/'],
+      ['232', 'Kruidendak sedummatten', 'https://www.mooigroendak.nl/product/sedum-kruidendak/'],
+      ['240', 'Standaard sedum cassettes', 'https://www.mooigroendak.nl/product/sedumcassettes/'],
+      ['28', 'Kruiden sedum cassettes', 'https://www.mooigroendak.nl/product/sedum-kruidencassettes/'],
+      ['8684', 'Hellend dak sedummatten', 'https://www.mooigroendak.nl/product/hellend-dak-sedummatten-pakket/']
+    ] } };
   var n = namen[klant];
   if (n) { document.getElementById('kop').textContent = n.kop; document.title = n.naam + ' | Testomgeving Forgexe'; }
   else { document.getElementById('tips').parentNode.style.display = 'none'; }
+
+  /* Naast de website: de site van de klant in een frame, de chat ernaast.
+     Bij "volg Bram" springt de site naar het pakket waar Bram een kaart voor toont. */
+  if (n && n.paginas) {
+    var sel = document.getElementById('pagina');
+    var frame = document.getElementById('site');
+    n.paginas.forEach(function (p) {
+      var o = document.createElement('option');
+      o.value = p[2]; o.textContent = p[1]; o.setAttribute('data-id', p[0]);
+      sel.appendChild(o);
+    });
+    sel.addEventListener('change', function () { frame.src = sel.value; });
+    function zetSplit(aan) {
+      document.body.classList.toggle('split', aan);
+      if (aan && !frame.src) frame.src = sel.value;
+      try { history.replaceState(null, '', aan ? '?klant=' + klant + '&naast=1' : '?klant=' + klant); } catch (e) {}
+    }
+    var knop = document.getElementById('naast-knop');
+    knop.style.display = 'inline-flex';
+    knop.addEventListener('click', function () { zetSplit(true); });
+    document.getElementById('terug').addEventListener('click', function () { zetSplit(false); });
+    window.addEventListener('fxa:kaart', function (e) {
+      if (!document.getElementById('volg').checked) return;
+      var id = String((e.detail && e.detail.product_id) || '');
+      for (var i = 0; i < sel.options.length; i++) {
+        if (id && sel.options[i].getAttribute('data-id') === id) {
+          if (sel.selectedIndex !== i) { sel.selectedIndex = i; frame.src = sel.value; }
+          return;
+        }
+      }
+    });
+    if (/[?&]naast=1/.test(location.search) && window.innerWidth >= 900) zetSplit(true);
+  }
   var s = document.createElement('script');
   s.src = '/assistent.js';
   s.setAttribute('data-klant', klant);
