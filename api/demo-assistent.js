@@ -16,7 +16,9 @@ var KLANTEN = {
   mooigroendak: {
     site: 'https://www.mooigroendak.nl',
     naam: 'Bram van MooiGroendak',
-    avatar: 'https://www.forgexe.nl/assistent-avatars/mooigroendak-bram.png'
+    avatar: 'https://www.forgexe.nl/assistent-avatars/mooigroendak-bram.png',
+    /* Eigen WhatsApp-knop van de site (plugin Joinchat): bij livegang gaat die weg, dus in de demo al niet tonen */
+    verberg: ['.joinchat']
   }
 };
 
@@ -76,7 +78,9 @@ export default async function handler(req) {
   html = html.replace(/<head([^>]*)>/i, '<head$1><base href="' + attr(basis.origin + '/') + '">');
 
   var label = '<div style="position:fixed;left:12px;bottom:12px;z-index:2147482000;background:#0b110e;color:#e9f2ec;font:600 12px/1.3 system-ui,sans-serif;padding:8px 11px;border-radius:8px;opacity:.88;pointer-events:none">Testweergave Forgexe · zo staat ' + attr(k.naam.split(' ')[0]) + ' straks op de site</div>';
+  var verberg = (k.verberg || []).filter(function (s) { return /^[.#a-z0-9_\-\s\[\]="]+$/i.test(s); });
   var widget =
+    (verberg.length ? '<style>' + verberg.join(',') + '{display:none!important}</style>' : '') +
     '<script>window.FXA_TEST_PAD=' + JSON.stringify(eind.pathname) + ';</script>' +
     '<script src="https://www.forgexe.nl/assistent.js" data-klant="' + attr(klant) + '" data-naam="' + attr(k.naam) + '" data-avatar="' + attr(k.avatar) + '"></script>';
   if (/<\/body>/i.test(html)) html = html.replace(/<\/body>/i, label + widget + '</body>');
