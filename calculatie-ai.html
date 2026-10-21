@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>Calculatie-check: hoeveel uur reken je voor niks? | Forgexe</title>
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="Zes vragen, één minuut: zie hoeveel calculatie-uren per jaar naar offertes gaan die geen opdracht worden. Daarna een live demo van de calculatie-agent met je eigen tekening.">
+<meta name="author" content="Forgexe">
+<link rel="canonical" href="https://www.forgexe.nl/calculatie-ai">
+<meta property="og:title" content="Hoeveel uur reken je per jaar voor niks?">
+<meta property="og:description" content="De calculatie-check voor maakbedrijven: zes vragen, één minuut, direct je uitkomst.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.forgexe.nl/calculatie-ai">
+<meta property="og:image" content="https://www.forgexe.nl/og-image.png">
+<meta property="og:site_name" content="Forgexe">
+<meta property="og:locale" content="nl_NL">
+<meta name="theme-color" content="#0a0b0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --dark:#0a0b0e; --dark-2:#10141b; --dark-3:#171d26; --line-d:rgba(255,255,255,0.09);
+    --green:#34d399; --green-bright:#4ade80; --green-pale:#d1fae5; --cyan:#00f0ff;
+    --cloud:#f5f7f6; --white:#fff; --slate:#475569; --slate-light:#8d9bb5;
+    --ink:#0a0b0e; --border:#e2e7e4; --red:#e5484d;
+    --head:'Outfit',sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { font-family:var(--head); color:var(--ink); background:var(--white); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:var(--green); color:#052e16; }
+  img { max-width:100%; display:block; }
+  a { color:inherit; }
+  button { font-family:inherit; }
+
+  /* ---------- HERO ---------- */
+  .hero { position:relative; overflow:hidden; background:var(--dark); color:#fff; }
+  .hero-grid { position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(52,211,153,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(52,211,153,0.05) 1px,transparent 1px);
+    background-size:48px 48px; mask-image:radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%); -webkit-mask-image:radial-gradient(ellipse at 70% 30%, #000 20%, transparent 75%); }
+  .hero-glow { position:absolute; width:560px; height:560px; right:-220px; top:-200px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle,rgba(52,211,153,0.16),transparent 65%); }
+  .wrap { position:relative; z-index:2; max-width:1140px; margin:0 auto; padding:18px 16px 44px; }
+
+  .brand { display:inline-flex; align-items:center; gap:9px; margin-bottom:26px; text-decoration:none; }
+  .brand .nm { font-size:17px; font-weight:700; color:#fff; letter-spacing:-0.3px; }
+
+  .grid { display:grid; grid-template-areas:"top" "quiz" "bottom"; gap:22px; }
+  .pitch-top { grid-area:top; }
+  .quiz { grid-area:quiz; }
+  .pitch-bottom { grid-area:bottom; }
+
+  .eyebrow { display:inline-block; font-family:var(--mono); font-size:11.5px; font-weight:600; letter-spacing:0.5px; color:var(--green-bright); margin-bottom:14px; }
+  h1 { font-size:33px; font-weight:700; line-height:1.08; letter-spacing:-1px; margin-bottom:14px; }
+  h1 em { font-style:normal; color:var(--green); }
+  .sub { font-size:16px; line-height:1.6; color:rgba(255,255,255,0.76); font-weight:300; max-width:540px; }
+
+  .bul { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:24px; }
+  .bul li { display:flex; align-items:flex-start; gap:12px; font-size:15px; line-height:1.45; color:rgba(255,255,255,0.88); }
+  .bul .ic { width:24px; height:24px; border-radius:7px; background:rgba(52,211,153,0.12); border:1px solid rgba(74,222,128,0.4); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:-1px; }
+  .bul .ic svg { width:13px; height:13px; }
+
+  .trust { display:flex; align-items:center; gap:13px; }
+  .trust img { width:46px; height:46px; border-radius:50%; object-fit:cover; border:2px solid var(--dark-3); flex-shrink:0; }
+  .trust-txt { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.45; }
+  .trust-txt b { color:#fff; font-weight:600; }
+
+  /* ---------- QUIZ ---------- */
+  .quiz { background:#fff; color:var(--ink); border-radius:18px; padding:20px 18px 22px; box-shadow:0 30px 80px rgba(0,0,0,0.45); scroll-margin-top:16px; }
+  .q-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+  .q-step { font-family:var(--mono); font-size:11.5px; font-weight:600; color:var(--slate); }
+  .q-step b { color:var(--ink); }
+  .q-back { background:none; border:none; font-size:13px; font-weight:600; color:var(--slate-light); cursor:pointer; padding:8px 0 8px 8px; min-height:40px; visibility:hidden; }
+  .q-back.on { visibility:visible; }
+  .q-back:hover { color:var(--ink); }
+  .q-bar { height:4px; border-radius:4px; background:var(--cloud); overflow:hidden; margin-bottom:18px; }
+  .q-bar i { display:block; height:100%; width:100%; background:var(--green); border-radius:4px; transform:scaleX(0); transform-origin:left center; transition:transform .35s ease; }
+  .q-h { font-size:21px; font-weight:700; line-height:1.2; letter-spacing:-0.3px; margin-bottom:5px; }
+  .q-s { font-size:13.5px; color:var(--slate); line-height:1.5; margin-bottom:16px; }
+  .opts { display:grid; grid-template-columns:1fr; gap:9px; }
+  .opt { display:flex; align-items:center; gap:12px; width:100%; min-height:52px; padding:12px 14px; text-align:left; background:var(--cloud); border:1.5px solid var(--border); border-radius:11px; font-size:15.5px; font-weight:500; color:var(--ink); cursor:pointer; transition:border-color .15s, background .15s, transform .15s; }
+  .opt:hover { border-color:var(--green); background:#fff; }
+  .opt:active { transform:scale(0.99); }
+  .opt .k { font-family:var(--mono); font-size:11px; font-weight:600; color:var(--slate-light); width:22px; height:22px; border:1.5px solid var(--border); border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:#fff; }
+  .opt.sel { border-color:var(--green); background:var(--green-pale); }
+  .opt.sel .k { background:var(--green); border-color:var(--green); color:#052e16; }
+  .q-foot { margin-top:14px; font-size:12px; color:var(--slate-light); text-align:center; }
+  .q-panel { animation:qin .3s ease; }
+  @keyframes qin { from { opacity:0; transform:translateX(12px); } to { opacity:1; transform:none; } }
+
+  /* uitkomst */
+  .r-eyebrow { font-family:var(--mono); font-size:11.5px; font-weight:600; color:var(--slate); margin-bottom:10px; }
+  .r-big { background:var(--dark); color:#fff; border-radius:14px; padding:18px 16px; margin-bottom:12px; position:relative; overflow:hidden; }
+  .r-big::after { content:""; position:absolute; width:220px; height:220px; right:-90px; top:-110px; border-radius:50%; background:radial-gradient(circle,rgba(52,211,153,0.22),transparent 65%); }
+  .r-big .lbl { position:relative; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.45; }
+  .r-big .num { position:relative; font-family:var(--mono); font-size:34px; font-weight:700; color:var(--green); letter-spacing:-1px; line-height:1.1; margin:4px 0 2px; }
+  .r-tiles { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:14px; }
+  .r-tile { background:var(--cloud); border:1px solid var(--border); border-radius:12px; padding:12px; }
+  .r-tile .num { font-family:var(--mono); font-size:20px; font-weight:700; color:var(--ink); letter-spacing:-0.5px; }
+  .r-tile .lbl { font-size:12px; color:var(--slate); line-height:1.4; margin-top:2px; }
+  .r-txt { font-size:14.5px; line-height:1.6; color:var(--slate); margin-bottom:8px; }
+  .r-txt b { color:var(--ink); font-weight:600; }
+  .r-how { font-size:12px; color:var(--slate-light); line-height:1.5; margin-bottom:18px; }
+  .r-how summary { cursor:pointer; font-weight:600; color:var(--slate); padding:4px 0; }
+  .r-how p { margin-top:6px; }
+
+  .r-form { border-top:1px solid var(--border); padding-top:18px; }
+  .r-form-h { font-size:19px; font-weight:700; line-height:1.25; letter-spacing:-0.2px; margin-bottom:4px; }
+  .r-form-s { font-size:13.5px; color:var(--slate); line-height:1.5; margin-bottom:14px; }
+  .fld { display:flex; flex-direction:column; gap:6px; margin-bottom:11px; }
+  .fld label { font-size:12.5px; font-weight:600; color:var(--ink); }
+  .fld label .opt-l { font-weight:400; color:var(--slate-light); }
+  .fld input, .fld textarea { width:100%; padding:13px 14px; border:1.5px solid var(--border); border-radius:10px; font-family:var(--head); font-size:16px; color:var(--ink); background:var(--cloud); outline:none; transition:border-color .2s, box-shadow .2s, background .2s; -webkit-appearance:none; appearance:none; }
+  .fld textarea { min-height:76px; resize:vertical; }
+  .fld input:focus, .fld textarea:focus { border-color:var(--green); background:#fff; box-shadow:0 0 0 3px rgba(52,211,153,0.16); }
+  .fld input.err { border-color:var(--red); }
+  .fld input:disabled, .fld textarea:disabled { color:var(--slate-light); }
+  .row2 { display:grid; grid-template-columns:1fr; gap:0; }
+  .submit { width:100%; min-height:54px; padding:15px 16px; margin-top:4px; background:var(--green); color:#052e16; font-size:16px; font-weight:700; border:none; border-radius:10px; cursor:pointer; transition:background .2s, transform .2s, box-shadow .2s; }
+  .submit:hover { background:var(--green-bright); transform:translateY(-1px); box-shadow:0 10px 24px rgba(52,211,153,0.25); }
+  .submit:disabled { cursor:default; transform:none; box-shadow:none; }
+  .submit.is-err { background:var(--red); color:#fff; }
+  .note { text-align:center; font-size:12.5px; color:var(--slate-light); margin-top:10px; line-height:1.5; }
+  .done { background:var(--green-pale); border:1.5px solid rgba(52,211,153,0.6); border-radius:12px; padding:16px; }
+  .done-h { font-size:17px; font-weight:700; margin-bottom:6px; }
+  .done p { font-size:14px; line-height:1.6; color:#14532d; }
+  .again { background:none; border:none; margin-top:12px; font-size:13px; font-weight:600; color:var(--slate-light); cursor:pointer; padding:6px 0; }
+  .again:hover { color:var(--ink); }
+
+  /* ---------- SECTIES ---------- */
+  .sec { padding:52px 16px; }
+  .sec-in { max-width:1140px; margin:0 auto; }
+  .sec.cloud { background:var(--cloud); }
+  .sec.dark { background:var(--dark); color:#fff; }
+  .kicker { font-family:var(--mono); font-size:11.5px; font-weight:600; color:#059669; margin-bottom:10px; display:block; }
+  .sec.dark .kicker { color:var(--green-bright); }
+  .h2 { font-size:28px; font-weight:700; line-height:1.15; letter-spacing:-0.6px; margin-bottom:12px; max-width:720px; }
+  .h2 em { font-style:normal; color:var(--green); }
+  .lead { font-size:16px; line-height:1.65; color:var(--slate); max-width:640px; margin-bottom:28px; font-weight:300; }
+  .sec.dark .lead { color:rgba(255,255,255,0.72); }
+
+  /* dossier-visual */
+  .flow { display:grid; grid-template-columns:1fr; gap:26px; align-items:start; }
+  .dossier { background:var(--dark); border-radius:18px; padding:18px; color:#fff; }
+  .dossier-top { display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.55); margin-bottom:12px; gap:8px; }
+  .dossier-top b { color:var(--green); font-weight:600; }
+  .sheets { display:grid; grid-template-columns:repeat(8,1fr); gap:5px; margin-bottom:14px; }
+  .sheet { aspect-ratio:3/4; border-radius:3px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.08); position:relative; }
+  .sheet.on { background:rgba(52,211,153,0.2); border-color:var(--green); box-shadow:0 0 0 2px rgba(52,211,153,0.15); }
+  .sheet.on::after { content:attr(data-n); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:9px; font-weight:700; color:var(--green-bright); }
+  .out { background:var(--dark-2); border:1px solid var(--line-d); border-radius:12px; padding:12px 13px; font-family:var(--mono); font-size:12px; }
+  .out-row { display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.08); color:rgba(255,255,255,0.8); }
+  .out-row:last-child { border-bottom:none; }
+  .out-row span:last-child { color:#fff; font-weight:600; white-space:nowrap; }
+  .out-row.warn { color:#fbbf24; }
+  .out-row.warn span:last-child { color:#fbbf24; }
+  .out-src { font-size:10.5px; color:rgba(255,255,255,0.4); margin-top:8px; }
+
+  .steps { list-style:none; display:flex; flex-direction:column; gap:4px; }
+  .steps li { display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-bottom:1px solid var(--border); }
+  .steps li:last-child { border-bottom:none; }
+  .steps .n { font-family:var(--mono); font-size:13px; font-weight:700; color:#059669; padding-top:2px; }
+  .steps h3 { font-size:16.5px; font-weight:600; margin-bottom:3px; letter-spacing:-0.2px; }
+  .steps p { font-size:14.5px; line-height:1.55; color:var(--slate); }
+
+  .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:30px; }
+  .stat { background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 14px; }
+  .stat .num { font-family:var(--mono); font-size:24px; font-weight:700; letter-spacing:-0.8px; color:var(--ink); }
+  .stat .num em { font-style:normal; color:#059669; }
+  .stat .lbl { font-size:12.5px; color:var(--slate); line-height:1.4; margin-top:3px; }
+  .stat.wide { grid-column:1 / -1; }
+  .stats-note { font-size:12px; color:var(--slate-light); margin-top:10px; }
+
+  .cards { display:grid; grid-template-columns:1fr; gap:12px; }
+  .card { background:var(--dark-2); border:1px solid var(--line-d); border-radius:16px; padding:20px 18px; }
+  .card .ic { width:38px; height:38px; border-radius:10px; background:rgba(52,211,153,0.12); border:1px solid rgba(74,222,128,0.35); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .card .ic svg { width:19px; height:19px; }
+  .card h3 { font-size:17px; font-weight:600; margin-bottom:6px; letter-spacing:-0.2px; }
+  .card p { font-size:14.5px; line-height:1.6; color:rgba(255,255,255,0.68); }
+  .card p a { color:var(--green); text-decoration:none; font-weight:500; }
+  .card p a:hover { text-decoration:underline; }
+
+  .demo { display:grid; grid-template-columns:1fr; gap:24px; align-items:center; }
+  .demo-list { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+  .demo-list li { display:flex; gap:12px; font-size:15.5px; line-height:1.5; color:var(--ink); }
+  .demo-list .ck { width:24px; height:24px; border-radius:50%; background:var(--green-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:-1px; }
+  .demo-list .ck svg { width:12px; height:12px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:14px 24px; background:var(--green); color:#052e16; font-weight:700; font-size:16px; border-radius:999px; text-decoration:none; transition:background .2s, transform .2s; }
+  .btn:hover { background:var(--green-bright); transform:translateY(-1px); }
+  .sedat { display:flex; gap:16px; align-items:center; background:var(--white); border:1px solid var(--border); border-radius:16px; padding:18px; }
+  .sedat img { width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+  .sedat b { display:block; font-size:16px; }
+  .sedat span { display:block; font-family:var(--mono); font-size:11.5px; color:#059669; margin:2px 0 6px; }
+  .sedat p { font-size:14px; line-height:1.55; color:var(--slate); }
+
+  .faq { max-width:780px; }
+  .faq details { border-bottom:1px solid var(--border); }
+  .faq summary { list-style:none; cursor:pointer; padding:18px 36px 18px 0; font-size:16.5px; font-weight:600; position:relative; line-height:1.35; }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:"+"; position:absolute; right:4px; top:15px; font-family:var(--mono); font-size:20px; color:#059669; }
+  .faq details[open] summary::after { content:"–"; }
+  .faq details p { font-size:15px; line-height:1.65; color:var(--slate); padding:0 0 18px; }
+  .faq details p a { color:#059669; font-weight:600; }
+
+  .end { text-align:center; }
+  .end .h2, .end .lead { margin-left:auto; margin-right:auto; }
+
+  footer { background:var(--dark); padding:24px 16px; text-align:center; border-top:1px solid var(--line-d); }
+  footer a { color:rgba(255,255,255,0.5); font-size:12.5px; text-decoration:none; margin:0 7px; }
+  footer a:hover { color:#fff; }
+  footer .cp { display:block; font-size:11.5px; color:rgba(255,255,255,0.3); margin-top:8px; }
+
+  .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    .q-panel { animation:none; }
+    html { scroll-behavior:auto; }
+  }
+
+  /* ---------- TABLET ---------- */
+  @media (min-width:600px) {
+    .wrap { padding:24px 28px 60px; }
+    h1 { font-size:42px; }
+    .quiz { padding:26px 26px 28px; }
+    .opts.two { grid-template-columns:1fr 1fr; }
+    .row2 { grid-template-columns:1fr 1fr; column-gap:12px; }
+    .sec { padding:68px 28px; }
+    .h2 { font-size:34px; }
+    .stats { grid-template-columns:repeat(4,1fr); }
+    .stat.wide { grid-column:auto; }
+    .cards { grid-template-columns:1fr 1fr; }
+    .r-big .num { font-size:40px; }
+  }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width:960px) {
+    .hero { min-height:100vh; display:flex; align-items:center; }
+    .wrap { width:100%; padding:30px 32px 70px; }
+    .brand { margin-bottom:44px; }
+    .grid { grid-template-columns:1.02fr 0.98fr; grid-template-areas:"top quiz" "bottom quiz"; column-gap:56px; row-gap:28px; align-items:start; }
+    .quiz { align-self:center; }
+    h1 { font-size:clamp(46px,4.6vw,58px); margin-bottom:18px; }
+    .sub { font-size:17.5px; }
+    .sec { padding:92px 32px; }
+    .h2 { font-size:40px; }
+    .flow { grid-template-columns:1fr 1fr; gap:56px; }
+    .dossier { position:sticky; top:24px; padding:24px; }
+    .cards { grid-template-columns:repeat(4,1fr); }
+    .demo { grid-template-columns:1.1fr 0.9fr; gap:56px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Forgexe">
+      <svg viewBox="0 0 120 120" width="26" height="26" aria-hidden="true"><rect x="25" y="20" width="12" height="80" rx="1" fill="#34d399"/><rect x="25" y="20" width="55" height="10" rx="1" fill="#34d399"/><rect x="25" y="52" width="40" height="8" rx="1" fill="#34d399"/><polygon points="76,52 100,68 76,84" fill="#34d399"/></svg>
+      <span class="nm">Forgexe</span>
+    </a>
+
+    <div class="grid">
+      <div class="pitch-top">
+        <span class="eyebrow">// calculatie-check voor maakbedrijven</span>
+        <h1>Hoeveel uur reken je per jaar <em>voor niks</em>?</h1>
+        <p class="sub">Elke aanvraag kost je calculator uren: bestek lezen, tekeningen doorspitten, m² en aantallen tellen. De meeste van die offertes worden nooit een opdracht. Beantwoord zes vragen en je ziet wat dat je per jaar kost.</p>
+      </div>
+
+      <div class="quiz" id="check" aria-live="polite">
+        <div id="quizBody"></div>
+      </div>
+
+      <div class="pitch-bottom">
+        <ul class="bul">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Voor kozijnen, gevelbouw, installatie en staalbouw</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Je uitkomst staat meteen in beeld, zonder e-mailadres</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Daarna een live demo met een tekening van jezelf</li>
+        </ul>
+        <div class="trust">
+          <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="46" height="46">
+          <div class="trust-txt"><b>Sedat Ayar</b> · Forgexe<br>Bouwt calculatie-agents voor maakbedrijven</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cloud" id="zo-werkt-het">
+  <div class="sec-in">
+    <span class="kicker">// wat de calculatie-agent doet</span>
+    <h2 class="h2 reveal">Een dossier van 40 bladen. De agent kiest er de 3 die ertoe doen.</h2>
+    <p class="lead reveal">Het meeste werk in een calculatie is zoeken en lezen. Dat deel neemt de agent over. Je calculator houdt het rekenwerk dat ervaring vraagt, en de beslissing.</p>
+
+    <div class="flow">
+      <div class="dossier reveal" aria-hidden="true">
+        <div class="dossier-top"><span>aanvraagdossier.pdf · 40 bladen</span><b>3 gebruikt</b></div>
+        <div class="sheets" id="sheets"></div>
+        <div class="out">
+          <div class="out-row"><span>Woonkamer / keuken</span><span>42,6 m²</span></div>
+          <div class="out-row"><span>Slaapkamer 1</span><span>14,2 m²</span></div>
+          <div class="out-row"><span>Badkamer</span><span>7,8 m²</span></div>
+          <div class="out-row warn"><span>⚠ h.o.h. bestek ≠ tekening</span><span>2×</span></div>
+          <div class="out-src">bron per getal: blad 9, 10 en 38</div>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li class="reveal"><span class="n">01</span><div><h3>Haalt de aanvraag op</h3><p>PDF uit de mail, een downloadlink of je portaal. Elke aanvraag staat meteen geregistreerd.</p></div></li>
+        <li class="reveal"><span class="n">02</span><div><h3>Kiest de bladen die ertoe doen</h3><p>Plattegronden, staten en gevels eruit. Doorsneden, situatie en installatieschema's legt hij opzij.</p></div></li>
+        <li class="reveal"><span class="n">03</span><div><h3>Haalt de getallen eruit</h3><p>m², aantallen, maten en eisen uit tekening en bestek. Bij elk getal zie je van welk blad het komt.</p></div></li>
+        <li class="reveal"><span class="n">04</span><div><h3>Legt tekening naast bestek</h3><p>Staat er in het bestek iets anders dan op de tekening? Dan zie je dat voordat je gaat rekenen.</p></div></li>
+        <li class="reveal"><span class="n">05</span><div><h3>Zet de calculatie klaar</h3><p>In jullie opbouw, met jullie prijzen. Je calculator controleert, past aan en beslist.</p></div></li>
+      </ol>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><div class="num">40 → <em>3</em></div><div class="lbl">bladen gebruikt, de rest terecht opzij gelegd</div></div>
+      <div class="stat"><div class="num"><em>88</em> sec</div><div class="lbl">van PDF tot uitgelezen dossier</div></div>
+      <div class="stat"><div class="num"><em>2</em> van 2</div><div class="lbl">conflicten tussen bestek en tekening gevonden</div></div>
+      <div class="stat"><div class="num"><em>16</em> van 16</div><div class="lbl">ruimtes herkend op een losse plattegrond</div></div>
+    </div>
+    <p class="stats-note">Uit onze eigen demo, met testdossiers. In de demo laten we het zien op een tekening van jou.</p>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="sec-in">
+    <span class="kicker">// jouw kennis blijft van jou</span>
+    <h2 class="h2 reveal">Je rekenkennis is je voorsprong. <em>Die hoort bij jou.</em></h2>
+    <p class="lead reveal">Hoe jullie rekenen, welke marges je pakt en welke details je kent: daar win je opdrachten mee. Dus bouwen we de agent zo dat die kennis in huis blijft.</p>
+    <div class="cards">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></div><h3>Op je eigen server</h3><p>De agent draait op je eigen server of op je eigen accounts. Tekeningen en rekenregels komen niet op een gedeeld platform.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><h3>Leert van je calculator</h3><p>Past je calculator iets aan, dan neemt de agent dat mee in de volgende calculatie. Zo gaat hij rekenen zoals jullie rekenen.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H6a4 4 0 0 0 0 8h3M15 7h3a4 4 0 0 1 0 8h-3M8 11h8"/></svg></div><h3>Koppelt met je pakket</h3><p>De uitkomst gaat als importbestand of via een koppeling naar je calculatie- of ERP-pakket. Je team werkt verder in wat het kent.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.6 7.6a5.5 5.5 0 1 1-7.8 7.8 5.5 5.5 0 0 1 7.8-7.8Zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><h3>Van jou, als je wilt</h3><p>Liever geen abonnement? Dan bouwen we het eenmalig en word je eigenaar. Je eigen IT kan er daarna mee verder. <a href="/pricing">Bekijk de prijzen</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-in demo">
+    <div>
+      <span class="kicker">// de demo</span>
+      <h2 class="h2 reveal">30 minuten, met een tekening van jezelf</h2>
+      <p class="lead reveal">Geen verkooppraatje met een mooi voorbeeld. We laten de agent live een dossier van jullie lezen.</p>
+      <ul class="demo-list reveal">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Neem een dossier mee dat je al gecalculeerd hebt. Dan zie je de uitkomst naast je eigen cijfers.</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Online of bij je op kantoor, wat jij het handigst vindt.</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Wat je laat zien, verwijderen we na de demo.</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Je hoort eerlijk of het voor jullie aantal aanvragen loont.</li>
+      </ul>
+      <a href="#check" class="btn" onclick="naarCheck(event)">Doe de check en meld je aan →</a>
+    </div>
+    <div class="sedat reveal">
+      <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="72" height="72" loading="lazy">
+      <div><b>Sedat Ayar</b><span>oprichter · Forgexe</span><p>Ik geef de demo zelf. Na je aanmelding neem ik binnen één werkdag contact met je op om een moment te prikken.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cloud">
+  <div class="sec-in">
+    <span class="kicker">// vragen</span>
+    <h2 class="h2">Wat calculators meestal vragen</h2>
+    <div class="faq">
+      <details><summary>Werkt het met onze tekeningen?</summary><p>PDF-tekeningen leest de agent met AI, ook als het scans zijn. DWG en IFC lezen we met code uit, want daar staat de informatie al gestructureerd in. Neem in de demo gerust een lastig dossier mee.</p></details>
+      <details><summary>Wat als de AI een fout maakt?</summary><p>De agent verstuurt niets en rekent niets af. Hij zet een concept klaar en laat bij elk getal zien van welk blad het komt. Je calculator controleert, past aan en beslist. Die aanpassingen neemt de agent mee in de volgende calculatie.</p></details>
+      <details><summary>Werkt het met ons calculatiepakket?</summary><p>De uitkomst gaat als importbestand of via een koppeling naar je calculatie- of ERP-pakket. In de demo vragen we welk pakket jullie gebruiken, dan zoeken we uit welke route het snelst is.</p></details>
+      <details><summary>Waar staan onze tekeningen en rekenregels?</summary><p>Op je eigen server of in je eigen accounts. Wat de agent over jullie manier van rekenen leert, blijft bij jullie en gebruiken we nergens anders voor.</p></details>
+      <details><summary>Voor welke bedrijven is dit?</summary><p>Voor iedereen die offreert op basis van bestek en tekening: kozijnen, gevelbouw, vloerverwarming en installatie, staal- en metaalbouw, afbouw. Vanaf zo'n 100 aanvragen per jaar begint het te tellen.</p></details>
+      <details><summary>Wat kost het?</summary><p>Je kiest: een vast maandbedrag, of eenmalig laten bouwen waarna het van jou is. De bedragen staan op onze <a href="/pricing">prijzenpagina</a>. In de demo rekenen we samen uit wat het voor jullie oplevert.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark end">
+  <div class="sec-in">
+    <span class="kicker">// één minuut</span>
+    <h2 class="h2">Benieuwd wat je calculatie je nu kost?</h2>
+    <p class="lead">Zes vragen. Je uitkomst staat meteen in beeld.</p>
+    <a href="#check" class="btn" onclick="naarCheck(event)">Start de check →</a>
+  </div>
+</section>
+
+<footer>
+  <div><a href="/">forgexe.nl</a>·<a href="/pricing">Prijzen</a>·<a href="/privacy">Privacy</a></div>
+  <span class="cp">© 2026 Forgexe</span>
+</footer>
+
+<script>
+  var WEBHOOK = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-calculatie-demo';
+  var UURTARIEF = 60;
+
+  /* Vragen. Bij elke optie de waarde waarmee gerekend wordt (midden van de klasse). */
+  var VRAGEN = [
+    { id: 'sector', h: 'Wat calculeren jullie?', s: 'Dan weten we welke gegevens de agent uit je dossiers haalt.', two: true, opts: [
+      { v: 'kozijnen', l: 'Kozijnen, deuren of glas' },
+      { v: 'gevel', l: 'Gevelbouw of gevelbekleding' },
+      { v: 'installatie', l: 'Vloerverwarming of installatie' },
+      { v: 'staal', l: 'Staal- of metaalbouw' },
+      { v: 'anders', l: 'Iets anders' }
+    ]},
+    { id: 'aanvragen', h: 'Hoeveel aanvragen calculeren jullie per jaar?', s: 'Een schatting is genoeg.', two: true, opts: [
+      { v: 'lt100', l: 'Minder dan 100', n: 75 },
+      { v: '100-300', l: '100 tot 300', n: 200 },
+      { v: '300-600', l: '300 tot 600', n: 450 },
+      { v: '600plus', l: 'Meer dan 600', n: 800 }
+    ]},
+    { id: 'uren', h: 'Hoe lang duurt een gemiddelde calculatie?', s: 'Van aanvraag binnen tot offerte de deur uit.', two: true, opts: [
+      { v: 'lt1', l: 'Minder dan 1 uur', n: 0.75 },
+      { v: '1-2', l: '1 tot 2 uur', n: 1.5 },
+      { v: '2-4', l: '2 tot 4 uur', n: 3 },
+      { v: '4plus', l: 'Meer dan 4 uur', n: 5 }
+    ]},
+    { id: 'scoring', h: 'Hoeveel van je offertes worden een opdracht?', s: 'Je scoringspercentage, ongeveer.', two: true, opts: [
+      { v: 'lt10', l: 'Minder dan 10%', n: 0.08 },
+      { v: '10-20', l: '10 tot 20%', n: 0.15 },
+      { v: '20-30', l: '20 tot 30%', n: 0.25 },
+      { v: '30plus', l: 'Meer dan 30%', n: 0.35 }
+    ]},
+    { id: 'aanlevering', h: 'Hoe komen de tekeningen meestal binnen?', s: 'Kies wat het vaakst voorkomt.', two: true, opts: [
+      { v: 'pdf-mail', l: 'PDF in de mail' },
+      { v: 'link', l: 'Downloadlink (WeTransfer e.d.)' },
+      { v: 'portaal', l: 'Via een portaal' },
+      { v: 'dwg-ifc', l: 'DWG of IFC' }
+    ]},
+    { id: 'toekomst', h: 'Wie calculeert er over drie jaar nog bij jullie?', s: 'Eerlijk antwoord, niemand kijkt mee.', two: false, opts: [
+      { v: 'stabiel', l: 'Hetzelfde team, dat zit goed' },
+      { v: 'pensioen', l: 'Er gaat iemand met pensioen' },
+      { v: 'zoeken', l: 'We zoeken nu al een calculator' },
+      { v: 'zelf', l: 'Ik doe het zelf, naast de rest' }
+    ]}
+  ];
+
+  var SECTOR_TXT = {
+    kozijnen: 'de kozijnstaat, glas, Uw-waarden en brandwerende eisen',
+    gevel: 'm² per gevel, materialen, plaatmaten en details',
+    installatie: 'm² per ruimte, groepen en leidinglengtes',
+    staal: 'profielen, aantallen en maten',
+    anders: 'hoeveelheden, maten en eisen uit het bestek'
+  };
+  var TOEKOMST_TXT = {
+    stabiel: 'Je team zit goed. Dan zit de winst vooral in capaciteit: meer aanvragen beantwoorden met dezelfde mensen, en sneller een offerte de deur uit.',
+    pensioen: 'Gaat er iemand met pensioen, dan gaat er kennis de deur uit. De agent legt de rekenregels van je calculator vast zolang die er nog is, zodat een opvolger sneller op niveau zit.',
+    zoeken: 'Calculators zijn bijna niet te vinden. Met de agent hoeft je huidige team het leeswerk niet meer zelf te doen en houdt het tijd over voor de aanvragen die tellen.',
+    zelf: 'Calculeer je zelf, dan gaan die uren af van je verkoop of van je avonden. De agent zet de calculatie klaar en jij controleert.'
+  };
+  var AANLEVERING_TXT = {
+    'pdf-mail': 'Tekeningen als PDF in de mail haalt de agent zelf op.',
+    link: 'Downloadlinks volgt de agent zelf, zodat niemand eerst bestanden hoeft binnen te halen.',
+    portaal: 'Komen aanvragen via een portaal binnen, dan kijken we in de demo hoe de agent daar het makkelijkst bij kan.',
+    'dwg-ifc': 'DWG en IFC lezen we met code uit, PDF-tekeningen met AI.'
+  };
+
+  var antwoorden = {};
+  var stap = 0;
+  var gestart = false;
+  var uitkomst = null;
+  var body = document.getElementById('quizBody');
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fmt(n) { return Math.round(n).toLocaleString('nl-NL'); }
+  function rond(n, op) { return Math.round(n / op) * op; }
+  function optie(vraagId) {
+    var v = null;
+    for (var i = 0; i < VRAGEN.length; i++) if (VRAGEN[i].id === vraagId) v = VRAGEN[i];
+    if (!v) return null;
+    for (var j = 0; j < v.opts.length; j++) if (v.opts[j].v === antwoorden[vraagId]) return v.opts[j];
+    return null;
+  }
+
+  function toonVraag() {
+    var v = VRAGEN[stap];
+    var html = '<div class="q-panel">' +
+      '<div class="q-top"><span class="q-step">check // vraag <b>' + (stap + 1) + '</b> van ' + VRAGEN.length + '</span>' +
+      '<button type="button" class="q-back' + (stap > 0 ? ' on' : '') + '" onclick="terug()">← Terug</button></div>' +
+      '<div class="q-bar"><i style="transform:scaleX(' + (stap / VRAGEN.length).toFixed(3) + ')"></i></div>' +
+      '<div class="q-h">' + esc(v.h) + '</div><div class="q-s">' + esc(v.s) + '</div>' +
+      '<div class="opts' + (v.two ? ' two' : '') + '">';
+    for (var i = 0; i < v.opts.length; i++) {
+      var o = v.opts[i];
+      html += '<button type="button" class="opt' + (antwoorden[v.id] === o.v ? ' sel' : '') + '" onclick="kies(\'' + v.id + '\',\'' + o.v + '\',this)">' +
+        '<span class="k">' + String.fromCharCode(65 + i) + '</span>' + esc(o.l) + '</button>';
+    }
+    html += '</div>' + (stap === 0 ? '<div class="q-foot">6 vragen · ongeveer 1 minuut · uitkomst direct in beeld</div>' : '') + '</div>';
+    body.innerHTML = html;
+    var bar = body.querySelector('.q-bar i');
+    setTimeout(function() { bar.style.transform = 'scaleX(' + ((stap + 0.5) / VRAGEN.length).toFixed(3) + ')'; }, 30);
+  }
+
+  function kies(vraagId, waarde, el) {
+    antwoorden[vraagId] = waarde;
+    var knoppen = body.querySelectorAll('.opt');
+    for (var i = 0; i < knoppen.length; i++) knoppen[i].classList.remove('sel');
+    el.classList.add('sel');
+    if (!gestart) { gestart = true; if (window.fxTrackCustom) fxTrackCustom('CalculatieQuizStart', {}); }
+    setTimeout(function() {
+      if (stap < VRAGEN.length - 1) { stap++; toonVraag(); }
+      else { toonUitkomst(); }
+    }, 220);
+  }
+
+  function terug() { if (stap > 0) { stap--; toonVraag(); } }
+
+  function berekenen() {
+    var a = optie('aanvragen').n, u = optie('uren').n, s = optie('scoring').n;
+    var totaal = a * u;
+    var verloren = totaal * (1 - s);
+    return {
+      aanvragen: a, uren_per_calc: u, scoring: s,
+      uren_totaal: rond(totaal, 10),
+      uren_verloren: rond(verloren, 10),
+      euro_verloren: rond(verloren * UURTARIEF, 1000),
+      werkweken: Math.round(verloren / 40)
+    };
+  }
+
+  function toonUitkomst() {
+    uitkomst = berekenen();
+    if (window.fxTrackCustom) fxTrackCustom('CalculatieQuizVoltooid', { aanvragen: antwoorden.aanvragen, sector: antwoorden.sector });
+    var r = uitkomst;
+    var scoringTxt = optie('scoring').l.toLowerCase();
+    var html = '<div class="q-panel">' +
+      '<div class="r-eyebrow">check // jouw uitkomst</div>' +
+      '<div class="r-big"><div class="lbl">Zoveel kost het calculeren van offertes die geen opdracht worden, per jaar</div>' +
+      '<div class="num">± € ' + fmt(r.euro_verloren) + '</div>' +
+      '<div class="lbl">tegen € ' + UURTARIEF + ' per uur</div></div>' +
+      '<div class="r-tiles">' +
+        '<div class="r-tile"><div class="num">± ' + fmt(r.uren_totaal) + ' u</div><div class="lbl">calculeren per jaar</div></div>' +
+        '<div class="r-tile"><div class="num">± ' + fmt(r.uren_verloren) + ' u</div><div class="lbl">voor offertes die je niet wint' + (r.werkweken > 1 ? ', ruim ' + r.werkweken + ' werkweken' : '') + '</div></div>' +
+      '</div>' +
+      '<p class="r-txt">Voor jullie werk haalt de agent <b>' + SECTOR_TXT[antwoorden.sector] + '</b> uit het dossier. ' + AANLEVERING_TXT[antwoorden.aanlevering] + '</p>' +
+      '<p class="r-txt">' + TOEKOMST_TXT[antwoorden.toekomst] + '</p>' +
+      '<details class="r-how"><summary>Zo rekenden we</summary><p>' + fmt(r.aanvragen) + ' aanvragen × ' + String(r.uren_per_calc).replace('.', ',') + ' uur = ± ' + fmt(r.uren_totaal) + ' uur per jaar. Bij een scoring van ' + scoringTxt + ' rekenden we met ' + Math.round(r.scoring * 100) + '%; de rest is tijd voor offertes die geen opdracht worden. We namen steeds het midden van je antwoord en € ' + UURTARIEF + ' per uur. <a href="#" onclick="opnieuw(event)">Antwoorden aanpassen</a></p></details>' +
+      '<div class="r-form" data-form="quiz">' +
+        '<div class="r-form-h">Zien hoe dat leeswerk eruit gaat?</div>' +
+        '<div class="r-form-s">Meld je aan voor een live demo van 30 minuten met een tekening van jezelf. Ik neem binnen één werkdag contact met je op.</div>' +
+        '<div class="row2">' +
+          '<div class="fld"><label for="f-naam">Je naam</label><input id="f-naam" data-field="naam" type="text" autocomplete="name" placeholder="Voor- en achternaam"></div>' +
+          '<div class="fld"><label for="f-bedrijf">Bedrijf</label><input id="f-bedrijf" data-field="bedrijf" type="text" autocomplete="organization" placeholder="Bedrijfsnaam"></div>' +
+          '<div class="fld"><label for="f-email">Zakelijk e-mailadres</label><input id="f-email" data-field="email" type="email" inputmode="email" autocomplete="email" placeholder="naam@bedrijf.nl"></div>' +
+          '<div class="fld"><label for="f-tel">Telefoon <span class="opt-l">(dan bel ik je)</span></label><input id="f-tel" data-field="telefoon" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78"></div>' +
+        '</div>' +
+        '<div class="fld"><label for="f-bericht">Iets wat ik vooraf moet weten? <span class="opt-l">(optioneel)</span></label><textarea id="f-bericht" data-field="bericht" placeholder="Bijvoorbeeld je calculatiepakket of een lastig type aanvraag"></textarea></div>' +
+        '<button type="button" class="submit" onclick="aanmelden(this)">Meld me aan voor de demo →</button>' +
+        '<p class="note">Geen verplichtingen. Je gegevens gebruiken we alleen voor deze demo.</p>' +
+      '</div>' +
+    '</div>';
+    body.innerHTML = html;
+    scrollNaar(document.getElementById('check'));
+  }
+
+  function opnieuw(e) {
+    if (e) e.preventDefault();
+    stap = 0; toonVraag(); scrollNaar(document.getElementById('check'));
+  }
+
+  function scrollNaar(el) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 12;
+    if (Math.abs(window.pageYOffset - top) > 80) window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  function naarCheck(e) {
+    e.preventDefault();
+    scrollNaar(document.getElementById('check'));
+  }
+
+  /* Meta-velden voor de Conversions API (zelfde opzet als de andere landingspagina's). */
+  function leesCookie(naam) {
+    var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+  function leadMeta() {
+    if (window.fxLeadMeta) { try { return window.fxLeadMeta(); } catch (e) {} }
+    var fbc = leesCookie('_fbc');
+    if (!fbc) {
+      try {
+        var fbclid = new URLSearchParams(location.search).get('fbclid');
+        if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      } catch (e) {}
+    }
+    return { fbc: fbc, fbp: leesCookie('_fbp'), event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10), event_source_url: location.href };
+  }
+  function utm(naam) { try { return new URLSearchParams(location.search).get(naam) || ''; } catch (e) { return ''; } }
+
+  function geldigEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  function veld(wrap, naam) { return wrap.querySelector('[data-field="' + naam + '"]'); }
+  function waarde(el) { return el ? el.value.trim() : ''; }
+
+  function aanmelden(btn) {
+    var wrap = btn.closest('[data-form]');
+    var verplicht = [
+      { el: veld(wrap, 'naam'), ok: function(v) { return v.length > 1; } },
+      { el: veld(wrap, 'bedrijf'), ok: function(v) { return v.length > 1; } },
+      { el: veld(wrap, 'email'), ok: geldigEmail }
+    ];
+    var eerste = null;
+    for (var i = 0; i < verplicht.length; i++) {
+      var goed = verplicht[i].ok(waarde(verplicht[i].el));
+      verplicht[i].el.classList.toggle('err', !goed);
+      if (!goed && !eerste) eerste = verplicht[i].el;
+    }
+    if (eerste) { eerste.focus(); return; }
+
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    var meta = leadMeta();
+    var labels = {};
+    for (var j = 0; j < VRAGEN.length; j++) { var o = optie(VRAGEN[j].id); labels[VRAGEN[j].id] = o ? o.l : ''; }
+    var data = {
+      type: 'demo-aanmelding', bron: 'calculatie-ai-quiz',
+      naam: waarde(veld(wrap, 'naam')), bedrijf: waarde(veld(wrap, 'bedrijf')),
+      email: waarde(veld(wrap, 'email')), telefoon: waarde(veld(wrap, 'telefoon')),
+      bericht: waarde(veld(wrap, 'bericht')),
+      antwoorden: antwoorden, antwoord_labels: labels, uitkomst: uitkomst, uurtarief: UURTARIEF,
+      utm_source: utm('utm_source'), utm_campaign: utm('utm_campaign'), utm_content: utm('utm_content'),
+      datum: new Date().toISOString(),
+      fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
+    };
+
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(resp) {
+        if (resp.ok || resp.type === 'opaque') { gelukt(wrap, meta.event_id, data); }
+        else { throw new Error('http ' + resp.status); }
+      })
+      .catch(function() {
+        btn.textContent = 'Er ging iets mis, probeer het opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+        setTimeout(function() { btn.textContent = 'Meld me aan voor de demo →'; btn.classList.remove('is-err'); }, 3000);
+      });
+  }
+
+  function gelukt(wrap, eventId, data) {
+    if (window.fxTrack) fxTrack('Lead', { content_name: 'calculatie-ai-demo', content_category: data.antwoorden.sector }, eventId);
+    var voornaam = data.naam.split(/\s+/)[0];
+    wrap.innerHTML = '<div class="done"><div class="done-h">✓ Dank je, ' + esc(voornaam) + '. Je aanmelding is binnen.</div>' +
+      '<p>Ik neem binnen één werkdag contact met je op' + (data.telefoon ? ' via ' + esc(data.telefoon) : ' per mail') + ' om de demo in te plannen. ' +
+      'Zoek alvast een dossier op dat je al gecalculeerd hebt, dan leggen we de uitkomst naast je eigen cijfers.</p></div>' +
+      '<p class="note">Sedat Ayar · Forgexe</p>';
+  }
+
+  /* Enter in een veld = verzenden (niet in het tekstvak) */
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    var el = e.target;
+    if (!el || el.tagName !== 'INPUT') return;
+    var wrap = el.closest('[data-form]');
+    if (!wrap) return;
+    var btn = wrap.querySelector('.submit');
+    if (btn && !btn.disabled) { e.preventDefault(); aanmelden(btn); }
+  });
+
+  /* Dossier-visual: 40 bladen, 3 gekozen (blad 9, 10 en 38 zoals in de demo) */
+  (function() {
+    var el = document.getElementById('sheets');
+    var html = '';
+    for (var i = 1; i <= 40; i++) {
+      var on = (i === 9 || i === 10 || i === 38);
+      html += '<div class="sheet' + (on ? ' on' : '') + '"' + (on ? ' data-n="' + i + '"' : '') + '></div>';
+    }
+    el.innerHTML = html;
+  })();
+
+  /* scroll-reveal */
+  (function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { for (var i = 0; i < els.length; i++) els[i].classList.add('in'); return; }
+    var io = new IntersectionObserver(function(entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) { entries[i].target.classList.add('in'); io.unobserve(entries[i].target); }
+      }
+    }, { threshold: 0.12 });
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  })();
+
+  toonVraag();
+</script>
+<script src="/tracking.js"></script>
+</body>
+</html>
