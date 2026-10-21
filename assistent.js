@@ -1122,8 +1122,8 @@
     root.classList.remove('fxa-kaart');
   }
 
-  /* De eerste kaart wacht kort op de paginadata, zodat hij meteen de tekst van
-     deze pagina toont; hooguit 1,5 seconde, daarna de standaardtekst. */
+  /* De eerste kaart komt pas na 6 seconden, zodat de bezoeker eerst de pagina
+     ziet; de paginadata is er dan al, dus hij toont meteen de tekst van deze pagina. */
   var kaartGetoond = false;
   function toonKaart() {
     if (kaartGetoond || open || !kaartModus) return;
@@ -1137,7 +1137,7 @@
 
   if (kaartModus) {
     root.classList.add('fxa-kaart');
-    setTimeout(toonKaart, 1500);
+    setTimeout(toonKaart, 6000);
   } else {
     setTimeout(puls, 4000);
   }
