@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" href="/favicon.png">
-<title>Calculatie-check: hoeveel uur reken je voor niks? | Forgexe</title>
+<title>Calculatie-check: hoeveel van je calculatietijd is zoekwerk? | Forgexe</title>
 <meta name="robots" content="noindex,follow">
-<meta name="description" content="Zes vragen, één minuut: zie hoeveel calculatie-uren per jaar naar offertes gaan die geen opdracht worden. Daarna een live demo van de calculatie-agent met je eigen tekening.">
+<meta name="description" content="Zes vragen, één minuut: zie hoeveel uur jullie per jaar kwijt zijn aan bladeren, opzoeken en tellen in bestek en tekeningen. Daarna een live demo van de calculatie-agent met je eigen tekening.">
 <meta name="author" content="Forgexe">
 <link rel="canonical" href="https://www.forgexe.nl/calculatie-ai">
-<meta property="og:title" content="Hoeveel uur reken je per jaar voor niks?">
+<meta property="og:title" content="Hoeveel van je calculatietijd is zoekwerk?">
 <meta property="og:description" content="De calculatie-check voor maakbedrijven: zes vragen, één minuut, direct je uitkomst.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.forgexe.nl/calculatie-ai">
@@ -151,7 +151,6 @@
   .sheets { display:grid; grid-template-columns:repeat(8,1fr); gap:5px; margin-bottom:14px; }
   .sheet { aspect-ratio:3/4; border-radius:3px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.08); position:relative; }
   .sheet.on { background:rgba(52,211,153,0.2); border-color:var(--green); box-shadow:0 0 0 2px rgba(52,211,153,0.15); }
-  .sheet.on::after { content:attr(data-n); position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:9px; font-weight:700; color:var(--green-bright); }
   .out { background:var(--dark-2); border:1px solid var(--line-d); border-radius:12px; padding:12px 13px; font-family:var(--mono); font-size:12px; }
   .out-row { display:flex; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.08); color:rgba(255,255,255,0.8); }
   .out-row:last-child { border-bottom:none; }
@@ -167,9 +166,9 @@
   .steps h3 { font-size:16.5px; font-weight:600; margin-bottom:3px; letter-spacing:-0.2px; }
   .steps p { font-size:14.5px; line-height:1.55; color:var(--slate); }
 
-  .stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:30px; }
+  .stats { display:grid; grid-template-columns:1fr; gap:10px; margin-top:30px; }
   .stat { background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px 14px; }
-  .stat .num { font-family:var(--mono); font-size:24px; font-weight:700; letter-spacing:-0.8px; color:var(--ink); }
+  .stat .num { font-family:var(--head); font-size:21px; font-weight:700; letter-spacing:-0.4px; line-height:1.2; color:var(--ink); }
   .stat .num em { font-style:normal; color:#059669; }
   .stat .lbl { font-size:12.5px; color:var(--slate); line-height:1.4; margin-top:3px; }
   .stat.wide { grid-column:1 / -1; }
@@ -231,7 +230,7 @@
     .row2 { grid-template-columns:1fr 1fr; column-gap:12px; }
     .sec { padding:68px 28px; }
     .h2 { font-size:34px; }
-    .stats { grid-template-columns:repeat(4,1fr); }
+    .stats { grid-template-columns:repeat(3,1fr); }
     .stat.wide { grid-column:auto; }
     .cards { grid-template-columns:1fr 1fr; }
     .r-big .num { font-size:40px; }
@@ -269,8 +268,8 @@
     <div class="grid">
       <div class="pitch-top">
         <span class="eyebrow">// calculatie-check voor maakbedrijven</span>
-        <h1>Hoeveel uur reken je per jaar <em>voor niks</em>?</h1>
-        <p class="sub">Elke aanvraag kost je calculator uren: bestek lezen, tekeningen doorspitten, m² en aantallen tellen. De meeste van die offertes worden nooit een opdracht. Beantwoord zes vragen en je ziet wat dat je per jaar kost.</p>
+        <h1>Hoeveel van je calculatietijd is <em>zoekwerk</em>?</h1>
+        <p class="sub">Elke calculatie begint met zoeken: bestek lezen, tekeningen doorbladeren, m² en aantallen tellen. Beantwoord zes vragen en je ziet hoeveel uur dat jullie per jaar kost.</p>
       </div>
 
       <div class="quiz" id="check" aria-live="polite">
@@ -295,38 +294,37 @@
 <section class="sec cloud" id="zo-werkt-het">
   <div class="sec-in">
     <span class="kicker">// wat de calculatie-agent doet</span>
-    <h2 class="h2 reveal">Een dossier van 40 bladen. De agent kiest er de 3 die ertoe doen.</h2>
-    <p class="lead reveal">Het meeste werk in een calculatie is zoeken en lezen. Dat deel neemt de agent over. Je calculator houdt het rekenwerk dat ervaring vraagt, en de beslissing.</p>
+    <h2 class="h2 reveal">De agent bladert en rekent. <em>Je calculator controleert.</em></h2>
+    <p class="lead reveal">Een aanvraagdossier is al snel tientallen pagina's, en je calculator heeft er maar een deel van nodig. De agent zoekt de juiste pagina's eruit, haalt de gegevens eruit en zet de calculatie klaar. Je calculator controleert, past aan en beslist.</p>
 
     <div class="flow">
       <div class="dossier reveal" aria-hidden="true">
-        <div class="dossier-top"><span>aanvraagdossier.pdf · 40 bladen</span><b>3 gebruikt</b></div>
+        <div class="dossier-top"><span>aanvraagdossier.pdf</span><b>juiste pagina's gevonden</b></div>
         <div class="sheets" id="sheets"></div>
         <div class="out">
           <div class="out-row"><span>Woonkamer / keuken</span><span>42,6 m²</span></div>
           <div class="out-row"><span>Slaapkamer 1</span><span>14,2 m²</span></div>
           <div class="out-row"><span>Badkamer</span><span>7,8 m²</span></div>
-          <div class="out-row warn"><span>⚠ h.o.h. bestek ≠ tekening</span><span>2×</span></div>
-          <div class="out-src">bron per getal: blad 9, 10 en 38</div>
+          <div class="out-row warn"><span>⚠ bestek ≠ tekening</span><span>controleren</span></div>
+          <div class="out-src">bij elk getal de pagina waar het vandaan komt</div>
         </div>
       </div>
 
       <ol class="steps">
         <li class="reveal"><span class="n">01</span><div><h3>Haalt de aanvraag op</h3><p>PDF uit de mail, een downloadlink of je portaal. Elke aanvraag staat meteen geregistreerd.</p></div></li>
-        <li class="reveal"><span class="n">02</span><div><h3>Kiest de bladen die ertoe doen</h3><p>Plattegronden, staten en gevels eruit. Doorsneden, situatie en installatieschema's legt hij opzij.</p></div></li>
-        <li class="reveal"><span class="n">03</span><div><h3>Haalt de getallen eruit</h3><p>m², aantallen, maten en eisen uit tekening en bestek. Bij elk getal zie je van welk blad het komt.</p></div></li>
-        <li class="reveal"><span class="n">04</span><div><h3>Legt tekening naast bestek</h3><p>Staat er in het bestek iets anders dan op de tekening? Dan zie je dat voordat je gaat rekenen.</p></div></li>
-        <li class="reveal"><span class="n">05</span><div><h3>Zet de calculatie klaar</h3><p>In jullie opbouw, met jullie prijzen. Je calculator controleert, past aan en beslist.</p></div></li>
+        <li class="reveal"><span class="n">02</span><div><h3>Kiest de juiste pagina's</h3><p>Plattegronden, staten en gevels eruit. Doorsneden, situatie en installatieschema's legt hij opzij.</p></div></li>
+        <li class="reveal"><span class="n">03</span><div><h3>Haalt de getallen eruit</h3><p>m², aantallen, maten en eisen uit tekening en bestek. Bij elk getal zie je van welke pagina het komt.</p></div></li>
+        <li class="reveal"><span class="n">04</span><div><h3>Legt tekening naast bestek</h3><p>Staat er in het bestek iets anders dan op de tekening? Dan zie je dat voordat er gerekend wordt.</p></div></li>
+        <li class="reveal"><span class="n">05</span><div><h3>Rekent de calculatie uit</h3><p>In jullie opbouw, met jullie prijzen. Je calculator controleert, past aan en beslist.</p></div></li>
       </ol>
     </div>
 
     <div class="stats reveal">
-      <div class="stat"><div class="num">40 → <em>3</em></div><div class="lbl">bladen gebruikt, de rest terecht opzij gelegd</div></div>
-      <div class="stat"><div class="num"><em>88</em> sec</div><div class="lbl">van PDF tot uitgelezen dossier</div></div>
-      <div class="stat"><div class="num"><em>2</em> van 2</div><div class="lbl">conflicten tussen bestek en tekening gevonden</div></div>
-      <div class="stat"><div class="num"><em>16</em> van 16</div><div class="lbl">ruimtes herkend op een losse plattegrond</div></div>
+      <div class="stat"><div class="num">Juiste <em>pagina's</em></div><div class="lbl">uit elk dossier, hoe dik het pakket ook is</div></div>
+      <div class="stat"><div class="num">Bron bij <em>elk getal</em></div><div class="lbl">zodat je calculator snel kan controleren</div></div>
+      <div class="stat"><div class="num">Verschillen <em>gemeld</em></div><div class="lbl">tussen bestek en tekening, voordat er gerekend wordt</div></div>
     </div>
-    <p class="stats-note">Uit onze eigen demo, met testdossiers. In de demo laten we het zien op een tekening van jou.</p>
+    <p class="stats-note">In de demo laten we het zien op een tekening van jou.</p>
   </div>
 </section>
 
@@ -371,7 +369,7 @@
     <h2 class="h2">Wat calculators meestal vragen</h2>
     <div class="faq">
       <details><summary>Werkt het met onze tekeningen?</summary><p>PDF-tekeningen leest de agent met AI, ook als het scans zijn. DWG en IFC lezen we met code uit, want daar staat de informatie al gestructureerd in. Neem in de demo gerust een lastig dossier mee.</p></details>
-      <details><summary>Wat als de AI een fout maakt?</summary><p>De agent verstuurt niets en rekent niets af. Hij zet een concept klaar en laat bij elk getal zien van welk blad het komt. Je calculator controleert, past aan en beslist. Die aanpassingen neemt de agent mee in de volgende calculatie.</p></details>
+      <details><summary>Wat als de AI een fout maakt?</summary><p>De agent verstuurt niets zelf. Hij rekent een concept uit en laat bij elk getal zien van welke pagina het komt. Je calculator controleert, past aan en beslist. Die aanpassingen neemt de agent mee in de volgende calculatie.</p></details>
       <details><summary>Werkt het met ons calculatiepakket?</summary><p>De uitkomst gaat als importbestand of via een koppeling naar je calculatie- of ERP-pakket. In de demo vragen we welk pakket jullie gebruiken, dan zoeken we uit welke route het snelst is.</p></details>
       <details><summary>Waar staan onze tekeningen en rekenregels?</summary><p>Op je eigen server of in je eigen accounts. Wat de agent over jullie manier van rekenen leert, blijft bij jullie en gebruiken we nergens anders voor.</p></details>
       <details><summary>Voor welke bedrijven is dit?</summary><p>Voor iedereen die offreert op basis van bestek en tekening: kozijnen, gevelbouw, vloerverwarming en installatie, staal- en metaalbouw, afbouw. Vanaf zo'n 100 aanvragen per jaar begint het te tellen.</p></details>
@@ -383,7 +381,7 @@
 <section class="sec dark end">
   <div class="sec-in">
     <span class="kicker">// één minuut</span>
-    <h2 class="h2">Benieuwd wat je calculatie je nu kost?</h2>
+    <h2 class="h2">Benieuwd hoeveel zoekwerk er in jullie calculaties zit?</h2>
     <p class="lead">Zes vragen. Je uitkomst staat meteen in beeld.</p>
     <a href="#check" class="btn" onclick="naarCheck(event)">Start de check →</a>
   </div>
@@ -419,11 +417,11 @@
       { v: '2-4', l: '2 tot 4 uur', n: 3 },
       { v: '4plus', l: 'Meer dan 4 uur', n: 5 }
     ]},
-    { id: 'scoring', h: 'Hoeveel van je offertes worden een opdracht?', s: 'Je scoringspercentage, ongeveer.', two: true, opts: [
-      { v: 'lt10', l: 'Minder dan 10%', n: 0.08 },
-      { v: '10-20', l: '10 tot 20%', n: 0.15 },
-      { v: '20-30', l: '20 tot 30%', n: 0.25 },
-      { v: '30plus', l: 'Meer dan 30%', n: 0.35 }
+    { id: 'zoekdeel', h: 'Hoeveel van een calculatie gaat op aan zoeken, lezen en tellen?', s: 'Alles vóór het echte rekenwerk: bladeren, opzoeken, overnemen.', two: true, opts: [
+      { v: 'lt25', l: 'Minder dan een kwart', n: 0.2 },
+      { v: '25-50', l: 'Een kwart tot de helft', n: 0.375 },
+      { v: '50-75', l: 'De helft tot driekwart', n: 0.6 },
+      { v: '75plus', l: 'Meer dan driekwart', n: 0.8 }
     ]},
     { id: 'aanlevering', h: 'Hoe komen de tekeningen meestal binnen?', s: 'Kies wat het vaakst voorkomt.', two: true, opts: [
       { v: 'pdf-mail', l: 'PDF in de mail' },
@@ -449,7 +447,7 @@
   var TOEKOMST_TXT = {
     stabiel: 'Je team zit goed. Dan zit de winst vooral in capaciteit: meer aanvragen beantwoorden met dezelfde mensen, en sneller een offerte de deur uit.',
     pensioen: 'Gaat er iemand met pensioen, dan gaat er kennis de deur uit. De agent legt de rekenregels van je calculator vast zolang die er nog is, zodat een opvolger sneller op niveau zit.',
-    zoeken: 'Calculators zijn bijna niet te vinden. Met de agent hoeft je huidige team het leeswerk niet meer zelf te doen en houdt het tijd over voor de aanvragen die tellen.',
+    zoeken: 'Calculators zijn bijna niet te vinden. Met de agent hoeft je huidige team het zoekwerk niet meer zelf te doen en houdt het tijd over om goed te controleren.',
     zelf: 'Calculeer je zelf, dan gaan die uren af van je verkoop of van je avonden. De agent zet de calculatie klaar en jij controleert.'
   };
   var AANLEVERING_TXT = {
@@ -510,15 +508,15 @@
   function terug() { if (stap > 0) { stap--; toonVraag(); } }
 
   function berekenen() {
-    var a = optie('aanvragen').n, u = optie('uren').n, s = optie('scoring').n;
+    var a = optie('aanvragen').n, u = optie('uren').n, d = optie('zoekdeel').n;
     var totaal = a * u;
-    var verloren = totaal * (1 - s);
+    var zoek = totaal * d;
     return {
-      aanvragen: a, uren_per_calc: u, scoring: s,
+      aanvragen: a, uren_per_calc: u, zoekdeel: d,
       uren_totaal: rond(totaal, 10),
-      uren_verloren: rond(verloren, 10),
-      euro_verloren: rond(verloren * UURTARIEF, 1000),
-      werkweken: Math.round(verloren / 40)
+      uren_zoek: rond(zoek, 10),
+      euro_zoek: rond(zoek * UURTARIEF, 1000),
+      werkweken: Math.round(zoek / 40)
     };
   }
 
@@ -526,21 +524,21 @@
     uitkomst = berekenen();
     if (window.fxTrackCustom) fxTrackCustom('CalculatieQuizVoltooid', { aanvragen: antwoorden.aanvragen, sector: antwoorden.sector });
     var r = uitkomst;
-    var scoringTxt = optie('scoring').l.toLowerCase();
+    var zoekTxt = optie('zoekdeel').l.toLowerCase();
     var html = '<div class="q-panel">' +
       '<div class="r-eyebrow">check // jouw uitkomst</div>' +
-      '<div class="r-big"><div class="lbl">Zoveel kost het calculeren van offertes die geen opdracht worden, per jaar</div>' +
-      '<div class="num">± € ' + fmt(r.euro_verloren) + '</div>' +
-      '<div class="lbl">tegen € ' + UURTARIEF + ' per uur</div></div>' +
+      '<div class="r-big"><div class="lbl">Zoeken, lezen en tellen voor jullie calculaties, per jaar</div>' +
+      '<div class="num">± ' + fmt(r.uren_zoek) + ' uur</div>' +
+      '<div class="lbl">' + (r.werkweken > 1 ? 'ruim ' + r.werkweken + ' werkweken' : 'per jaar') + '</div></div>' +
       '<div class="r-tiles">' +
-        '<div class="r-tile"><div class="num">± ' + fmt(r.uren_totaal) + ' u</div><div class="lbl">calculeren per jaar</div></div>' +
-        '<div class="r-tile"><div class="num">± ' + fmt(r.uren_verloren) + ' u</div><div class="lbl">voor offertes die je niet wint' + (r.werkweken > 1 ? ', ruim ' + r.werkweken + ' werkweken' : '') + '</div></div>' +
+        '<div class="r-tile"><div class="num">± ' + fmt(r.uren_totaal) + ' u</div><div class="lbl">calculeren per jaar, in totaal</div></div>' +
+        '<div class="r-tile"><div class="num">± € ' + fmt(r.euro_zoek) + '</div><div class="lbl">aan zoekwerk, tegen € ' + UURTARIEF + ' per uur</div></div>' +
       '</div>' +
-      '<p class="r-txt">Voor jullie werk haalt de agent <b>' + SECTOR_TXT[antwoorden.sector] + '</b> uit het dossier. ' + AANLEVERING_TXT[antwoorden.aanlevering] + '</p>' +
+      '<p class="r-txt">Dat werk doet de agent: hij bladert door het dossier, haalt <b>' + SECTOR_TXT[antwoorden.sector] + '</b> eruit en rekent een concept uit. Je calculator controleert en beslist. ' + AANLEVERING_TXT[antwoorden.aanlevering] + '</p>' +
       '<p class="r-txt">' + TOEKOMST_TXT[antwoorden.toekomst] + '</p>' +
-      '<details class="r-how"><summary>Zo rekenden we</summary><p>' + fmt(r.aanvragen) + ' aanvragen × ' + String(r.uren_per_calc).replace('.', ',') + ' uur = ± ' + fmt(r.uren_totaal) + ' uur per jaar. Bij een scoring van ' + scoringTxt + ' rekenden we met ' + Math.round(r.scoring * 100) + '%; de rest is tijd voor offertes die geen opdracht worden. We namen steeds het midden van je antwoord en € ' + UURTARIEF + ' per uur. <a href="#" onclick="opnieuw(event)">Antwoorden aanpassen</a></p></details>' +
+      '<details class="r-how"><summary>Zo rekenden we</summary><p>' + fmt(r.aanvragen) + ' aanvragen × ' + String(r.uren_per_calc).replace('.', ',') + ' uur = ± ' + fmt(r.uren_totaal) + ' uur per jaar. Voor zoekwerk (' + zoekTxt + ') rekenden we met ' + String(Math.round(r.zoekdeel * 1000) / 10).replace('.', ',') + '% daarvan. We namen steeds het midden van je antwoord en € ' + UURTARIEF + ' per uur. <a href="#" onclick="opnieuw(event)">Antwoorden aanpassen</a></p></details>' +
       '<div class="r-form" data-form="quiz">' +
-        '<div class="r-form-h">Zien hoe dat leeswerk eruit gaat?</div>' +
+        '<div class="r-form-h">Zien hoe de agent dat voor jullie doet?</div>' +
         '<div class="r-form-s">Meld je aan voor een live demo van 30 minuten met een tekening van jezelf. Ik neem binnen één werkdag contact met je op.</div>' +
         '<div class="row2">' +
           '<div class="fld"><label for="f-naam">Je naam</label><input id="f-naam" data-field="naam" type="text" autocomplete="name" placeholder="Voor- en achternaam"></div>' +
@@ -655,13 +653,13 @@
     if (btn && !btn.disabled) { e.preventDefault(); aanmelden(btn); }
   });
 
-  /* Dossier-visual: 40 bladen, 3 gekozen (blad 9, 10 en 38 zoals in de demo) */
+  /* Dossier-visual: een stapel pagina's waarvan de agent er een paar kiest */
   (function() {
     var el = document.getElementById('sheets');
     var html = '';
     for (var i = 1; i <= 40; i++) {
       var on = (i === 9 || i === 10 || i === 38);
-      html += '<div class="sheet' + (on ? ' on' : '') + '"' + (on ? ' data-n="' + i + '"' : '') + '></div>';
+      html += '<div class="sheet' + (on ? ' on' : '') + '"></div>';
     }
     el.innerHTML = html;
   })();
