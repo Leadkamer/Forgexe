@@ -157,6 +157,9 @@ button.stat:hover { border-color: #D3D4CE; }
 .bubbel { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 14px; white-space: pre-wrap; word-wrap: break-word; }
 .bubbel.klant { align-self: flex-end; background: var(--ink); color: #FFF; border-bottom-right-radius: 4px; }
 .bubbel.bot { align-self: flex-start; background: var(--bg); color: var(--ink); border-bottom-left-radius: 4px; }
+.kaartjes { align-self: flex-start; display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 2px; }
+.kaartje { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+.kaartje::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: var(--accent); }
 .bubbel-tijd { font-size: 11px; color: var(--muted); align-self: center; margin-top: 4px; }
 
 .melding { background: #FFF8E6; border: 1px solid #F1E2B5; color: #6B5310; border-radius: 12px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
@@ -609,6 +612,13 @@ button.stat:hover { border-color: #D3D4CE; }
   });
 
   /* ---- Gesprekken ---- */
+  var KAART_NAMEN = { whatsapp: 'Kreeg de knop: app met een collega', prijs: 'Kreeg een prijskaart', invulkaart: 'Kreeg de invulkaart voor het dak' };
+  function kaartjes(lijst) {
+    var namen = String(lijst || '').split(',').filter(function (k) { return KAART_NAMEN[k]; });
+    if (!namen.length) return '';
+    return '<div class="kaartjes">' + namen.map(function (k) { return '<span class="kaartje">' + KAART_NAMEN[k] + '</span>'; }).join('') + '</div>';
+  }
+
   function renderGesprekken(lijst, botNaam) {
     if (!lijst.length) {
       $('c-gesprekken').innerHTML = '<div class="card leeg">Nog geen gesprekken. Zodra een bezoeker iets vraagt aan ' + esc(botNaam) + ', lees je het hier terug.</div>';
@@ -618,7 +628,7 @@ button.stat:hover { border-color: #D3D4CE; }
       var eerste = (g.items[0] && g.items[0].vraag) || '';
       var body = g.items.map(function (it) {
         return '<div class="bubbel klant">' + esc(it.vraag) + '</div>' +
-          (it.antwoord ? '<div class="bubbel bot">' + esc(platteTekst(it.antwoord)) + '</div>' : '');
+          (it.antwoord ? '<div class="bubbel bot">' + esc(platteTekst(it.antwoord)) + '</div>' : '') + kaartjes(it.kaarten);
       }).join('');
       return '<details class="gs"><summary><span class="gs-vraag">' + esc(eerste) + '</span>' +
         '<span class="gs-n">' + g.n + (g.n === 1 ? ' vraag' : ' vragen') + '</span>' +
