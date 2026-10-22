@@ -157,9 +157,30 @@ button.stat:hover { border-color: #D3D4CE; }
 .bubbel { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 14px; white-space: pre-wrap; word-wrap: break-word; }
 .bubbel.klant { align-self: flex-end; background: var(--ink); color: #FFF; border-bottom-right-radius: 4px; }
 .bubbel.bot { align-self: flex-start; background: var(--bg); color: var(--ink); border-bottom-left-radius: 4px; }
-.kaartjes { align-self: flex-start; display: flex; flex-wrap: wrap; gap: 6px; margin: -2px 0 2px; }
-.kaartje { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-.kaartje::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: var(--accent); }
+.gs-tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.gs-tags span { font-size: 12px; font-weight: 600; color: #3F5E0E; background: var(--accent-zacht); border-radius: 999px; padding: 2px 9px; }
+.mk { align-self: flex-start; width: 100%; max-width: 340px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.mk-label { font-size: 11px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); margin-bottom: -4px; }
+.mk-kop { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.mk-sub { font-size: 12px; color: var(--muted); margin-top: -8px; }
+.mk-regels { display: flex; flex-direction: column; }
+.mk-regel { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+.mk-regel span { min-width: 0; }
+.mk-regel small { display: block; font-size: 12px; color: var(--muted); }
+.mk-regel b { white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mk-totaal { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 12px; color: var(--muted); }
+.mk-totaal strong { font-size: 17px; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mk-velden { display: flex; flex-direction: column; gap: 6px; }
+.mk-velden span { font-size: 12px; color: var(--ink-2); background: var(--bg); border-radius: 8px; padding: 7px 10px; }
+.mk-knop { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; border-radius: 12px; background: var(--accent); color: #FFF; font-weight: 700; font-size: 13px; opacity: .9; }
+.mk-knop.mk-wa { background: #1DA851; }
+.mk-knop svg { width: 18px; height: 18px; }
+.mk-klik { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.mk-klik::before { content: ""; width: 8px; height: 8px; border-radius: 99px; border: 1.5px solid var(--muted); box-sizing: border-box; }
+.mk-klik.ja { color: var(--ink); font-weight: 600; }
+.mk-klik.ja::before { background: var(--accent); border-color: var(--accent); }
+.mk-kort { gap: 6px; }
+.mk-kort .mk-sub { margin-top: 0; }
 .bubbel-tijd { font-size: 11px; color: var(--muted); align-self: center; margin-top: 4px; }
 
 .melding { background: #FFF8E6; border: 1px solid #F1E2B5; color: #6B5310; border-radius: 12px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
@@ -611,13 +632,48 @@ button.stat:hover { border-color: #D3D4CE; }
     });
   });
 
-  /* ---- Gesprekken ---- */
-  var KAART_NAMEN = { whatsapp: 'Kreeg de knop: app met een collega', prijs: 'Kreeg een prijskaart', invulkaart: 'Kreeg de invulkaart voor het dak' };
-  function kaartjes(lijst) {
-    var namen = String(lijst || '').split(',').filter(function (k) { return KAART_NAMEN[k]; });
-    if (!namen.length) return '';
-    return '<div class="kaartjes">' + namen.map(function (k) { return '<span class="kaartje">' + KAART_NAMEN[k] + '</span>'; }).join('') + '</div>';
+  /* ---- Gesprekken ----
+     Onder een antwoord tekenen we de kaart na die de bezoeker in de chat kreeg
+     (prijskaart, invulkaart, WhatsApp), in dezelfde vorm als in de widget. */
+  var WA_ICOON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.1-.3Z"/></svg>';
+
+  function klikRegel(gedaan, ja, nee) {
+    return '<div class="mk-klik' + (gedaan ? ' ja' : '') + '">' + esc(gedaan ? ja : nee) + '</div>';
   }
+
+  function prijsKaartMini(p, geklikt) {
+    var regels = (p.regels || []).map(function (r) {
+      var delen = String(r.o || '').split(' — ');
+      return '<div class="mk-regel"><span>' + esc(delen[0]) + (delen[1] ? '<small>' + esc(delen.slice(1).join(' — ')) + '</small>' : '') + '</span><b>' + esc(r.b) + '</b></div>';
+    }).join('');
+    return '<div class="mk"><div class="mk-label">Prijskaart in de chat</div>' +
+      '<div class="mk-kop">' + esc(p.pakket || 'Groendak') + '</div>' +
+      '<div class="mk-sub">' + esc(String(p.m2 || '').replace('.', ',')) + ' m² · richtprijs</div>' +
+      '<div class="mk-regels">' + regels + '</div>' +
+      '<div class="mk-totaal"><span>Totaal, excl. eventuele verzendkosten</span><strong>' + esc(p.totaal) + '</strong></div>' +
+      '<div class="mk-knop">In winkelwagen en bestellen</div>' +
+      klikRegel(geklikt, 'Bezoeker klikte op de winkelwagenknop', 'Niet op de winkelwagenknop geklikt') + '</div>';
+  }
+
+  function invulKaartMini(w, verstuurd) {
+    var velden = ['Afmetingen van het dak', 'Onderbreking (dakkapel, lichtstraat)', 'Grindstrook', 'Wortelwerende folie', 'Afvoeren bedekken', 'Meststof'];
+    return '<div class="mk"><div class="mk-label">Invulkaart in de chat</div>' +
+      '<div class="mk-kop">Bereken je groendak</div>' +
+      '<div class="mk-sub">' + esc((w && w.pakket) || 'Groendakpakket') + '</div>' +
+      '<div class="mk-velden">' + velden.map(function (v) { return '<span>' + esc(v) + '</span>'; }).join('') + '</div>' +
+      '<div class="mk-knop">Bereken mijn prijs</div>' +
+      klikRegel(verstuurd, 'Bezoeker vulde de kaart in en verstuurde hem', 'Kaart niet verstuurd') + '</div>';
+  }
+
+  function waKaartMini(geklikt) {
+    return '<div class="mk"><div class="mk-label">WhatsApp-kaart in de chat</div>' +
+      '<div class="mk-kop">App met een collega</div>' +
+      '<div class="mk-sub">Je vraag en wat we net bespraken staan er al in. Je kunt het nog aanpassen voor je verstuurt.</div>' +
+      '<div class="mk-knop mk-wa">' + WA_ICOON + '<span>Open WhatsApp</span></div>' +
+      klikRegel(geklikt, 'Bezoeker opende WhatsApp', 'WhatsApp niet geopend') + '</div>';
+  }
+
+  function soorten(it) { return String(it.kaarten || '').split(',').filter(Boolean); }
 
   function renderGesprekken(lijst, botNaam) {
     if (!lijst.length) {
@@ -626,13 +682,29 @@ button.stat:hover { border-color: #D3D4CE; }
     }
     $('c-gesprekken').innerHTML = lijst.map(function (g) {
       var eerste = (g.items[0] && g.items[0].vraag) || '';
-      var body = g.items.map(function (it) {
-        return '<div class="bubbel klant">' + esc(it.vraag) + '</div>' +
-          (it.antwoord ? '<div class="bubbel bot">' + esc(platteTekst(it.antwoord)) + '</div>' : '') + kaartjes(it.kaarten);
+      var kl = g.klikken || {};
+      /* Een klik weten we per gesprek, niet per kaart: die hoort bij de laatste kaart van die soort */
+      var laatste = {};
+      g.items.forEach(function (it, i) { soorten(it).forEach(function (k) { laatste[k] = i; }); });
+      var body = g.items.map(function (it, i) {
+        var html = '<div class="bubbel klant">' + esc(it.vraag) + '</div>' +
+          (it.antwoord ? '<div class="bubbel bot">' + esc(platteTekst(it.antwoord)) + '</div>' : '');
+        soorten(it).forEach(function (k) {
+          var kd = it.kaart || {};
+          if (k === 'prijs') html += kd.prijs ? prijsKaartMini(kd.prijs, kl.winkelwagen && laatste.prijs === i) : '<div class="mk mk-kort"><div class="mk-label">Prijskaart in de chat</div><div class="mk-sub">Details van deze berekening zijn niet bewaard (oud gesprek).</div></div>';
+          if (k === 'invulkaart') html += invulKaartMini(kd.wizard, kl.wizard && laatste.invulkaart === i);
+          if (k === 'whatsapp') html += waKaartMini(kl.whatsapp && laatste.whatsapp === i);
+        });
+        return html;
       }).join('');
+      var tags = [];
+      if (laatste.prijs !== undefined) tags.push('Prijs berekend');
+      if (kl.winkelwagen) tags.push('In winkelwagen');
+      if (kl.whatsapp) tags.push('WhatsApp geopend');
       return '<details class="gs"><summary><span class="gs-vraag">' + esc(eerste) + '</span>' +
         '<span class="gs-n">' + g.n + (g.n === 1 ? ' vraag' : ' vragen') + '</span>' +
-        '<span class="gs-meta">' + esc(datumTijd(g.start)) + ' · ' + esc(paginaTitel(g.pagina || '/')) + '</span></summary>' +
+        '<span class="gs-meta">' + esc(datumTijd(g.start)) + ' · ' + esc(paginaTitel(g.pagina || '/')) + '</span>' +
+        (tags.length ? '<span class="gs-tags">' + tags.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</span>' : '') + '</summary>' +
         '<div class="gs-body">' + body + (g.n > g.items.length ? '<div class="bubbel-tijd">Eerste ' + g.items.length + ' van ' + g.n + ' vragen</div>' : '') + '</div></details>';
     }).join('');
   }
