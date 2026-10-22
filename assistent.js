@@ -156,7 +156,10 @@
     try {
       var id = sessionStorage.getItem(storeKey + '-sessie');
       if (!id) {
-        id = 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+        /* Testomgeving en demolink draaien op forgexe.nl: die sessies beginnen met
+           een t, zodat het klantdashboard ze niet meetelt. */
+        var test = /(^|\.)forgexe\.nl$|vercel\.app$|^localhost$|^127\./.test(location.hostname) || location.protocol === 'file:';
+        id = (test ? 't' : 's') + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
         sessionStorage.setItem(storeKey + '-sessie', id);
       }
       return id;
@@ -197,6 +200,12 @@
       d: detail ? String(detail).slice(0, 200) : ''
     });
     if (eventBuffer.length >= 25) flushEvents();
+  }
+
+  /* Detail bij kaart-events: product-id|pakket|m2|totaal, zodat het dashboard
+     per pakket kan tellen zonder de productnamen te kennen. */
+  function kaartDetail(d) {
+    return [d.product_id || '', d.pakket || '', d.m2 || '', d.totaal || ''].join('|');
   }
 
   function trackEenmalig(naam) {
@@ -732,7 +741,7 @@
       var inWagen = el('button', 'fxa-cta', 'In winkelwagen en bestellen');
       inWagen.type = 'button';
       inWagen.addEventListener('click', function () {
-        track('winkelwagen_geklikt', d.product_id || '');
+        track('winkelwagen_geklikt', kaartDetail(d));
         var form = document.createElement('form');
         form.method = 'post';
         form.action = ww.actie;
@@ -758,7 +767,7 @@
       bestel.href = d.link;
       bestel.target = '_blank';
       bestel.rel = 'noopener';
-      bestel.addEventListener('click', function () { track('bestel_geklikt', d.product_id || ''); });
+      bestel.addEventListener('click', function () { track('bestel_geklikt', kaartDetail(d)); });
       knoppen.appendChild(bestel);
     }
     if (d.product_id) {
@@ -866,7 +875,7 @@
       var h = loadHistory();
       h.push(item);
       saveHistory(h);
-      track({ prijs: 'prijskaart_getoond', wizard: 'wizard_getoond', whatsapp: 'whatsapp_getoond' }[soort] || 'kaart_getoond', (data && data.product_id) || '');
+      track({ prijs: 'prijskaart_getoond', wizard: 'wizard_getoond', whatsapp: 'whatsapp_getoond' }[soort] || 'kaart_getoond', data ? kaartDetail(data) : '');
       /* Signaal voor de pagina eromheen (de testomgeving volgt hiermee het pakket) */
       try {
         window.dispatchEvent(new CustomEvent('fxa:kaart', { detail: { soort: soort, product_id: (data && data.product_id) || '', link: (data && data.link) || '' } }));

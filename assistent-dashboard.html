@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboard AI-assistent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F6F6F3;
+  --card: #FFFFFF;
+  --line: #E6E6E0;
+  --line-2: #EFEFEA;
+  --ink: #0C0D10;
+  --ink-2: #4A4F5A;
+  --muted: #8A909D;
+  --accent: #6A961F;
+  --accent-zacht: rgba(106, 150, 31, .10);
+  --rood: #B42318;
+  --radius: 14px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+button, input { font-family: inherit; font-size: inherit; }
+.hidden { display: none !important; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Inloggen */
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+.login { width: 100%; max-width: 380px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 22px; }
+.login h1 { font-size: 21px; margin: 0 0 6px; letter-spacing: -.01em; }
+.login p { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+.fl { display: block; font-size: 13px; font-weight: 600; margin: 0 0 6px; color: var(--ink-2); }
+.fi { width: 100%; height: 46px; border: 1px solid var(--line); border-radius: 12px; padding: 0 14px; margin: 0 0 14px; background: #FFF; color: var(--ink); font-size: 16px; }
+.fi:focus { outline: none; border-color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--ink); color: #FFF; font-weight: 600; cursor: pointer; width: 100%; }
+.btn:disabled { opacity: .6; cursor: default; }
+.login-err { color: var(--rood); font-size: 14px; margin-top: 12px; min-height: 21px; }
+.door { text-align: center; margin-top: 18px; font-size: 12px; color: var(--muted); }
+.door a { color: inherit; }
+
+/* App */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+.top { display: flex; align-items: center; gap: 12px; padding: 18px 0 14px; }
+.avatar { width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--card) center/cover no-repeat; flex: none; }
+.top-tekst { flex: 1; min-width: 0; }
+.top-naam { font-weight: 700; font-size: 17px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.top-sub { color: var(--muted); font-size: 13px; }
+.knop-licht { height: 38px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font-weight: 600; font-size: 13px; cursor: pointer; flex: none; }
+.knop-licht:hover { border-color: #D3D4CE; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 0 -16px 18px; padding: 0 16px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { position: relative; height: 44px; padding: 0 12px; border: 0; background: none; color: var(--muted); font-weight: 600; cursor: pointer; white-space: nowrap; }
+.tab.actief { color: var(--ink); }
+.tab.actief::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 2px; background: var(--ink); border-radius: 2px; }
+.badge { display: inline-block; min-width: 20px; height: 20px; line-height: 20px; padding: 0 6px; margin-left: 6px; border-radius: 999px; background: var(--accent); color: #FFF; font-size: 12px; text-align: center; }
+.periode { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin-bottom: 16px; }
+.periode::before { content: ""; width: 8px; height: 8px; border-radius: 99px; background: var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 22px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+.stat-l { font-size: 13px; color: var(--muted); font-weight: 500; }
+.stat-v { font-size: 28px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.stat-s { font-size: 12px; color: var(--muted); margin-top: 2px; }
+button.stat { text-align: left; cursor: pointer; font: inherit; color: inherit; }
+button.stat:hover { border-color: #D3D4CE; }
+
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 15px; font-weight: 700; margin: 0 0 10px; }
+.sec-h small { font-weight: 500; color: var(--muted); font-size: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 22px; }
+.uitleg { font-size: 13px; color: var(--muted); margin: -2px 0 14px; }
+.leeg { color: var(--muted); font-size: 14px; padding: 4px 0; }
+.grid2 { display: grid; gap: 0 18px; }
+
+/* Trechter */
+.tr-rij { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 9px 0; border-bottom: 1px solid var(--line-2); }
+.tr-rij:last-child { border-bottom: 0; }
+.tr-kop { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+.tr-naam { color: var(--ink-2); }
+.tr-waarde { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tr-waarde span { color: var(--muted); font-weight: 500; margin-left: 6px; }
+.tr-baan { height: 12px; }
+.tr-balk { height: 12px; background: var(--accent); border-radius: 0 4px 4px 0; }
+.tr-extra { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.tr-extra b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Kolommen per dag */
+.kol-wrap { position: relative; }
+.kol { display: flex; align-items: flex-end; gap: 2px; height: 140px; border-bottom: 1px solid var(--line); }
+.kol-slot { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; cursor: default; position: relative; }
+.kol-slot:focus { outline: none; }
+.kol-balk { width: 100%; max-width: 24px; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 0; }
+.kol-slot.nul .kol-balk { height: 0 !important; }
+.kol-slot:hover .kol-balk, .kol-slot:focus .kol-balk { filter: brightness(.88); }
+.kol-lbl { position: absolute; top: -20px; font-size: 12px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.kol-as { display: flex; gap: 2px; margin-top: 6px; }
+.kol-as span { flex: 1; min-width: 0; text-align: center; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.kol-as span.weg { visibility: hidden; }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--ink); color: #FFF; font-size: 12px; padding: 6px 9px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -100%); margin-top: -8px; }
+
+/* Lijsten en tabellen */
+.lijst-rij { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 9px 0; border-bottom: 1px solid var(--line-2); font-size: 14px; }
+.lijst-rij:last-child { border-bottom: 0; }
+.lijst-naam { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lijst-naam small { display: block; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+.lijst-n { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.lijst-baan { grid-column: 1 / -1; height: 6px; }
+.lijst-balk { height: 6px; background: var(--accent); border-radius: 0 4px 4px 0; min-width: 2px; }
+.tabel { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabel th { text-align: right; font-size: 12px; font-weight: 600; color: var(--muted); padding: 0 0 8px 10px; white-space: nowrap; }
+.tabel th:first-child, .tabel td:first-child { text-align: left; padding-left: 0; }
+.tabel td { text-align: right; padding: 9px 0 9px 10px; border-top: 1px solid var(--line-2); font-variant-numeric: tabular-nums; }
+.tabel td:first-child { font-variant-numeric: normal; }
+.tabel td:not(:first-child) { white-space: nowrap; }
+.tabel .zacht { color: var(--muted); }
+.scroll-x { overflow-x: auto; }
+
+/* Terugbelverzoeken */
+.filter { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 3px; margin-bottom: 14px; }
+.filter button { height: 32px; padding: 0 12px; border: 0; border-radius: 8px; background: none; color: var(--muted); font-weight: 600; font-size: 13px; cursor: pointer; }
+.filter button.actief { background: var(--ink); color: #FFF; }
+.tb { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.tb.klaar { opacity: .62; }
+.tb-kop { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.tb-naam { font-weight: 700; font-size: 16px; }
+.tb-tijd { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.tb-onderwerp { font-weight: 600; margin: 4px 0 8px; }
+.tb-sam { color: var(--ink-2); font-size: 14px; white-space: pre-wrap; margin: 0 0 12px; }
+.tb-acties { display: flex; flex-wrap: wrap; gap: 8px; }
+.tb-acties a, .tb-acties button { display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: none; cursor: pointer; }
+.tb-acties .hoofd { background: var(--ink); color: #FFF; border-color: var(--ink); }
+.status { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: 2px; }
+.status.open { background: var(--accent-zacht); color: #3F5E0E; }
+.status.af { background: var(--line-2); color: var(--muted); }
+
+/* Gesprekken */
+.gs { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
+.gs summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; }
+.gs summary::-webkit-details-marker { display: none; }
+.gs-vraag { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gs-n { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.gs-meta { grid-column: 1 / -1; font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gs[open] summary { border-bottom: 1px solid var(--line-2); }
+.gs-body { padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.bubbel { max-width: 88%; padding: 9px 12px; border-radius: 14px; font-size: 14px; white-space: pre-wrap; word-wrap: break-word; }
+.bubbel.klant { align-self: flex-end; background: var(--ink); color: #FFF; border-bottom-right-radius: 4px; }
+.bubbel.bot { align-self: flex-start; background: var(--bg); color: var(--ink); border-bottom-left-radius: 4px; }
+.bubbel-tijd { font-size: 11px; color: var(--muted); align-self: center; margin-top: 4px; }
+
+.melding { background: #FFF8E6; border: 1px solid #F1E2B5; color: #6B5310; border-radius: 12px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+.voet { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.voet a { color: inherit; }
+
+@media (max-width: 519px) {
+  .top { gap: 10px; }
+  .avatar { width: 38px; height: 38px; }
+  .top-naam { font-size: 15px; }
+  .knop-licht { height: 34px; padding: 0 10px; font-size: 12px; }
+}
+@media (min-width: 720px) {
+  .wrap { padding: 0 24px 56px; }
+  .tabs { margin: 0 -24px 22px; padding: 0 24px; }
+  .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tr-rij { grid-template-columns: 200px minmax(0, 1fr) 110px; align-items: center; gap: 14px; }
+  .tr-kop { display: contents; }
+  .tr-naam { grid-column: 1; }
+  .tr-baan { grid-column: 2; grid-row: 1; }
+  .tr-waarde { grid-column: 3; text-align: right; }
+  .kol { height: 170px; }
+}
+</style>
+</head>
+<body>
+
+<div class="login-wrap" id="v-login">
+  <div class="login">
+    <h1>Dashboard AI-assistent</h1>
+    <p>Log in met de naam en code die je van Forgexe hebt gekregen.</p>
+    <label class="fl" for="l-klant">Naam</label>
+    <input class="fi" id="l-klant" placeholder="bijv. mooigroendak" autocomplete="username" autocapitalize="none" spellcheck="false">
+    <label class="fl" for="l-code">Code</label>
+    <input class="fi" id="l-code" type="password" placeholder="Je toegangscode" autocomplete="current-password">
+    <button class="btn" id="l-btn" type="button">Inloggen</button>
+    <div class="login-err" id="l-err" role="alert"></div>
+    <div class="door"><a href="https://www.forgexe.nl" target="_blank" rel="noopener">AI-assistent door Forgexe</a></div>
+  </div>
+</div>
+
+<div id="v-app" class="hidden">
+  <div class="wrap">
+    <div class="top">
+      <span class="avatar" id="a-avatar" aria-hidden="true"></span>
+      <div class="top-tekst">
+        <div class="top-naam" id="a-naam"></div>
+        <div class="top-sub" id="a-sub">Dashboard</div>
+      </div>
+      <button class="knop-licht" id="a-vernieuw" type="button">Vernieuwen</button>
+      <button class="knop-licht" id="a-uit" type="button">Uitloggen</button>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab actief" data-tab="overzicht" type="button" role="tab">Overzicht</button>
+      <button class="tab" data-tab="terugbel" type="button" role="tab">Terugbellen<span class="badge hidden" id="t-badge">0</span></button>
+      <button class="tab" data-tab="gesprekken" type="button" role="tab">Gesprekken</button>
+    </div>
+
+    <div class="melding hidden" id="melding"></div>
+
+    <section id="tab-overzicht">
+      <div class="periode" id="periode"></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-l">Gesprekken</div><div class="stat-v" id="s-gesprekken">–</div><div class="stat-s" id="s-vragen"></div></div>
+        <div class="stat"><div class="stat-l">Prijs berekend</div><div class="stat-v" id="s-berekend">–</div><div class="stat-s">bezoekers met een prijskaart</div></div>
+        <div class="stat"><div class="stat-l">In winkelwagen</div><div class="stat-v" id="s-wagen">–</div><div class="stat-s" id="s-waarde"></div></div>
+        <button class="stat" type="button" id="s-terugbel-knop"><div class="stat-l">Terugbelverzoeken</div><div class="stat-v" id="s-terugbel">–</div><div class="stat-s">nog te bellen</div></button>
+      </div>
+
+      <div class="sec-h">Van bezoek tot winkelwagen <small>aantal bezoekers</small></div>
+      <div class="card">
+        <p class="uitleg">Elke regel telt bezoekers. Het percentage is het deel van alle bezoekers op pagina's waar <span class="bot-naam"></span> staat.</p>
+        <div id="c-trechter"></div>
+      </div>
+
+      <div class="sec-h">Gesprekken per dag <small>laatste 14 dagen</small></div>
+      <div class="card"><div id="c-dagen"></div></div>
+
+      <div class="grid2">
+        <div>
+          <div class="sec-h">Pakketten die bezoekers uitrekenen</div>
+          <div class="card"><div id="c-pakketten"></div></div>
+        </div>
+        <div>
+          <div class="sec-h">Waar gesprekken beginnen</div>
+          <div class="card"><div id="c-paginas"></div></div>
+        </div>
+      </div>
+
+      <div class="sec-h">Welke ballonnen werken <small>getoond en aangeklikt</small></div>
+      <div class="card">
+        <p class="uitleg">Het ballonnetje naast <span class="bot-naam"></span> heeft per pagina een eigen tekst. Hier zie je welke teksten bezoekers aanklikken.</p>
+        <div id="c-ballonnen"></div>
+      </div>
+    </section>
+
+    <section id="tab-terugbel" class="hidden">
+      <div class="filter" role="group" aria-label="Filter">
+        <button type="button" class="actief" data-f="open">Nog te bellen</button>
+        <button type="button" data-f="alles">Alles</button>
+      </div>
+      <div id="c-terugbel"></div>
+    </section>
+
+    <section id="tab-gesprekken" class="hidden">
+      <p class="uitleg" style="margin-top:0">De laatste 40 gesprekken. Klik op een gesprek om het te lezen. Bezoekers zijn anoniem: je ziet alleen wat ze in de chat typen.</p>
+      <div id="c-gesprekken"></div>
+    </section>
+
+    <div class="voet"><a href="https://www.forgexe.nl" target="_blank" rel="noopener">AI-assistent door Forgexe</a></div>
+  </div>
+</div>
+
+<div class="tip hidden" id="tip" role="tooltip"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var API = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-assistent-dashboard';
+  var OPSLAG = 'fxa-dashboard-v1';
+  var data = null;
+  var paginaData = null;
+  var terugbelFilter = 'open';
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function getal(n) { return Number(n || 0).toLocaleString('nl-NL'); }
+  function euro(n) { return '€ ' + Number(n || 0).toLocaleString('nl-NL', { maximumFractionDigits: 0 }); }
+  function pct(deel, geheel) { return geheel ? Math.round(deel / geheel * 100) + '%' : ''; }
+  function datumTijd(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return '';
+    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' }) + ', ' + d.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+  }
+  /* Antwoorden van de assistent bevatten markdown-links; hier als platte tekst */
+  function platteTekst(s) {
+    return String(s || '').replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
+  }
+
+  function leesLogin() {
+    try { return JSON.parse(localStorage.getItem(OPSLAG) || 'null'); } catch (e) { return null; }
+  }
+  function zetLogin(l) {
+    try { if (l) localStorage.setItem(OPSLAG, JSON.stringify(l)); else localStorage.removeItem(OPSLAG); } catch (e) { /* geen opslag */ }
+  }
+  var login = null;
+
+  function api(body) {
+    var b = { klant: login.klant, code: login.code };
+    for (var k in body) b[k] = body[k];
+    /* text/plain: geen CORS-preflight nodig */
+    return fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(b) })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (r.status === 401) { var e = new Error('login'); e.login = true; throw e; }
+          if (!r.ok || !j || j.ok === false) throw new Error('fout');
+          return j;
+        });
+      });
+  }
+
+  /* ---- Inloggen ---- */
+  function probeerLogin(klant, code, stil) {
+    login = { klant: String(klant || '').trim().toLowerCase(), code: String(code || '').trim() };
+    if (!login.klant || !login.code) { $('l-err').textContent = 'Vul je naam en code in.'; return; }
+    $('l-btn').disabled = true;
+    $('l-btn').textContent = 'Bezig met laden…';
+    $('l-err').textContent = '';
+    api({ actie: 'data' }).then(function (j) {
+      zetLogin(login);
+      data = j;
+      $('l-btn').textContent = 'Inloggen';
+      toonApp();
+    }).catch(function (e) {
+      $('l-btn').disabled = false;
+      $('l-btn').textContent = 'Inloggen';
+      zetLogin(null);
+      $('v-login').classList.remove('hidden');
+      $('v-app').classList.add('hidden');
+      if (!stil || !e.login) $('l-err').textContent = e.login ? 'Naam of code klopt niet.' : 'Het dashboard is even niet bereikbaar. Probeer het zo opnieuw.';
+    });
+  }
+
+  $('l-btn').addEventListener('click', function () { probeerLogin($('l-klant').value, $('l-code').value); });
+  $('l-code').addEventListener('keydown', function (e) { if (e.key === 'Enter') probeerLogin($('l-klant').value, $('l-code').value); });
+  $('a-uit').addEventListener('click', function () {
+    zetLogin(null);
+    data = null;
+    $('l-code').value = '';
+    $('l-btn').disabled = false;
+    $('v-app').classList.add('hidden');
+    $('v-login').classList.remove('hidden');
+  });
+  $('a-vernieuw').addEventListener('click', function () {
+    var knop = this;
+    knop.disabled = true;
+    knop.textContent = 'Bezig…';
+    api({ actie: 'data' }).then(function (j) { data = j; render(); }).catch(function () {
+      meld('Vernieuwen lukte niet. Probeer het zo opnieuw.');
+    }).then(function () { knop.disabled = false; knop.textContent = 'Vernieuwen'; });
+  });
+
+  function meld(tekst) {
+    var m = $('melding');
+    m.textContent = tekst;
+    m.classList.toggle('hidden', !tekst);
+  }
+
+  /* ---- Tabs ---- */
+  function zetTab(t) {
+    var knoppen = document.querySelectorAll('.tab');
+    for (var i = 0; i < knoppen.length; i++) knoppen[i].classList.toggle('actief', knoppen[i].getAttribute('data-tab') === t);
+    ['overzicht', 'terugbel', 'gesprekken'].forEach(function (n) { $('tab-' + n).classList.toggle('hidden', n !== t); });
+    window.scrollTo(0, 0);
+  }
+  document.querySelector('.tabs').addEventListener('click', function (e) {
+    var k = e.target.closest('.tab');
+    if (k) zetTab(k.getAttribute('data-tab'));
+  });
+  $('s-terugbel-knop').addEventListener('click', function () { zetTab('terugbel'); });
+
+  /* Paginatitels en productnamen uit het statische databestand van de widget */
+  function laadPaginaData(klant) {
+    if (paginaData !== null) return;
+    paginaData = {};
+    var s = document.createElement('script');
+    s.src = '/assistent-data/' + encodeURIComponent(klant) + '.js';
+    s.onload = function () {
+      var d = window.FXA_PAGINAS && window.FXA_PAGINAS[klant];
+      if (d && d.paginas) { paginaData = d.paginas; if (data) render(); }
+    };
+    document.head.appendChild(s);
+  }
+  function paginaTitel(pad) {
+    if (pad === '/') return 'Homepage';
+    var p = paginaData && paginaData[pad];
+    return (p && p.titel) || pad;
+  }
+  function pakketNaam(p) {
+    if (!/^Pakket \d+$/.test(p.naam) || !paginaData) return p.naam;
+    for (var pad in paginaData) {
+      if (String(paginaData[pad].product_id) === String(p.id) && paginaData[pad].titel) return paginaData[pad].titel;
+    }
+    return p.naam;
+  }
+
+  function toonApp() {
+    $('v-login').classList.add('hidden');
+    $('v-app').classList.remove('hidden');
+    laadPaginaData(login.klant);
+    render();
+  }
+
+  /* ---- Weergave ---- */
+  function render() {
+    var k = data.klant || {};
+    var botNaam = k.bot_naam || 'de assistent';
+    document.documentElement.style.setProperty('--accent', k.kleur || '#6A961F');
+    document.documentElement.style.setProperty('--accent-zacht', zacht(k.kleur || '#6A961F'));
+    $('a-naam').textContent = botNaam;
+    $('a-sub').textContent = (k.naam ? k.naam + ' · ' : '') + 'Dashboard';
+    if (k.avatar_url) $('a-avatar').style.backgroundImage = 'url("' + k.avatar_url.replace(/"/g, '') + '")';
+    document.title = 'Dashboard ' + botNaam + ' · ' + (k.naam || '');
+    var namen = document.querySelectorAll('.bot-naam');
+    for (var i = 0; i < namen.length; i++) namen[i].textContent = botNaam;
+
+    var p = data.periode || {};
+    $('periode').textContent = p.beperkt_door_livegang && p.live_sinds
+      ? 'Sinds de livegang op ' + datumTijd(p.live_sinds)
+      : 'Afgelopen ' + (p.dagen || 30) + ' dagen';
+    meld(data.events_afgekapt ? 'Er zijn zoveel bezoeken dat de oudste niet meer in de telling passen. Neem contact op met Forgexe.' : '');
+
+    var s = data.stats || {};
+    $('s-gesprekken').textContent = getal(s.gesprekken);
+    $('s-vragen').textContent = getal(s.vragen) + (s.vragen === 1 ? ' vraag beantwoord' : ' vragen beantwoord');
+    $('s-berekend').textContent = getal(s.berekend);
+    $('s-wagen').textContent = getal(s.winkelwagen);
+    $('s-waarde').textContent = s.waarde_winkelwagen ? euro(s.waarde_winkelwagen) + ' aan berekeningen' : 'bezoekers, via de prijskaart';
+    $('s-terugbel').textContent = getal(s.terugbel_open);
+    var badge = $('t-badge');
+    badge.textContent = s.terugbel_open || 0;
+    badge.classList.toggle('hidden', !s.terugbel_open);
+
+    renderTrechter(data.trechter || {}, botNaam);
+    renderDagen(data.perdag || []);
+    renderPakketten(data.pakketten || []);
+    renderPaginas(data.paginas || []);
+    renderBallonnen(data.ballonnen || []);
+    renderTerugbel();
+    renderGesprekken(data.gesprekken || [], botNaam);
+  }
+
+  function zacht(hex) {
+    var m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex || '');
+    if (!m) return 'rgba(106,150,31,.1)';
+    return 'rgba(' + parseInt(m[1], 16) + ',' + parseInt(m[2], 16) + ',' + parseInt(m[3], 16) + ',.12)';
+  }
+
+  function renderTrechter(t, botNaam) {
+    var basis = t.bezoeken || 0;
+    var stappen = [
+      ['Bezoekers met ' + botNaam, t.bezoeken],
+      ['Zagen een ballon van ' + botNaam, t.aangesproken],
+      ['Openden de chat', t.geopend],
+      ['Stelden een vraag', t.gesprekken],
+      ['Kregen een prijsberekening', t.berekend],
+      ['Zetten het in de winkelwagen', t.winkelwagen]
+    ];
+    if (!basis) {
+      $('c-trechter').innerHTML = '<div class="leeg">Nog geen bezoekers geteld. Zodra er mensen op de site komen, verschijnen ze hier.</div>';
+      return;
+    }
+    var html = stappen.map(function (st, i) {
+      var n = st[1] || 0;
+      var breed = Math.max(n / basis * 100, n ? 1 : 0);
+      return '<div class="tr-rij"><div class="tr-kop"><span class="tr-naam">' + esc(st[0]) + '</span>' +
+        '<span class="tr-waarde">' + getal(n) + (i ? '<span>' + pct(n, basis) + '</span>' : '') + '</span></div>' +
+        '<div class="tr-baan"><div class="tr-balk" style="width:' + breed.toFixed(1) + '%"></div></div></div>';
+    }).join('');
+    html += '<div class="tr-extra"><span>Doorgezet naar WhatsApp: <b>' + getal(t.whatsapp) + '</b></span>' +
+      '<span>Terugbelverzoeken: <b>' + getal(t.terugbel) + '</b></span></div>';
+    $('c-trechter').innerHTML = html;
+  }
+
+  function renderDagen(dagen) {
+    var max = 0;
+    dagen.forEach(function (d) { if (d.n > max) max = d.n; });
+    if (!max) {
+      $('c-dagen').innerHTML = '<div class="leeg">Nog geen gesprekken in deze periode.</div>';
+      return;
+    }
+    var laatsteMax = -1;
+    dagen.forEach(function (d, i) { if (d.n === max) laatsteMax = i; });
+    var kol = dagen.map(function (d, i) {
+      var h = d.n ? Math.max(d.n / max * 100, 3) : 0;
+      var lbl = (i === laatsteMax || (i === dagen.length - 1 && d.n)) ? '<span class="kol-lbl" style="bottom:calc(' + h + '% + 4px);top:auto">' + d.n + '</span>' : '';
+      var tekst = d.label + ': ' + d.n + (d.n === 1 ? ' gesprek' : ' gesprekken');
+      return '<div class="kol-slot' + (d.n ? '' : ' nul') + '" tabindex="0" data-tip="' + esc(tekst) + '" aria-label="' + esc(tekst) + '">' + lbl +
+        '<div class="kol-balk" style="height:' + h + '%"></div></div>';
+    }).join('');
+    var as = dagen.map(function (d, i) {
+      /* Op een smal scherm alleen om de dag een datum */
+      var weg = (window.innerWidth < 520 && (dagen.length - 1 - i) % 2 === 1) ? ' class="weg"' : '';
+      return '<span' + weg + '>' + esc(d.label) + '</span>';
+    }).join('');
+    var tabel = '<table class="sr"><caption>Gesprekken per dag</caption><tr><th>Dag</th><th>Gesprekken</th></tr>' +
+      dagen.map(function (d) { return '<tr><td>' + esc(d.label) + '</td><td>' + d.n + '</td></tr>'; }).join('') + '</table>';
+    $('c-dagen').innerHTML = '<div class="kol-wrap" style="padding-top:22px"><div class="kol">' + kol + '</div><div class="kol-as">' + as + '</div></div>' + tabel;
+  }
+
+  function renderPakketten(lijst) {
+    if (!lijst.length) {
+      $('c-pakketten').innerHTML = '<div class="leeg">Nog geen prijsberekeningen. Zodra een bezoeker een dak laat uitrekenen, zie je hier welk pakket.</div>';
+      return;
+    }
+    var heeftWaarde = lijst.some(function (p) { return p.waarde; });
+    var html = '<div class="scroll-x"><table class="tabel"><thead><tr><th>Pakket</th><th>Berekend</th><th>In wagen</th>' +
+      (heeftWaarde ? '<th>Waarde</th>' : '') + '</tr></thead><tbody>' +
+      lijst.map(function (p) {
+        return '<tr><td>' + esc(pakketNaam(p)) + (p.m2 ? '<div class="zacht" style="font-size:12px">' + getal(p.m2) + ' m² uitgerekend</div>' : '') + '</td>' +
+          '<td>' + getal(p.berekend) + '</td><td>' + getal(p.winkelwagen) + '</td>' +
+          (heeftWaarde ? '<td>' + (p.waarde ? euro(p.waarde) : '<span class="zacht">–</span>') + '</td>' : '') + '</tr>';
+      }).join('') + '</tbody></table></div>';
+    if (heeftWaarde) html += '<p class="uitleg" style="margin:12px 0 0">Waarde = het totaal van de prijskaart op het moment van de klik op de winkelwagenknop. Of de bestelling is afgerond, zie je in WooCommerce.</p>';
+    $('c-pakketten').innerHTML = html;
+  }
+
+  function renderPaginas(lijst) {
+    if (!lijst.length) {
+      $('c-paginas').innerHTML = '<div class="leeg">Nog geen gesprekken in deze periode.</div>';
+      return;
+    }
+    var max = lijst[0].n || 1;
+    $('c-paginas').innerHTML = lijst.map(function (p) {
+      var titel = paginaTitel(p.pagina);
+      return '<div class="lijst-rij"><div class="lijst-naam">' + esc(titel) + (titel !== p.pagina && p.pagina !== '/' ? '<small>' + esc(p.pagina) + '</small>' : '') + '</div>' +
+        '<div class="lijst-n">' + getal(p.n) + '</div>' +
+        '<div class="lijst-baan"><div class="lijst-balk" style="width:' + (p.n / max * 100).toFixed(1) + '%"></div></div></div>';
+    }).join('');
+  }
+
+  function renderBallonnen(lijst) {
+    if (!lijst.length) {
+      $('c-ballonnen').innerHTML = '<div class="leeg">Nog geen ballonnen getoond in deze periode.</div>';
+      return;
+    }
+    $('c-ballonnen').innerHTML = '<div class="scroll-x"><table class="tabel"><thead><tr><th>Tekst</th><th>Getoond</th><th>Aangeklikt</th></tr></thead><tbody>' +
+      lijst.map(function (b) {
+        return '<tr><td>' + esc(b.tekst) + '</td><td>' + getal(b.getoond) + '</td><td>' + getal(b.geklikt) +
+          (b.geklikt ? ' <span class="zacht">(' + pct(b.geklikt, b.getoond) + ')</span>' : '') + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
+  /* ---- Terugbelverzoeken ---- */
+  document.querySelector('.filter').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    terugbelFilter = b.getAttribute('data-f');
+    var knoppen = this.querySelectorAll('button');
+    for (var i = 0; i < knoppen.length; i++) knoppen[i].classList.toggle('actief', knoppen[i] === b);
+    renderTerugbel();
+  });
+
+  function telLink(nr) { return 'tel:' + String(nr).replace(/[^0-9+]/g, ''); }
+
+  function renderTerugbel() {
+    var alle = data.terugbel || [];
+    var lijst = terugbelFilter === 'open' ? alle.filter(function (t) { return t.status !== 'afgehandeld'; }) : alle;
+    if (!lijst.length) {
+      $('c-terugbel').innerHTML = '<div class="card leeg">' + (terugbelFilter === 'open' && alle.length ? 'Alles is gebeld. Mooi zo.' : 'Nog geen terugbelverzoeken. Als een bezoeker teruggebeld wil worden, komt het verzoek hier en in je mail.') + '</div>';
+      return;
+    }
+    $('c-terugbel').innerHTML = lijst.map(function (t) {
+      var af = t.status === 'afgehandeld';
+      var acties = '';
+      if (t.telefoon) acties += '<a class="hoofd" href="' + esc(telLink(t.telefoon)) + '">Bel ' + esc(t.telefoon) + '</a>';
+      if (t.email) acties += '<a href="mailto:' + esc(t.email) + '">Mail</a>';
+      acties += '<button type="button" data-id="' + esc(t.id) + '" data-status="' + (af ? 'nieuw' : 'afgehandeld') + '">' + (af ? 'Toch nog bellen' : 'Gebeld, afvinken') + '</button>';
+      return '<div class="tb' + (af ? ' klaar' : '') + '">' +
+        '<div class="tb-kop"><div class="tb-naam">' + esc(t.naam) + '<span class="status ' + (af ? 'af">Afgehandeld' : 'open">Nog bellen') + '</span></div>' +
+        '<div class="tb-tijd">' + esc(datumTijd(t.createdAt)) + '</div></div>' +
+        (t.onderwerp ? '<div class="tb-onderwerp">' + esc(t.onderwerp) + '</div>' : '') +
+        (t.samenvatting ? '<p class="tb-sam">' + esc(t.samenvatting) + '</p>' : '') +
+        (t.email ? '<p class="tb-sam" style="margin-top:-6px">' + esc(t.email) + '</p>' : '') +
+        '<div class="tb-acties">' + acties + '</div></div>';
+    }).join('');
+  }
+
+  $('c-terugbel').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-id]');
+    if (!b) return;
+    var id = b.getAttribute('data-id');
+    var status = b.getAttribute('data-status');
+    b.disabled = true;
+    api({ actie: 'terugbel_status', id: id, status: status }).then(function () {
+      (data.terugbel || []).forEach(function (t) { if (String(t.id) === id) t.status = status; });
+      data.stats.terugbel_open = (data.terugbel || []).filter(function (t) { return t.status !== 'afgehandeld'; }).length;
+      render();
+    }).catch(function () {
+      b.disabled = false;
+      meld('Opslaan lukte niet. Probeer het zo opnieuw.');
+    });
+  });
+
+  /* ---- Gesprekken ---- */
+  function renderGesprekken(lijst, botNaam) {
+    if (!lijst.length) {
+      $('c-gesprekken').innerHTML = '<div class="card leeg">Nog geen gesprekken. Zodra een bezoeker iets vraagt aan ' + esc(botNaam) + ', lees je het hier terug.</div>';
+      return;
+    }
+    $('c-gesprekken').innerHTML = lijst.map(function (g) {
+      var eerste = (g.items[0] && g.items[0].vraag) || '';
+      var body = g.items.map(function (it) {
+        return '<div class="bubbel klant">' + esc(it.vraag) + '</div>' +
+          (it.antwoord ? '<div class="bubbel bot">' + esc(platteTekst(it.antwoord)) + '</div>' : '');
+      }).join('');
+      return '<details class="gs"><summary><span class="gs-vraag">' + esc(eerste) + '</span>' +
+        '<span class="gs-n">' + g.n + (g.n === 1 ? ' vraag' : ' vragen') + '</span>' +
+        '<span class="gs-meta">' + esc(datumTijd(g.start)) + ' · ' + esc(paginaTitel(g.pagina || '/')) + '</span></summary>' +
+        '<div class="gs-body">' + body + (g.n > g.items.length ? '<div class="bubbel-tijd">Eerste ' + g.items.length + ' van ' + g.n + ' vragen</div>' : '') + '</div></details>';
+    }).join('');
+  }
+
+  /* ---- Tooltip op de dagkolommen ---- */
+  var tip = $('tip');
+  function toonTip(slot) {
+    var r = slot.getBoundingClientRect();
+    tip.textContent = slot.getAttribute('data-tip');
+    tip.style.left = (r.left + r.width / 2 + window.scrollX) + 'px';
+    tip.style.top = (r.top + window.scrollY + r.height - (slot.querySelector('.kol-balk').offsetHeight || 0)) + 'px';
+    tip.classList.remove('hidden');
+  }
+  function verbergTip() { tip.classList.add('hidden'); }
+  document.addEventListener('mouseover', function (e) { var s = e.target.closest && e.target.closest('.kol-slot'); if (s) toonTip(s); else verbergTip(); });
+  document.addEventListener('focusin', function (e) { var s = e.target.closest && e.target.closest('.kol-slot'); if (s) toonTip(s); else verbergTip(); });
+  document.addEventListener('touchstart', function (e) { var s = e.target.closest && e.target.closest('.kol-slot'); if (s) toonTip(s); else verbergTip(); }, { passive: true });
+  window.addEventListener('scroll', verbergTip, { passive: true });
+
+  /* ---- Start: directe login via ?klant=&code=, anders opgeslagen login ---- */
+  (function start() {
+    var q = new URLSearchParams(location.search);
+    var klant = q.get('klant');
+    var code = q.get('code');
+    if (klant && code) {
+      try { history.replaceState(null, '', location.pathname); } catch (e) { /* oude browser */ }
+      $('l-klant').value = klant;
+      probeerLogin(klant, code);
+      return;
+    }
+    var l = leesLogin();
+    if (klant) $('l-klant').value = klant;
+    if (l && l.klant && l.code) {
+      $('l-klant').value = l.klant;
+      probeerLogin(l.klant, l.code, true);
+    }
+  })();
+})();
+</script>
+</body>
+</html>
