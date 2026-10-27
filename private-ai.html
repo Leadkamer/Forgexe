@@ -276,6 +276,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .faq-a{padding-top:.85rem;font-family:var(--head);font-size:.94rem;color:var(--ink-dim);line-height:1.65;max-width:70ch}
 @media(max-width:900px){.why-grid,.koepel-card{grid-template-columns:1fr}.koepel-card{gap:1.4rem;padding:1.6rem 1.3rem}.price-band{padding:1.5rem 1.3rem}}
 </style>
+<style id="lm-css">
+.lm-band{display:grid;grid-template-columns:1.2fr .8fr;gap:2.4rem;align-items:center;background:#0a0b0e!important;color:#fff;border:none!important}
+.lm-band .eyebrow{color:var(--green)}
+.lm-band h2{font-family:var(--head);font-weight:700;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.08;letter-spacing:-.025em;margin-bottom:.9rem;color:#fff}
+.lm-band h2 em{font-style:italic;font-weight:600;color:var(--green)}
+.lm-band p{font-family:var(--head);font-size:.98rem;color:rgba(255,255,255,.72);line-height:1.6;max-width:56ch;margin-bottom:1.6rem}
+.lm-mini{display:flex;flex-direction:column;gap:8px;font-family:var(--head);font-size:.86rem}
+.lm-mini div{display:flex;align-items:center;justify-content:space-between;gap:.8rem;background:#171d26;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.7rem .9rem;color:rgba(255,255,255,.88)}
+.lm-mini b{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:.2rem .5rem;border-radius:5px;white-space:nowrap}
+.lm-mini .a{background:#e2e7ee;color:#334155}.lm-mini .b{background:var(--green);color:#052e16}.lm-mini .c{background:#fff;color:#0a0b0e}
+@media(max-width:900px){.lm-band{grid-template-columns:1fr;gap:1.6rem}}
+</style>
 </head>
 <body>
 <div class="shell">
@@ -364,6 +376,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
 </section>
 
+<section class="section-card reveal lm-band">
+  <div>
+    <span class="eyebrow">&gt; C:\gratis\ai-beslisboom</span>
+    <h2>Mag dit in <em>ChatGPT</em>? Check het in een minuut.</h2>
+    <p>Twijfel je of je gegevens een eigen omgeving nodig hebben? Hooguit zes vragen per taak, met direct je uitkomst. De complete beslisboom krijg je erbij als PDF, om op te hangen of te delen met je collega's.</p>
+    <a href="/ai-beslisboom" class="btn-pill primary">Doe de check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  </div>
+  <div class="lm-mini" aria-hidden="true">
+    <div>Openbare tekst herschrijven<b class="a">ROUTE 1</b></div>
+    <div>Offerte van een klant samenvatten<b class="b">ROUTE 2</b></div>
+    <div>Verzuimdossier analyseren<b class="c">ROUTE 3/4</b></div>
+  </div>
+</section>
 <section class="section-card rel-block">
   <span class="rel-eyebrow">&gt; C:\verder-lezen</span>
   <h2 class="rel-h2">Verder lezen.</h2>

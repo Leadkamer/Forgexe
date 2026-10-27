@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>AI-beslisboom: mag dit in ChatGPT? | Forgexe</title>
+<meta name="description" content="Mag je klantgegevens in ChatGPT of Claude zetten? Doe de gratis check: hooguit zes vragen, direct je uitkomst. Met de complete AI-beslisboom als PDF.">
+<meta property="og:title" content="AI-beslisboom: mag dit in ChatGPT? | Forgexe">
+<meta property="og:description" content="Mag je klantgegevens in ChatGPT of Claude zetten? Doe de gratis check: hooguit zes vragen, direct je uitkomst. Met de complete AI-beslisboom als PDF.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.forgexe.nl/ai-beslisboom">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<style>:root{--mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;--green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;--amber:#f5a623;--amber-lt:#ffc247;--page-bg:#f4f6f8;--card-bg:#ffffff;--ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;--line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);--radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;--tr:.32s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:#052e16}
+img{max-width:100%;height:auto;display:block}
+.shell{max-width:1480px;margin:0 auto;padding:18px}
+nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.8rem;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:0 6px 24px rgba(10,11,14,.04)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.nav-center{display:flex;align-items:center;gap:.25rem}
+.nav-center a{position:relative;color:var(--ink-dim);text-decoration:none;font-family:var(--head);font-size:.88rem;font-weight:500;padding:.5rem 1rem;transition:color var(--tr)}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;height:2px;background:var(--green);border-radius:1px}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.75rem 1.2rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);border:none;cursor:pointer}
+.nav-cta:hover{background:#000;transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.hamburger span{width:14px;height:1.5px;background:var(--ink)}
+.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line)}
+@media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--green)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+.page-hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:22ch}
+.page-hero h1 em{font-style:italic;font-weight:600;color:var(--green)}
+.page-hero p.lead{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.18rem);color:var(--ink-dim);max-width:60ch;line-height:1.55;margin-bottom:2rem;font-weight:400}
+.section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;border:1px solid var(--line)}
+@media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.section-h2{font-family:var(--head);font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
+.section-sub{font-family:var(--head);font-size:1rem;color:var(--ink-dim);max-width:580px;line-height:1.65;font-weight:400}
+.steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:3rem}
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr}}
+.step-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem 1.8rem}
+.step-num{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:1rem}
+.step-card h3{font-family:var(--head);font-size:1.2rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:.7rem}
+.step-card p{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);line-height:1.55}
+.cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
+.cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
+.cta-card h2 em{font-style:italic;font-weight:800}
+.cta-card p{font-family:var(--head);font-size:.96rem;color:#052e16;opacity:.85;margin-bottom:2rem;max-width:480px;line-height:1.55}
+.cta-card .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:900px){.cta-card{padding:2.5rem 1.6rem}}
+.btn-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head);font-weight:600;font-size:.88rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all var(--tr)}
+.btn-pill svg{width:14px;height:14px}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
+.btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-pill.primary{background:var(--green);color:#052e16}
+.btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
+footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:1.4fr 1.1fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
+.foot-brand{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.foot-brand-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.foot-desc{font-family:var(--head);font-size:.85rem;color:var(--ink-dim);line-height:1.55;max-width:280px;margin-bottom:1rem}
+.foot-col-title{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.foot-col a{display:block;font-family:var(--head);font-size:.86rem;color:var(--ink);text-decoration:none;margin-bottom:.5rem;transition:color var(--tr)}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
+.foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
+.js .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+/* ==FORGEXE-MOBILE-FIX== */
+html,body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+@media(max-width:760px){
+  .shell{padding:10px}
+  nav{padding:.7rem 1rem!important;gap:.5rem}
+  .brand{flex-shrink:0;min-width:0}
+  .brand-text{font-size:.92rem;letter-spacing:.04em;white-space:nowrap}
+  .nav-cta{padding:.55rem .85rem!important;font-size:.72rem!important;gap:.35rem;white-space:nowrap;flex-shrink:0}
+  .nav-cta svg{width:11px;height:11px;flex-shrink:0}
+  .hamburger{display:flex!important;flex-shrink:0}
+  .nav-center,.nav-right .lang-pill{display:none!important}
+  .page-hero,.hero-main,.hero{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important;min-height:auto!important}
+  .section-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .cta-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .page-hero h1,.hero-main h1,.case-title-big{font-size:clamp(1.9rem,8vw,2.6rem)!important;line-height:1.05;max-width:100%}
+  .section-h2{font-size:clamp(1.55rem,7vw,2.2rem)!important;line-height:1.1}
+  .page-hero p.lead,.hero-main p.lead,.case-subtitle{font-size:.96rem!important;max-width:100%}
+  .section-sub{font-size:.92rem!important}
+  .btn-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .btn-row .btn-pill,.btn-row a.btn-pill{width:100%;justify-content:center}
+  .breadcrumb{font-size:.66rem;flex-wrap:wrap}
+  .eyebrow{font-size:.66rem}
+  footer{padding:2rem 1.2rem 1rem!important;border-radius:14px!important}
+  .footer-top{grid-template-columns:1fr 1fr!important;gap:1.5rem!important;padding-bottom:1.5rem!important}
+  .foot-bottom{flex-direction:column!important;align-items:flex-start!important;gap:.6rem;text-align:left;padding-top:1.2rem!important}
+  .hero-laptop{padding:.9rem!important;margin-top:1.5rem!important}
+  .case-stats{grid-template-columns:1fr 1fr!important;gap:12px!important;padding-top:1.5rem!important}
+  .case-stat-num{font-size:1.4rem!important}
+  .sidebar-card{position:static!important;padding:1.4rem!important;margin-top:1rem}
+  .detail-grid{gap:1.5rem!important}
+  .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .compare-table{min-width:600px}
+  .filter-row{overflow-x:auto;flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;margin-bottom:1.4rem!important;scrollbar-width:none}
+  .filter-row::-webkit-scrollbar{display:none}
+  .filter-pill{flex-shrink:0;white-space:nowrap}
+  .tile.span-6,.tile.span-4,.tile.span-3,.tile.span-2{grid-column:span 1!important}
+  .tile{min-height:240px!important;padding:1.4rem 1.2rem!important}
+  .tile-title{font-size:1.2rem!important;line-height:1.2}
+  .tile-desc{font-size:.86rem!important}
+  .train-grid{gap:12px!important}
+  .train-card{padding:1.8rem 1.4rem!important}
+  .train-price-num{font-size:1.9rem!important}
+  .tier-card{padding:1.8rem 1.4rem!important}
+  .tier-price-num{font-size:2rem!important}
+  .form-row{grid-template-columns:1fr!important}
+  .form-card{padding:1.6rem 1.2rem!important}
+  .form-actions{flex-direction:column!important;align-items:stretch!important}
+  .form-submit{width:100%;justify-content:center}
+  .info-card{padding:1.6rem 1.2rem!important;min-height:auto!important}
+  .info-item{grid-template-columns:6rem 1fr!important;gap:.7rem!important}
+  .location-card{padding:2rem 1.2rem!important;min-height:240px!important;border-radius:14px!important}
+  .loc-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .location-card .right-btn{position:static!important;margin-top:1rem;width:fit-content}
+  .steps-grid,.aanpak-grid,.result-grid,.principles-grid,.trust-row,.values-grid,.team-grid,.tiers-grid,.channels-grid,.builds-grid,.test-grid,.cases-grid,.next-grid,.pain-grid,.bottlenecks-grid,.tiles-grid{grid-template-columns:1fr!important;gap:12px!important}
+  .build-card[style*="grid-column:span 2"]{grid-column:span 1!important}
+  .hero h1{font-size:clamp(2rem,9vw,3.2rem)!important;line-height:1.02}
+  .hero p.lead{font-size:.98rem!important}
+  .hero-cta-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .hero-cta-row .btn-pill{width:100%;justify-content:center}
+  .hero-wave{opacity:.5}
+  .proof-bar{flex-direction:column!important;align-items:stretch!important;text-align:center;padding:1.4rem 1.2rem!important;gap:1rem!important;margin:10px 0!important;border-radius:14px!important}
+  .proof-logos{justify-content:center;gap:1.2rem}
+  .proof-cta{align-self:center;width:fit-content}
+  .dark-card{padding:2.4rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .dark-card .section-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .compare-foot{flex-direction:column!important;align-items:stretch!important;gap:.8rem;padding:1.2rem 1rem!important}
+  .compare-foot .btn-pill{width:100%;justify-content:center}
+  .trust-foot{flex-direction:column!important;align-items:stretch!important}
+  .trust-foot a{width:100%;justify-content:center}
+  .hero-meta{gap:.55rem!important;margin-bottom:1.4rem!important}
+  .hero-meta-item{font-size:.66rem!important}
+  .testimonial-inline{padding:1.4rem 1.2rem!important}
+  .testimonial-quote{font-size:1.05rem!important}
+  .approach-list{gap:.5rem!important}
+  .approach-item{padding:.8rem .9rem!important}
+  .approach-text{font-size:.86rem!important}
+  .train-note{flex-direction:column!important;gap:.6rem;padding:1rem 1.1rem!important}
+  .compare-wrap{margin-top:2rem!important}
+  .workspace-strip{display:none}
+  .ws-frame{display:none}
+}
+@media(max-width:380px){
+  .brand-text{font-size:.8rem;letter-spacing:.02em}
+  .nav-cta{padding:.5rem .65rem!important;font-size:.68rem!important}
+  .nav-cta svg{display:none}
+  .case-stats{grid-template-columns:1fr 1fr!important}
+  .info-item{grid-template-columns:5.2rem 1fr!important;gap:.5rem!important}
+  .info-label{font-size:.6rem!important}
+  .info-value{font-size:.85rem!important}
+}
+@media(max-width:600px){
+  .scan-modal{padding:.7rem!important}
+  .scan-card{padding:1.5rem 1.1rem!important;border-radius:14px}
+  .scan-question{font-size:1.2rem!important;line-height:1.2}
+}
+/* ==/FORGEXE-MOBILE-FIX== */
+</style>
+<!-- ==FORGEXE-SEO== -->
+<meta property="og:url" content="https://www.forgexe.nl/ai-beslisboom">
+<meta property="og:image" content="https://www.forgexe.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forgexe — AI-medewerkers voor het Nederlandse MKB">
+<meta property="og:site_name" content="Forgexe">
+<meta property="og:locale" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-beslisboom: mag dit in ChatGPT? | Forgexe">
+<meta name="twitter:description" content="Mag je klantgegevens in ChatGPT of Claude zetten? Doe de gratis check: hooguit zes vragen, direct je uitkomst. Met de complete AI-beslisboom als PDF.">
+<meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
+<meta name="theme-color" content="#f4f6f8">
+<meta name="author" content="Forgexe">
+<link rel="apple-touch-icon" href="favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.agents"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
+<!-- ==/FORGEXE-SEO== -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.forgexe.nl/"},{"@type":"ListItem","position":2,"name":"Diensten","item":"https://www.forgexe.nl/expertises"},{"@type":"ListItem","position":3,"name":"AI-beslisboom","item":"https://www.forgexe.nl/ai-beslisboom"}]}</script>
+<style id="rel-css">
+.rel-block .rel-eyebrow{font-family:var(--mono,monospace);font-size:.72rem;letter-spacing:.12em;color:var(--green,#34d399);font-weight:600;display:block;margin-bottom:.5rem}
+.rel-block .rel-h2{font-family:var(--head,sans-serif);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--ink,#fff);margin:0 0 .5rem;line-height:1.15}
+.rel-block .rel-h2 em{font-style:normal;color:var(--green,#34d399)}
+.rel-block .rel-sub{font-family:var(--head,sans-serif);font-size:.95rem;color:var(--ink-dim,#a0a8b8);margin:0 0 1.3rem;max-width:62ch;line-height:1.55}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;margin-top:1rem}
+.rel-item{display:flex;flex-direction:column;gap:.4rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;text-decoration:none;color:var(--ink,#fff);transition:border-color .2s,transform .2s}
+.rel-item:hover{border-color:var(--green,#34d399);transform:translateY(-2px)}
+.rel-kind{font-family:var(--mono,monospace);font-size:.66rem;letter-spacing:.14em;color:var(--green,#34d399);font-weight:600}
+.rel-title{font-family:var(--head,sans-serif);font-weight:600;font-size:.98rem;line-height:1.35;color:var(--ink,#fff)}
+.rel-desc{font-family:var(--head,sans-serif);font-size:.86rem;color:var(--ink-dim,#a0a8b8);line-height:1.5}
+.rel-inline{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line,rgba(255,255,255,.14))}
+.article-author{display:flex;gap:1rem;align-items:flex-start;margin-top:2.5rem;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px}
+.article-author-avatar{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--green,#34d399);color:#052e16;font-family:var(--mono,monospace);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.article-author-name{font-family:var(--head,sans-serif);font-weight:700;color:var(--ink,#fff);margin-bottom:.25rem}
+.article-author p{font-family:var(--head,sans-serif);font-size:.9rem;color:var(--ink-dim,#a0a8b8);line-height:1.55;margin:0}
+.article-author a{color:var(--green,#34d399);text-decoration:underline;text-underline-offset:3px}
+.lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
+@media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}.footer-top>div:first-child{grid-column:1/-1}.foot-col a{margin-bottom:.3rem;padding-block:.15rem}.foot-col-title{margin-bottom:.7rem}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Mag ik klantgegevens in ChatGPT zetten?", "acceptedAnswer": {"@type": "Answer", "text": "Alleen in een zakelijke versie met verwerkersovereenkomst, zoals ChatGPT Business of Enterprise, en dan nog niet meer dan nodig. In de gratis versie, Plus of Pro niet: daar is geen verwerkersovereenkomst, en dat los je niet op door training uit te zetten."}}, {"@type": "Question", "name": "Is ChatGPT Plus of Claude Pro zakelijk genoeg?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Plus, Pro en Max zijn privé-abonnementen onder consumentenvoorwaarden. Je betaalt voor meer gebruik, niet voor andere afspraken over je gegevens. Voor werk met klant- of bedrijfsgegevens heb je ChatGPT Business of Enterprise, of Claude Team of Enterprise nodig."}}, {"@type": "Question", "name": "Is training uitzetten niet genoeg?", "acceptedAnswer": {"@type": "Answer", "text": "Het lost één probleem op. Je invoer wordt dan niet gebruikt om modellen te verbeteren, maar er is nog steeds geen verwerkersovereenkomst en de aanbieder beslist zelf over je gegevens. Bovendien moet elke collega het schuifje zelf omzetten. Bij een zakelijk account staat het in het contract, voor iedereen."}}, {"@type": "Question", "name": "Is een zakelijk account dan AVG-proof?", "acceptedAnswer": {"@type": "Answer", "text": "Het is de basis, niet het hele verhaal. Daarnaast heb je een AI-beleid nodig, collega's die weten wat wel en niet mag, en bij gevoelige of veel persoonsgegevens een DPIA. De aanbieder bewaart je invoer meestal nog tot 30 dagen voor misbruikdetectie. Een juridisch oordeel over jouw situatie geven we niet; dat doet je functionaris gegevensbescherming of een jurist."}}, {"@type": "Question", "name": "Wat is het verschil tussen een EU-regio en een Europese aanbieder?", "acceptedAnswer": {"@type": "Answer", "text": "Bij een EU-regio staan de servers in Europa, bijvoorbeeld in Frankfurt, maar de aanbieder kan Amerikaans zijn (AWS, Google, Microsoft). Die valt onder de Amerikaanse CLOUD Act, waar de servers ook staan. Alleen een Europese aanbieder of een model in eigen beheer haalt dat weg. Meer daarover op onze pagina over Private AI."}}, {"@type": "Question", "name": "Een collega heeft al klantgegevens in een gratis tool gezet. Wat nu?", "acceptedAnswer": {"@type": "Answer", "text": "Dan is het mogelijk een datalek. Schat het risico in voor de mensen om wie het gaat en leg die inschatting vast. Is er risico, dan meld je het zonder onredelijke vertraging, en zo mogelijk binnen 72 uur, bij de Autoriteit Persoonsgegevens. Registreer het lek altijd intern, ook als je niet meldt. Regel daarna een zakelijk account en een AI-beleid, zodat het niet opnieuw gebeurt."}}, {"@type": "Question", "name": "Moeten mijn medewerkers een AI-training volgen?", "acceptedAnswer": {"@type": "Answer", "text": "Sinds februari 2025 moet je volgens de AI Act (artikel 4) zorgen voor voldoende AI-geletterdheid bij iedereen die namens je bedrijf met AI werkt. Een vaste vorm schrijft de wet niet voor. Een korte training met deze beslisboom is een goede start."}}]}</script>
+<style id="page-css">
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:start}
+@media(min-width:1000px){.hero-grid{grid-template-columns:1fr .95fr;gap:3.5rem}}
+.hero-ticks{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.3rem;font-family:var(--mono);font-size:.76rem;color:var(--ink);font-weight:600}
+.hero-ticks span::first-letter{color:var(--green)}
+.trust{display:flex;align-items:center;gap:.8rem;margin-top:1.8rem}
+.trust img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.trust-txt{font-family:var(--head);font-size:.84rem;color:var(--ink-dim);line-height:1.45}
+.trust-txt b{color:var(--ink);font-weight:600}
+
+/* check */
+.quiz{background:#0a0b0e;color:#fff;border-radius:18px;padding:22px 20px 24px;box-shadow:0 24px 60px rgba(10,11,14,.18);scroll-margin-top:96px;position:relative;overflow:hidden}
+.quiz::after{content:"";position:absolute;width:300px;height:300px;right:-140px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.18),transparent 65%);pointer-events:none}
+.quiz>*{position:relative;z-index:1}
+.q-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.q-step{font-family:var(--mono);font-size:.72rem;font-weight:600;color:#8d9bb5}
+.q-step b{color:#fff}
+.q-back{background:none;border:none;font-family:var(--head);font-size:.82rem;font-weight:600;color:#8d9bb5;cursor:pointer;padding:8px 0 8px 8px;min-height:40px;visibility:hidden}
+.q-back.on{visibility:visible}
+.q-back:hover{color:#fff}
+.q-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:18px}
+.q-bar i{display:block;height:100%;width:100%;background:var(--green);border-radius:4px;transform:scaleX(0);transform-origin:left center;transition:transform .35s ease}
+.q-h{font-family:var(--head);font-size:1.32rem;font-weight:700;line-height:1.2;letter-spacing:-.015em;margin-bottom:6px}
+.q-s{font-family:var(--head);font-size:.88rem;color:rgba(255,255,255,.66);line-height:1.5;margin-bottom:16px}
+.opts{display:grid;grid-template-columns:1fr;gap:9px}
+@media(min-width:520px){.opts{grid-template-columns:1fr 1fr}}
+.opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;min-height:58px;padding:12px 14px;text-align:left;background:#171d26;border:1.5px solid rgba(255,255,255,.1);border-radius:11px;font-family:var(--head);color:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.opt b{font-size:1rem;font-weight:600}
+.opt span{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.35}
+.opt:hover{border-color:var(--green);background:#1c2430}
+.opt:active{transform:scale(.99)}
+.opt.sel{border-color:var(--green);background:rgba(52,211,153,.14)}
+.q-foot{margin-top:14px;font-family:var(--mono);font-size:.7rem;color:#8d9bb5;text-align:center}
+.q-panel{animation:qin .3s ease}
+@keyframes qin{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+
+.r-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;color:#8d9bb5;margin-bottom:10px}
+.r-badge{display:inline-block;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:.3rem .65rem;border-radius:6px;margin-bottom:.7rem}
+.r-badge.r1{background:#e2e7ee;color:#334155}.r-badge.r2{background:var(--green);color:#052e16}.r-badge.r3{background:#fff;color:#0a0b0e}.r-badge.r4{background:#67e8f9;color:#083344}.r-badge.stop{background:#fb923c;color:#431407}.r-badge.nda{background:#fde68a;color:#422006}
+.r-h{font-family:var(--head);font-size:1.4rem;font-weight:700;line-height:1.18;letter-spacing:-.015em;margin-bottom:.6rem}
+.r-txt{font-family:var(--head);font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.78);margin-bottom:.8rem}
+.r-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin:0 0 1rem}
+.r-list li{font-family:var(--head);font-size:.88rem;line-height:1.45;color:rgba(255,255,255,.85);padding-left:1.4rem;position:relative}
+.r-list li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--green);font-weight:700}
+.r-next{font-family:var(--head);font-size:.86rem;color:rgba(255,255,255,.66);margin-bottom:1.2rem}
+.r-next a{color:var(--green);font-weight:600;text-decoration:none}
+.r-next a:hover{text-decoration:underline}
+.r-again{background:none;border:none;font-family:var(--head);font-size:.8rem;font-weight:600;color:#8d9bb5;cursor:pointer;padding:6px 0;margin-top:.4rem}
+.r-again:hover{color:#fff}
+
+/* formulier (in de check en in het downloadblok) */
+.lm-form{border-top:1px solid rgba(255,255,255,.1);padding-top:1.1rem}
+.lm-form-h{font-family:var(--head);font-size:1.1rem;font-weight:700;line-height:1.25;margin-bottom:.25rem}
+.lm-form-s{font-family:var(--head);font-size:.86rem;color:rgba(255,255,255,.66);line-height:1.5;margin-bottom:.9rem}
+.fld{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.fld label{font-family:var(--head);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85)}
+.fld input{width:100%;padding:12px 13px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;font-family:var(--head);font-size:16px;color:#fff;background:#171d26;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.fld input::placeholder{color:rgba(255,255,255,.35)}
+.fld input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+.fld input.err{border-color:#f87171}
+.row2{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:520px){.row2{grid-template-columns:1fr 1fr;column-gap:10px}}
+.submit{width:100%;min-height:52px;padding:14px 16px;margin-top:4px;background:var(--green);color:#052e16;font-family:var(--head);font-size:1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:background .2s,transform .2s}
+.submit:hover{background:var(--green-lt);transform:translateY(-1px)}
+.submit:disabled{cursor:default;transform:none}
+.submit.is-err{background:#ef4444;color:#fff}
+.note{text-align:center;font-family:var(--head);font-size:.76rem;color:rgba(255,255,255,.5);margin-top:9px;line-height:1.5}
+.note a{color:rgba(255,255,255,.7)}
+.done{background:rgba(52,211,153,.12);border:1.5px solid rgba(52,211,153,.55);border-radius:12px;padding:16px}
+.done-h{font-family:var(--head);font-size:1.02rem;font-weight:700;margin-bottom:6px}
+.done p{font-family:var(--head);font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.82);margin-bottom:.8rem}
+.done a.dl{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:#052e16;font-family:var(--head);font-weight:700;font-size:.9rem;text-decoration:none;padding:.7rem 1.1rem;border-radius:9px}
+
+/* routes */
+.route-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:2.6rem}
+@media(min-width:700px){.route-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1200px){.route-grid{grid-template-columns:repeat(4,1fr)}}
+.route{background:#fafbfc;border:1px solid var(--line);border-top:4px solid;border-radius:var(--radius-md);padding:1.6rem 1.4rem}
+.route.r1{border-top-color:#8d9bb5}.route.r2{border-top-color:var(--green)}.route.r3{border-top-color:#0a0b0e}.route.r4{border-top-color:#0e7490}
+.route .rn{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--ink-mut);margin-bottom:.7rem}
+.route h3{font-family:var(--head);font-size:1.15rem;font-weight:700;letter-spacing:-.015em;margin-bottom:.5rem}
+.route .vb{font-family:var(--head);font-size:.84rem;color:var(--ink-dim);line-height:1.5;margin-bottom:.9rem}
+.route dl{font-family:var(--head);font-size:.86rem;line-height:1.5}
+.route dt{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--ink-mut);text-transform:uppercase;margin-top:.6rem}
+.route dd{color:var(--ink)}
+
+/* privé vs zakelijk */
+.vs-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:2.6rem}
+@media(min-width:800px){.vs-grid{grid-template-columns:1fr 1fr}}
+.vs{border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem 1.6rem;background:#fff;border-top:4px solid}
+.vs.prive{border-top-color:#ef4444}.vs.zak{border-top-color:var(--green)}
+.vs h3{font-family:var(--head);font-size:1.25rem;font-weight:700;letter-spacing:-.015em;margin-bottom:.3rem}
+.vs .wie{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);margin-bottom:1rem;line-height:1.5}
+.vs ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.vs li{font-family:var(--head);font-size:.92rem;line-height:1.5;color:var(--ink-dim);padding-left:1.4rem;position:relative}
+.vs.prive li::before{content:"\2715";position:absolute;left:0;color:#ef4444;font-weight:700}
+.vs.zak li::before{content:"\2713";position:absolute;left:0;color:var(--green-deep);font-weight:700}
+.vs li b{color:var(--ink);font-weight:600}
+.vs .oordeel{margin-top:1.1rem;font-family:var(--head);font-weight:700;font-size:.95rem}
+.vs.prive .oordeel{color:#dc2626}.vs.zak .oordeel{color:var(--green-deep)}
+.tips{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+@media(min-width:800px){.tips{grid-template-columns:1fr 1fr}}
+.tip{display:flex;gap:.9rem;align-items:flex-start;background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.2rem 1.3rem;font-family:var(--head);font-size:.9rem;line-height:1.55;color:var(--ink-dim)}
+.tip b{color:var(--ink)}
+.tip i{flex-shrink:0;width:6px;align-self:stretch;background:var(--green);border-radius:3px}
+
+/* checklist + download */
+.check-list{list-style:none;display:grid;grid-template-columns:1fr;gap:.7rem 2rem;margin-top:2rem}
+@media(min-width:800px){.check-list{grid-template-columns:1fr 1fr}}
+.check-list li{font-family:var(--head);font-size:.95rem;line-height:1.5;color:var(--ink);padding-left:1.9rem;position:relative}
+.check-list li::before{content:'\2713';position:absolute;left:0;top:.1rem;width:20px;height:20px;border-radius:50%;background:var(--green-soft);color:#052e16;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700}
+.check-list li span{display:block;font-size:.84rem;color:var(--ink-dim)}
+.dl-band{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;margin-top:2.6rem;padding:2.2rem 1.6rem;background:#0a0b0e;border-radius:var(--radius-md);color:#fff}
+@media(min-width:900px){.dl-band{grid-template-columns:.9fr 1.1fr;padding:2.6rem 2.6rem;gap:3rem}}
+.dl-band .pb-label{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;margin-bottom:.7rem}
+.dl-band h3{font-family:var(--head);font-size:1.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:.7rem}
+.dl-band p{font-family:var(--head);font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.6}
+.dl-band .lm-form{border-top:none;padding-top:0}
+.pdf-mock{display:flex;gap:10px;margin-top:1.3rem}
+.pdf-mock div{flex:1;max-width:120px;aspect-ratio:210/297;background:#fff;border-radius:4px;padding:8px 7px;display:flex;flex-direction:column;gap:4px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.pdf-mock div:nth-child(2){transform:translateY(10px)}
+.pdf-mock i{display:block;height:5px;border-radius:2px;background:#e2e7ee}
+.pdf-mock i.g{background:var(--green)}.pdf-mock i.d{background:#0a0b0e;width:70%}.pdf-mock i.s{width:55%}
+.honest-note{display:flex;gap:.8rem;align-items:flex-start;margin-top:1.8rem;max-width:760px;font-family:var(--head);font-size:.9rem;color:var(--ink-dim);line-height:1.6}
+.honest-note svg{flex-shrink:0;margin-top:.15rem}
+
+.faq-list{margin-top:2.6rem;max-width:820px}
+.faq-list details{border-bottom:1px solid var(--line);padding:1.25rem 0}
+.faq-list summary{font-family:var(--head);font-weight:600;font-size:1.05rem;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:'+';font-family:var(--mono);color:var(--green);font-size:1.2rem;font-weight:600;flex-shrink:0}
+.faq-list details[open] summary::after{content:'\2013'}
+.faq-a{padding-top:.85rem;font-family:var(--head);font-size:.94rem;color:var(--ink-dim);line-height:1.65;max-width:70ch}
+@media(max-width:760px){.quiz{padding:18px 15px 20px}.q-h{font-size:1.18rem}.dl-band{padding:1.8rem 1.2rem}}
+@media(prefers-reduced-motion:reduce){.q-panel{animation:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav>
+  <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
+  <div class="nav-center"><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises" class="active">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
+    <a href="/contact">Contact</a></div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <button class="nav-cta" type="button" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+
+<header class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/expertises">Diensten</a> &middot; <span>AI-beslisboom</span></div>
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">&gt; C:\tools\ai-beslisboom</span>
+      <h1>Mag dit in <em>ChatGPT</em>?</h1>
+      <p class="lead">Klantgegevens, offertes, tekeningen: niet alles hoort in elke AI-tool. Beantwoord hooguit zes vragen en je ziet welke route past bij wat je wilt invoeren. Een gratis tool, een zakelijk account, een eigen EU-omgeving of je eigen server.</p>
+      <div class="hero-ticks"><span>&#10003; Uitkomst direct in beeld</span><span>&#10003; Geen e-mailadres nodig</span><span>&#10003; Complete beslisboom als PDF</span></div>
+      <div class="trust">
+        <img src="/trainer-sedat.webp" alt="Sedat Ayar" width="44" height="44">
+        <div class="trust-txt"><b>Sedat Ayar</b> · Forgexe<br>Richt AI in voor MKB-bedrijven en geeft AI-trainingen</div>
+      </div>
+    </div>
+    <div class="quiz" id="check" aria-live="polite"><div id="quizBody"></div></div>
+  </div>
+</header>
+
+<section class="section-card reveal" id="routes">
+  <span class="eyebrow">&gt; C:\vier-routes</span>
+  <h2 class="section-h2">Vier routes, van gratis tot <em style="font-style:italic;color:var(--green)">eigen server</em>.</h2>
+  <p class="section-sub">Welke route past, hangt af van wat je invoert, niet van welk model je gebruikt. Het verschil zit in de versie en het contract.</p>
+  <div class="route-grid">
+    <div class="route r1"><div class="rn">&gt; ROUTE_01</div><h3>Gratis of privé</h3><p class="vb">ChatGPT Free, Plus en Pro, Claude Free, Pro en Max, gratis Copilot of Gemini.</p><dl><dt>Waarvoor</dt><dd>Algemene vragen, openbare teksten, een eerste opzet.</dd><dt>Let op</dt><dd>Geen verwerkersovereenkomst, dus nooit klant- of bedrijfsgegevens.</dd></dl></div>
+    <div class="route r2"><div class="rn">&gt; ROUTE_02</div><h3>Zakelijk account</h3><p class="vb">ChatGPT Business of Enterprise, Claude Team of Enterprise, Copilot in Microsoft 365, Gemini in Google Workspace.</p><dl><dt>Waarvoor</dt><dd>Het meeste dagelijkse werk. De standaardroute.</dd><dt>Let op</dt><dd>Invoer wordt meestal tot 30 dagen bewaard, en de aanbieder is Amerikaans.</dd></dl></div>
+    <div class="route r3"><div class="rn">&gt; ROUTE_03</div><h3>Eigen EU-omgeving</h3><p class="vb">Een model via een EU-regio (AWS Bedrock, Google Vertex, Azure) of een Europese aanbieder, met de automatisering erbij.</p><dl><dt>Waarvoor</dt><dd>Gevoelige gegevens en koppelingen met je eigen systemen.</dd><dt>Let op</dt><dd>Vraagt inrichting en beheer. Bij een Amerikaans bedrijf blijft de CLOUD Act gelden.</dd></dl></div>
+    <div class="route r4"><div class="rn">&gt; ROUTE_04</div><h3>Eigen server</h3><p class="vb">Een open model op je eigen hardware, binnen je eigen netwerk.</p><dl><dt>Waarvoor</dt><dd>NDA's die externe diensten uitsluiten, en je kroonjuwelen.</dd><dt>Let op</dt><dd>Hardware en beheer nodig, en open modellen zijn minder krachtig.</dd></dl></div>
+  </div>
+</section>
+
+<section class="section-card reveal" id="prive-zakelijk">
+  <span class="eyebrow">&gt; C:\prive-of-zakelijk</span>
+  <h2 class="section-h2">ChatGPT en Claude: privé of zakelijk?</h2>
+  <p class="section-sub">Ook het duurste privé-abonnement blijft een consumentenversie. Het verschil met zakelijk zit in wie er over je gegevens beslist.</p>
+  <div class="vs-grid">
+    <div class="vs prive">
+      <h3>Privé-abonnement</h3>
+      <div class="wie">ChatGPT Free · Plus · Pro &nbsp;|&nbsp; Claude Free · Pro · Max</div>
+      <ul>
+        <li>De aanbieder beslist zelf wat er met je gegevens gebeurt.</li>
+        <li><b>Training uitzetten</b> is een schuifje dat ieder zelf moet omzetten. ChatGPT: Instellingen &rarr; Gegevensbeheer. Claude: Instellingen &rarr; Privacy.</li>
+        <li><b>Geen verwerkersovereenkomst</b>, ook niet met training uit.</li>
+      </ul>
+      <div class="oordeel">Niet voor klant- of bedrijfsgegevens</div>
+    </div>
+    <div class="vs zak">
+      <h3>Zakelijk account</h3>
+      <div class="wie">ChatGPT Business · Enterprise &nbsp;|&nbsp; Claude Team · Enterprise</div>
+      <ul>
+        <li>De aanbieder werkt voor jou, als <b>verwerker</b> (art. 28 AVG).</li>
+        <li><b>Geen training</b> op je gegevens: vastgelegd in het contract, voor het hele bedrijf.</li>
+        <li><b>Centraal beheer</b>: jij bepaalt wie erin mag en haalt iemand eruit bij vertrek. Claude Team kan al vanaf 2 gebruikers.</li>
+      </ul>
+      <div class="oordeel">De standaardroute voor werk met bedrijfsgegevens</div>
+    </div>
+  </div>
+  <div class="tips">
+    <div class="tip"><i></i><div><b>Geen duimpjes bij gevoelige gesprekken.</b> Bij Claude mag de aanbieder een gesprek waarop je feedback geeft gebruiken voor training, ook in een zakelijk account. Bij Enterprise kan de beheerder de knoppen uitzetten.</div></div>
+    <div class="tip"><i></i><div><b>Zit je echt in het bedrijfsaccount?</b> Het grootste risico is de collega die thuis even het eigen privé-account pakt. Voor Copilot en Gemini geldt hetzelfde: alleen met je werkaccount val je onder het zakelijke contract.</div></div>
+  </div>
+</section>
+
+<section class="section-card reveal" id="download">
+  <span class="eyebrow">&gt; C:\altijd-regelen</span>
+  <h2 class="section-h2">Wat je altijd regelt, welke route je ook kiest.</h2>
+  <ul class="check-list">
+    <li>Verwerkersovereenkomst getekend en bewaard<span>De Autoriteit Persoonsgegevens kan erom vragen.</span></li>
+    <li>Iedereen werkt in het bedrijfsaccount<span>Niet in een privé-account, ook niet thuis.</span></li>
+    <li>Een AI-beleid<span>Welke tool voor welk werk, en wat nooit.</span></li>
+    <li>AI-geletterdheid voor wie ermee werkt<span>Verplicht onder de AI Act (art. 4), sinds februari 2025.</span></li>
+    <li>Afspraken met klanten naast je AI-gebruik gelegd<span>Vooral NDA's en inkoopvoorwaarden.</span></li>
+    <li>Afgesproken wie een mogelijk datalek beoordeelt<span>Melden bij de AP moet binnen 72 uur als er risico is.</span></li>
+  </ul>
+  <div class="dl-band">
+    <div>
+      <div class="pb-label">&gt; GRATIS DOWNLOAD</div>
+      <h3>De complete beslisboom als PDF</h3>
+      <p>Twee pagina's: de zes vragen per taak, en wat je als bedrijf inricht, met de checklist en de vier routes op een rij. Om op te hangen of te delen met je collega's.</p>
+      <div class="pdf-mock" aria-hidden="true"><div><i class="g"></i><i class="d"></i><i></i><i class="s"></i><i></i><i class="g"></i><i></i><i class="s"></i></div><div><i class="g"></i><i class="d"></i><i></i><i></i><i class="s"></i><i class="g"></i><i></i><i></i></div></div>
+    </div>
+    <div id="dlForm"></div>
+  </div>
+  <div class="honest-note"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#0a0b0e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span>Dit is een algemene richtlijn, stand oktober 2026, en geen juridisch advies. Voorwaarden van aanbieders veranderen geregeld. Twijfel je over een specifieke situatie, leg die dan voor aan je functionaris gegevensbescherming of een jurist.</span></div>
+</section>
+
+<section class="section-card reveal">
+  <span class="eyebrow">&gt; C:\faq</span>
+  <h2 class="section-h2">Veelgestelde vragen.</h2>
+  <div class="faq-list">
+    <details><summary>Mag ik klantgegevens in ChatGPT zetten?</summary><div class="faq-a">Alleen in een zakelijke versie met verwerkersovereenkomst, zoals ChatGPT Business of Enterprise, en dan nog niet meer dan nodig. In de gratis versie, Plus of Pro niet: daar is geen verwerkersovereenkomst, en dat los je niet op door training uit te zetten.</div></details>
+    <details><summary>Is ChatGPT Plus of Claude Pro zakelijk genoeg?</summary><div class="faq-a">Nee. Plus, Pro en Max zijn privé-abonnementen onder consumentenvoorwaarden. Je betaalt voor meer gebruik, niet voor andere afspraken over je gegevens. Voor werk met klant- of bedrijfsgegevens heb je ChatGPT Business of Enterprise, of Claude Team of Enterprise nodig.</div></details>
+    <details><summary>Is training uitzetten niet genoeg?</summary><div class="faq-a">Het lost één probleem op. Je invoer wordt dan niet gebruikt om modellen te verbeteren, maar er is nog steeds geen verwerkersovereenkomst en de aanbieder beslist zelf over je gegevens. Bovendien moet elke collega het schuifje zelf omzetten. Bij een zakelijk account staat het in het contract, voor iedereen.</div></details>
+    <details><summary>Is een zakelijk account dan AVG-proof?</summary><div class="faq-a">Het is de basis, niet het hele verhaal. Daarnaast heb je een AI-beleid nodig, collega's die weten wat wel en niet mag, en bij gevoelige of veel persoonsgegevens een DPIA. De aanbieder bewaart je invoer meestal nog tot 30 dagen voor misbruikdetectie. Een juridisch oordeel over jouw situatie geven we niet; dat doet je functionaris gegevensbescherming of een jurist.</div></details>
+    <details><summary>Wat is het verschil tussen een EU-regio en een Europese aanbieder?</summary><div class="faq-a">Bij een EU-regio staan de servers in Europa, bijvoorbeeld in Frankfurt, maar de aanbieder kan Amerikaans zijn (AWS, Google, Microsoft). Die valt onder de Amerikaanse CLOUD Act, waar de servers ook staan. Alleen een Europese aanbieder of een model in eigen beheer haalt dat weg. Meer daarover op onze pagina over <a href="/private-ai">Private AI</a>.</div></details>
+    <details><summary>Een collega heeft al klantgegevens in een gratis tool gezet. Wat nu?</summary><div class="faq-a">Dan is het mogelijk een datalek. Schat het risico in voor de mensen om wie het gaat en leg die inschatting vast. Is er risico, dan meld je het zonder onredelijke vertraging, en zo mogelijk binnen 72 uur, bij de Autoriteit Persoonsgegevens. Registreer het lek altijd intern, ook als je niet meldt. Regel daarna een zakelijk account en een <a href="/ai-governance">AI-beleid</a>, zodat het niet opnieuw gebeurt.</div></details>
+    <details><summary>Moeten mijn medewerkers een AI-training volgen?</summary><div class="faq-a">Sinds februari 2025 moet je volgens de AI Act (artikel 4) zorgen voor voldoende AI-geletterdheid bij iedereen die namens je bedrijf met AI werkt. Een vaste vorm schrijft de wet niet voor. Een korte <a href="/ai-training">training</a> met deze beslisboom is een goede start.</div></details>
+  </div>
+</section>
+
+<section class="section-card rel-block">
+  <span class="rel-eyebrow">&gt; C:\verder-lezen</span>
+  <h2 class="rel-h2">Verder lezen.</h2>
+  <div class="rel-grid">
+    <a href="/ai-scan" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-scan: weten welke AI er nu al gebruikt wordt</span></a>
+    <a href="/ai-governance" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-governance: beleid en grip na de scan</span></a>
+    <a href="/private-ai" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">Private AI: AI in een eigen EU-omgeving</span></a>
+    <a href="/ai-act" class="rel-item"><span class="rel-kind">GIDS</span><span class="rel-title">De EU AI Act uitgelegd</span></a>
+  </div>
+</section>
+<section class="cta-card reveal">
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\volgende-stap</div>
+  <h2>Weet je welke AI je collega's <em>nu al</em> gebruiken?</h2>
+  <p>De beslisboom helpt per taak. Met een AI-scan zie je wat er in je hele bedrijf gebeurt, en wat je moet regelen.</p>
+  <div class="btn-row">
+    <a href="/ai-scan" class="btn-pill dark">Bekijk de AI-scan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <a href="/private-ai" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Private AI</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand"><svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="foot-brand-text">FORGEXE</span></div>
+      <p class="foot-desc">Forgexe is een AI-automatiseringsbureau in Panningen (Limburg). We bouwen AI-medewerkers, AI-agents en n8n-automatiseringen voor het Nederlandse MKB.</p>
+    </div>
+    <div class="foot-col"><div class="foot-col-title">Diensten</div><a href="/ai-medewerker">AI-medewerker inhuren</a><a href="/ai-agent-laten-bouwen">AI-agent laten bouwen</a><a href="/ai-automatisering-laten-bouwen">AI-automatisering laten bouwen</a><a href="/ai-automatisering-limburg">AI-automatisering Limburg</a><a href="/ai-automatisering-eindhoven">AI-automatisering Eindhoven</a><a href="/n8n-specialist">n8n-specialist</a><a href="/leadgeneratie-automatiseren">Leadgeneratie</a><a href="/email-automatiseren">E-mail automatiseren</a><a href="/factuurverwerking-automatiseren">Factuurverwerking</a><a href="/ai-scan">AI-scan</a><a href="/expertises">Alle diensten</a></div><div class="foot-col"><div class="foot-col-title">Bedrijf</div><a href="/over-ons">Over ons</a><a href="/cases">Cases</a><a href="/blog">Blog</a><a href="/pricing">Prijzen</a><a href="/wat-kost-ai-automatisering">Wat kost AI?</a><a href="/ai-training">Trainingen</a><a href="/ai-act">AI Act</a><a href="/contact">Contact</a></div>
+    <div class="foot-col"><div class="foot-col-title">Branches</div><a href="/branche-maakindustrie">Maakindustrie</a><a href="/branche-technische-groothandel">Technische Groothandel</a><a href="/branche-zakelijke-dienstverlening">Zakelijke Dienstverlening</a><a href="/branche-marketing-bureaus">Marketing &amp; Bureaus</a></div>
+    <div class="foot-col"><div class="foot-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.agents">Instagram</a></div>
+  </div>
+  <div class="foot-bottom"><div>&copy; 2026 Forgexe</div><div class="foot-tagline">C:\&gt; execute growth</div><div style="display:flex;gap:1.2rem"><a href="/privacy" style="color:var(--ink-mut);text-decoration:none">Privacy</a><a href="/voorwaarden" style="color:var(--ink-mut);text-decoration:none">Voorwaarden</a><a href="/disclaimer" style="color:var(--ink-mut);text-decoration:none">Disclaimer</a></div></div>
+</footer>
+
+</div>
+<script>
+var WEBHOOK = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-ai-beslisboom';
+var PDF_URL = '/ai-beslisboom-forgexe.pdf';
+
+/* De beslisboom: per vraag twee antwoorden; elk antwoord gaat naar een volgende vraag of naar een uitkomst. */
+var VRAGEN = {
+  q1: { h: 'Zitten er gegevens in die niet openbaar zijn?', s: 'Denk aan namen of gegevens van klanten en medewerkers, prijzen, offertes, tekeningen, contracten of cijfers.',
+        opts: [{ l: 'Nee', d: 'Algemene vraag of openbare tekst', naar: 'r1a' }, { l: 'Ja', d: 'Er zit iets in dat niet openbaar is', naar: 'q2' }] },
+  q2: { h: 'Kun je de vraag ook stellen zonder die gegevens?', s: 'Vaak heb je alleen de kern nodig, niet de namen en details.',
+        opts: [{ l: 'Ja', d: 'De kern is genoeg', naar: 'r1b' }, { l: 'Nee', d: 'Ik heb de gegevens echt nodig', naar: 'q3' }] },
+  q3: { h: 'Heb je met een klant afgesproken dat gegevens binnen blijven?', s: 'Een NDA, een geheimhoudingsclausule of inkoopvoorwaarden over clouddiensten.',
+        opts: [{ l: 'Ja', d: 'Er ligt zo\u2019n afspraak', naar: 'nda' }, { l: 'Nee', d: 'Geen afspraak daarover', naar: 'q4' }] },
+  q4: { h: 'Werk je in een zakelijke versie met verwerkersovereenkomst?', s: 'Zoals ChatGPT Business, Claude Team, Copilot in Microsoft 365 of Gemini in Workspace. Plus, Pro en Max tellen niet.',
+        opts: [{ l: 'Ja', d: 'Bedrijfsaccount met contract', naar: 'q5' }, { l: 'Nee of weet ik niet', d: 'Gratis, privé of onduidelijk', naar: 'stop' }] },
+  q5: { h: 'Gaat het om gevoelige persoonsgegevens of je kroonjuwelen?', s: 'Gezondheid en verzuim, BSN, personeelsdossiers. Of rekenregels, recepturen, broncode en strategische plannen.',
+        opts: [{ l: 'Ja', d: 'Gevoelig of bedrijfskritisch', naar: 'r34' }, { l: 'Nee', d: 'Gewone bedrijfsgegevens', naar: 'q6' }] },
+  q6: { h: 'Moet AI dit elke dag doen, gekoppeld aan je systemen?', s: 'ERP, CRM, mailbox of dossiers: dan is het geen losse vraag meer, maar een proces.',
+        opts: [{ l: 'Ja', d: 'Terugkerend en gekoppeld', naar: 'r3' }, { l: 'Nee', d: 'Losse taken in een chat', naar: 'r2' }] }
+};
+var VOLGORDE = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'];
+
+var UITKOMST = {
+  r1a: { code: 'r1', badge: 'ROUTE 1', label: 'Route 1: elke tool mag', h: 'Elke tool mag, ook een gratis versie.',
+    t: 'Er zit niets in wat niet openbaar is. Een algemene vraag, een openbare tekst of een eerste opzet kun je in elke AI-tool kwijt.',
+    lijst: ['Werk je vaker met vaste teksten van je bedrijf, zoals huisstijl of productinfo? Zet die dan in een zakelijke versie.', 'Controleer wat eruit komt: AI levert een concept, jij blijft verantwoordelijk.'],
+    next: 'Gebruiken collega\u2019s AI ook voor klantwerk? <a href="/ai-scan">Met een AI-scan zie je waar het gebeurt.</a>' },
+  r1b: { code: 'r1', badge: 'ROUTE 1', label: 'Route 1: zonder gegevens', h: 'Stel de vraag zonder die gegevens.',
+    t: 'Dan mag elke tool. Vraag bijvoorbeeld \u201choe reageer ik op een klant die te laat betaalt?\u201d in plaats van de mail van die klant te plakken.',
+    lijst: ['Haal namen, bedragen en details eruit die je niet nodig hebt.', 'Hele documenten anonimiseren raden we af: het is veel werk en gaat snel mis.'],
+    next: 'Heb je de gegevens toch nodig? <a href="#" onclick="opnieuw(event)">Loop de check opnieuw door</a> en kies \u201cnee\u201d bij vraag 2.' },
+  nda: { code: 'nda', badge: 'EERST CHECKEN', label: 'Eerst de afspraak met de klant lezen', h: 'Lees eerst de afspraak met je klant.',
+    t: 'Een NDA of inkoopvoorwaarden kunnen bepalen waar gegevens wel en niet heen mogen. Die afspraak gaat voor.',
+    lijst: ['Sluit de afspraak elke externe dienst uit? Dan kan alleen route 4: een model op je eigen server.', 'Mag het met afspraken over locatie en toegang? Dan route 3: een eigen EU-omgeving.', 'Twijfel je? Dan niet met AI, of vraag het de klant.'],
+    next: 'Werk je vaak onder NDA? <a href="/private-ai">Bekijk hoe Private AI werkt.</a>' },
+  stop: { code: 'stop', badge: 'STOP', label: 'Stop: niet invoeren zonder zakelijk account', h: 'Niet invoeren.',
+    t: 'Een gratis of privé-abonnement, ook Plus, Pro of Max, heeft geen verwerkersovereenkomst. Dan horen er geen klant- of bedrijfsgegevens in, ook niet met training uit.',
+    lijst: ['Regel een zakelijk account, bijvoorbeeld binnen Microsoft 365 of Google Workspace als je dat al hebt.', 'Al gebeurd met persoonsgegevens? Mogelijk een datalek: risico inschatten, vastleggen, en bij risico binnen 72 uur melden bij de AP.'],
+    next: 'Wil je dit bedrijfsbreed regelen? <a href="/ai-governance">Zo helpen we met AI-beleid.</a>' },
+  r34: { code: 'r3', badge: 'ROUTE 3 OF 4', label: 'Route 3 of 4: eigen omgeving', h: 'Een eigen omgeving: in de EU of op je eigen server.',
+    t: 'Gevoelige persoonsgegevens en je kroonjuwelen horen niet in een standaard chat, ook niet in een zakelijke.',
+    lijst: ['Route 3: een model in een EU-regio, met vastgelegde toegang en bewaartermijn.', 'Route 4: een open model op je eigen server, als niets je netwerk uit mag.', 'Voer alleen in wat nodig is voor de taak.'],
+    next: '<a href="/private-ai">Zo richten we een eigen EU-omgeving in.</a>' },
+  r3: { code: 'r3', badge: 'ROUTE 3', label: 'Route 3: eigen EU-omgeving', h: 'Een AI-agent in je eigen omgeving.',
+    t: 'Moet AI dit elke dag doen, gekoppeld aan je systemen, dan is kopi\u00ebren en plakken in een chat foutgevoelig en niet te controleren.',
+    lijst: ['Een agent die in een EU-omgeving draait en met je ERP, CRM of mailbox werkt.', 'Toegang, logging en bewaartermijnen vastgelegd, zodat je het kunt uitleggen aan klant of toezichthouder.'],
+    next: '<a href="/private-ai">Bekijk Private AI</a> of <a href="/ai-agent-laten-bouwen">lees hoe we AI-agents bouwen.</a>' },
+  r2: { code: 'r2', badge: 'ROUTE 2', label: 'Route 2: zakelijk account', h: 'Je zakelijke account volstaat.',
+    t: 'Dit is de standaardroute: een zakelijke versie met verwerkersovereenkomst. Verdedigbaar, maar niet risicoloos.',
+    lijst: ['Werk in het bedrijfsaccount, niet in een privé-account.', 'Geen duimpjes of feedbackknoppen bij gevoelige gesprekken.', 'Leg in een AI-beleid vast welk werk wel en niet in AI mag.'],
+    next: 'Nog geen AI-beleid? <a href="/ai-governance">Zo pakken we dat aan.</a>' }
+};
+
+var pad = [];
+var antwoorden = {};
+var gestart = false;
+var uitkomst = null;
+var body = document.getElementById('quizBody');
+
+function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+function toonVraag(id) {
+  var v = VRAGEN[id];
+  var nr = VOLGORDE.indexOf(id) + 1;
+  var html = '<div class="q-panel">' +
+    '<div class="q-top"><span class="q-step">check // vraag <b>' + nr + '</b> van max. 6</span>' +
+    '<button type="button" class="q-back' + (pad.length > 1 ? ' on' : '') + '" onclick="terug()">\u2190 Terug</button></div>' +
+    '<div class="q-bar"><i style="transform:scaleX(' + ((nr - 1) / 6).toFixed(3) + ')"></i></div>' +
+    '<div class="q-h">' + esc(v.h) + '</div><div class="q-s">' + esc(v.s) + '</div><div class="opts">';
+  for (var i = 0; i < v.opts.length; i++) {
+    var o = v.opts[i];
+    html += '<button type="button" class="opt' + (antwoorden[id] === i ? ' sel' : '') + '" onclick="kies(\'' + id + '\',' + i + ',this)"><b>' + esc(o.l) + '</b><span>' + esc(o.d) + '</span></button>';
+  }
+  html += '</div>' + (nr === 1 ? '<div class="q-foot">hooguit 6 vragen \u00b7 uitkomst direct in beeld</div>' : '') + '</div>';
+  body.innerHTML = html;
+  var bar = body.querySelector('.q-bar i');
+  setTimeout(function() { bar.style.transform = 'scaleX(' + ((nr - 0.5) / 6).toFixed(3) + ')'; }, 30);
+}
+
+function kies(id, i, el) {
+  antwoorden[id] = i;
+  var knoppen = body.querySelectorAll('.opt');
+  for (var k = 0; k < knoppen.length; k++) knoppen[k].classList.remove('sel');
+  el.classList.add('sel');
+  if (!gestart) { gestart = true; if (window.fxTrackCustom) fxTrackCustom('AiBeslisboomStart', {}); }
+  var naar = VRAGEN[id].opts[i].naar;
+  setTimeout(function() {
+    if (VRAGEN[naar]) { pad.push(naar); toonVraag(naar); }
+    else { toonUitkomst(naar); }
+  }, 200);
+}
+
+function terug() {
+  if (pad.length > 1) { pad.pop(); toonVraag(pad[pad.length - 1]); }
+}
+
+function antwoordLabels() {
+  var labels = {};
+  for (var i = 0; i < pad.length; i++) {
+    var id = pad[i];
+    if (antwoorden[id] !== undefined) labels[VRAGEN[id].h] = VRAGEN[id].opts[antwoorden[id]].l;
+  }
+  return labels;
+}
+
+function formHtml(bron, kop, sub) {
+  return '<div class="lm-form" data-form="' + bron + '">' +
+    '<div class="lm-form-h">' + kop + '</div>' +
+    '<div class="lm-form-s">' + sub + '</div>' +
+    '<div class="row2">' +
+      '<div class="fld"><label for="n-' + bron + '">Je naam</label><input id="n-' + bron + '" data-field="naam" type="text" autocomplete="name" placeholder="Voor- en achternaam"></div>' +
+      '<div class="fld"><label for="b-' + bron + '">Bedrijf</label><input id="b-' + bron + '" data-field="bedrijf" type="text" autocomplete="organization" placeholder="Bedrijfsnaam"></div>' +
+    '</div>' +
+    '<div class="fld"><label for="e-' + bron + '">Zakelijk e-mailadres</label><input id="e-' + bron + '" data-field="email" type="email" inputmode="email" autocomplete="email" placeholder="naam@bedrijf.nl"></div>' +
+    '<button type="button" class="submit" onclick="aanvragen(this)">Stuur me de beslisboom \u2192</button>' +
+    '<p class="note">Je krijgt de PDF direct in beeld en in je mail. Geen nieuwsbrief zonder je toestemming. <a href="/privacy">Privacy</a></p>' +
+  '</div>';
+}
+
+function toonUitkomst(sleutel) {
+  uitkomst = UITKOMST[sleutel];
+  if (window.fxTrackCustom) fxTrackCustom('AiBeslisboomVoltooid', { route: uitkomst.code });
+  var lijst = '';
+  for (var i = 0; i < uitkomst.lijst.length; i++) lijst += '<li>' + esc(uitkomst.lijst[i]) + '</li>';
+  body.innerHTML = '<div class="q-panel">' +
+    '<div class="r-eyebrow">check // jouw uitkomst</div>' +
+    '<span class="r-badge ' + (sleutel === 'r34' ? 'r3' : uitkomst.code) + '">' + uitkomst.badge + '</span>' +
+    '<div class="r-h">' + esc(uitkomst.h) + '</div>' +
+    '<p class="r-txt">' + esc(uitkomst.t) + '</p>' +
+    '<ul class="r-list">' + lijst + '</ul>' +
+    '<p class="r-next">' + uitkomst.next + '</p>' +
+    formHtml('check', 'Neem de complete beslisboom mee', 'De PDF met alle zes vragen en wat je als bedrijf regelt. Handig voor je collega\u2019s.') +
+    '<button type="button" class="r-again" onclick="opnieuw(event)">\u21ba Opnieuw, voor een andere taak</button>' +
+  '</div>';
+  scrollNaar(document.getElementById('check'));
+}
+
+function opnieuw(e) {
+  if (e) e.preventDefault();
+  pad = ['q1']; antwoorden = {}; uitkomst = null;
+  toonVraag('q1'); scrollNaar(document.getElementById('check'));
+}
+
+function scrollNaar(el) {
+  var top = el.getBoundingClientRect().top + window.pageYOffset - 96;
+  if (Math.abs(window.pageYOffset - top) > 80) window.scrollTo({ top: top, behavior: 'smooth' });
+}
+
+/* Meta-velden voor de Conversions API (zelfde opzet als de andere landingspagina's). */
+function leesCookie(naam) {
+  var m = document.cookie.match('(^|;)\\s*' + naam + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : '';
+}
+function leadMeta() {
+  if (window.fxLeadMeta) { try { return window.fxLeadMeta(); } catch (e) {} }
+  var fbc = leesCookie('_fbc');
+  if (!fbc) {
+    try {
+      var fbclid = new URLSearchParams(location.search).get('fbclid');
+      if (fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    } catch (e) {}
+  }
+  return { fbc: fbc, fbp: leesCookie('_fbp'), event_id: 'lead-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10), event_source_url: location.href };
+}
+function utm(naam) { try { return new URLSearchParams(location.search).get(naam) || ''; } catch (e) { return ''; } }
+function geldigEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+function veld(wrap, naam) { return wrap.querySelector('[data-field="' + naam + '"]'); }
+function waarde(el) { return el ? el.value.trim() : ''; }
+
+function aanvragen(btn) {
+  var wrap = btn.closest('[data-form]');
+  var verplicht = [
+    { el: veld(wrap, 'naam'), ok: function(v) { return v.length > 1; } },
+    { el: veld(wrap, 'bedrijf'), ok: function(v) { return v.length > 1; } },
+    { el: veld(wrap, 'email'), ok: geldigEmail }
+  ];
+  var eerste = null;
+  for (var i = 0; i < verplicht.length; i++) {
+    var goed = verplicht[i].ok(waarde(verplicht[i].el));
+    verplicht[i].el.classList.toggle('err', !goed);
+    if (!goed && !eerste) eerste = verplicht[i].el;
+  }
+  if (eerste) { eerste.focus(); return; }
+
+  btn.textContent = 'Versturen...'; btn.disabled = true;
+  var meta = leadMeta();
+  var metCheck = wrap.getAttribute('data-form') === 'check' && uitkomst;
+  var data = {
+    type: 'download', bron: location.pathname + (metCheck ? ' (na de check)' : ' (downloadblok)'),
+    naam: waarde(veld(wrap, 'naam')), bedrijf: waarde(veld(wrap, 'bedrijf')), email: waarde(veld(wrap, 'email')),
+    route: metCheck ? uitkomst.code : '', route_label: metCheck ? uitkomst.label : '',
+    antwoord_labels: metCheck ? antwoordLabels() : {},
+    utm_source: utm('utm_source'), utm_campaign: utm('utm_campaign'), utm_content: utm('utm_content'),
+    datum: new Date().toISOString(),
+    fbc: meta.fbc, fbp: meta.fbp, event_id: meta.event_id, event_source_url: meta.event_source_url
+  };
+
+  fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+    .then(function(resp) {
+      if (resp.ok || resp.type === 'opaque') { gelukt(wrap, meta.event_id, data); }
+      else { throw new Error('http ' + resp.status); }
+    })
+    .catch(function() {
+      btn.textContent = 'Er ging iets mis, probeer het opnieuw'; btn.classList.add('is-err'); btn.disabled = false;
+      setTimeout(function() { btn.textContent = 'Stuur me de beslisboom \u2192'; btn.classList.remove('is-err'); }, 3000);
+    });
+}
+
+function gelukt(wrap, eventId, data) {
+  if (window.fxTrack) fxTrack('Lead', { content_name: 'ai-beslisboom', content_category: data.route || 'geen-check' }, eventId);
+  var voornaam = data.naam.split(/\s+/)[0];
+  wrap.innerHTML = '<div class="done"><div class="done-h">\u2713 Dank je, ' + esc(voornaam) + '. Hier is je beslisboom.</div>' +
+    '<p>We hebben hem ook naar ' + esc(data.email) + ' gestuurd, zodat je hem terugvindt.</p>' +
+    '<a class="dl" href="' + PDF_URL + '" target="_blank" rel="noopener">Download de PDF \u2192</a></div>';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  var el = e.target;
+  if (!el || el.tagName !== 'INPUT') return;
+  var wrap = el.closest('[data-form]');
+  if (!wrap) return;
+  var btn = wrap.querySelector('.submit');
+  if (btn && !btn.disabled) { e.preventDefault(); aanvragen(btn); }
+});
+
+document.getElementById('dlForm').innerHTML = formHtml('blok', 'Stuur me de beslisboom', 'Vul je gegevens in en je hebt hem meteen.');
+pad = ['q1'];
+toonVraag('q1');
+
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+</script>
+<script src="scan-modal.js" defer></script>
+<script src="/chat-widget.js" defer></script>
+<script src="/tracking.js" defer></script>
+</body>
+</html>

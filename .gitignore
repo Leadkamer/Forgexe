@@ -9,6 +9,12 @@ ads/
 realcob/
 .claude/handoffs/
 demo-topscore/
+demo-eisma/
+demo-cannock/
+demo-bouwtekeningen/
+demo-altherm/
+demo-hanssen/
+Hanssen Group/
 
 # Bronfoto's voor het BNI-scherm: zitten verwerkt in bni-scherm.html.
 # Blijven lokaal, zodat portretten van leden niet publiek op de site staan.
@@ -23,3 +29,9 @@ node_modules/
 fesma x forgexe/
 peters x forgexe/
 fidecon x forgexe/
+totalus x forgexe/
+blue-people x forgexe/
+steve-mulroy x forgexe/
+
+# Bronbestanden van lead magnets (de PDF zelf staat in de root en gaat wel live)
+lead-magnets/

@@ -19,6 +19,7 @@ Regio: Limburg, Noord-Brabant (Eindhoven/Brainport), Nijmegen en heel Nederland 
 - [AI-scan](https://www.forgexe.nl/ai-scan): welke AI medewerkers gebruiken, welke data meegaat, risicosignalen voor AVG, NIS2 en AI Act, en kansen met ROI.
 - [AI-governance](https://www.forgexe.nl/ai-governance): AI-beleid, lijst met toegestane tools en een herscan per kwartaal.
 - [Private AI](https://www.forgexe.nl/private-ai): AI met gevoelige gegevens in een eigen EU-omgeving, model en automatisering binnen Europa, geen training op jouw data. Pilotfase.
+- [AI-beslisboom](https://www.forgexe.nl/ai-beslisboom): gratis check in hooguit zes vragen of je gegevens in ChatGPT, Claude of Copilot mogen: gratis tool, zakelijk account, eigen EU-omgeving of eigen server. Met PDF.
 - [AI-training voor teams](https://www.forgexe.nl/ai-training), ook over veilig werken met AI, en [EU AI Act-aanpak](https://www.forgexe.nl/ai-act)
 
 ## Prijzen en kosten
