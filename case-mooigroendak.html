@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>MooiGroendak | Forgexe Case</title>
+<meta name="description" content="AI-assistent Bram helpt bezoekers van de MooiGroendak-webshop een groendakpakket kiezen, rekent de prijs uit en zet het in één klik in de winkelwagen.">
+<meta property="og:title" content="MooiGroendak | Forgexe Case">
+<meta property="og:description" content="AI-assistent met prijsberekening en WhatsApp-overdracht voor een groendak-webshop.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://www.forgexe.nl/case-mooigroendak">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+<style>
+:root{
+  --mono:'JetBrains Mono',monospace;--head:'Outfit',sans-serif;
+  --green:#34d399;--green-lt:#4ade80;--green-deep:#059669;--green-soft:#d1fae5;
+  --amber:#f5a623;--amber-lt:#ffc247;--amber-deep:#c47f0a;
+  --page-bg:#f4f6f8;--card-bg:#ffffff;
+  --ink:#0a0b0e;--ink-dim:#475569;--ink-mut:#8d9bb5;
+  --line:rgba(10,11,14,.08);--line-strong:rgba(10,11,14,.14);
+  --radius-xl:16px;--radius-lg:20px;--radius-md:14px;--radius-pill:999px;
+  --tr:.32s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--ink);font-family:var(--mono);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+::selection{background:var(--green);color:#052e16}
+img{max-width:100%;height:auto;display:block}
+
+.shell{max-width:1480px;margin:0 auto;padding:18px}
+
+nav{position:sticky;top:18px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.8rem;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:0 6px 24px rgba(10,11,14,.04)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink)}
+.brand-text{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:.06em}
+.nav-center{display:flex;align-items:center;gap:.25rem}
+.nav-center a{position:relative;color:var(--ink-dim);text-decoration:none;font-family:var(--head);font-size:.88rem;font-weight:500;padding:.5rem 1rem;transition:color var(--tr)}
+.nav-center a:hover{color:var(--ink)}
+.nav-center a.active{color:var(--ink);font-weight:600}
+.nav-center a.active::after{content:'';position:absolute;left:1rem;right:1rem;bottom:-2px;height:2px;background:var(--green);border-radius:1px}
+.nav-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.75rem 1.2rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);border:none;cursor:pointer}
+.nav-cta:hover{background:#000;transform:translateY(-1px)}
+.nav-cta svg{width:13px;height:13px}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:0}
+.hamburger span{width:14px;height:1.5px;background:var(--ink)}
+
+.section-card{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:4rem 3.5rem;position:relative;overflow:hidden;border:1px solid var(--line)}
+@media(max-width:900px){.section-card{padding:2.5rem 1.5rem}}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.12em;text-transform:lowercase;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+.section-h2{font-family:var(--head);font-weight:700;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;color:var(--ink)}
+
+.page-hero{padding:4rem 3.5rem;border-radius:var(--radius-xl);background:var(--card-bg);margin:14px 0;border:1px solid var(--line);position:relative;overflow:hidden}
+@media(max-width:900px){.page-hero{padding:2.5rem 1.5rem}}
+.breadcrumb{font-family:var(--mono);font-size:.74rem;color:var(--ink-mut);margin-bottom:1.6rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-mut);text-decoration:none;transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--green)}
+.hero-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-pill{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:#052e16;padding:.5rem 1rem;border-radius:9px;font-family:var(--head);font-size:.82rem;font-weight:700;letter-spacing:.04em}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:#052e16}
+.hero-meta-item{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);font-weight:500;letter-spacing:.05em}
+.hero-meta-item svg{width:13px;height:13px}
+.case-title-big{font-family:var(--head);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;letter-spacing:-.035em;color:var(--ink);margin-bottom:1.4rem;max-width:22ch}
+.case-subtitle{font-family:var(--head);font-size:clamp(1rem,1.3vw,1.15rem);color:var(--ink-dim);max-width:62ch;line-height:1.55;margin-bottom:3rem;font-weight:400}
+.case-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding-top:2rem;border-top:1px solid var(--line)}
+@media(max-width:700px){.case-stats{grid-template-columns:repeat(2,1fr)}}
+.case-stat{display:flex;flex-direction:column;gap:.2rem}
+.case-stat-num{font-family:var(--head);font-size:1.6rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.case-stat-label{font-family:var(--mono);font-size:.68rem;color:var(--ink-mut);letter-spacing:.06em}
+
+.hero-laptop{margin-top:3rem;padding:2rem;background:#fafbfc;border-radius:var(--radius-md);border:1px solid var(--line)}
+.laptop-frame{background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:10px 10px 0 0;padding:8px 8px 0;position:relative;box-shadow:0 18px 40px rgba(10,11,14,.22)}
+.laptop-frame::before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:38px;height:3px;background:#0a0a0a;border-radius:0 0 3px 3px}
+.laptop-frame img{display:block;width:100%;height:auto;border-radius:3px;aspect-ratio:640/400;object-fit:cover;object-position:top}
+.laptop-base{height:12px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 14px 14px;position:relative}
+.laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:2px;background:#0a0a0a;border-radius:0 0 4px 4px}
+
+.detail-grid{display:grid;grid-template-columns:1.8fr 1fr;gap:3rem;align-items:start}
+@media(max-width:1000px){.detail-grid{grid-template-columns:1fr}}
+.detail-section{margin-bottom:3rem}
+.detail-section-head{display:flex;align-items:center;gap:.85rem;margin-bottom:1.2rem}
+.detail-icon{width:38px;height:38px;border-radius:50%;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center}
+.detail-icon svg{width:18px;height:18px;stroke-width:1.8}
+.detail-h2{font-family:var(--head);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.detail-p{font-family:var(--head);font-size:1rem;color:var(--ink-dim);line-height:1.65;margin-bottom:1.1rem}
+.detail-p:last-child{margin-bottom:0}
+
+.approach-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.approach-item{display:flex;align-items:flex-start;gap:.85rem;background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:.95rem 1.1rem}
+.approach-check{width:22px;height:22px;border-radius:50%;background:var(--green);color:#052e16;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.approach-check svg{width:12px;height:12px}
+.approach-text{font-family:var(--head);font-size:.92rem;color:var(--ink);line-height:1.5}
+
+.testimonial-inline{margin-top:2rem;background:var(--green);border-radius:var(--radius-md);padding:2rem 2.25rem;position:relative}
+.testimonial-stars{color:#052e16;font-size:.9rem;letter-spacing:.2em;margin-bottom:.75rem;font-weight:700}
+.testimonial-quote{font-family:var(--head);font-size:1.25rem;font-weight:700;color:#052e16;line-height:1.3;margin-bottom:.8rem;letter-spacing:-.015em}
+.testimonial-body{font-family:var(--head);font-size:.92rem;color:#052e16;opacity:.88;line-height:1.6;margin-bottom:1.4rem}
+.testimonial-meta{display:flex;align-items:center;gap:.7rem;padding-top:1rem;border-top:1px solid rgba(5,46,22,.18)}
+.testimonial-avatar{width:36px;height:36px;border-radius:50%;background:#052e16;color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:700;font-size:.85rem}
+.testimonial-name{font-family:var(--head);font-size:.92rem;font-weight:700;color:#052e16;line-height:1.1}
+.testimonial-role{font-family:var(--mono);font-size:.72rem;color:#052e16;opacity:.72;margin-top:.1rem}
+
+.sidebar-card{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.8rem;position:sticky;top:120px}
+.sidebar-card h3{font-family:var(--head);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em}
+.sidebar-card p{font-family:var(--head);font-size:.88rem;color:var(--ink-dim);line-height:1.55;margin-bottom:1.2rem}
+.sidebar-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;text-decoration:none;padding:.7rem 1.1rem;border-radius:9px;font-family:var(--head);font-size:.84rem;font-weight:600;transition:all var(--tr);width:100%;justify-content:center;border:none;cursor:pointer}
+.sidebar-cta:hover{background:#000;transform:translateY(-1px)}
+.sidebar-cta svg{width:13px;height:13px}
+.sidebar-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.sidebar-tag-label{font-family:var(--mono);font-size:.68rem;color:var(--ink-mut);letter-spacing:.06em;text-transform:uppercase;font-weight:600;width:100%;margin-bottom:.4rem}
+.sidebar-tag{padding:.3rem .65rem;background:#fff;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);font-size:.66rem;color:var(--ink-dim);font-weight:500}
+
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.5rem}
+@media(max-width:1100px){.next-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.next-grid{grid-template-columns:1fr}}
+.case-card{background:#fafbfc;border-radius:var(--radius-lg);border:1px solid var(--line);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all var(--tr);position:relative}
+.case-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,11,14,.08);border-color:var(--line-strong)}
+.case-laptop{padding:1.5rem 1.5rem 0;background:#fafbfc}
+.case-laptop-frame{background:linear-gradient(180deg,#2a2a2a,#0a0a0a);border-radius:10px 10px 0 0;padding:8px 8px 0;position:relative;box-shadow:0 12px 28px rgba(10,11,14,.18)}
+.case-laptop-frame::before{content:'';position:absolute;top:3px;left:50%;transform:translateX(-50%);width:34px;height:3px;background:#0a0a0a;border-radius:0 0 3px 3px}
+.case-laptop-frame img,.case-laptop-frame svg{display:block;width:100%;height:auto;border-radius:3px;aspect-ratio:640/400;object-fit:cover;object-position:top}
+.case-laptop-base{height:10px;background:linear-gradient(180deg,#2a2a2a,#0a0a0a);margin:0 -3%;border-radius:0 0 10px 10px;position:relative}
+.case-laptop-base::after{content:'';position:absolute;top:0;left:42%;width:16%;height:2px;background:#0a0a0a;border-radius:0 0 4px 4px}
+.case-body{padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.case-client{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.7rem;color:var(--green);font-weight:600;letter-spacing:.06em}
+.case-client::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
+.case-title-card{font-family:var(--head);font-size:1.05rem;font-weight:600;color:var(--ink);line-height:1.25;margin-top:.2rem}
+.case-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.case-tag{padding:.3rem .65rem;background:#fff;border:1px solid var(--line);border-radius:9px;font-family:var(--mono);font-size:.62rem;color:var(--ink-dim);font-weight:500}
+.case-arrow{position:absolute;top:1.2rem;right:1.2rem;width:34px;height:34px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;color:#fff;transition:all var(--tr);z-index:2}
+.case-card:hover .case-arrow{background:var(--green);color:#052e16;transform:rotate(-12deg)}
+.case-arrow svg{width:13px;height:13px}
+
+.cta-card{background:var(--green);border-radius:var(--radius-xl);padding:3.5rem;margin:14px 0;position:relative;overflow:hidden}
+.cta-card h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;color:#052e16;max-width:540px;margin-bottom:1rem}
+.cta-card h2 em{font-style:italic;font-weight:800}
+.cta-card p{font-family:var(--head);font-size:.96rem;color:#052e16;opacity:.85;margin-bottom:2rem;max-width:480px;line-height:1.55}
+.cta-card .btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+@media(max-width:900px){.cta-card{padding:2.5rem 1.6rem}}
+
+.btn-pill{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:9px;font-family:var(--head);font-weight:600;font-size:.88rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:all var(--tr)}
+.btn-pill svg{width:14px;height:14px}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#000;transform:translateY(-1px)}
+.btn-pill.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-pill.primary{background:var(--green);color:#052e16}
+.voice-grid{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:3.5rem;align-items:center}
+@media(max-width:900px){.voice-grid{grid-template-columns:1fr;gap:2rem}}
+.voice-video{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:var(--radius-md);overflow:hidden;background:var(--ink);border:1px solid var(--line-strong);box-shadow:0 18px 40px rgba(10,11,14,.16)}
+@media(max-width:900px){.voice-video{margin:0 auto}}
+.voice-video video{width:100%;height:100%;object-fit:cover;display:block}
+.voice-quotes{display:flex;flex-direction:column;gap:1.8rem}
+.voice-quote{margin:0}
+.voice-quote+.voice-quote{border-top:1px solid var(--line);padding-top:1.6rem}
+.voice-quote p{font-family:var(--head);font-size:1.15rem;line-height:1.5;color:var(--ink-dim);margin:0}
+.voice-quote.big p{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
+.voice-quote .q{color:var(--green)}
+.voice-who{font-family:var(--mono);font-size:.78rem;color:var(--ink-mut);letter-spacing:.04em}
+.voice-who strong{color:var(--ink);font-weight:600}
+.btn-pill.primary:hover{background:var(--green-lt);transform:translateY(-1px);box-shadow:0 8px 24px rgba(52,211,153,.32)}
+
+footer{background:var(--card-bg);border-radius:var(--radius-xl);margin:14px 0;padding:3.5rem 4rem 1.5rem;border:1px solid var(--line)}
+.footer-top{display:grid;grid-template-columns:1.4fr 1.1fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}footer{padding:2.5rem 1.6rem 1.5rem}}
+.foot-brand{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem}
+.foot-brand-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.foot-desc{font-family:var(--head);font-size:.85rem;color:var(--ink-dim);line-height:1.55;max-width:280px;margin-bottom:1rem}
+.foot-col-title{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.foot-col a{display:block;font-family:var(--head);font-size:.86rem;color:var(--ink);text-decoration:none;margin-bottom:.5rem;transition:color var(--tr)}
+.foot-col a:hover{color:var(--green)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);flex-wrap:wrap}
+.foot-tagline{font-family:var(--mono);color:var(--green);font-weight:500}
+
+.js .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.js .reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:1280px){.nav-center{display:none}.hamburger{display:flex}}
+@media(max-width:700px){.shell{padding:8px}nav{padding:10px 14px}.hamburger{display:flex}}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--card-bg);z-index:60;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-family:var(--head);font-size:1.4rem;font-weight:500}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+.scan-modal{position:fixed;inset:0;background:rgba(10,11,14,.55);display:none;align-items:center;justify-content:center;padding:1.4rem;z-index:200;backdrop-filter:blur(6px);overflow-y:auto}
+.scan-modal.open{display:flex;animation:scanFadeIn .25s ease forwards}
+@keyframes scanFadeIn{from{opacity:0}to{opacity:1}}
+.scan-card{background:var(--card-bg);border-radius:var(--radius-xl);max-width:620px;width:100%;padding:2.4rem 2.2rem;position:relative;box-shadow:0 24px 60px rgba(10,11,14,.28);margin:auto}
+.scan-close{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:#fafbfc;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-dim);font-size:1.2rem;cursor:pointer;line-height:1}
+.scan-close:hover{background:var(--ink);color:#fff}
+.scan-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--green);letter-spacing:.06em;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.scan-eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(52,211,153,.2)}
+.scan-question{font-family:var(--head);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.6rem;line-height:1.15}
+.scan-hint{font-family:var(--head);font-size:.85rem;color:var(--ink-mut);margin-bottom:1.2rem;line-height:1.5}
+.scan-options{display:flex;gap:.5rem;flex-wrap:wrap}
+.scan-options.col{flex-direction:column}
+.scan-options.col .scan-option{width:100%}
+.scan-option{padding:.85rem 1.3rem;background:#fafbfc;border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:.82rem;font-weight:500;cursor:pointer;border-radius:8px;transition:all var(--tr);text-align:left}
+.scan-option:hover{border-color:var(--green);background:var(--green-soft);color:var(--green);transform:translateY(-1px)}
+.scan-option.selected{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.scan-back{background:none;border:none;color:var(--ink-mut);font-family:var(--mono);font-size:.74rem;cursor:pointer;padding:0;margin-bottom:1.2rem}
+.scan-back:hover{color:var(--ink)}
+.scan-form{display:flex;flex-direction:column;gap:.7rem}
+.scan-form-row{display:flex;gap:.7rem}
+.scan-form-row input{flex:1;padding:.85rem 1rem;font-size:.85rem;font-family:var(--mono);background:#fafbfc;border:1px solid var(--line);color:var(--ink);outline:none;border-radius:8px}
+.scan-form-row input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(52,211,153,.15)}
+.scan-form-row input::placeholder{color:var(--ink-mut)}
+.scan-privacy{display:flex;align-items:flex-start;gap:.6rem;font-family:var(--head);font-size:.8rem;color:var(--ink-dim);line-height:1.5;cursor:pointer;margin-top:.4rem}
+.scan-privacy input{margin-top:.2rem;accent-color:var(--green);flex-shrink:0}
+.scan-privacy a{color:var(--green);font-weight:600}
+.scan-progress{height:3px;background:var(--line);border-radius:2px;margin-top:1.8rem;overflow:hidden}
+.scan-progress-bar{height:100%;background:var(--green);transition:width .5s cubic-bezier(.16,1,.3,1);border-radius:2px}
+.scan-step{display:none}
+.scan-step.active{display:block}
+.scan-done-title{font-family:var(--head);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.6rem;letter-spacing:-.02em}
+.scan-done-desc{font-family:var(--head);font-size:.92rem;color:var(--ink-dim);margin-bottom:1.6rem;line-height:1.5}
+.scan-done-checks{display:flex;gap:1.4rem;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);padding-top:1.2rem;border-top:1px solid var(--line)}
+.scan-done-checks span strong{color:var(--green);font-weight:700}
+@media(max-width:600px){.scan-card{padding:1.8rem 1.4rem 1.6rem}.scan-options{flex-direction:column}.scan-form-row{flex-direction:column}.scan-done-checks{flex-direction:column;gap:.5rem}}
+
+/* ==FORGEXE-MOBILE-FIX== */
+html,body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+@media(max-width:760px){
+  .shell{padding:10px}
+  nav{padding:.7rem 1rem!important;gap:.5rem}
+  .brand{flex-shrink:0;min-width:0}
+  .brand-text{font-size:.92rem;letter-spacing:.04em;white-space:nowrap}
+  .nav-cta{padding:.55rem .85rem!important;font-size:.72rem!important;gap:.35rem;white-space:nowrap;flex-shrink:0}
+  .nav-cta svg{width:11px;height:11px;flex-shrink:0}
+  .hamburger{display:flex!important;flex-shrink:0}
+  .nav-center,.nav-right .lang-pill{display:none!important}
+  .page-hero,.hero-main,.hero{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important;min-height:auto!important}
+  .section-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .cta-card{padding:2.2rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .page-hero h1,.hero-main h1,.case-title-big{font-size:clamp(1.9rem,8vw,2.6rem)!important;line-height:1.05;max-width:100%}
+  .section-h2{font-size:clamp(1.55rem,7vw,2.2rem)!important;line-height:1.1}
+  .page-hero p.lead,.hero-main p.lead,.case-subtitle{font-size:.96rem!important;max-width:100%}
+  .section-sub{font-size:.92rem!important}
+  .btn-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .btn-row .btn-pill,.btn-row a.btn-pill{width:100%;justify-content:center}
+  .breadcrumb{font-size:.66rem;flex-wrap:wrap}
+  .eyebrow{font-size:.66rem}
+  footer{padding:2rem 1.2rem 1rem!important;border-radius:14px!important}
+  .footer-top{grid-template-columns:1fr 1fr!important;gap:1.5rem!important;padding-bottom:1.5rem!important}
+  .foot-bottom{flex-direction:column!important;align-items:flex-start!important;gap:.6rem;text-align:left;padding-top:1.2rem!important}
+  .hero-laptop{padding:.9rem!important;margin-top:1.5rem!important}
+  .case-stats{grid-template-columns:1fr 1fr!important;gap:12px!important;padding-top:1.5rem!important}
+  .case-stat-num{font-size:1.4rem!important}
+  .sidebar-card{position:static!important;padding:1.4rem!important;margin-top:1rem}
+  .detail-grid{gap:1.5rem!important}
+  .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .compare-table{min-width:600px}
+  .filter-row{overflow-x:auto;flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;margin-bottom:1.4rem!important;scrollbar-width:none}
+  .filter-row::-webkit-scrollbar{display:none}
+  .filter-pill{flex-shrink:0;white-space:nowrap}
+  .tile.span-6,.tile.span-4,.tile.span-3,.tile.span-2{grid-column:span 1!important}
+  .tile{min-height:240px!important;padding:1.4rem 1.2rem!important}
+  .tile-title{font-size:1.2rem!important;line-height:1.2}
+  .tile-desc{font-size:.86rem!important}
+  .train-grid{gap:12px!important}
+  .train-card{padding:1.8rem 1.4rem!important}
+  .train-price-num{font-size:1.9rem!important}
+  .tier-card{padding:1.8rem 1.4rem!important}
+  .tier-price-num{font-size:2rem!important}
+  .form-row{grid-template-columns:1fr!important}
+  .form-card{padding:1.6rem 1.2rem!important}
+  .form-actions{flex-direction:column!important;align-items:stretch!important}
+  .form-submit{width:100%;justify-content:center}
+  .info-card{padding:1.6rem 1.2rem!important;min-height:auto!important}
+  .info-item{grid-template-columns:6rem 1fr!important;gap:.7rem!important}
+  .location-card{padding:2rem 1.2rem!important;min-height:240px!important;border-radius:14px!important}
+  .loc-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .location-card .right-btn{position:static!important;margin-top:1rem;width:fit-content}
+  .steps-grid,.aanpak-grid,.result-grid,.principles-grid,.trust-row,.values-grid,.team-grid,.tiers-grid,.channels-grid,.builds-grid,.test-grid,.cases-grid,.next-grid,.pain-grid,.bottlenecks-grid,.tiles-grid{grid-template-columns:1fr!important;gap:12px!important}
+  .build-card[style*="grid-column:span 2"]{grid-column:span 1!important}
+  .hero h1{font-size:clamp(2rem,9vw,3.2rem)!important;line-height:1.02}
+  .hero p.lead{font-size:.98rem!important}
+  .hero-cta-row{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .hero-cta-row .btn-pill{width:100%;justify-content:center}
+  .hero-wave{opacity:.5}
+  .proof-bar{flex-direction:column!important;align-items:stretch!important;text-align:center;padding:1.4rem 1.2rem!important;gap:1rem!important;margin:10px 0!important;border-radius:14px!important}
+  .proof-logos{justify-content:center;gap:1.2rem}
+  .proof-cta{align-self:center;width:fit-content}
+  .dark-card{padding:2.4rem 1.2rem!important;border-radius:14px!important;margin:10px 0!important}
+  .dark-card .section-h2{font-size:clamp(1.5rem,7vw,2rem)!important}
+  .compare-foot{flex-direction:column!important;align-items:stretch!important;gap:.8rem;padding:1.2rem 1rem!important}
+  .compare-foot .btn-pill{width:100%;justify-content:center}
+  .trust-foot{flex-direction:column!important;align-items:stretch!important}
+  .trust-foot a{width:100%;justify-content:center}
+  .hero-meta{gap:.55rem!important;margin-bottom:1.4rem!important}
+  .hero-meta-item{font-size:.66rem!important}
+  .testimonial-inline{padding:1.4rem 1.2rem!important}
+  .testimonial-quote{font-size:1.05rem!important}
+  .approach-list{gap:.5rem!important}
+  .approach-item{padding:.8rem .9rem!important}
+  .approach-text{font-size:.86rem!important}
+  .train-note{flex-direction:column!important;gap:.6rem;padding:1rem 1.1rem!important}
+  .compare-wrap{margin-top:2rem!important}
+  .workspace-strip{display:none}
+  .ws-frame{display:none}
+}
+@media(max-width:380px){
+  .brand-text{font-size:.8rem;letter-spacing:.02em}
+  .nav-cta{padding:.5rem .65rem!important;font-size:.68rem!important}
+  .nav-cta svg{display:none}
+  .case-stats{grid-template-columns:1fr 1fr!important}
+  .info-item{grid-template-columns:5.2rem 1fr!important;gap:.5rem!important}
+  .info-label{font-size:.6rem!important}
+  .info-value{font-size:.85rem!important}
+}
+@media(max-width:600px){
+  .scan-modal{padding:.7rem!important}
+  .scan-card{padding:1.5rem 1.1rem!important;border-radius:14px}
+  .scan-question{font-size:1.2rem!important;line-height:1.2}
+}
+/* ==/FORGEXE-MOBILE-FIX== */
+.case-shot{border-radius:12px 12px 0 0;overflow:hidden;border:1px solid rgba(10,11,14,.14);border-bottom:0;background:#0a0b0e;box-shadow:0 14px 34px rgba(10,11,14,.14)}
+.case-shot-bar{display:flex;align-items:center;gap:5px;padding:9px 12px;background:#0a0b0e}
+.case-shot-bar span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.16)}
+.case-shot img{display:block;width:100%;height:auto}
+
+/* iOS zoomt in op invoervelden onder 16px */
+@media(max-width:900px){input,textarea,select{font-size:16px!important}}
+</style>
+<!-- ==FORGEXE-SEO== -->
+<meta property="og:url" content="https://www.forgexe.nl/case-mooigroendak">
+<meta property="og:image" content="https://www.forgexe.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forgexe — AI-medewerkers voor het Nederlandse MKB">
+<meta property="og:site_name" content="Forgexe">
+<meta property="og:locale" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MooiGroendak | Forgexe Case">
+<meta name="twitter:description" content="AI-assistent met prijsberekening en WhatsApp-overdracht voor een groendak-webshop.">
+<meta name="twitter:image" content="https://www.forgexe.nl/og-image.png">
+<meta name="theme-color" content="#f4f6f8">
+<meta name="author" content="Forgexe">
+<link rel="apple-touch-icon" href="favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Forgexe","alternateName":"Forgexe AI Automation","url":"https://www.forgexe.nl/","logo":"https://www.forgexe.nl/forgexe-lockup-dark.png","description":"AI-medewerkers en automatiseringen voor het Nederlandse MKB. Voor groei en operatie.","founder":{"@type":"Person","name":"Sedat Ayar"},"address":{"@type":"PostalAddress","addressLocality":"Panningen","addressRegion":"Limburg","addressCountry":"NL"},"areaServed":["NL","BE","DE"],"sameAs":["https://www.linkedin.com/company/forgexe/","https://www.instagram.com/forgexe.agents"],"contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"info@forgexe.nl","telephone":"+31-85-080-54-39","areaServed":"NL","availableLanguage":["nl","en"]}]}</script>
+<!-- ==/FORGEXE-SEO== -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.forgexe.nl/"},{"@type":"ListItem","position":2,"name":"Cases","item":"https://www.forgexe.nl/cases"},{"@type":"ListItem","position":3,"name":"MooiGroendak","item":"https://www.forgexe.nl/case-mooigroendak"}]}</script>
+<style id="rel-css">
+.rel-block .rel-eyebrow{font-family:var(--mono,monospace);font-size:.72rem;letter-spacing:.12em;color:var(--green,#34d399);font-weight:600;display:block;margin-bottom:.5rem}
+.rel-block .rel-h2{font-family:var(--head,sans-serif);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--ink,#fff);margin:0 0 .5rem;line-height:1.15}
+.rel-block .rel-h2 em{font-style:normal;color:var(--green,#34d399)}
+.rel-block .rel-sub{font-family:var(--head,sans-serif);font-size:.95rem;color:var(--ink-dim,#a0a8b8);margin:0 0 1.3rem;max-width:62ch;line-height:1.55}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;margin-top:1rem}
+.rel-item{display:flex;flex-direction:column;gap:.4rem;padding:1rem 1.1rem;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;text-decoration:none;color:var(--ink,#fff);transition:border-color .2s,transform .2s}
+.rel-item:hover{border-color:var(--green,#34d399);transform:translateY(-2px)}
+.rel-kind{font-family:var(--mono,monospace);font-size:.66rem;letter-spacing:.14em;color:var(--green,#34d399);font-weight:600}
+.rel-title{font-family:var(--head,sans-serif);font-weight:600;font-size:.98rem;line-height:1.35;color:var(--ink,#fff)}
+.rel-desc{font-family:var(--head,sans-serif);font-size:.86rem;color:var(--ink-dim,#a0a8b8);line-height:1.5}
+.rel-inline{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--line,rgba(255,255,255,.14))}
+.article-author{display:flex;gap:1rem;align-items:flex-start;margin-top:2.5rem;padding:1.2rem 1.3rem;border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px}
+.article-author-avatar{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:var(--green,#34d399);color:#052e16;font-family:var(--mono,monospace);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.article-author-name{font-family:var(--head,sans-serif);font-weight:700;color:var(--ink,#fff);margin-bottom:.25rem}
+.article-author p{font-family:var(--head,sans-serif);font-size:.9rem;color:var(--ink-dim,#a0a8b8);line-height:1.55;margin:0}
+.article-author a{color:var(--green,#34d399);text-decoration:underline;text-underline-offset:3px}
+.lead a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green,#34d399)}
+@media(max-width:600px){.rel-grid{grid-template-columns:1fr}}
+</style>
+<style id="polish-css">
+/* Toetsenbordfocus: zichtbaar en met genoeg contrast op licht en donker */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--ink,#0a0b0e);outline-offset:3px}
+.btn-pill:focus-visible,.nav-cta:focus-visible,.btn-primary:focus-visible{outline-offset:4px}
+/* Tekstlinks in lopende tekst: inkt met mint onderstreping (mint-op-wit haalt 4,5:1 niet) */
+.article-body a,.faq-a a,.prose a,.honest-note a,.scan-privacy a,.legal-shell a{color:var(--ink,#0a0b0e);text-decoration:underline;text-decoration-color:var(--green,#34d399);text-decoration-thickness:2px;text-underline-offset:3px}
+.article-body a:hover,.faq-a a:hover,.prose a:hover,.honest-note a:hover,.scan-privacy a:hover,.legal-shell a:hover{text-decoration-color:var(--ink,#0a0b0e)}
+.lead a{text-decoration-thickness:1px;text-decoration-color:rgba(52,211,153,.8)}
+.foot-col a{padding-block:.2rem}
+.task-link{color:var(--ink,#0a0b0e)}
+.task-link:hover{color:var(--green-deep,#059669)}
+@media (max-width:640px){.hero-flow{display:none}.footer-top>div:first-child{grid-column:1/-1}.foot-col a{margin-bottom:.3rem;padding-block:.15rem}.foot-col-title{margin-bottom:.7rem}}
+/* Minder beweging als de bezoeker daarom vraagt; secties blijven gewoon zichtbaar */
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+<style id="case-mg-css">
+.week-intro{font-family:var(--head);font-size:1rem;color:var(--ink-dim);line-height:1.6;max-width:62ch;margin-bottom:2rem}
+.week-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media(max-width:1000px){.week-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.week-stat{background:#fafbfc;border:1px solid var(--line);border-radius:var(--radius-md);padding:1.3rem 1.2rem;display:flex;flex-direction:column;gap:.35rem}
+.week-num{font-family:var(--head);font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.week-label{font-family:var(--head);font-size:.86rem;color:var(--ink-dim);line-height:1.4}
+.week-story{margin-top:1.6rem;border-left:3px solid var(--green);background:#fafbfc;border-radius:0 var(--radius-md) var(--radius-md) 0;padding:1.3rem 1.5rem;max-width:760px}
+.week-story-tijd{display:block;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--ink-mut);margin-bottom:.5rem}
+.week-story p{font-family:var(--head);font-size:1rem;color:var(--ink);line-height:1.6}
+.case-title-big{text-wrap:balance}
+.approach-text a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:3px}
+@media(max-width:600px){.week-stat{padding:1rem}.week-num{font-size:1.8rem}.week-grid .week-stat:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<nav>
+  <a href="/" class="brand"><svg viewBox="0 0 40 40" width="26" height="26" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="brand-text">FORGEXE</span></a>
+  <div class="nav-center"><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases" class="active">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a>
+    <a href="/contact">Contact</a></div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <button class="nav-cta" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+    <button class="hamburger" onclick="document.getElementById('mob').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mob"><button class="mobile-menu-close" onclick="document.getElementById('mob').classList.remove('open')" aria-label="Menu sluiten">&times;</button><a href="/">Home</a><a href="/over-ons">Over ons</a><a href="/expertises">Diensten</a><a href="/branches">Branches</a><a href="/cases">Cases</a><a href="/pricing">Prijzen</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+
+<header class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> &middot; <a href="/cases">Cases</a> &middot; <span>MooiGroendak</span></div>
+  <div class="hero-meta">
+    <span class="hero-pill">MooiGroendak</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Gemert</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>2026</span>
+    <span class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>AI-assistent</span>
+  </div>
+  <h1 class="case-title-big">Bram rekent het groendak voor je uit.</h1>
+  <p class="case-subtitle">MooiGroendak verkoopt complete groendakpakketten via een eigen webshop. AI-assistent Bram helpt bezoekers het juiste pakket te kiezen, rekent de prijs voor hun dak uit en zet het pakket in &eacute;&eacute;n klik in de winkelwagen. Vragen waar een mens bij moet, stuurt hij met een samenvatting door naar het team.</p>
+  <div class="case-stats">
+    <div class="case-stat"><span class="case-stat-num">16 dagen</span><span class="case-stat-label">VAN AKKOORD TOT LIVE</span></div>
+    <div class="case-stat"><span class="case-stat-num">6</span><span class="case-stat-label">PAKKETTEN DOORGEREKEND</span></div>
+    <div class="case-stat"><span class="case-stat-num">128</span><span class="case-stat-label">PAGINA'S MET EIGEN OPENER</span></div>
+    <div class="case-stat"><span class="case-stat-num">1 klik</span><span class="case-stat-label">NAAR DE WINKELWAGEN</span></div>
+  </div>
+  <div class="hero-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-mooigroendak-preview-lg.webp" alt="AI-assistent Bram met een prijsberekening op de webshop van MooiGroendak" loading="lazy" width="1600" height="1000"></div></div>
+</header>
+
+<section class="section-card reveal">
+  <span class="eyebrow">&gt; C:\eerste-week-live</span>
+  <h2 class="section-h2">De eerste week op de site.</h2>
+  <p class="week-intro">Bram staat sinds 21 oktober 2026 op mooigroendak.nl. Dit zijn de cijfers uit het klantdashboard over de eerste acht dagen, zonder testgesprekken.</p>
+  <div class="week-grid">
+    <div class="week-stat"><span class="week-num">54</span><span class="week-label">keer de chat geopend</span></div>
+    <div class="week-stat"><span class="week-num">61</span><span class="week-label">vragen gesteld in 18 gesprekken</span></div>
+    <div class="week-stat"><span class="week-num">7</span><span class="week-label">pakketprijzen uitgerekend</span></div>
+    <div class="week-stat"><span class="week-num">2</span><span class="week-label">pakketten direct in de winkelwagen</span></div>
+    <div class="week-stat"><span class="week-num">3</span><span class="week-label">keer doorgeklikt naar WhatsApp</span></div>
+  </div>
+  <div class="week-story">
+    <span class="week-story-tijd">dinsdag &middot; 08:41</span>
+    <p>Een bezoeker op de pagina van het lichtgewicht sedumdak vraagt of hij 46&nbsp;m&sup2; groendak volgende week vrijdag kan laten bezorgen. Over levering beslist het team, dus Bram geeft hem de invulkaart voor de prijs en de WhatsApp-knop. Om 08:43 staat zijn bericht bij MooiGroendak in WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <div class="detail-grid">
+    <div>
+      <div class="detail-section">
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h2 class="detail-h2">De uitdaging</h2></div>
+        <p class="detail-p">MooiGroendak is een familiebedrijf uit Gemert dat groendaken levert en tuinen aanlegt. Een groendak koop je niet even tussendoor. Voordat je een prijs ziet, moet je weten hoe groot je dak is, hoe schuin het loopt, of er wortelwerende folie onder moet en hoe het water wordt afgevoerd. De webshop heeft daar een keuzewizard voor, maar wie twijfelt tussen sedummatten en cassettes, belt of appt. Of klikt weg.</p>
+        <p class="detail-p">Die vragen komen bij hetzelfde kleine team dat ook de tuinen aanlegt. De eigenaar had &eacute;&eacute;n harde eis: een klant moet altijd een mens kunnen spreken. Een ticketsysteem of een bot die mensen afhoudt, kwam er niet in.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg></div><h2 class="detail-h2">De oplossing</h2></div>
+        <p class="detail-p">Bram was al de mascotte van MooiGroendak, de man met het sedumdak op zijn hoofd. Nu is hij ook hun AI-assistent. Hij haalt producten en prijzen rechtstreeks uit de webshop, dus er is geen aparte prijslijst om bij te houden. Wil een bezoeker weten wat zijn dak kost, dan krijgt hij een invulkaart met dezelfde vragen als de wizard. Bram rekent met de formules die op de productpagina's staan, inclusief staffelkorting, en laat de uitkomst zien als prijskaart met alle regels en het totaal. Met &eacute;&eacute;n klik ligt het pakket met alle gekozen opties in de winkelwagen. In de test kwam daar hetzelfde bedrag uit als in de webshop zelf.</p>
+        <p class="detail-p">Op elke pagina begint Bram met een eigen opener. Op een productpagina vraagt hij of hij moet uitrekenen hoeveel matten je nodig hebt, op de homepage helpt hij je een pakket kiezen. Hij zegt er eerlijk bij dat hij een AI-assistent is. Gaat een vraag over levering, maatwerk of iets wat hij niet zeker weet, dan geeft hij de WhatsApp-knop met een samenvatting van het gesprek, of vraagt hij of het team mag terugbellen. Het terugbelverzoek staat met samenvatting in de mailbox van MooiGroendak.</p>
+        <p class="detail-p">In hun eigen dashboard ziet het team hoeveel bezoekers met Bram praten, welke pakketten ze laten uitrekenen, welke terugbelverzoeken openstaan en hoe elk gesprek verliep, met de kaarten die de bezoeker kreeg en waar hij op klikte.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-head"><div class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h2 class="detail-h2">Onze aanpak</h2></div>
+        <div class="approach-list">
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Producten en prijzen live uit de WooCommerce-webshop</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Invulkaart met dezelfde vragen als de keuzewizard van de webshop</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Prijsberekening met de formules van de productpagina's, inclusief staffelkorting</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Prijskaart met regels, totaal en een tip als de volgende staffel dichtbij ligt</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Pakket met alle gekozen opties in &eacute;&eacute;n klik in de winkelwagen</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Eigen opener voor elk van de 128 pagina's in de sitemap</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Overdracht naar WhatsApp met een samenvatting van het gesprek</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Terugbelverzoek met samenvatting in de mailbox van het team</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Bram meldt dat hij AI is, zoals de <a href="/blog-ai-act-transparantieplicht-chatbot">transparantieplicht uit de AI Act</a> vraagt</div></div>
+          <div class="approach-item"><div class="approach-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="approach-text">Klantdashboard met trechter, pakketten, terugbelverzoeken en alle gesprekken</div></div>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <div class="sidebar-card">
+        <h3>Ook een assistent op je webshop?</h3>
+        <p>We kijken samen welke vragen je team nu elke dag beantwoordt en wat een assistent daarvan kan overnemen. Gratis bedrijfsscan, quick wins binnen 48 uur.</p>
+        <button class="sidebar-cta" onclick="openScan()">Plan een scan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button>
+        <div class="sidebar-tags">
+          <span class="sidebar-tag-label">Technologie</span><span class="sidebar-tag">AI-assistent</span><span class="sidebar-tag">n8n</span><span class="sidebar-tag">WooCommerce</span><span class="sidebar-tag">WhatsApp</span><span class="sidebar-tag">Prijsberekening</span><span class="sidebar-tag">Klantdashboard</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section-card reveal">
+  <span class="eyebrow">&gt; C:\meer-projecten</span>
+  <h2 class="section-h2">Andere systemen die we hebben gesmeed.</h2>
+  <div class="next-grid">
+    <a href="/case-fietsencatalogus" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-fietsencatalogus-preview.webp" alt="Fietsencatalogus Nieuwsbrief Portaal" loading="lazy" width="960" height="474"></div></div>
+      <div class="case-body"><span class="case-client">Fietsencatalogus</span><div class="case-title-card">Nieuwsbrief Portaal &amp; AI Content Pipeline</div><div class="case-tags"><span class="case-tag">Webapp</span><span class="case-tag">Content AI</span><span class="case-tag">Brevo</span></div></div>
+    </a>
+    <a href="/case-wijnzinnig" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img src="case-wijnzinnig-preview.webp" alt="Wijnzinnig Content Machine Dashboard" loading="lazy" width="960" height="475"></div></div>
+      <div class="case-body"><span class="case-client">Wijnzinnig!</span><div class="case-title-card">Content Machine voor wijnsector</div><div class="case-tags"><span class="case-tag">Content AI</span><span class="case-tag">MailChimp</span><span class="case-tag">3 segmenten</span></div></div>
+    </a>
+    <a href="/case-realcob" class="case-card">
+      <div class="case-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></div>
+      <div class="case-laptop"><div class="case-shot"><div class="case-shot-bar"><span></span><span></span><span></span></div><img loading="lazy" src="case-realcob-preview.webp" alt="RealCob" width="960" height="475"></div></div>
+      <div class="case-body"><span class="case-client">RealCob</span><div class="case-title-card">Multi-segment AI Growth voor GDPR/NIS2</div><div class="case-tags"><span class="case-tag">AI Agents</span><span class="case-tag">LinkedIn</span><span class="case-tag">Content</span></div></div>
+    </a>
+  </div>
+</section>
+
+
+<section class="section-card rel-block">
+  <span class="rel-eyebrow">&gt; C:\verder-lezen</span>
+  <h2 class="rel-h2">Verder lezen.</h2>
+  <div class="rel-grid">
+    <a href="/ai-medewerker" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-medewerker inhuren</span></a>
+    <a href="/ai-agent-laten-bouwen" class="rel-item"><span class="rel-kind">DIENST</span><span class="rel-title">AI-agent laten bouwen</span></a>
+    <a href="/blog-chatbot-vs-ai-agent-verschil" class="rel-item"><span class="rel-kind">BLOG</span><span class="rel-title">Chatbot of AI-agent: wat is het verschil?</span></a>
+  </div>
+</section>
+<section class="cta-card reveal">
+  <div style="font-family:var(--mono);font-size:.74rem;color:#052e16;opacity:.7;margin-bottom:1rem;font-weight:600;letter-spacing:.1em">&gt; C:\forgexe\klaar</div>
+  <h2>Klaar voor je eigen <em>Bram</em>?</h2>
+  <p>Binnen 48 uur: kort gesprek + jouw drie grootste quick wins op een rij. Vrijblijvend.</p>
+  <div class="btn-row"><button class="btn-pill dark" onclick="openScan()">Gratis bedrijfsscan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></button><a href="/contact" class="btn-pill ghost" style="border-color:#052e16;color:#052e16">Plan een kennismaking</a></div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand"><svg viewBox="0 0 40 40" width="22" height="22" fill="none"><rect x="5" y="4" width="7" height="32" rx="1.5" fill="var(--green)"/><rect x="5" y="4" width="25" height="6" rx="1.5" fill="var(--green)"/><rect x="5" y="17" width="18" height="5" rx="1.5" fill="var(--green)"/><polygon points="27,16 38,24 27,32" fill="var(--green)"/></svg><span class="foot-brand-text">FORGEXE</span></div>
+      <p class="foot-desc">Forgexe is een AI-automatiseringsbureau in Panningen (Limburg). We bouwen AI-medewerkers, AI-agents en n8n-automatiseringen voor het Nederlandse MKB.</p>
+    </div>
+    <div class="foot-col"><div class="foot-col-title">Diensten</div><a href="/ai-medewerker">AI-medewerker inhuren</a><a href="/ai-agent-laten-bouwen">AI-agent laten bouwen</a><a href="/ai-automatisering-laten-bouwen">AI-automatisering laten bouwen</a><a href="/ai-automatisering-limburg">AI-automatisering Limburg</a><a href="/ai-automatisering-eindhoven">AI-automatisering Eindhoven</a><a href="/n8n-specialist">n8n-specialist</a><a href="/leadgeneratie-automatiseren">Leadgeneratie</a><a href="/email-automatiseren">E-mail automatiseren</a><a href="/factuurverwerking-automatiseren">Factuurverwerking</a><a href="/ai-scan">AI-scan</a><a href="/expertises">Alle diensten</a></div><div class="foot-col"><div class="foot-col-title">Bedrijf</div><a href="/over-ons">Over ons</a><a href="/cases">Cases</a><a href="/blog">Blog</a><a href="/pricing">Prijzen</a><a href="/wat-kost-ai-automatisering">Wat kost AI?</a><a href="/ai-training">Trainingen</a><a href="/ai-act">AI Act</a><a href="/contact">Contact</a></div>
+    <div class="foot-col"><div class="foot-col-title">Branches</div><a href="/branche-maakindustrie">Maakindustrie</a><a href="/branche-technische-groothandel">Technische Groothandel</a><a href="/branche-zakelijke-dienstverlening">Zakelijke Dienstverlening</a><a href="/branche-marketing-bureaus">Marketing &amp; Bureaus</a></div>
+    <div class="foot-col"><div class="foot-col-title">Contact</div><a href="mailto:info@forgexe.nl">info@forgexe.nl</a><a href="tel:+31850805439">+31 (0) 85 080 54 39</a><a href="https://wa.me/31618031022">WhatsApp</a><a href="https://www.linkedin.com/company/forgexe/">LinkedIn</a><a href="https://www.instagram.com/forgexe.agents">Instagram</a></div>
+  </div>
+  <div class="foot-bottom"><div>&copy; 2026 Forgexe</div><div class="foot-tagline">C:\&gt; execute growth</div><div style="display:flex;gap:1.2rem"><a href="/privacy" style="color:var(--ink-mut);text-decoration:none">Privacy</a><a href="/voorwaarden" style="color:var(--ink-mut);text-decoration:none">Voorwaarden</a><a href="/disclaimer" style="color:var(--ink-mut);text-decoration:none">Disclaimer</a></div></div>
+</footer>
+
+</div>
+
+<div class="scan-modal" id="scanModal" role="dialog" aria-modal="true">
+  <div class="scan-card">
+    <button class="scan-close" onclick="closeScan()" aria-label="Sluiten">&times;</button>
+    <div class="scan-eyebrow">C:\forgexe\scan &middot; gratis bedrijfsscan</div>
+    <div class="scan-step active" id="scanStep1"><h3 class="scan-question">Hoeveel medewerkers heeft je bedrijf?</h3><div class="scan-options"><button class="scan-option" onclick="nextScanStep(1,'medewerkers','1-15')">1 tot 15</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','15-50')">15 tot 50</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','50-200')">50 tot 200</button><button class="scan-option" onclick="nextScanStep(1,'medewerkers','200+')">200+</button></div></div>
+    <div class="scan-step" id="scanStep2"><button class="scan-back" onclick="prevScanStep(2)">&larr; Terug</button><h3 class="scan-question">In welke branche ben je actief?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(2,'branche','Maakindustrie')">Maakindustrie</button><button class="scan-option" onclick="nextScanStep(2,'branche','Technische Groothandel')">Technische Groothandel</button><button class="scan-option" onclick="nextScanStep(2,'branche','Zakelijke Dienstverlening')">Zakelijke Dienstverlening</button><button class="scan-option" onclick="nextScanStep(2,'branche','Marketing &amp; Bureaus')">Marketing &amp; Bureaus</button><button class="scan-option" onclick="nextScanStep(2,'branche','Anders')">Anders</button></div></div>
+    <div class="scan-step" id="scanStep3"><button class="scan-back" onclick="prevScanStep(3)">&larr; Terug</button><h3 class="scan-question">Waar ligt je grootste uitdaging?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Meer leads en klanten')">Meer leads en klanten</button><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Efficientere operatie')">Effici&euml;ntere operatie</button><button class="scan-option" onclick="nextScanStep(3,'uitdaging','Beide')">Beide</button></div></div>
+    <div class="scan-step" id="scanStep4"><button class="scan-back" onclick="prevScanStep(4)">&larr; Terug</button><h3 class="scan-question">Welke tools gebruik je nu?</h3><p class="scan-hint">Selecteer alles dat van toepassing is.</p><div class="scan-options col" id="toolOptions"></div><button class="btn-pill primary" style="margin-top:1.5rem" onclick="submitTools()">Volgende <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="scan-step" id="scanStep5"><button class="scan-back" onclick="prevScanStep(5)">&larr; Terug</button><h3 class="scan-question">Hoe snel wil je resultaat zien?</h3><div class="scan-options col"><button class="scan-option" onclick="nextScanStep(5,'urgentie','Zo snel mogelijk')">Zo snel mogelijk</button><button class="scan-option" onclick="nextScanStep(5,'urgentie','Binnen 3 maanden')">Binnen 3 maanden</button><button class="scan-option" onclick="nextScanStep(5,'urgentie','Ik orienteer me nog')">Ik ori&euml;nteer me nog</button></div></div>
+    <div class="scan-step" id="scanStep6"><button class="scan-back" onclick="prevScanStep(6)">&larr; Terug</button><h3 class="scan-question">Waar kunnen we je rapport naartoe sturen?</h3><form class="scan-form" onsubmit="submitScan(event)"><div class="scan-form-row"><input type="text" id="scanNaam" placeholder="Jouw naam" required><input type="text" id="scanBedrijf" placeholder="Bedrijfsnaam" required></div><div class="scan-form-row"><input type="email" id="scanEmail" placeholder="Zakelijke e-mail" required><input type="tel" id="scanTelefoon" placeholder="Telefoon (optioneel)"></div><label class="scan-privacy"><input type="checkbox" id="scanPrivacy" required><span>Ik ga akkoord met het <a href="/privacy" target="_blank">privacybeleid</a>.</span></label><button type="submit" class="btn-pill primary" style="width:100%;justify-content:center;margin-top:1rem">Verstuur scanverzoek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></form></div>
+    <div class="scan-step" id="scanDone"><div class="scan-eyebrow">C:\forgexe\scan &middot; processing</div><h3 class="scan-done-title">Bedankt! Je scanverzoek is ontvangen.</h3><p class="scan-done-desc">We nemen binnen 48 uur contact op met jouw drie grootste quick wins.</p><div class="scan-done-checks"><span><strong>&#10003;</strong> Quick wins binnen 48 uur</span><span><strong>&#10003;</strong> Reactie binnen 2 uur</span><span><strong>&#10003;</strong> 100% gratis</span></div></div>
+    <div class="scan-progress"><div class="scan-progress-bar" id="scanProgressBar" style="width:16%"></div></div>
+  </div>
+</div>
+
+<script>
+var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+var scanData={},SCAN_TOTAL_STEPS=6;
+var toolsByUitdaging={'Meer leads en klanten':['CRM (Zoho, Pipedrive, Salesforce)','LinkedIn','Google Ads','Meta Ads','E-mail marketing (Mailchimp, ActiveCampaign)','WordPress / Webflow','Geen van deze'],'Efficientere operatie':['ERP (SAP, Exact, AFAS)','Boekhoudpakket','Planningssoftware','Google Workspace','Microsoft 365','Slack / Teams','Geen van deze'],'Beide':['CRM (Zoho, Pipedrive, Salesforce)','ERP (SAP, Exact, AFAS)','Google Ads / Meta Ads','Google Workspace','Microsoft 365','Boekhoudpakket','E-mail marketing','Geen van deze']};
+function openScan(){scanData={};document.querySelectorAll('.scan-step').forEach(function(s){s.classList.remove('active')});document.getElementById('scanStep1').classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((1/SCAN_TOTAL_STEPS)*100)+'%';document.getElementById('scanModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeScan(){document.getElementById('scanModal').classList.remove('open');document.body.style.overflow=''}
+function nextScanStep(step,key,value){scanData[key]=value;var next=step+1;if(step===3)buildToolOptions();document.getElementById('scanStep'+step).classList.remove('active');document.getElementById('scanStep'+next).classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((next/SCAN_TOTAL_STEPS)*100)+'%'}
+function prevScanStep(step){var prev=step-1;document.getElementById('scanStep'+step).classList.remove('active');document.getElementById('scanStep'+prev).classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((prev/SCAN_TOTAL_STEPS)*100)+'%'}
+function buildToolOptions(){var c=document.getElementById('toolOptions');var t=toolsByUitdaging[scanData.uitdaging]||toolsByUitdaging['Beide'];c.innerHTML='';t.forEach(function(tool){var b=document.createElement('button');b.className='scan-option';b.type='button';b.textContent=tool;b.onclick=function(){b.classList.toggle('selected')};c.appendChild(b)})}
+function submitTools(){var sel=[];document.querySelectorAll('#toolOptions .selected').forEach(function(b){sel.push(b.textContent)});scanData.tools=sel.length?sel.join(', '):'Geen geselecteerd';document.getElementById('scanStep4').classList.remove('active');document.getElementById('scanStep5').classList.add('active');document.getElementById('scanProgressBar').style.width=Math.round((5/SCAN_TOTAL_STEPS)*100)+'%'}
+function submitScan(e){e.preventDefault();scanData.naam=document.getElementById('scanNaam').value;scanData.bedrijf=document.getElementById('scanBedrijf').value;scanData.email=document.getElementById('scanEmail').value;scanData.telefoon=document.getElementById('scanTelefoon').value;document.getElementById('scanStep6').classList.remove('active');document.getElementById('scanDone').classList.add('active');document.getElementById('scanProgressBar').style.width='100%';fetch('https://leadkamer.app.n8n.cloud/webhook/forgexe-scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(scanData)}).catch(function(){})}
+document.getElementById('scanModal').addEventListener('click',function(e){if(e.target===this)closeScan()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('scanModal').classList.contains('open'))closeScan()});
+</script>
+<script src="scan-modal.js" defer></script>
+<script src="/chat-widget.js" defer></script>
+<script src="/tracking.js" defer></script>
+</body>
+</html>

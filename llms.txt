@@ -46,7 +46,8 @@ Regio: Limburg, Noord-Brabant (Eindhoven/Brainport), Nijmegen en heel Nederland 
 
 ## Cases
 
-- [Alle cases](https://www.forgexe.nl/cases): DNA-talent, Smart ESG, Technetium, Wijnzinnig, Fietsencatalogus, RealCob
+- [Alle cases](https://www.forgexe.nl/cases): DNA-talent, Smart ESG, Technetium, Wijnzinnig, Fietsencatalogus, RealCob, MooiGroendak
+- [MooiGroendak](https://www.forgexe.nl/case-mooigroendak): AI-assistent Bram op een groendak-webshop, rekent pakketprijzen uit en zet ze in de winkelwagen
 
 ## Bedrijf
 
