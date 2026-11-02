@@ -790,6 +790,7 @@
           <option value="2026-11-05">Do 5 november · Roermond</option>
           <option value="2026-11-19">Do 19 november · IJmuiden</option>
           <option value="2026-12-03">Do 3 december · IJmuiden</option>
+          <option value="incompany">In-company · op eigen locatie</option>
         </select>
         <button type="button" class="form-submit" style="margin-top:0;" onclick="submitBrochure(this)">Stuur mij de brochure →</button>
         <span class="brochure-note">Geen verplichtingen. Uitschrijven kan altijd.</span>
@@ -882,33 +883,34 @@
           <option value="2026-11-05">Donderdag 5 november 2026 — Roermond</option>
           <option value="2026-11-19">Donderdag 19 november 2026 — IJmuiden</option>
           <option value="2026-12-03">Donderdag 3 december 2026 — IJmuiden</option>
+          <option value="incompany">In-company · op jullie eigen locatie</option>
         </select>
       </div>
       <div class="form-group">
         <label class="form-label">Werk je al met een AI-tool?</label>
         <input type="text" class="form-input" id="ins-aitool" placeholder="Bijv. ChatGPT (gratis), Claude Pro, Copilot, nog niet...">
       </div>
-      <div class="form-group full form-subhead">
+      <div class="form-group full form-subhead" data-factuur>
         <span class="form-subhead-title">Factuurgegevens</span>
         <span class="form-subhead-note">De factuur staat op naam van het kantoor of de organisatie hierboven.</span>
       </div>
-      <div class="form-group full">
+      <div class="form-group full" data-factuur>
         <label class="form-label" for="ins-adres">Adres *</label>
         <input type="text" class="form-input" id="ins-adres" placeholder="Straat en huisnummer" autocomplete="street-address" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" data-factuur>
         <label class="form-label" for="ins-postcode">Postcode *</label>
         <input type="text" class="form-input" id="ins-postcode" placeholder="1234 AB" autocomplete="postal-code" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" data-factuur>
         <label class="form-label" for="ins-plaats">Plaats *</label>
         <input type="text" class="form-input" id="ins-plaats" placeholder="Plaats" autocomplete="address-level2" required>
       </div>
-      <div class="form-group">
+      <div class="form-group" data-factuur>
         <label class="form-label" for="ins-factuurmail">Factuur naar ander e-mailadres</label>
         <input type="email" class="form-input" id="ins-factuurmail" placeholder="Bijv. administratie@kantoor.nl">
       </div>
-      <div class="form-group">
+      <div class="form-group" data-factuur>
         <label class="form-label" for="ins-kenmerk">Kenmerk of inkoopnummer</label>
         <input type="text" class="form-input" id="ins-kenmerk" placeholder="Optioneel">
       </div>
@@ -1011,6 +1013,25 @@
       event_source_url: location.href
     };
   }
+
+  // In-company: geen vaste datum en nog geen factuur, dus factuurvelden verbergen
+  (function() {
+    var sel = document.getElementById('ins-datum');
+    if (!sel) return;
+    function toggle() {
+      var ic = sel.value === 'incompany';
+      document.querySelectorAll('[data-factuur]').forEach(function(g) {
+        g.style.display = ic ? 'none' : '';
+        g.querySelectorAll('input').forEach(function(i) {
+          if (i.id === 'ins-adres' || i.id === 'ins-postcode' || i.id === 'ins-plaats') {
+            if (ic) i.removeAttribute('required'); else i.setAttribute('required', '');
+          }
+        });
+      });
+    }
+    sel.addEventListener('change', toggle);
+    toggle();
+  })();
 
   // Form submit
   async function submitForm(btn) {
