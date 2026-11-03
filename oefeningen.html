@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Groepsoefeningen · Juridische AI-training</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/forgexe-mark-green.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1B2A55; --navy-deep: #111D3E; --navy-light: #2A3E6E;
+    --green: #34d399; --green-bright: #4ade80; --green-pale: #E6F9F1;
+    --sky: #EEF2F9; --cloud: #F6F8FC; --white: #FFFFFF;
+    --slate: #4A5568; --slate-light: #718096; --ink: #1A1F2E; --border: #DEE5F0;
+    --red: #C0392B; --red-pale: #FCEDEB; --amber: #A86A00; --amber-pale: #FDF3E1;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Outfit', sans-serif; color: var(--ink); background: var(--cloud); -webkit-font-smoothing: antialiased; line-height: 1.5; font-size: 16px; overflow-x: hidden; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; color: var(--navy-deep); line-height: 1.2; font-weight: 600; }
+  button, input, textarea, select { font: inherit; color: inherit; }
+  a { color: var(--navy); }
+  .verborgen { display: none !important; }
+
+  /* Kop */
+  .kop { background: var(--navy-deep); color: #fff; padding: 14px 16px; position: sticky; top: 0; z-index: 50; }
+  .kop-in { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .kop-merk { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); font-weight: 500; }
+  .kop-merk b { color: var(--green); font-weight: 600; }
+  .kop-rechts { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.8); }
+  .kop-rechts button { background: none; border: 1px solid rgba(255,255,255,.3); color: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px; }
+  .tabs { max-width: 1080px; margin: 10px auto 0; display: flex; gap: 6px; overflow-x: auto; }
+  .tab { background: rgba(255,255,255,.08); border: 0; color: rgba(255,255,255,.75); padding: 8px 14px; border-radius: 8px 8px 0 0; cursor: pointer; font-weight: 500; white-space: nowrap; font-size: 15px; }
+  .tab.actief { background: var(--cloud); color: var(--navy-deep); }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 20px 16px 80px; }
+  .kaart { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .kaart h2 { font-size: 22px; margin-bottom: 6px; }
+  .kaart h3 { font-size: 18px; margin: 14px 0 6px; }
+  .stap { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--slate-light); font-weight: 600; margin-bottom: 4px; }
+  .uitleg { color: var(--slate); font-size: 15px; margin-bottom: 12px; }
+  .klein { font-size: 13px; color: var(--slate-light); }
+
+  /* Formulier */
+  label.veld { display: block; font-weight: 500; font-size: 14px; color: var(--navy); margin: 12px 0 4px; }
+  input[type=text], input[type=password], textarea, select { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; background: #fff; font-size: 16px; }
+  textarea { min-height: 76px; resize: vertical; }
+  textarea.groot { min-height: 220px; font-size: 14px; }
+  input:focus, textarea:focus, select:focus { outline: 2px solid var(--green); outline-offset: 0; border-color: var(--green); }
+  .knop { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--green); color: var(--navy-deep); border: 0; border-radius: 8px; padding: 12px 20px; font-weight: 600; cursor: pointer; font-size: 16px; }
+  .knop:hover { background: var(--green-bright); }
+  .knop.twee { background: var(--white); border: 1px solid var(--border); color: var(--navy); }
+  .knop.twee:hover { background: var(--sky); }
+  .knop.klein { padding: 6px 12px; font-size: 14px; }
+  .knop.rood { background: var(--white); border: 1px solid #E8C4BF; color: var(--red); }
+  .fout { background: var(--red-pale); color: var(--red); border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 14px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border: 1px solid var(--border); background: #fff; color: var(--navy); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-size: 15px; font-weight: 500; }
+  .chip:hover { border-color: var(--navy-light); }
+  .chip.aan { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .chip.bezet { opacity: .55; }
+  .chip small { font-weight: 400; opacity: .8; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; flex-wrap: wrap; }
+  .seg button { border: 0; background: #fff; padding: 7px 12px; cursor: pointer; font-size: 14px; color: var(--slate); border-right: 1px solid var(--border); }
+  .seg button:last-child { border-right: 0; }
+  .seg button.aan.goed { background: var(--green-pale); color: #116b4a; font-weight: 600; }
+  .seg button.aan.mis { background: var(--red-pale); color: var(--red); font-weight: 600; }
+  .seg button.aan.half { background: var(--amber-pale); color: var(--amber); font-weight: 600; }
+
+  /* Vragen */
+  .vraag { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--sky); }
+  .vraag:first-child { border-top: 0; }
+  .vraag .nr { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green); font-size: 20px; min-width: 22px; line-height: 1.2; }
+  .vraag .tekst { flex: 1; }
+  .kopieer { border: 1px solid var(--border); background: #fff; border-radius: 6px; padding: 4px 10px; font-size: 13px; cursor: pointer; color: var(--navy); white-space: nowrap; }
+  .prompt { background: var(--cloud); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; white-space: pre-wrap; flex: 1; }
+
+  /* Arresten */
+  .arrest { border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 12px; background: #fff; }
+  .arrest-kop { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .arrest-kop b { color: var(--navy); }
+  .rij2 { display: grid; grid-template-columns: 1fr; gap: 0 12px; }
+  .check { background: var(--cloud); border-radius: 8px; padding: 10px 12px; margin-top: 12px; }
+  .checkrij { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 5px 0; flex-wrap: wrap; }
+  .checkrij span { font-size: 14px; color: var(--navy); font-weight: 500; }
+  .weg { border: 0; background: none; color: var(--slate-light); cursor: pointer; font-size: 13px; text-decoration: underline; }
+
+  .status { position: fixed; right: 12px; bottom: 12px; background: var(--navy-deep); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 13px; z-index: 60; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  .status.ok { background: #116b4a; }
+  .status.mis { background: var(--red); }
+
+  /* Envelop */
+  .envelop-dicht { text-align: center; padding: 26px 10px; }
+  .envelop-dicht svg { margin-bottom: 8px; }
+  .env h2 { font-size: 22px; margin: 18px 0 4px; }
+  .env h3 { font-size: 17px; margin: 16px 0 6px; }
+  .env p, .env li { font-size: 15px; margin: 6px 0; }
+  .env ul, .env ol { padding-left: 20px; }
+  .env-deel { border-top: 2px solid var(--green); margin-top: 20px; padding-top: 4px; }
+  .env-deel:first-child { margin-top: 0; }
+  .env-sub { color: var(--slate-light); font-size: 14px !important; }
+  .legenda { background: var(--cloud); border-radius: 8px; padding: 8px 10px; font-size: 13.5px !important; }
+  .tblwrap, .tbl { overflow-x: auto; margin: 8px 0; -webkit-overflow-scrolling: touch; }
+  .env table, .sleutel table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 13.5px; }
+  .env th, .env td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .env th { background: var(--sky); }
+  .env a.ecli { white-space: nowrap; }
+  .env p, .env li, .blok p { overflow-wrap: anywhere; }
+  .pres .bal span, .pres .klein { font-size: clamp(14px, 1.4vw, 22px); color: rgba(255,255,255,.75); }
+  @media (max-width: 599px) { .tab .lang { display: none; } .tab { padding: 8px 12px; } }
+  .env .copy, .env .mk { display: none; }
+
+  /* Trainer */
+  .balk { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .balk select { width: auto; }
+  .codeblok { background: var(--navy-deep); color: #fff; border-radius: 12px; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; }
+  .codeblok .url { font-size: 18px; color: rgba(255,255,255,.8); }
+  .codeblok .code { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: var(--green); letter-spacing: .04em; }
+  .schakel { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: 6px 14px 6px 6px; cursor: pointer; font-weight: 600; color: var(--navy); }
+  .schakel i { width: 38px; height: 22px; border-radius: 999px; background: #CBD3E1; position: relative; display: inline-block; transition: background .2s; }
+  .schakel i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left .2s; }
+  .schakel.aan i { background: var(--green); }
+  .schakel.aan i::after { left: 19px; }
+  .tellers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .teller { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .teller b { display: block; font-family: 'Playfair Display', serif; font-size: 30px; color: var(--navy-deep); line-height: 1.1; }
+  .teller span { font-size: 13.5px; color: var(--slate); }
+  .teller.mis b { color: var(--red); }
+  .teller.half b { color: var(--amber); }
+  .teller.goed b { color: #116b4a; }
+  .groepkaart { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-top: 14px; }
+  .groepkaart-kop { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; justify-content: space-between; }
+  .groepkaart h3 { font-size: 20px; margin: 0; }
+  .label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--slate-light); }
+  .blok { margin-top: 12px; }
+  .blok p { white-space: pre-wrap; }
+  .lijst { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .lijst th, .lijst td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--sky); vertical-align: top; }
+  .lijst th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--slate-light); font-weight: 600; }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tag { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: 12.5px; font-weight: 600; margin: 1px 2px 1px 0; white-space: nowrap; }
+  .tag.goed { background: var(--green-pale); color: #116b4a; }
+  .tag.mis { background: var(--red-pale); color: var(--red); }
+  .tag.half { background: var(--amber-pale); color: var(--amber); }
+  .tag.leeg { background: var(--sky); color: var(--slate); }
+  .balken { margin-top: 6px; }
+  .bal { display: grid; grid-template-columns: 110px 1fr 34px; gap: 8px; align-items: center; font-size: 14px; margin: 5px 0; }
+  .bal .spoor { background: var(--sky); border-radius: 4px; height: 14px; overflow: hidden; }
+  .bal .vul { height: 100%; background: var(--navy); border-radius: 4px; }
+  details.uitklap { margin-top: 10px; }
+  details.uitklap summary { cursor: pointer; color: var(--navy); font-weight: 500; }
+  .naast { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .naast pre { white-space: pre-wrap; font-family: inherit; font-size: 14px; background: var(--cloud); border-radius: 8px; padding: 12px; max-height: 520px; overflow: auto; }
+  .sleutel { background: var(--green-pale); border-radius: 10px; padding: 12px 14px; margin-top: 12px; }
+  .sleutel h3 { font-size: 16px; margin: 8px 0 4px; }
+  .sleutel ul { padding-left: 20px; font-size: 14.5px; }
+
+  /* Presenteren */
+  .pres { position: fixed; inset: 0; background: var(--navy-deep); color: #fff; z-index: 200; display: flex; flex-direction: column; }
+  .pres-in { flex: 1; overflow: auto; padding: 4vh 5vw; }
+  .pres h1 { color: #fff; font-size: clamp(28px, 4vw, 54px); margin-bottom: 2vh; }
+  .pres h2 { color: var(--green); font-size: clamp(20px, 2.4vw, 32px); margin: 3vh 0 1vh; }
+  .pres p, .pres li, .pres td, .pres th { font-size: clamp(16px, 1.7vw, 26px); }
+  .pres .p-kicker { font-size: clamp(13px, 1.1vw, 18px); letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .pres .tellers { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .pres .teller { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.15); }
+  .pres .teller b { color: #fff; font-size: clamp(34px, 4.4vw, 64px); }
+  .pres .teller span { color: rgba(255,255,255,.75); font-size: clamp(14px, 1.3vw, 20px); }
+  .pres .teller.mis b { color: #FF8A7A; }
+  .pres .teller.half b { color: #F5C26B; }
+  .pres .teller.goed b { color: var(--green); }
+  .pres .lijst th { color: rgba(255,255,255,.55); }
+  .pres .lijst td, .pres .lijst th { border-color: rgba(255,255,255,.12); padding: 1vh 10px; }
+  .pres .tag.leeg { background: rgba(255,255,255,.1); color: rgba(255,255,255,.8); }
+  .pres .citaat { border-left: 4px solid var(--green); padding: 4px 0 4px 18px; margin: 1.5vh 0; white-space: pre-wrap; }
+  .pres-voet { display: flex; justify-content: space-between; align-items: center; padding: 12px 5vw; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: rgba(255,255,255,.6); }
+  .pres-voet button { background: rgba(255,255,255,.1); border: 0; color: #fff; border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 15px; }
+  .pres .bal .spoor { background: rgba(255,255,255,.1); }
+  .pres .bal .vul { background: var(--green); }
+  .pres .bal { grid-template-columns: 200px 1fr 50px; }
+
+  .login { max-width: 460px; margin: 6vh auto 0; }
+  .login h1 { font-size: 30px; margin-bottom: 6px; }
+  .merkregel { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--slate); font-size: 14px; }
+  .merkregel img { width: 28px; height: 28px; }
+
+  @media (min-width: 720px) {
+    main { padding: 28px 24px 80px; }
+    .kaart { padding: 24px 28px; }
+    .rij2 { grid-template-columns: 1fr 1fr; }
+    .tellers { grid-template-columns: repeat(3, 1fr); }
+    .naast { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 980px) {
+    .tellers { grid-template-columns: repeat(6, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="kop">
+  <div class="kop-in">
+    <div class="kop-merk">Juridische AI-training · <b>Groepsoefeningen</b></div>
+    <div class="kop-rechts" id="kopRechts"></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<main id="app"></main>
+<div class="status verborgen" id="status"></div>
+<div class="pres verborgen" id="pres"></div>
+
+<script>
+(function () {
+  var API = 'https://leadkamer.app.n8n.cloud/webhook/peters-oefeningen';
+  var MODELLEN = ['ChatGPT', 'Claude', 'Gemini', 'Mistral', 'Copilot', 'Anders'];
+  var GEBIEDEN = {
+    '1': { naam: 'Civiel recht', kern: 'Wat is het kernbestanddeel van een onrechtmatige daad?' },
+    '2': { naam: 'Arbeidsrecht', kern: 'Wat zijn de voorwaarden voor een ontslag op staande voet?' },
+    '3': { naam: 'Huurrecht', kern: 'Wat zijn de belangrijkste juridische rechten van een huurder van woonruimte?' },
+    '4': { naam: 'Familierecht', kern: 'Wat zijn de belangrijkste rechten van de kinderen op de erfenis van hun ouders?' },
+    '5': { naam: 'Bestuursrecht', kern: 'Welk algemeen beginsel wordt voor de burger als het belangrijkst gezien binnen het bestuursrecht?',
+           hist: 'Welke historische uitspraken van de Raad van State zijn hierover belangrijk?',
+           act: 'Wat zijn de belangrijkste actuele uitspraken hierover?' },
+    '6': { naam: 'Strafrecht', kern: 'Wat is het belangrijkste recht van een verdachte binnen het strafrecht?' }
+  };
+  var RODE_PEN = [
+    'Elk wetsartikel is nagekeken op wetten.overheid.nl: het nummer én wat het model over de inhoud zegt',
+    'Elke uitspraak is gecontroleerd: ECLI, datum, instantie én inhoud',
+    'De genoemde instantie past bij de vorm van procedure',
+    'Het is de geldende versie van de wet (let op Omgevingswet, alimentatie, alcohol en verkeer)',
+    'Er staan geen herleidbare gegevens in de prompt',
+    'We kunnen elke zin in het stuk zelf verdedigen'
+  ];
+  var CASUS = {
+    'A': { titel: 'Arbeidsrecht: arbeidsovereenkomst machinebankwerker', sleutel: 'A',
+      opdracht: 'Stel een bondige arbeidsovereenkomst op voor een machinebankwerker.',
+      feiten: 'De werknemer treedt in dienst bij een fictief bedrijf in de autobranche, op de afdeling revisie en carrosseriebouw. Fulltime, onbepaalde tijd, proeftijd gewenst.',
+      r1: 'Stel een arbeidsovereenkomst op voor een machinebankwerker.',
+      r2: ['Een machinebankwerker gaat werken in de autobranche, op de afdeling revisie en carrosseriebouw. Welke cao’s kunnen van toepassing zijn, en waar hangt die keuze van af?',
+           'Welke bepalingen uit die cao(’s) moeten terugkomen in de arbeidsovereenkomst (loonschaal, arbeidsduur, proeftijd, opzegtermijn)?',
+           'Welk salaris moet worden opgenomen? Noem de bron en de datum van de loontabel.',
+           'Stel nu de arbeidsovereenkomst op. Markeer elke bepaling die uit de cao komt, met de vindplaats.'] },
+    'B': { titel: 'Huurrecht: huurovereenkomst bedrijfsruimte', sleutel: 'B',
+      opdracht: 'Stel een huurovereenkomst op voor een bedrijfsruimte.',
+      feiten: 'De huurder is een autobedrijf. In het pand wordt gewerkt met milieubelastende stoffen, er is opslag van afgewerkte olie, en er staan zeer zware machines.',
+      r1: 'Stel een huurovereenkomst op voor een bedrijfsruimte.',
+      r2: ['De huurder is een autobedrijf dat werkt met milieubelastende stoffen. Welke bepalingen over milieu, vergunningen en aansprakelijkheid horen in de huurovereenkomst?',
+           'Er wordt afgewerkte olie opgeslagen. Welke regels gelden voor die opslag, en hoe verwerk je dat in het contract?',
+           'Er staan zeer zware machines. Wat regel je over vloerbelasting, schade aan de vloer en aansprakelijkheid?',
+           'Gaat het om 7:290-bedrijfsruimte of om overige bedrijfsruimte (7:230a BW)? Wat betekent dat voor duur en opzegging?',
+           'Stel nu de huurovereenkomst op.'] },
+    'C': { titel: 'Familierecht: vaststellingsovereenkomst bij echtscheiding', sleutel: 'C',
+      opdracht: 'Stel in grote lijnen een vaststellingsovereenkomst (echtscheidingsconvenant) op.',
+      feiten: 'Partijen zijn gehuwd in gemeenschap van goederen. Zij bezitten samen een onderneming met vestigingen in het buitenland. Er spelen diverse fiscale aanslagen.',
+      r1: 'Stel een echtscheidingsconvenant op.',
+      r2: ['Partijen zijn gehuwd. Wat moet ik weten over het huwelijksgoederenregime? Maakt de trouwdatum uit (vóór of na 1 januari 2018)?',
+           'Ze bezitten samen een onderneming met vestigingen in het buitenland. Welke vragen van internationaal privaatrecht en fiscaal recht spelen hier?',
+           'Er lopen fiscale aanslagen. Hoe regel je de draagplicht in de onderlinge verhouding?',
+           'Stel nu in grote lijnen de vaststellingsovereenkomst op. Markeer de punten waar fiscaal advies nodig is.'] },
+    'Dg': { titel: 'Bestuursrecht: weigeringsbesluit (de gemeente)', kort: 'D · gemeente', sleutel: 'D',
+      opdracht: 'Jullie zijn de ambtenaar-jurist. Stel met AI een besluit op waarin de aanvraag voor een omgevingsvergunning wordt afgewezen.',
+      feiten: 'Een bewoner vraagt een omgevingsvergunning aan voor een dakkapel aan de voorkant van zijn woning. De gemeente wil de aanvraag afwijzen. (Liever een ander voorbeeld? Kies het gebruik van een deel van de woning als praktijkruimte.) De groep “advocaat” schrijft tegelijk het bezwaarschrift; straks leggen jullie de stukken naast elkaar.',
+      r1: 'Stel een besluit op waarin een omgevingsvergunning voor een dakkapel aan de voorkant wordt geweigerd.',
+      r2: ['Welke regels gelden sinds de Omgevingswet voor een dakkapel aan de voorkant van een woning? Noem de regel en de vindplaats.',
+           'Aan welke eisen moet een besluit voldoen: motivering, bekendmaking en de vermelding van bezwaar?',
+           'Op welke gronden kan de gemeente de vergunning weigeren, en hoe motiveer je dat?',
+           'Stel nu het weigeringsbesluit op, met de rechtsmiddelenclausule.'] },
+    'Da': { titel: 'Bestuursrecht: bezwaarschrift (de advocaat)', kort: 'D · advocaat', sleutel: 'D',
+      opdracht: 'Jullie zijn de advocaat van de bewoner. Stel met AI een bezwaarschrift op tegen het weigeringsbesluit.',
+      feiten: 'De gemeente heeft de omgevingsvergunning voor een dakkapel aan de voorkant van de woning van jullie cliënt geweigerd. (Liever een ander voorbeeld? Kies het gebruik van een deel van de woning als praktijkruimte.) De groep “gemeente” schrijft tegelijk het besluit; straks leggen jullie de stukken naast elkaar.',
+      r1: 'Stel een bezwaarschrift op tegen de weigering van een omgevingsvergunning voor een dakkapel.',
+      r2: ['Welke termijn geldt voor bezwaar, en wanneer begint die te lopen?',
+           'Aan welke vereisten moet een bezwaarschrift voldoen?',
+           'Is de dakkapel vergunningvrij onder de huidige regels? Noem de regel en de vindplaats.',
+           'Stel het bezwaarschrift op.'] },
+    'E': { titel: 'Strafrecht: herzieningsaanvraag (optioneel)', sleutel: 'E',
+      opdracht: 'Zet de opbouw van een herzieningsaanvraag op, waarbij een nieuwe getuigenverklaring als novum centraal staat. Deze casus laat vooral de grenzen van het model zien; hij hoeft niet “af”.',
+      feiten: 'Een cliënt is onherroepelijk veroordeeld. Er zijn nieuwe getuigenverklaringen die volgens de cliënt een ander licht op de zaak werpen.',
+      r1: 'Stel een herzieningsaanvraag op.',
+      r2: ['Op welke wettelijke grondslag kan een herzieningsaanvraag worden gedaan, en welke herzieningsgronden zijn er?',
+           'Wat is de rol van de advocaat-generaal bij de Hoge Raad en van de Adviescommissie afgesloten strafzaken (ACAS)?',
+           'Welke maatstaf hanteert de Hoge Raad voor een novum? Noem de arresten met ECLI.',
+           'Zet nu de opbouw van de herzieningsaanvraag op.'] }
+  };
+  var CASUS_VOLGORDE = ['A', 'B', 'C', 'Dg', 'Da', 'E'];
+
+  var st = {
+    rol: null, code: '', naam: '', wachtwoord: '', info: null, edities: [], editie: '',
+    oef: 'go1', groep: { go1: '', go2: '' }, data: { go1: {}, go2: {} }, basis: { go1: {}, go2: {} },
+    status: {}, groepen: [], envelop: null, overzicht: null, inhoud: {}, toonSleutel: {}, presIndex: 0
+  };
+  var app = document.getElementById('app');
+
+  /* ---------- hulpjes ---------- */
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function kloon(x) { return JSON.parse(JSON.stringify(x == null ? {} : x)); }
+  function zelfde(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
+  function nieuwId() { return 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  function bewaar(k, v) { try { localStorage.setItem('pfo-' + k, JSON.stringify(v)); } catch (e) {} }
+  function lees(k) { try { var v = localStorage.getItem('pfo-' + k); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+  function wis(k) { try { localStorage.removeItem('pfo-' + k); } catch (e) {} }
+
+  var statusTimer = null;
+  function meld(tekst, soort, blijf) {
+    var el = document.getElementById('status');
+    el.textContent = tekst; el.className = 'status' + (soort ? ' ' + soort : '');
+    clearTimeout(statusTimer);
+    if (!blijf) statusTimer = setTimeout(function () { el.className = 'status verborgen'; }, 2200);
+  }
+
+  function post(body, ok, mis) {
+    if (st.rol === 'trainer' || body.wachtwoord) { body.wachtwoord = st.wachtwoord || body.wachtwoord; if (!body.editie) body.editie = st.editie; }
+    else { body.code = body.code || st.code; body.naam = body.naam || st.naam; }
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.timeout = 30000;
+    xhr.onload = function () {
+      var r = null;
+      try { r = JSON.parse(xhr.responseText); } catch (e) {}
+      if (r && r.ok) ok(r);
+      else if (mis) mis(r && r.fout ? r.fout : 'Er ging iets mis. Probeer het opnieuw.');
+    };
+    xhr.onerror = xhr.ontimeout = function () { if (mis) mis('Geen verbinding. Controleer de wifi en probeer het opnieuw.'); };
+    xhr.send(JSON.stringify(body));
+  }
+
+  // pad: "kern.ChatGPT.antwoord" of "arresten.#id.naam"
+  function pad(obj, p, maak) {
+    var delen = p.split('.'), o = obj;
+    for (var i = 0; i < delen.length - 1; i++) {
+      var d = delen[i];
+      if (d.charAt(0) === '#') {
+        var id = d.slice(1), gevonden = null;
+        for (var j = 0; j < o.length; j++) if (o[j].id === id) gevonden = o[j];
+        if (!gevonden) return null;
+        o = gevonden;
+      } else {
+        if (o[d] == null) { if (!maak) return null; o[d] = (delen[i + 1].charAt(0) === '#') ? [] : {}; }
+        o = o[d];
+      }
+    }
+    return { o: o, k: delen[delen.length - 1] };
+  }
+  function haal(obj, p) { var r = pad(obj, p, false); return r ? r.o[r.k] : undefined; }
+  function zet(obj, p, v) { var r = pad(obj, p, true); if (r) r.o[r.k] = v; }
+
+  // zelfde drieweg-samenvoeging als in n8n
+  function isObj(x) { return !!x && typeof x === 'object' && !Array.isArray(x); }
+  function isIdArr(x) { return Array.isArray(x) && x.every(function (e) { return isObj(e) && e.id; }); }
+  function perId(a) { var m = {}; a.forEach(function (e) { m[e.id] = e; }); return m; }
+  function samen(b, l, c) {
+    if (c === undefined) return l;
+    if (l === undefined) return c;
+    if (zelfde(l, b)) return c;
+    if (zelfde(c, b)) return l;
+    if (isObj(l) && isObj(c)) {
+      var bb = isObj(b) ? b : {}, uit = {}, sleutels = {};
+      Object.keys(c).concat(Object.keys(l)).forEach(function (k) { sleutels[k] = 1; });
+      Object.keys(sleutels).forEach(function (k) { var v = samen(bb[k], l[k], c[k]); if (v !== undefined) uit[k] = v; });
+      return uit;
+    }
+    if (isIdArr(l) && isIdArr(c)) {
+      var bm = perId(isIdArr(b) ? b : []), lm = perId(l), cm = perId(c), lijst = [];
+      var ids = c.map(function (e) { return e.id; }).concat(l.map(function (e) { return e.id; }).filter(function (id) { return !cm[id]; }));
+      ids.forEach(function (id) {
+        if (lm[id] && cm[id]) lijst.push(samen(bm[id], lm[id], cm[id]));
+        else if (lm[id]) { if (!bm[id] || !zelfde(lm[id], bm[id])) lijst.push(lm[id]); }
+        else if (cm[id]) { if (!bm[id] || !zelfde(cm[id], bm[id])) lijst.push(cm[id]); }
+      });
+      return lijst;
+    }
+    return l;
+  }
+
+  function kopieer(tekst, knop) {
+    function klaar() { if (knop) { var o = knop.textContent; knop.textContent = 'Gekopieerd'; setTimeout(function () { knop.textContent = o; }, 1400); } }
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(tekst).then(klaar, function () { oud(); }); }
+    else oud();
+    function oud() {
+      var t = document.createElement('textarea'); t.value = tekst; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); klaar(); } catch (e) {}
+      document.body.removeChild(t);
+    }
+  }
+
+  /* ---------- kop en tabs ---------- */
+  function tekenKop() {
+    var r = document.getElementById('kopRechts'), t = document.getElementById('tabs');
+    if (!st.rol) { r.innerHTML = ''; t.innerHTML = ''; return; }
+    if (st.rol === 'trainer') {
+      r.innerHTML = '<span>Trainers</span><button data-actie="uitloggen">Uitloggen</button>';
+      t.innerHTML = tab('go1', 'Groepsoefening 1') + tab('go2', 'Groepsoefening 2');
+    } else {
+      r.innerHTML = '<span>' + esc(st.naam) + '</span><button data-actie="uitloggen">Uitloggen</button>';
+      t.innerHTML = tab('go1', 'Groepsoefening 1<span class="lang"> · Natrekken</span>') + tab('go2', 'Groepsoefening 2<span class="lang"> · Opstellen</span>');
+    }
+    function tab(id, label) { return '<button class="tab' + (st.oef === id ? ' actief' : '') + '" data-tab="' + id + '">' + label + '</button>'; }
+  }
+
+  /* ---------- inloggen ---------- */
+  function tekenLogin(trainer, fout) {
+    st.rol = null; tekenKop();
+    var h = '<div class="login kaart">' +
+      '<div class="merkregel"><img src="/forgexe-mark-green.svg" alt=""><span>Peters Advocatuur × Forgexe</span></div>';
+    if (!trainer) {
+      h += '<h1>Groepsoefeningen</h1><p class="uitleg">Vul de code in die op het scherm staat, en je naam. Je groep kies je daarna.</p>' +
+        '<form id="loginForm"><label class="veld" for="lCode">Code</label><input type="text" id="lCode" autocomplete="off" autocapitalize="characters" value="' + esc(st.code) + '" required>' +
+        '<label class="veld" for="lNaam">Je naam</label><input type="text" id="lNaam" autocomplete="name" value="' + esc(st.naam) + '" required>' +
+        '<div style="margin-top:18px"><button class="knop" type="submit">Verder</button></div></form>' +
+        (fout ? '<div class="fout">' + esc(fout) + '</div>' : '') +
+        '<p class="klein" style="margin-top:22px"><a href="#" data-actie="naarTrainer">Inloggen als trainer</a></p>';
+    } else {
+      h += '<h1>Trainers</h1><p class="uitleg">Overzicht van de antwoorden per groep, de envelop-knop en de presentatiemodus.</p>' +
+        '<form id="trainerForm"><label class="veld" for="lWw">Wachtwoord</label><input type="password" id="lWw" autocomplete="current-password" required>' +
+        '<div style="margin-top:18px"><button class="knop" type="submit">Inloggen</button></div></form>' +
+        (fout ? '<div class="fout">' + esc(fout) + '</div>' : '') +
+        '<p class="klein" style="margin-top:22px"><a href="#" data-actie="naarDeelnemer">Terug naar inloggen als deelnemer</a></p>';
+    }
+    app.innerHTML = h + '</div>';
+  }
+
+  function loginDeelnemer(code, naam, stil) {
+    post({ actie: 'login', code: code, naam: naam }, function (r) {
+      st.rol = 'deelnemer'; st.code = code; st.naam = naam; st.info = r.info; st.status = r.status || {};
+      bewaar('sessie', { code: code, naam: naam });
+      var g = lees('groep-' + r.editie) || {};
+      st.groep = { go1: g.go1 || '', go2: g.go2 || '' };
+      st.editie = r.editie;
+      tekenKop(); openOefening();
+    }, function (f) { if (stil) { wis('sessie'); tekenLogin(false); } else tekenLogin(false, f); });
+  }
+
+  function loginTrainer(ww, stil) {
+    post({ actie: 'login', wachtwoord: ww }, function (r) {
+      st.rol = 'trainer'; st.wachtwoord = ww; st.edities = r.edities || [];
+      var t = lees('trainer') || {};
+      st.editie = t.editie || kiesEditie();
+      bewaar('trainer', { ww: ww, editie: st.editie });
+      tekenKop(); laadOverzicht(true); startVerversen();
+    }, function (f) { if (stil) { wis('trainer'); tekenLogin(true); } else tekenLogin(true, f); });
+  }
+  function kiesEditie() {
+    var vandaag = new Date().toISOString().slice(0, 10), keuze = '';
+    st.edities.forEach(function (e) { if (e.id !== 'test' && !keuze && e.id >= vandaag) keuze = e.id; });
+    return keuze || st.edities[0].id;
+  }
+
+  /* ---------- deelnemer: groep kiezen en laden ---------- */
+  function openOefening() {
+    var g = st.groep[st.oef];
+    if (!g) { tekenGroepKiezen(); vraagStatus(); return; }
+    var lokaal = lees('data-' + st.editie + '-' + st.oef + '-' + g);
+    app.innerHTML = '<div class="kaart"><p class="uitleg">Even laden…</p></div>';
+    post({ actie: 'laad', oefening: st.oef, groep: g }, function (r) {
+      st.status = r.status || {};
+      st.basis[st.oef] = kloon(r.data);
+      // niet-verzonden lokale wijzigingen (bijv. na wegvallen wifi) gaan niet verloren
+      st.data[st.oef] = (lokaal && lokaal.basis) ? samen(lokaal.basis, lokaal.data, kloon(r.data)) : kloon(r.data);
+      teken();
+      if (!zelfde(st.data[st.oef], st.basis[st.oef])) planOpslaan();
+    }, function (f) {
+      if (lokaal) { st.data[st.oef] = lokaal.data; st.basis[st.oef] = lokaal.basis || {}; teken(); meld('Offline: je werk staat lokaal', 'mis', true); planOpslaan(); }
+      else app.innerHTML = '<div class="kaart"><div class="fout">' + esc(f) + '</div><p style="margin-top:12px"><button class="knop twee" data-actie="herlaad">Opnieuw</button></p></div>';
+    });
+  }
+
+  function vraagStatus() {
+    post({ actie: 'status' }, function (r) { st.status = r.status || {}; st.groepen = r.groepen || []; if (!st.groep[st.oef]) tekenGroepKiezen(); });
+  }
+
+  function tekenGroepKiezen() {
+    var go1 = st.oef === 'go1';
+    var h = '<div class="kaart"><div class="stap">' + (go1 ? 'Groepsoefening 1 · blanco casusonderzoek' : 'Groepsoefening 2 · opstellen met AI') + '</div>' +
+      '<h2>Welke groep zijn jullie?</h2><p class="uitleg">' +
+      (go1 ? 'Kies het groepsnummer dat jullie van de trainer kregen. Zit je met meerdere laptops in één groep, kies dan allemaal hetzelfde nummer: jullie werken in hetzelfde formulier.'
+           : 'Nieuwe groepjes van drie, bij voorkeur uit hetzelfde rechtsgebied. Kies het groepsnummer dat jullie van de trainer kregen; met meerdere laptops kiezen jullie allemaal hetzelfde nummer.') +
+      '</p><div class="chips">';
+    for (var i = 1; i <= 8; i++) {
+      var info = st.groepen.filter(function (x) { return x.oefening === st.oef && String(x.groep) === String(i); })[0];
+      var sub = '';
+      if (info) {
+        var wat = go1 ? (GEBIEDEN[info.gebied] ? GEBIEDEN[info.gebied].naam : '') : (CASUS[info.casus] ? (CASUS[info.casus].kort || 'Casus ' + info.casus) : '');
+        sub = [wat, info.leden].filter(Boolean).join(' · ');
+      }
+      h += '<button class="chip" data-groep="' + i + '">Groep ' + i + (sub ? ' <small>· ' + esc(sub.slice(0, 40)) + '</small>' : '') + '</button>';
+    }
+    app.innerHTML = h + '</div></div>';
+  }
+
+  /* ---------- opslaan ---------- */
+  var opslaanTimer = null, bezig = false, nogmaals = false;
+  function gewijzigd() {
+    var g = st.groep[st.oef];
+    bewaar('data-' + st.editie + '-' + st.oef + '-' + g, { data: st.data[st.oef], basis: st.basis[st.oef] });
+    planOpslaan();
+  }
+  function planOpslaan() {
+    clearTimeout(opslaanTimer);
+    meld('Wijzigingen…', '', true);
+    opslaanTimer = setTimeout(opslaan, 1500);
+  }
+  function opslaan() {
+    if (bezig) { nogmaals = true; return; }
+    var oef = st.oef, g = st.groep[oef];
+    if (!g) return;
+    var verstuurd = kloon(st.data[oef]);
+    bezig = true;
+    post({ actie: 'opslaan', oefening: oef, groep: g, data: verstuurd, basis: st.basis[oef] }, function (r) {
+      bezig = false;
+      st.status = r.status || st.status;
+      verwerkServer(oef, g, verstuurd, r.data);
+      meld('Opgeslagen', 'ok');
+      if (nogmaals) { nogmaals = false; opslaan(); }
+    }, function (f) {
+      bezig = false;
+      meld('Niet opgeslagen: ' + f.replace(/\.$/, '') + '. We proberen het zo opnieuw.', 'mis', true);
+      opslaanTimer = setTimeout(opslaan, 6000);
+    });
+  }
+  function verwerkServer(oef, g, verstuurd, server) {
+    if (st.groep[oef] !== g) return;
+    var lokaal = st.data[oef];
+    var nieuw = zelfde(lokaal, verstuurd) ? kloon(server) : samen(verstuurd, lokaal, kloon(server));
+    st.basis[oef] = kloon(server);
+    var anders = !zelfde(nieuw, lokaal);
+    st.data[oef] = nieuw;
+    bewaar('data-' + st.editie + '-' + oef + '-' + g, { data: nieuw, basis: st.basis[oef] });
+    if (anders && oef === st.oef) teken(true);
+  }
+
+  // groepsgenoten op andere laptops: af en toe ophalen wat zij invulden
+  setInterval(function () {
+    if (st.rol !== 'deelnemer' || document.hidden || bezig) return;
+    var oef = st.oef, g = st.groep[oef];
+    if (!g || !zelfde(st.data[oef], st.basis[oef])) return;
+    post({ actie: 'laad', oefening: oef, groep: g }, function (r) {
+      st.status = r.status || st.status;
+      if (bezig || !zelfde(st.data[oef], st.basis[oef])) return;
+      if (!zelfde(r.data, st.basis[oef])) { st.basis[oef] = kloon(r.data); st.data[oef] = kloon(r.data); if (oef === st.oef) teken(true); }
+    });
+  }, 45000);
+
+  /* ---------- tekenen deelnemer ---------- */
+  function teken(behoudFocus) {
+    var focusPad = null, s0 = null, s1 = null;
+    if (behoudFocus && document.activeElement && document.activeElement.getAttribute) {
+      focusPad = document.activeElement.getAttribute('data-pad');
+      try { s0 = document.activeElement.selectionStart; s1 = document.activeElement.selectionEnd; } catch (e) {}
+    }
+    app.innerHTML = st.oef === 'go1' ? htmlGo1() : htmlGo2();
+    if (focusPad) {
+      var el = app.querySelector('[data-pad="' + focusPad + '"]');
+      if (el) { el.focus(); try { if (s0 != null) el.setSelectionRange(s0, s1); } catch (e) {} }
+    }
+  }
+
+  function tekst(p, label, opts) {
+    opts = opts || {};
+    var v = haal(st.data[st.oef], p) || '';
+    var id = 'v-' + p.replace(/[^a-zA-Z0-9]/g, '-');
+    var veld = opts.regel
+      ? '<input type="text" id="' + id + '" data-pad="' + p + '" value="' + esc(v) + '"' + (opts.ph ? ' placeholder="' + esc(opts.ph) + '"' : '') + '>'
+      : '<textarea id="' + id + '" data-pad="' + p + '"' + (opts.groot ? ' class="groot"' : '') + (opts.ph ? ' placeholder="' + esc(opts.ph) + '"' : '') + '>' + esc(v) + '</textarea>';
+    return (label ? '<label class="veld" for="' + id + '">' + label + '</label>' : '') + veld;
+  }
+  function seg(p, opties) {
+    var v = haal(st.data[st.oef], p) || '';
+    return '<div class="seg">' + opties.map(function (o) {
+      return '<button type="button" class="' + (v === o[0] ? 'aan ' + o[2] : '') + '" data-zet="' + p + '" data-waarde="' + o[0] + '">' + o[1] + '</button>';
+    }).join('') + '</div>';
+  }
+  function groepRegel() {
+    return '<div class="balk" style="justify-content:space-between"><div class="stap" style="margin:0">Groep ' + esc(st.groep[st.oef]) + '</div>' +
+      '<button class="weg" data-actie="andereGroep">Andere groep kiezen</button></div>';
+  }
+  function vraagRij(nr, t, kop) {
+    return '<div class="vraag"><div class="nr">' + nr + '</div><div class="tekst">' + esc(t) + '</div>' + (kop ? '<button class="kopieer" data-kopieer="' + esc(t) + '">Kopieer</button>' : '') + '</div>';
+  }
+
+  function htmlGo1() {
+    var d = st.data.go1, gb = d.gebied, G = GEBIEDEN[gb];
+    var bezet = {};
+    st.groepen.forEach(function (x) { if (x.oefening === 'go1' && String(x.groep) !== String(st.groep.go1) && x.gebied) bezet[x.gebied] = x.groep; });
+    var h = '<div class="kaart">' + groepRegel() + '<h2>Jullie groep</h2>' +
+      '<label class="veld">Rechtsgebied <span class="klein">(bij voorkeur niet je eigen vak; elke groep een ander)</span></label><div class="chips">';
+    Object.keys(GEBIEDEN).forEach(function (k) {
+      h += '<button class="chip' + (gb === k ? ' aan' : '') + (bezet[k] && gb !== k ? ' bezet' : '') + '" data-zet="gebied" data-waarde="' + k + '">' + GEBIEDEN[k].naam + (bezet[k] && gb !== k ? ' <small>· groep ' + bezet[k] + '</small>' : '') + '</button>';
+    });
+    h += '</div>' + tekst('leden', 'Wie zitten er in jullie groep?', { regel: true, ph: 'Voornamen' }) + '</div>';
+    if (!G) return h + '<div class="kaart"><p class="uitleg">Kies eerst jullie rechtsgebied. Dan verschijnen de vragen.</p></div>';
+
+    h += '<div class="kaart"><div class="stap">Stap 1 · 15 minuten</div><h2>Stel de vragen aan de modellen</h2>' +
+      '<p class="uitleg">Werk met de modellen die je kent, gerust meerdere tegelijk. Stel de vragen in deze volgorde.</p>' +
+      vraagRij(1, G.kern, true) +
+      vraagRij(2, G.hist || 'Wat zijn de belangrijkste historische standaardarresten hierover?', true) +
+      vraagRij(3, G.act || 'Wat zijn de belangrijkste actuele standaardarresten hierover?', true) +
+      vraagRij(4, 'Aan jezelf: check de gevonden jurisprudentie in juridische bronnen. Dat doe je in stap 3.', false) +
+      '<h3>Welke modellen gebruiken jullie?</h3><div class="chips">';
+    var kern = d.kern || {};
+    MODELLEN.forEach(function (m) { h += '<button class="chip' + (kern[m] && kern[m].aan ? ' aan' : '') + '" data-wissel="kern.' + m + '.aan">' + m + '</button>'; });
+    h += '</div>';
+    var gebruikt = MODELLEN.filter(function (m) { return kern[m] && kern[m].aan; });
+    gebruikt.forEach(function (m) {
+      h += '<h3>' + m + ': antwoord op de kernvraag</h3>' +
+        tekst('kern.' + m + '.antwoord', '', { ph: 'In het kort: wat antwoordde ' + m + '?' }) +
+        tekst('kern.' + m + '.artikel', 'Noemde ' + m + ' een wetsartikel? Welk?', { regel: true, ph: 'bijv. 6:162 BW, of: geen' });
+    });
+    h += '</div>';
+
+    h += '<div class="kaart"><div class="stap">Stap 2 en 3 · noteren en natrekken (20 minuten)</div><h2>Arresten die de modellen noemen</h2>' +
+      '<p class="uitleg">Noteer elk arrest dat een model noemt, met het ECLI als dat erbij staat. Trek het daarna na op <a href="https://uitspraken.rechtspraak.nl" target="_blank" rel="noopener">uitspraken.rechtspraak.nl</a>: bestaat het, kloppen datum en instantie, en gaat het echt over dit onderwerp? Lees de inhoudsindicatie.</p>';
+    (d.arresten || []).forEach(function (a, i) { h += htmlArrest(a, i, gebruikt); });
+    h += '<div style="margin-top:14px"><button class="knop twee" data-actie="nieuwArrest">+ Arrest toevoegen</button></div></div>';
+
+    h += '<div class="kaart" id="envelop"><div class="stap">Stap 4 · 15 minuten</div><h2>De envelop</h2>';
+    if (st.envelop && st.envelop.gebied === gb && st.envelop.items) {
+      h += '<p class="uitleg">Johns eigen testresultaten en het antwoordblad voor ' + esc(G.naam.toLowerCase()) + '. Vergelijk ze met wat jullie vonden.</p><div class="env">' +
+        st.envelop.items.map(function (x) { return x.html; }).join('') + '</div>';
+    } else {
+      h += '<div class="envelop-dicht"><svg width="64" height="46" viewBox="0 0 64 46" fill="none" aria-hidden="true"><rect x="2" y="2" width="60" height="42" rx="4" stroke="#1B2A55" stroke-width="2.5" fill="#fff"/><path d="M3 5l29 21L61 5" stroke="#1B2A55" stroke-width="2.5" fill="none"/><circle cx="32" cy="26" r="6" fill="#34d399"/></svg>' +
+        '<p class="uitleg">De envelop blijft dicht tot John zegt dat hij open mag.</p>' +
+        (st.envelop && st.envelop.dicht ? '<p class="klein" style="margin-bottom:10px">Nog dicht. Even geduld.</p>' : '') +
+        '<button class="knop" data-actie="envelop">Open de envelop</button></div>';
+    }
+    h += '</div>';
+
+    h += '<div class="kaart"><div class="stap">Na de envelop</div><h2>Wat namen jullie mee?</h2>' +
+      tekst('na.ookGevonden', 'Wat vonden jullie dat John ook vond?') +
+      tekst('na.gemist', 'Wat vonden jullie dat John miste, of andersom?') +
+      tekst('na.twijfel', 'Bij welke arresten twijfelden jullie?') +
+      tekst('na.opvallend', 'Wat viel jullie het meest op? (Dit vertellen jullie straks in dertig seconden.)') + '</div>';
+    return h;
+  }
+
+  function htmlArrest(a, i, gebruikt) {
+    var p = 'arresten.#' + a.id;
+    var modellen = gebruikt.length ? gebruikt : MODELLEN.slice(0, 4);
+    var link = a.ecli && /ECLI:/i.test(a.ecli) ? 'https://uitspraken.rechtspraak.nl/details?id=' + encodeURIComponent(a.ecli.trim().toUpperCase().replace(/\s+/g, '')) : 'https://uitspraken.rechtspraak.nl';
+    var h = '<div class="arrest"><div class="arrest-kop"><b>Arrest ' + (i + 1) + '</b><button class="weg" data-weg="' + a.id + '">Verwijderen</button></div>' +
+      '<div class="rij2"><div>' + tekst(p + '.naam', 'Naam of omschrijving', { regel: true, ph: 'bijv. Lindenbaum/Cohen' }) + '</div>' +
+      '<div>' + tekst(p + '.ecli', 'ECLI (als het model dat noemde)', { regel: true, ph: 'ECLI:NL:HR:…' }) + '</div>' +
+      '<div>' + tekst(p + '.gezegd', 'Datum en instantie volgens het model', { regel: true, ph: 'bijv. HR 31 januari 1919' }) + '</div>' +
+      '<div><label class="veld">Soort</label>' + seg(p + '.soort', [['historisch', 'Historisch', 'goed'], ['actueel', 'Actueel', 'goed']]) + '</div></div>' +
+      '<label class="veld">Genoemd door</label><div class="chips">';
+    modellen.forEach(function (m) { h += '<button class="chip' + (a.door && a.door[m] ? ' aan' : '') + '" data-wissel="' + p + '.door.' + m + '">' + m + '</button>'; });
+    h += '</div><div class="check"><div class="checkrij"><span>Bestaat het?</span>' + seg(p + '.bestaat', [['ja', 'Ja', 'goed'], ['nee', 'Niet gevonden', 'mis']]) + '</div>' +
+      '<div class="checkrij"><span>Klopt de datum?</span>' + seg(p + '.datum', [['ja', 'Ja', 'goed'], ['nee', 'Nee', 'mis']]) + '</div>' +
+      '<div class="checkrij"><span>Klopt de instantie?</span>' + seg(p + '.instantie', [['ja', 'Ja', 'goed'], ['nee', 'Nee', 'mis']]) + '</div>' +
+      '<div class="checkrij"><span>Gaat het over dit onderwerp?</span>' + seg(p + '.onderwerp', [['ja', 'Ja', 'goed'], ['deels', 'Deels', 'half'], ['nee', 'Nee', 'mis']]) + '</div>' +
+      tekst(p + '.notitie', 'Wat vonden jullie?', { regel: true, ph: 'bijv. bestaat, maar gaat over dwaling' }) +
+      '<p style="margin-top:8px"><a href="' + esc(link) + '" target="_blank" rel="noopener">Zoek op rechtspraak.nl ↗</a></p></div></div>';
+    return h;
+  }
+
+  function htmlGo2() {
+    var d = st.data.go2, c = CASUS[d.casus];
+    var h = '<div class="kaart">' + groepRegel() + '<h2>Jullie groep</h2><label class="veld">Casus</label><div class="chips">';
+    CASUS_VOLGORDE.forEach(function (k) { h += '<button class="chip' + (d.casus === k ? ' aan' : '') + '" data-zet="casus" data-waarde="' + k + '">' + (CASUS[k].kort || k) + ' <small>· ' + esc(CASUS[k].titel.split(':')[0]) + '</small></button>'; });
+    h += '</div>' + tekst('leden', 'Wie zitten er in jullie groep?', { regel: true, ph: 'Voornamen' }) +
+      tekst('tool', 'Met welk model of welke tool werken jullie?', { regel: true, ph: 'bijv. Claude met het project Maasdal' }) + '</div>';
+    if (!c) return h + '<div class="kaart"><p class="uitleg">Kies eerst jullie casus. Dan verschijnt de opdracht.</p></div>';
+
+    h += '<div class="kaart"><div class="stap">De casus</div><h2>' + esc(c.titel) + '</h2>' +
+      '<p><b>Opdracht.</b> ' + esc(c.opdracht) + '</p><p style="margin-top:6px"><b>Feiten (fictief).</b> ' + esc(c.feiten) + '</p>' +
+      '<p class="uitleg" style="margin-top:12px">Drie rondes, samen 35 minuten. Houd per ronde bij wat het opleverde.</p></div>';
+
+    h += '<div class="kaart"><div class="stap">Ronde 1</div><h2>Een naïeve prompt</h2><p class="uitleg">Zoals je hem vóór vandaag zou hebben getypt. Eén zin.</p>' +
+      '<div class="vraag"><div class="prompt">' + esc(c.r1) + '</div><button class="kopieer" data-kopieer="' + esc(c.r1) + '">Kopieer</button></div>' +
+      tekst('r1.opgeleverd', 'Wat leverde het op?') + tekst('r1.fout', 'Wat ontbrak, of wat was fout?') + '</div>';
+
+    h += '<div class="kaart"><div class="stap">Ronde 2</div><h2>Stap voor stap</h2><p class="uitleg">Stel deze vragen één voor één, in hetzelfde gesprek.</p>';
+    c.r2.forEach(function (v, i) { h += vraagRij(i + 1, v, true); });
+    h += tekst('r2.opgeleverd', 'Wat leverde het op?') + tekst('r2.fout', 'Wat ontbrak, of wat was fout?') +
+      tekst('r2.boven', 'Welke informatie kwam pas boven doordat jullie stap voor stap vroegen?') + '</div>';
+
+    h += '<div class="kaart"><div class="stap">Ronde 3</div><h2>Met de kennisbank</h2><p class="uitleg">Dezelfde opdracht in het project met de kennisbank van Maasdal Advocaten (huisstijl, standaardclausules, model-opdrachtbevestiging).</p>' +
+      tekst('r3.opgeleverd', 'Wat leverde het op?') + tekst('r3.fout', 'Wat ontbrak, of wat was fout?') +
+      tekst('r3.kennisbank', 'Wat voegde de kennisbank toe? Zagen jullie de huisstijl en de vaste clausules terug?') + '</div>';
+
+    h += '<div class="kaart"><div class="stap">De rode pen · 15 minuten</div><h2>Controleer jullie stuk</h2><p class="uitleg">Loop het beste stuk langs deze zes punten.</p>';
+    RODE_PEN.forEach(function (t, i) {
+      h += '<div class="arrest"><div class="checkrij"><span>' + (i + 1) + '. ' + esc(t) + '</span>' + seg('rodepen.p' + (i + 1) + '.oordeel', [['ja', 'Ja', 'goed'], ['deels', 'Deels', 'half'], ['nee', 'Nee', 'mis']]) + '</div>' +
+        tekst('rodepen.p' + (i + 1) + '.toelichting', '', { regel: true, ph: 'Toelichting (optioneel)' }) + '</div>';
+    });
+    h += '</div>';
+
+    h += '<div class="kaart"><div class="stap">Conclusie</div><h2>Welke ronde leverde het beste stuk op?</h2>' +
+      seg('beste', [['1', 'Ronde 1', 'goed'], ['2', 'Ronde 2', 'goed'], ['3', 'Ronde 3', 'goed']]) +
+      tekst('waarom', 'Waarom?') +
+      tekst('stuk', 'Plak hier jullie eindversie (optioneel' + (d.casus === 'Dg' || d.casus === 'Da' ? '; voor de D-groepen handig, dan liggen besluit en bezwaar straks naast elkaar' : '') + ')', { groot: true, ph: 'Alleen fictieve gegevens.' }) + '</div>';
+    return h;
+  }
+
+  /* ---------- trainer ---------- */
+  var verversTimer = null;
+  function laadOverzicht(toonLaden) {
+    if (toonLaden) app.innerHTML = '<div class="kaart"><p class="uitleg">Overzicht laden…</p></div>';
+    post({ actie: 'overzicht' }, function (r) {
+      st.overzicht = r; st.status = r.status || {};
+      if (!st.inhoud.go1) laadInhoud('go1-');
+      if (!st.inhoud.go2) laadInhoud('go2-');
+      tekenTrainer();
+      if (!document.getElementById('pres').classList.contains('verborgen')) tekenPres();
+    }, function (f) { app.innerHTML = '<div class="kaart"><div class="fout">' + esc(f) + '</div></div>'; });
+  }
+  function laadInhoud(prefix) {
+    post({ actie: 'inhoud', prefix: prefix }, function (r) {
+      var m = {}; (r.items || []).forEach(function (x) { m[x.sleutel] = x; });
+      st.inhoud[prefix.slice(0, 3)] = m;
+      if (st.rol === 'trainer') tekenTrainer();
+    });
+  }
+  function startVerversen() {
+    clearInterval(verversTimer);
+    verversTimer = setInterval(function () { if (st.rol === 'trainer' && !document.hidden) laadOverzicht(false); }, 20000);
+  }
+
+  function groepenVan(oef) {
+    return ((st.overzicht && st.overzicht.groepen) || []).filter(function (g) { return g.oefening === oef; })
+      .sort(function (a, b) { return Number(a.groep) - Number(b.groep); });
+  }
+
+  function telGo1(groepen) {
+    var t = { totaal: 0, bestaatNiet: 0, datum: 0, instantie: 0, onderwerp: 0, deels: 0, klopt: 0, open: 0, perModel: {} };
+    groepen.forEach(function (g) {
+      (g.data.arresten || []).forEach(function (a) {
+        if (!a.naam && !a.ecli) return;
+        t.totaal++;
+        var fout = oordeelArrest(a);
+        if (fout.open) t.open++;
+        if (fout.bestaatNiet) t.bestaatNiet++;
+        if (fout.datum) t.datum++;
+        if (fout.instantie) t.instantie++;
+        if (fout.onderwerp) t.onderwerp++;
+        if (fout.deels) t.deels++;
+        if (fout.klopt) t.klopt++;
+        Object.keys(a.door || {}).forEach(function (m) {
+          if (!a.door[m]) return;
+          var pm = t.perModel[m] || (t.perModel[m] = { genoemd: 0, fout: 0 });
+          pm.genoemd++;
+          if (fout.bestaatNiet || fout.datum || fout.instantie || fout.onderwerp || fout.deels) pm.fout++;
+        });
+      });
+    });
+    return t;
+  }
+  function oordeelArrest(a) {
+    var o = {};
+    if (!a.bestaat) { o.open = true; return o; }
+    if (a.bestaat === 'nee') { o.bestaatNiet = true; return o; }
+    if (a.datum === 'nee') o.datum = true;
+    if (a.instantie === 'nee') o.instantie = true;
+    if (a.onderwerp === 'nee') o.onderwerp = true;
+    if (a.onderwerp === 'deels') o.deels = true;
+    if (!o.datum && !o.instantie && a.onderwerp === 'ja') o.klopt = true;
+    return o;
+  }
+  function tagsArrest(a) {
+    var o = oordeelArrest(a), h = '';
+    if (o.open) return '<span class="tag leeg">Nog niet nagetrokken</span>';
+    if (o.bestaatNiet) return '<span class="tag mis">Bestaat niet</span>';
+    if (o.klopt) h += '<span class="tag goed">Klopt</span>';
+    if (o.datum) h += '<span class="tag mis">Verkeerde datum</span>';
+    if (o.instantie) h += '<span class="tag mis">Verkeerde instantie</span>';
+    if (o.onderwerp) h += '<span class="tag mis">Ander onderwerp</span>';
+    if (o.deels) h += '<span class="tag half">Deels over dit onderwerp</span>';
+    if (!h) h = '<span class="tag leeg">Bestaat</span>';
+    return h;
+  }
+  function tellers(t) {
+    return '<div class="tellers">' +
+      teller(t.totaal, 'arresten genoteerd', '') +
+      teller(t.bestaatNiet, 'bestaan niet', 'mis') +
+      teller(t.datum, 'verkeerde datum', 'mis') +
+      teller(t.instantie, 'verkeerde instantie', 'mis') +
+      teller(t.onderwerp + t.deels, 'bestaan, maar (deels) ander onderwerp', 'half') +
+      teller(t.klopt, 'kloppen helemaal', 'goed') + '</div>' +
+      (t.open ? '<p class="klein" style="margin-top:8px">' + t.open + ' nog niet nagetrokken.</p>' : '');
+    function teller(n, l, s) { return '<div class="teller ' + s + '"><b>' + n + '</b><span>' + l + '</span></div>'; }
+  }
+  function balkenModellen(t) {
+    var ms = Object.keys(t.perModel);
+    if (!ms.length) return '';
+    var max = Math.max.apply(null, ms.map(function (m) { return t.perModel[m].genoemd; }));
+    return '<div class="balken">' + ms.sort(function (a, b) { return t.perModel[b].genoemd - t.perModel[a].genoemd; }).map(function (m) {
+      var pm = t.perModel[m];
+      return '<div class="bal"><span>' + esc(m) + '</span><div class="spoor"><div class="vul" style="width:' + Math.round(pm.genoemd / max * 100) + '%"></div></div><span>' + pm.genoemd + '</span></div>' +
+        '<div class="klein" style="margin:-2px 0 6px">waarvan ' + pm.fout + ' met een fout</div>';
+    }).join('') + '</div>';
+  }
+
+  function tekenTrainer() {
+    var o = st.overzicht || {}, info = o.info || {};
+    var ed = st.edities.filter(function (e) { return e.id === st.editie; })[0] || {};
+    var h = '<div class="kaart"><div class="balk" style="justify-content:space-between">' +
+      '<div class="balk"><label class="klein" for="kiesEditie">Editie</label><select id="kiesEditie">' +
+      st.edities.map(function (e) { return '<option value="' + e.id + '"' + (e.id === st.editie ? ' selected' : '') + '>' + esc(e.plaats + ' · ' + e.datum) + '</option>'; }).join('') +
+      '</select></div><div class="balk"><button class="knop twee klein" data-actie="ververs">Vernieuwen</button><button class="knop klein" data-actie="presenteer">Presenteren</button></div></div>' +
+      '<div class="codeblok" style="margin-top:14px"><span class="url">forgexe.nl/oefeningen</span><span class="url">code</span><span class="code">' + esc(ed.code || '') + '</span></div>';
+    if (st.oef === 'go1') {
+      h += '<div class="balk" style="margin-top:14px"><button class="schakel' + (st.status.envelop ? ' aan' : '') + '" data-actie="envelopWissel"><i></i>Envelop ' + (st.status.envelop ? 'open' : 'dicht') + '</button>' +
+        '<span class="klein">' + (st.status.envelop ? 'Groepen kunnen nu hun envelop openen.' : 'Zet hem open op het moment dat John “Envelop open” zegt.') + '</span></div>';
+    }
+    h += '<p class="klein" style="margin-top:10px">Ververst elke 20 seconden vanzelf.</p></div>';
+
+    var groepen = groepenVan(st.oef);
+    if (!groepen.length) return (app.innerHTML = h + '<div class="kaart"><p class="uitleg">Nog geen groepen voor deze oefening. Zodra een groep iets invult, verschijnt het hier.</p></div>');
+
+    if (st.oef === 'go1') {
+      var t = telGo1(groepen);
+      h += '<div class="kaart"><div class="stap">Alle groepen samen</div><h2>Wat de groepen vonden</h2>' + tellers(t) +
+        (Object.keys(t.perModel).length ? '<h3>Arresten per model</h3>' + balkenModellen(t) : '') + '</div>';
+      groepen.forEach(function (g) { h += kaartGo1(g); });
+    } else {
+      h += samenvattingGo2(groepen);
+      h += dNaastElkaar(groepen);
+      groepen.forEach(function (g) { h += kaartGo2(g); });
+    }
+    app.innerHTML = h;
+  }
+
+  function kop(g, titel) {
+    var tijd = g.bijgewerkt ? new Date(g.bijgewerkt).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : '';
+    return '<div class="groepkaart-kop"><h3>Groep ' + esc(g.groep) + (titel ? ' · ' + esc(titel) : '') + '</h3>' +
+      '<span class="klein">' + esc(g.data.leden || '') + (tijd ? ' · bijgewerkt ' + tijd : '') + '</span></div>';
+  }
+  function blok(label, waarde) { return waarde ? '<div class="blok"><span class="label">' + label + '</span><p>' + esc(waarde) + '</p></div>' : ''; }
+
+  function kaartGo1(g) {
+    var d = g.data, G = GEBIEDEN[d.gebied] || {};
+    var h = '<div class="groepkaart">' + kop(g, G.naam || 'nog geen rechtsgebied');
+    var kern = d.kern || {}, ms = MODELLEN.filter(function (m) { return kern[m] && kern[m].aan; });
+    if (ms.length) {
+      h += '<div class="blok"><span class="label">Kernvraag per model</span><div class="scroll"><table class="lijst"><tr><th>Model</th><th>Antwoord</th><th>Wetsartikel</th></tr>' +
+        ms.map(function (m) { return '<tr><td><b>' + m + '</b></td><td>' + esc(kern[m].antwoord || '') + '</td><td>' + esc(kern[m].artikel || '') + '</td></tr>'; }).join('') + '</table></div></div>';
+    }
+    var ar = (d.arresten || []).filter(function (a) { return a.naam || a.ecli; });
+    if (ar.length) {
+      h += '<div class="blok"><span class="label">Arresten (' + ar.length + ')</span><div class="scroll"><table class="lijst"><tr><th>Arrest</th><th>Volgens model</th><th>Door</th><th>Oordeel</th></tr>' +
+        ar.map(function (a) {
+          return '<tr><td><b>' + esc(a.naam || '') + '</b>' + (a.ecli ? '<br><span class="klein">' + esc(a.ecli) + '</span>' : '') + (a.soort ? '<br><span class="klein">' + esc(a.soort) + '</span>' : '') + '</td>' +
+            '<td>' + esc(a.gezegd || '') + '</td><td>' + esc(Object.keys(a.door || {}).filter(function (m) { return a.door[m]; }).join(', ')) + '</td>' +
+            '<td>' + tagsArrest(a) + (a.notitie ? '<br><span class="klein">' + esc(a.notitie) + '</span>' : '') + '</td></tr>';
+        }).join('') + '</table></div></div>';
+    }
+    var na = d.na || {};
+    h += blok('Ook gevonden als John', na.ookGevonden) + blok('Gemist', na.gemist) + blok('Twijfel', na.twijfel) + blok('Wat viel het meest op', na.opvallend);
+    var env = st.inhoud.go1 && st.inhoud.go1['go1-' + d.gebied];
+    if (env) h += '<details class="uitklap"><summary>Envelop ' + esc(G.naam || '') + ' bekijken</summary><div class="env">' + env.html + '</div></details>';
+    h += '<p style="margin-top:12px"><button class="weg" data-verwijder="go1|' + esc(g.groep) + '">Groep wissen</button></p>';
+    return h + '</div>';
+  }
+
+  function samenvattingGo2(groepen) {
+    var stemmen = { '1': 0, '2': 0, '3': 0 };
+    groepen.forEach(function (g) { if (stemmen[g.data.beste] != null) stemmen[g.data.beste]++; });
+    var max = Math.max(1, stemmen['1'], stemmen['2'], stemmen['3']);
+    var h = '<div class="kaart"><div class="stap">Alle groepen samen</div><h2>Welke ronde leverde het beste stuk op?</h2><div class="balken">' +
+      ['1', '2', '3'].map(function (r) {
+        var l = { '1': 'Naïeve prompt', '2': 'Stap voor stap', '3': 'Met kennisbank' }[r];
+        return '<div class="bal"><span>' + l + '</span><div class="spoor"><div class="vul" style="width:' + Math.round(stemmen[r] / max * 100) + '%"></div></div><span>' + stemmen[r] + '</span></div>';
+      }).join('') + '</div><h3>Rode pen per groep</h3><div class="scroll"><table class="lijst"><tr><th>Groep</th>' +
+      RODE_PEN.map(function (x, i) { return '<th title="' + esc(x) + '">' + (i + 1) + '</th>'; }).join('') + '</tr>' +
+      groepen.map(function (g) {
+        var rp = g.data.rodepen || {}, c = CASUS[g.data.casus];
+        return '<tr><td><b>' + esc(g.groep) + '</b> <span class="klein">' + esc(c ? (c.kort || 'Casus ' + g.data.casus) : '') + '</span></td>' +
+          RODE_PEN.map(function (x, i) { return '<td>' + oordeelTag((rp['p' + (i + 1)] || {}).oordeel) + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</table></div><p class="klein" style="margin-top:6px">' +
+      RODE_PEN.map(function (x, i) { return (i + 1) + '. ' + esc(x); }).join(' · ') + '</p></div>';
+    return h;
+  }
+  function oordeelTag(v) {
+    if (v === 'ja') return '<span class="tag goed">Ja</span>';
+    if (v === 'nee') return '<span class="tag mis">Nee</span>';
+    if (v === 'deels') return '<span class="tag half">Deels</span>';
+    return '<span class="tag leeg">–</span>';
+  }
+  function dNaastElkaar(groepen) {
+    var g = groepen.filter(function (x) { return x.data.casus === 'Dg' && x.data.stuk; })[0];
+    var a = groepen.filter(function (x) { return x.data.casus === 'Da' && x.data.stuk; })[0];
+    if (!g && !a) return '';
+    return '<div class="kaart"><div class="stap">Casus D</div><h2>Besluit naast bezwaarschrift</h2><div class="naast">' +
+      '<div><span class="label">Gemeente' + (g ? ' · groep ' + esc(g.groep) : '') + '</span><pre>' + esc(g ? g.data.stuk : 'Nog niet geplakt.') + '</pre></div>' +
+      '<div><span class="label">Advocaat' + (a ? ' · groep ' + esc(a.groep) : '') + '</span><pre>' + esc(a ? a.data.stuk : 'Nog niet geplakt.') + '</pre></div></div></div>';
+  }
+  function kaartGo2(g) {
+    var d = g.data, c = CASUS[d.casus];
+    var h = '<div class="groepkaart">' + kop(g, c ? c.titel : 'nog geen casus');
+    h += blok('Tool', d.tool);
+    var r1 = d.r1 || {}, r2 = d.r2 || {}, r3 = d.r3 || {};
+    if (r1.opgeleverd || r2.opgeleverd || r3.opgeleverd || r1.fout || r2.fout || r3.fout) {
+      h += '<div class="blok"><div class="scroll"><table class="lijst"><tr><th></th><th>Ronde 1 · naïef</th><th>Ronde 2 · stap voor stap</th><th>Ronde 3 · kennisbank</th></tr>' +
+        '<tr><td><b>Opgeleverd</b></td><td>' + esc(r1.opgeleverd || '') + '</td><td>' + esc(r2.opgeleverd || '') + '</td><td>' + esc(r3.opgeleverd || '') + '</td></tr>' +
+        '<tr><td><b>Ontbrak of fout</b></td><td>' + esc(r1.fout || '') + '</td><td>' + esc(r2.fout || '') + '</td><td>' + esc(r3.fout || '') + '</td></tr></table></div></div>';
+    }
+    h += blok('Kwam pas boven door stap voor stap', r2.boven) + blok('Wat de kennisbank toevoegde', r3.kennisbank);
+    if (d.beste) h += blok('Beste ronde', 'Ronde ' + d.beste + (d.waarom ? ': ' + d.waarom : ''));
+    var rp = d.rodepen || {}, rpRegels = RODE_PEN.map(function (x, i) { var p = rp['p' + (i + 1)] || {}; return p.oordeel || p.toelichting ? '<tr><td>' + (i + 1) + '. ' + esc(x) + '</td><td>' + oordeelTag(p.oordeel) + '</td><td>' + esc(p.toelichting || '') + '</td></tr>' : ''; }).join('');
+    if (rpRegels) h += '<div class="blok"><span class="label">Rode pen</span><div class="scroll"><table class="lijst">' + rpRegels + '</table></div></div>';
+    if (d.stuk) h += '<details class="uitklap"><summary>Eindversie bekijken</summary><div class="naast" style="grid-template-columns:1fr"><pre>' + esc(d.stuk) + '</pre></div></details>';
+    var sl = c && st.inhoud.go2 && st.inhoud.go2['go2-' + c.sleutel];
+    if (sl) {
+      var open = st.toonSleutel[g.groep];
+      h += '<p style="margin-top:10px"><button class="knop twee klein" data-sleutel="' + esc(g.groep) + '">' + (open ? 'Antwoordsleutel verbergen' : 'Antwoordsleutel tonen') + '</button></p>' +
+        (open ? '<div class="sleutel">' + sl.html + '</div>' : '');
+    }
+    h += '<p style="margin-top:12px"><button class="weg" data-verwijder="go2|' + esc(g.groep) + '">Groep wissen</button></p>';
+    return h + '</div>';
+  }
+
+  /* ---------- presenteren ---------- */
+  function presDia() {
+    var groepen = groepenVan(st.oef), dia = [];
+    if (st.oef === 'go1') {
+      var t = telGo1(groepen);
+      dia.push('<div class="p-kicker">Groepsoefening 1 · alle groepen</div><h1>Wat jullie vonden</h1>' + tellers(t) +
+        (Object.keys(t.perModel).length ? '<h2>Arresten per model</h2>' + balkenModellen(t) : ''));
+      groepen.forEach(function (g) {
+        var d = g.data, G = GEBIEDEN[d.gebied] || {}, na = d.na || {};
+        var ar = (d.arresten || []).filter(function (a) { return a.naam || a.ecli; });
+        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + (d.leden ? ' · ' + esc(d.leden) : '') + '</div><h1>' + esc(G.naam || 'Groep ' + g.groep) + '</h1>';
+        if (na.opvallend) h += '<h2>Wat viel het meest op</h2><div class="citaat">' + esc(na.opvallend) + '</div>';
+        if (ar.length) h += '<h2>Arresten</h2><table class="lijst">' + ar.map(function (a) {
+          return '<tr><td>' + esc(a.naam || a.ecli) + (a.gezegd ? ' <span style="opacity:.6">(' + esc(a.gezegd) + ')</span>' : '') + '</td><td>' + tagsArrest(a) + '</td></tr>';
+        }).join('') + '</table>';
+        if (na.gemist) h += '<h2>Gemist</h2><div class="citaat">' + esc(na.gemist) + '</div>';
+        dia.push(h);
+      });
+    } else {
+      dia.push('<div class="p-kicker">Groepsoefening 2 · alle groepen</div><h1>Welke ronde leverde het beste stuk op?</h1>' +
+        samenvattingGo2(groepen).replace(/^<div class="kaart"><div class="stap">[^<]*<\/div><h2>[^<]*<\/h2>/, '<div>'));
+      groepen.forEach(function (g) {
+        var d = g.data, c = CASUS[d.casus] || { titel: '' }, r2 = d.r2 || {}, r3 = d.r3 || {};
+        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + (d.leden ? ' · ' + esc(d.leden) : '') + '</div><h1>' + esc(c.titel) + '</h1>';
+        if (d.beste) h += '<h2>Beste ronde: ' + esc(d.beste) + '</h2>' + (d.waarom ? '<div class="citaat">' + esc(d.waarom) + '</div>' : '');
+        if (r2.boven) h += '<h2>Kwam pas boven door stap voor stap</h2><div class="citaat">' + esc(r2.boven) + '</div>';
+        if (r3.kennisbank) h += '<h2>Wat de kennisbank toevoegde</h2><div class="citaat">' + esc(r3.kennisbank) + '</div>';
+        dia.push(h);
+      });
+      var dg = groepen.filter(function (x) { return x.data.casus === 'Dg' && x.data.stuk; })[0], da = groepen.filter(function (x) { return x.data.casus === 'Da' && x.data.stuk; })[0];
+      if (dg || da) dia.push('<div class="p-kicker">Casus D</div><h1>Besluit naast bezwaarschrift</h1><div class="naast"><div><h2>Gemeente</h2><div class="citaat">' + esc(dg ? dg.data.stuk : '–') + '</div></div><div><h2>Advocaat</h2><div class="citaat">' + esc(da ? da.data.stuk : '–') + '</div></div></div>');
+    }
+    return dia;
+  }
+  function tekenPres() {
+    var dia = presDia(), el = document.getElementById('pres');
+    if (st.presIndex >= dia.length) st.presIndex = dia.length - 1;
+    if (st.presIndex < 0) st.presIndex = 0;
+    el.innerHTML = '<div class="pres-in">' + dia[st.presIndex] + '</div><div class="pres-voet"><button data-pres="-1">← Vorige</button><span>' + (st.presIndex + 1) + ' / ' + dia.length +
+      ' · pijltjestoetsen · Esc sluit</span><span><button data-pres="0">Sluiten</button> <button data-pres="1">Volgende →</button></span></div>';
+  }
+  function openPres() {
+    st.presIndex = 0;
+    document.getElementById('pres').classList.remove('verborgen');
+    tekenPres();
+    try { var fs = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); if (fs && fs.catch) fs.catch(function () {}); } catch (e) {}
+  }
+  function sluitPres() {
+    document.getElementById('pres').classList.add('verborgen');
+    try { if (document.fullscreenElement) { var fx = document.exitFullscreen(); if (fx && fx.catch) fx.catch(function () {}); } } catch (e) {}
+  }
+
+  /* ---------- gebeurtenissen ---------- */
+  document.addEventListener('submit', function (e) {
+    if (e.target.id === 'loginForm') {
+      e.preventDefault();
+      var code = document.getElementById('lCode').value.trim(), naam = document.getElementById('lNaam').value.trim();
+      if (code && naam) loginDeelnemer(code, naam);
+    }
+    if (e.target.id === 'trainerForm') {
+      e.preventDefault();
+      loginTrainer(document.getElementById('lWw').value);
+    }
+  });
+
+  document.addEventListener('input', function (e) {
+    var p = e.target.getAttribute && e.target.getAttribute('data-pad');
+    if (!p || st.rol !== 'deelnemer') return;
+    zet(st.data[st.oef], p, e.target.value);
+    gewijzigd();
+  });
+
+  document.addEventListener('change', function (e) {
+    if (e.target.id === 'kiesEditie') {
+      st.editie = e.target.value; bewaar('trainer', { ww: st.wachtwoord, editie: st.editie });
+      st.overzicht = null; laadOverzicht(true);
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('button, a') : null;
+    if (!el) return;
+    var a = el.getAttribute('data-actie');
+    var d = st.data[st.oef];
+
+    if (el.hasAttribute('data-pres')) {
+      var stap = Number(el.getAttribute('data-pres'));
+      if (stap === 0) sluitPres(); else { st.presIndex += stap; tekenPres(); }
+      return;
+    }
+    if (el.hasAttribute('data-tab')) {
+      if (opslaanTimer && st.rol === 'deelnemer') { clearTimeout(opslaanTimer); opslaanTimer = null; opslaan(); }
+      st.oef = el.getAttribute('data-tab'); st.envelop = null; tekenKop();
+      if (st.rol === 'trainer') tekenTrainer(); else openOefening();
+      return;
+    }
+    if (el.hasAttribute('data-groep')) {
+      st.groep[st.oef] = el.getAttribute('data-groep');
+      bewaar('groep-' + st.editie, st.groep); openOefening(); return;
+    }
+    if (el.hasAttribute('data-kopieer')) { kopieer(el.getAttribute('data-kopieer'), el); return; }
+    if (el.hasAttribute('data-zet')) {
+      var p = el.getAttribute('data-zet'), w = el.getAttribute('data-waarde');
+      zet(d, p, haal(d, p) === w && p !== 'gebied' && p !== 'casus' ? '' : w);
+      if (p === 'gebied') st.envelop = null;
+      gewijzigd(); teken(); return;
+    }
+    if (el.hasAttribute('data-wissel')) {
+      var pw = el.getAttribute('data-wissel');
+      zet(d, pw, !haal(d, pw)); gewijzigd(); teken(); return;
+    }
+    if (el.hasAttribute('data-weg')) {
+      if (!confirm('Dit arrest verwijderen?')) return;
+      var id = el.getAttribute('data-weg');
+      d.arresten = (d.arresten || []).filter(function (x) { return x.id !== id; });
+      gewijzigd(); teken(); return;
+    }
+    if (el.hasAttribute('data-sleutel')) {
+      var gk = el.getAttribute('data-sleutel'); st.toonSleutel[gk] = !st.toonSleutel[gk]; tekenTrainer(); return;
+    }
+    if (el.hasAttribute('data-verwijder')) {
+      var dl = el.getAttribute('data-verwijder').split('|');
+      if (!confirm('Alles van groep ' + dl[1] + ' in deze oefening wissen? Dit kun je niet terugdraaien.')) return;
+      post({ actie: 'verwijder', oefening: dl[0], groep: dl[1] }, function () { laadOverzicht(false); }, function (f) { alert(f); });
+      return;
+    }
+
+    if (!a) return;
+    e.preventDefault();
+    if (a === 'naarTrainer') tekenLogin(true);
+    else if (a === 'naarDeelnemer') tekenLogin(false);
+    else if (a === 'uitloggen') {
+      wis('sessie'); wis('trainer'); clearInterval(verversTimer);
+      st.rol = null; st.wachtwoord = ''; st.groep = { go1: '', go2: '' }; st.data = { go1: {}, go2: {} }; st.basis = { go1: {}, go2: {} }; st.envelop = null;
+      tekenLogin(false);
+    }
+    else if (a === 'andereGroep') { st.groep[st.oef] = ''; bewaar('groep-' + st.editie, st.groep); st.data[st.oef] = {}; st.basis[st.oef] = {}; st.envelop = null; openOefening(); }
+    else if (a === 'herlaad') openOefening();
+    else if (a === 'nieuwArrest') {
+      d.arresten = d.arresten || [];
+      d.arresten.push({ id: nieuwId() });
+      gewijzigd(); teken();
+      var velden = app.querySelectorAll('.arrest input[type=text]');
+      if (velden.length) { var laatste = app.querySelectorAll('.arrest'); laatste = laatste[laatste.length - 1]; var inp = laatste.querySelector('input'); if (inp) inp.focus(); }
+    }
+    else if (a === 'envelop') {
+      el.disabled = true; el.textContent = 'Even kijken…';
+      var gebied = d.gebied;
+      post({ actie: 'envelop', gebied: gebied }, function (r) {
+        st.envelop = r.open ? { gebied: gebied, items: r.items } : { dicht: true };
+        teken();
+        var env = document.getElementById('envelop'); if (env && r.open) env.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, function (f) { el.disabled = false; el.textContent = 'Open de envelop'; meld(f, 'mis'); });
+    }
+    else if (a === 'envelopWissel') {
+      var nieuw = !st.status.envelop;
+      post({ actie: 'zet', data: { envelop: nieuw } }, function (r) { st.status = r.status; tekenTrainer(); meld(nieuw ? 'Envelop staat open' : 'Envelop is weer dicht', 'ok'); }, function (f) { meld(f, 'mis'); });
+    }
+    else if (a === 'ververs') laadOverzicht(false);
+    else if (a === 'presenteer') openPres();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('pres').classList.contains('verborgen')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { st.presIndex++; tekenPres(); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { st.presIndex--; tekenPres(); e.preventDefault(); }
+    else if (e.key === 'Escape') sluitPres();
+  });
+
+  /* ---------- start ---------- */
+  var t = lees('trainer'), s = lees('sessie');
+  if (/[?&]trainer\b/.test(location.search) && !t) tekenLogin(true);
+  else if (t && t.ww) { app.innerHTML = '<div class="kaart"><p class="uitleg">Inloggen…</p></div>'; loginTrainer(t.ww, true); }
+  else if (s && s.code) { app.innerHTML = '<div class="kaart"><p class="uitleg">Inloggen…</p></div>'; st.code = s.code; st.naam = s.naam; loginDeelnemer(s.code, s.naam, true); }
+  else {
+    var m = location.search.match(/[?&]code=([^&]+)/);
+    if (m) st.code = decodeURIComponent(m[1]);
+    tekenLogin(false);
+  }
+})();
+</script>
+</body>
+</html>
