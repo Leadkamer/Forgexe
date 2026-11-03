@@ -288,7 +288,7 @@
   var CASUS_VOLGORDE = ['A', 'B', 'C', 'Dg', 'Da', 'E'];
 
   var st = {
-    rol: null, code: '', naam: '', wachtwoord: '', info: null, edities: [], editie: '',
+    rol: null, code: '', wachtwoord: '', info: null, edities: [], editie: '',
     oef: 'go1', groep: { go1: '', go2: '' }, data: { go1: {}, go2: {} }, basis: { go1: {}, go2: {} },
     status: {}, groepen: [], envelop: null, overzicht: null, inhoud: {}, toonSleutel: {}, presIndex: 0
   };
@@ -313,7 +313,7 @@
 
   function post(body, ok, mis) {
     if (st.rol === 'trainer' || body.wachtwoord) { body.wachtwoord = st.wachtwoord || body.wachtwoord; if (!body.editie) body.editie = st.editie; }
-    else { body.code = body.code || st.code; body.naam = body.naam || st.naam; }
+    else { body.code = body.code || st.code; }
     var xhr = new XMLHttpRequest();
     xhr.open('POST', API, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -395,7 +395,7 @@
       r.innerHTML = '<span>Trainers</span><button data-actie="uitloggen">Uitloggen</button>';
       t.innerHTML = tab('go1', 'Groepsoefening 1') + tab('go2', 'Groepsoefening 2');
     } else {
-      r.innerHTML = '<span>' + esc(st.naam) + '</span><button data-actie="uitloggen">Uitloggen</button>';
+      r.innerHTML = '<span>' + esc(st.info ? st.info.plaats : '') + '</span><button data-actie="uitloggen">Uitloggen</button>';
       t.innerHTML = tab('go1', 'Groepsoefening 1<span class="lang"> · Natrekken</span>') + tab('go2', 'Groepsoefening 2<span class="lang"> · Opstellen</span>');
     }
     function tab(id, label) { return '<button class="tab' + (st.oef === id ? ' actief' : '') + '" data-tab="' + id + '">' + label + '</button>'; }
@@ -407,9 +407,8 @@
     var h = '<div class="login kaart">' +
       '<div class="merkregel"><img src="/forgexe-mark-green.svg" alt=""><span>Peters Advocatuur × Forgexe</span></div>';
     if (!trainer) {
-      h += '<h1>Groepsoefeningen</h1><p class="uitleg">Vul de code in die op het scherm staat, en je naam. Je groep kies je daarna.</p>' +
+      h += '<h1>Groepsoefeningen</h1><p class="uitleg">Vul de code in die op het scherm staat. Je groep kies je daarna. Je naam hoeven we niet te weten.</p>' +
         '<form id="loginForm"><label class="veld" for="lCode">Code</label><input type="text" id="lCode" autocomplete="off" autocapitalize="characters" value="' + esc(st.code) + '" required>' +
-        '<label class="veld" for="lNaam">Je naam</label><input type="text" id="lNaam" autocomplete="name" value="' + esc(st.naam) + '" required>' +
         '<div style="margin-top:18px"><button class="knop" type="submit">Verder</button></div></form>' +
         (fout ? '<div class="fout">' + esc(fout) + '</div>' : '') +
         '<p class="klein" style="margin-top:22px"><a href="#" data-actie="naarTrainer">Inloggen als trainer</a></p>';
@@ -423,10 +422,10 @@
     app.innerHTML = h + '</div>';
   }
 
-  function loginDeelnemer(code, naam, stil) {
-    post({ actie: 'login', code: code, naam: naam }, function (r) {
-      st.rol = 'deelnemer'; st.code = code; st.naam = naam; st.info = r.info; st.status = r.status || {};
-      bewaar('sessie', { code: code, naam: naam });
+  function loginDeelnemer(code, stil) {
+    post({ actie: 'login', code: code }, function (r) {
+      st.rol = 'deelnemer'; st.code = code; st.info = r.info; st.status = r.status || {};
+      bewaar('sessie', { code: code });
       var g = lees('groep-' + r.editie) || {};
       st.groep = { go1: g.go1 || '', go2: g.go2 || '' };
       st.editie = r.editie;
@@ -484,7 +483,7 @@
       var sub = '';
       if (info) {
         var wat = go1 ? (GEBIEDEN[info.gebied] ? GEBIEDEN[info.gebied].naam : '') : (CASUS[info.casus] ? (CASUS[info.casus].kort || 'Casus ' + info.casus) : '');
-        sub = [wat, info.leden].filter(Boolean).join(' · ');
+        sub = wat;
       }
       h += '<button class="chip" data-groep="' + i + '">Groep ' + i + (sub ? ' <small>· ' + esc(sub.slice(0, 40)) + '</small>' : '') + '</button>';
     }
@@ -590,7 +589,7 @@
     Object.keys(GEBIEDEN).forEach(function (k) {
       h += '<button class="chip' + (gb === k ? ' aan' : '') + (bezet[k] && gb !== k ? ' bezet' : '') + '" data-zet="gebied" data-waarde="' + k + '">' + GEBIEDEN[k].naam + (bezet[k] && gb !== k ? ' <small>· groep ' + bezet[k] + '</small>' : '') + '</button>';
     });
-    h += '</div>' + tekst('leden', 'Wie zitten er in jullie groep?', { regel: true, ph: 'Voornamen' }) + '</div>';
+    h += '</div></div>';
     if (!G) return h + '<div class="kaart"><p class="uitleg">Kies eerst jullie rechtsgebied. Dan verschijnen de vragen.</p></div>';
 
     h += '<div class="kaart"><div class="stap">Stap 1 · 15 minuten</div><h2>Stel de vragen aan de modellen</h2>' +
@@ -660,7 +659,7 @@
     var d = st.data.go2, c = CASUS[d.casus];
     var h = '<div class="kaart">' + groepRegel() + '<h2>Jullie groep</h2><label class="veld">Casus</label><div class="chips">';
     CASUS_VOLGORDE.forEach(function (k) { h += '<button class="chip' + (d.casus === k ? ' aan' : '') + '" data-zet="casus" data-waarde="' + k + '">' + (CASUS[k].kort || k) + ' <small>· ' + esc(CASUS[k].titel.split(':')[0]) + '</small></button>'; });
-    h += '</div>' + tekst('leden', 'Wie zitten er in jullie groep?', { regel: true, ph: 'Voornamen' }) +
+    h += '</div>' +
       tekst('tool', 'Met welk model of welke tool werken jullie?', { regel: true, ph: 'bijv. Claude met het project Maasdal' }) + '</div>';
     if (!c) return h + '<div class="kaart"><p class="uitleg">Kies eerst jullie casus. Dan verschijnt de opdracht.</p></div>';
 
@@ -826,7 +825,7 @@
   function kop(g, titel) {
     var tijd = g.bijgewerkt ? new Date(g.bijgewerkt).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }) : '';
     return '<div class="groepkaart-kop"><h3>Groep ' + esc(g.groep) + (titel ? ' · ' + esc(titel) : '') + '</h3>' +
-      '<span class="klein">' + esc(g.data.leden || '') + (tijd ? ' · bijgewerkt ' + tijd : '') + '</span></div>';
+      '<span class="klein">' + (tijd ? 'bijgewerkt ' + tijd : '') + '</span></div>';
   }
   function blok(label, waarde) { return waarde ? '<div class="blok"><span class="label">' + label + '</span><p>' + esc(waarde) + '</p></div>' : ''; }
 
@@ -922,7 +921,7 @@
       groepen.forEach(function (g) {
         var d = g.data, G = GEBIEDEN[d.gebied] || {}, na = d.na || {};
         var ar = (d.arresten || []).filter(function (a) { return a.naam || a.ecli; });
-        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + (d.leden ? ' · ' + esc(d.leden) : '') + '</div><h1>' + esc(G.naam || 'Groep ' + g.groep) + '</h1>';
+        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + '' + '</div><h1>' + esc(G.naam || 'Groep ' + g.groep) + '</h1>';
         if (na.opvallend) h += '<h2>Wat viel het meest op</h2><div class="citaat">' + esc(na.opvallend) + '</div>';
         if (ar.length) h += '<h2>Arresten</h2><table class="lijst">' + ar.map(function (a) {
           return '<tr><td>' + esc(a.naam || a.ecli) + (a.gezegd ? ' <span style="opacity:.6">(' + esc(a.gezegd) + ')</span>' : '') + '</td><td>' + tagsArrest(a) + '</td></tr>';
@@ -935,7 +934,7 @@
         samenvattingGo2(groepen).replace(/^<div class="kaart"><div class="stap">[^<]*<\/div><h2>[^<]*<\/h2>/, '<div>'));
       groepen.forEach(function (g) {
         var d = g.data, c = CASUS[d.casus] || { titel: '' }, r2 = d.r2 || {}, r3 = d.r3 || {};
-        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + (d.leden ? ' · ' + esc(d.leden) : '') + '</div><h1>' + esc(c.titel) + '</h1>';
+        var h = '<div class="p-kicker">Groep ' + esc(g.groep) + '' + '</div><h1>' + esc(c.titel) + '</h1>';
         if (d.beste) h += '<h2>Beste ronde: ' + esc(d.beste) + '</h2>' + (d.waarom ? '<div class="citaat">' + esc(d.waarom) + '</div>' : '');
         if (r2.boven) h += '<h2>Kwam pas boven door stap voor stap</h2><div class="citaat">' + esc(r2.boven) + '</div>';
         if (r3.kennisbank) h += '<h2>Wat de kennisbank toevoegde</h2><div class="citaat">' + esc(r3.kennisbank) + '</div>';
@@ -968,8 +967,8 @@
   document.addEventListener('submit', function (e) {
     if (e.target.id === 'loginForm') {
       e.preventDefault();
-      var code = document.getElementById('lCode').value.trim(), naam = document.getElementById('lNaam').value.trim();
-      if (code && naam) loginDeelnemer(code, naam);
+      var code = document.getElementById('lCode').value.trim();
+      if (code) loginDeelnemer(code);
     }
     if (e.target.id === 'trainerForm') {
       e.preventDefault();
@@ -1085,7 +1084,7 @@
   var t = lees('trainer'), s = lees('sessie');
   if (/[?&]trainer\b/.test(location.search) && !t) tekenLogin(true);
   else if (t && t.ww) { app.innerHTML = '<div class="kaart"><p class="uitleg">Inloggen…</p></div>'; loginTrainer(t.ww, true); }
-  else if (s && s.code) { app.innerHTML = '<div class="kaart"><p class="uitleg">Inloggen…</p></div>'; st.code = s.code; st.naam = s.naam; loginDeelnemer(s.code, s.naam, true); }
+  else if (s && s.code) { app.innerHTML = '<div class="kaart"><p class="uitleg">Inloggen…</p></div>'; st.code = s.code; loginDeelnemer(s.code, true); }
   else {
     var m = location.search.match(/[?&]code=([^&]+)/);
     if (m) st.code = decodeURIComponent(m[1]);
