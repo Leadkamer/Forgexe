@@ -109,7 +109,8 @@
   .env a.ecli { white-space: nowrap; }
   .env p, .env li, .blok p { overflow-wrap: anywhere; }
   .pres .bal span, .pres .klein { font-size: clamp(14px, 1.4vw, 22px); color: rgba(255,255,255,.75); }
-  @media (max-width: 599px) { .tab .lang { display: none; } .tab { padding: 8px 12px; } }
+  .tab .kort { display: none; }
+  @media (max-width: 599px) { .tab .lang { display: none; } .tab .kort { display: inline; } .tab { padding: 8px 12px; } }
   .env .copy, .env .mk { display: none; }
 
   /* Trainer */
@@ -186,12 +187,46 @@
   .merkregel { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--slate); font-size: 14px; }
   .merkregel img { width: 28px; height: 28px; }
 
+  /* Hand-outs */
+  .ho-lijst { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .ho-kaart { display: flex; align-items: center; gap: 14px; text-align: left; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; cursor: pointer; width: 100%; }
+  .ho-kaart:hover { border-color: var(--navy-light); }
+  .ho-nr { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green); font-size: 22px; min-width: 26px; line-height: 1.2; }
+  .ho-tekst { flex: 1; display: flex; flex-direction: column; }
+  .ho-tekst b { color: var(--navy-deep); font-size: 16px; }
+  .ho-tekst span { color: var(--slate); font-size: 14px; }
+  .ho-tekst-blok blockquote { background: var(--cloud); border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+  .ho-tekst-blok pre { background: var(--cloud); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-size: 13.5px; white-space: pre-wrap; margin: 6px 0 12px; }
+  .ho-tekst-blok .kopieer { margin-top: 6px; }
+  .vink { width: 18px; height: 18px; vertical-align: -3px; margin-right: 4px; accent-color: #116b4a; }
+  .boom { background: var(--cloud); border-radius: 10px; padding: 14px; margin: 10px 0 6px; }
+  .boom-rij { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--slate); padding: 6px 0; border-bottom: 1px solid var(--border); }
+  .boom-vraag { padding-top: 10px; }
+  .boom-vraag p { font-weight: 500; color: var(--navy-deep); margin-bottom: 10px; font-size: 16.5px; }
+  .boom-uitkomst { margin-top: 12px; border-radius: 8px; padding: 12px 14px; }
+  .boom-uitkomst.goed { background: var(--green-pale); color: #0d5a3d; }
+  .boom-uitkomst.mis { background: var(--red-pale); color: var(--red); }
+  .boom-uitkomst.half { background: var(--amber-pale); color: #7a4d00; }
+  .boom-uitkomst b { font-size: 17px; }
+  .sorteer-taak { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .sorteer .seg { display: grid; grid-template-columns: 1fr; width: 100%; }
+  .sorteer .seg button { border-right: 0; border-bottom: 1px solid var(--border); text-align: left; padding: 9px 12px; }
+  .sorteer .seg button:last-child { border-bottom: 0; }
+  @media (min-width: 720px) { .sorteer .seg { grid-template-columns: repeat(3, 1fr); } .sorteer .seg button { border-bottom: 0; border-right: 1px solid var(--border); text-align: center; } .sorteer .seg button:last-child { border-right: 0; } }
+  @media print {
+    .kop, .status, .geen-print, .pres { display: none !important; }
+    body { background: #fff; }
+    main { padding: 0; }
+    .kaart, .arrest { border: 0; padding: 0; }
+    input[type=text], textarea { border: 0; border-bottom: 1px solid #999; border-radius: 0; padding: 4px 0; resize: none; }
+  }
   @media (min-width: 720px) {
     main { padding: 28px 24px 80px; }
     .kaart { padding: 24px 28px; }
     .rij2 { grid-template-columns: 1fr 1fr; }
     .tellers { grid-template-columns: repeat(3, 1fr); }
     .naast { grid-template-columns: 1fr 1fr; }
+    .ho-lijst { grid-template-columns: 1fr 1fr; }
   }
   @media (min-width: 980px) {
     .tellers { grid-template-columns: repeat(6, 1fr); }
@@ -393,10 +428,10 @@
     if (!st.rol) { r.innerHTML = ''; t.innerHTML = ''; return; }
     if (st.rol === 'trainer') {
       r.innerHTML = '<span>Trainers</span><button data-actie="uitloggen">Uitloggen</button>';
-      t.innerHTML = tab('go1', 'Groepsoefening 1') + tab('go2', 'Groepsoefening 2');
+      t.innerHTML = tab('go1', '<span class="lang">Groepsoefening 1</span><span class="kort">Oefening 1</span>') + tab('go2', '<span class="lang">Groepsoefening 2</span><span class="kort">Oefening 2</span>') + tab('ho', 'Hand-outs');
     } else {
       r.innerHTML = '<span>' + esc(st.info ? st.info.plaats : '') + '</span><button data-actie="uitloggen">Uitloggen</button>';
-      t.innerHTML = tab('go1', 'Groepsoefening 1<span class="lang"> · Natrekken</span>') + tab('go2', 'Groepsoefening 2<span class="lang"> · Opstellen</span>');
+      t.innerHTML = tab('go1', '<span class="lang">Groepsoefening 1 · Natrekken</span><span class="kort">Oefening 1</span>') + tab('go2', '<span class="lang">Groepsoefening 2 · Opstellen</span><span class="kort">Oefening 2</span>') + tab('ho', 'Hand-outs');
     }
     function tab(id, label) { return '<button class="tab' + (st.oef === id ? ' actief' : '') + '" data-tab="' + id + '">' + label + '</button>'; }
   }
@@ -468,7 +503,7 @@
   }
 
   function vraagStatus() {
-    post({ actie: 'status' }, function (r) { st.status = r.status || {}; st.groepen = r.groepen || []; if (!st.groep[st.oef]) tekenGroepKiezen(); });
+    post({ actie: 'status' }, function (r) { st.status = r.status || {}; st.groepen = r.groepen || []; if (st.oef !== 'ho' && !st.groep[st.oef]) tekenGroepKiezen(); });
   }
 
   function tekenGroepKiezen() {
@@ -545,6 +580,7 @@
 
   /* ---------- tekenen deelnemer ---------- */
   function teken(behoudFocus) {
+    if (st.oef === 'ho') return;
     var focusPad = null, s0 = null, s1 = null;
     if (behoudFocus && document.activeElement && document.activeElement.getAttribute) {
       focusPad = document.activeElement.getAttribute('data-pad');
@@ -793,6 +829,7 @@
   }
 
   function tekenTrainer() {
+    if (st.oef === 'ho') return;
     var o = st.overzicht || {}, info = o.info || {};
     var ed = st.edities.filter(function (e) { return e.id === st.editie; })[0] || {};
     var h = '<div class="kaart"><div class="balk" style="justify-content:space-between">' +
@@ -963,6 +1000,200 @@
     try { if (document.fullscreenElement) { var fx = document.exitFullscreen(); if (fx && fx.catch) fx.catch(function () {}); } } catch (e) {}
   }
 
+  /* ---------- hand-outs ---------- */
+  // Teksten komen achter de code uit n8n; invullen blijft voorlopig in de eigen browser.
+  var HO_INFO = {
+    'ho-01': { kort: 'Altijd, nooit, en wat bij jou op kantoor mag', soort: 'Invullen' },
+    'ho-02': { kort: 'Acht controles voordat je iets uit AI gebruikt', soort: 'Afvinken' },
+    'ho-03': { kort: 'Klik een dossier door de vijf vragen', soort: 'Doorklikken' },
+    'ho-04': { kort: 'Ons concept, en jullie eigen versie', soort: 'Invullen' },
+    'ho-05': { kort: 'Wat je vraagt voordat je tekent', soort: '' },
+    'ho-06': { kort: 'Opbouw van een goede prompt en vijf vervolgvragen', soort: '' },
+    'ho-07': { kort: 'Prompt, automatiseren of niet met AI?', soort: 'Oefening' },
+    'ho-08': { kort: 'Drie taken die je vanaf morgen anders doet', soort: 'Invullen' },
+    'ho-10': { kort: 'Zo bouw je op kantoor je eigen kennisbank', soort: '' }
+  };
+  var BOOM = {
+    q1: { v: 'Staan er herleidbare gegevens of vertrouwelijke zaakfeiten in wat je wilt invoeren?', ja: 'q2', nee: 'r1' },
+    q2: { v: 'Gebruik je een zakelijke versie met verwerkersovereenkomst, en staat training op je invoer uit?', ja: 'q3', nee: 'r2' },
+    q3: { v: 'Gaat het om bijzondere of strafrechtelijke gegevens (gezondheid, strafzaken, etniciteit, seksuele gerichtheid) of om zeer gevoelige bedrijfsinformatie?', ja: 'r3', nee: 'q4' },
+    q4: { v: 'Heeft de cliënt bezwaar gemaakt tegen AI-gebruik?', ja: 'r4', nee: 'q5' },
+    q5: { v: 'Heb je vindplaatsen nodig (rechtspraak, literatuur)?', ja: 'r5', nee: 'r6' },
+    r1: { soort: 'goed', t: 'Elke tool mag, ook een consumentenversie.', s: 'Bijvoorbeeld een algemene kennisvraag, een openbare tekst of oefenen. Route 1.' },
+    r2: { soort: 'mis', t: 'Stop. Niet invoeren.', s: 'Een consumentenversie is nooit voor cliëntgegevens.' },
+    r3: { soort: 'half', t: 'Alleen in een omgeving met strenge contractuele waarborgen.', s: 'Bij voorkeur met verwerking in de EU: een juridische tool die de vijf leveranciersvragen goed beantwoordt (route 3), of een eigen omgeving in een EU-regio (route 4). Voer alleen in wat strikt nodig is.' },
+    r4: { soort: 'mis', t: 'Niet gebruiken voor dit dossier.', s: 'De cliënt heeft bezwaar gemaakt; die keuze respecteer je.' },
+    r5: { soort: 'goed', t: 'Juridische AI met gelicentieerde bronnen, en zelf natrekken.', s: 'Route 3.' },
+    r6: { soort: 'goed', t: 'Een zakelijk algemeen model met kennisbank volstaat.', s: 'Route 2. Altijd met de verificatie-checklist.' }
+  };
+  var KAARTEN = [
+    ['Eenmalig een lastige brief aan de wederpartij herschrijven', 'p'],
+    ['Elk nieuw dossier: intakeformulier overnemen in het dossiersysteem en conflictcheck doen', 'a'],
+    ['Termijnen uit binnenkomende vonnissen en beschikkingen in de agenda zetten', 'a'],
+    ['Een samenvatting maken van een productie van 80 pagina’s', 'p'],
+    ['Strategie bepalen voor een zitting', 'n'],
+    ['Wekelijks een statusupdate aan cliënten sturen', 'a'],
+    ['Een vragenlijst voor een nieuwe cliënt in een ongewoon rechtsgebied', 'p'],
+    ['Uren uit agenda en mail verzamelen voor de declaratie', 'a'],
+    ['Een slecht-nieuwsgesprek met een cliënt voeren', 'n'],
+    ['Standaardbrief na het indienen van een verzoekschrift', 'a'],
+    ['Jurisprudentie zoeken voor een niche-vraag', 'p', 'Prompt, in een juridische tool, en natrekken'],
+    ['Een strafdossier met medische gegevens samenvatten in een gratis tool', 'n', 'Niet met AI (wel in een geschikte omgeving)']
+  ];
+  var STAPEL = { p: 'Betere prompt volstaat', a: 'Automatiseren', n: 'Niet met AI' };
+
+  st.ho = lees('ho-ingevuld') || {};
+  st.boom = [];
+  st.sorteerToon = false;
+
+  function hoHaal(p) { return haal(st.ho, p) || ''; }
+  function hoVeld(p, label, opts) {
+    opts = opts || {};
+    var id = 'h-' + p.replace(/[^a-zA-Z0-9]/g, '-'), v = hoHaal(p);
+    var veld = opts.regel
+      ? '<input type="text" id="' + id + '" data-ho="' + p + '" value="' + esc(v) + '"' + (opts.ph ? ' placeholder="' + esc(opts.ph) + '"' : '') + '>'
+      : '<textarea id="' + id + '" data-ho="' + p + '"' + (opts.groot ? ' class="groot"' : '') + (opts.ph ? ' placeholder="' + esc(opts.ph) + '"' : '') + '>' + esc(v) + '</textarea>';
+    return (label ? '<label class="veld" for="' + id + '">' + label + '</label>' : '') + veld;
+  }
+
+  function laadHandouts() {
+    app.innerHTML = '<div class="kaart"><p class="uitleg">Hand-outs laden…</p></div>';
+    var body = st.rol === 'trainer' ? { actie: 'inhoud', prefix: 'ho-' } : { actie: 'handouts' };
+    post(body, function (r) { st.handouts = r.items || []; tekenHandouts(); },
+      function (f) { app.innerHTML = '<div class="kaart"><div class="fout">' + esc(f) + '</div></div>'; });
+  }
+
+  function tekenHandouts() {
+    if (!st.handouts) return laadHandouts();
+    var open = st.hoOpen && st.handouts.filter(function (x) { return x.sleutel === st.hoOpen; })[0];
+    if (!open) {
+      var h = '<div class="kaart"><div class="stap">Hand-outs</div><h2>Alles van vandaag, om te bewaren</h2>' +
+        '<p class="uitleg">Wat je hier invult, blijft alleen in deze browser staan. Druk het af of bewaar het als PDF voordat je weggaat.</p></div><div class="ho-lijst">';
+      st.handouts.forEach(function (x) {
+        var nr = Number(x.sleutel.slice(3)), info = HO_INFO[x.sleutel] || {};
+        h += '<button class="ho-kaart" data-hoopen="' + x.sleutel + '"><span class="ho-nr">' + nr + '</span><span class="ho-tekst"><b>' + esc(x.titel) + '</b>' +
+          (info.kort ? '<span>' + esc(info.kort) + '</span>' : '') + '</span>' + (info.soort ? '<span class="tag leeg">' + info.soort + '</span>' : '') + '</button>';
+      });
+      app.innerHTML = h + '</div>';
+      return;
+    }
+    var nr = Number(open.sleutel.slice(3));
+    var h2 = '<div class="kaart"><div class="balk geen-print" style="justify-content:space-between;margin-bottom:10px"><button class="weg" data-hoterug="1">← Alle hand-outs</button>' +
+      '<button class="knop twee klein" data-print="1">Afdrukken of bewaren als PDF</button></div>' +
+      '<div class="stap">Hand-out ' + nr + '</div><h2>' + esc(open.titel) + '</h2>';
+    if (open.sleutel === 'ho-03') h2 += htmlBoom();
+    if (open.sleutel === 'ho-07') h2 += htmlSorteer();
+    h2 += '<div class="env ho-tekst-blok">' + open.html + '</div>';
+    if (open.sleutel === 'ho-01') {
+      h2 += '<h3>Voor jouw kantoor of afdeling</h3>' + hoVeld('ho1.kantoor', 'Kantoor of afdeling', { regel: true }) +
+        '<label class="veld">Bij ons toegestaan</label>';
+      for (var i = 1; i <= 4; i++) {
+        h2 += '<div class="arrest"><div class="rij2"><div>' + hoVeld('ho1.r' + i + '.tool', 'Tool en versie', { regel: true, ph: i === 1 ? 'bijv. Claude Team' : '' }) + '</div>' +
+          '<div>' + hoVeld('ho1.r' + i + '.werk', 'Voor welk werk', { regel: true }) + '</div></div>' + hoVeld('ho1.r' + i + '.niet', 'Niet voor', { regel: true }) + '</div>';
+      }
+      h2 += '<h3>Gaat het mis?</h3>' + hoVeld('ho1.melden', 'Direct melden bij', { regel: true }) +
+        '<p class="klein" style="margin-top:6px">Datalek registreren, risico inschatten (meldplicht binnen 72 uur), cliënt informeren.</p>';
+    }
+    if (open.sleutel === 'ho-04') {
+      h2 += '<h3>Jullie eigen clausule</h3><p class="uitleg">Schrijf in tweetallen je eigen versie. Begin gerust met ons concept en pas het aan.</p>' +
+        '<p class="geen-print" style="margin-bottom:8px"><button class="knop twee klein" data-hoconcept="1">Begin met het concept</button> <button class="kopieer" data-hokopieer="ho4.clausule">Kopieer</button></p>' +
+        hoVeld('ho4.clausule', '', { groot: true, ph: 'Gebruik van kunstmatige intelligentie\n\n1. …' });
+    }
+    if (open.sleutel === 'ho-08') {
+      for (var j = 1; j <= 3; j++) {
+        h2 += '<div class="arrest"><div class="arrest-kop"><b>Taak ' + j + '</b></div>' + hoVeld('ho8.t' + j + '.taak', 'Taak', { regel: true, ph: j === 1 ? 'bijv. de eerste versie van een opdrachtbevestiging' : '' }) +
+          '<div class="rij2"><div>' + hoVeld('ho8.t' + j + '.nu', 'Hoe vaak, en hoeveel tijd nu', { regel: true }) + '</div><div>' + hoVeld('ho8.t' + j + '.tool', 'Gereedschap (tool en versie)', { regel: true }) + '</div></div>' +
+          hoVeld('ho8.t' + j + '.prompt', 'Mijn prompt (kort)') + hoVeld('ho8.t' + j + '.controle', 'Mijn controle', { regel: true }) + '</div>';
+      }
+      h2 += hoVeld('ho8.terug', 'Over vier weken kijk ik terug: hoeveel tijd heeft het opgeleverd?', { regel: true });
+    }
+    app.innerHTML = h2 + '</div>';
+    // afvinkbare checklist en kopieerknoppen bij de promptblokken
+    if (open.sleutel === 'ho-02') {
+      Array.prototype.forEach.call(app.querySelectorAll('.ho-tekst-blok li'), function (li, k) {
+        li.innerHTML = li.innerHTML.replace('☐', '<input type="checkbox" class="vink" data-vink="' + k + '"' + (st.ho['vink' + k] ? ' checked' : '') + '>');
+      });
+    }
+    Array.prototype.forEach.call(app.querySelectorAll('.ho-tekst-blok pre'), function (pre, k) {
+      var knop = document.createElement('button');
+      knop.className = 'kopieer geen-print'; knop.textContent = 'Kopieer'; knop.setAttribute('data-hokopieerpre', k);
+      pre.parentNode.insertBefore(knop, pre);
+    });
+  }
+
+  function htmlBoom() {
+    var h = '<div class="boom">', stap = 'q1';
+    st.boom.forEach(function (antw) {
+      h += '<div class="boom-rij"><span>' + esc(BOOM[stap].v) + '</span><span class="tag ' + (antw === 'ja' ? 'half' : 'leeg') + '">' + (antw === 'ja' ? 'Ja' : 'Nee') + '</span></div>';
+      stap = BOOM[stap][antw];
+    });
+    var b = BOOM[stap];
+    if (b.v) h += '<div class="boom-vraag"><p>' + esc(b.v) + '</p><div class="balk"><button class="knop klein" data-boom="ja">Ja</button><button class="knop twee klein" data-boom="nee">Nee</button></div></div>';
+    else h += '<div class="boom-uitkomst ' + b.soort + '"><b>' + esc(b.t) + '</b><p>' + esc(b.s) + '</p></div>';
+    if (st.boom.length) h += '<p style="margin-top:10px"><button class="weg" data-boom="opnieuw">Opnieuw, met een ander dossier</button></p>';
+    return h + '</div>';
+  }
+
+  function htmlSorteer() {
+    var keuze = st.ho.sorteer || {}, goed = 0, gedaan = 0;
+    var h = '<p class="uitleg">Leg elke taak op een stapel. Daarna kun je de verwachte stapel tonen.</p><div class="sorteer">';
+    KAARTEN.forEach(function (k, i) {
+      var v = keuze['k' + i] || '';
+      if (v) gedaan++;
+      if (v && v === k[1]) goed++;
+      h += '<div class="arrest"><div class="sorteer-taak"><span class="ho-nr">' + (i + 1) + '</span><span>' + esc(k[0]) + '</span></div><div class="seg">' +
+        ['p', 'a', 'n'].map(function (s) {
+          var cls = v === s ? 'aan ' + (st.sorteerToon ? (s === k[1] ? 'goed' : 'mis') : 'goed') : '';
+          return '<button type="button" class="' + cls + '" data-sorteer="' + i + '|' + s + '">' + STAPEL[s] + '</button>';
+        }).join('') + '</div>' +
+        (st.sorteerToon ? '<p class="klein" style="margin-top:6px">Verwacht: <b>' + esc(k[2] || STAPEL[k[1]]) + '</b></p>' : '') + '</div>';
+    });
+    h += '</div><p class="geen-print" style="margin:14px 0"><button class="knop twee klein" data-sorteertoon="1">' + (st.sorteerToon ? 'Verberg de verwachte stapel' : 'Toon de verwachte stapel') + '</button>' +
+      (st.sorteerToon && gedaan ? ' <span class="klein">' + goed + ' van de ' + gedaan + ' op dezelfde stapel als wij.</span>' : '') + '</p>';
+    return h;
+  }
+
+  document.addEventListener('input', function (e) {
+    var p = e.target.getAttribute && e.target.getAttribute('data-ho');
+    if (!p) return;
+    zet(st.ho, p, e.target.value); bewaar('ho-ingevuld', st.ho);
+  });
+  document.addEventListener('change', function (e) {
+    var k = e.target.getAttribute && e.target.getAttribute('data-vink');
+    if (k == null) return;
+    st.ho['vink' + k] = e.target.checked; bewaar('ho-ingevuld', st.ho);
+  });
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest ? e.target.closest('button') : null;
+    if (!el) return;
+    if (el.hasAttribute('data-hoopen')) { st.hoOpen = el.getAttribute('data-hoopen'); st.boom = []; st.sorteerToon = false; tekenHandouts(); window.scrollTo(0, 0); }
+    else if (el.hasAttribute('data-hoterug')) { st.hoOpen = null; tekenHandouts(); window.scrollTo(0, 0); }
+    else if (el.hasAttribute('data-print')) window.print();
+    else if (el.hasAttribute('data-boom')) {
+      var w = el.getAttribute('data-boom');
+      if (w === 'opnieuw') st.boom = []; else st.boom.push(w);
+      tekenHandouts();
+    }
+    else if (el.hasAttribute('data-sorteer')) {
+      var s = el.getAttribute('data-sorteer').split('|');
+      st.ho.sorteer = st.ho.sorteer || {};
+      st.ho.sorteer['k' + s[0]] = st.ho.sorteer['k' + s[0]] === s[1] ? '' : s[1];
+      bewaar('ho-ingevuld', st.ho); tekenHandouts();
+    }
+    else if (el.hasAttribute('data-sorteertoon')) { st.sorteerToon = !st.sorteerToon; tekenHandouts(); }
+    else if (el.hasAttribute('data-hoconcept')) {
+      var bq = app.querySelector('.ho-tekst-blok blockquote');
+      if (!bq) return;
+      if (hoHaal('ho4.clausule') && !confirm('Je eigen tekst vervangen door het concept?')) return;
+      zet(st.ho, 'ho4.clausule', bq.innerText.trim()); bewaar('ho-ingevuld', st.ho); tekenHandouts();
+    }
+    else if (el.hasAttribute('data-hokopieer')) kopieer(hoHaal(el.getAttribute('data-hokopieer')), el);
+    else if (el.hasAttribute('data-hokopieerpre')) {
+      var pre = app.querySelectorAll('.ho-tekst-blok pre')[Number(el.getAttribute('data-hokopieerpre'))];
+      if (pre) kopieer(pre.innerText, el);
+    }
+  });
+
   /* ---------- gebeurtenissen ---------- */
   document.addEventListener('submit', function (e) {
     if (e.target.id === 'loginForm') {
@@ -1004,7 +1235,7 @@
     if (el.hasAttribute('data-tab')) {
       if (opslaanTimer && st.rol === 'deelnemer') { clearTimeout(opslaanTimer); opslaanTimer = null; opslaan(); }
       st.oef = el.getAttribute('data-tab'); st.envelop = null; tekenKop();
-      if (st.rol === 'trainer') tekenTrainer(); else openOefening();
+      if (st.oef === 'ho') tekenHandouts(); else if (st.rol === 'trainer') tekenTrainer(); else openOefening();
       return;
     }
     if (el.hasAttribute('data-groep')) {
