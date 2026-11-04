@@ -1214,9 +1214,15 @@
     var h2 = '<div class="kaart"><div class="balk geen-print" style="justify-content:space-between;margin-bottom:10px"><button class="weg" data-hoterug="1">← Alle hand-outs</button>' +
       '<button class="knop twee klein" data-print="1">Afdrukken of bewaren als PDF</button></div>' +
       '<div class="stap">Hand-out ' + nr + '</div><h2>' + esc(open.titel) + '</h2>';
-    if (open.sleutel === 'ho-03') h2 += htmlBoom();
+    // hand-out 3: de uitgewerkte beslisboom (deel A per dossier, deel B voor je kantoor) in plaats van de klikversie
+    if (open.sleutel === 'ho-03') {
+      var bb = '/downloads/beslisboom/';
+      h2 += '<p class="geen-print" style="margin:6px 0 14px"><a class="knop klein" href="' + bb + 'beslisboom-ai-route.pdf" download>Download als PDF</a></p>' +
+        '<img src="' + bb + 'beslisboom-deel-a.png" alt="Beslisboom deel A: welke AI-route kies je per taak of dossier" style="width:100%;height:auto;border:1px solid var(--border);border-radius:8px">' +
+        '<img src="' + bb + 'beslisboom-deel-b.png" alt="Beslisboom deel B: welke omgeving richt je in voor je kantoor, met de vier routes op een rij" style="width:100%;height:auto;border:1px solid var(--border);border-radius:8px;margin-top:14px">';
+    }
     if (open.sleutel === 'ho-07') h2 += htmlSorteer();
-    h2 += '<div class="env ho-tekst-blok">' + open.html + '</div>';
+    if (open.sleutel !== 'ho-03') h2 += '<div class="env ho-tekst-blok">' + open.html + '</div>';
     if (open.sleutel === 'ho-01') {
       h2 += '<h3>Voor jouw kantoor of afdeling</h3>' + hoVeld('ho1.kantoor', 'Kantoor of afdeling', { regel: true }) +
         '<label class="veld">Bij ons toegestaan</label>';
