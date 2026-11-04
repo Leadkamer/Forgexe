@@ -1146,7 +1146,8 @@
   function laadHandouts() {
     app.innerHTML = '<div class="kaart"><p class="uitleg">Hand-outs laden…</p></div>';
     var body = st.rol === 'trainer' ? { actie: 'inhoud', prefix: 'ho-' } : { actie: 'handouts' };
-    post(body, function (r) { st.handouts = r.items || []; tekenHandouts(); },
+    // hand-out 7 (sorteerkaarten) vervalt sinds 4-11-2026: blok 9 is een quiz op het scherm
+    post(body, function (r) { st.handouts = (r.items || []).filter(function (x) { return x.sleutel !== 'ho-07'; }); tekenHandouts(); },
       function (f) { app.innerHTML = '<div class="kaart"><div class="fout">' + esc(f) + '</div></div>'; });
   }
 
