@@ -438,9 +438,13 @@
         ['Straf en maatregel', ['Straftoemeting', 'Voorwaardelijke straf en bijzondere voorwaarden', 'Tbs en andere maatregelen', 'Ontneming wederrechtelijk verkregen voordeel', 'Schadevergoeding en de benadeelde partij']],
         ['Procedure', ['Geldigheid van de dagvaarding', 'Redelijke termijn', 'Hoger beroep en cassatie', 'Strafbeschikking en OM-afdoening', 'Jeugdstrafrecht']]
       ]
+    },
+    civiel: {
+      naam: 'Overig civiel', vraagOver: 'huur, koop of contracten', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 6 en 7 (huur, koop, aanneming, opdracht)', pill: 'Rechtspraak.nl · BW 7 + 6',
+      cats: []
     }
   };
-  var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf'];
+  var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf', 'civiel'];
   var rg = 'arbeid';
   var topic = null;
   var laatsteSjabloon = '';
@@ -499,7 +503,7 @@
     $('rgList').innerHTML = html;
     $('bronWet').textContent = RG[rg].wet;
     $('bronPill').textContent = RG[rg].pill;
-    vraagEl.placeholder = 'Stel je vraag over ' + RG[rg].naam.toLowerCase() + (gekozen().length ? ' of over dit dossier' : '');
+    vraagEl.placeholder = 'Stel je vraag over ' + (RG[rg].vraagOver || RG[rg].naam.toLowerCase()) + (gekozen().length ? ' of over dit dossier' : '');
   }
   function setRg(k) {
     if (!RG[k] || k === rg) return;
@@ -708,7 +712,7 @@
       if (docs.some(function (d) { return /huur/i.test(d.naam); })) vragen.splice(1, 0, 'Welke bepalingen kunnen het recht van huurder om in 2029 te stoppen beperken of duurder maken? Noem ook relevante rechtspraak.');
     }
     var g = RG[rg];
-    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier, of kies hieronder een onderdeel' : 'Kies een onderdeel om gericht te zoeken, of stel direct je vraag. Stukken voeg je toe via Bijlagen.') + '</p>';
+    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier' + (g.cats.length ? ', of kies hieronder een onderdeel' : '') : (g.cats.length ? 'Kies een onderdeel om gericht te zoeken, of stel direct je vraag.' : 'Stel direct je vraag.') + ' Stukken voeg je toe via Bijlagen.') + '</p>';
     html += '<div class="rg-tabs" role="tablist" aria-label="Rechtsgebied">';
     RG_VOLGORDE.forEach(function (k) { html += '<button role="tab" data-rg="' + k + '" aria-selected="' + (k === rg) + '">' + esc(RG[k].naam) + '</button>'; });
     html += '</div>';
@@ -716,6 +720,12 @@
       html += '<div class="sugg">';
       vragen.forEach(function (v) { html += '<button data-v="' + esc(v) + '">' + ICON_Q + '<span>' + esc(v) + '</span></button>'; });
       html += '</div>';
+    }
+    if (!g.cats.length) {
+      html += '<div class="indeling"><div class="indeling-head"><h3>' + esc(g.naam) + '</h3><p>Huur, koop, aanneming, opdracht en contracten. Geen vaste indeling: stel je vraag of voeg stukken toe.</p></div></div></div>';
+      chatInner.innerHTML = html;
+      bindEmpty();
+      return;
     }
     html += '<div class="indeling"><div class="indeling-head"><h3>Indeling ' + esc(g.naam.toLowerCase()) + '</h3><p>Eerst het overzicht, dan per onderdeel gericht zoeken</p></div><div class="cats">';
     g.cats.forEach(function (c, ci) {
@@ -728,6 +738,9 @@
     });
     html += '</div></div></div>';
     chatInner.innerHTML = html;
+    bindEmpty();
+  }
+  function bindEmpty() {
     chatInner.querySelectorAll('.sugg button').forEach(function (b) {
       b.addEventListener('click', function () { vraagEl.value = b.getAttribute('data-v'); laatsteSjabloon = ''; autoGrow(); updateSend(); vraagEl.focus(); });
     });
@@ -809,7 +822,7 @@
 
     var taken = [];
     if (gen) taken.push(vraagAlgemeen(payload, gen));
-    taken.push(vraagTool(payload, tool, beurt));
+    taken.push(vraagTool(payload, tool, beurt, rubriek));
     Promise.all(taken).then(function () {
       busy = false;
       gesprek.push(beurt);
@@ -893,7 +906,7 @@
       p.querySelector('.pm').innerHTML = k < n ? '&#10003;' : (k === n ? '&#9679;' : '&middot;');
     });
   }
-  function vraagTool(payload, card, beurt) {
+  function vraagTool(payload, card, beurt, rubriek) {
     var t0 = Date.now();
     var bar = card.querySelector('.bar i');
     var fasen = setInterval(function () {
@@ -908,7 +921,7 @@
       clearInterval(fasen);
       var secs = stopTimer(card);
       beurt.antwoord = (res.notitie && (res.notitie.antwoord || res.notitie.samenvatting)) || '';
-      toonTool(card, res, secs);
+      toonTool(card, res, secs, rubriek);
     }).catch(function (err) { clearInterval(fasen); toonFout(card, err); });
   }
   function poll(job, t0) {
@@ -975,13 +988,12 @@
   function lijst(arr) { if (!arr || !arr.length) return '<p class="disclaimer">Geen.</p>'; return '<ul class="lijst">' + arr.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
 
   var resultaten = {};
-  function toonTool(card, res, secs) {
+  function toonTool(card, res, secs, rubriek) {
     var n = res.notitie || {};
     var m = res.meta || {};
     var rid = 'r' + (nextId++);
     resultaten[rid] = res;
     var antwoord = n.antwoord || n.analyse || n.samenvatting || '';
-    var rubriek = [m.rechtsgebied_keuze, m.onderwerp].filter(function (x) { return x; }).join(' › ');
     var html = (rubriek ? '<div class="rubriek">' + esc(rubriek) + '</div>' : '') + '<div class="prose">' + linkify(md(antwoord), n) + '</div>';
 
     if (n.citaten && n.citaten.length) {
