@@ -82,13 +82,32 @@
 
   .chat { flex: 1; overflow-y: auto; padding: 26px 22px 12px; min-height: 0; }
   .chat-inner { max-width: 1040px; margin: 0 auto; }
-  .empty { text-align: center; padding: 9vh 0 20px; }
+  .rg-list { margin: 0 -10px; }
+  .rg-list .nav-btn[aria-pressed="true"] { background: var(--mint-wash); color: var(--ink); font-weight: 600; }
+  .empty { text-align: center; padding: 6vh 0 20px; }
   .empty h2 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 6px; }
   .empty p { color: var(--ink-faint); font-size: 13.5px; margin-bottom: 18px; }
   .sugg { display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .sugg button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 9px 14px; font-size: 14px; cursor: pointer; text-align: left; max-width: 100%; }
   .sugg button:hover { border-color: var(--mint-deep); background: var(--mint-wash); }
   .sugg svg { width: 15px; height: 15px; flex: none; color: var(--ink-faint); }
+  .rg-tabs { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px; background: var(--surface-2); border-radius: 10px; padding: 4px; margin-bottom: 18px; }
+  .rg-tabs button { border: 0; background: none; border-radius: 7px; padding: 7px 14px; font-size: 14px; cursor: pointer; color: var(--ink-soft); }
+  .rg-tabs button:hover { color: var(--ink); }
+  .rg-tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: 0 1px 3px rgba(18,40,58,.12); }
+  .indeling { text-align: left; max-width: 860px; margin: 26px auto 0; }
+  .indeling-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .indeling-head h3 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
+  .indeling-head p { font-size: 12.5px; color: var(--ink-faint); margin: 0; }
+  .cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .cat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px 12px; }
+  .cat h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+  .cat h4 .nr { font-family: var(--mono); font-size: 11px; color: var(--mint-deep); }
+  .subs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .subs button { border: 1px solid var(--line); background: var(--paper); border-radius: 99px; padding: 4px 10px; font-size: 12.5px; line-height: 1.4; cursor: pointer; color: var(--ink-soft); text-align: left; }
+  .subs button:hover { border-color: var(--mint-deep); color: var(--ink); }
+  .subs button.on { background: var(--navy); border-color: var(--navy); color: var(--mint); }
+  .rubriek { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); margin-bottom: 10px; }
 
   .msg-user { display: flex; justify-content: flex-end; margin: 18px 0 12px; }
   .msg-user div { background: var(--navy); color: #e8f5ee; border-radius: 14px 14px 4px 14px; padding: 10px 15px; max-width: min(640px, 85%); font-size: 14.5px; white-space: pre-wrap; }
@@ -180,6 +199,8 @@
   .chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border-radius: 7px; padding: 4px 9px; font-size: 12.5px; max-width: 240px; }
   .chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .chip.clear { background: none; border: 0; cursor: pointer; color: var(--ink-faint); }
+  .chip.topic { background: var(--mint-wash); max-width: 100%; }
+  .chip.topic button { background: none; border: 0; cursor: pointer; color: var(--ink-faint); font-size: 15px; line-height: 1; padding: 0 0 0 2px; }
   .composer textarea { width: 100%; border: 0; background: none; resize: none; padding: 12px 14px 6px; font-size: 15px; line-height: 1.5; outline: none; max-height: 180px; }
   .composer-bar { display: flex; align-items: center; gap: 6px; padding: 6px 8px 8px 10px; flex-wrap: wrap; }
   .tool-btn { background: none; border: 0; border-radius: 7px; padding: 6px 8px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--ink-soft); }
@@ -256,7 +277,10 @@
     .composer-wrap { padding: 8px 12px 12px; }
     .ans-body { padding: 14px; }
     .prose { font-size: 15.5px; }
-    .empty { padding-top: 5vh; }
+    .empty { padding-top: 3vh; }
+    .cats { grid-template-columns: minmax(0, 1fr); }
+    .rg-tabs { gap: 2px; padding: 3px; }
+    .rg-tabs button { font-size: 13px; padding: 6px 9px; }
   }
   .scrim.show { display: block; position: fixed; inset: 0; background: rgba(10,20,28,.35); z-index: 25; }
   @media (prefers-reduced-motion: reduce) { .side, .panel { transition: none; } .phase.busy .pm, .typing i { animation: none; } }
@@ -275,9 +299,13 @@
       <div class="nav-sub" id="navTitel">Nieuw dossier</div>
     </div>
     <div class="side-section">
+      <div class="side-label">Rechtsgebied</div>
+      <div class="rg-list" id="rgList"></div>
+    </div>
+    <div class="side-section">
       <div class="side-label">Bronnen</div>
       <div class="src"><span class="chk">&#10003;</span><span>Rechtspraak.nl, volledige uitspraken via de open-data-API</span></div>
-      <div class="src"><span class="chk">&#10003;</span><span>Wetten.overheid.nl, actuele tekst BW Boek 6 en 7</span></div>
+      <div class="src"><span class="chk">&#10003;</span><span id="bronWet">Wetten.overheid.nl, actuele wettekst</span></div>
       <div class="src"><span class="chk">&#10003;</span><span>Jouw dossierstukken, alleen voor deze vraag</span></div>
     </div>
     <div class="side-section">
@@ -320,7 +348,7 @@
         <textarea id="vraag" rows="1" placeholder="Stel je vraag over dit dossier"></textarea>
         <div class="composer-bar">
           <button class="tool-btn" id="attachBtn" title="Stukken toevoegen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5l-8.5 8.5a5 5 0 0 1-7-7l9-9a3.5 3.5 0 0 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg><span>Stukken</span></button>
-          <span class="bronnen-pill">Bronnen <span class="n">2</span> Rechtspraak.nl &middot; BW 6 + 7</span>
+          <span class="bronnen-pill">Bronnen <span class="n">2</span> <span id="bronPill">Rechtspraak.nl</span></span>
           <button class="send" id="sendBtn" aria-label="Verstuur" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
         </div>
       </div>
@@ -377,11 +405,52 @@
   var code = '';
   var nextId = 1;
 
+  /* ── Rechtsgebieden en indeling: eerst het overzicht, dan per onderdeel gericht zoeken ── */
+  var RG = {
+    arbeid: {
+      naam: 'Arbeidsrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 7 (arbeidsovereenkomst) en Boek 6', pill: 'Rechtspraak.nl · BW 7 + 6',
+      cats: [
+        ['Ontslag en ontbinding', ['Ontslag op staande voet', 'Ontbinding door de kantonrechter', 'Disfunctioneren en verstoorde arbeidsverhouding', 'Cumulatiegrond (i-grond)', 'Ontslag via het UWV', 'Beëindigingsovereenkomst en bedenktermijn', 'Opzegverboden']],
+        ['Vergoedingen', ['Transitievergoeding', 'Billijke vergoeding', 'Ernstig verwijtbaar handelen werkgever', 'Gefixeerde schadevergoeding', 'Aanzegvergoeding']],
+        ['Het contract', ['Arbeidsovereenkomst of opdracht', 'Proeftijd', 'Ketenregeling en tijdelijke contracten', 'Concurrentie- en relatiebeding', 'Eenzijdige wijziging arbeidsvoorwaarden', 'Oproep- en nulurencontracten']],
+        ['Loon en ziekte', ['Loondoorbetaling bij ziekte', 'Re-integratie en loonsanctie', 'Loonvordering en wettelijke verhoging', 'Vakantiedagen en vakantiegeld', 'Loonopschorting en loonstop']],
+        ['Overige', ['Werkgeversaansprakelijkheid', 'Overgang van onderneming', 'Privacy en controle op het werk', 'Gelijke behandeling', 'Uitzendwerk en detachering']]
+      ]
+    },
+    scheiding: {
+      naam: 'Echtscheidingsrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 1 en Wet verevening pensioenrechten bij scheiding', pill: 'Rechtspraak.nl · BW 1 + WVPS',
+      cats: [
+        ['De echtscheiding zelf', ['Duurzame ontwrichting en het verzoek', 'Echtscheidingsconvenant', 'Voorlopige voorzieningen', 'Gebruik van de echtelijke woning', 'Scheiding van tafel en bed', 'Ontbinding geregistreerd partnerschap']],
+        ['Vermogen en verdeling', ['Gemeenschap van goederen en peildatum', 'Huwelijkse voorwaarden en verrekenbeding', 'Echtelijke woning en hypotheek', 'Vergoedingsrechten', 'Schulden', 'Onderneming in het vermogen']],
+        ['Pensioen', ['Verevening ouderdomspensioen', 'Conversie', 'Bijzonder partnerpensioen', 'Afwijken in het convenant', 'Melding bij de pensioenuitvoerder']],
+        ['Partneralimentatie', ['Behoefte en de hofnorm', 'Draagkracht', 'Duur en limitering', 'Wijziging en nihilstelling', 'Samenwonen met een nieuwe partner', 'Verdiencapaciteit']],
+        ['Kinderalimentatie', ['Behoefte van het kind', 'Draagkracht van de ouders', 'Zorgkorting', 'Jongmeerderjarigen (18 tot 21)', 'Wijziging van kinderalimentatie']],
+        ['Kinderen, gezag en omgang', ['Gezamenlijk of eenhoofdig gezag', 'Ouderschapsplan', 'Zorgregeling en omgang', 'Verhuizen met kinderen', 'Hoofdverblijfplaats', 'Kind horen en bijzondere curator']]
+      ]
+    },
+    straf: {
+      naam: 'Strafrecht', wet: 'Wetten.overheid.nl, actuele tekst Sr, Sv, Opiumwet en Wegenverkeerswet 1994', pill: 'Rechtspraak.nl · Sr + Sv',
+      cats: [
+        ['Opsporing en dwangmiddelen', ['Aanhouding en verhoor', 'Consultatie- en verhoorbijstand', 'Voorlopige hechtenis', 'Doorzoeking en inbeslagneming', 'Onderzoek van telefoon en gegevens', 'Vormverzuimen (art. 359a Sv)']],
+        ['Bewijs', ['Bewijsminimum en steunbewijs', 'Getuigen en het ondervragingsrecht', 'Alternatief scenario', 'Opzet en voorwaardelijk opzet', 'Medeplegen en medeplichtigheid']],
+        ['Delicten', ['Vermogensdelicten', 'Geweldsdelicten', 'Zedendelicten', 'Opiumwet', 'Verkeer (art. 6 en 8 WVW 1994)', 'Witwassen en fraude']],
+        ['Verweren en strafuitsluiting', ['Noodweer en noodweerexces', 'Overmacht en noodtoestand', 'Ontoerekeningsvatbaarheid', 'Verjaring', 'Ne bis in idem']],
+        ['Straf en maatregel', ['Straftoemeting', 'Voorwaardelijke straf en bijzondere voorwaarden', 'Tbs en andere maatregelen', 'Ontneming wederrechtelijk verkregen voordeel', 'Schadevergoeding en de benadeelde partij']],
+        ['Procedure', ['Geldigheid van de dagvaarding', 'Redelijke termijn', 'Hoger beroep en cassatie', 'Strafbeschikking en OM-afdoening', 'Jeugdstrafrecht']]
+      ]
+    }
+  };
+  var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf'];
+  var rg = 'arbeid';
+  var topic = null;
+  var laatsteSjabloon = '';
+
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   function store(k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
   function load(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
   var smallScreen = window.matchMedia('(max-width: 1180px)');
+  if (RG[load('considerans_rg')]) rg = load('considerans_rg');
 
   /* ── Toegangscode ── */
   function askCode(fout) {
@@ -418,10 +487,50 @@
   $('nieuwBtn').addEventListener('click', function () {
     if (busy) return;
     if ((docs.length || gesprek.length) && !confirm('Nieuw dossier starten? De stukken en het gesprek verdwijnen; er wordt niets bewaard.')) return;
-    docs = []; gesprek = [];
+    docs = []; gesprek = []; topic = null;
     titelEl.value = 'Nieuw dossier'; $('navTitel').textContent = 'Nieuw dossier';
     renderDocs(); renderEmpty(); closeDrawers();
   });
+
+  /* ── Rechtsgebied en onderwerp ── */
+  function renderRg() {
+    var html = '';
+    RG_VOLGORDE.forEach(function (k) { html += '<button class="nav-btn" data-rg="' + k + '" aria-pressed="' + (k === rg) + '">' + esc(RG[k].naam) + '</button>'; });
+    $('rgList').innerHTML = html;
+    $('bronWet').textContent = RG[rg].wet;
+    $('bronPill').textContent = RG[rg].pill;
+    vraagEl.placeholder = 'Stel je vraag over ' + RG[rg].naam.toLowerCase() + (gekozen().length ? ' of over dit dossier' : '');
+  }
+  function setRg(k) {
+    if (!RG[k] || k === rg) return;
+    rg = k;
+    store('considerans_rg', k);
+    topic = null;
+    if (vraagEl.value === laatsteSjabloon) { vraagEl.value = ''; autoGrow(); updateSend(); }
+    renderRg(); renderChips();
+    if (!gesprek.length) renderEmpty();
+  }
+  $('rgList').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-rg]');
+    if (b) { setRg(b.getAttribute('data-rg')); closeDrawers(); }
+  });
+  function onderwerpTekst() { return topic ? topic.cat + ' › ' + topic.sub : ''; }
+  function kiesOnderwerp(ci, si) {
+    var c = RG[rg].cats[ci];
+    if (!c) return;
+    var sub = c[1][si];
+    if (topic && topic.cat === c[0] && topic.sub === sub) { topic = null; }
+    else { topic = { cat: c[0], sub: sub }; }
+    var leeg = !vraagEl.value.trim() || vraagEl.value === laatsteSjabloon;
+    if (leeg) {
+      laatsteSjabloon = topic ? 'Welke maatstaven hanteert de rechter bij ' + sub.charAt(0).toLowerCase() + sub.slice(1) + ', en welke uitspraken zijn daarbij leidend?' : '';
+      vraagEl.value = laatsteSjabloon;
+      autoGrow(); updateSend();
+    }
+    renderChips();
+    if (!gesprek.length) renderEmpty();
+    vraagEl.focus();
+  }
   $('dossierNav').addEventListener('click', function () { titelEl.focus(); titelEl.select(); closeDrawers(); });
 
   /* ── Bestanden ── */
@@ -551,12 +660,24 @@
     $('selText').textContent = sel.length + ' van ' + ok.length + ' geselecteerd';
     $('selToggle').textContent = sel.length ? 'Deselecteer alles' : 'Selecteer alles';
     $('docCount').textContent = sel.length;
+    renderChips();
+    renderRg();
+    updateSend();
+  }
+  function renderChips() {
+    var sel = gekozen();
     var chips = '';
-    if (sel.length) chips += '<button class="chip clear" id="chipClear">&times; Alles wissen</button>';
+    if (topic) chips += '<span class="chip topic"><span>' + esc(RG[rg].naam + ' › ' + onderwerpTekst()) + '</span><button id="topicClear" aria-label="Onderwerp loslaten">&times;</button></span>';
+    if (sel.length) chips += '<button class="chip clear" id="chipClear">&times; Stukken wissen</button>';
     sel.forEach(function (d) { chips += '<span class="chip"><span>' + esc(d.naam) + '</span></span>'; });
     chipsEl.innerHTML = chips;
     if ($('chipClear')) $('chipClear').addEventListener('click', function () { docs.forEach(function (d) { d.aan = false; }); renderDocs(); });
-    updateSend();
+    if ($('topicClear')) $('topicClear').addEventListener('click', function () {
+      topic = null;
+      if (vraagEl.value === laatsteSjabloon) { vraagEl.value = ''; autoGrow(); updateSend(); }
+      renderChips();
+      if (!gesprek.length) renderEmpty();
+    });
   }
   docsEl.addEventListener('change', function (e) {
     var id = parseInt(e.target.getAttribute('data-id'), 10);
@@ -581,19 +702,40 @@
   var ICON_Q = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>';
   function renderEmpty() {
     var heeftDocs = gekozen().length > 0;
-    var vragen;
+    var vragen = [];
     if (heeftDocs) {
-      vragen = ['Kun je dit dossier kort samenvatten?', 'Welke bepalingen zijn het meest risicovol voor onze cliënt?', 'Welke rechtspraak is relevant voor de kernvraag in dit dossier?'];
+      vragen = ['Kun je dit dossier kort samenvatten?', 'Welke punten zijn het meest risicovol voor onze cliënt?', 'Welke rechtspraak is relevant voor de kernvraag in dit dossier?'];
       if (docs.some(function (d) { return /huur/i.test(d.naam); })) vragen.splice(1, 0, 'Welke bepalingen kunnen het recht van huurder om in 2029 te stoppen beperken of duurder maken? Noem ook relevante rechtspraak.');
-    } else {
-      vragen = ['Wanneer kan een verhuurder zich niet beroepen op het vervallen van een breakoptie?', 'Is een concurrentiebeding in een tijdelijk arbeidscontract geldig zonder motivering?'];
     }
-    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier' : 'Voeg stukken toe via Bijlagen, of stel een algemene vraag') + '</p><div class="sugg">';
-    vragen.forEach(function (v) { html += '<button data-v="' + esc(v) + '">' + ICON_Q + '<span>' + esc(v) + '</span></button>'; });
-    html += '</div></div>';
+    var g = RG[rg];
+    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier, of kies hieronder een onderdeel' : 'Kies een onderdeel om gericht te zoeken, of stel direct je vraag. Stukken voeg je toe via Bijlagen.') + '</p>';
+    html += '<div class="rg-tabs" role="tablist" aria-label="Rechtsgebied">';
+    RG_VOLGORDE.forEach(function (k) { html += '<button role="tab" data-rg="' + k + '" aria-selected="' + (k === rg) + '">' + esc(RG[k].naam) + '</button>'; });
+    html += '</div>';
+    if (vragen.length) {
+      html += '<div class="sugg">';
+      vragen.forEach(function (v) { html += '<button data-v="' + esc(v) + '">' + ICON_Q + '<span>' + esc(v) + '</span></button>'; });
+      html += '</div>';
+    }
+    html += '<div class="indeling"><div class="indeling-head"><h3>Indeling ' + esc(g.naam.toLowerCase()) + '</h3><p>Eerst het overzicht, dan per onderdeel gericht zoeken</p></div><div class="cats">';
+    g.cats.forEach(function (c, ci) {
+      html += '<div class="cat"><h4><span class="nr">' + (ci + 1) + '</span>' + esc(c[0]) + '</h4><div class="subs">';
+      c[1].forEach(function (s, si) {
+        var on = topic && topic.cat === c[0] && topic.sub === s;
+        html += '<button data-c="' + ci + '" data-s="' + si + '"' + (on ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') + '>' + esc(s) + '</button>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div></div></div>';
     chatInner.innerHTML = html;
     chatInner.querySelectorAll('.sugg button').forEach(function (b) {
-      b.addEventListener('click', function () { vraagEl.value = b.getAttribute('data-v'); autoGrow(); updateSend(); vraagEl.focus(); });
+      b.addEventListener('click', function () { vraagEl.value = b.getAttribute('data-v'); laatsteSjabloon = ''; autoGrow(); updateSend(); vraagEl.focus(); });
+    });
+    chatInner.querySelectorAll('.rg-tabs button').forEach(function (b) {
+      b.addEventListener('click', function () { setRg(b.getAttribute('data-rg')); });
+    });
+    chatInner.querySelectorAll('.subs button').forEach(function (b) {
+      b.addEventListener('click', function () { kiesOnderwerp(parseInt(b.getAttribute('data-c'), 10), parseInt(b.getAttribute('data-s'), 10)); });
     });
   }
 
@@ -625,7 +767,8 @@
     var beurt = { vraag: vraag, antwoord: '' };
     var userEl = document.createElement('div');
     userEl.className = 'msg-user';
-    userEl.innerHTML = '<div>' + esc(vraag) + (stukken.length ? '<span class="att">' + stukken.length + ' stuk' + (stukken.length > 1 ? 'ken' : '') + ' meegestuurd</span>' : '') + '</div>';
+    var rubriek = RG[rg].naam + (topic ? ' › ' + onderwerpTekst() : '');
+    userEl.innerHTML = '<div>' + esc(vraag) + '<span class="att">' + esc(rubriek) + '</span>' + (stukken.length ? '<span class="att">' + stukken.length + ' stuk' + (stukken.length > 1 ? 'ken' : '') + ' meegestuurd</span>' : '') + '</div>';
     chatInner.appendChild(userEl);
 
     var wrap = document.createElement('div');
@@ -657,6 +800,8 @@
       code: code,
       vraag: vraag,
       kantoor: 'pilot',
+      rechtsgebied: rg,
+      onderwerp: onderwerpTekst(),
       model: model,
       eerder: gesprek.slice(-2).map(function (b) { return { vraag: b.vraag, antwoord: b.antwoord }; }),
       documenten: stukken.map(function (d) { return { naam: d.naam, tekst: d.tekst.slice(0, 120000) }; })
@@ -792,9 +937,18 @@
   function linkify(html, n) {
     var uit = {}, art = {};
     (n.uitspraken || []).forEach(function (u) { uit[u.ecli] = u.url; });
-    (n.wetsartikelen || []).forEach(function (a) { art[String(a.artikel).replace(/\s*BW$/, '').toLowerCase()] = a.url; });
-    html = html.replace(/ECLI:NL:[A-Z]+:\d{4}:[A-Z0-9]+/g, function (e) { return uit[e] ? '<a class="cite" href="' + esc(uit[e]) + '" target="_blank" rel="noopener">' + e + '</a>' : e; });
-    html = html.replace(/(art(?:ikel)?\.?\s*)([67]:\d+[a-z]?)(\s*BW)/gi, function (m, a, k, b) { var u = art[k.toLowerCase()]; return u ? '<a class="cite" href="' + esc(u) + '" target="_blank" rel="noopener">' + a + k + b + '</a>' : m; });
+    /* sleutels zoals de workflow ze teruggeeft: '7:669 bw', '310 sr', '8 wvw 1994' */
+    (n.wetsartikelen || []).forEach(function (a) { art[String(a.artikel).toLowerCase()] = a.url; });
+    function link(u, t) { return '<a class="cite" href="' + esc(u) + '" target="_blank" rel="noopener">' + t + '</a>'; }
+    html = html.replace(/ECLI:NL:[A-Z]+:\d{4}:[A-Z0-9]+/g, function (e) { return uit[e] ? link(uit[e], e) : e; });
+    /* verkorte vorm in de lopende tekst: HR:2017:1162 */
+    html = html.replace(/(?<![A-Z:])([A-Z]{2,6}:\d{4}:[A-Z0-9]+)\b/g, function (m, k) { var e = 'ECLI:NL:' + k; return uit[e] ? link(uit[e], m) : m; });
+    html = html.replace(/(art(?:ikel)?\.?\s*)([167]:\d+[a-z]?)(\s*BW)/gi, function (m, a, k) { var u = art[k.toLowerCase() + ' bw']; return u ? link(u, m) : m; });
+    html = html.replace(/(art(?:ikel)?\.?\s*)(\d+[a-z]{0,9})((?:\s*lid\s*\d+)?\s*)(Sr|Sv|Opiumwet|WVW(?: 1994)?|WVPS)\b/g, function (m, a, nr, l, w) {
+      var wl = w.toLowerCase() === 'wvw' ? 'wvw 1994' : w.toLowerCase();
+      var u = art[nr.toLowerCase() + ' ' + wl];
+      return u ? link(u, m) : m;
+    });
     return html;
   }
   function md(s) {
@@ -827,7 +981,8 @@
     var rid = 'r' + (nextId++);
     resultaten[rid] = res;
     var antwoord = n.antwoord || n.analyse || n.samenvatting || '';
-    var html = '<div class="prose">' + linkify(md(antwoord), n) + '</div>';
+    var rubriek = [m.rechtsgebied_keuze, m.onderwerp].filter(function (x) { return x; }).join(' › ');
+    var html = (rubriek ? '<div class="rubriek">' + esc(rubriek) + '</div>' : '') + '<div class="prose">' + linkify(md(antwoord), n) + '</div>';
 
     if (n.citaten && n.citaten.length) {
       html += '<div class="sec"><h3>Uit het dossier <span class="ok">&#10003; letterlijk teruggevonden</span></h3>';
