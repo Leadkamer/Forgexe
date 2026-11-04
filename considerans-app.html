@@ -776,6 +776,7 @@
             if (!j || !j.status || j.status === 'bezig') { setTimeout(tick, POLL_INTERVAL_MS); return; }
             if (j.status === 'fout') {
               if (/toegangscode/i.test(j.fout || '')) { var e = new Error('code'); e.code = true; reject(e); return; }
+              if (/credit balance|rate.?limit|overloaded/i.test(j.fout || '')) { reject(new Error('Het taalmodel is nu niet bereikbaar (tegoed of drukte bij de leverancier). Probeer het over een minuut opnieuw.')); return; }
               reject(new Error('Analyse mislukt' + (j.fout ? ': ' + j.fout : '') + (j.node ? ' (stap: ' + j.node + ')' : ''))); return;
             }
             if (j.status === 'klaar' && j.notitie) { resolve(j); return; }
