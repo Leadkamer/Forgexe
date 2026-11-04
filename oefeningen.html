@@ -115,6 +115,11 @@
 
   /* Trainer */
   .balk { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .stappen { display: flex; gap: 6px; margin-top: 12px; overflow-x: auto; padding-bottom: 2px; }
+  .stapknop { flex: none; border: 1px solid var(--border); background: #fff; color: var(--navy); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+  .stapknop.nu { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .stapknop:disabled { opacity: .45; cursor: default; }
+  .stap-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 4px 0 24px; }
   .balk select { width: auto; }
   .codeblok { background: var(--navy-deep); color: #fff; border-radius: 12px; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 6px 24px; align-items: baseline; }
   .codeblok .url { font-size: 18px; color: rgba(255,255,255,.8); }
@@ -325,7 +330,7 @@
   var CASUS_VOLGORDE = ['A', 'B', 'C', 'Dg', 'Da', 'E'];
 
   var st = {
-    rol: null, code: '', naam: '', namen: [], wachtwoord: '', info: null, edities: [], editie: '', nr: null,
+    rol: null, code: '', naam: '', namen: [], stap: {}, wachtwoord: '', info: null, edities: [], editie: '', nr: null,
     oef: 'go1', groep: { go1: '', go2: '' }, data: { go1: {}, go2: {} }, basis: { go1: {}, go2: {} },
     status: {}, groepen: [], envelop: null, overzicht: null, inhoud: {}, toonSleutel: {}, presIndex: 0
   };
@@ -630,20 +635,38 @@
     return '<div class="vraag"><div class="nr">' + nr + '</div><div class="tekst">' + esc(t) + '</div>' + (kop ? '<button class="kopieer" data-kopieer="' + esc(t) + '">Kopieer</button>' : '') + '</div>';
   }
 
+  // één onderdeel tegelijk: balk met alle onderdelen, het huidige onderdeel, en Vorige/Volgende.
+  // delen = de onderdelen die al open zijn; de rest van de balk staat op slot (slot = de reden).
+  function stapVan(oef) {
+    if (st.stap[oef] == null) st.stap[oef] = Number(lees('stap-' + st.editie + '-' + oef + '-' + st.groep[oef])) || 0;
+    return st.stap[oef];
+  }
+  function stappenHtml(oef, namen, delen, slot) {
+    var i = Math.min(stapVan(oef), delen.length - 1);
+    var h = '<div class="kaart stappen-kop">' + groepRegel() + '<div class="stappen">' + namen.map(function (nm, j) {
+      return '<button type="button" class="stapknop' + (j === i ? ' nu' : '') + '"' + (j < delen.length ? ' data-stapnaar="' + j + '"' : ' disabled') + '>' + esc(nm) + '</button>';
+    }).join('') + '</div></div>' + delen[i] + '<div class="stap-nav">';
+    h += i > 0 ? '<button class="knop twee" data-stapnaar="' + (i - 1) + '">← ' + esc(namen[i - 1]) + '</button>' : '<span></span>';
+    if (i < namen.length - 1) h += i + 1 < delen.length ? '<button class="knop" data-stapnaar="' + (i + 1) + '">' + esc(namen[i + 1]) + ' →</button>' : '<span class="klein">' + esc(slot || '') + '</span>';
+    return h + '</div>';
+  }
+
   function htmlGo1() {
     var d = st.data.go1, gb = d.gebied, G = GEBIEDEN[gb];
     var anderen = {};
     st.groepen.forEach(function (x) { if (x.oefening === 'go1' && String(x.groep) !== String(st.groep.go1) && x.gebied) anderen[x.gebied] = (anderen[x.gebied] || 0) + 1; });
-    var h = '<div class="kaart">' + groepRegel() + '<h2>Jouw rechtsgebied</h2>' +
+    var NAMEN = ['Rechtsgebied', 'Vragen', 'Arresten', 'Envelop', 'Wat neem je mee'], delen = [];
+    var h = '<div class="kaart"><h2>Jouw rechtsgebied</h2>' +
       '<label class="veld">Rechtsgebied <span class="klein">(bij voorkeur niet je eigen vak; kies liefst een gebied dat nog weinig anderen kozen)</span></label><div class="chips">';
     Object.keys(GEBIEDEN).forEach(function (k) {
       var n = anderen[k] || 0;
       h += '<button class="chip' + (gb === k ? ' aan' : '') + '" data-zet="gebied" data-waarde="' + k + '">' + GEBIEDEN[k].naam + (n ? ' <small>· ' + n + (n === 1 ? ' ander' : ' anderen') + '</small>' : '') + '</button>';
     });
     h += '</div></div>';
-    if (!G) return h + '<div class="kaart"><p class="uitleg">Kies eerst je rechtsgebied. Dan verschijnen de vragen.</p></div>';
+    if (!G) return stappenHtml('go1', NAMEN, [h + '<div class="kaart"><p class="uitleg">Kies eerst je rechtsgebied. Dan verschijnen de vragen.</p></div>'], 'Kies eerst je rechtsgebied');
+    delen.push(h);
 
-    h += '<div class="kaart"><div class="stap">Stap 1 · 15 minuten</div><h2>Stel de vragen aan de modellen</h2>' +
+    h = '<div class="kaart"><div class="stap">Stap 1 · 15 minuten</div><h2>Stel de vragen aan de modellen</h2>' +
       '<p class="uitleg">Werk met de modellen die je kent, gerust meerdere tegelijk. Stel de vragen in deze volgorde.</p>' +
       vraagRij(1, G.kern, true) +
       vraagRij(2, G.hist || 'Wat zijn de belangrijkste historische standaardarresten hierover?', true) +
@@ -659,14 +682,14 @@
         tekst('kern.' + m + '.antwoord', '', { ph: 'In het kort: wat antwoordde ' + m + '?' }) +
         tekst('kern.' + m + '.artikel', 'Noemde ' + m + ' een wetsartikel? Welk?', { regel: true, ph: 'bijv. 6:162 BW, of: geen' });
     });
-    h += '</div>';
+    delen.push(h + '</div>');
 
-    h += '<div class="kaart"><div class="stap">Stap 2 en 3 · noteren en natrekken (20 minuten)</div><h2>Arresten die de modellen noemen</h2>' +
+    h = '<div class="kaart"><div class="stap">Stap 2 en 3 · noteren en natrekken (20 minuten)</div><h2>Arresten die de modellen noemen</h2>' +
       '<p class="uitleg">Noteer elk arrest dat een model noemt, met het ECLI als dat erbij staat. Trek het daarna na op <a href="https://uitspraken.rechtspraak.nl" target="_blank" rel="noopener">uitspraken.rechtspraak.nl</a>: bestaat het, kloppen datum en instantie, en gaat het echt over dit onderwerp? Lees de inhoudsindicatie.</p>';
     (d.arresten || []).forEach(function (a, i) { h += htmlArrest(a, i, gebruikt); });
-    h += '<div style="margin-top:14px"><button class="knop twee" data-actie="nieuwArrest">+ Arrest toevoegen</button></div></div>';
+    delen.push(h + '<div style="margin-top:14px"><button class="knop twee" data-actie="nieuwArrest">+ Arrest toevoegen</button></div></div>');
 
-    h += '<div class="kaart" id="envelop"><div class="stap">Stap 4 · 15 minuten</div><h2>De envelop</h2>';
+    h = '<div class="kaart" id="envelop"><div class="stap">Stap 4 · 15 minuten</div><h2>De envelop</h2>';
     if (st.envelop && st.envelop.gebied === gb && st.envelop.items) {
       h += '<p class="uitleg">Johns eigen testresultaten en het antwoordblad voor ' + esc(G.naam.toLowerCase()) + '. Vergelijk ze met wat jij vond.</p><div class="env">' +
         st.envelop.items.map(function (x) { return x.html; }).join('') + '</div>';
@@ -676,14 +699,14 @@
         (st.envelop && st.envelop.dicht ? '<p class="klein" style="margin-bottom:10px">Nog dicht. Even geduld.</p>' : '') +
         '<button class="knop" data-actie="envelop">Open de envelop</button></div>';
     }
-    h += '</div>';
+    delen.push(h + '</div>');
 
-    h += '<div class="kaart"><div class="stap">Na de envelop</div><h2>Wat neem je mee?</h2>' +
+    delen.push('<div class="kaart"><div class="stap">Na de envelop</div><h2>Wat neem je mee?</h2>' +
       tekst('na.ookGevonden', 'Wat vond jij dat John ook vond?') +
       tekst('na.gemist', 'Wat vond jij dat John miste, of andersom?') +
       tekst('na.twijfel', 'Bij welke arresten twijfelde je?') +
-      tekst('na.opvallend', 'Wat viel je het meest op? (Dit kun je straks in één zin vertellen.)') + '</div>';
-    return h;
+      tekst('na.opvallend', 'Wat viel je het meest op? (Dit kun je straks in één zin vertellen.)') + '</div>');
+    return stappenHtml('go1', NAMEN, delen);
   }
 
   function htmlArrest(a, i, gebruikt) {
@@ -708,41 +731,45 @@
 
   function htmlGo2() {
     var d = st.data.go2, c = CASUS[d.casus];
-    var h = '<div class="kaart">' + groepRegel() + '<h2>Jouw casus</h2><label class="veld">Casus</label><div class="chips">';
+    var NAMEN = ['Casus', 'Ronde 1', 'Ronde 2', 'Ronde 3', 'Rode pen', 'Conclusie'], delen = [];
+    var h = '<div class="kaart"><h2>Jouw casus</h2><label class="veld">Casus</label><div class="chips">';
     CASUS_VOLGORDE.forEach(function (k) { h += '<button class="chip' + (d.casus === k ? ' aan' : '') + '" data-zet="casus" data-waarde="' + k + '">' + (CASUS[k].kort || k) + ' <small>· ' + esc(CASUS[k].titel.split(':')[0]) + '</small></button>'; });
     h += '</div>' +
       tekst('tool', 'Met welk model of welke tool werk je?', { regel: true, ph: 'bijv. Claude met het project Maasdal' }) + '</div>';
-    if (!c) return h + '<div class="kaart"><p class="uitleg">Kies eerst je casus. Dan verschijnt de opdracht.</p></div>';
+    if (!c) return stappenHtml('go2', NAMEN, [h + '<div class="kaart"><p class="uitleg">Kies eerst je casus. Dan verschijnt de opdracht.</p></div>'], 'Kies eerst je casus');
+    var geheugen = '<p class="klein" style="margin-bottom:10px">' + esc(c.titel) + ' · ' + esc(c.opdracht) + '</p>';
 
     h += '<div class="kaart"><div class="stap">De casus</div><h2>' + esc(c.titel) + '</h2>' +
       '<p><b>Opdracht.</b> ' + esc(c.opdracht) + '</p><p style="margin-top:6px"><b>Feiten (fictief).</b> ' + esc(c.feiten) + '</p>' +
       '<p class="uitleg" style="margin-top:12px">Drie rondes, samen 35 minuten. Houd per ronde bij wat het opleverde.</p></div>';
+    delen.push(h);
 
-    h += '<div class="kaart"><div class="stap">Ronde 1</div><h2>Een naïeve prompt</h2><p class="uitleg">Zoals je hem vóór vandaag zou hebben getypt. Eén zin.</p>' +
+    delen.push('<div class="kaart"><div class="stap">Ronde 1</div>' + geheugen + '<h2>Een naïeve prompt</h2><p class="uitleg">Zoals je hem vóór vandaag zou hebben getypt. Eén zin.</p>' +
       '<div class="vraag"><div class="prompt">' + esc(c.r1) + '</div><button class="kopieer" data-kopieer="' + esc(c.r1) + '">Kopieer</button></div>' +
-      tekst('r1.opgeleverd', 'Wat leverde het op?') + tekst('r1.fout', 'Wat ontbrak, of wat was fout?') + '</div>';
+      tekst('r1.opgeleverd', 'Wat leverde het op?') + tekst('r1.fout', 'Wat ontbrak, of wat was fout?') + '</div>');
 
-    h += '<div class="kaart"><div class="stap">Ronde 2</div><h2>Stap voor stap</h2><p class="uitleg">Stel deze vragen één voor één, in hetzelfde gesprek.</p>';
+    h = '<div class="kaart"><div class="stap">Ronde 2</div>' + geheugen + '<h2>Stap voor stap</h2><p class="uitleg">Stel deze vragen één voor één, in hetzelfde gesprek.</p>';
     c.r2.forEach(function (v, i) { h += vraagRij(i + 1, v, true); });
     h += tekst('r2.opgeleverd', 'Wat leverde het op?') + tekst('r2.fout', 'Wat ontbrak, of wat was fout?') +
       tekst('r2.boven', 'Welke informatie kwam pas boven doordat je stap voor stap vroeg?') + '</div>';
+    delen.push(h);
 
-    h += '<div class="kaart"><div class="stap">Ronde 3</div><h2>Met de kennisbank</h2><p class="uitleg">Dezelfde opdracht in het project met de kennisbank van Maasdal Advocaten (huisstijl, standaardclausules, model-opdrachtbevestiging).</p>' +
+    delen.push('<div class="kaart"><div class="stap">Ronde 3</div>' + geheugen + '<h2>Met de kennisbank</h2><p class="uitleg">Dezelfde opdracht in het project met de kennisbank van Maasdal Advocaten (huisstijl, standaardclausules, model-opdrachtbevestiging).</p>' +
       tekst('r3.opgeleverd', 'Wat leverde het op?') + tekst('r3.fout', 'Wat ontbrak, of wat was fout?') +
-      tekst('r3.kennisbank', 'Wat voegde de kennisbank toe? Zag je de huisstijl en de vaste clausules terug?') + '</div>';
+      tekst('r3.kennisbank', 'Wat voegde de kennisbank toe? Zag je de huisstijl en de vaste clausules terug?') + '</div>');
 
-    h += '<div class="kaart"><div class="stap">De rode pen · 15 minuten</div><h2>Controleer je stuk</h2><p class="uitleg">Loop je beste stuk langs deze zes punten.</p>';
+    h = '<div class="kaart"><div class="stap">De rode pen · 15 minuten</div><h2>Controleer je stuk</h2><p class="uitleg">Loop je beste stuk langs deze zes punten.</p>';
     RODE_PEN.forEach(function (t, i) {
       h += '<div class="arrest"><div class="checkrij"><span>' + (i + 1) + '. ' + esc(t) + '</span>' + seg('rodepen.p' + (i + 1) + '.oordeel', [['ja', 'Ja', 'goed'], ['deels', 'Deels', 'half'], ['nee', 'Nee', 'mis']]) + '</div>' +
         tekst('rodepen.p' + (i + 1) + '.toelichting', '', { regel: true, ph: 'Toelichting (optioneel)' }) + '</div>';
     });
-    h += '</div>';
+    delen.push(h + '</div>');
 
-    h += '<div class="kaart"><div class="stap">Conclusie</div><h2>Welke ronde leverde het beste stuk op?</h2>' +
+    delen.push('<div class="kaart"><div class="stap">Conclusie</div><h2>Welke ronde leverde het beste stuk op?</h2>' +
       seg('beste', [['1', 'Ronde 1', 'goed'], ['2', 'Ronde 2', 'goed'], ['3', 'Ronde 3', 'goed']]) +
       tekst('waarom', 'Waarom?') +
-      tekst('stuk', 'Plak hier je eindversie (optioneel' + (d.casus === 'Dg' || d.casus === 'Da' ? '; bij casus D handig, dan liggen besluit en bezwaar straks naast elkaar' : '') + ')', { groot: true, ph: 'Alleen fictieve gegevens.' }) + '</div>';
-    return h;
+      tekst('stuk', 'Plak hier je eindversie (optioneel' + (d.casus === 'Dg' || d.casus === 'Da' ? '; bij casus D handig, dan liggen besluit en bezwaar straks naast elkaar' : '') + ')', { groot: true, ph: 'Alleen fictieve gegevens.' }) + '</div>');
+    return stappenHtml('go2', NAMEN, delen);
   }
 
   /* ---------- trainer ---------- */
@@ -1351,6 +1378,11 @@
     }
     if (el.hasAttribute('data-naam')) { loginDeelnemer(st.code, false, el.getAttribute('data-naam')); return; }
     if (el.hasAttribute('data-kopieer')) { kopieer(el.getAttribute('data-kopieer'), el); return; }
+    if (el.hasAttribute('data-stapnaar')) {
+      st.stap[st.oef] = Number(el.getAttribute('data-stapnaar'));
+      bewaar('stap-' + st.editie + '-' + st.oef + '-' + st.groep[st.oef], st.stap[st.oef]);
+      teken(); window.scrollTo(0, 0); return;
+    }
     if (el.hasAttribute('data-zet')) {
       var p = el.getAttribute('data-zet'), w = el.getAttribute('data-waarde');
       zet(d, p, haal(d, p) === w && p !== 'gebied' && p !== 'casus' ? '' : w);
@@ -1383,7 +1415,7 @@
     else if (a === 'naarDeelnemer') tekenLogin(false);
     else if (a === 'uitloggen') {
       wis('sessie'); wis('trainer'); clearInterval(verversTimer);
-      st.rol = null; st.oef = 'go1'; st.wachtwoord = ''; st.nr = null; st.naam = ''; st.ho = {}; st.hoBasis = {}; st.groep = { go1: '', go2: '' }; st.data = { go1: {}, go2: {} }; st.basis = { go1: {}, go2: {} }; st.envelop = null;
+      st.rol = null; st.oef = 'go1'; st.wachtwoord = ''; st.nr = null; st.naam = ''; st.ho = {}; st.hoBasis = {}; st.groep = { go1: '', go2: '' }; st.data = { go1: {}, go2: {} }; st.basis = { go1: {}, go2: {} }; st.envelop = null; st.stap = {};
       tekenLogin(false);
     }
     else if (a === 'herlaad') openOefening();
