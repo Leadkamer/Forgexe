@@ -5,6 +5,7 @@
     { "src": "/ai-outreach(\\.html)?", "status": 301, "headers": { "Location": "/leadgeneratie-automatiseren" } },
     { "src": "/juridische-ai/?", "status": 302, "headers": { "Location": "/peters-forgexe-juridische-ai?bron=advocatenblad" } },
     { "src": "/ai-beslisboom-forgexe.pdf", "headers": { "X-Robots-Tag": "noindex" }, "continue": true },
+    { "src": "/downloads/(.*)", "headers": { "X-Robots-Tag": "noindex" }, "continue": true },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/404.html", "status": 404 }
   ]

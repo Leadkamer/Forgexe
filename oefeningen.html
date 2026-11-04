@@ -189,6 +189,8 @@
 
   /* Hand-outs */
   .ho-lijst { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  a.ho-kaart, a.knop { text-decoration: none; color: inherit; }
+  a.knop { color: var(--navy-deep); }
   .ho-kaart { display: flex; align-items: center; gap: 14px; text-align: left; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; cursor: pointer; width: 100%; }
   .ho-kaart:hover { border-color: var(--navy-light); }
   .ho-nr { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green); font-size: 22px; min-width: 26px; line-height: 1.2; }
@@ -1148,12 +1150,30 @@
       function (f) { app.innerHTML = '<div class="kaart"><div class="fout">' + esc(f) + '</div></div>'; });
   }
 
+  // blok 7: de bestanden van het fictieve kantoor om in een project te zetten (staan in /downloads/kennisbank-maasdal/)
+  var KB = [
+    ['Projectinstructie.txt', 'Projectinstructie', 'plakken in het instructieveld'],
+    ['Huisstijl.docx', 'Huisstijl', 'uploaden'],
+    ['Standaardclausules.docx', 'Standaardclausules', 'uploaden, met de AI-clausule'],
+    ['Model-opdrachtbevestiging.docx', 'Model opdrachtbevestiging', 'uploaden'],
+    ['Keuzekaart.docx', 'Keuzekaart', 'uploaden']
+  ];
+  function htmlKennisbank() {
+    var pad = '/downloads/kennisbank-maasdal/';
+    return '<div class="kaart geen-print"><div class="stap">Blok 7 · Je eigen kennisbank</div><h2>Kennisbank Maasdal Advocaten</h2>' +
+      '<p class="uitleg">Maasdal Advocaten is een fictief kantoor. Maak een nieuw project, plak de projectinstructie in het instructieveld en upload de vier documenten.</p>' +
+      '<p style="margin:12px 0"><a class="knop" href="' + pad + 'Kennisbank-Maasdal-Advocaten.zip" download>Alles downloaden (zip)</a></p><div class="ho-lijst">' +
+      KB.map(function (k) {
+        return '<a class="ho-kaart" href="' + pad + k[0] + '" download><span class="ho-tekst"><b>' + k[1] + '</b><span>' + k[2] + '</span></span><span class="tag leeg">' + k[0].split('.').pop() + '</span></a>';
+      }).join('') + '</div></div>';
+  }
+
   function tekenHandouts() {
     if (!st.handouts) return laadHandouts();
     var open = st.hoOpen && st.handouts.filter(function (x) { return x.sleutel === st.hoOpen; })[0];
     if (!open) {
       var h = (st.rol === 'trainer' ? htmlHoIngevuld() : '') + '<div class="kaart"><div class="stap">Hand-outs</div><h2>Alles van vandaag, om te bewaren</h2>' +
-        '<p class="uitleg">' + (st.rol === 'deelnemer' ? 'Wat je hier invult, wordt op jouw naam bewaard. Druk het af of bewaar het als PDF als je het zelf wilt houden.' : 'Wat je hier als trainer invult, blijft alleen in deze browser staan.') + '</p></div><div class="ho-lijst">';
+        '<p class="uitleg">' + (st.rol === 'deelnemer' ? 'Wat je hier invult, wordt op jouw naam bewaard. Druk het af of bewaar het als PDF als je het zelf wilt houden.' : 'Wat je hier als trainer invult, blijft alleen in deze browser staan.') + '</p></div>' + htmlKennisbank() + '<div class="ho-lijst">';
       st.handouts.forEach(function (x) {
         var nr = Number(x.sleutel.slice(3)), info = HO_INFO[x.sleutel] || {};
         h += '<button class="ho-kaart" data-hoopen="' + x.sleutel + '"><span class="ho-nr">' + nr + '</span><span class="ho-tekst"><b>' + esc(x.titel) + '</b>' +
