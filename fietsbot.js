@@ -225,9 +225,29 @@
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  var WA_ICOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.11-1.48-1.11-2.82s.7-2 .95-2.27c.25-.27.54-.34.72-.34h.52c.16 0 .39-.06.6.46.24.56.8 1.94.87 2.08.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.6.75 1.87.89.27.14.45.2.52.32.07.11.07.66-.17 1.34z"/></svg>';
+
+  /* Vraagt iemand naar een medewerker of een echt persoon? Dan tonen we
+     direct (nog vóór het AI-antwoord) een WhatsApp-knop, als de winkel een
+     WhatsApp-nummer heeft (config.whatsapp). Zelfde woordenlijst als het
+     vangnet in n8n-node "Splits Vervolgvragen". */
+  var WA_VRAAG = /(medewerker|personeel|\bmens\b|echte? (persoon|mens)|iemand (van|uit|in) (de|jullie) (winkel|zaak|werkplaats)|iemand spreken|met iemand (praten|chatten|spreken|bellen)|iemand aan de lijn|contact met (de winkel|jullie|iemand)|whats\s?app|\bappen\b|ben (je|jij) een (robot|bot|computer|ai)\b|real person|human|employee|speak to someone|talk to someone)/i;
+  var WA_LINK_RE = /\n*\[[^\]]+\]\((https:\/\/wa\.me\/[^)\s]+)\)\n*/;
+
+  function waUrl(bericht) {
+    return 'https://wa.me/' + String(config.whatsapp).replace(/\D/g, '') + '?text=' +
+      encodeURIComponent(bericht).replace(/\(/g, '%28').replace(/\)/g, '%29');
+  }
+
   function renderText(s) {
     return escapeHtml(s)
-      .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, function (heel, label, url) {
+        /* WhatsApp-links worden een echte groene knop */
+        if (/^https:\/\/wa\.me\//.test(url)) {
+          return '<a class="fb-wa" href="' + url + '" target="_blank" rel="noopener">' + WA_ICOON + '<span>' + label + '</span></a>';
+        }
+        return '<a href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
+      })
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
   }
@@ -260,6 +280,9 @@
     '.fb-msg{max-width:80%;padding:12px 16px;word-wrap:break-word;overflow-wrap:break-word;font-size:14px}' +
     '.fb-msg-bot{background:#FFFFFF;color:#0C0D10;border:1px solid #E6E6E0;border-radius:18px 18px 18px 6px;align-self:flex-start}' +
     '.fb-msg-bot a{font-weight:600;text-decoration:underline;word-break:break-all}' +
+    '.fb-msg-bot a.fb-wa{display:inline-flex;align-items:center;gap:8px;margin:6px 0 2px;padding:10px 16px;border-radius:999px;background:#25D366;color:#fff;text-decoration:none;word-break:normal;font-weight:700;line-height:1.2;transition:background .15s}' +
+    '.fb-msg-bot a.fb-wa:hover,.fb-msg-bot a.fb-wa:focus-visible{background:#1EBE5A}' +
+    '.fb-msg-bot a.fb-wa svg{flex:none}' +
     '.fb-msg-user{border-radius:18px 18px 6px 18px;align-self:flex-end;border:1px solid transparent}' +
     '.fb-typing{display:inline-flex;gap:5px;align-items:center;padding:13px 16px;background:#FFFFFF;border:1px solid #E6E6E0;border-radius:18px 18px 18px 6px;align-self:flex-start}' +
     '.fb-typing span{width:6px;height:6px;border-radius:999px;background:#B6BBC5;transition:background-color .15s cubic-bezier(.16,1,.3,1)}' +
@@ -400,6 +423,18 @@
       h.push({ rol: rol, tekst: tekst });
       saveHistory(h);
     }
+    return el;
+  }
+
+  /* Werkt de tekst van een eerder getoond bericht bij, ook in de opgeslagen
+     geschiedenis (laatste bericht met precies die oude tekst). */
+  function updateMsg(el, oud, nieuw) {
+    el.innerHTML = renderText(nieuw);
+    var h = loadHistory();
+    for (var i = h.length - 1; i >= 0; i--) {
+      if (h[i].tekst === oud) { h[i].tekst = nieuw; break; }
+    }
+    saveHistory(h);
   }
 
   msgsEl.addEventListener('click', function (e) {
@@ -483,7 +518,7 @@
     if (config) return Promise.resolve(config);
     try {
       var cached = JSON.parse(sessionStorage.getItem(storeKey + '-config'));
-      if (cached && cached.t && (Date.now() - cached.t) < CONFIG_TTL && cached.d && cached.d.naam) {
+      if (cached && cached.t && (Date.now() - cached.t) < CONFIG_TTL && cached.d && cached.d.naam && 'whatsapp' in cached.d) {
         return Promise.resolve(applyConfig(cached.d));
       }
     } catch (e) { /* geen of ongeldige cache — gewoon ophalen */ }
@@ -508,12 +543,30 @@
     saveVervolg([]);
     busy = true;
     armSend();
+    /* Directe WhatsApp-knop: de klant hoeft niet op de AI te wachten */
+    var waDirect = null;
+    if (config && config.whatsapp && WA_VRAAG.test(vraag)) {
+      var waTekst = 'Liever direct iemand van de winkel? Een medewerker leest je WhatsApp-bericht.\n\n' +
+        '[Stuur ons een WhatsApp](' + waUrl('Hoi, ik had net een chat op jullie website en wil graag iemand van de winkel spreken.') + ')';
+      waDirect = { el: addMsg('bot', waTekst), tekst: waTekst };
+      track('whatsapp_getoond', 'direct');
+    }
     showTyping();
     track('bericht', bron || 'getypt');
     post({ winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad() })
       .then(function (data) {
         hideTyping();
-        addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
+        var antwoord = data.antwoord || 'Hmm, daar heb ik even geen antwoord op.';
+        /* Stond de directe knop er al? Dan geen tweede knop in het AI-antwoord:
+           de knop bovenin krijgt de link van de AI (met samenvatting van het
+           gesprek in het berichtvak) en verdwijnt uit het antwoord zelf. */
+        var waM = waDirect && antwoord.match(WA_LINK_RE);
+        if (waM) {
+          var nieuw = waDirect.tekst.replace(/\(https:\/\/wa\.me\/[^)\s]+\)/, '(' + waM[1] + ')');
+          updateMsg(waDirect.el, waDirect.tekst, nieuw);
+          antwoord = antwoord.replace(WA_LINK_RE, '\n\n').replace(/\n{3,}/g, '\n\n').trim() || antwoord;
+        }
+        addMsg('bot', antwoord);
         var vervolg = Array.isArray(data.vervolg) ? data.vervolg.slice(0, 3) : [];
         saveVervolg(vervolg);
         renderChips(vervolg, 'vervolg');
@@ -533,7 +586,7 @@
   /* Gecachte huisstijl direct toepassen bij laden (kleur/logo zonder extra call) */
   try {
     var bootCfg = JSON.parse(sessionStorage.getItem(storeKey + '-config'));
-    if (bootCfg && bootCfg.t && (Date.now() - bootCfg.t) < CONFIG_TTL && bootCfg.d && bootCfg.d.naam) applyConfig(bootCfg.d);
+    if (bootCfg && bootCfg.t && (Date.now() - bootCfg.t) < CONFIG_TTL && bootCfg.d && bootCfg.d.naam && 'whatsapp' in bootCfg.d) applyConfig(bootCfg.d);
   } catch (e) { /* geen cache */ }
 
   /* Teaser: compacte kaart met winkelnaam en een gedempte openingszin
