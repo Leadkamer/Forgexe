@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Verzoeken | Forgexe</title>
+<link rel="icon" href="/forgexe-mark-green.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#34d399;
+  --green-lt:#4ade80;
+  --cyan:#00f0ff;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --head:'Outfit',system-ui,sans-serif;
+}
+body{
+  --bg:#0b110e;
+  --bg2:#0e1712;
+  --panel:#111b15;
+  --panel2:#15211a;
+  --line:#22332b;
+  --line-strong:#2e4438;
+  --ink:#e9f2ec;
+  --ink-dim:#94a89d;
+  --ink-mut:#68796f;
+  --navy:#0b1f18;
+  --amber:#f4bf4f;
+  --amber-bg:rgba(244,191,79,.12);
+  --blue:#7cc4ff;
+  --blue-bg:rgba(124,196,255,.12);
+  --red:#f47c6a;
+  --green-bg:rgba(52,211,153,.13);
+  --grey-bg:rgba(148,168,157,.12);
+}
+body.light{
+  --bg:#f2f6f3;
+  --bg2:#fafcfb;
+  --panel:#ffffff;
+  --panel2:#f5f9f6;
+  --line:#dfe8e2;
+  --line-strong:#c8d6cd;
+  --ink:#15201a;
+  --ink-dim:#53645b;
+  --ink-mut:#7e8d85;
+  --amber:#8a5d08;
+  --amber-bg:#fbf0d6;
+  --blue:#1f5f99;
+  --blue-bg:#e3f0fb;
+  --red:#bb4a37;
+  --green-bg:#d9f7ea;
+  --grey-bg:#edf1ee;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--head);font-size:16px;line-height:1.6;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;opacity:.25;mask-image:linear-gradient(to bottom,#000 0,transparent 420px);-webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 420px)}
+::selection{background:var(--green);color:var(--navy)}
+a{color:var(--green)}
+button,input,textarea{font:inherit}
+
+header{border-bottom:1px solid var(--line);background:var(--bg2);position:sticky;top:0;z-index:20}
+.hd{max-width:880px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.wordmark{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none}
+.wordmark .blok{width:13px;height:13px;background:var(--green);border-radius:3px}
+.hd-sub{font-family:var(--mono);font-size:.68rem;color:var(--ink-mut);letter-spacing:.1em;text-transform:uppercase}
+.hd .spacer{flex:1}
+.theme-toggle{appearance:none;cursor:pointer;background:none;color:var(--ink-dim);border:1px solid var(--line-strong);border-radius:999px;font-family:var(--mono);font-size:.7rem;padding:6px 12px;min-height:32px}
+.theme-toggle:hover{color:var(--ink)}
+
+.wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 16px 80px}
+.intro{padding:34px 0 8px}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+h1{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:6px 0 10px}
+.lead{color:var(--ink-dim);max-width:60ch}
+
+/* tellers */
+.tellers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 8px}
+.teller{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.teller .n{font-family:var(--mono);font-size:1.5rem;font-weight:700;line-height:1.1}
+.teller .l{font-size:.78rem;color:var(--ink-dim)}
+.teller.wacht .n{color:var(--amber)}
+
+/* balk met filters + knop */
+.balk{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0 14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{appearance:none;cursor:pointer;background:var(--panel);border:1px solid var(--line-strong);color:var(--ink-dim);border-radius:999px;padding:7px 14px;font-size:.86rem;min-height:36px}
+.chip.aan{background:var(--green);border-color:var(--green);color:var(--navy);font-weight:600}
+.balk .spacer{flex:1}
+.knop{appearance:none;cursor:pointer;border:0;border-radius:10px;background:var(--green);color:var(--navy);font-weight:700;padding:10px 18px;min-height:42px;font-size:.95rem;transition:transform .15s ease,background .15s ease}
+.knop:hover{background:var(--green-lt)}
+.knop:active{transform:translateY(1px)}
+.knop:disabled{opacity:.6;cursor:default}
+.knop.licht{background:none;border:1px solid var(--line-strong);color:var(--ink)}
+
+/* formulier */
+.form{display:none;background:var(--panel);border:1px solid var(--line-strong);border-radius:14px;padding:18px;margin-bottom:18px}
+.form.open{display:block;animation:in .3s cubic-bezier(.22,1,.36,1)}
+@keyframes in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.form h2{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.form p.hint{font-size:.88rem;color:var(--ink-dim);margin-bottom:14px}
+.veld{margin-bottom:12px}
+.veld label{display:block;font-size:.82rem;font-weight:600;margin-bottom:5px}
+.veld input[type=text],.veld textarea{width:100%;background:var(--bg2);border:1px solid var(--line-strong);border-radius:9px;color:var(--ink);padding:10px 12px;font-size:16px}
+.veld textarea{min-height:120px;resize:vertical}
+.veld input:focus,.veld textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent}
+.rij{display:grid;grid-template-columns:1fr 2fr;gap:12px}
+.spoed-vink{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--ink-dim);margin:4px 0 14px;cursor:pointer}
+.spoed-vink input{width:18px;height:18px;accent-color:var(--green)}
+.form-acties{display:flex;gap:8px;flex-wrap:wrap}
+.melding{font-size:.9rem;margin-top:10px;min-height:1.2em}
+.melding.fout{color:var(--red)}
+.melding.ok{color:var(--green)}
+
+/* lijst */
+.lijst{display:flex;flex-direction:column;gap:10px}
+.kaart{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px}
+.kaart.haast{border-left:3px solid var(--amber)}
+.kaart-top{display:flex;align-items:flex-start;gap:10px}
+.kaart-top h3{font-size:1.04rem;font-weight:700;line-height:1.3;flex:1}
+.pil{flex-shrink:0;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap;font-weight:600}
+.pil.nieuw{background:var(--grey-bg);color:var(--ink-dim)}
+.pil.ingepland{background:var(--blue-bg);color:var(--blue)}
+.pil.bezig{background:var(--blue-bg);color:var(--blue)}
+.pil.wacht_op_klant{background:var(--amber-bg);color:var(--amber)}
+.pil.klaar{background:var(--green-bg);color:var(--green)}
+body.light .pil.klaar{color:#0b5a3d}
+.meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
+.omschrijving{color:var(--ink-dim);font-size:.94rem;margin-top:10px;white-space:pre-line;overflow-wrap:anywhere}
+.omschrijving.dicht{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.meer{appearance:none;background:none;border:0;color:var(--green);cursor:pointer;font-size:.85rem;padding:4px 0;margin-top:2px}
+.update{margin-top:12px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.update .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
+.update p{font-size:.93rem;white-space:pre-line;overflow-wrap:anywhere}
+.leeg,.laden,.foutblok{text-align:center;color:var(--ink-dim);padding:44px 16px;border:1px dashed var(--line-strong);border-radius:14px}
+.foutblok h2{color:var(--ink);font-size:1.2rem;margin-bottom:6px}
+.voet{margin-top:34px;font-size:.82rem;color:var(--ink-mut);text-align:center}
+
+@media (max-width:640px){
+  .tellers{grid-template-columns:repeat(2,1fr)}
+  .rij{grid-template-columns:1fr}
+  .balk .knop{width:100%}
+  .balk .spacer{display:none}
+  .hd-sub{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <a class="wordmark" href="/"><span class="blok"></span>forgexe</a>
+    <span class="hd-sub">klantportaal</span>
+    <span class="spacer"></span>
+    <button class="theme-toggle" id="themaKnop" type="button">licht</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <div class="eyebrow" id="eyebrow">Verzoeken</div>
+    <h1 id="kop">Jullie verzoeken aan Forgexe</h1>
+    <p class="lead">Alles wat jullie bij ons hebben neergelegd, op één plek. Per verzoek zie je waar het staat en wat we hebben gedaan. Nieuwe vraag? Zet hem hier neer, dan raakt hij niet zoek tussen mail en WhatsApp.</p>
+  </section>
+
+  <div id="inhoud">
+    <div class="laden">Verzoeken ophalen...</div>
+  </div>
+
+  <p class="voet">Vragen over dit overzicht? Bel of app Sedat via <span style="white-space:nowrap">085 080 54 39</span>.</p>
+</main>
+
+<script>
+(function () {
+  var API = 'https://leadkamer.app.n8n.cloud/webhook/fx-verzoeken';
+  var STATUS = {
+    nieuw: 'Ontvangen',
+    ingepland: 'Ingepland',
+    bezig: 'Mee bezig',
+    wacht_op_klant: 'Wacht op jullie',
+    klaar: 'Klaar'
+  };
+  var OPEN = ['nieuw', 'ingepland', 'bezig', 'wacht_op_klant'];
+  var token = '';
+  try { token = new URLSearchParams(location.search).get('t') || ''; } catch (e) { token = ''; }
+  var data = [];
+  var filter = 'open';
+  var klantNaam = '';
+
+  // thema
+  var knop = document.getElementById('themaKnop');
+  function zetThema(licht) {
+    document.body.classList.toggle('light', licht);
+    knop.textContent = licht ? 'donker' : 'licht';
+    try { localStorage.setItem('forgexe-portaal-thema', licht ? 'light' : 'dark'); } catch (e) {}
+  }
+  var bewaard = null;
+  try { bewaard = localStorage.getItem('forgexe-portaal-thema'); } catch (e) {}
+  zetThema(bewaard === 'light');
+  knop.addEventListener('click', function () { zetThema(!document.body.classList.contains('light')); });
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function datum(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: d.getFullYear() === new Date().getFullYear() ? undefined : 'numeric' });
+  }
+  function naamOnthouden(n) { try { localStorage.setItem('forgexe-portaal-naam', n); } catch (e) {} }
+  function naamOphalen() { try { return localStorage.getItem('forgexe-portaal-naam') || ''; } catch (e) { return ''; } }
+
+  var inhoud = document.getElementById('inhoud');
+
+  function toonFout(titel, tekst) {
+    inhoud.innerHTML = '<div class="foutblok"><h2>' + esc(titel) + '</h2><p>' + esc(tekst) + '</p></div>';
+  }
+
+  function laad(stil) {
+    if (!token) { toonFout('Geen geldige link', 'Open deze pagina via de link die je van Forgexe hebt gekregen.'); return; }
+    fetch(API + '?t=' + encodeURIComponent(token), { cache: 'no-store' })
+      .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+      .then(function (res) {
+        if (!res.body || !res.body.ok) {
+          toonFout('Deze link werkt niet (meer)', (res.body && res.body.fout) || 'Vraag Forgexe om een nieuwe link.');
+          return;
+        }
+        data = res.body.verzoeken || [];
+        if (res.body.klant && res.body.klant !== klantNaam) {
+          klantNaam = res.body.klant;
+          document.getElementById('eyebrow').textContent = 'Verzoeken · ' + klantNaam;
+          document.title = 'Verzoeken ' + klantNaam + ' | Forgexe';
+        }
+        teken();
+      })
+      .catch(function () {
+        if (!stil) toonFout('Even geen verbinding', 'Het overzicht kon niet geladen worden. Probeer het over een minuut opnieuw.');
+      });
+  }
+
+  function teller(n, label, extra) {
+    return '<div class="teller' + (extra ? ' ' + extra : '') + '"><div class="n">' + n + '</div><div class="l">' + label + '</div></div>';
+  }
+
+  function teken() {
+    var formOpen = document.getElementById('form') && document.getElementById('form').classList.contains('open');
+    var bewaardForm = formOpen ? leesForm() : null;
+    var nOpen = data.filter(function (v) { return OPEN.indexOf(v.status) !== -1; }).length;
+    var nBezig = data.filter(function (v) { return v.status === 'bezig' || v.status === 'ingepland'; }).length;
+    var nWacht = data.filter(function (v) { return v.status === 'wacht_op_klant'; }).length;
+    var nKlaar = data.filter(function (v) { return v.status === 'klaar'; }).length;
+
+    var lijst = data.filter(function (v) {
+      if (filter === 'open') return OPEN.indexOf(v.status) !== -1;
+      if (filter === 'klaar') return v.status === 'klaar';
+      return true;
+    });
+    // wacht-op-jullie bovenaan bij open
+    if (filter === 'open') {
+      lijst.sort(function (a, b) {
+        var wa = a.status === 'wacht_op_klant' ? 0 : 1, wb = b.status === 'wacht_op_klant' ? 0 : 1;
+        if (wa !== wb) return wa - wb;
+        return String(b.ontvangen_op || '').localeCompare(String(a.ontvangen_op || ''));
+      });
+    }
+
+    var html = '';
+    html += '<div class="tellers">' + teller(nOpen, 'Open') + teller(nBezig, 'Ingepland of mee bezig') + teller(nWacht, 'Wacht op jullie', nWacht ? 'wacht' : '') + teller(nKlaar, 'Klaar') + '</div>';
+    html += '<div class="balk"><div class="chips" role="group" aria-label="Filter">' +
+      chip('open', 'Open') + chip('klaar', 'Klaar') + chip('alles', 'Alles') +
+      '</div><span class="spacer"></span><button class="knop" type="button" id="nieuwKnop">+ Nieuw verzoek</button></div>';
+    html += formHtml();
+    if (!lijst.length) {
+      html += '<div class="leeg">' + (filter === 'open' ? 'Er staat niets open. Alles is afgehandeld.' : filter === 'klaar' ? 'Nog niets afgerond.' : 'Nog geen verzoeken.') + '</div>';
+    } else {
+      html += '<div class="lijst">' + lijst.map(kaart).join('') + '</div>';
+    }
+    inhoud.innerHTML = html;
+
+    Array.prototype.forEach.call(inhoud.querySelectorAll('.chip'), function (c) {
+      c.addEventListener('click', function () { filter = c.getAttribute('data-f'); teken(); });
+    });
+    Array.prototype.forEach.call(inhoud.querySelectorAll('.meer'), function (m) {
+      m.addEventListener('click', function () {
+        var o = document.getElementById('om-' + m.getAttribute('data-id'));
+        var dicht = o.classList.toggle('dicht');
+        m.textContent = dicht ? 'Meer lezen' : 'Minder';
+      });
+    });
+    Array.prototype.forEach.call(inhoud.querySelectorAll('.omschrijving.dicht'), function (o) {
+      if (o.scrollHeight <= o.clientHeight + 2) {
+        o.classList.remove('dicht');
+        var m = inhoud.querySelector('.meer[data-id="' + o.id.slice(3) + '"]');
+        if (m) m.parentNode.removeChild(m);
+      }
+    });
+    koppelForm(formOpen, bewaardForm);
+  }
+
+  function chip(f, label) {
+    return '<button type="button" class="chip' + (filter === f ? ' aan' : '') + '" data-f="' + f + '" aria-pressed="' + (filter === f) + '">' + label + '</button>';
+  }
+
+  function kaart(v) {
+    var meta = [];
+    if (v.ontvangen_op) meta.push('Ontvangen ' + datum(v.ontvangen_op));
+    if (v.van) meta.push('Van ' + esc(v.van));
+    if (v.status === 'klaar' && v.afgerond_op) meta.push('Afgerond ' + datum(v.afgerond_op));
+    if (v.prioriteit === 'hoog') meta.push('Spoed');
+    var h = '<article class="kaart' + (v.prioriteit === 'hoog' && v.status !== 'klaar' ? ' haast' : '') + '">';
+    h += '<div class="kaart-top"><h3>' + esc(v.titel) + '</h3><span class="pil ' + esc(v.status) + '">' + esc(STATUS[v.status] || v.status) + '</span></div>';
+    h += '<div class="meta">' + meta.map(function (m) { return '<span>' + m + '</span>'; }).join('') + '</div>';
+    if (v.omschrijving) {
+      h += '<div class="omschrijving dicht" id="om-' + v.id + '">' + esc(v.omschrijving) + '</div><button type="button" class="meer" data-id="' + v.id + '">Meer lezen</button>';
+    }
+    if (v.update_klant) {
+      h += '<div class="update"><div class="k">' + (v.status === 'wacht_op_klant' ? 'We hebben dit van jullie nodig' : 'Update van Forgexe') + '</div><p>' + esc(v.update_klant) + '</p></div>';
+    }
+    return h + '</article>';
+  }
+
+  function formHtml() {
+    return '<form class="form" id="form" novalidate>' +
+      '<h2>Nieuw verzoek</h2><p class="hint">Eén verzoek per onderwerp werkt het snelst. Je krijgt hier een update zodra we ermee bezig zijn.</p>' +
+      '<div class="rij"><div class="veld"><label for="fNaam">Je naam</label><input type="text" id="fNaam" maxlength="80" autocomplete="given-name"></div>' +
+      '<div class="veld"><label for="fTitel">Waar gaat het over?</label><input type="text" id="fTitel" maxlength="120" placeholder="Bijv. tekst nieuwsbrief Fietsweer aanpassen"></div></div>' +
+      '<div class="veld"><label for="fOms">Toelichting</label><textarea id="fOms" maxlength="4000" placeholder="Wat moet er gebeuren, voor welke winkel, en voor wanneer?"></textarea></div>' +
+      '<label class="spoed-vink"><input type="checkbox" id="fSpoed"> Dit heeft haast</label>' +
+      '<div class="form-acties"><button class="knop" type="submit" id="fVerstuur">Verzoek versturen</button><button class="knop licht" type="button" id="fAnnuleer">Annuleren</button></div>' +
+      '<div class="melding" id="fMelding" role="status"></div></form>';
+  }
+
+  function leesForm() {
+    return {
+      naam: document.getElementById('fNaam').value,
+      titel: document.getElementById('fTitel').value,
+      oms: document.getElementById('fOms').value,
+      spoed: document.getElementById('fSpoed').checked
+    };
+  }
+
+  function koppelForm(open, waarden) {
+    var form = document.getElementById('form');
+    var nk = document.getElementById('nieuwKnop');
+    document.getElementById('fNaam').value = waarden ? waarden.naam : naamOphalen();
+    if (waarden) {
+      document.getElementById('fTitel').value = waarden.titel;
+      document.getElementById('fOms').value = waarden.oms;
+      document.getElementById('fSpoed').checked = waarden.spoed;
+    }
+    if (open) { form.classList.add('open'); nk.style.display = 'none'; }
+    nk.addEventListener('click', function () {
+      form.classList.add('open');
+      nk.style.display = 'none';
+      (document.getElementById('fNaam').value ? document.getElementById('fTitel') : document.getElementById('fNaam')).focus();
+    });
+    document.getElementById('fAnnuleer').addEventListener('click', function () {
+      form.classList.remove('open');
+      nk.style.display = '';
+    });
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var w = leesForm();
+      var mld = document.getElementById('fMelding');
+      mld.className = 'melding';
+      if (!w.titel.trim()) { mld.className = 'melding fout'; mld.textContent = 'Vul in waar het over gaat.'; document.getElementById('fTitel').focus(); return; }
+      var btn = document.getElementById('fVerstuur');
+      btn.disabled = true; btn.textContent = 'Versturen...';
+      if (w.naam.trim()) naamOnthouden(w.naam.trim());
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ t: token, actie: 'nieuw', naam: w.naam.trim(), titel: w.titel.trim(), omschrijving: w.oms.trim(), spoed: w.spoed })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (!j || !j.ok) throw new Error((j && j.fout) || 'Versturen lukte niet.');
+          filter = 'open';
+          data.unshift({ id: j.id, titel: w.titel.trim(), omschrijving: w.oms.trim(), van: w.naam.trim(), status: 'nieuw', prioriteit: w.spoed ? 'hoog' : 'normaal', ontvangen_op: new Date().toISOString() });
+          teken();
+          var m2 = document.createElement('div');
+          m2.className = 'melding ok';
+          m2.textContent = 'Verstuurd. Sedat krijgt er direct een melding van.';
+          var balk = inhoud.querySelector('.balk');
+          balk.parentNode.insertBefore(m2, balk.nextSibling);
+          setTimeout(function () { if (m2.parentNode) m2.parentNode.removeChild(m2); }, 6000);
+        })
+        .catch(function (e) {
+          btn.disabled = false; btn.textContent = 'Verzoek versturen';
+          mld.className = 'melding fout';
+          mld.textContent = e.message || 'Versturen lukte niet. Probeer het opnieuw.';
+        });
+    });
+  }
+
+  laad(false);
+  // verversen als iemand terugkomt naar het tabblad
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && data) laad(true); });
+})();
+</script>
+</body>
+</html>
