@@ -129,6 +129,7 @@ h1{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;letter-spacing:-.02em;line
 .pil.wacht_op_klant{background:var(--amber-bg);color:var(--amber)}
 .pil.klaar{background:var(--green-bg);color:var(--green)}
 body.light .pil.klaar{color:#0b5a3d}
+body.light .eyebrow{color:var(--navy)}
 .meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-mut);margin-top:4px;display:flex;gap:10px;flex-wrap:wrap}
 .omschrijving{color:var(--ink-dim);font-size:.94rem;margin-top:10px;white-space:pre-line;overflow-wrap:anywhere}
 .omschrijving.dicht{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -150,13 +151,13 @@ body.light .pil.klaar{color:#0b5a3d}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
-<body>
+<body class="light">
 <header>
   <div class="hd">
     <a class="wordmark" href="/"><span class="blok"></span>forgexe</a>
     <span class="hd-sub">klantportaal</span>
     <span class="spacer"></span>
-    <button class="theme-toggle" id="themaKnop" type="button">licht</button>
+    <button class="theme-toggle" id="themaKnop" type="button">donker</button>
   </div>
 </header>
 
@@ -193,15 +194,19 @@ body.light .pil.klaar{color:#0b5a3d}
 
   // thema
   var knop = document.getElementById('themaKnop');
+  // standaard licht; alleen een eigen klik op de knop wordt onthouden
   function zetThema(licht) {
     document.body.classList.toggle('light', licht);
     knop.textContent = licht ? 'donker' : 'licht';
-    try { localStorage.setItem('forgexe-portaal-thema', licht ? 'light' : 'dark'); } catch (e) {}
   }
   var bewaard = null;
-  try { bewaard = localStorage.getItem('forgexe-portaal-thema'); } catch (e) {}
-  zetThema(bewaard === 'light');
-  knop.addEventListener('click', function () { zetThema(!document.body.classList.contains('light')); });
+  try { bewaard = localStorage.getItem('forgexe-portaal-kleur'); } catch (e) {}
+  zetThema(bewaard !== 'dark');
+  knop.addEventListener('click', function () {
+    var licht = !document.body.classList.contains('light');
+    zetThema(licht);
+    try { localStorage.setItem('forgexe-portaal-kleur', licht ? 'light' : 'dark'); } catch (e) {}
+  });
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
