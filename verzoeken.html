@@ -137,6 +137,30 @@ body.light .eyebrow{color:var(--navy)}
 .update{margin-top:12px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .update .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:3px}
 .update p{font-size:.93rem;white-space:pre-line;overflow-wrap:anywhere}
+/* gesprek per verzoek */
+.gesprek{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.bericht{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:10px;padding:9px 12px}
+.bericht.klant{border-left-color:var(--line-strong);background:var(--bg2)}
+.bericht .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mut);margin-bottom:2px;display:flex;gap:8px;flex-wrap:wrap}
+.bericht .k b{color:var(--ink-dim);font-weight:700}
+.bericht.forgexe .k b{color:var(--green)}
+body.light .bericht.forgexe .k b{color:var(--navy)}
+.bericht .k .tag{color:var(--amber)}
+.bericht .k .tag.ok{color:var(--green)}
+body.light .bericht .k .tag.ok{color:#0b5a3d}
+.bericht p{font-size:.93rem;white-space:pre-line;overflow-wrap:anywhere}
+.akkoord-regel{font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);display:flex;align-items:center;gap:6px}
+.akkoord-regel .v{color:var(--green);font-weight:700}
+body.light .akkoord-regel .v{color:#0b5a3d}
+.eerder{appearance:none;background:none;border:0;color:var(--ink-dim);cursor:pointer;font-size:.82rem;padding:2px 0;text-align:left;text-decoration:underline;text-underline-offset:3px}
+.kaart-acties{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.knop.klein{min-height:36px;padding:7px 14px;font-size:.86rem;border-radius:9px}
+.knop.stil{background:none;color:var(--ink-dim);border:1px solid transparent}
+.knop.stil:hover{background:var(--grey-bg);color:var(--ink)}
+.reageer{margin-top:12px;background:var(--bg2);border:1px solid var(--line-strong);border-radius:12px;padding:12px}
+.reageer .veld{margin-bottom:10px}
+.reageer textarea{min-height:90px}
+.reageer .titel{font-size:.9rem;font-weight:700;margin-bottom:8px}
 .leeg,.laden,.foutblok{text-align:center;color:var(--ink-dim);padding:44px 16px;border:1px dashed var(--line-strong);border-radius:14px}
 .foutblok h2{color:var(--ink);font-size:1.2rem;margin-bottom:6px}
 .voet{margin-top:34px;font-size:.82rem;color:var(--ink-mut);text-align:center}
@@ -145,6 +169,7 @@ body.light .eyebrow{color:var(--navy)}
   .tellers{grid-template-columns:repeat(2,1fr)}
   .rij{grid-template-columns:1fr}
   .balk .knop{width:100%}
+  .kaart-acties .knop{flex:1 1 auto}
   .balk .spacer{display:none}
   .hd-sub{display:none}
 }
@@ -165,7 +190,7 @@ body.light .eyebrow{color:var(--navy)}
   <section class="intro">
     <div class="eyebrow" id="eyebrow">Verzoeken</div>
     <h1 id="kop">Jullie verzoeken aan Forgexe</h1>
-    <p class="lead">Alles wat jullie bij ons hebben neergelegd, op één plek. Per verzoek zie je waar het staat en wat we hebben gedaan. Nieuwe vraag? Zet hem hier neer, dan raakt hij niet zoek tussen mail en WhatsApp.</p>
+    <p class="lead">Alles wat jullie bij ons hebben neergelegd, op één plek. Per verzoek zie je waar het staat en wat we hebben gedaan. Is het goed zo, of klopt er nog iets niet? Geef het direct bij het verzoek aan. Nieuwe vraag? Zet hem hier neer, dan raakt hij niet zoek tussen mail en WhatsApp.</p>
   </section>
 
   <div id="inhoud">
@@ -191,6 +216,10 @@ body.light .eyebrow{color:var(--navy)}
   var data = [];
   var filter = 'open';
   var klantNaam = '';
+  var reactieOpen = null;   // { id, oordeel, tekst, naam } van het reactievak dat open staat
+  var uitgeklapt = {};      // verzoeken waarvan alle berichten getoond worden
+  var bovenMelding = '';
+  var bovenTimer = null;
 
   // thema
   var knop = document.getElementById('themaKnop');
@@ -279,6 +308,7 @@ body.light .eyebrow{color:var(--navy)}
     html += '<div class="balk"><div class="chips" role="group" aria-label="Filter">' +
       chip('open', 'Open') + chip('klaar', 'Klaar') + chip('alles', 'Alles') +
       '</div><span class="spacer"></span><button class="knop" type="button" id="nieuwKnop">+ Nieuw verzoek</button></div>';
+    if (bovenMelding) html += '<div class="melding ok" id="bovenMld" role="status" style="margin:-4px 0 12px">' + esc(bovenMelding) + '</div>';
     html += formHtml();
     if (!lijst.length) {
       html += '<div class="leeg">' + (filter === 'open' ? 'Er staat niets open. Alles is afgehandeld.' : filter === 'klaar' ? 'Nog niets afgerond.' : 'Nog geen verzoeken.') + '</div>';
@@ -323,11 +353,146 @@ body.light .eyebrow{color:var(--navy)}
     if (v.omschrijving) {
       h += '<div class="omschrijving dicht" id="om-' + v.id + '">' + esc(v.omschrijving) + '</div><button type="button" class="meer" data-id="' + v.id + '">Meer lezen</button>';
     }
-    if (v.update_klant) {
-      h += '<div class="update"><div class="k">' + (v.status === 'wacht_op_klant' ? 'We hebben dit van jullie nodig' : 'Update van Forgexe') + '</div><p>' + esc(v.update_klant) + '</p></div>';
-    }
+    h += gesprekHtml(v);
+    var bezigMet = reactieOpen && String(reactieOpen.id) === String(v.id);
+    h += bezigMet ? reageerHtml(v) : actiesHtml(v);
     return h + '</article>';
   }
+
+  // gesprek: updates van Forgexe en reacties van de klant, oudste eerst
+  function berichten(v) {
+    var lijst = (v.reacties || []).slice();
+    if (v.update_klant && !lijst.some(function (r) { return r.wie === 'forgexe' && r.tekst === v.update_klant; })) {
+      lijst.unshift({ wie: 'forgexe', tekst: v.update_klant, op: v.bijgewerkt_op });
+    }
+    return lijst;
+  }
+
+  function gesprekHtml(v) {
+    var lijst = berichten(v);
+    if (!lijst.length) return '';
+    var laatsteForgexe = -1;
+    lijst.forEach(function (r, i) { if (r.wie === 'forgexe') laatsteForgexe = i; });
+    var start = lijst.length > 3 && !uitgeklapt[v.id] ? lijst.length - 3 : 0;
+    var h = '<div class="gesprek">';
+    if (start) h += '<button type="button" class="eerder" data-actie="eerder" data-id="' + v.id + '">Eerdere berichten tonen (' + start + ')</button>';
+    lijst.slice(start).forEach(function (r, j) {
+      var i = start + j;
+      var naam = r.naam || klantNaam || 'Jullie';
+      if (r.wie === 'klant' && r.oordeel === 'akkoord' && !r.tekst) {
+        h += '<div class="akkoord-regel"><span class="v">✓</span>' + esc(naam) + ' gaf akkoord · ' + datum(r.op) + '</div>';
+        return;
+      }
+      var vraag = r.wie === 'forgexe' && i === laatsteForgexe && v.status === 'wacht_op_klant';
+      var wie = r.wie === 'forgexe' ? (vraag ? 'Vraag van Forgexe' : 'Forgexe') : naam;
+      var tag = r.oordeel === 'akkoord' ? '<span class="tag ok">akkoord</span>' : r.oordeel === 'niet_goed' ? '<span class="tag">klopt nog niet</span>' : '';
+      h += '<div class="bericht ' + (r.wie === 'forgexe' ? 'forgexe' : 'klant') + '"><div class="k"><b>' + esc(wie) + '</b><span>' + datum(r.op) + '</span>' + tag + '</div><p>' + esc(r.tekst) + '</p></div>';
+    });
+    return h + '</div>';
+  }
+
+  function actiesHtml(v) {
+    var lijst = berichten(v);
+    var laatste = lijst[lijst.length - 1];
+    var heeftAntwoord = lijst.some(function (r) { return r.wie === 'forgexe'; });
+    function k(actie, label, soort) {
+      return '<button type="button" class="knop klein' + (soort ? ' ' + soort : '') + '" data-actie="' + actie + '" data-id="' + v.id + '">' + label + '</button>';
+    }
+    var b = [];
+    if (v.status === 'klaar') {
+      if (laatste && laatste.wie === 'klant' && laatste.oordeel === 'akkoord') b.push(k('niet_goed', 'Toch nog iets', 'stil'));
+      else { b.push(k('akkoord', '✓ Akkoord')); b.push(k('niet_goed', 'Klopt nog niet', 'licht')); }
+    } else {
+      if (v.status === 'wacht_op_klant') b.push(k('reageer', 'Antwoorden'));
+      if (heeftAntwoord) b.push(k('akkoord', '✓ Akkoord, is goed', v.status === 'wacht_op_klant' ? 'licht' : ''));
+      if (v.status !== 'wacht_op_klant') b.push(k('reageer', 'Reageren of aanvullen', 'licht'));
+      b.push(k('vervalt', 'Niet meer nodig', 'stil'));
+    }
+    return '<div class="kaart-acties">' + b.join('') + '</div>';
+  }
+
+  function reageerHtml(v) {
+    var ng = reactieOpen.oordeel === 'niet_goed';
+    var titel = ng ? 'Wat klopt er nog niet of ontbreekt?' : (v.status === 'wacht_op_klant' ? 'Je antwoord' : 'Je reactie of aanvulling');
+    return '<div class="reageer"><div class="titel" id="rTitel">' + titel + '</div>' +
+      (naamOphalen() ? '' : '<div class="veld"><label for="rNaam">Je naam</label><input type="text" id="rNaam" maxlength="80" autocomplete="given-name" value="' + esc(reactieOpen.naam) + '"></div>') +
+      '<div class="veld"><textarea id="rTekst" maxlength="2000" aria-labelledby="rTitel">' + esc(reactieOpen.tekst) + '</textarea></div>' +
+      '<div class="form-acties"><button type="button" class="knop klein" data-actie="verstuur" data-id="' + v.id + '">Versturen</button>' +
+      '<button type="button" class="knop klein licht" data-actie="sluit" data-id="' + v.id + '">Annuleren</button></div>' +
+      '<div class="melding" id="rMelding" role="status"></div></div>';
+  }
+
+  function stuur(v, oordeel, tekst, knopEl, mld) {
+    var oud = knopEl.textContent;
+    knopEl.disabled = true;
+    knopEl.textContent = 'Versturen...';
+    var body = { t: token, actie: 'reactie', id: v.id, tekst: tekst, naam: naamOphalen() };
+    if (oordeel) body.oordeel = oordeel;
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || !j.ok) throw new Error((j && j.fout) || 'Versturen lukte niet.');
+        reactieOpen = null;
+        bovenMelding = oordeel === 'akkoord' ? 'Akkoord doorgegeven. Het verzoek staat nu bij Klaar.'
+          : oordeel === 'vervalt' ? 'Verzoek ingetrokken.'
+          : 'Verstuurd. Sedat krijgt er direct een melding van.';
+        clearTimeout(bovenTimer);
+        bovenTimer = setTimeout(function () { bovenMelding = ''; var m = document.getElementById('bovenMld'); if (m) m.parentNode.removeChild(m); }, 7000);
+        laad(true);
+      })
+      .catch(function (e) {
+        knopEl.disabled = false;
+        knopEl.textContent = oud;
+        var tekstFout = (e && e.message) || 'Versturen lukte niet. Probeer het opnieuw.';
+        if (mld) { mld.className = 'melding fout'; mld.textContent = tekstFout; } else { alert(tekstFout); }
+      });
+  }
+
+  inhoud.addEventListener('input', function (ev) {
+    if (!reactieOpen) return;
+    if (ev.target.id === 'rTekst') reactieOpen.tekst = ev.target.value;
+    if (ev.target.id === 'rNaam') reactieOpen.naam = ev.target.value;
+  });
+
+  inhoud.addEventListener('click', function (ev) {
+    var el = ev.target.closest ? ev.target.closest('[data-actie]') : null;
+    if (!el) return;
+    var id = el.getAttribute('data-id');
+    var actie = el.getAttribute('data-actie');
+    var v = data.filter(function (x) { return String(x.id) === String(id); })[0];
+    if (!v) return;
+    if (actie === 'eerder') { uitgeklapt[id] = true; teken(); return; }
+    if (actie === 'reageer' || actie === 'niet_goed') {
+      reactieOpen = { id: id, oordeel: actie === 'niet_goed' ? 'niet_goed' : '', tekst: '', naam: '' };
+      teken();
+      var veld = document.getElementById(naamOphalen() ? 'rTekst' : 'rNaam');
+      if (veld) veld.focus();
+      return;
+    }
+    if (actie === 'sluit') { reactieOpen = null; teken(); return; }
+    if (actie === 'akkoord') { stuur(v, 'akkoord', '', el); return; }
+    if (actie === 'vervalt') {
+      if (confirm('Is "' + v.titel + '" niet meer nodig?\n\nHet verzoek verdwijnt dan uit dit overzicht.')) stuur(v, 'vervalt', '', el);
+      return;
+    }
+    if (actie === 'verstuur') {
+      var mld = document.getElementById('rMelding');
+      var nEl = document.getElementById('rNaam');
+      var tekst = (document.getElementById('rTekst').value || '').trim();
+      mld.className = 'melding';
+      if (nEl) {
+        if (!nEl.value.trim()) { mld.className = 'melding fout'; mld.textContent = 'Vul je naam in.'; nEl.focus(); return; }
+        naamOnthouden(nEl.value.trim());
+      }
+      if (!tekst) {
+        mld.className = 'melding fout';
+        mld.textContent = reactieOpen.oordeel === 'niet_goed' ? 'Laat even weten wat er nog niet klopt.' : 'Schrijf eerst je reactie.';
+        document.getElementById('rTekst').focus();
+        return;
+      }
+      stuur(v, reactieOpen.oordeel, tekst, el, mld);
+    }
+  });
 
   function formHtml() {
     return '<form class="form" id="form" novalidate>' +
