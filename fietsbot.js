@@ -482,6 +482,12 @@
     var uit = { tel: '', wa: '', contact: '' };
     if (config && config.telefoon) uit.tel = String(config.telefoon);
     if (config && config.whatsapp) uit.wa = 'https://wa.me/' + String(config.whatsapp).replace(/\D/g, '');
+    /* WhatsApp-nummer per winkel voor als de server (en dus de config) niet
+       bereikbaar is. Zelfde nummers als de map WHATSAPP in de chatflow. */
+    var VANGNET_WA = { fietsdienstverleningede: '31610409454' };
+    if (!uit.wa && VANGNET_WA[WINKEL]) {
+      uit.wa = 'https://wa.me/' + VANGNET_WA[WINKEL] + '?text=' + encodeURIComponent('Hoi, ik heb een vraag via jullie website: ');
+    }
     try {
       var links = document.querySelectorAll('a[href]');
       for (var i = 0; i < links.length; i++) {
