@@ -919,8 +919,17 @@
   /* Vangnet als de chatserver niet bereikbaar is. De bezoeker krijgt dan de
      contactmogelijkheden die al bekend zijn (config uit de cache) of die op
      de site van de klant zelf staan: de eerste bel-, WhatsApp- en contactlink. */
+  /* WhatsApp-nummer per klant voor als de server (en dus de config) niet
+     bereikbaar is en er op de site zelf geen WhatsApp-link staat. */
+  var VANGNET_WA = {
+    mooigroendak: '31618812960'
+  };
+
   function siteContact() {
     var uit = { tel: '', wa: waBasis(), contact: '' };
+    if (!uit.wa && VANGNET_WA[WINKEL]) {
+      uit.wa = 'https://wa.me/' + VANGNET_WA[WINKEL] + '?text=' + encodeURIComponent('Hoi, ik heb een vraag via jullie website: ');
+    }
     if (config && config.telefoon) uit.tel = String(config.telefoon);
     try {
       var links = document.querySelectorAll('a[href]');
