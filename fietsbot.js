@@ -475,9 +475,80 @@
     });
   }
 
+  /* Vangnet als de chatserver niet bereikbaar is. De bezoeker krijgt dan de
+     contactmogelijkheden die al bekend zijn (config uit de cache) of die op
+     de winkelsite zelf staan: de eerste bel-, WhatsApp- en contactlink. */
+  function siteContact() {
+    var uit = { tel: '', wa: '', contact: '' };
+    if (config && config.telefoon) uit.tel = String(config.telefoon);
+    if (config && config.whatsapp) uit.wa = 'https://wa.me/' + String(config.whatsapp).replace(/\D/g, '');
+    try {
+      var links = document.querySelectorAll('a[href]');
+      for (var i = 0; i < links.length; i++) {
+        if (root.contains(links[i])) continue;
+        var h = links[i].getAttribute('href') || '';
+        if (/^tel:/i.test(h)) {
+          var nr = h.slice(4).replace(/%20/g, '').replace(/[^\d+]/g, '');
+          /* Liefst het nummer zoals het leesbaar op de site staat */
+          var zichtbaar = String(links[i].textContent || '').replace(/\s+/g, ' ').trim();
+          if (!/^[\d\s()+-]{8,20}$/.test(zichtbaar)) zichtbaar = nr;
+          if (!uit.tel && nr.replace(/\D/g, '').length >= 8) uit.tel = zichtbaar;
+        } else if (/^https:\/\/(wa\.me\/\+?\d{8,}|api\.whatsapp\.com\/send\/?\?(.*&)?phone=\+?\d{8,})/i.test(h)) {
+          if (!uit.wa) uit.wa = h;
+        } else if (!uit.contact && /contact/i.test(h) && links[i].hostname === location.hostname) {
+          uit.contact = links[i].href;
+        }
+      }
+    } catch (e) { /* pagina niet uit te lezen: dan alleen de tekst */ }
+    return uit;
+  }
+
+  function zetStatus(online) {
+    var sub = root.querySelector('.fb-head-sub');
+    if (!sub) return;
+    sub.innerHTML = online ? '&#9679; Online — antwoordt direct' : '&#9679; Tijdelijk niet bereikbaar';
+    sub.style.color = online ? '' : '#8A909D';
+  }
+
   function foutmelding() {
-    var tel = config && config.telefoon ? ' Je kunt ons ook bellen op ' + config.telefoon + '.' : '';
-    addMsg('bot', 'Sorry, er ging iets mis. Probeer het zo nog eens.' + tel, true);
+    zetStatus(false);
+    /* Staat de melding er al als laatste bericht? Dan niet nog een keer. */
+    var laatste = msgsEl.lastElementChild;
+    if (laatste && laatste.getAttribute('data-storing')) { scrollDown(); return; }
+    var c = siteContact();
+    var el = document.createElement('div');
+    el.className = 'fb-msg fb-msg-bot';
+    el.setAttribute('data-storing', '1');
+    el.appendChild(document.createTextNode(c.tel || c.wa || c.contact
+      ? 'De chat is op dit moment niet bereikbaar. Je bereikt ons wel direct:'
+      : 'De chat is op dit moment niet bereikbaar. Onze contactgegevens vind je op deze website. Probeer het later gerust opnieuw.'));
+    function regel(a) {
+      el.appendChild(document.createElement('br'));
+      el.appendChild(a);
+    }
+    if (c.wa) {
+      var wa = document.createElement('a');
+      wa.className = 'fb-wa';
+      wa.href = c.wa;
+      wa.target = '_blank';
+      wa.rel = 'noopener';
+      wa.innerHTML = WA_ICOON + '<span>Stuur ons een WhatsApp</span>';
+      regel(wa);
+    }
+    if (c.tel) {
+      var tel = document.createElement('a');
+      tel.href = 'tel:' + c.tel.replace(/[^\d+]/g, '');
+      tel.textContent = 'Bel ' + c.tel;
+      regel(tel);
+    }
+    if (c.contact) {
+      var cl = document.createElement('a');
+      cl.href = c.contact;
+      cl.textContent = 'Naar de contactpagina';
+      regel(cl);
+    }
+    msgsEl.appendChild(el);
+    scrollDown();
   }
 
   function applyConfig(data) {
@@ -556,6 +627,7 @@
     post({ winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad() })
       .then(function (data) {
         hideTyping();
+        zetStatus(true);
         var antwoord = data.antwoord || 'Hmm, daar heb ik even geen antwoord op.';
         /* Stond de directe knop er al? Dan geen tweede knop in het AI-antwoord:
            de knop bovenin krijgt de link van de AI (met samenvatting van het
@@ -732,9 +804,9 @@
     }
     initConfig()
       .catch(function () {
-        naamEl.textContent = 'Chat';
+        naamEl.textContent = DATA_NAAM || 'Chat';
         avatarEl.textContent = '!';
-        addMsg('bot', 'Sorry, de chat is nu even niet beschikbaar. Probeer het later opnieuw.', true);
+        foutmelding();
         track('fout', 'config');
       });
     setTimeout(function () { inputEl.focus(); }, 100);
