@@ -162,7 +162,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       </div>
       <div class="acties">
         <button class="btn btn-ghost" id="btnPdf" type="button">Download als PDF</button>
-        <a class="btn btn-groen" id="btnNaarAkkoord" href="#akkoord">Akkoord geven ↓</a>
+        <a class="btn btn-ghost" id="btnNaarAkkoord" href="#akkoord">Naar het akkoord</a>
       </div>
     </div>
 
@@ -174,7 +174,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
 
 <div class="sticky-akkoord" id="stickyAkkoord">
   <span id="stickyTekst">Klaar met lezen?</span>
-  <a class="btn btn-groen" href="#akkoord">Akkoord geven</a>
+  <a class="btn btn-groen" href="#akkoord">Naar het akkoord</a>
 </div>
 
 <footer>
@@ -307,7 +307,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
     $id('akkoord').innerHTML =
       '<div class="kop">&gt; akkoord</div>' +
       '<h2>Akkoord met dit voorstel?</h2>' +
-      '<p class="sub">Geef hier digitaal je akkoord. Je krijgt meteen een bevestiging per e-mail' + (data.onboarding_link ? ' en daarna ga je door naar de onboarding.' : '.') + ' Vragen of iets aanpassen? <a href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a>.</p>' +
+      '<p class="sub">Als je akkoord bent, kun je dat hier digitaal doorgeven. Je krijgt dan meteen een bevestiging per e-mail' + (data.onboarding_link ? ' en daarna ga je door naar de onboarding.' : '.') + ' Vragen of iets aanpassen? <a href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a>.</p>' +
       '<div class="grid">' +
         '<div class="veld"><label for="f_naam">Naam <span class="req">*</span></label><input id="f_naam" autocomplete="name" value="' + esc(data.contactpersoon || '') + '"></div>' +
         '<div class="veld"><label for="f_functie">Functie</label><input id="f_functie" placeholder="Bijv. eigenaar, directeur"></div>' +
@@ -315,7 +315,7 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
       '</div>' +
       '<label class="check-rij"><input type="checkbox" id="c_akkoord"><span>Ik ga akkoord met dit voorstel en ben bevoegd om namens <strong>' + bedrijf + '</strong> te tekenen.</span></label>' +
       '<label class="check-rij"><input type="checkbox" id="c_av"><span>Ik heb de <a href="/voorwaarden" target="_blank" rel="noopener">algemene voorwaarden van Forgexe</a> gelezen en ga ermee akkoord.</span></label>' +
-      '<div class="verstuur-rij"><button class="btn btn-groen" id="btnAkkoord" type="button">Akkoord geven ✓</button>' +
+      '<div class="verstuur-rij"><button class="btn btn-groen" id="btnAkkoord" type="button">Akkoord versturen</button>' +
       (preview ? '<span class="hint">voorbeeldweergave: akkoord is hier uitgeschakeld</span>' : '<span class="hint">Je akkoord wordt vastgelegd met datum en tijd.</span>') + '</div>' +
       '<div class="fout-lijn" id="foutLijn"></div>';
     if (preview) $id('btnAkkoord').disabled = true;
@@ -348,13 +348,13 @@ footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12p
         $id('akkoord').scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         knop.disabled = false;
-        knop.textContent = 'Akkoord geven ✓';
+        knop.textContent = 'Akkoord versturen';
         fout.innerHTML = esc((res && res.fout) || 'Er ging iets mis.') + ' Lukt het niet? <a href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a>.';
         fout.style.display = 'block';
       }
     }).catch(function(){
       knop.disabled = false;
-      knop.textContent = 'Akkoord geven ✓';
+      knop.textContent = 'Akkoord versturen';
       fout.innerHTML = 'Versturen lukte niet. Probeer het opnieuw of <a href="' + WA + '" target="_blank" rel="noopener">stuur een WhatsApp</a>, dan regel ik het.';
       fout.style.display = 'block';
     });
