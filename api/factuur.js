@@ -33,7 +33,8 @@ var AFZENDER = {
 var EDITIES = {
   '2026-11-05': { lang: 'Donderdag 5 november 2026', kort: '5 nov 2026', locatie: 'Peters Advocatuur, Neerstraat 63, Roermond' },
   '2026-11-19': { lang: 'Donderdag 19 november 2026', kort: '19 nov 2026', locatie: 'Peters Advocatuur, Dokweg 33 A, IJmuiden' },
-  '2026-12-03': { lang: 'Donderdag 3 december 2026', kort: '3 dec 2026', locatie: 'Peters Advocatuur, Dokweg 33 A, IJmuiden' }
+  '2026-12-03': { lang: 'Donderdag 3 december 2026', kort: '3 dec 2026', locatie: 'Peters Advocatuur, Dokweg 33 A, IJmuiden' },
+  '2026-12-17': { lang: 'Donderdag 17 december 2026', kort: '17 dec 2026', locatie: 'Peters Advocatuur, Dokweg 33 A, IJmuiden' }
 };
 
 var TRAINING = {
