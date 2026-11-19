@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Voorstel | Forgexe</title>
+<link rel="icon" href="/forgexe-mark-green.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#34d399;
+  --green-lt:#4ade80;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --head:'Outfit',system-ui,sans-serif;
+}
+body{
+  --bg:#0b110e;
+  --bg2:#0e1712;
+  --panel:#111b15;
+  --line:#22332b;
+  --line-strong:#2e4438;
+  --ink:#e9f2ec;
+  --ink-dim:#94a89d;
+  --ink-mut:#68796f;
+  --navy:#0b1f18;
+  --red:#f47c6a;
+}
+body.light{
+  --bg:#f2f6f3;
+  --bg2:#fafcfb;
+  --panel:#ffffff;
+  --line:#dfe8e2;
+  --line-strong:#c8d6cd;
+  --ink:#15201a;
+  --ink-dim:#53645b;
+  --ink-mut:#7e8d85;
+  --red:#bb4a37;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--head);font-size:16px;line-height:1.6}
+::selection{background:var(--green);color:var(--navy)}
+a{color:var(--green)}
+
+header{border-bottom:1px solid var(--line);background:var(--bg2);position:sticky;top:0;z-index:20}
+.hd{max-width:940px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:12px}
+.wordmark{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-weight:700;font-size:1rem}
+.wordmark .blok{width:13px;height:13px;background:var(--green);border-radius:3px}
+.hd-sub{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut);letter-spacing:.1em;text-transform:uppercase}
+.hd .spacer{flex:1}
+.theme-toggle{appearance:none;cursor:pointer;background:none;color:var(--ink-dim);border:1px solid var(--line-strong);border-radius:999px;font-family:var(--mono);font-size:.7rem;padding:5px 12px}
+.theme-toggle:hover{color:var(--ink)}
+
+.wrap{max-width:940px;margin:0 auto;padding:0 22px 70px}
+
+.intro{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;margin:34px 0 18px}
+.intro .kop{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.intro h1{font-size:clamp(1.35rem,3.6vw,1.9rem);font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.intro .meta{font-family:var(--mono);font-size:.76rem;color:var(--ink-dim);margin-top:6px}
+.intro .meta b{color:var(--ink);font-weight:600}
+.acties{display:flex;gap:10px;flex-wrap:wrap}
+
+.btn{
+  appearance:none;border:none;cursor:pointer;font-family:var(--mono);font-weight:600;text-decoration:none;
+  font-size:.84rem;padding:12px 20px;border-radius:9px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s ease,background .15s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn-groen{background:var(--green);color:var(--navy)}
+.btn-groen:hover{background:var(--green-lt)}
+.btn-ghost{background:none;color:var(--ink-dim);border:1px solid var(--line-strong)}
+.btn-ghost:hover{color:var(--ink)}
+.btn[disabled]{opacity:.4;cursor:default;pointer-events:none}
+
+.papier{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 var(--line),0 18px 40px rgba(0,0,0,.25)}
+body.light .papier{box-shadow:0 1px 3px rgba(21,32,26,.08),0 18px 40px rgba(21,32,26,.08)}
+#doc{display:block;width:100%;border:0;height:900px;background:#fff}
+
+.akkoord{margin-top:34px;border:1px solid var(--line-strong);border-radius:14px;background:var(--panel);padding:28px}
+.akkoord .kop{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.akkoord h2{font-size:1.35rem;font-weight:800;line-height:1.2;margin-bottom:6px}
+.akkoord .sub{color:var(--ink-dim);max-width:62ch;font-size:.95rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;margin-top:20px}
+.veld{display:flex;flex-direction:column;gap:5px}
+.veld.breed{grid-column:1/-1}
+.veld label{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mut)}
+.veld label .req{color:var(--green)}
+.veld input,.veld textarea{background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;color:var(--ink);font-family:var(--head);font-size:16px;padding:11px 13px;width:100%}
+.veld textarea{min-height:76px;resize:vertical}
+.veld input:focus,.veld textarea:focus{outline:none;border-color:var(--green)}
+.check-rij{display:flex;gap:12px;align-items:flex-start;margin-top:14px;cursor:pointer}
+.check-rij input{width:19px;height:19px;margin-top:3px;accent-color:var(--green);flex:none;cursor:pointer}
+.check-rij span{color:var(--ink-dim);font-size:.93rem}
+.verstuur-rij{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.verstuur-rij .hint{font-family:var(--mono);font-size:.72rem;color:var(--ink-mut)}
+.fout-lijn{color:var(--red);font-size:.9rem;margin-top:12px;display:none}
+.fout-lijn a{color:var(--red);font-weight:600}
+
+.status-box{text-align:center;padding:12px 0}
+.status-box .vink{width:58px;height:58px;border-radius:50%;background:var(--green);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;margin:0 auto 16px}
+.status-box h2{margin-bottom:8px}
+.status-box p{color:var(--ink-dim);max-width:52ch;margin:0 auto}
+.status-box .btn{margin-top:20px}
+
+.melding{margin-top:60px;text-align:center;padding:50px 20px;border:1px solid var(--line-strong);border-radius:14px;background:var(--panel)}
+.melding h1{font-size:1.5rem;margin-bottom:8px}
+.melding p{color:var(--ink-dim);max-width:48ch;margin:0 auto}
+#laden{padding:80px 0;text-align:center;color:var(--ink-mut);font-family:var(--mono);font-size:.85rem}
+
+.sticky-akkoord{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg2);border-top:1px solid var(--line-strong);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:12px;transform:translateY(100%);transition:transform .25s ease}
+.sticky-akkoord.zichtbaar{transform:none}
+.sticky-akkoord span{font-family:var(--mono);font-size:.74rem;color:var(--ink-dim)}
+
+footer{border-top:1px solid var(--line);padding:20px 0 40px;margin-top:20px}
+footer .wrap{padding-bottom:0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--ink-mut)}
+
+@media(max-width:640px){
+  .wrap{padding:0 16px 90px}
+  .hd{padding:12px 16px}
+  .hd-sub{display:none}
+  .intro{margin-top:24px}
+  .acties{width:100%}
+  .acties .btn{flex:1}
+  .papier{border-radius:10px}
+  .akkoord{padding:22px 18px}
+  .grid{grid-template-columns:1fr}
+  .verstuur-rij .btn{width:100%}
+  .sticky-akkoord{display:flex}
+}
+@media print{
+  header,footer,.intro,.akkoord,.sticky-akkoord{display:none !important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <span class="wordmark"><span class="blok"></span>forgexe</span>
+    <span class="hd-sub">// voorstel</span>
+    <span class="spacer"></span>
+    <button class="theme-toggle" id="themeToggle" type="button">licht</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="laden">voorstel laden…</div>
+
+  <div id="ongeldig" class="melding" style="display:none">
+    <h1>Deze link werkt niet (meer)</h1>
+    <p id="ongeldigTekst">Neem even contact op, dan sturen we je een nieuwe link.</p>
+  </div>
+
+  <div id="inhoud" style="display:none">
+    <div class="intro">
+      <div>
+        <div class="kop">&gt; voorstel voor <span id="iBedrijf"></span></div>
+        <h1 id="iTitel"></h1>
+        <div class="meta" id="iMeta"></div>
+      </div>
+      <div class="acties">
+        <button class="btn btn-ghost" id="btnPdf" type="button">Download als PDF</button>
+        <a class="btn btn-groen" id="btnNaarAkkoord" href="#akkoord">Akkoord geven ↓</a>
+      </div>
+    </div>
+
+    <div class="papier"><iframe id="doc" title="Voorstel"></iframe></div>
+
+    <section class="akkoord" id="akkoord"></section>
+  </div>
+</div>
+
+<div class="sticky-akkoord" id="stickyAkkoord">
+  <span id="stickyTekst">Klaar met lezen?</span>
+  <a class="btn btn-groen" href="#akkoord">Akkoord geven</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>Forgexe · Panningen · KvK 83002677</span>
+    <span>Vragen? <a href="https://wa.me/31850805439" target="_blank" rel="noopener">WhatsApp 085 080 54 39</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var CONFIG_URL = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-voorstel-config';
+  var AKKOORD_URL = 'https://leadkamer.app.n8n.cloud/webhook/forgexe-voorstel-akkoord';
+  var WA = 'https://wa.me/31850805439';
+
+  function $id(x){ return document.getElementById(x); }
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function datumNL(s){
+    if (!s) return '';
+    var d = /^\d{4}-\d{2}-\d{2}$/.test(s) ? new Date(s + 'T12:00:00') : new Date(s);
+    if (isNaN(d)) return s;
+    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  /* thema */
+  var themeBtn = $id('themeToggle');
+  function zetThema(licht){
+    document.body.classList.toggle('light', licht);
+    themeBtn.textContent = licht ? 'donker' : 'licht';
+    try { localStorage.setItem('forgexe-onb-thema', licht ? 'light' : 'dark'); } catch (e) {}
+  }
+  try { var bewaard = localStorage.getItem('forgexe-onb-thema'); if (bewaard) zetThema(bewaard === 'light'); } catch (e) {}
+  themeBtn.addEventListener('click', function(){ zetThema(!document.body.classList.contains('light')); });
+
+  var params = new URLSearchParams(location.search);
+  var token = params.get('t') || '';
+  var preview = params.get('p') === '1';
+  var data = null;
+
+  function ongeldig(tekst){
+    $id('laden').style.display = 'none';
+    $id('ongeldig').style.display = 'block';
+    if (tekst) $id('ongeldigTekst').textContent = tekst;
+  }
+
+  /* Schermregels voor het document in het iframe. Alleen @media screen:
+     de PDF (print) houdt exact de A4-opmaak van het voorstel. */
+  var SCHERM_CSS =
+    '@media screen{' +
+      'html,body{background:#fff}' +
+      'body{max-width:820px;margin:0 auto;padding:34px 40px 40px}' +
+      'img,svg{max-width:100%}' +
+      '@media(max-width:640px){' +
+        'body{padding:22px 18px 28px;font-size:15px}' +
+        '.cover h1{font-size:23px;margin-top:22px}' +
+        '.cover .sub{font-size:15px}' +
+        '.brands{gap:16px}.brands .fx{height:18px}.brands img{height:30px}' +
+        '.meta{grid-template-columns:1fr 1fr;gap:12px 18px}' +
+        '.keyrow{grid-template-columns:1fr 1fr}' +
+        '.keyrow div b{font-size:18px}' +
+        '.price{flex-direction:column;align-items:flex-start}' +
+        '.price .n{font-size:26px;white-space:normal}' +
+        '.timeline{grid-template-columns:1fr}.timeline div{border-left:none;border-top:1px solid #e3e7ec}.timeline div:first-child{border-top:none}' +
+        '.sign{grid-template-columns:1fr;gap:18px}' +
+        'h2{display:block;line-height:1.3}h2 .nr{display:inline-block;margin-right:8px;vertical-align:2px}h2 .tag{display:inline-block;margin-left:8px;vertical-align:3px}' +
+        'table{font-size:13px}td,th{padding-right:8px}' +
+        '.foot{flex-direction:column;gap:4px}' +
+      '}' +
+    '}';
+
+  var frame = $id('doc');
+  function pasHoogteAan(){
+    try {
+      var d = frame.contentDocument;
+      if (!d || !d.body) return;
+      /* niet documentElement.scrollHeight: die is nooit kleiner dan het iframe zelf, dus krimpt nooit mee */
+      var st = d.defaultView.getComputedStyle(d.body);
+      var h = d.body.getBoundingClientRect().height + parseFloat(st.marginTop || 0) + parseFloat(st.marginBottom || 0);
+      frame.style.height = Math.ceil(h) + 'px';
+    } catch (e) {}
+  }
+  function laadDocument(html){
+    frame.addEventListener('load', function(){
+      var d = frame.contentDocument;
+      try {
+        var st = d.createElement('style');
+        st.textContent = SCHERM_CSS;
+        d.head.appendChild(st);
+        var basis = d.createElement('base');
+        basis.target = '_blank';
+        d.head.appendChild(basis);
+      } catch (e) {}
+      pasHoogteAan();
+      try { if (d.fonts && d.fonts.ready) d.fonts.ready.then(pasHoogteAan); } catch (e) {}
+      try { new ResizeObserver(pasHoogteAan).observe(d.body); } catch (e) {}
+      setTimeout(pasHoogteAan, 600);
+    });
+    frame.srcdoc = html;
+  }
+  window.addEventListener('resize', pasHoogteAan);
+
+  $id('btnPdf').addEventListener('click', function(){
+    try { frame.contentWindow.focus(); frame.contentWindow.print(); } catch (e) { window.print(); }
+  });
+
+  function toonAkkoordGegeven(){
+    var html = '<div class="status-box"><div class="vink">✓</div>' +
+      '<h2>Akkoord gegeven</h2>' +
+      '<p>Op ' + esc(datumNL(data.akkoord_op)) + ' door ' + esc(data.akkoord_naam) + (data.akkoord_functie ? ' (' + esc(data.akkoord_functie) + ')' : '') + '. Je hebt een bevestiging per e-mail ontvangen.</p>' +
+      (data.onboarding_link
+        ? '<p style="margin-top:12px">De volgende stap is de onboarding: daar vul je je gegevens in en teken je de overeenkomsten.</p><a class="btn btn-groen" href="' + esc(data.onboarding_link) + '">Naar de onboarding →</a>'
+        : '<p style="margin-top:12px">Ik neem snel contact met je op om de start in te plannen.</p>') +
+      '</div>';
+    $id('akkoord').innerHTML = html;
+    $id('btnNaarAkkoord').style.display = 'none';
+    $id('stickyAkkoord').style.display = 'none';
+  }
+
+  function toonVerlopen(){
+    $id('akkoord').innerHTML = '<div class="status-box"><h2>Dit voorstel is verlopen</h2>' +
+      '<p>Het voorstel was geldig tot ' + esc(datumNL(data.geldig_tot)) + '. Laat even weten of je verder wilt, dan stuur ik je een nieuwe versie.</p>' +
+      '<a class="btn btn-groen" href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a></div>';
+    $id('btnNaarAkkoord').style.display = 'none';
+    $id('stickyAkkoord').style.display = 'none';
+  }
+
+  function toonFormulier(){
+    var bedrijf = esc(data.bedrijf || 'ons bedrijf');
+    $id('akkoord').innerHTML =
+      '<div class="kop">&gt; akkoord</div>' +
+      '<h2>Akkoord met dit voorstel?</h2>' +
+      '<p class="sub">Geef hier digitaal je akkoord. Je krijgt meteen een bevestiging per e-mail' + (data.onboarding_link ? ' en daarna ga je door naar de onboarding.' : '.') + ' Vragen of iets aanpassen? <a href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a>.</p>' +
+      '<div class="grid">' +
+        '<div class="veld"><label for="f_naam">Naam <span class="req">*</span></label><input id="f_naam" autocomplete="name" value="' + esc(data.contactpersoon || '') + '"></div>' +
+        '<div class="veld"><label for="f_functie">Functie</label><input id="f_functie" placeholder="Bijv. eigenaar, directeur"></div>' +
+        '<div class="veld breed"><label for="f_opm">Opmerking (optioneel)</label><textarea id="f_opm" placeholder="Bijvoorbeeld een voorkeur voor de startdatum"></textarea></div>' +
+      '</div>' +
+      '<label class="check-rij"><input type="checkbox" id="c_akkoord"><span>Ik ga akkoord met dit voorstel en ben bevoegd om namens <strong>' + bedrijf + '</strong> te tekenen.</span></label>' +
+      '<label class="check-rij"><input type="checkbox" id="c_av"><span>Ik heb de <a href="/voorwaarden" target="_blank" rel="noopener">algemene voorwaarden van Forgexe</a> gelezen en ga ermee akkoord.</span></label>' +
+      '<div class="verstuur-rij"><button class="btn btn-groen" id="btnAkkoord" type="button">Akkoord geven ✓</button>' +
+      (preview ? '<span class="hint">voorbeeldweergave: akkoord is hier uitgeschakeld</span>' : '<span class="hint">Je akkoord wordt vastgelegd met datum en tijd.</span>') + '</div>' +
+      '<div class="fout-lijn" id="foutLijn"></div>';
+    if (preview) $id('btnAkkoord').disabled = true;
+    $id('btnAkkoord').addEventListener('click', verstuur);
+  }
+
+  function verstuur(){
+    var knop = $id('btnAkkoord'), fout = $id('foutLijn');
+    fout.style.display = 'none';
+    var naam = $id('f_naam').value.trim();
+    if (!naam || !$id('c_akkoord').checked || !$id('c_av').checked) {
+      fout.textContent = 'Vul je naam in en zet beide vinkjes.';
+      fout.style.display = 'block';
+      return;
+    }
+    knop.disabled = true;
+    knop.textContent = 'Bezig…';
+    fetch(AKKOORD_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token, naam: naam, functie: $id('f_functie').value.trim(), opmerking: $id('f_opm').value.trim(), akkoord: true, voorwaarden: true })
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if (res && res.ok) {
+        data.status = 'akkoord';
+        data.akkoord_naam = naam;
+        data.akkoord_functie = $id('f_functie').value.trim();
+        data.akkoord_op = new Date().toISOString();
+        if (res.onboarding_link) data.onboarding_link = res.onboarding_link;
+        toonAkkoordGegeven();
+        $id('akkoord').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        knop.disabled = false;
+        knop.textContent = 'Akkoord geven ✓';
+        fout.innerHTML = esc((res && res.fout) || 'Er ging iets mis.') + ' Lukt het niet? <a href="' + WA + '" target="_blank" rel="noopener">Stuur een WhatsApp</a>.';
+        fout.style.display = 'block';
+      }
+    }).catch(function(){
+      knop.disabled = false;
+      knop.textContent = 'Akkoord geven ✓';
+      fout.innerHTML = 'Versturen lukte niet. Probeer het opnieuw of <a href="' + WA + '" target="_blank" rel="noopener">stuur een WhatsApp</a>, dan regel ik het.';
+      fout.style.display = 'block';
+    });
+  }
+
+  /* sticky balk op mobiel: tonen zodra je in het document scrolt, verbergen bij het akkoordblok */
+  function stickyUpdate(){
+    var bar = $id('stickyAkkoord');
+    if (!data || data.status === 'akkoord' || data.verlopen) return;
+    var ak = $id('akkoord').getBoundingClientRect().top;
+    var zichtbaar = window.scrollY > 500 && ak > window.innerHeight * 0.85;
+    bar.classList.toggle('zichtbaar', zichtbaar);
+  }
+  window.addEventListener('scroll', stickyUpdate, { passive: true });
+
+  if (!token) { ongeldig(); return; }
+  fetch(CONFIG_URL + '?t=' + encodeURIComponent(token) + (preview ? '&p=1' : ''))
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res || !res.ok) { ongeldig(res && res.fout); return; }
+      data = res;
+      document.title = (res.titel || 'Voorstel') + ' | Forgexe';
+      $id('iBedrijf').textContent = res.bedrijf || '';
+      $id('iTitel').textContent = res.titel || 'Voorstel';
+      var meta = [];
+      if (res.contactpersoon) meta.push('voor <b>' + esc(res.contactpersoon) + '</b>');
+      if (res.geldig_tot) meta.push('geldig tot <b>' + esc(datumNL(res.geldig_tot)) + '</b>');
+      $id('iMeta').innerHTML = meta.join(' · ');
+      $id('laden').style.display = 'none';
+      $id('inhoud').style.display = 'block';
+      laadDocument(res.html || '<p>Leeg voorstel.</p>');
+      if (res.status === 'akkoord') toonAkkoordGegeven();
+      else if (res.verlopen) toonVerlopen();
+      else toonFormulier();
+    })
+    .catch(function(){ ongeldig('Het voorstel kon niet worden geladen. Probeer het zo opnieuw of stuur een WhatsApp naar 085 080 54 39.'); });
+})();
+</script>
+</body>
+</html>
