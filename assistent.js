@@ -24,6 +24,11 @@
      de kop, ook bij een eerste bezoek zonder gecachte config. */
   var DATA_AVATAR = scriptTag ? scriptTag.getAttribute('data-avatar') : null;
   if (DATA_AVATAR && !/^https:\/\//.test(DATA_AVATAR)) DATA_AVATAR = null;
+  /* Optioneel: data-endpoint="https://leadkamer.app.n8n.cloud/webhook/..." voor een
+     klant met een eigen chatflow (eigen model-key), bijvoorbeeld LaMikasa.
+     Alleen webhooks op onze eigen n8n-omgeving worden geaccepteerd. */
+  var DATA_ENDPOINT = scriptTag ? scriptTag.getAttribute('data-endpoint') : null;
+  if (DATA_ENDPOINT && /^https:\/\/leadkamer\.app\.n8n\.cloud\/webhook\/[a-z0-9-]+$/.test(DATA_ENDPOINT)) ENDPOINT = DATA_ENDPOINT;
 
   var WA_ICOON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2Zm0 17.7c-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.1-.3Z"/></svg>';
 
@@ -702,7 +707,8 @@
     var kaart = el('div', 'fxa-card');
     var kop = el('div');
     kop.appendChild(el('div', 'fxa-card-kop', d.pakket || 'Je groendak'));
-    kop.appendChild(el('div', 'fxa-card-sub', maatTekst(Number(d.m2) || 0) + ' m² · richtprijs'));
+    /* d.sub / d.totaal_label / d.cta_tekst: optioneel, voor klanten zonder m²-berekening (bijv. een verblijf) */
+    kop.appendChild(el('div', 'fxa-card-sub', d.sub ? String(d.sub) : maatTekst(Number(d.m2) || 0) + ' m² · richtprijs'));
     kaart.appendChild(kop);
 
     var lijst = el('div', 'fxa-regels');
@@ -719,7 +725,7 @@
     kaart.appendChild(lijst);
 
     var tot = el('div', 'fxa-totaal');
-    tot.appendChild(el('span', 'fxa-card-sub', 'Totaal, excl. eventuele verzendkosten'));
+    tot.appendChild(el('span', 'fxa-card-sub', d.totaal_label ? String(d.totaal_label) : 'Totaal, excl. eventuele verzendkosten'));
     tot.appendChild(el('strong', '', d.totaal || ''));
     kaart.appendChild(tot);
 
@@ -763,9 +769,11 @@
       });
       knoppen.appendChild(inWagen);
     } else if (d.link && /^https:\/\//.test(d.link)) {
-      var bestel = el('a', 'fxa-cta', 'Bestellen op de pakketpagina');
+      var bestel = el('a', 'fxa-cta', d.cta_tekst ? String(d.cta_tekst) : 'Bestellen op de pakketpagina');
       bestel.href = d.link;
-      bestel.target = '_blank';
+      var zelfdeSite = false;
+      try { zelfdeSite = new URL(d.link).hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''); } catch (e) { /* onbekend: nieuw tabblad */ }
+      bestel.target = d.sub && zelfdeSite ? '_self' : '_blank';
       bestel.rel = 'noopener';
       bestel.addEventListener('click', function () { track('bestel_geklikt', kaartDetail(d)); });
       knoppen.appendChild(bestel);
@@ -815,7 +823,9 @@
     var bot = (config && config.bot_naam) || 'de AI-assistent';
     var regels = ['Hoi! Ik had net contact met ' + bot + ' op jullie website.'];
     if (vragen.length) regels.push('Mijn vragen: ' + vragen.slice(-3).join(' / '));
-    if (prijs) {
+    if (prijs && prijs.sub) {
+      regels.push('Berekening: ' + (prijs.pakket || '') + ' (' + prijs.sub + '), richtprijs ' + (prijs.totaal || '') + '.');
+    } else if (prijs) {
       var opties = invoerTekst(prijs.invoer);
       regels.push('Berekening: ' + (prijs.pakket || 'pakket') + ', ' + maatTekst(Number(prijs.m2) || 0) + ' m²' + (opties ? ' (' + opties + ')' : '') + ', richtprijs ' + (prijs.totaal || '') + '.');
     }
@@ -834,7 +844,7 @@
   function whatsappKaart() {
     var kaart = el('div', 'fxa-card');
     var kop = el('div');
-    kop.appendChild(el('div', 'fxa-card-kop', 'App met een collega'));
+    kop.appendChild(el('div', 'fxa-card-kop', (config && config.wa_titel) || 'App met een collega'));
     kop.appendChild(el('div', 'fxa-card-sub', 'Je vraag en wat we net bespraken staan er al in. Je kunt het nog aanpassen voor je verstuurt.'));
     kaart.appendChild(kop);
     var knop = el('a', 'fxa-wa-knop');
@@ -847,7 +857,7 @@
       track('whatsapp_geklikt', 'kaart');
     });
     kaart.appendChild(knop);
-    if (config && config.telefoon) kaart.appendChild(el('div', 'fxa-hint', 'Bellen kan ook: ' + config.telefoon + '. We reageren tijdens kantoortijden.'));
+    if (config && config.telefoon) kaart.appendChild(el('div', 'fxa-hint', 'Bellen kan ook: ' + config.telefoon + '. ' + (config.wa_noot || 'We reageren tijdens kantoortijden.')));
     return kaart;
   }
 
