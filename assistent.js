@@ -868,9 +868,43 @@
     track('whatsapp_geklikt', 'kop');
   });
 
+  /* Algemene lijstkaart (bijv. een dagplanning): { titel, sub, regels: [{ naam, det, rechts }], knop: { tekst, link } } */
+  function lijstKaart(item) {
+    var d = item.data || {};
+    var kaart = el('div', 'fxa-card');
+    var kop = el('div');
+    kop.appendChild(el('div', 'fxa-card-kop', String(d.titel || '')));
+    if (d.sub) kop.appendChild(el('div', 'fxa-card-sub', String(d.sub)));
+    kaart.appendChild(kop);
+    var lijst = el('div', 'fxa-regels');
+    (Array.isArray(d.regels) ? d.regels : []).slice(0, 14).forEach(function (r) {
+      var rij = el('div', 'fxa-regel');
+      var naam = el('span', 'fxa-regel-naam');
+      naam.appendChild(document.createTextNode(String(r.naam || '')));
+      if (r.det) naam.appendChild(el('span', 'fxa-regel-det', String(r.det)));
+      rij.appendChild(naam);
+      rij.appendChild(el('span', 'fxa-regel-bedrag', String(r.rechts || '')));
+      lijst.appendChild(rij);
+    });
+    kaart.appendChild(lijst);
+    if (d.knop && /^https:\/\//.test(String(d.knop.link || ''))) {
+      var knoppen = el('div', 'fxa-knoppen');
+      var a = el('a', 'fxa-cta', String(d.knop.tekst || 'Bekijken'));
+      a.href = d.knop.link;
+      var zelfde = false;
+      try { zelfde = new URL(d.knop.link).hostname.replace(/^www\./, '') === location.hostname.replace(/^www\./, ''); } catch (e) { /* nieuw tabblad */ }
+      a.target = zelfde ? '_self' : '_blank';
+      a.rel = 'noopener';
+      a.addEventListener('click', function () { track('lijstkaart_geklikt', String(d.titel || '')); });
+      knoppen.appendChild(a);
+      kaart.appendChild(knoppen);
+    }
+    return kaart;
+  }
+
   function addKaart(soort, data, skipSave, bestaand) {
     var item = bestaand || { rol: 'kaart', soort: soort, data: data, id: kaartId() };
-    var kaart = soort === 'prijs' ? prijsKaart(item) : (soort === 'whatsapp' ? whatsappKaart() : wizardKaart(item));
+    var kaart = soort === 'prijs' ? prijsKaart(item) : (soort === 'whatsapp' ? whatsappKaart() : (soort === 'lijst' ? lijstKaart(item) : wizardKaart(item)));
     msgsEl.appendChild(kaart);
     if (!skipSave) {
       /* Bij een nieuwe kaart naar Brams tekst erboven scrollen, niet naar de
@@ -885,7 +919,7 @@
       var h = loadHistory();
       h.push(item);
       saveHistory(h);
-      track({ prijs: 'prijskaart_getoond', wizard: 'wizard_getoond', whatsapp: 'whatsapp_getoond' }[soort] || 'kaart_getoond', data ? kaartDetail(data) : '');
+      track({ prijs: 'prijskaart_getoond', wizard: 'wizard_getoond', whatsapp: 'whatsapp_getoond', lijst: 'lijstkaart_getoond' }[soort] || 'kaart_getoond', data ? kaartDetail(data) : '');
       /* Signaal voor de pagina eromheen (de testomgeving volgt hiermee het pakket) */
       try {
         window.dispatchEvent(new CustomEvent('fxa:kaart', { detail: { soort: soort, product_id: (data && data.product_id) || '', link: (data && data.link) || '' } }));
@@ -1074,6 +1108,12 @@
 
   /* opdracht/toon: de invulkaart stuurt een volledige opdracht naar de bot,
      maar toont de klant een korte samenvatting van wat hij invulde. */
+  /* Optioneel: de pagina kan extra context meegeven via window.FXA_CONTEXT = function () { return 'tekst'; }
+     (bijv. de huidige reisplanning). Max. 1500 tekens. */
+  function paginaContextExtra() {
+    try { return typeof window.FXA_CONTEXT === 'function' ? String(window.FXA_CONTEXT() || '').slice(0, 1500) : ''; } catch (e) { return ''; }
+  }
+
   function send(bron, opdracht, toon) {
     var vraag = opdracht ? String(opdracht) : inputEl.value.trim();
     if (!vraag || busy) return;
@@ -1097,7 +1137,8 @@
       winkel: WINKEL, actie: 'chat', vraag: vraag, sessie: sessieId(), pagina: paginaPad(),
       pagina_titel: String(document.title || '').slice(0, 150),
       pagina_info: info ? (String(info.samenvatting || '') + (info.product_id ? ' (product-id ' + info.product_id + ')' : '')).slice(0, 400) : '',
-      ballon: geklikt.slice(0, 150)
+      ballon: geklikt.slice(0, 150),
+      context: paginaContextExtra()
     })
       .then(function (data) {
         hideTyping();
@@ -1105,7 +1146,12 @@
         addMsg('bot', data.antwoord || 'Hmm, daar heb ik even geen antwoord op.');
         if (data.berekening && Array.isArray(data.berekening.regels)) addKaart('prijs', data.berekening);
         else if (data.wizard && data.wizard.product_id) addKaart('wizard', data.wizard);
+        if (data.lijst && Array.isArray(data.lijst.regels)) addKaart('lijst', data.lijst);
         if (data.whatsapp && waBasis()) addKaart('whatsapp', {});
+        /* Actie voor de pagina zelf (bijv. de reisplanner van LaMikasa vult de kaart) */
+        if (data.actie && data.actie.type) {
+          try { window.dispatchEvent(new CustomEvent('fxa:actie', { detail: data.actie })); } catch (e) { /* oude browser */ }
+        }
         var vervolg = Array.isArray(data.vervolg) ? data.vervolg.slice(0, 3) : [];
         saveVervolg(vervolg);
         renderChips(vervolg, 'vervolg');
