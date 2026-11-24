@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Considerans · Jurisprudentietool</title>
+<title>Wetweter · Jurisprudentietool</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -300,7 +300,7 @@
 <div class="app" id="app">
   <aside class="side" id="side">
     <div class="brand">
-      <div class="wordmark">Considerans<span class="dot">.</span></div>
+      <div class="wordmark">Wetweter<span class="dot">.</span></div>
       <div class="sub">Jurisprudentietool &middot; pilot</div>
     </div>
     <div class="nav">
@@ -925,7 +925,7 @@
     }
     var tool = document.createElement('div');
     tool.className = 'ans tool';
-    tool.innerHTML = '<div class="ans-head"><span class="who">Considerans</span><span class="model-name">Claude Sonnet 5 &middot; met bronnen</span><span class="tag tool">jurisprudentietool</span></div>' +
+    tool.innerHTML = '<div class="ans-head"><span class="who">Wetweter</span><span class="model-name">Claude Sonnet 5 &middot; met bronnen</span><span class="tag tool">jurisprudentietool</span></div>' +
       '<div class="ans-body">' +
       '<div class="phase busy" data-p="1"><span class="pm">&#9679;</span><span>Stukken pseudonimiseren (namen, BSN, IBAN, contactgegevens)</span></div>' +
       '<div class="phase" data-p="2"><span class="pm">&middot;</span><span>Zoekstrategie bepalen en rechtspraak.nl doorzoeken</span></div>' +
@@ -1211,7 +1211,7 @@
       kids.push(new D.Paragraph({ children: ch, spacing: { after: 80 } }));
     }
     kids.push(new D.Paragraph({ text: n.titel || 'Dossiernotitie', heading: D.HeadingLevel.HEADING_1 }));
-    kids.push(new D.Paragraph({ children: [new D.TextRun({ text: 'Conceptnotitie · ' + new Date(m.gegenereerd || Date.now()).toLocaleString('nl-NL') + ' · gegenereerd met Considerans, ter controle door de behandelend advocaat', italics: true, size: 18 })], spacing: { after: 240 } }));
+    kids.push(new D.Paragraph({ children: [new D.TextRun({ text: 'Conceptnotitie · ' + new Date(m.gegenereerd || Date.now()).toLocaleString('nl-NL') + ' · gegenereerd met Wetweter, ter controle door de behandelend advocaat', italics: true, size: 18 })], spacing: { after: 240 } }));
     if (n.antwoord) { H('Antwoord'); P(n.antwoord); }
     if (n.citaten && n.citaten.length) { H('Uit het dossier'); n.citaten.forEach(function (c) { kids.push(new D.Paragraph({ children: [new D.TextRun({ text: '“' + c.passage + '”', italics: true }), new D.TextRun(' (' + c.document + ')')], spacing: { after: 80 } })); }); }
     H('Samenvatting'); P(n.samenvatting);
@@ -1228,7 +1228,7 @@
     H('Vervolgstappen'); B(n.vervolgstappen);
     H('Ontbrekende informatie'); B(n.ontbrekende_informatie);
     kids.push(new D.Paragraph({ children: [new D.TextRun({ text: m.disclaimer || '', italics: true, size: 18 })], spacing: { before: 240 } }));
-    var doc = new D.Document({ creator: 'Considerans', title: n.titel || 'Dossiernotitie', sections: [{ children: kids }] });
+    var doc = new D.Document({ creator: 'Wetweter', title: n.titel || 'Dossiernotitie', sections: [{ children: kids }] });
     D.Packer.toBlob(doc).then(function (blob) {
       var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
