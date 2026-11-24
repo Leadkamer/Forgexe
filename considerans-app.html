@@ -91,7 +91,7 @@
   .sugg button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 9px 14px; font-size: 15.5px; cursor: pointer; text-align: left; max-width: 100%; }
   .sugg button:hover { border-color: var(--mint-deep); background: var(--mint-wash); }
   .sugg svg { width: 15px; height: 15px; flex: none; color: var(--ink-faint); }
-  .rg-tabs { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px; background: var(--surface-2); border-radius: 10px; padding: 4px; margin-bottom: 18px; }
+  .rg-tabs { display: inline-grid; grid-template-columns: repeat(3, auto); gap: 4px; background: var(--surface-2); border-radius: 10px; padding: 4px; margin-bottom: 18px; }
   .rg-tabs button { border: 0; background: none; border-radius: 7px; padding: 7px 14px; font-size: 15.5px; cursor: pointer; color: var(--ink-soft); }
   .rg-tabs button:hover { color: var(--ink); }
   .rg-tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: 0 1px 3px rgba(18,40,58,.12); }
@@ -289,7 +289,8 @@
     .prose { font-size: 17px; }
     .empty { padding-top: 3vh; }
     .cats { grid-template-columns: minmax(0, 1fr); }
-    .rg-tabs { gap: 2px; padding: 3px; }
+    .rg-tabs { gap: 2px; padding: 3px; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+    .rg-tabs button { white-space: normal; line-height: 1.25; }
     .rg-tabs button { font-size: 14.5px; padding: 6px 9px; }
   }
   .scrim.show { display: block; position: fixed; inset: 0; background: rgba(10,20,28,.35); z-index: 25; }
@@ -527,6 +528,63 @@
         ]]
       ]
     },
+    asiel: {
+      naam: 'Asiel- en vluchtelingenrecht', wet: 'Wetten.overheid.nl, actuele tekst Vw 2000, Vb 2000, VV 2000 en Awb', pill: 'Rechtspraak.nl · Vw + Awb',
+      cats: [
+        ['De asielprocedure', [
+          ['Aanvraag en gehoor', ['Melden, registreren en indienen van de asielaanvraag', 'Screening bij binnenkomst (Screeningsverordening)', 'Aanmeldgehoor en nader gehoor', 'Asielgrensprocedure en versnelde procedure']],
+          ['Beoordeling van het relaas', ['Geloofwaardigheid van het asielrelaas', 'Bewijslast en medisch onderzoek naar littekens of trauma', 'Identiteit, nationaliteit en taalanalyse', 'Voornemen en zienswijze']],
+          ['Opvolgende aanvragen', ['Nieuwe elementen of bevindingen', 'Niet-ontvankelijkheid van een opvolgende aanvraag']]
+        ]],
+        ['Gronden voor bescherming', [
+          ['Vluchtelingschap', ['Gegronde vrees voor vervolging (Vluchtelingenverdrag)', 'Vervolgingsgronden: ras, religie, nationaliteit, politieke overtuiging, sociale groep', 'Bekering en religieuze activiteiten', 'Lhbtiq+-asielzoekers', 'Binnenlands beschermingsalternatief']],
+          ['Subsidiaire bescherming', ['Reëel risico op ernstige schade (art. 3 EVRM)', 'Uitzonderlijke situatie van willekeurig geweld', 'Medische noodsituatie en art. 3 EVRM']],
+          ['Uitsluiting en intrekking', ['Artikel 1F Vluchtelingenverdrag', 'Intrekking wegens gevaar voor de openbare orde', 'Intrekking bij veranderde omstandigheden in het land van herkomst']]
+        ]],
+        ['Verantwoordelijke lidstaat', [
+          ['Overdracht aan een andere lidstaat', ['Claim en overdracht onder de AMMR (voorheen de Dublinverordening)', 'Interstatelijk vertrouwensbeginsel en systeemfouten', 'Overdrachtstermijnen en verlopen claims', 'Gezinsleden en afhankelijke personen']],
+          ['Veilig land', ['Veilig land van herkomst', 'Veilig derde land en eerste land van asiel', 'Al bescherming in een andere lidstaat']]
+        ]],
+        ['Nareis', [
+          ['Gezinshereniging na asiel', ['Nareis van kerngezinsleden', 'Feitelijke gezinsband en identiteit van gezinsleden', 'Termijn voor de nareisaanvraag', 'Meerderjarige kinderen en afhankelijkheid']]
+        ]],
+        ['Minderjarigen en kwetsbaren', [
+          ['Alleenstaande minderjarigen', ['Leeftijdsonderzoek', 'Adequate opvang in het land van herkomst', 'Belang van het kind (art. 3 IVRK)']],
+          ['Kwetsbare personen', ['Slachtoffers van mensenhandel', 'Medische en psychische klachten tijdens het gehoor']]
+        ]],
+        ['Procesrecht en opvang', [
+          ['Beroep', ['Beroepstermijnen in asielzaken', 'Schorsende werking en voorlopige voorziening', 'Ex nunc-toetsing door de rechter', 'Hoger beroep bij de Afdeling bestuursrechtspraak']],
+          ['Opvang en beslistermijn', ['Recht op opvang tijdens de procedure', 'Dwangsom bij niet tijdig beslissen']]
+        ]]
+      ]
+    },
+    vreemdeling: {
+      naam: 'Vreemdelingenrecht', wet: 'Wetten.overheid.nl, actuele tekst Vw 2000, Vb 2000, VV 2000 en Awb', pill: 'Rechtspraak.nl · Vw + Awb',
+      cats: [
+        ['Verblijf en verblijfsvergunningen', [
+          ['Toelating', ['Machtiging tot voorlopig verblijf (mvv)', 'Verblijfsvergunning regulier: voorwaarden en beperkingen', 'Middelenvereiste', 'Inburgeringsvereiste in het buitenland']],
+          ['Verlenging en intrekking', ['Verlenging van de verblijfsvergunning', 'Intrekking wegens openbare orde (glijdende schaal)', 'Duurzaam verblijf en EU-langdurig ingezetene']]
+        ]],
+        ['Gezin en privéleven', [
+          ['Gezinsmigratie', ['Gezinshereniging en gezinsvorming', 'Referentvereisten: inkomen en leeftijd', 'Art. 8 EVRM: familie- en gezinsleven', 'Art. 8 EVRM: privéleven na langdurig verblijf']],
+          ['Kinderen', ['Verblijf bij een Nederlands kind (Chavez-Vilchez)', 'Belang van het kind bij weigering of uitzetting']]
+        ]],
+        ['Arbeid en studie', [
+          ['Arbeidsmigratie', ['Kennismigranten', 'Tewerkstellingsvergunning (Wav)', 'Zelfstandige ondernemers', 'Seizoensarbeid en overplaatsing binnen een concern']],
+          ['Studie', ['Studie en het zoekjaar hoogopgeleiden']]
+        ]],
+        ['EU-burgers en Unierecht', [
+          ['Vrij verkeer', ['Verblijfsrecht van EU-burgers en hun familieleden', 'Afgeleid verblijfsrecht (Zambrano, Chavez-Vilchez)', 'Associatierecht EU-Turkije', 'Brexit en het terugtrekkingsakkoord']]
+        ]],
+        ['Toezicht, bewaring en terugkeer', [
+          ['Vrijheidsontneming', ['Ophouding voor vaststelling van identiteit', 'Vreemdelingenbewaring (art. 59 Vw 2000)', 'Zicht op uitzetting en voortvarendheid', 'Een lichter middel dan bewaring']],
+          ['Terugkeer', ['Terugkeerbesluit en vertrektermijn', 'Inreisverbod en ongewenstverklaring', 'Uitstel van vertrek om medische redenen (art. 64 Vw 2000)']]
+        ]],
+        ['Procedure en rechtsbescherming', [
+          ['Bezwaar en beroep', ['Bezwaar en beroep in reguliere zaken', 'Voorlopige voorziening tegen uitzetting', 'Leges en niet-ontvankelijkheid', 'Dwangsom bij niet tijdig beslissen']]
+        ]]
+      ]
+    },
     /* sleutel 'civiel': de workflow zoekt dan in BW Boek 6 en 7 */
     civiel: {
       naam: 'Huurrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 7 (huur) en Boek 6', pill: 'Rechtspraak.nl · BW 7 + 6',
@@ -560,7 +618,7 @@
       ]
     }
   };
-  var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf', 'civiel'];
+  var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf', 'civiel', 'asiel', 'vreemdeling'];
   var rg = 'arbeid';
   var topic = null;
   var openSecs = {};
@@ -1087,8 +1145,10 @@
     /* verkorte vorm in de lopende tekst: HR:2017:1162 */
     html = html.replace(/(?<![A-Z:])([A-Z]{2,6}:\d{4}:[A-Z0-9]+)\b/g, function (m, k) { var e = 'ECLI:NL:' + k; return uit[e] ? link(uit[e], m) : m; });
     html = html.replace(/(art(?:ikel)?\.?\s*)([167]:\d+[a-z]?)(\s*BW)/gi, function (m, a, k) { var u = art[k.toLowerCase() + ' bw']; return u ? link(u, m) : m; });
-    html = html.replace(/(art(?:ikel)?\.?\s*)(\d+[a-z]{0,9})((?:\s*lid\s*\d+)?\s*)(Sr|Sv|Opiumwet|WVW(?: 1994)?|WVPS)\b/g, function (m, a, nr, l, w) {
-      var wl = w.toLowerCase() === 'wvw' ? 'wvw 1994' : w.toLowerCase();
+    /* 41 Sr, 29 Vw 2000, 3.6a Vb 2000, 8:72 Awb, ook met "eerste lid" ertussen */
+    var VOLUIT = { wvw: 'wvw 1994', vw: 'vw 2000', vb: 'vb 2000', vv: 'vv 2000' };
+    html = html.replace(/(art(?:ikel)?\.?\s*)(\d+[a-z]{0,9}(?:[.:]\d+[a-z]{0,9})*)((?:\s*,?\s*(?:lid\s*\d+|(?:eerste|tweede|derde|vierde|vijfde)\s+lid),?)?\s*)(Sr|Sv|Opiumwet|WVW(?: 1994)?|WVPS|Vw(?: 2000)?|Vb(?: 2000)?|VV(?: 2000)?|Awb)\b/g, function (m, a, nr, l, w) {
+      var wl = VOLUIT[w.toLowerCase()] || w.toLowerCase();
       var u = art[nr.toLowerCase() + ' ' + wl];
       return u ? link(u, m) : m;
     });
