@@ -7,9 +7,9 @@ Home Over ons Diensten Branches Cases Prijzen Blog
 Contact
 Gratis bedrijfsscan
 x Home Over ons Diensten Branches Cases Prijzen Blog Contact
-Laatst bijgewerkt: 1 januari 2026
+Laatst bijgewerkt: 24 november 2026
 Artikel 1 - Definities
-De Opdrachtnemer: Forgexe, AI-automatiseringsbedrijf gevestigd in Maastricht en ingeschreven bij de Kamer van Koophandel onder nummer 83002677.
+De Opdrachtnemer: Forgexe, AI-automatiseringsbedrijf gevestigd in Panningen en ingeschreven bij de Kamer van Koophandel onder nummer 83002677.
 De Opdrachtgever: De natuurlijke- of rechtspersoon welke met Opdrachtnemer (Forgexe) enige schriftelijke en/of mondelinge, al dan niet aanvullende overeenkomst heeft gesloten met Forgexe, gebruik maakt van de diensten welke Forgexe aanbiedt of aan wie Forgexe een offerte heeft uitgebracht waarop deze Algemene Voorwaarden van toepassing zijn.
 Diensten: De diensten welke Forgexe aanbiedt. Onder andere, maar niet beperkt tot: AI-automations, AI-agents, geautomatiseerde workflows, data-enrichment, lead scoring, social media marketing en optimalisatie, website development en design, online leadgeneratie, zoekmachinemarketing en -optimalisatie, consultancy, Google Ads, e-mailmarketingcampagnes en aanverwante AI-diensten.
 Overeenkomst: De overeenkomst welke gesloten wordt ten behoeve van het gebruik van de door Forgexe aangeboden diensten.
@@ -33,7 +33,9 @@ Opdrachtnemer zal de overeengekomen diensten naar beste inzicht, kennis, vermoge
 Wijzigingen en aanvullingen op een overeenkomst gelden slechts indien Opdrachtnemer ze schriftelijk vastlegt.
 Artikel 7 - Ontbinding en opzegging
 Opdrachtnemer is bevoegd de nakoming op te schorten of de overeenkomst te ontbinden indien de Opdrachtgever zijn verplichtingen niet, onvolledig of niet tijdig nakomt.
-Bij overeenkomsten met een onbepaalde looptijd dient de Opdrachtgever een opzegtermijn van één (1) maand in acht te nemen. Een overeenkomst voor bepaalde tijd is niet tussentijds opzegbaar en wordt na afloop automatisch verlengd voor eenzelfde periode, behoudens opzegging met inachtneming van een opzegtermijn van twee (2) servicemaanden.
+Een overeenkomst voor bepaalde tijd is niet tussentijds opzegbaar. Na afloop van de bepaalde tijd wordt de overeenkomst omgezet in een overeenkomst voor onbepaalde tijd, tenzij een van de partijen de overeenkomst uiterlijk drie (3) maanden voor het einde van de bepaalde tijd schriftelijk heeft opgezegd.
+Een overeenkomst voor onbepaalde tijd kan door beide partijen worden opgezegd met inachtneming van een opzegtermijn van drie (3) maanden.
+Het bepaalde in dit artikel geldt tenzij partijen schriftelijk anders zijn overeengekomen.
 Indien de Opdrachtgever een overeenkomst opzegt, dient hij de gemaakte kosten met betrekking tot de tot dan verrichte werkzaamheden integraal te betalen.
 Artikel 8 - Aard van de AI-dienstverlening
 Forgexe levert AI-diensten op basis van een inspanningsverplichting. Forgexe garandeert geen specifieke resultaten, conversieverhoudingen of aantallen gegenereerde leads, tenzij schriftelijk anders overeengekomen.
@@ -45,7 +47,7 @@ Wijzigingen in API-limieten, tarieven of beschikbaarheid van Derde Partij Platfo
 Artikel 10 - Aansprakelijkheid voor AI-output
 AI-output wordt gegenereerd op basis van statistische modellen en kan fouten, onnauwkeurigheden of verouderde informatie bevatten. Forgexe is niet aansprakelijk voor schade die voortvloeit uit het gebruik van AI-output zonder adequate verificatie door de Opdrachtgever.
 De Opdrachtgever is verantwoordelijk voor het instellen van adequate controle- en goedkeuringsprocessen bij het gebruik van AI-agents die namens hem communiceren of handelingen verrichten.
-De totale aansprakelijkheid van Forgexe voor schade voortvloeiend uit AI-diensten is beperkt tot het bedrag dat één (1) maand voorafgaand aan de schadeveroorzakende gebeurtenis door de Opdrachtgever is betaald voor de betreffende AI-dienst.
+De totale aansprakelijkheid van Forgexe voor schade voortvloeiend uit AI-diensten is beperkt tot een bedrag gelijk aan twee (2) maandtermijnen van de betreffende AI-dienst.
 Artikel 11 - Acceptabel gebruik en compliance
 Opdrachtgever is verantwoordelijk voor het gebruik van de geleverde AI-diensten in overeenstemming met alle toepasselijke wet- en regelgeving, waaronder de AVG, de Telecommunicatiewet en de ePrivacy-verordening.
 Het is Opdrachtgever niet toegestaan de AI-diensten te gebruiken voor:
@@ -58,7 +60,7 @@ Artikel 12 - Continuïteit en onderhoud AI-diensten
 Forgexe spant zich in om overeengekomen AI-workflows en agents operationeel te houden. Bij storingen zal Forgexe zich inspannen om deze binnen een redelijke termijn te verhelpen.
 Forgexe is niet aansprakelijk voor downtime of verminderde functionaliteit als gevolg van gepland of ongepland onderhoud door Derde Partij Platforms.
 Artikel 13 - Intellectuele eigendommen
-Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten, waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen, blijven te allen tijde eigendom van Opdrachtnemer.
+Alle intellectuele eigendomsrechten op door Opdrachtnemer ontwikkelde materialen en diensten, waaronder documenten, rapportages, workflows, agent-architecturen, systeem-prompts en scoringsmodellen, blijven eigendom van Opdrachtnemer, tenzij partijen in een samenwerkingsovereenkomst of andere schriftelijke overeenkomst anders zijn overeengekomen.
 AI-output die specifiek is gegenereerd op basis van data en instructies van de Opdrachtgever is eigendom van de Opdrachtgever, mits alle betalingsverplichtingen zijn nagekomen.
 Forgexe behoudt het recht om generieke methodologieën en best practices opnieuw te gebruiken voor andere opdrachtgevers, zonder dat daarbij vertrouwelijke informatie wordt gedeeld.
 Bij overtreding van dit artikel is Opdrachtgever een boete verschuldigd van tweeduizend euro (€ 2.000,-) per overtreding, naast eventuele schadevergoeding.
@@ -67,7 +69,7 @@ Voor zover Forgexe persoonsgegevens verwerkt namens de Opdrachtgever, handelt Fo
 Opdrachtgever garandeert dat aangeleverde data rechtmatig is verkregen. Forgexe verwerkt persoonsgegevens uitsluitend voor de uitvoering van de overeengekomen diensten.
 Na beëindiging van de overeenkomst worden persoonsgegevens op verzoek teruggeleverd. Zonder verzoek worden gegevens binnen zes (6) maanden permanent vernietigd.
 Artikel 15 - Aansprakelijkheid
-De aansprakelijkheid van Opdrachtnemer is beperkt tot maximaal de factuurwaarde van de order waarop de aansprakelijkheid betrekking heeft. Niet voor vergoeding in aanmerking komt: indirecte schade, gevolgschade, gederfde winst en omzetderving.
+De aansprakelijkheid van Opdrachtnemer is beperkt tot maximaal twee (2) maandtermijnen van de dienst waarop de aansprakelijkheid betrekking heeft. Bij eenmalige opdrachten is de aansprakelijkheid beperkt tot maximaal de factuurwaarde van de betreffende opdracht. Niet voor vergoeding in aanmerking komt: indirecte schade, gevolgschade, gederfde winst en omzetderving.
 Iedere vordering tot schadevergoeding vervalt door het verloop van twaalf (12) maanden na het ontstaan van de vordering.
 Artikel 16 - Overmacht
 Opdrachtnemer is niet aansprakelijk voor schade als gevolg van overmacht. Onder overmacht wordt mede verstaan: oorlog, overstroming, brand, bedrijfsstoornissen, storingen in internetverbindingen, uitval van elektriciteit, maatregelen van overheidswege, niet-levering door derden, ziekte van medewerkers, en API-wijzigingen, uitval of beleidswijzigingen van Derde Partij Platforms.
@@ -75,7 +77,8 @@ Indien de overmachtssituatie langer duurt dan één (1) maand, zijn partijen ger
 Artikel 17 - Offertes en aanbiedingen
 Aanbiedingen en offertes zijn vrijblijvend en geldig gedurende veertien (14) dagen, tenzij anders aangegeven. Prijzen zijn exclusief BTW.
 Artikel 18 - Vrijwaring
-Opdrachtgever vrijwaart Opdrachtnemer geheel en onvoorwaardelijk tegen alle aanspraken van derden tot vergoeding van schade, behoudens opzet of grove schuld aan de zijde van Opdrachtnemer.
+Opdrachtgever vrijwaart Opdrachtnemer tegen aanspraken van derden tot vergoeding van schade, voor zover die aanspraken aantoonbaar het gevolg zijn van handelen of nalaten van de Opdrachtgever. Deze vrijwaring geldt niet voor zover de schade geheel of gedeeltelijk het gevolg is van een tekortkoming of onrechtmatig handelen van Opdrachtnemer.
+De aansprakelijkheid van Opdrachtnemer blijft in alle gevallen beperkt overeenkomstig artikel 10 en artikel 15.
 Artikel 19 - Klachten
 Klachten dienen direct na ontdekking schriftelijk aan Forgexe te worden gemeld. Indien geen expliciete garantietermijn is overeengekomen, geldt een termijn van zes (6) maanden na levering.
 Artikel 20 - Toepasselijk recht
