@@ -99,9 +99,19 @@
   .indeling-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; margin-bottom: 10px; }
   .indeling-head h3 { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; }
   .indeling-head p { font-size: 14px; color: var(--ink-faint); margin: 0; }
-  .cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; }
+  .sec-h { display: flex; gap: 9px; align-items: baseline; width: 100%; background: none; border: 0; border-top: 1px solid var(--line); padding: 8px 2px; font-size: 14.5px; line-height: 1.4; text-align: left; cursor: pointer; color: var(--ink); }
+  .sec-i:first-child .sec-h { border-top: 0; }
+  .sec-h:hover .stt { color: var(--mint-deep); }
+  .sec-h:disabled { cursor: default; }
+  .sec-h:disabled:hover .stt { color: inherit; }
+  .sec-h .snr { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); flex: none; min-width: 2.2em; }
+  .sec-h .cnt { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); flex: none; border: 1px solid var(--line); border-radius: 99px; padding: 0 7px; }
+  .sec-i.open .cnt { background: var(--mint-wash); border-color: transparent; color: var(--mint-deep); }
+  .sec-i .subs { flex-direction: column; flex-wrap: nowrap; gap: 4px; padding: 2px 0 12px 2px; }
+  .sec-i .subs button { border-radius: 8px; width: 100%; padding: 6px 10px; }
   .cat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px 12px; }
-  .cat h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+  .cat h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 4px; display: flex; gap: 8px; align-items: baseline; }
   .cat h4 .nr { font-family: var(--mono); font-size: 12.5px; color: var(--mint-deep); }
   .subs { display: flex; flex-wrap: wrap; gap: 6px; }
   .subs button { border: 1px solid var(--line); background: var(--paper); border-radius: 99px; padding: 4px 10px; font-size: 14px; line-height: 1.4; cursor: pointer; color: var(--ink-soft); text-align: left; }
@@ -405,48 +415,155 @@
   var code = '';
   var nextId = 1;
 
-  /* ── Rechtsgebieden en indeling: eerst het overzicht, dan per onderdeel gericht zoeken ── */
+  /* ── Rechtsgebieden en indeling (definitieve indeling jurisprudentieonderzoek, nov 2026):
+        hoofdcategorie › onderdeel › onderwerp ── */
   var RG = {
     arbeid: {
       naam: 'Arbeidsrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 7 (arbeidsovereenkomst) en Boek 6', pill: 'Rechtspraak.nl · BW 7 + 6',
       cats: [
-        ['Ontslag en ontbinding', ['Ontslag op staande voet', 'Ontbinding door de kantonrechter', 'Disfunctioneren en verstoorde arbeidsverhouding', 'Cumulatiegrond (i-grond)', 'Ontslag via het UWV', 'Beëindigingsovereenkomst en bedenktermijn', 'Opzegverboden']],
-        ['Vergoedingen', ['Transitievergoeding', 'Billijke vergoeding', 'Ernstig verwijtbaar handelen werkgever', 'Gefixeerde schadevergoeding', 'Aanzegvergoeding']],
-        ['Het contract', ['Arbeidsovereenkomst of opdracht', 'Proeftijd', 'Ketenregeling en tijdelijke contracten', 'Concurrentie- en relatiebeding', 'Eenzijdige wijziging arbeidsvoorwaarden', 'Oproep- en nulurencontracten']],
-        ['Loon en ziekte', ['Loondoorbetaling bij ziekte', 'Re-integratie en loonsanctie', 'Loonvordering en wettelijke verhoging', 'Vakantiedagen en vakantiegeld', 'Loonopschorting en loonstop']],
-        ['Overige', ['Werkgeversaansprakelijkheid', 'Overgang van onderneming', 'Privacy en controle op het werk', 'Gelijke behandeling', 'Uitzendwerk en detachering']]
+        ['Ontslag en ontbinding', [
+          ['Redelijke gronden (art. 7:669 lid 3 BW)', ['a-grond: bedrijfseconomische redenen (reorganisatie, afspiegeling, vervallen arbeidsplaats)', 'b-grond: langdurige arbeidsongeschiktheid (na 104 weken)', 'c-grond: frequent ziekteverzuim', 'd-grond: disfunctioneren (verbetertraject, dossier)', 'e-grond: verwijtbaar handelen of nalaten van de werknemer', 'f-grond: werkweigering wegens gewetensbezwaar', 'g-grond: verstoorde arbeidsverhouding', 'h-grond: overige omstandigheden (restgrond)', 'i-grond: cumulatiegrond (combinatie van gronden)', 'Herplaatsingsverplichting (art. 7:669 lid 1 BW)']],
+          ['Ontslagroutes', ['Opzegging na toestemming van het UWV (art. 7:671a BW), vooral bij de a- en b-grond', 'Ontbinding door de kantonrechter op verzoek van de werkgever (art. 7:671b BW)', 'Ontbinding op verzoek van de werknemer (art. 7:671c BW)', 'Opzegging met instemming van de werknemer, inclusief de bedenktermijn (art. 7:671 BW)', 'Beëindiging met wederzijds goedvinden, de vaststellingsovereenkomst (art. 7:900 BW)', 'Ontslag op staande voet: dringende reden en onverwijldheid (art. 7:677-7:679 BW)', 'Opzegging tijdens de proeftijd (art. 7:652 BW)', 'Einde van rechtswege van een tijdelijk contract, ketenregeling en aanzegging (art. 7:667-7:668 BW)']],
+          ['Opzegverboden en bijzondere bescherming', ['Ziekte, zwangerschap, OR-lidmaatschap en dergelijke (art. 7:670 BW)', 'Discriminatie- en benadelingsverboden (art. 7:670 lid 1-10, art. 7:681 BW)']],
+          ['Financiële gevolgen', ['Transitievergoeding (art. 7:673 BW), inclusief de compensatieregeling bij langdurige ziekte', 'Billijke vergoeding bij ernstig verwijtbaar handelen van de werkgever (art. 7:671b lid 9, 7:681, 7:683 BW); New Hairstyle, ECLI:NL:HR:2017:1187', 'Verval van de transitievergoeding bij ernstig verwijtbaar handelen van de werknemer', 'Gefixeerde schadevergoeding en de onregelmatige opzegtermijn (art. 7:672 en 7:677 BW)']],
+          ['Procesrecht en rechtsmiddelen', ['Herstel van de arbeidsovereenkomst en vernietiging van de opzegging (art. 7:681-7:683 BW)', 'Vervaltermijnen van twee maanden (art. 7:686a BW)', 'Hoger beroep en cassatie']]
+        ]],
+        ['Vergoedingen', [
+          ['Transitievergoeding (art. 7:673 BW)', ['Recht op de vergoeding vanaf de eerste werkdag, bij beëindiging op initiatief van de werkgever', 'Recht bij beëindiging op initiatief van de werknemer, als de werkgever ernstig verwijtbaar heeft gehandeld (art. 7:673 lid 1 sub b BW)', 'Het loonbegrip: variabel loon, bonussen en overwerk (art. 7:673 lid 2 BW en het Besluit loonbegrippen)', 'Diensttijd en samentellen van dienstverbanden bij opvolgend werkgeverschap (art. 7:673 lid 4 BW)', 'Het wettelijk maximum van de transitievergoeding', 'Uitzonderingen en verval: ernstig verwijtbaar handelen werknemer, AOW-leeftijd, jongeren, faillissement (art. 7:673 lid 7 en 7:673c BW)', 'Verrekening van transitie- en inzetbaarheidskosten (Besluit voorwaarden verrekening)', 'Gelijkwaardige voorziening in een cao of sociaal plan (art. 7:673b BW)', 'Compensatie voor de werkgever na ontslag wegens langdurige arbeidsongeschiktheid (art. 7:673e BW)', 'Slapend dienstverband (HR Xella, ECLI:NL:HR:2019:1734)']],
+          ['Billijke vergoeding', ['Ontbinding op verzoek van de werkgever met ernstig verwijtbaar handelen van de werkgever (art. 7:671b lid 9 BW)', 'Ontbinding op verzoek van de werknemer (art. 7:671c lid 2 BW)', 'Vernietigbare opzegging of onterecht ontslag op staande voet (art. 7:681 BW)', 'Einde van rechtswege of schending van de aanzeg- of herplaatsingsregels (art. 7:682 lid 1 BW)', 'Vergoeding in plaats van herstel in hoger beroep (art. 7:683 lid 3 BW; ECLI:NL:HR:2018:857)', 'Begroting: de New Hairstyle-gezichtspunten (ECLI:NL:HR:2017:1187)', 'Inkomensschade, kans op ander werk, WW-duur en de fictieve opzegtermijn', 'Verhouding tot de transitievergoeding en het meewegen ervan', 'Eigen schuld van de werknemer', 'Extra vergoeding bij ontbinding op de i-grond (art. 7:671b lid 8 BW, maximaal 50% van de transitievergoeding)']],
+          ['Gefixeerde schadevergoeding', ['Onregelmatige opzegging, opzegtermijn niet in acht genomen (art. 7:672 lid 10 BW)', 'Onterecht ontslag op staande voet (art. 7:677 lid 2-4 BW)', 'Verschuldigd door de werknemer bij een dringende reden of onregelmatige opzegging', 'Matiging door de rechter (art. 7:680a BW)']],
+          ['Vergoeding wegens schending van de aanzegplicht (art. 7:668 lid 3 BW)', ['Wel of niet aangezegd, te laat aangezegd, en de pro-rata-vergoeding']],
+          ['Aanverwante vergoedingen in ontslagzaken', ['Schadevergoeding wegens strijd met goed werkgeverschap (art. 7:611 BW)', 'Uitbetaling van vakantiedagen bij het einde van het dienstverband (art. 7:641 BW)', 'Vergoeding bij een concurrentiebeding (art. 7:653 lid 5 BW)', 'Vergoedingen in een vaststellingsovereenkomst: uitleg en dwaling']]
+        ]],
+        ['Het contract', [
+          ['Kwalificatie: is er een arbeidsovereenkomst?', ['De elementen: arbeid, loon, gezag en persoonlijke arbeid (art. 7:610 BW)', 'Arbeidsovereenkomst of opdracht, zzp en schijnzelfstandigheid (HR Deliveroo, ECLI:NL:HR:2023:443)', 'Partijbedoeling en uitleg van het contract (Haviltex-maatstaf)', 'Rechtsvermoeden van een arbeidsovereenkomst (art. 7:610a BW)']],
+          ['Soorten contracten', ['Bepaalde of onbepaalde tijd, en de ketenregeling (art. 7:668a BW)', 'Oproepcontracten: nulurencontract, min-maxcontract en het rechtsvermoeden van arbeidsomvang (art. 7:628a en 7:610b BW)', 'Uitzendovereenkomst (art. 7:690 e.v. BW)', 'Payrolling (art. 7:692 BW)', 'Opvolgend werkgeverschap']],
+          ['Totstandkoming en de beginfase', ['Proeftijd: geldigheid, schriftelijkheid en duur (art. 7:652 BW)', 'Aanbod en aanvaarding, en een ingetrokken aanbod', 'Informatieplicht van de werkgever (art. 7:655 BW)']],
+          ['Bedingen in het contract', ['Concurrentie- en relatiebeding: schriftelijkheid, motivering bij een tijdelijk contract en matiging (art. 7:653 BW)', 'Geheimhoudingsbeding', 'Boetebeding (art. 7:650 BW)', 'Studiekostenbeding (art. 7:611a BW)', 'Nevenwerkzaamhedenbeding (art. 7:653a BW)', 'Eenzijdig wijzigingsbeding (art. 7:613 BW)']],
+          ['Wijziging van arbeidsvoorwaarden', ['Met een wijzigingsbeding (art. 7:613 BW)', 'Zonder wijzigingsbeding, via goed werknemerschap: Stoof/Mammoet (HR 2008) en Van der Lely/Taxi Hofman (HR 2015)', 'Wijziging van arbeidsduur of werkplek (Wet flexibel werken)']],
+          ['Einde van het contract van rechtswege', ['Aanzegplicht (art. 7:668 BW)', 'Voortzetting en stilzwijgende verlenging']]
+        ]],
+        ['Loon en ziekte', [
+          ['Loon en loondoorbetaling', ['Loonvordering en wettelijke verhoging (art. 7:625 BW)', 'Loon bij niet werken, de risicosfeer van de werkgever (art. 7:628 BW)', 'Loondoorbetaling bij ziekte en de loonsanctie (art. 7:629 BW)']]
+        ]],
+        ['Overige', [
+          ['Overgang van onderneming (art. 7:662 e.v. BW)', ['Wanneer er sprake is van overgang van onderneming, en welke arbeidsvoorwaarden overgaan']]
+        ]]
       ]
     },
     scheiding: {
       naam: 'Echtscheidingsrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 1 en Wet verevening pensioenrechten bij scheiding', pill: 'Rechtspraak.nl · BW 1 + WVPS',
       cats: [
-        ['De echtscheiding zelf', ['Duurzame ontwrichting en het verzoek', 'Echtscheidingsconvenant', 'Voorlopige voorzieningen', 'Gebruik van de echtelijke woning', 'Scheiding van tafel en bed', 'Ontbinding geregistreerd partnerschap']],
-        ['Vermogen en verdeling', ['Gemeenschap van goederen en peildatum', 'Huwelijkse voorwaarden en verrekenbeding', 'Echtelijke woning en hypotheek', 'Vergoedingsrechten', 'Schulden', 'Onderneming in het vermogen']],
-        ['Pensioen', ['Verevening ouderdomspensioen', 'Conversie', 'Bijzonder partnerpensioen', 'Afwijken in het convenant', 'Melding bij de pensioenuitvoerder']],
-        ['Partneralimentatie', ['Behoefte en de hofnorm', 'Draagkracht', 'Duur en limitering', 'Wijziging en nihilstelling', 'Samenwonen met een nieuwe partner', 'Verdiencapaciteit']],
-        ['Kinderalimentatie', ['Behoefte van het kind', 'Draagkracht van de ouders', 'Zorgkorting', 'Jongmeerderjarigen (18 tot 21)', 'Wijziging van kinderalimentatie']],
-        ['Kinderen, gezag en omgang', ['Gezamenlijk of eenhoofdig gezag', 'Ouderschapsplan', 'Zorgregeling en omgang', 'Verhuizen met kinderen', 'Hoofdverblijfplaats', 'Kind horen en bijzondere curator']]
+        ['De echtscheiding zelf', [
+          ['Grond en procedures', ['Duurzame ontwrichting als enige grond (art. 1:151 BW)', 'Gemeenschappelijk verzoek en eenzijdig verzoek (art. 1:154 BW, art. 815 Rv)', 'Scheiding van tafel en bed (art. 1:169 e.v. BW)', 'Ontbinding van een geregistreerd partnerschap (art. 1:80c BW)', 'Inschrijving van de beschikking binnen zes maanden (art. 1:163 BW)']],
+          ['Afspraken en voorlopige voorzieningen', ['Echtscheidingsconvenant: uitleg, dwaling en vernietiging', 'Verplicht ouderschapsplan (art. 815 lid 2 Rv)', 'Voorlopige voorzieningen: gebruik van de woning, alimentatie en de kinderen (art. 821-826 Rv)']],
+          ['Internationale echtscheiding', ['Rechtsmacht (Brussel IIter-Verordening) en toepasselijk recht', 'Erkenning van buitenlandse echtscheidingen']]
+        ]],
+        ['Vermogen en verdeling', [
+          ['Huwelijksvermogensregime', ['Beperkte gemeenschap van goederen voor huwelijken vanaf 1 januari 2018 (art. 1:94 BW)', 'Algehele gemeenschap van goederen voor huwelijken vóór 2018', 'Verknochtheid, bijvoorbeeld smartengeld of letselschade-uitkeringen (art. 1:94 lid 3 BW)', 'Peildatum: ontbinding van de gemeenschap bij indiening van het verzoek (art. 1:99 BW)']],
+          ['Huwelijkse voorwaarden', ['Koude uitsluiting', 'Periodiek verrekenbeding en het niet-nagekomen verrekenbeding (art. 1:141 BW)', 'Finaal verrekenbeding (art. 1:142 BW)', 'Uitleg en vernietiging van huwelijkse voorwaarden']],
+          ['Verdeling', ['De echtelijke woning: toedeling, overbedeling, hypotheek en gebruiksvergoeding', 'Waardering van een onderneming', 'Schulden: interne draagplicht en externe aansprakelijkheid', 'Vergoedingsrechten en de beleggingsleer (art. 1:87 en 1:95 BW)', 'Verzwijgen of zoekmaken van goederen (art. 3:194 lid 2 BW)', 'Huurrecht van de woning na scheiding (art. 7:266-7:267 BW)']]
+        ]],
+        ['Pensioen', [
+          ['Ouderdomspensioen', ['Wet pensioenverdeling bij scheiding 2022: conversie als hoofdregel, voor scheidingen vanaf 1 juli 2022', 'Wet verevening pensioenrechten bij scheiding (Wvps) voor eerdere scheidingen', 'Afwijkende afspraken in het convenant of in huwelijkse voorwaarden', 'Termijn voor melding bij het pensioenfonds']],
+          ['Bijzondere situaties', ['Bijzonder partnerpensioen (nabestaandenpensioen)', 'Pensioen in eigen beheer bij een dga en de oudedagsverplichting', 'Gevolgen van de Wet toekomst pensioenen']]
+        ]],
+        ['Partneralimentatie', [
+          ['Behoefte en draagkracht', ['Behoefte: de hofnorm, behoeftelijsten en de huwelijkse welstand', 'Aanvullende behoefte en verdiencapaciteit', 'Draagkracht volgens het Rapport alimentatienormen (voorheen Tremanormen)']],
+          ['Duur (art. 1:157 BW)', ['Maximaal vijf jaar sinds de Wet herziening partneralimentatie (1 januari 2020)', 'Uitzonderingen: jonge kinderen, lange huwelijken en de nadering van de AOW-leeftijd', 'Verlenging bij ingrijpende gevolgen']],
+          ['Wijziging en beëindiging', ['Wijziging van omstandigheden en nihilstelling (art. 1:401 BW)', 'Niet-wijzigingsbeding (art. 1:159 BW)', 'Samenwonen van de alimentatiegerechtigde (art. 1:160 BW)']]
+        ]],
+        ['Kinderalimentatie', [
+          ['Grondslag en berekening', ['Onderhoudsplicht van ouders (art. 1:392 en 1:404 BW) en jongmeerderjarigen van 18 tot 21 jaar (art. 1:395a BW)', 'Behoefte: de tabel eigen aandeel kosten van kinderen', 'Draagkracht, zorgkorting en de verwerking van het kindgebonden budget', 'Voorrang van kinderalimentatie boven partneralimentatie (art. 1:400 BW)']],
+          ['Overig', ['Wijziging van kinderalimentatie (art. 1:401 BW)', 'Onderhoudsplicht van stiefouders (art. 1:395 BW)', 'Inning via het LBIO']]
+        ]],
+        ['Kinderen, gezag en omgang', [
+          ['Gezag', ['Gezamenlijk gezag blijft na scheiding bestaan (art. 1:251 BW)', 'Eenhoofdig gezag op verzoek en het klem-en-verloren-criterium (art. 1:251a BW)']],
+          ['Zorg en omgang', ['Hoofdverblijfplaats en co-ouderschap (art. 1:253a BW)', 'Zorg- en omgangsregeling en ontzegging van omgang (art. 1:377a BW)', 'Informatie- en consultatieplicht (art. 1:377b-1:377c BW)', 'Naleving van het ouderschapsplan, inclusief dwangsommen']],
+          ['Geschillen over beslissingen', ['Verhuizing met de kinderen (art. 1:253a BW)', 'Schoolkeuze, paspoort en medische beslissingen', 'Hoorrecht van het kind (art. 809 Rv) en de bijzondere curator (art. 1:250 BW)']],
+          ['Kinderbescherming en internationaal', ['Ondertoezichtstelling en uithuisplaatsing', 'Internationale kinderontvoering (Haags Kinderontvoeringsverdrag)']]
+        ]]
       ]
     },
     straf: {
       naam: 'Strafrecht', wet: 'Wetten.overheid.nl, actuele tekst Sr, Sv, Opiumwet en Wegenverkeerswet 1994', pill: 'Rechtspraak.nl · Sr + Sv',
       cats: [
-        ['Opsporing en dwangmiddelen', ['Aanhouding en verhoor', 'Consultatie- en verhoorbijstand', 'Voorlopige hechtenis', 'Doorzoeking en inbeslagneming', 'Onderzoek van telefoon en gegevens', 'Vormverzuimen (art. 359a Sv)']],
-        ['Bewijs', ['Bewijsminimum en steunbewijs', 'Getuigen en het ondervragingsrecht', 'Alternatief scenario', 'Opzet en voorwaardelijk opzet', 'Medeplegen en medeplichtigheid']],
-        ['Delicten', ['Vermogensdelicten', 'Geweldsdelicten', 'Zedendelicten', 'Opiumwet', 'Verkeer (art. 6 en 8 WVW 1994)', 'Witwassen en fraude']],
-        ['Verweren en strafuitsluiting', ['Noodweer en noodweerexces', 'Overmacht en noodtoestand', 'Ontoerekeningsvatbaarheid', 'Verjaring', 'Ne bis in idem']],
-        ['Straf en maatregel', ['Straftoemeting', 'Voorwaardelijke straf en bijzondere voorwaarden', 'Tbs en andere maatregelen', 'Ontneming wederrechtelijk verkregen voordeel', 'Schadevergoeding en de benadeelde partij']],
-        ['Procedure', ['Geldigheid van de dagvaarding', 'Redelijke termijn', 'Hoger beroep en cassatie', 'Strafbeschikking en OM-afdoening', 'Jeugdstrafrecht']]
+        ['Algemene leerstukken', [
+          ['Strafbaarheid en schuld', ['Legaliteitsbeginsel (art. 1 Sr)', 'Opzet, inclusief voorwaardelijk opzet (HIV-arrest, ECLI:NL:HR:2003:AE9049)', 'Culpa (schuld) bij schulddelicten', 'Wederrechtelijkheid en materiële wederrechtelijkheid']],
+          ['Poging en voorbereiding', ['Poging (art. 45 Sr) en het begin van uitvoering', 'Voorbereiding (art. 46 Sr)', 'Vrijwillige terugtred (art. 46b Sr)']],
+          ['Deelneming', ['Medeplegen: nauwe en bewuste samenwerking (art. 47 Sr; overzichtsarrest ECLI:NL:HR:2014:3474)', 'Doen plegen en uitlokking (art. 47 Sr)', 'Medeplichtigheid (art. 48 Sr)', 'Functioneel daderschap en strafbaarheid van rechtspersonen (art. 51 Sr)']],
+          ['Strafuitsluitingsgronden', ['Ontoerekeningsvatbaarheid (art. 39 Sr)', 'Overmacht: psychische overmacht en noodtoestand (art. 40 Sr)', 'Noodweer en noodweerexces (art. 41 Sr)', 'Wettelijk voorschrift en ambtelijk bevel (art. 42-43 Sr)', 'Afwezigheid van alle schuld (AVAS)']]
+        ]],
+        ['Delicten', [
+          ['Leven en lichamelijke integriteit', ['Moord en doodslag (art. 289 en 287 Sr)', 'Mishandeling en zware mishandeling (art. 300-304 Sr)', 'Dood of letsel door schuld (art. 307-308 Sr)', 'Bedreiging (art. 285 Sr)']],
+          ['Zeden', ['Wet seksuele misdrijven (sinds 1 juli 2024): schuld- en opzetaanranding en -verkrachting', 'Seksuele misdrijven met minderjarigen en online seksueel misbruik']],
+          ['Vermogen', ['Diefstal, ook met geweld (art. 310-312 Sr)', 'Afpersing en afdreiging (art. 317-318 Sr)', 'Verduistering (art. 321 e.v. Sr)', 'Oplichting (art. 326 Sr)', 'Heling (art. 416-417bis Sr) en witwassen (art. 420bis e.v. Sr)', 'Valsheid in geschrift (art. 225 Sr)']],
+          ['Bijzondere wetten', ['Opiumwet: bezit, handel, invoer en voorbereidingshandelingen (art. 2, 3 en 10a Opiumwet)', 'Verkeersdelicten: rijden onder invloed (art. 8 WVW 1994), doorrijden na een ongeval (art. 7 WVW 1994) en verkeersongeval door schuld (art. 6 WVW 1994)', 'Wet wapens en munitie', 'Economisch en fiscaal strafrecht (WED, AWR)']],
+          ['Openbare orde, uitingen en cybercrime', ['Belediging en smaad (art. 261-266 Sr)', 'Discriminatie en groepsbelediging (art. 137c e.v. Sr)', 'Computervredebreuk (art. 138ab Sr) en andere cybercrime']]
+        ]],
+        ['Opsporing en voorlopige hechtenis', [
+          ['De verdachte en zijn rechten', ['Staandehouding en aanhouding (art. 52-54 Sv)', 'Verhoor, cautie en het recht op een advocaat (art. 27c e.v. en 28 e.v. Sv)', 'Inzage in processtukken (art. 30 e.v. Sv)']],
+          ['Dwangmiddelen', ['Doorzoeking en inbeslagneming (art. 94 e.v. Sv), inclusief onderzoek aan smartphones', 'Bijzondere opsporingsbevoegdheden: telefoontap, observatie en infiltratie', 'Lichamelijk onderzoek en DNA-onderzoek']],
+          ['Voorlopige hechtenis (art. 63-88 Sv)', ['Ernstige bezwaren en de gronden (art. 67 en 67a Sv)', 'Schorsing onder voorwaarden (art. 80 Sv)', 'Duur en verlenging van de voorlopige hechtenis']],
+          ['Vormverzuimen (art. 359a Sv)', ['Rechtsgevolgen: strafvermindering, bewijsuitsluiting en niet-ontvankelijkheid van het OM', 'Overzichtsarrest HR 1 december 2020, ECLI:NL:HR:2020:1889']]
+        ]],
+        ['Vervolging, berechting en bewijs', [
+          ['De vervolgingsbeslissing', ['Sepot en het opportuniteitsbeginsel (art. 167 Sv)', 'Strafbeschikking (art. 257a e.v. Sv) en transactie (art. 74 Sr)', 'Beklag over niet-vervolging (art. 12 Sv)']],
+          ['Dagvaarding en procedure', ['Tenlastelegging en nietigheid van de dagvaarding (art. 261 Sv)', 'Verstek, aanwezigheidsrecht en verdediging', 'Het beslissingsmodel (art. 348 en 350 Sv)']],
+          ['Bewijs', ['Wettige bewijsmiddelen en bewijsminimum (art. 339-344a Sv)', 'Getuigen en het ondervragingsrecht (art. 6 EVRM)', 'Betrouwbaarheid van verklaringen en deskundigenbewijs']],
+          ['Beletselen en waarborgen', ['Ne bis in idem (art. 68 Sr)', 'Verjaring (art. 70 e.v. Sr)', 'Overschrijding van de redelijke termijn (art. 6 EVRM)']]
+        ]],
+        ['Straffen en maatregelen', [
+          ['Straffen (art. 9 Sr)', ['Gevangenisstraf, hechtenis, taakstraf en geldboete', 'Voorwaardelijke straf en bijzondere voorwaarden (art. 14a e.v. Sr)', 'Straftoemeting en de LOVS-oriëntatiepunten']],
+          ['Maatregelen', ['Tbs, met of zonder verpleging (art. 37a e.v. Sr)', 'ISD-maatregel (art. 38m Sr)', 'Ontneming van wederrechtelijk verkregen voordeel (art. 36e Sr)', 'Onttrekking aan het verkeer en verbeurdverklaring (art. 33 en 36b Sr)', 'Gedragsbeïnvloedende en vrijheidsbeperkende maatregel (art. 38v Sr)']],
+          ['Jeugd- en adolescentenstrafrecht', ['Jeugdstrafrecht (art. 77a e.v. Sr)', 'Adolescentenstrafrecht voor 18- tot 23-jarigen (art. 77c Sr)']]
+        ]],
+        ['Slachtoffer en benadeelde partij', [
+          ['Rechten van het slachtoffer', ['Vordering van de benadeelde partij (art. 51f Sv), inclusief de vraag of die een onevenredige belasting voor het strafgeding is', 'Schadevergoedingsmaatregel (art. 36f Sr)', 'Spreekrecht (art. 51e Sv)']]
+        ]],
+        ['Rechtsmiddelen en overig', [
+          ['Rechtsmiddelen', ['Hoger beroep, inclusief de appelschriftuur (art. 404 e.v. Sv)', 'Cassatie (art. 427 e.v. Sv)', 'Herziening (art. 457 e.v. Sv)']],
+          ['Overig', ['Vergoeding na vrijspraak of ontslag van alle rechtsvervolging (art. 533 e.v. Sv)', 'Internationale samenwerking: overlevering (EAB) en uitlevering', 'Tenuitvoerlegging: voorwaardelijke invrijheidstelling en gratie']]
+        ]]
       ]
     },
+    /* sleutel 'civiel': de workflow zoekt dan in BW Boek 6 en 7 */
     civiel: {
-      naam: 'Overig civiel', vraagOver: 'huur, koop of contracten', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 6 en 7 (huur, koop, aanneming, opdracht)', pill: 'Rechtspraak.nl · BW 7 + 6',
-      cats: []
+      naam: 'Huurrecht', wet: 'Wetten.overheid.nl, actuele tekst BW Boek 7 (huur) en Boek 6', pill: 'Rechtspraak.nl · BW 7 + 6',
+      cats: [
+        ['Toepassingsgebied en soorten huur', [
+          ['Kwalificatie', ['De huurovereenkomst: gebruik van een zaak tegen een tegenprestatie (art. 7:201 BW)', 'Huur of bruikleen, gebruiksovereenkomst en antikraak', 'Gemengde overeenkomsten, zoals huur met zorg of huur met arbeid', 'Gebruik dat naar zijn aard van korte duur is (art. 7:232 lid 2 BW)']],
+          ['Soorten huur', ['Woonruimte (art. 7:232 e.v. BW)', 'Middenstandsbedrijfsruimte, zoals winkels en horeca (art. 7:290 e.v. BW)', 'Overige bedrijfsruimte, zoals kantoren (art. 7:230a BW)', 'Onzelfstandige woonruimte, kamerverhuur en onderhuur']]
+        ]],
+        ['Huurprijs en servicekosten', [
+          ['Woonruimte', ['Puntenstelsel (woningwaarderingsstelsel) en de Wet betaalbare huur voor middenhuur (sinds 1 juli 2024)', 'Toetsing van de aanvangshuur (art. 7:249 BW)', 'Huurverhoging (art. 7:250 e.v. BW), inclusief de inkomensafhankelijke huurverhoging', 'Servicekosten en de jaarlijkse afrekening (art. 7:259-7:261 BW)']],
+          ['Bedrijfsruimte', ['Huurprijsherziening van middenstandsbedrijfsruimte op basis van vergelijkingspanden (art. 7:303 BW)', 'Indexering en contractuele huurprijsaanpassing']]
+        ]],
+        ['Gebreken, onderhoud en renovatie', [
+          ['Gebreken', ['Het gebrekbegrip (art. 7:204 BW)', 'Herstelplicht van de verhuurder (art. 7:206 BW)', 'Huurprijsvermindering (art. 7:207 BW) en schadevergoeding (art. 7:208 BW)', 'Kleine herstellingen voor rekening van de huurder (art. 7:217 BW)', 'Veelvoorkomende gebreken: schimmel, vocht, lekkage en geluidsoverlast']],
+          ['Renovatie en werkzaamheden', ['Dringende werkzaamheden en renovatie (art. 7:220 BW)', 'Redelijk renovatievoorstel en het 70%-vermoeden bij complexen', 'Verhuis- en inrichtingskostenvergoeding (art. 7:220 lid 5 BW)']]
+        ]],
+        ['Verplichtingen van de huurder', [
+          ['Betaling en gebruik', ['Huurachterstand en ontbinding (art. 6:265 BW), inclusief de tenzij-clausule', 'Goed huurderschap (art. 7:213 BW): overlast, hennepteelt en gebruik in strijd met de bestemming', 'Onderverhuur, woonfraude en het hoofdverblijf (art. 7:244 BW)', 'Veranderingen en toevoegingen door de huurder (art. 7:215-7:216 BW)']]
+        ]],
+        ['Beëindiging en huurbescherming', [
+          ['Woonruimte', ['Opzegging door de verhuurder alleen op wettelijke gronden (art. 7:271 en 7:274 BW)', 'Opzeggingsgrond: niet behoorlijk huurderschap', 'Opzeggingsgrond: dringend eigen gebruik', 'Opzeggingsgrond: weigering van een redelijk aanbod', 'Opzeggingsgrond: verwezenlijking van een bestemmingsplan', 'Opzeggingsgrond: belangenafweging na afloop van een tijdelijke huur', 'Tijdelijke huur en de Wet vaste huurcontracten (sinds 1 juli 2024)', 'Ontruiming in kort geding']],
+          ['Middenstandsbedrijfsruimte', ['Huurtermijnen van tweemaal vijf jaar (art. 7:292 BW)', 'Opzeggingsgronden voor de verhuurder (art. 7:296 BW)', 'Beëindigings- en verlengingsvordering bij de kantonrechter', 'Overeenkomsten van ten hoogste twee jaar (art. 7:301 BW)']],
+          ['Overige bedrijfsruimte', ['Ontruimingsbescherming (art. 7:230a BW)']]
+        ]],
+        ['Overdracht, medehuur en voortzetting', [
+          ['Wisseling van partijen', ['Koop breekt geen huur (art. 7:226 BW)', 'Medehuurderschap van de echtgenoot of partner (art. 7:266-7:267 BW)', 'Voortzetting na overlijden van de huurder (art. 7:268 BW)', 'Indeplaatsstelling bij middenstandsbedrijfsruimte (art. 7:307 BW)']]
+        ]],
+        ['Procesrecht', [
+          ['Procedures', ['Exclusieve bevoegdheid van de kantonrechter (art. 93 Rv)', 'De Huurcommissie en de termijn van acht weken om de uitspraak aan de kantonrechter voor te leggen (art. 7:262 BW)', 'Wet goed verhuurderschap: regels voor verhuurders en handhaving door gemeenten']]
+        ]]
+      ]
     }
   };
   var RG_VOLGORDE = ['arbeid', 'scheiding', 'straf', 'civiel'];
   var rg = 'arbeid';
   var topic = null;
+  var openSecs = {};
   var laatsteSjabloon = '';
 
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -503,13 +620,14 @@
     $('rgList').innerHTML = html;
     $('bronWet').textContent = RG[rg].wet;
     $('bronPill').textContent = RG[rg].pill;
-    vraagEl.placeholder = 'Stel je vraag over ' + (RG[rg].vraagOver || RG[rg].naam.toLowerCase()) + (gekozen().length ? ' of over dit dossier' : '');
+    vraagEl.placeholder = 'Stel je vraag over ' + RG[rg].naam.toLowerCase() + (gekozen().length ? ' of over dit dossier' : '');
   }
   function setRg(k) {
     if (!RG[k] || k === rg) return;
     rg = k;
     store('considerans_rg', k);
     topic = null;
+    openSecs = {};
     if (vraagEl.value === laatsteSjabloon) { vraagEl.value = ''; autoGrow(); updateSend(); }
     renderRg(); renderChips();
     if (!gesprek.length) renderEmpty();
@@ -518,23 +636,26 @@
     var b = e.target.closest('[data-rg]');
     if (b) { setRg(b.getAttribute('data-rg')); closeDrawers(); }
   });
-  function onderwerpTekst() { return topic ? topic.cat + ' › ' + topic.sub : ''; }
-  function kiesOnderwerp(ci, si) {
+  function onderwerpTekst() { return topic ? topic.cat + ' › ' + topic.sec + ' › ' + topic.item : ''; }
+  function kiesOnderwerp(ci, si, ii) {
     var c = RG[rg].cats[ci];
-    if (!c) return;
-    var sub = c[1][si];
-    if (topic && topic.cat === c[0] && topic.sub === sub) { topic = null; }
-    else { topic = { cat: c[0], sub: sub }; }
+    var s = c && c[1][si];
+    var item = s && s[1][ii];
+    if (!item) return;
+    if (topic && topic.cat === c[0] && topic.sec === s[0] && topic.item === item) { topic = null; }
+    else { topic = { cat: c[0], sec: s[0], item: item }; }
     var leeg = !vraagEl.value.trim() || vraagEl.value === laatsteSjabloon;
     if (leeg) {
-      laatsteSjabloon = topic ? 'Welke maatstaven hanteert de rechter bij ' + sub.charAt(0).toLowerCase() + sub.slice(1) + ', en welke uitspraken zijn daarbij leidend?' : '';
+      laatsteSjabloon = topic ? 'Welke maatstaven en welke leidende rechtspraak gelden bij: ' + item + '?' : '';
       vraagEl.value = laatsteSjabloon;
       autoGrow(); updateSend();
     }
     renderChips();
-    if (!gesprek.length) renderEmpty();
-    vraagEl.focus();
+    if (!gesprek.length) herteken();
+    vraagEl.focus({ preventScroll: true });
   }
+  /* lege staat opnieuw tekenen zonder dat de scrollpositie verspringt */
+  function herteken() { var y = chatEl.scrollTop; renderEmpty(); chatEl.scrollTop = y; }
   $('dossierNav').addEventListener('click', function () { titelEl.focus(); titelEl.select(); closeDrawers(); });
 
   /* ── Bestanden ── */
@@ -712,7 +833,7 @@
       if (docs.some(function (d) { return /huur/i.test(d.naam); })) vragen.splice(1, 0, 'Welke bepalingen kunnen het recht van huurder om in 2029 te stoppen beperken of duurder maken? Noem ook relevante rechtspraak.');
     }
     var g = RG[rg];
-    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier' + (g.cats.length ? ', of kies hieronder een onderdeel' : '') : (g.cats.length ? 'Kies een onderdeel om gericht te zoeken, of stel direct je vraag.' : 'Stel direct je vraag.') + ' Stukken voeg je toe via Bijlagen.') + '</p>';
+    var html = '<div class="empty"><h2>Waarmee kan ik je helpen?</h2><p>' + (heeftDocs ? 'Een paar voorbeeldvragen bij dit dossier, of kies hieronder een onderwerp' : 'Kies een onderwerp om gericht te zoeken, of stel direct je vraag. Stukken voeg je toe via Bijlagen.') + '</p>';
     html += '<div class="rg-tabs" role="tablist" aria-label="Rechtsgebied">';
     RG_VOLGORDE.forEach(function (k) { html += '<button role="tab" data-rg="' + k + '" aria-selected="' + (k === rg) + '">' + esc(RG[k].naam) + '</button>'; });
     html += '</div>';
@@ -721,18 +842,24 @@
       vragen.forEach(function (v) { html += '<button data-v="' + esc(v) + '">' + ICON_Q + '<span>' + esc(v) + '</span></button>'; });
       html += '</div>';
     }
-    if (!g.cats.length) {
-      html += '<div class="indeling"><div class="indeling-head"><h3>' + esc(g.naam) + '</h3><p>Huur, koop, aanneming, opdracht en contracten. Geen vaste indeling: stel je vraag of voeg stukken toe.</p></div></div></div>';
-      chatInner.innerHTML = html;
-      bindEmpty();
-      return;
-    }
-    html += '<div class="indeling"><div class="indeling-head"><h3>Indeling ' + esc(g.naam.toLowerCase()) + '</h3><p>Eerst het overzicht, dan per onderdeel gericht zoeken</p></div><div class="cats">';
+    html += '<div class="indeling"><div class="indeling-head"><h3>Indeling ' + esc(g.naam.toLowerCase()) + '</h3><p>Open een onderdeel en kies een onderwerp</p></div><div class="cats">';
     g.cats.forEach(function (c, ci) {
-      html += '<div class="cat"><h4><span class="nr">' + (ci + 1) + '</span>' + esc(c[0]) + '</h4><div class="subs">';
+      html += '<div class="cat"><h4><span class="nr">' + (ci + 1) + '</span>' + esc(c[0]) + '</h4><div class="secs">';
       c[1].forEach(function (s, si) {
-        var on = topic && topic.cat === c[0] && topic.sub === s;
-        html += '<button data-c="' + ci + '" data-s="' + si + '"' + (on ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') + '>' + esc(s) + '</button>';
+        var k = ci + '.' + si;
+        var heeftTopic = topic && topic.cat === c[0] && topic.sec === s[0];
+        var open = c[1].length === 1 || heeftTopic || openSecs[k];
+        html += '<div class="sec-i' + (open ? ' open' : '') + '">';
+        html += '<button class="sec-h" data-k="' + k + '" aria-expanded="' + (open ? 'true' : 'false') + '"' + (c[1].length === 1 ? ' disabled' : '') + '><span class="snr">' + (ci + 1) + '.' + (si + 1) + '</span><span class="stt">' + esc(s[0]) + '</span><span class="cnt">' + s[1].length + '</span></button>';
+        if (open) {
+          html += '<div class="subs">';
+          s[1].forEach(function (it, ii) {
+            var on = heeftTopic && topic.item === it;
+            html += '<button data-c="' + ci + '" data-s="' + si + '" data-i="' + ii + '"' + (on ? ' class="on" aria-pressed="true"' : ' aria-pressed="false"') + '>' + esc(it) + '</button>';
+          });
+          html += '</div>';
+        }
+        html += '</div>';
       });
       html += '</div></div>';
     });
@@ -747,8 +874,11 @@
     chatInner.querySelectorAll('.rg-tabs button').forEach(function (b) {
       b.addEventListener('click', function () { setRg(b.getAttribute('data-rg')); });
     });
+    chatInner.querySelectorAll('.sec-h').forEach(function (b) {
+      b.addEventListener('click', function () { var k = b.getAttribute('data-k'); openSecs[k] = !openSecs[k]; herteken(); });
+    });
     chatInner.querySelectorAll('.subs button').forEach(function (b) {
-      b.addEventListener('click', function () { kiesOnderwerp(parseInt(b.getAttribute('data-c'), 10), parseInt(b.getAttribute('data-s'), 10)); });
+      b.addEventListener('click', function () { kiesOnderwerp(parseInt(b.getAttribute('data-c'), 10), parseInt(b.getAttribute('data-s'), 10), parseInt(b.getAttribute('data-i'), 10)); });
     });
   }
 
@@ -814,7 +944,7 @@
       vraag: vraag,
       kantoor: 'pilot',
       rechtsgebied: rg,
-      onderwerp: onderwerpTekst(),
+      onderwerp: (rg === 'civiel' ? 'Huurrecht' + (topic ? ' › ' : '') : '') + onderwerpTekst(),
       model: model,
       eerder: gesprek.slice(-2).map(function (b) { return { vraag: b.vraag, antwoord: b.antwoord }; }),
       documenten: stukken.map(function (d) { return { naam: d.naam, tekst: d.tekst.slice(0, 120000) }; })
