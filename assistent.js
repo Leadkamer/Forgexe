@@ -305,7 +305,7 @@
     '.fxa-wa-knop:hover,.fxa-wa-knop:focus{background:#178F45;color:#FFFFFF}' +
     '.fxa-wa-knop svg{width:18px;height:18px}' +
     '.fxa-close:hover{color:#0C0D10}' +
-    '.fxa-msgs{flex:1;overflow-y:auto;padding:16px;background:#F2F2EE;display:flex;flex-direction:column;gap:10px}' +
+    '.fxa-msgs{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:16px;background:#F2F2EE;display:flex;flex-direction:column;gap:10px}' +
     '.fxa-msg{max-width:80%;padding:12px 16px;word-wrap:break-word;overflow-wrap:break-word;font-size:14px}' +
     '.fxa-msg-bot{background:#FFFFFF;color:#0C0D10;border:1px solid #E6E6E0;border-radius:18px 18px 18px 6px;align-self:flex-start}' +
     '.fxa-msg-bot a{font-weight:600;text-decoration:underline;word-break:break-all}' +
@@ -384,7 +384,8 @@
     '.fxa-totaal strong{font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}' +
     '.fxa-tip{background:#F2F2EE;border-radius:10px;padding:9px 11px;font-size:12px;line-height:1.45;color:#22252C}' +
     '.fxa-knoppen{display:flex;flex-direction:column;gap:8px}' +
-    '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}.fxa-root.fxa-open .fxa-btn{display:none}}';
+    '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;top:0;left:0;right:0;bottom:auto;width:100%;max-width:100%;height:100vh;height:100dvh;max-height:none;border-radius:0;border:none}.fxa-inputbar{padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px))}.fxa-teaser{max-width:calc(100vw - 24px)}.fxa-root.fxa-open .fxa-btn{display:none}}' +
+    'html.fxa-lock,html.fxa-lock body{overflow:hidden!important;overscroll-behavior:none}';
 
   /* Alle widgetregels krijgen ".fxa-root" ervoor. Thema's als Elementor stylen
      knoppen met bijv. ".elementor-kit-5 button" (specifieker dan één klasse);
@@ -1457,10 +1458,46 @@
     stopPulsen();
   });
 
+  /* Mobiel: het chatvenster vult precies het zichtbare deel van het scherm, ook als de adresbalk of het
+     toetsenbord van Safari in beeld komt, zodat het typveld altijd onderaan zichtbaar is. De pagina
+     erachter scrolt dan niet mee. */
+  var panelEl = root.querySelector('.fxa-panel');
+  function isMobiel() { return window.innerWidth <= 520; }
+  var vergrendeld = false, bewaardeY = 0;
+  function zetSlot(aan) {
+    if (aan === vergrendeld) return;
+    vergrendeld = aan;
+    var b = document.body.style;
+    document.documentElement.classList.toggle('fxa-lock', aan);
+    if (aan) {
+      /* iOS Safari negeert overflow:hidden bij vegen: de pagina vastzetten op de huidige plek */
+      bewaardeY = window.pageYOffset || 0;
+      b.position = 'fixed'; b.top = -bewaardeY + 'px'; b.left = '0'; b.right = '0'; b.width = '100%';
+    } else {
+      b.position = ''; b.top = ''; b.left = ''; b.right = ''; b.width = '';
+      window.scrollTo(0, bewaardeY);
+    }
+  }
+  function pasSchermAan() {
+    var mob = open && isMobiel();
+    zetSlot(mob);
+    if (!mob) { panelEl.style.height = ''; panelEl.style.top = ''; return; }
+    var vv = window.visualViewport;
+    panelEl.style.height = Math.round(vv ? vv.height : window.innerHeight) + 'px';
+    panelEl.style.top = Math.round(vv ? vv.offsetTop : 0) + 'px';
+    if (msgsEl) scrollDown();
+  }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', pasSchermAan);
+    window.visualViewport.addEventListener('scroll', pasSchermAan);
+  }
+  window.addEventListener('resize', pasSchermAan);
+
   function openChat(bron) {
     if (!open) {
       open = true;
       root.classList.add('fxa-open');
+      pasSchermAan();
       stopPulsen();
       /* Wie de chat opent hoeft de teaserkaart deze sessie niet meer te zien */
       markeerTeaserGezien();
@@ -1468,7 +1505,7 @@
       track('chat_geopend', bron);
     }
     verbergTeaser();
-    setTimeout(function () { inputEl.focus(); }, 100);
+    if (!isMobiel()) setTimeout(function () { inputEl.focus(); }, 100);
     return initConfig()
       .catch(function () {
         naamEl.textContent = DATA_NAAM || 'Chat';
@@ -1483,6 +1520,7 @@
     if (open) {
       open = false;
       root.classList.remove('fxa-open');
+      pasSchermAan();
       return;
     }
     openChat('knop');
@@ -1491,6 +1529,7 @@
   closeBtn.addEventListener('click', function () {
     open = false;
     root.classList.remove('fxa-open');
+    pasSchermAan();
     flushEvents();
   });
 
