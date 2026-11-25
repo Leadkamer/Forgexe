@@ -384,7 +384,7 @@
     '.fxa-totaal strong{font-size:18px;font-variant-numeric:tabular-nums;white-space:nowrap;flex:none}' +
     '.fxa-tip{background:#F2F2EE;border-radius:10px;padding:9px 11px;font-size:12px;line-height:1.45;color:#22252C}' +
     '.fxa-knoppen{display:flex;flex-direction:column;gap:8px}' +
-    '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}}';
+    '@media (max-width:520px){.fxa-root{right:12px;bottom:12px}.fxa-panel{position:fixed;inset:0;width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;border:none;bottom:0}.fxa-teaser{max-width:calc(100vw - 24px)}.fxa-root.fxa-open .fxa-btn{display:none}}';
 
   /* Alle widgetregels krijgen ".fxa-root" ervoor. Thema's als Elementor stylen
      knoppen met bijv. ".elementor-kit-5 button" (specifieker dan één klasse);
